@@ -60,32 +60,37 @@ function reviewresult(){
 
             var data = JSON.parse(this.responseText);
             // console.log(data[0]);
-            var message = data[0].msg;
-            // console.log(message);
+            var app = data[0].app;
+            var appstore = data[0].appstore;
+
+            console.log(appstore);
             document.getElementById("appcont").innerHTML="";
-            for (var i = 0; i < message.length; i++) {
+            document.getElementById("appstorecont").innerHTML="";
+            for (var i = 0; i < app.length; i++) {
                 var appcont = document.getElementById("appcont");
                 var child = document.createElement("div");
                 child.setAttribute('class','col-sm-3 form-group');
-                var text = document.createTextNode(message[i].name);
+                var text = document.createTextNode(app[i].name);
                 var input = document.createElement("input");
                 input.setAttribute('type','checkbox');
-                if (message[i].state == 1) {input.setAttribute('checked','');};
+                if (app[i].state == 1) {input.setAttribute('checked','');};
                 child.appendChild(input);
                 child.appendChild(text);
                 appcont.appendChild(child);
+            };
+            for (var i = 0; i < appstore.length; i++) {
+                var appstorecont = document.getElementById("appstorecont");
+                var child = document.createElement("div");
+                child.setAttribute('class','col-sm-3 form-group');
+                var text = document.createTextNode(appstore[i].name);
+                var input = document.createElement("input");
+                input.setAttribute('type','checkbox');
+                if (appstore[i].state == 1) {input.setAttribute('checked','');};
+                child.appendChild(input);
+                child.appendChild(text);
+                appstorecont.appendChild(child);
             };
             
         }
     }
 }
-
-
-/*多项删除*/
-// var oButton = document.getElementById("wait-delete");
-// oButton.onclick = function(){
-//     console.log("in delete");
-//     $("#myMoreDeleteModalLabel").text("删除");
-//     $('#myMoreDeleteModal').modal();
-//     $(".modal-backdrop").addClass("new-backdrop");
-// }
