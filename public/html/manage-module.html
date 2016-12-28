@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="moduleManagePage">
+			<div class="col-xs-12 form-group">
+				<fieldset>
+					<legend>模块列表</legend>
+					<div class="">
+						<button type="button" class="btn btn-default" id="manage-moduleAdd">新增</button>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered" id="module-mkTable">
+								<tr>
+									<td>
+										<div>App:</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div>App:</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div>App:</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+										<div class="col-xs-4">
+
+											<a>酷开商城</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+
+		<!--新增和编辑弹框-->
+		<div class="modal fade" id="myModuleAddChangeModal" tabindex="-1" role="dialog" aria-labelledby="myModuleAddChangeModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content" id="myModuleBorder">
+					<div class="modal-body">
+						<button type="button" id="inputModuleClose" data-dismiss="modal">关闭</button>
+						<label for="moduleName" class="control-label" style="margin-bottom: 0px;">模块名称：</label><br/>
+						<input type="text" value="" id="moduleName"><br/>
+						<label for="moduleSrc" class="control-label" style="margin-bottom: 0px;">模块路径：</label><br/>
+						<input type="text" value="" id="moduleSrc"><br/>
+						<label for="moduleInstr" class="control-label" style="margin-bottom: 0px;">描述：</label><br/>
+						<input type="text" value="" id="moduleInstr"><br/>
+						<label for="moduleSelect" class="control-label" style="margin-bottom: 0px;">所属分类：</label><br/>
+						<select id="moduleSelect">
+							<option value="volvo">APP</option>
+							<option value="saab">HomePage</option>
+							<option value="opel">SysApp</option>
+							<option value="audi">Appstore</option>
+						</select>
+						<button type="button" class="btn" data-dismiss="modal" id="inputModuleSubmit">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../javascripts/manage-module.js"></script>
+	</body>
+
+</html>

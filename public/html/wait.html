@@ -1,216 +1,1622 @@
 <!--内容列表-->
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title></title>
 
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../javascripts/test.js"></script>
-</head>
-<body>
-    <fieldset>
-        <legend>配置文件查询</legend>
-        <form action="/" method="post" role="form">
-            <!--机芯、机型、Device-->
-            <div class="row text-right">
-                <div class="col-xs-4 form-group">
-                    <label for="jixin" class="control-label">酷开版本</label>
-                    <input type="text" value="" id="coocaa">
-                </div>
-                <div class="col-xs-4 form-group">
-                    <label for="model" class="control-label">机型</label>
-                    <input type="text" value="" id="model">
-                </div>
-                <div class="col-xs-4 form-group">
-                    <label for="Device" class="control-label">机芯</label>
-                    <input type="text" value="" id="chip">
-                </div>
-            </div>
-            <div class="row text-right">
-                <div class="col-xs-4 form-group">
-                    <label for="androidVersion" class="control-label">安卓版本</label>
-                    <input type="text" value="" id="androidVersion">
-                </div>
-                <div class="col-xs-4 form-group">
-                    <label for="xinpianxinghao" class="control-label">芯片型号</label>
-                    <input type="text" value="" id="chipid">
-                </div>
-                <div class="col-xs-4 form-group">
-                    <label for="memory" class="control-label">内存</label>
-                    <input type="text" value="" id="memory">
-                </div>
-            </div>
-            <div class="form-group text-center">
-                <div class="col-sm-offset- col-sm-4"></div>
-                <div class="col-sm-offset- col-sm-2">
-                    <button type="submit" class="btn btn-default btn-success">查询</button>
-                </div>
-                <div class="col-sm-offset- col-sm-2">
-                    <button type="reset" class="btn btn-default btn-success">重置</button>
-                </div>
-                <div class="col-sm-offset- col-sm-4"></div>
-            </div>
-        </form>      
-    </fieldset>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
 
-    <fieldset>
-        <legend>内容列表</legend>
-        <div class="">
-            <button type="button" class="btn btn-default" onclick="addtab()">新增</button>
-            <button type="button" class="btn btn-default">批量修改</button>
-            <button type="button" class="btn btn-default">删除</button>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <table class="table table-striped table-bordered" style="align:center">
-                    <thead>
-                    <tr>
-                        <th>选择</th>
-                        <th>机芯机型</th>
-                        <th>Android版本</th>
-                        <th>芯片版本</th>
-                        <th>提交者</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+ 		<script type="text/javascript" src="../javascripts/test.js"></script>
+	</head>
 
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="">
-                        </td>
-                        <td>8S61</td>
-                        <td>5.0.2</td>
-                        <td>10.21</td>
-                        <td></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">编辑</button>
-                                <button type="button" class="btn btn-default">删除</button>
-                                <button type="button" class="btn btn-default">复制</button>
-                            </div>
-                        </td>
-                    </tr>
+	<body>
+		<div id="waitHomePage">
+			<fieldset>
+				<legend>配置文件查询</legend>
+				<!--机芯、机型、Device-->
+				<div class="row text-right">
+					<div class="col-xs-4 form-group">
+						<label for="coocaa" class="control-label">酷开版本</label>
+						<input type="text" value="" id="coocaa">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="model" class="control-label">机型</label>
+						<input type="text" value="" id="model">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="chip" class="control-label">机芯</label>
+						<input type="text" value="" id="chip">
+					</div>
+				</div>
+				<div class="row text-right">
+					<div class="col-xs-4 form-group">
+						<label for="androidVersion" class="control-label">安卓版本</label>
+						<input type="text" value="" id="androidVersion">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="chipid" class="control-label">芯片型号</label>
+						<input type="text" value="" id="chipid">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="memory" class="control-label">内存</label>
+						<input type="text" value="" id="memory">
+					</div>
+				</div>
+				<div class="form-group text-center">
+					<div class="col-sm-offset- col-sm-4"></div>
+					<div class="col-sm-offset- col-sm-2">
+						<button type="submit" class="btn btn-default btn-success">查询</button>
+					</div>
+					<div class="col-sm-offset- col-sm-2">
+						<button type="reset" class="btn btn-default btn-success">重置</button>
+					</div>
+					<div class="col-sm-offset- col-sm-4"></div>
+				</div>
+			</fieldset>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </fieldset>
-</body>
+			<fieldset>
+				<legend>内容列表</legend>
+				<div class="">
+					<button type="button" class="btn btn-default" id="wait-add">新增</button>
+					<button type="button" class="btn btn-default" id="wait-change">批量修改</button>
+					<button type="button" class="btn btn-default" id="wait-delete">删除</button>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>选择</th>
+									<th>机芯机型</th>
+									<th>Android版本</th>
+									<th>芯片版本</th>
+									<th>提交者</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" value="">
+									</td>
+									<td>8S61</td>
+									<td>5.0.2</td>
+									<td>10.21</td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default eachedit">编辑</button>
+											<button type="button" class="btn btn-default eachdelete">删除</button>
+											<button type="button" class="btn btn-default eachcopy">复制</button>
+										</div>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		
+			
+		<!--新增、编辑、复制  共用一套div   执行的js不一样-->
+		<div class="modal fade" id="myAddModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myAddModalLabel">新建机芯机型</h4>
+					</div>
+					<div class="modal-body mybody">
+						<!--机芯、机型、Device-->
+						<table class="table table-bordered mytable">
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group">
+										<label for="newChip" class="control-label">机芯 :</label>
+										<input type="text" value="" id="newChip" placeholder="newChip">
+									</div>
+									<div class="col-xs-6 form-group">
+										<label for="newModel" class="control-label">机型 :</label>
+										<input type="text" value="" id="newModel" placeholder="newModel">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group">
+										<label for="newDevice" class="control-label">Device :</label>
+										<input type="text" value="" id="newDevice" placeholder="newDevice">
+									</div>
+									<div class="col-xs-6 form-group">
+										<label for="NewAndroidVersion" class="control-label">Android版本 :</label>
+										<input type="text" value="" id="NewAndroidVersion" placeholder="NewAndroidVersion">
+									</div>
+									<div class="col-xs-6 form-group">
+										<label for="newChipMode" class="control-label">芯片型号 :</label>
+										<input type="text" value="" id="newChipMode" placeholder="newChipMode">
+									</div>
+									<div class="col-xs-6 form-group">
+										<label for="newMemory" class="control-label">内存 :</label>
+										<input type="text" value="" id="newMemory" placeholder="newMemory">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 0;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" id="mkButton" onclick="oButtonMKonclick('mkButton')">MK文件</button>
+										<button type="button" class="btn btn-default" id="configButton" onclick="oButtonConfigonclick('configButton')">config文件</button>
+									</div>
+									<table class="table table-bordered mytable" id="modal-mkTable">
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城1</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城2</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span>酷开商城</span>
+												</div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="table table-bordered fontsize mytable" id="modal-configTable">
+										<tr>
+											<td>
+												<div>核心功能 :</div>
+												<div class="col-xs-6">
+													<span>PANEL(屏幕) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>NETWORK(网络) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Source(通道) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>BleRemote(蓝牙遥控) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>H.265(H.265解码) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Log_appender(打印等级) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Ota_path(升级包路径) :</span>
+													<input type="text" name="Ota_path" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>Boot_flow(新开机流程) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Homepage(首页) :</span>
+													<input type="text" name="Homepage" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>ScreenSaver(屏保) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>ChildMode(儿童模式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Dolby DD+(杜比DD认证) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Server(基础服务后台) :</span>
+													<input type="text" name="Server" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>TCServer(TC后台) :</span>
+													<input type="text" name="TCServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>PushServer(推送后台) :</span>
+													<input type="text" name="PushServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>PayServer(支付后台) :</span>
+													<input type="text" name="PayServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span></span>PassServer(账号后台) :</a>
+													<input type="text" name="PassServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>LogServer(日志后台) :</span>
+													<input type="text" name="LogServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span></span>MovieServer(影视后台) :</a>
+													<input type="text" name="MovieServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>WebServer(网页后台) :</span>
+													<input type="text" name="WebServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>DEServer(DE后台) :</span>
+													<input type="text" name="DEServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>ADServer(AD后台) :</span>
+													<input type="text" name="ADServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BootAD(开机广告) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>SingalDelay(无信号延时) :</span>
+													<input type="text" name="SingalDelay" value="">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>其他功能:</div>
+												<div class="col-xs-6">
+													<span>HDMIDelay(HDMI延时) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>SourceSwitch(信源自切换) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>DTVSubTitle(数字通道字幕) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>DTVView(DTV场景实现) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Audio(音频格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Picture(图片格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Video(视频格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>BitmapSize(图片解码阀值) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>NewSubtitle(新字幕标准) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Samba(Samba) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>PicturePreview(图片预览) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>VideoPreview(视频预览) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>MediaSort(媒体分类) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>MusicDuration(音乐时间开关) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>HomeNetwork(家庭网络) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>PlayerKernel(播放器实现) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BrowserHome(浏览器地址) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BrowserLabel(浏览器标签数) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AirPlay(AirPlay) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AirMirror(AirMirror) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AppInstall(应用自由安装) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" data-dismiss="modal">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--批量修改-->
+		<div class="modal fade" id="myMoreEditModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myMoreEditModalLabel">批量修改</h4>
+					</div>
+					<div class="modal-body mybody">
+						<table class="table table-bordered">
+							<tr>
+								<td style="padding: 0;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" id="mkAdminButton" onclick="oButtonMKonclick('mkAdminButton')">批量编辑MK文件</button>
+										<button type="button" class="btn btn-default" id="configAdminButton" onclick="oButtonConfigonclick('configAdminButton')">批量编辑config文件</button>
+									</div>
+									<table class="table table-bordered mytable" id="modal-mkAdminTable">
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<div><a class="aFlagToButton">酷开商城</a></div>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>App:</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+												<div class="col-xs-4">
+													<a class="aFlagToButton">酷开商城</a>
+													<button type="button" class="btn btn-default mybuttonAddstyle">批量新增</button>
+													<button type="button" class="btn btn-default mybuttonDelstyle">批量删除</button>
+												</div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="table table-bordered fontsize mytable" id="modal-configAdminTable">
+										<tr>
+											<td>
+												<div>核心功能 :</div>
+												<div class="col-xs-6">
+													<span>PANEL(屏幕) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>NETWORK(网络) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Source(通道) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>BleRemote(蓝牙遥控) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>H.265(H.265解码) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Log_appender(打印等级) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Ota_path(升级包路径) :</span>
+													<input type="text" name="Ota_path" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>Boot_flow(新开机流程) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Homepage(首页) :</span>
+													<input type="text" name="Homepage" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>ScreenSaver(屏保) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>ChildMode(儿童模式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Dolby DD+(杜比DD认证) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Server(基础服务后台) :</span>
+													<input type="text" name="Server" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>TCServer(TC后台) :</span>
+													<input type="text" name="TCServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>PushServer(推送后台) :</span>
+													<input type="text" name="PushServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>PayServer(支付后台) :</span>
+													<input type="text" name="PayServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span></span>PassServer(账号后台) :</a>
+													<input type="text" name="PassServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>LogServer(日志后台) :</span>
+													<input type="text" name="LogServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span></span>MovieServer(影视后台) :</a>
+													<input type="text" name="MovieServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>WebServer(网页后台) :</span>
+													<input type="text" name="WebServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>DEServer(DE后台) :</span>
+													<input type="text" name="DEServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>ADServer(AD后台) :</span>
+													<input type="text" name="ADServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BootAD(开机广告) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>SingalDelay(无信号延时) :</span>
+													<input type="text" name="SingalDelay" value="">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>其他功能:</div>
+												<div class="col-xs-6">
+													<span>HDMIDelay(HDMI延时) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>SourceSwitch(信源自切换) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>DTVSubTitle(数字通道字幕) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>DTVView(DTV场景实现) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Audio(音频格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Picture(图片格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Video(视频格式) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>BitmapSize(图片解码阀值) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>NewSubtitle(新字幕标准) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>Samba(Samba) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>PicturePreview(图片预览) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>VideoPreview(视频预览) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>MediaSort(媒体分类) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>MusicDuration(音乐时间开关) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>HomeNetwork(家庭网络) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>PlayerKernel(播放器实现) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BrowserHome(浏览器地址) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span>BrowserLabel(浏览器标签数) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AirPlay(AirPlay) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AirMirror(AirMirror) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span>AppInstall(应用自由安装) :</span>
+													<select>
+														<option value="volvo">请选择</option>
+														<option value="saab">Saab</option>
+														<option value="opel">Opel</option>
+														<option value="audi">Audi</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="MoreEditSubmit">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--删除、批量删除-->
+		<div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="myDeleteModalLabel">批量删除</h4>
+					</div>
+					<div class="modal-body">
+						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--批量修改-保存-确认框-->
+		<div class="modal fade" id="myMoreEditSubmitModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditSubmitModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="myMoreEditSubmitModalLabel">批量修改确认框</h4>
+					</div>
+					<div class="modal-body">
+						<p style="font-size: 24px;margin-left: 20%;">是否确认保存修改？</p>
+						<p style="font-size: 16px;margin-left: 20%;margin-right: 20%;text-align: center;">针对：<span>"机芯1、机型1""机芯2、机型2""机芯3、机型3"</span>这<span>3</span>个型号的机器做了如下修改。</p>
+						<p style="font-size: 16px;margin-left: 20%;">新增了：<span>天气、智慧家庭</span>模块</p>
+						<p style="font-size: 16px;margin-left: 20%;">删除了：<span>浏览器</span>模块</p>
+						<p style="font-size: 16px;margin-left: 20%;">配置了：<span>屏幕(PHD)</span></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		
+		<script src="../javascripts/wait.js"></script>
+	</body>
+
 </html>
