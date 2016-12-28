@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+    <link rel="stylesheet" href="../stylesheets/bootstrap.addtabs.css" type="text/css" media="screen"/>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript" src="../javascripts/bootstrap.addtabs.js"></script>
+   
+    <!-- <link rel="stylesheet" type="text/css" href="../css/other.css"> -->
+</head>
+<body>
+    <nav class="navbar navbar-default container" role="navigation">       
+                <a class="navbar-brand" >
+                    <span style="font-size:30px">配置信息管理平台</span>
+                </a>           
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!--左侧-->
+            <div class="col-lg-3 col-xs-3" >
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <ul class="list-group">
+                            <a href="javascript:void(0);" data-addtab="userMenu1" url="wait.html" class="list-group-item"><b>配置文件管理</b></a>
+                            <a href="javascript:void(0);" data-addtab="userMenu2" url="review.html" class="list-group-item"><b>待审核文件</b></a>
+                            <span class="list-group-item"><b>配置内容管理</b></span>
+                            <a href="javascript:void(0);" data-addtab="userMenu4" url="/admin/message" class="list-group-item">　机芯机型管理</a>
+                            <a href="javascript:void(0);" data-addtab="userMenu5" url="http://sina.com.cn" class="list-group-item">　模块管理</a>
+                            <a href="javascript:void(0);" data-addtab="userMenu6" url="http://baidu.com" class="list-group-item">　配置管理</a>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--右侧-->
+            <div class="col-lg-9 col-xs-9 col-md-9">
+                <div class="main">
+                <div id="tabs">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home" url="wait.html" aria-controls="home" role="tab" data-toggle="tab">配置文件管理</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content" id="main">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <script type="text/javascript" src="../javascripts/head.js"></script>
+</body>
+</html>

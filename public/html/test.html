@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" >
+    <title>用户登录</title>
+
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    body{
+        height: 100%;
+    }
+.mycenter{padding-top: 20%;};
+</style>
+</head>
+<body>
+  <a class="hello" href="login.html">点我试试</a><br>
+  <a class="hello" href="http://www.cnblogs.com/iLoveMyD/archive/2013/03/13/2957749.html#2">点我试试</a><br>
+  <a class="hello" href="http://www.cnblogs.com/iLoveMyD/archive/2013/03/13/2957749.html#3">点我试试</a><br>
+  <a class="hello" href="http://www.cnblogs.com/iLoveMyD/archive/2013/03/13/2957749.html#4">点我试试</a><br>
+  <a class="hello" href="http://www.cnblogs.com/iLoveMyD/archive/2013/03/13/2957749.html#5">点我试试</a><br>
+  <hr>
+ <div id="world">
+  hello
+</div>
+ <script type="text/javascript"> 
+ $(document).ready(
+        function(){
+            $(".hello").click(
+                    function(){
+                        $("#world").load(this.href);
+                        return false;
+                     });
+         });
+ </script>
+</body>
