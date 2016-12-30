@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var jquery = require('jquery');
 
 // 定义了一个模型，用户模型，"学生类"
 var User = require("../models/User");
