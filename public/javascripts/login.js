@@ -38,8 +38,8 @@ function loginresult(){
             }
             else if (data.msg == "failure") {
 	    	var loginmsg = document.getElementById("logintxt");
-                loginmsg.innerHTML = loginmsg.innerHTML+"!请输入正确账号或密码";
-                setTimeout("loginmsg.innerHTML='　'",2000);
+            loginmsg.innerHTML = loginmsg.innerHTML+"!请输入正确账号或密码";
+            setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
 	    };
             // loginId = data.data;
             // printlog(loginId);
