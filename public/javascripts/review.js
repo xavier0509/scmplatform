@@ -17,7 +17,7 @@ function reviewlist(){
             console.log(data.length);
             var level = 1;
             for (var i = 0; i < data.length; i++) {
-                _row = document.getElementById("mytable").insertRow(0);  
+                _row = document.getElementById("reviewmytable").insertRow(0);  
                 var _cell0 = _row.insertCell(0); 
                 _cell0.innerHTML = data[i]. chip;
                 var _cell1 = _row.insertCell(1);
@@ -60,12 +60,15 @@ function reviewresult(){
 
             var data = JSON.parse(this.responseText);
             // console.log(data[0]);
-            var app = data[0].app;
-            var appstore = data[0].appstore;
+            var app = data.app;
+            var appstore = data.appstore;
+            var main = data.main;
 
             console.log(appstore);
             document.getElementById("appcont").innerHTML="";
             document.getElementById("appstorecont").innerHTML="";
+            document.getElementById("maincont").innerHTML="";
+            //mk文件生成
             for (var i = 0; i < app.length; i++) {
                 var appcont = document.getElementById("appcont");
                 var child = document.createElement("div");
@@ -73,7 +76,7 @@ function reviewresult(){
                 var text = document.createTextNode(app[i].name);
                 var input = document.createElement("input");
                 input.setAttribute('type','checkbox');
-                if (app[i].state == 1) {input.setAttribute('checked','');};
+                if (app[i].state == 1) {input.setAttribute('checked','');};//勾选状态
                 child.appendChild(input);
                 child.appendChild(text);
                 appcont.appendChild(child);
@@ -90,7 +93,57 @@ function reviewresult(){
                 child.appendChild(text);
                 appstorecont.appendChild(child);
             };
+            //config生成
+            for (var i = 0; i < main.length; i++) {
+                var maincont = document.getElementById("maincont");
+                var child = document.createElement("div");
+                child.setAttribute('class','col-sm-5 form-group text-right');
+                var text = document.createTextNode(main[i].name);
+                if (main[i].type == "text") {
+                    var input = document.createElement("input");
+                    input.value = main[i].value;
+                }
+                else if (main[i].type == "select"){
+                    var input = document.createElement("select");
+                    input.setAttribute("class","form-group");
+                    for (var j = 0; j< main[i].option.length; j++) {
+                        var txt = main[i].option[j];
+                        var option =document.createElement("option");
+                        option.setAttribute("value",txt);
+                        var txtvalue = document.createTextNode(txt);
+                        option.appendChild(txtvalue);
+                        input.appendChild(option);
+                    };
+                }
+                child.appendChild(text);
+                child.appendChild(input);
+                maincont.appendChild(child);
+            };
+
+//如果是管理员，不允许修改
+            if(false){
+                var inputcounts = document.getElementsByTagName("input");
+                var selectcounts = document.getElementsByTagName("select");
+                console.log("inputcounts="+inputcounts.length);
+                for (var i = 0; i < inputcounts.length; i++) {
+                    inputcounts[i].setAttribute('disabled','')
+                }
+                for (var i = 0; i < selectcounts.length; i++) {
+                    selectcounts[i].setAttribute('disabled','')
+                }
+            }
             
         }
     }
 }
+
+
+$('#configbutton').click(function(){
+    $("#reviewconfigfile").css("display","block");
+    $("#reviewmkfile").css("display","none");
+})
+
+$('#mkbutton').click(function(){
+    $("#reviewconfigfile").css("display","none");
+    $("#reviewmkfile").css("display","block");
+})

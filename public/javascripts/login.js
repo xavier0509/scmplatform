@@ -9,12 +9,28 @@ function loginfun() {
     var node = '{"data":{"username":"' + username + '","password":"' + pwd + '"}}';
     console.log(node);
     if (username != "" && pwd != "") {
+<<<<<<< HEAD
         sendHTTPRequest("/users", node, loginresult);
         // sendHTTPRequest("http://127.0.0.1:3000/api/login", node, loginresult);
     }
     else {
         console.log("请填写完整")
     }
+=======
+        sendHTTPRequest("http://172.20.132.225:3000/api/login", node, loginresult);
+    }
+    else if(username == ""){
+        var usermessage = document.getElementById('usermessage');
+        usermessage.innerHTML="请输入账号";
+        setTimeout("usermessage.innerHTML=''",2000);
+    }
+    else{
+        var pwdmessage = document.getElementById('pwdmessage');
+        pwdmessage.innerHTML="请输入账号";
+        setTimeout("pwdmessage.innerHTML=''",2000);
+    }
+
+>>>>>>> b183aed8703acf1f402e4d4f5978533ea2ff3d3b
 }
 
 function loginresult() {
@@ -27,10 +43,21 @@ function loginresult() {
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
                 level = 1;
+<<<<<<< HEAD
                 document.location.href = "index.html";
 
             }
             ;
+=======
+                document.location.href="index.html" ;
+                
+            }
+            else if (data.msg == "failure") {
+	    	var loginmsg = document.getElementById("logintxt");
+            loginmsg.innerHTML = loginmsg.innerHTML+"!请输入正确账号或密码";
+            setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
+	    };
+>>>>>>> b183aed8703acf1f402e4d4f5978533ea2ff3d3b
             // loginId = data.data;
             // printlog(loginId);
 

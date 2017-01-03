@@ -23,8 +23,8 @@ td{
 	padding-right: 0px;
 }
 
-#mytable td{text-align: center; vertical-align: middle;}
-#tableTR th{text-align: center; vertical-align: middle;}
+#reviewmytable td{text-align: center; vertical-align: middle;}
+#reviewtableTR th{text-align: center; vertical-align: middle;}
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
 
@@ -356,4 +356,15 @@ td{
 
 #configEnumerateTable,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
 	margin: auto;
+}
+
+.loginmycenter{padding-top: 18%;}
+
+#logintxt,#pwdmessage,#usermessage{color: red}
+
+#reviewmkfile{
+	display: block;
+}
+#reviewconfigfile{
+	display: none;
 }
