@@ -8,9 +8,19 @@ function loginfun(){
     var node = '{"username":"' + username + '","password":"' + pwd +'"}';
     console.log(node);
     if (username != "" && pwd != "") {
-        sendHTTPRequest("/users", node, loginresult);
+        sendHTTPRequest("http://172.20.132.225:3000/api/login", node, loginresult);
     }
-    else{console.log("请填写完整")}
+    else if(username == ""){
+        var usermessage = document.getElementById('usermessage');
+        usermessage.innerHTML="请输入账号";
+        setTimeout("usermessage.innerHTML=''",2000)
+    }
+    else{
+        var pwdmessage = document.getElementById('pwdmessage');
+        pwdmessage.innerHTML="请输入账号";
+        setTimeout("pwdmessage.innerHTML=''",2000)
+    }
+
 }
 
 function loginresult(){
@@ -24,8 +34,12 @@ function loginresult(){
             if (data.msg == "success") {
                 level = 1;
                 document.location.href="index.html" ;
-
-            };
+                
+            }
+            else if (data.msg == "failure") {
+	    	var loginmsg = document.getElementById("logintxt");
+                loginmsg.innerHTML = loginmsg.innerHTML+"!请输入正确账号或密码";
+	    };
             // loginId = data.data;
             // printlog(loginId);
             
