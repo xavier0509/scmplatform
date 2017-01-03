@@ -1,3 +1,7 @@
+$(function () {
+    ModalHtmlInfo();
+})
+
 /*模块管理板块-增加与编辑*/
 var oButtonAdd = document.getElementById("manage-moduleAdd");
 oButtonAdd.onclick = function() {
@@ -15,4 +19,9 @@ for (var i=0; i<oTableA.length; i++) {
 		$('#myModuleAddChangeModal').modal();//显示新建与编辑机芯机型时的弹框
 		$(".modal-backdrop").addClass("new-backdrop");
 	}
+}
+
+/*点击模块管理，获取数据*/
+function ModalHtmlInfo(){
+	console.log("lxw "+ "ModalHtmlInfo");
 }

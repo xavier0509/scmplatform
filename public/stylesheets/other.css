@@ -5,39 +5,81 @@
 
 body{
     width: 100%;
-    /*background-color: #333;*/
 }
 
 fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}
 
 legend{padding:.5em;border:0;width:auto}
 
-td{align:center;}
+td{
+	align:center;
+}
+.inputstyle{
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.divstyle{
+	padding-left: 8px;
+	padding-right: 0px;
+}
+
 #mytable td{text-align: center; vertical-align: middle;}
 #tableTR th{text-align: center; vertical-align: middle;}
+#contenttable td{text-align: center; vertical-align: middle;}
+#contenttable th{text-align: center; vertical-align: middle;}
 
 #modal-mkTable a{
 	text-decoration: underline;
 }
+#modal-mkTable div{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
 #chip-mkTable a{
 	text-decoration: underline;
 }
+#chip-mkTable tr td div{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
 #module-mkTable a{
 	text-decoration: underline;
 }
+#module-mkTable tr td div{
+	margin-bottom: 5px;
+	font-size: 20px;
+	text-align: center;
+}
+#module-mkTable tr td div:nth-child(1){
+	color: red;
+	margin-left: 4%;
+	text-align: left;
+}
 
-#waitAddPage{
+#config-mkTable a{
+	text-decoration: underline;
+}
+#config-mkTable tr td div{
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 20px;
+	text-align: left;
+}
+#config-mkTable tr td div:nth-child(1){
+	color: red;
+	text-align: left;
+}
+
+#waitAddPage,#configTable,#modal-configTable,#modal-configAdminTable{
 	display: none;
 }
-#configTable,#modal-configTable,#modal-configAdminTable{
-	display: none;
-}
-#mkTable,#modal-mkTable,#modal-mkAdminTable{
+#mkTable,#modal-mkTable,#modal-mkAdminTable,#configString{
 	display: block;
 }
 
 .bottomStyle{
-	/*background-color:red;*/
 	border-bottom: 10px;
 }
 .fontsize{
@@ -58,6 +100,13 @@ td{align:center;}
 	padding-top: 4%;
 	margin: 0;
 }
+.modal-delete{
+	position: relative;
+	width: 98%;
+	padding-left: 2%;
+	padding-top: 24%;
+	margin: 0;
+}
 
 .new-backdrop{
 	background-color: #FFFFFF;
@@ -72,11 +121,8 @@ td{align:center;}
 	margin-right: 5px;
 }
 
-.mybody{
+.mybody,.mytable{
 	padding-bottom: 0px;
-}
-.mytable{
-	margin-bottom: 0px;
 }
 .myfooter{
 	padding: 0;
@@ -88,7 +134,6 @@ td{align:center;}
 	margin: 0 auto;
 }
 .smallbutton{
-	/*display: block;*/
 	width: 30%;
 	text-align: left;
 	font-size: 12px;
@@ -99,21 +144,40 @@ td{align:center;}
 .mybuttonAddstyle{
 	display: none;
 	padding: 0;
-	margin-right: 5px;
-	float: right;
+	float: left;
+	margin-left: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 .mybuttonDelstyle{
 	display: none;
 	padding: 0;
-	margin-right: 5px;
-	float: right;
+	float: left;
+	margin-left: 5px;
+	padding-left: 5px;
+	padding-right: 0px;
 }
 
+#modal-configAdminTable div{
+	margin-bottom: 5px;
+}
 #modal-configAdminTable div select{
 	width: 36%;
 	float: right;
 }
 #modal-configAdminTable div input{
+	width: 36%;
+	float: right;
+}
+
+#modal-configTable div{
+	margin-bottom: 5px;
+}
+#modal-configTable div select{
+	width: 36%;
+	float: right;
+}
+#modal-configTable div input{
 	width: 36%;
 	float: right;
 }
@@ -226,24 +290,20 @@ td{align:center;}
 #myConfigBorder div label:nth-child(2){
 	margin-top: 3%;
 	margin-bottom: 0;
-	/*color:red;*/
 }
 #myConfigBorder div label:nth-child(3){
 	margin-top: 3%;
 	margin-left: 24%;
 	margin-bottom: 0;
-	/*color:blue;*/
 }
 #myConfigBorder div input:nth-child(5){
 	width: 39%;
 	float: left;
 	margin-left: 10%;
-	/*background:red;*/
 }
 #myConfigBorder div input:nth-child(6){
 	width: 39%;
 	margin-left: 51%;
-	/*background:skyblue;*/
 }
 
 .configselect{
@@ -285,20 +345,15 @@ td{align:center;}
 }
 .configDefaultedOption:nth-child(1){
 	margin-left: 10.3%;
-	/*background-color: olivedrab;*/
 }
 .tableBox{
 	width: 80%;
 	margin: auto;
 	padding: 1% 2% 1% 2%;
 	margin-bottom: 3%;
-	/*background-color: orchid;*/
 	display: none;
 }
-#configString{
-	display: block;
-}
-#configEnumerateTable{
+
+#configEnumerateTable,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
 	margin: auto;
-	/*background-color: bisque;*/
 }

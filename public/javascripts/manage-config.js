@@ -1,3 +1,8 @@
+$(function () {
+    ConfigHtmlInfo();
+})
+
+
 /*配置管理板块-增加与编辑*/
 var oButtonAdd = document.getElementById("manage-configAdd");
 oButtonAdd.onclick = function() {
@@ -57,4 +62,9 @@ for(var i = 0; i < oEnumerateButtons.length; i++) {
 			console.log("lxw "+ "点击的是全部删除");
 		}
 	}
+}
+
+/*点击配置管理，获取数据*/
+function ConfigHtmlInfo(){
+	console.log("lxw "+ "ConfigHtmlInfo");
 }
