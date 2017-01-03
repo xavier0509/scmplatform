@@ -9,7 +9,7 @@ function loginfun() {
     var node = '{"data":{"username":"' + username + '","password":"' + pwd + '"}}';
     console.log(node);
     if (username != "" && pwd != "") {
-        sendHTTPRequest("/users", node, loginresult);
+        sendHTTPRequest("/api/login", node, loginresult);
     }
     else if(username == ""){
         var usermessage = document.getElementById('usermessage');
