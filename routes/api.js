@@ -53,6 +53,9 @@ router.post('/login', function (req, res) {
     "use strict";
     var username = req.body.username;
     var password = req.body.password;
+    console.log("username->"+username);
+    console.log("password->"+password);
+    
     User.zhaoren1(username, password, function (err, result) {
         console.log(result);
         if (result[0] == null) {
