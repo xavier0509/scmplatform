@@ -17,7 +17,7 @@ function loginfun(){
     }
     else{
         var pwdmessage = document.getElementById('pwdmessage');
-        pwdmessage.innerHTML="请输入账号";
+        pwdmessage.innerHTML="请输入密码";
         setTimeout("pwdmessage.innerHTML=''",2000);
     }
 
