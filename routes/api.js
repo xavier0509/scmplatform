@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
-// 定义了一个模型，用户模型，"学生类"
+// 定义了一个模型，用户模型
 var User = require("../models/User");
 var Configfile = require("../models/Configfile");
 
