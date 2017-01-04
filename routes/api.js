@@ -327,7 +327,8 @@ router.post('/configmananger/add', function (req, res) {
 router.post('/configmananger/search', function (req, res) {
     "use strict";
     var productModel = req.body.productModel;
-    Configfile.zhaoren(productModel, function (err, result) {
+    var platformModel = req.body.platformModel;
+    Configfile.zhaoren(productModel, platformModel, function (err, result) {
         // console.log("result:"+result);
         if (result[0] == null) {
             res.json(failure);
