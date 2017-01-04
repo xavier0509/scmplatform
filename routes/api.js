@@ -4,7 +4,6 @@ var router = express.Router();
 
 // 定义了一个模型，用户模型，"学生类"
 var User = require("../models/User");
-var Book = require("../models/Book");
 var Configfile = require("../models/Configfile");
 
 var success = {};
@@ -60,13 +59,16 @@ router.post('/login', function (req, res) {
         password = req.body.data.password;
         console.log("username->" + username);
         console.log("password->" + password);
-
         User.zhaoren1(username, password, function (err, result) {
             console.log(result);
             if (result[0] == null) {
                 res.json(failure);
             } else {
                 res.json({"code": 1, "msg": "success", "data": result});
+                // 保存session信息
+                req.session.logined = true;
+                req.session.username = username;
+                req.session.adminFlag = result[0].adminFlag;
             }
         });
     }
@@ -122,66 +124,189 @@ router.get('/xiugai', function (req, res) {
     });
 });
 
-router.get("/addbook", function (req, res) {
-
-});
-
 
 router.post('/configmananger/add', function (req, res) {
     "use strict";
-
     var a = new Array(10);
     for (var i = 0; i < a.length; i++) {
         a[i] = {};
         a[i].status = true;
     }
-    console.log(JSON.stringify(a));
+    // console.log(JSON.stringify(a));
 
 
+    // DevInfo
     var platformModel = req.body.platformModel;
     var productModel = req.body.productModel;
     var androidVersion = req.body.androidVersion;
     var chipModel = req.body.chipModel;
     var memorySize = req.body.memorySize;
     var pendingReview = req.body.pendingReview;
-    var mkFile = req.body.mkFile;
+
+    // App
     var App = req.body.App;
     var SkyCCMall = req.body.SkyCCMall;
     var SkyEDU = req.body.SkyEDU;
+    var SkyMovie = req.body.SkyMovie;
+    var SkyQrcode = req.body.SkyQrcode;
+    var SkyTVAgent = req.body.SkyTVAgent;
+    var SkyTVQQ = req.body.SkyTVQQ;
+    var SkyUser = req.body.SkyUser;
+    var SkyWeather = req.body.SkyWeather;
+    var SkyVoice = req.body.SkyVoice;
     var SkyManual = req.body.SkyManual;
 
+    // Appstore
+    var SkyAppStore = req.body.SkyAppStore;
+    var SkyAppStore_OEM = req.body.SkyAppStore_OEM;
+    var SkyAppStore_Oversea = req.body.SkyAppStore_Oversea;
+    var SkyAppStore_PE = req.body.SkyAppStore_PE;
+    var SkyHall = req.body.SkyHall;
+    var OperaStore = req.body.OperaStore;
 
-    var AppStore = req.body.AppStore;
-    var HomePage = req.body.HomePage;
-    var IME = req.body.IME;
+    // HomePage
+    var SimpleHome5 = req.body.SimpleHome5;
+    var SimpleHomepage = req.body.SimpleHomepage;
+    var SimpleHomepage_OEM = req.body.SimpleHomepage_OEM;
+    var SkyHomeShell = req.body.SkyHomeShell;
+    var SkyOverseaHomepage = req.body.SkyOverseaHomepage;
+    var SkyPanasonicHome = req.body.SkyPanasonicHome;
 
-    console.log("platformModel: " + platformModel);
-    console.log("productModel: " + productModel);
-    console.log("androidVersion: " + androidVersion);
-    console.log("chipModel: " + chipModel);
-    console.log("memorySize: " + memorySize);
-    console.log("pendingReview: " + pendingReview);
-    console.log("mkFile: " + mkFile);
-    console.log("App: " + App);
-    console.log("AppStore: " + AppStore);
-    console.log("HomePage: " + HomePage);
-    console.log("HomePage: " + IME);
+    // IME
+    var AndroidKeyboard = req.body.AndroidKeyboard;
+    var SkyTianciIME = req.body.SkyTianciIME;
+    var SogouIME = req.body.SogouIME;
+
+    // Service
+    var SkyADService = req.body.SkyADService;
+    var SkyDEService = req.body.SkyDEService;
+    var SkyDataService = req.body.SkyDataService;
+    var SkyIPCService = req.body.SkyIPCService;
+    var SkyPushService = req.body.SkyPushService;
+    var SkySSService = req.body.SkySSService;
+    var SkySystemService = req.body.SkySystemService;
+
+    // SysApp
+    var SkyAutoInstaller = req.body.SkyAutoInstaller;
+    var SkyAutoTest = req.body.SkyAutoTest;
+    var SkyBrowser = req.body.SkyBrowser;
+    var SkyCommonFactory = req.body.SkyCommonFactory;
+    var SkyLocalMedia = req.body.SkyLocalMedia;
+    var SkyMirrorPlayer = req.body.SkyMirrorPlayer;
+    var SkyPackageInstaller = req.body.SkyPackageInstaller;
+    var SkyPayCenter = req.body.SkyPayCenter;
+    var SkySetting = req.body.SkySetting;
+    var SkyTaskManager = req.body.SkyTaskManager;
+
+    // TV
+    var SkyDigitalDTV = req.body.SkyDigitalDTV;
+    var SkyTV = req.body.SkyTV;
+    var SkyTVCaUI = req.body.SkyTVCaUI;
+    var SkyTV_OverSea = req.body.SkyTV_OverSea;
+
+
+    // configFile
+    // main
+    var PANEL = req.body.PANEL;
+    var NETWORK = req.body.NETWORK;
+    var Source = req.body.Source;
+    var BleRemote = req.body.BleRemote;
+    var H = req.body.H;
+    var Log_appender = req.body.Log_appender;
+
+    // other
+    var HDMIDelay = req.body.HDMIDelay;
+    var SourceSwitch = req.body.SourceSwitch;
+    var DTVSubTitle = req.body.DTVSubTitle;
 
 
     Configfile.create({
-        "platformModel": platformModel,
-        "productModel": productModel,
-        "androidVersion": androidVersion,
-        "chipModel": chipModel,
-        "memorySize": memorySize,
-        "pendingReview": pendingReview,
-        "mkFile": mkFile,
-        "App": [SkyCCMall, SkyEDU, SkyManual],
-        // "AppStore": AppStore,
-        // "HomePage": HomePage,
-        // "IME": IME
-
-
+        "DevInfo": [{
+            "platformModel": platformModel,
+            "productModel": productModel,
+            "androidVersion": androidVersion,
+            "chipModel": chipModel,
+            "memorySize": memorySize,
+            "pendingReview": pendingReview
+        }],
+        "mkFile": {
+            "App": [
+                {"name": "酷开商城", state: "1", pkgname: SkyCCMall},
+                {"name": "教育中心", state: "0", pkgname: SkyEDU},
+                {"name": "电子说明书", state: "0", pkgname: SkyManual},
+                {"name": "影视中心", state: "1", pkgname: SkyMovie},
+                {"name": "二维码", state: "1", pkgname: SkyQrcode},
+                {"name": "远程服务", state: "1", pkgname: SkyTVAgent},
+                {"name": "亲友圈", state: "1", pkgname: SkyTVQQ},
+                {"name": "酷开用户", state: "1", pkgname: SkyUser},
+                {"name": "天气", state: "1", pkgname: SkyWeather},
+                {"name": "智慧家庭", state: "1", pkgname: SkyCCMall},
+                {"name": "搜狗语音", state: "1", pkgname: SkyVoice}
+            ],
+            "AppStore": [
+                {"name": "应用圈", state: "1", pkgname: SkyAppStore},
+                {"name": "应用圈OEM版本", state: "0", pkgname: SkyAppStore_OEM},
+                {"name": "应用圈海外版本", state: "0", pkgname: SkyAppStore_Oversea},
+                {"name": "应用圈外包版本", state: "1", pkgname: SkyAppStore_PE},
+                {"name": "运营大厅", state: "1", pkgname: SkyHall},
+                {"name": "Opera浏览器", state: "1", pkgname: OperaStore}
+            ],
+            "HomePage": [
+                {"name": "简易首页4.4", state: "1", pkgname: SimpleHome5 + ".0"},
+                {"name": "简易首页5.0", state: "0", pkgname: SimpleHomepage},
+                {"name": "简易首页OEM", state: "0", pkgname: SimpleHomepage_OEM},
+                {"name": "常规首页", state: "1", pkgname: SkyHomeShell},
+                {"name": "海外首页", state: "1", pkgname: SkyOverseaHomepage},
+                {"name": "松下首页", state: "1", pkgname: SkyPanasonicHome}
+            ],
+            "IME": [
+                {"name": "Android输入法", state: "1", pkgname: AndroidKeyboard},
+                {"name": "酷开系统输入法", state: "0", pkgname: SkyTianciIME},
+                {"name": "搜狗输入法", state: "0", pkgname: SogouIME}
+            ],
+            "Service": [
+                {"name": "广告服务", state: "1", pkgname: SkyADService},
+                {"name": "设备服务", state: "0", pkgname: SkyDEService},
+                {"name": "数据采集服务", state: "0", pkgname: SkyDataService},
+                {"name": "通讯服务", state: "0", pkgname: SkyIPCService},
+                {"name": "推送服务", state: "0", pkgname: SkyPushService},
+                {"name": "智慧启动", state: "0", pkgname: SkySSService},
+                {"name": "系统服务", state: "0", pkgname: SkySystemService}
+            ],
+            "SysApp": [
+                {"name": "自动安装器", state: "1", pkgname: SkyAutoInstaller},
+                {"name": "自动化测试", state: "0", pkgname: SkyAutoTest},
+                {"name": "酷开浏览器", state: "0", pkgname: SkyBrowser},
+                {"name": "通用工厂", state: "0", pkgname: SkyCommonFactory},
+                {"name": "本地媒体", state: "0", pkgname: SkyLocalMedia},
+                {"name": "Mirror播放器", state: "0", pkgname: SkyMirrorPlayer},
+                {"name": "应用安装器", state: "0", pkgname: SkyPackageInstaller},
+                {"name": "支付中心", state: "0", pkgname: SkyPayCenter},
+                {"name": "设置", state: "0", pkgname: SkySetting},
+                {"name": "任务管理器", state: "0", pkgname: SkyTaskManager}
+            ],
+            "TV": [
+                {"name": "数字外挂DTV", state: "1", pkgname: SkyDigitalDTV},
+                {"name": "TV", state: "0", pkgname: SkyTV},
+                {"name": "TV_CA界面", state: "0", pkgname: SkyTVCaUI},
+                {"name": "TV海外版", state: "0", pkgname: SkyTV_OverSea}
+            ]
+        },
+        "configFile": {
+            "main": [
+                {"name": "屏幕", state: "1", pkgname: PANEL},
+                {"name": "网络", state: "1", pkgname: NETWORK},
+                {"name": "通道", state: "1", pkgname: Source},
+                {"name": "蓝牙遥控", state: "1", pkgname: BleRemote},
+                {"name": "H.265解码", state: "1", pkgname: H + ".265"},
+                {"name": "打印等级", state: "1", pkgname: Log_appender},
+            ],
+            "other": [
+                {"name": "HDMI延时", state: "1", pkgname: HDMIDelay},
+                {"name": "信源自切换", state: "1", pkgname: SourceSwitch},
+                {"name": "数字通道字幕", state: "1", pkgname: DTVSubTitle},
+            ]
+        }
     }, function (error) {
         res.json(success);
     });
@@ -197,6 +322,19 @@ router.post('/configmananger/add', function (req, res) {
      }
      */
 
+});
+
+router.post('/configmananger/search', function (req, res) {
+    "use strict";
+    var productModel = req.body.productModel;
+    Configfile.zhaoren(productModel, function (err, result) {
+        // console.log("result:"+result);
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
 });
 
 module.exports = router;

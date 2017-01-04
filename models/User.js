@@ -1,7 +1,6 @@
 /**
  * Created by d on 16/12/29.
  */
-
 var mongoose = require('mongoose');
 var db = require("./db");
 
@@ -29,7 +28,6 @@ userSchema.statics.xiugai = function (conditions, update, options, callback) {
     this.model("User").update(conditions, update, options, callback);
 };
 
-// 创建了一个模型，就是学生模型，就是学生类
 // 类是基于schema创建的。
 var userModel = db.model("User", userSchema);
 

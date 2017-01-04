@@ -6,24 +6,35 @@ var db = require("./db");
 
 // 创建了一个schema结构。
 var configfileSchema = new mongoose.Schema({
-    platformModel: {type: String},
-    productModel: {type: String},
-    androidVersion: {type: String},
-    chipModel: {type: String},
-    memorySize: {type: String},
-    pendingReview: {type: String},
-    App: {type: Array},
-    AppStore: {type: Array},
-    HomePage: {type: Array},
-    IME: {type: Array},
-
-
-
+    DevInfo: {type: Array},
+    mkFile: {
+        App:      {type: Array},
+        AppStore: {type: Array},
+        HomePage: {type: Array},
+        IME:      {type: Array},
+        Service:  {type: Array},
+        SysApp:   {type: Array},
+        TV:       {type: Array}
+    },
+    configFile: {
+        main:     {type: Array},
+        other:    {type: Array}
+    }
 });
+
+
+// 创建静态方法
+configfileSchema.statics.zhaoren = function (productModel, callback) {
+    console.log("---->"+productModel+"<----");
+    this.model("Configfile").find({"DevInfo.productModel": productModel}, callback);
+};
 
 
 // 类是基于schema创建的。
 var configfileModel = db.model("Configfile", configfileSchema);
+
+
+
 
 // 向外暴露
 module.exports = configfileModel;
