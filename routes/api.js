@@ -326,16 +326,60 @@ router.post('/configmananger/add', function (req, res) {
 
 router.post('/configmananger/search', function (req, res) {
     "use strict";
+
+
+    console.log("1233333");
+
+
     var productModel = req.body.productModel;
     var platformModel = req.body.platformModel;
-    Configfile.zhaoren(productModel, platformModel, function (err, result) {
-        // console.log("result:"+result);
-        if (result[0] == null) {
-            res.json(failure);
-        } else {
-            res.json({"code": 1, "msg": "success", "data": result});
-        }
-    });
+    var androidVersion = req.body.androidVersion;
+    var chipModel = req.body.chipModel;
+    var memorySize = req.body.memorySize;
+    var pendingReview = req.body.pendingReview;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (productModel == null || platformModel == null || androidVersion == null || chipModel == null || memorySize == null || pendingReview == null) {
+        console.log("没有参数啊,应该返回所有记录");
+        Configfile.searchAll(function (err, result) {
+            if (result[0] == null) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success", "data": result});
+            }
+        });
+    }else {
+        Configfile.searchBy(productModel, platformModel, function (err, result) {
+            // console.log("result:"+result);
+            if (result[0] == null) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success", "data": result});
+            }
+        });
+
+
+
+
+
+
+    }
+
+
+
 });
 
 module.exports = router;

@@ -23,8 +23,14 @@ var configfileSchema = new mongoose.Schema({
 });
 
 
+
+// 查询所有记录
+configfileSchema.statics.searchAll = function (callback) {
+    this.model("Configfile").find({},{"DevInfo":1}, callback);
+};
+
 // 创建静态方法
-configfileSchema.statics.zhaoren = function (productModel, platformModel, callback) {
+configfileSchema.statics.searchBy = function (productModel, platformModel, callback) {
     console.log("find---->" + productModel+ "," + platformModel + "<----");
     this.model("Configfile").find({
         "DevInfo.productModel": productModel,
