@@ -25,7 +25,7 @@ var configfileSchema = new mongoose.Schema({
 
 // 创建静态方法
 configfileSchema.statics.zhaoren = function (productModel, platformModel, callback) {
-    console.log("---->" + productModel + "<----");
+    console.log("find---->" + productModel+ "," + platformModel + "<----");
     this.model("Configfile").find({
         "DevInfo.productModel": productModel,
         "DevInfo.platformModel": platformModel
