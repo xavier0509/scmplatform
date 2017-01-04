@@ -2,7 +2,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function () {
-    sendHTTPRequest("/review", "node", reviewlist);
+    sendHTTPRequest("/review", '{"data":""}', reviewlist);
 })
 
 function reviewlist(){
@@ -24,15 +24,14 @@ function reviewlist(){
                 _cell1.innerHTML = data[i].android;
                 var _cell2 = _row.insertCell(2);
                 _cell2.innerHTML = data[i].chipid;
+                // var _cell3 = _row.insertCell(3);
+                // _cell3.innerHTML = data[i].author;
                 var _cell3 = _row.insertCell(3);
-                _cell3.innerHTML = data[i].author;
-                console.log("level=="+level);
-                var _cell4 = _row.insertCell(4);
                 if (level == 1) {
-                    _cell4.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
+                    _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                 }
                 else{
-                    _cell4.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+                    _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
                 }
             };
             // loginId = data.data;
@@ -45,7 +44,7 @@ function reviewlist(){
 function review(obj){
     var node = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     console.log(node);
-    sendHTTPRequest("/reviewcontent", "node", reviewresult);
+    sendHTTPRequest("/reviewcontent", '{"data":""}', reviewresult);
 }
 
 function reviewresult(){
