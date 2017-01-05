@@ -8,91 +8,69 @@ $(function() {
 
 function AfterWaitHtmlinfo() {
 
-	//查询searchInfo
-	var mySearchInfo = document.getElementById("searchInfo");
-	mySearchInfo.onclick = function(){
-		var oChip = document.getElementById('chip').value;
-    	var oMode = document.getElementById('model').value;
-    	var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode +'"}}';
-    
-		sendHTTPRequest("/api/configmananger/search", node, searchResource);
-		
-	}
-	
-	function searchResource(){
-		console.log("this.readyState = " + this.readyState);
-    if (this.readyState == 4) {
-        console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
-        {
-            var data = JSON.parse(this.responseText);
-            
-            // loginId = data.data;
-            // printlog(loginId);
-            
-        }
-    }
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*增加*/
+	//	//查询searchInfo
+	//	var mySearchInfo = document.getElementById("searchInfo");
+	//	mySearchInfo.onclick = function(){
+	//		var oChip = document.getElementById('chip').value;
+	//  	var oMode = document.getElementById('model').value;
+	//  	var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode +'"}}';
+	//		sendHTTPRequest("/api/configmananger/search", node, searchResource);
+	//	}
+	//	function searchResource(){
+	//		console.log("this.readyState = " + this.readyState);
+	//  if (this.readyState == 4) {
+	//      console.log("this.status = " + this.status);
+	//      console.log("this.responseText = " + this.responseText);
+	//      if (this.status == 200) 
+	//      {
+	//          var data = JSON.parse(this.responseText);
+	//          
+	//          // loginId = data.data;
+	//          // printlog(loginId);
+	//          
+	//      }
+	//  }
+	//	}
+	/*点击新增按钮*/
 	var oButtonAdd = document.getElementById("wait-add");
 	oButtonAdd.onclick = function() {
 		var currentParentName = oButtonAdd.id;
 		var thisIndex = null;
+		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		myCloseEnsure("#myAddModal","wait-add",thisIndex);
-		modalSave(currentParentName);
+		addPageButtons(); //后期可能会传参给页面里的点击事件
 	}
-	/*多项删除*/
-	var oButtonDelete = document.getElementById("wait-delete");
-	oButtonDelete.onclick = function() {
-		console.log("in delete");
-		var currentParentName = oButtonDelete.id;
-		//需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody
-		var myCheckboxChecked = new Array();
-		var myCheckedNumber = 0;
-		var myDeleArray = new Array();
-		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
-		console.log("lxw:" + myCheckboxChecked.length);
-		for(var i = 0; i < myCheckboxChecked.length; i++) {
-			if($('.checkboxstatus')[i].checked == true) {
-				myCheckedNumber++;
-				myDeleArray.push(i);
-			}
+
+	function addPageButtons() {
+		var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
+		oButtonEditEnsure.onclick = function() {
+			console.log("新增页-提交按钮一");
+			$("#myAddModal").modal('hide');
 		}
-		console.log("lxw:" + myCheckedNumber);
-		if(myCheckedNumber != 0) {
-			$("#myMoreDeleteModalLabel").text("删除");
-			$('#myMoreDeleteModal').modal();
+		var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
+		oButtonEditEnsure.onclick = function() {
+			console.log("新增页-提交按钮二");
+			$("#myAddModal").modal('hide');
+		}
+		var oButtonAdd = document.getElementById("myAddModalClose");
+		oButtonAdd.onclick = function() {
+			console.log("新增页-关闭按钮");
+			$('#myEditEnsureModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-		} else {
-			$("#myDeleteDialogModalLabel").text("请注意：");
-			$('#myDeleteDialogModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
+			//传参-关闭父页  
+			closeparentpage("#myAddModal");
 		}
 		
-//		myCloseEnsure("#wait-delete");
+		//新增页mk-config button的点击
+		functionMkConfigTable("myAddModalMkButton","myAddModalMkTable","myAddModalConfigButton","myAddModalConfigTable");
+		
 	}
+
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
-		//需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody
+		/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
 		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
@@ -108,25 +86,129 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			myCloseEnsure("#myMoreEditModal","#wait-change",thisIndex);
+			//myCloseEnsure("#myMoreEditModal","#wait-change",thisIndex);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
 			$('#myDeleteDialogModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
+		moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 	}
-	/*批量修改-保存-确认框*/
-	var oButtonEditEnsure = document.getElementById("MoreEditSubmit");
-	oButtonEditEnsure.onclick = function() {
-		console.log("in delete");
-		$('#myMoreEditSubmitModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+
+	function moreEditPageButtons() {
+		var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
+		oButtonEditEnsure.onclick = function() {
+			console.log("批量修改页-提交按钮一");
+			$('#myMoreEditSubmitModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
+		var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
+		oButtonEditEnsure.onclick = function() {
+			console.log("批量修改页-提交按钮二");
+			$('#myMoreEditSubmitModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
+		var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
+		oButtonEditEnsure.onclick = function() {
+			console.log("批量修改页-关闭按钮");
+			$('#myEditEnsureModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			closeparentpage("#myMoreEditModal");
+		}
+		var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
+		oButtonEditEnsure.onclick = function() {
+			console.log("批量修改页-提交确认按钮");
+			$("#myMoreEditModal").modal('hide');
+			$("#myMoreEditSubmitModal").modal('hide');
+		}
+		//批量修改页mk-config button的点击
+		functionMkConfigTable("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
+
+		/*批量修改页-单项*/
+		var oClassAClicks = new Array();
+		var omybuttonAddstyle = new Array();
+		var omybuttonDelstyle = new Array();
+		var oAFlagStatus = new Array();
+		oClassAClicks = document.getElementsByClassName("aFlagToButton");
+		omybuttonAddstyle = document.getElementsByClassName("mybuttonAddstyle");
+		omybuttonDelstyle = document.getElementsByClassName("mybuttonDelstyle");
+		for(var i = 0; i < oClassAClicks.length; i++) {
+			oClassAClicks[i].index = i;
+			oAFlagStatus[i] = true;
+			oClassAClicks[i].onclick = function() {
+				console.log(this.index); //点击的是第几个
+				console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
+				for(var j = 0; j < oClassAClicks.length; j++) {
+					omybuttonAddstyle[j].style.display = "none";
+					omybuttonDelstyle[j].style.display = "none";
+				}
+				if(oAFlagStatus[this.index] == true) {
+					omybuttonAddstyle[this.index].style.display = "block";
+					omybuttonDelstyle[this.index].style.display = "block";
+				} else {
+					omybuttonAddstyle[this.index].style.display = "none";
+					omybuttonDelstyle[this.index].style.display = "none";
+				}
+
+				oAFlagStatus[this.index] = !oAFlagStatus[this.index];
+
+				AddOrDelButtonFunction(this.index);
+			}
+
+		}
+		/*批量删除或新增的点击*/
+		function AddOrDelButtonFunction(number) {
+			console.log("lxw" + "in AddOrDelButtonFunction" + number);
+			omybuttonAddstyle[number].onclick = function() {
+				console.log("lxw" + "批量新增的点击" + number);
+				omybuttonAddstyle[number].style.color = "red";
+				omybuttonDelstyle[number].style.color = "";
+			}
+			omybuttonDelstyle[number].onclick = function() {
+					console.log("lxw" + "批量删除的点击" + number);
+					omybuttonDelstyle[number].style.color = "red";
+					omybuttonAddstyle[number].style.color = "";
+				}
+				/*执行保存按钮的动作*/
+		}
 	}
-	var oButtonDeleteEnsure = document.getElementById("myMoreDeleteSubmit");
-	oButtonDeleteEnsure.onclick = function() {
+
+	/*多项删除*/
+	var oButtonDelete = document.getElementById("wait-delete");
+	oButtonDelete.onclick = function() {
 		console.log("in delete");
-		$('#myMoreEditSubmitModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+		var currentParentName = oButtonDelete.id;
+		/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
+		var myCheckboxChecked = new Array();
+		var myCheckedNumber = 0;
+		var myDeleArray = new Array();
+		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
+		console.log("lxw:" + myCheckboxChecked.length);
+		for(var i = 0; i < myCheckboxChecked.length; i++) {
+			if($('.checkboxstatus')[i].checked == true) {
+				myCheckedNumber++;
+				myDeleArray.push(i);
+			}
+		}
+		console.log("lxw:" + myCheckedNumber);
+		if(myCheckedNumber != 0) {
+			$("#myMoreDeleteModalLabel").text("多项删除");
+			$('#myMoreDeleteModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		} else {
+			$("#myDeleteDialogModalLabel").text("请注意：");
+			$('#myDeleteDialogModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
+		moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
+	}
+
+	function moreDeletePageButtons() {
+		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
+		oButtonEditEnsure.onclick = function() {
+			console.log("多项删除页-确认按钮");
+			$("#myMoreDeleteModal").modal('hide');
+		}
 	}
 
 	/*单项编辑*/
@@ -137,12 +219,35 @@ function AfterWaitHtmlinfo() {
 		oClassButtonEdit[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			$("#myAddModalLabel").text("新增机芯机型");
-			$('#myAddModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+			$("#myEditModalLabel").text("单项编辑");
+			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			document.getElementById("newChip").value = "编辑功能";
-			myCloseEnsure("#myAddModal","eachedit",thisIndex);
+			//myCloseEnsure("#myAddModal","eachedit",thisIndex);
+			editPageButtonsOnclick(thisIndex);
 		}
+	}
+
+	function editPageButtonsOnclick(index) {
+		var oButtonEditEnsure = document.getElementById("myEditModalSubmit");
+		oButtonEditEnsure.onclick = function() {
+			console.log("单项编辑页-提交按钮一");
+			$("#myEditModal").modal('hide');
+		}
+		var oButtonEditEnsure = document.getElementById("myEditModalSubmitTwo");
+		oButtonEditEnsure.onclick = function() {
+			console.log("单项编辑页-提交按钮二");
+			$("#myEditModal").modal('hide');
+		}
+		var oButtonAdd = document.getElementById("myEditModalClose");
+		oButtonAdd.onclick = function() {
+			console.log("单项编辑页-关闭按钮");
+			$('#myEditEnsureModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			//传参-关闭父页  
+			closeparentpage("#myEditModal");
+		}
+		//编辑页mk-config button的点击
+		functionMkConfigTable("myEditModalMkButton","myEditModalMkTable","myEditModalConfigButton","myEditModalConfigTable");
 	}
 
 	/*单项删除*/
@@ -152,12 +257,20 @@ function AfterWaitHtmlinfo() {
 		oClassButtonDelete[i].index = i;
 		oClassButtonDelete[i].onclick = function() {
 			console.log("in delete");
-			$("#myMoreDeleteModalLabel").text("删除");
-			$('#myMoreDeleteModal').modal();
+			$("#myDeleteModalLabel").text("删除");
+			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
+		singleDeletePageButtons(this.index); //后期可能会传参给页面里的点击事件
 	}
 
+	function singleDeletePageButtons(index) {
+		var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
+		oButtonEditEnsure.onclick = function() {
+			console.log("单项删除页-确认按钮");
+			$("#myDeleteModal").modal('hide');
+		}
+	}
 	/*单项复制*/
 	var oClassButtonCopy = new Array();
 	oClassButtonCopy = document.getElementsByClassName("eachcopy");
@@ -166,99 +279,57 @@ function AfterWaitHtmlinfo() {
 		oClassButtonCopy[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			$("#myAddModalLabel").text("新增机芯机型");
-			$('#myAddModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+			$("#myCopyModalLabel").text("新增机芯机型");
+			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			document.getElementById("newChip").value = "复制功能";
-
-			myCloseEnsure("#myAddModal","eachcopy",thisIndex);
+			//document.getElementById("newChip").textContent = "复制功能";
+			//myCloseEnsure("#myAddModal","eachcopy",thisIndex);
+			copyPageButtons(); //后期可能会传参给页面里的点击事件
 		}
 	}
 
-	/*批量修改-单项*/
-	var oClassAClicks = new Array();
-	var omybuttonAddstyle = new Array();
-	var omybuttonDelstyle = new Array();
-	var oAFlagStatus = new Array();
-	oClassAClicks = document.getElementsByClassName("aFlagToButton");
-	omybuttonAddstyle = document.getElementsByClassName("mybuttonAddstyle");
-	omybuttonDelstyle = document.getElementsByClassName("mybuttonDelstyle");
-	for(var i = 0; i < oClassAClicks.length; i++) {
-		oClassAClicks[i].index = i;
-		oAFlagStatus[i] = true;
-		oClassAClicks[i].onclick = function() {
-			console.log(this.index); //点击的是第几个
-			console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
-			for(var j = 0; j < oClassAClicks.length; j++) {
-				omybuttonAddstyle[j].style.display = "none";
-				omybuttonDelstyle[j].style.display = "none";
-			}
-			if(oAFlagStatus[this.index] == true) {
-				omybuttonAddstyle[this.index].style.display = "block";
-				omybuttonDelstyle[this.index].style.display = "block";
-			} else {
-				omybuttonAddstyle[this.index].style.display = "none";
-				omybuttonDelstyle[this.index].style.display = "none";
-			}
-
-			oAFlagStatus[this.index] = !oAFlagStatus[this.index];
-
-			AddOrDelButtonFunction(this.index);
+	function copyPageButtons() {
+		var oButtonEditEnsure = document.getElementById("myCopyModalSubmit");
+		oButtonEditEnsure.onclick = function() {
+			console.log("单项复制页-提交按钮一");
+			$("#myCopyModal").modal('hide');
 		}
-
-	}
-	/*批量删除或新增的点击*/
-	function AddOrDelButtonFunction(number) {
-		console.log("lxw" + "in AddOrDelButtonFunction" + number);
-		omybuttonAddstyle[number].onclick = function() {
-			console.log("lxw" + "批量新增的点击" + number);
-			omybuttonAddstyle[number].style.color = "red";
+		var oButtonEditEnsure = document.getElementById("myCopyModalSubmitTwo");
+		oButtonEditEnsure.onclick = function() {
+			console.log("单项复制页-提交按钮二");
+			$("#myCopyModal").modal('hide');
 		}
-		omybuttonDelstyle[number].onclick = function() {
-				console.log("lxw" + "批量删除的点击" + number);
-				omybuttonDelstyle[number].style.color = "red";
-			}
-			/*执行保存按钮的动作*/
-		MoreEditSubmit();
-	}
-	/*弹出确认框*/
-	function MoreEditSubmit() {
-		console.log("lxw" + "in MoreEditSubmit");
+		var oButtonAdd = document.getElementById("myCopyModalClose");
+		oButtonAdd.onclick = function() {
+			console.log("单项复制页-关闭按钮");
+			$('#myEditEnsureModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			//传参-关闭父页  
+			closeparentpage("#myCopyModal");
+		}
+		
+		//复制页mk-config button的点击
+		functionMkConfigTable("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
 	}
 
-	/*关闭按钮的确认框*/
-	function myCloseEnsure(currentModalname,parentName,index) {
-		var oCloseEnsure = new Array();
-		oCloseEnsure = document.getElementsByClassName("myclose");
-		for(var i = 0; i < oCloseEnsure.length; i++) {
-			oCloseEnsure[i].index = i;
-			oCloseEnsure[i].onclick = function() {
-				console.log(this.index); //点击的是第几个
-				if(this.index == 0) {
-					$('#myEditEnsureModal').modal();
-					$(".modal-backdrop").addClass("new-backdrop");
-					myCloseEnsuretrue(oCloseEnsure, this.index, currentModalname,parentName,index);
-				} else if(this.index == 1) {
-					$('#myEditEnsureModal').modal();
-					$(".modal-backdrop").addClass("new-backdrop");
-					myCloseEnsuretrue(oCloseEnsure, this.index, currentModalname,parentName,index);
-				} else if(this.index == 2) {
-					$('#myMoreDeleteModal').modal();
-					$(".modal-backdrop").addClass("new-backdrop");
-					myCloseEnsuretrue(oCloseEnsure, this.index, currentModalname,parentName,index);
-				}
-			}
+	function closeparentpage(pageName) {
+		var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
+		oButtonObject.onclick = function() {
+			$(pageName).modal('hide');
+			$("#myEditEnsureModal").modal('hide');
 		}
 	}
-
-	function myCloseEnsuretrue(obj, number, modalName, parentName,index) {
-		var oClosetrue = new Array();
-		var oClosetrue = document.getElementsByClassName("ensureTrue");
-		for(var i = 0; i < oClosetrue.length; i++) {
-			oClosetrue[i].onclick = function() {
-				console.log("lxw:" + obj[number].className + ",modalName=" + modalName+ ",parentName=" + parentName+ ",index=" + index);
-				$(modalName).modal('hide')
-			}
+	
+	function functionMkConfigTable(name1,table1,name2,table2){
+		var oMkButtonObject = document.getElementById(name1);
+		oMkButtonObject.onclick = function(){
+			document.getElementById(table1).style.display = "block";
+			document.getElementById(table2).style.display = "none";
+		}
+		var oConfigButtonObject = document.getElementById(name2);
+		oConfigButtonObject.onclick = function(){
+			document.getElementById(table2).style.display = "block";
+			document.getElementById(table1).style.display = "none";
 		}
 	}
 }
@@ -284,140 +355,127 @@ function waitHtmlInfo() {
 	};
 }
 
-function oButtonMKonclick(name) {
-	console.log("ok=" + name);
-	if(name == "mkButton") {
-		changeStyle("modal-mkTable", "block");
-		changeStyle("modal-configTable", "none");
-	} else if(name == "mkAdminButton") {
-		changeStyle("modal-mkAdminTable", "block");
-		changeStyle("modal-configAdminTable", "none");
-	}
+//function oButtonMKonclick(name) {
+//	console.log("ok=" + name);
+//	if(name == "mkButton") {
+//		changeStyle("modal-mkTable", "block");
+//		changeStyle("modal-configTable", "none");
+//	} else if(name == "mkAdminButton") {
+//		changeStyle("modal-mkAdminTable", "block");
+//		changeStyle("modal-configAdminTable", "none");
+//	}
+//}
+//function oButtonConfigonclick(name) {
+//	if(name == "configButton") {
+//		changeStyle("modal-mkTable", "none");
+//		changeStyle("modal-configTable", "block");
+//	} else if(name == "configAdminButton") {
+//		changeStyle("modal-mkAdminTable", "none");
+//		changeStyle("modal-configAdminTable", "block");
+//	}
+//}
+//function changeStyle(id, style) {
+//	var currentObject = document.getElementById(id);
+//	currentObject.style.display = style;
+//}
 
-}
-
-function oButtonConfigonclick(name) {
-	if(name == "configButton") {
-		changeStyle("modal-mkTable", "none");
-		changeStyle("modal-configTable", "block");
-	} else if(name == "configAdminButton") {
-		changeStyle("modal-mkAdminTable", "none");
-		changeStyle("modal-configAdminTable", "block");
-	}
-}
-
-function changeStyle(id, style) {
-	var currentObject = document.getElementById(id);
-	currentObject.style.display = style;
-}
-
-//新增、编辑、辅助页点击保存，向后台传递数据
-function modalSave(currentParentName){
-	//传参，判断是新增还是编辑还是复制，执行不同的功能函数
-	if (currentParentName == "wait-add") {
-		modalAddSave();
-	} else {
-		//区分编辑和复制
-	}
-	
-}
 //新增页保存，向后台传递数据
-function modalAddSave(){
-	var currentObject = document.getElementsByClassName("addOrEditsubmit");
-	for (var i=0;i<currentObject.length; i++) {
-		currentObject[i].onclick = function(){
-			console.log("lxw "+"新增页点击保存，向后台传递数据");
-			//获取每个表格的tr有多少行 myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber= 最外层有多少行
-			var myAddModalTableTrNumber = $("#myAddModalTable").find("tr").length;
-			var modalMkTableTrNumber = $("#modal-mkTable").find("tr").length;
-			var modalConfigTableTrNumber = $("#modal-configTable").find("tr").length;
-			//console.log("lxw 1"+myAddModalTableTrNumber+"lxw 2"+modalMkTableTrNumber+"lxw 3"+modalConfigTableTrNumber);
-			var firstVar = myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber;
-			var jsonarray=[];
-			var arr = {"name" : "","type" : "","value" : ""}
-			for (var i=0; i<firstVar; i++) {
-				if (i==0) {
-					var trTdDiv = $("#myAddModalTable").find("tr:first").find("div");
-					//console.log("lxw "+trTdDiv.length);
-					for (var j=0; j<trTdDiv.length; j++) {
-						//var oName = trTdDiv[j].children[0].innerHTML;//中文
-						var oName = trTdDiv[j].children[0].title;//英文
-						var oType = trTdDiv[j].children[0].nodeName;//标签名
-						//console.log("lxw "+ oType);
-						var oValue = trTdDiv[j].children[1].value;
-						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
-						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-						jsonarray.push(arr);
-					}
-				}else if(i==1){
-					var trTdDiv = $("#myAddModalTable").find("tr:eq(1)").find("div");
-					//console.log("lxw "+trTdDiv.length);
-					for (var j=0; j<trTdDiv.length; j++) {
-						var oName = trTdDiv[j].children[0].title;//英文
-						var oType = trTdDiv[j].children[0].nodeName;//标签名
-						var oValue = trTdDiv[j].children[1].value;
-						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
-						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-						jsonarray.push(arr);
-					}
-				}else if(i==2){
-					var tableTr = $("#modal-mkTable").find("tr");
-					//console.log("lxw "+tableTr.length);
-					for (var j=0; j<tableTr.length; j++) {
-						var tableTrDiv = $("#modal-mkTable").find("tr:eq("+j+")").find("div");
-						//console.log("lxw "+ tableTrDiv.length);
-						for (var k=0;k<tableTrDiv.length;k++) {
-							if (k==0) {
-								console.log("lxw "+ tableTrDiv[0].title);
-							} else{
-								var oName = tableTrDiv[k].children[1].title;//英文
-								var oType = tableTrDiv[k].children[0].type;//标签名
-								var oValue = tableTrDiv[k].children[0].checked;
-								//console.log("lxw "+ tableTrDiv[k].children[0].nodeName+"--"+tableTrDiv[k].children[1].nodeName);
-								//console.log("lxw "+ tableTrDiv[k].children[0].checked+"--"+tableTrDiv[k].children[1].innerHTML);
-								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-								jsonarray.push(arr);
-							}
-							
-						}
-					}
-					
-					var tableTrTwo = $("#modal-configTable").find("tr");
-					console.log("lxw "+tableTrTwo.length);
-					for (var jj=0; jj<tableTrTwo.length; jj++) {
-						var tableTrDivTwo = $("#modal-configTable").find("tr:eq("+jj+")").find("div");
-						console.log("lxw "+ tableTrDivTwo.length);
-						for (var kk=0;kk<tableTrDivTwo.length;kk++) {
-							if (kk==0) {
-								console.log("lxw "+ tableTrDivTwo[0].title);
-							} else{
-								var oName = tableTrDivTwo[kk].children[0].title;//英文
-								var oNodeName = tableTrDivTwo[kk].children[1].nodeName;//标签名
-								if (oNodeName == "INPUT") {
-									var oType = tableTrDivTwo[kk].children[1].type;//标签名
-									var oValue = tableTrDivTwo[kk].children[1].value;
-								} else if(oNodeName == "SELECT"){
-									var oType = tableTrDivTwo[kk].children[1].nodeName;
-									var index = tableTrDivTwo[kk].children[1].selectedIndex;
-									var oValue = tableTrDivTwo[kk].children[1].options[index].value;
-								}
-								console.log("lxw "+ oName+"--"+oNodeName+"--"+oType+"--"+oValue);
-								//console.log("lxw "+ tableTrDivTwo[kk].children[0].checked+"--"+tableTrDivTwo[kk].children[1].innerHTML);
-								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-								jsonarray.push(arr);
-							}							
-						}
-					}
-				}
-			}
-			console.log("lxw "+ jsonarray);
-		}
-	}
-}
-
-//删除、批量删除弹出框确认按钮的点击
-
-function modalDelete(name){
-	
-}
-
+//function modalAddSave(){
+//	var currentObject = document.getElementsByClassName("addOrEditsubmit");
+//	for (var i=0;i<currentObject.length; i++) {
+//		currentObject[i].onclick = function(){
+//			console.log("lxw "+"新增页点击保存，向后台传递数据");
+//			//获取每个表格的tr有多少行 myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber= 最外层有多少行
+//			var myAddModalTableTrNumber = $("#myAddModalTable").find("tr").length;
+//			var modalMkTableTrNumber = $("#modal-mkTable").find("tr").length;
+//			var modalConfigTableTrNumber = $("#modal-configTable").find("tr").length;
+//			//console.log("lxw 1"+myAddModalTableTrNumber+"lxw 2"+modalMkTableTrNumber+"lxw 3"+modalConfigTableTrNumber);
+//			var firstVar = myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber;
+//			var jsonarray=[];
+//			var arr = {"name" : "","type" : "","value" : ""}
+//			for (var i=0; i<firstVar; i++) {
+//				if (i==0) {
+//					var trTdDiv = $("#myAddModalTable").find("tr:first").find("div");
+//					//console.log("lxw "+trTdDiv.length);
+//					for (var j=0; j<trTdDiv.length; j++) {
+//						//var oName = trTdDiv[j].children[0].innerHTML;//中文
+//						var oName = trTdDiv[j].children[0].title;//英文
+//						var oType = trTdDiv[j].children[0].nodeName;//标签名
+//						//console.log("lxw "+ oType);
+//						var oValue = trTdDiv[j].children[1].value;
+//						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
+//						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
+//						jsonarray.push(arr);
+//					}
+//				}else if(i==1){
+//					var trTdDiv = $("#myAddModalTable").find("tr:eq(1)").find("div");
+//					//console.log("lxw "+trTdDiv.length);
+//					for (var j=0; j<trTdDiv.length; j++) {
+//						var oName = trTdDiv[j].children[0].title;//英文
+//						var oType = trTdDiv[j].children[0].nodeName;//标签名
+//						var oValue = trTdDiv[j].children[1].value;
+//						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
+//						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
+//						jsonarray.push(arr);
+//					}
+//				}else if(i==2){
+//					var tableTr = $("#modal-mkTable").find("tr");
+//					//console.log("lxw "+tableTr.length);
+//					for (var j=0; j<tableTr.length; j++) {
+//						var tableTrDiv = $("#modal-mkTable").find("tr:eq("+j+")").find("div");
+//						//console.log("lxw "+ tableTrDiv.length);
+//						for (var k=0;k<tableTrDiv.length;k++) {
+//							if (k==0) {
+//								console.log("lxw "+ tableTrDiv[0].title);
+//							} else{
+//								var oName = tableTrDiv[k].children[1].title;//英文
+//								var oType = tableTrDiv[k].children[0].type;//标签名
+//								var oValue = tableTrDiv[k].children[0].checked;
+//								//console.log("lxw "+ tableTrDiv[k].children[0].nodeName+"--"+tableTrDiv[k].children[1].nodeName);
+//								//console.log("lxw "+ tableTrDiv[k].children[0].checked+"--"+tableTrDiv[k].children[1].innerHTML);
+//								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
+//								jsonarray.push(arr);
+//							}
+//							
+//						}
+//					}
+//					
+//					var tableTrTwo = $("#modal-configTable").find("tr");
+//					console.log("lxw "+tableTrTwo.length);
+//					for (var jj=0; jj<tableTrTwo.length; jj++) {
+//						var tableTrDivTwo = $("#modal-configTable").find("tr:eq("+jj+")").find("div");
+//						console.log("lxw "+ tableTrDivTwo.length);
+//						for (var kk=0;kk<tableTrDivTwo.length;kk++) {
+//							if (kk==0) {
+//								console.log("lxw "+ tableTrDivTwo[0].title);
+//							} else{
+//								var oName = tableTrDivTwo[kk].children[0].title;//英文
+//								var oNodeName = tableTrDivTwo[kk].children[1].nodeName;//标签名
+//								if (oNodeName == "INPUT") {
+//									var oType = tableTrDivTwo[kk].children[1].type;//标签名
+//									var oValue = tableTrDivTwo[kk].children[1].value;
+//								} else if(oNodeName == "SELECT"){
+//									var oType = tableTrDivTwo[kk].children[1].nodeName;
+//									var index = tableTrDivTwo[kk].children[1].selectedIndex;
+//									var oValue = tableTrDivTwo[kk].children[1].options[index].value;
+//								}
+//								console.log("lxw "+ oName+"--"+oNodeName+"--"+oType+"--"+oValue);
+//								//console.log("lxw "+ tableTrDivTwo[kk].children[0].checked+"--"+tableTrDivTwo[kk].children[1].innerHTML);
+//								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
+//								jsonarray.push(arr);
+//							}							
+//						}
+//					}
+//				}
+//			}
+//			console.log("lxw "+ jsonarray);
+//		}
+//	}
+//}
+//
+////删除、批量删除弹出框确认按钮的点击
+//
+//function modalDelete(name){
+//	
+//}
+//
