@@ -26,7 +26,7 @@ function searchResource() {
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var title=document.getElementById("wait-tablebody"); //获取tbody的表格内容
-			for (var i = title.childNodes,length-1; i > 0; i--) {
+			for (var i = title.childNodes.length-1; i > 0; i--) {
 				title.removeChild(title.childNodes[i]); //删除掉每个子节点的内容
 			};			
 			var data = JSON.parse(this.responseText);
