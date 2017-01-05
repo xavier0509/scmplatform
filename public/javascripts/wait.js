@@ -3,7 +3,9 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 
 $(function() {
 	// waitHtmlInfo(); //获取后台数据
+	startSelect();//打开就获取数据
 	AfterWaitHtmlinfo(); //具体细节操作
+
 })
 
 function AfterWaitHtmlinfo() {
@@ -14,7 +16,9 @@ function AfterWaitHtmlinfo() {
 
 	//查询searchInfo
 	var mySearchInfo = document.getElementById("searchInfo");
-	mySearchInfo.onclick = function() {
+	mySearchInfo.onclick = startSelect();
+
+	function startSelect() {
 		var oChip = document.getElementById('chip').value;
 		var oMode = document.getElementById('model').value;
 		var oMemory = document.getElementById('memory').value;
