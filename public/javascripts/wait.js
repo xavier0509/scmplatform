@@ -67,7 +67,7 @@ function AfterWaitHtmlinfo() {
 
 	//查询searchInfo
 	var mySearchInfo = document.getElementById("searchInfo");
-	mySearchInfo.onclick = startSelect();
+	mySearchInfo.click = startSelect();
 
 	
 	/*点击新增按钮*/
