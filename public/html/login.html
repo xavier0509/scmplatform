@@ -10,7 +10,7 @@
 		<script src="../javascripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../javascripts/login.js"></script>
 </head>
-<body>
+<body onkeydown="keyLogin();">
 <div class="">
     <form class="form-horizontal" role="form" >
         <div class="loginmycenter">
@@ -38,7 +38,7 @@
 
                 <div class="form-group text-center">
                     <div class="col-sm-offset- col-sm-12">
-                        <button type="button" class="btn btn-default btn-success" onclick="loginfun()">登录</button>
+                        <button id="loginbutton" type="button" class="btn btn-default btn-success" onclick="loginfun()">登录</button>
                     </div>
                 </div>
             </div>

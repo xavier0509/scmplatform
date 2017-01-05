@@ -15,7 +15,6 @@ function reviewlist(){
             var data = JSON.parse(this.responseText);
             var _row;
             console.log(data.length);
-            var level = 1;
             for (var i = 0; i < data.length; i++) {
                 _row = document.getElementById("reviewmytable").insertRow(0);  
                 var _cell0 = _row.insertCell(0); 
@@ -24,8 +23,6 @@ function reviewlist(){
                 _cell1.innerHTML = data[i].android;
                 var _cell2 = _row.insertCell(2);
                 _cell2.innerHTML = data[i].chipid;
-                // var _cell3 = _row.insertCell(3);
-                // _cell3.innerHTML = data[i].author;
                 var _cell3 = _row.insertCell(3);
                 if (level == 1) {
                     _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";

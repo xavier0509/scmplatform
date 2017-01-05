@@ -33,10 +33,7 @@ function loginresult() {
         {
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
-                level = 1;
-
-                document.location.href="index.html" ;
-                
+                document.location.href="index.html" ;  
             }
             else if (data.msg == "failure") {
 	    	var loginmsg = document.getElementById("logintxt");
@@ -49,4 +46,10 @@ function loginresult() {
 
         }
     }
+}
+
+
+function keyLogin(){
+    if (event.keyCode==13)   //回车键的键值为13
+     document.getElementById("loginbutton").click();  //调用登录按钮的登录事件
 }
