@@ -2,35 +2,74 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	waitHtmlInfo(); //获取后台数据
+	// waitHtmlInfo(); //获取后台数据
+	startSelect();//打开就获取数据
 	AfterWaitHtmlinfo(); //具体细节操作
+
 })
 
-function AfterWaitHtmlinfo() {
+function startSelect() {
+	console.log("xjr start select");
+	var oChip = document.getElementById('chip').value;
+	var oMode = document.getElementById('model').value;
+	var oMemory = document.getElementById('memory').value;
+	var oAndroid = document.getElementById('androidVersion').value;
+	var oChipid = document.getElementById('chipid').value;
+	var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode + '","androidVersion":"' + oAndroid + '","chipModel":"' + oChipid + '","memorySize":"' + oMemory + '"}}';
+	console.log("lxw "+node);
+	sendHTTPRequest("/api/configmananger/search", node, searchResource);
+}
 
-	//	//查询searchInfo
-	//	var mySearchInfo = document.getElementById("searchInfo");
-	//	mySearchInfo.onclick = function(){
-	//		var oChip = document.getElementById('chip').value;
-	//  	var oMode = document.getElementById('model').value;
-	//  	var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode +'"}}';
-	//		sendHTTPRequest("/api/configmananger/search", node, searchResource);
-	//	}
-	//	function searchResource(){
-	//		console.log("this.readyState = " + this.readyState);
-	//  if (this.readyState == 4) {
-	//      console.log("this.status = " + this.status);
-	//      console.log("this.responseText = " + this.responseText);
-	//      if (this.status == 200) 
-	//      {
-	//          var data = JSON.parse(this.responseText);
-	//          
-	//          // loginId = data.data;
-	//          // printlog(loginId);
-	//          
-	//      }
-	//  }
-	//	}
+function searchResource() {
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var title=document.getElementById("wait-tablebody"); //获取tbody的表格内容
+			for (var i = title.childNodes.length-1; i > 0; i--) {
+				title.removeChild(title.childNodes[i]); //删除掉每个子节点的内容
+			};			
+			var data = JSON.parse(this.responseText);
+			var datalength = data.data;
+			console.log(datalength);
+			for (var i = 0; i < datalength.length; i++) {
+				var objData = datalength[i].DevInfo;
+				console.log(objData);
+				for(var j = 0; j < objData.length; j++) {
+					_row = document.getElementById("wait-tablebody").insertRow(0);
+					var _cell0 = _row.insertCell(0);
+					_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+					var _cell1 = _row.insertCell(1);
+					_cell1.innerHTML = objData[j].platformModel;
+					var _cell2 = _row.insertCell(2);
+					_cell2.innerHTML = objData[j].productModel;
+					var _cell3 = _row.insertCell(3);
+					_cell3.innerHTML = objData[j].androidVersion;
+					var _cell3 = _row.insertCell(4);
+					_cell3.innerHTML = objData[j].chipModel;
+					var _cell3 = _row.insertCell(5);
+					_cell3.innerHTML = objData[j].memorySize;
+					var _cell4 = _row.insertCell(6);
+					_cell4.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+				};
+			};
+
+		}
+	}
+}
+
+function AfterWaitHtmlinfo() {
+	//console.log("admin="+parent.adminFlag);
+	//if (parent.adminFlag != "1") {
+	//	document.getElementById("wait-change").style.display="none";
+	//};
+
+	//查询searchInfo
+	var mySearchInfo = document.getElementById("searchInfo");
+	mySearchInfo.onclick = startSelect;
+
+	
 	/*点击新增按钮*/
 	var oButtonAdd = document.getElementById("wait-add");
 	oButtonAdd.onclick = function() {
@@ -61,10 +100,10 @@ function AfterWaitHtmlinfo() {
 			//传参-关闭父页  
 			closeparentpage("#myAddModal");
 		}
-		
+
 		//新增页mk-config button的点击
-		functionMkConfigTable("myAddModalMkButton","myAddModalMkTable","myAddModalConfigButton","myAddModalConfigTable");
-		
+		functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
+
 	}
 
 	/*批量修改*/
@@ -117,12 +156,12 @@ function AfterWaitHtmlinfo() {
 		}
 		var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
 		oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交确认按钮");
-			$("#myMoreEditModal").modal('hide');
-			$("#myMoreEditSubmitModal").modal('hide');
-		}
-		//批量修改页mk-config button的点击
-		functionMkConfigTable("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
+				console.log("批量修改页-提交确认按钮");
+				$("#myMoreEditModal").modal('hide');
+				$("#myMoreEditSubmitModal").modal('hide');
+			}
+			//批量修改页mk-config button的点击
+		functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
 		/*批量修改页-单项*/
 		var oClassAClicks = new Array();
@@ -240,14 +279,14 @@ function AfterWaitHtmlinfo() {
 		}
 		var oButtonAdd = document.getElementById("myEditModalClose");
 		oButtonAdd.onclick = function() {
-			console.log("单项编辑页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			//传参-关闭父页  
-			closeparentpage("#myEditModal");
-		}
-		//编辑页mk-config button的点击
-		functionMkConfigTable("myEditModalMkButton","myEditModalMkTable","myEditModalConfigButton","myEditModalConfigTable");
+				console.log("单项编辑页-关闭按钮");
+				$('#myEditEnsureModal').modal();
+				$(".modal-backdrop").addClass("new-backdrop");
+				//传参-关闭父页  
+				closeparentpage("#myEditModal");
+			}
+			//编辑页mk-config button的点击
+		functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
 	}
 
 	/*单项删除*/
@@ -307,9 +346,9 @@ function AfterWaitHtmlinfo() {
 			//传参-关闭父页  
 			closeparentpage("#myCopyModal");
 		}
-		
+
 		//复制页mk-config button的点击
-		functionMkConfigTable("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
+		functionMkConfigTable("myCopyModalMkButton", "myCopyModalMkTable", "myCopyModalConfigButton", "myCopyModalConfigTable");
 	}
 
 	function closeparentpage(pageName) {
@@ -319,15 +358,15 @@ function AfterWaitHtmlinfo() {
 			$("#myEditEnsureModal").modal('hide');
 		}
 	}
-	
-	function functionMkConfigTable(name1,table1,name2,table2){
+
+	function functionMkConfigTable(name1, table1, name2, table2) {
 		var oMkButtonObject = document.getElementById(name1);
-		oMkButtonObject.onclick = function(){
+		oMkButtonObject.onclick = function() {
 			document.getElementById(table1).style.display = "block";
 			document.getElementById(table2).style.display = "none";
 		}
 		var oConfigButtonObject = document.getElementById(name2);
-		oConfigButtonObject.onclick = function(){
+		oConfigButtonObject.onclick = function() {
 			document.getElementById(table2).style.display = "block";
 			document.getElementById(table1).style.display = "none";
 		}
