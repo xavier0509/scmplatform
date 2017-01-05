@@ -17,6 +17,7 @@ function AfterWaitHtmlinfo() {
 		var oAndroid = document.getElementById('androidVersion').value;
 		var oChipid = document.getElementById('chipid').value;
 		var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode + '","androidVersion":"' + oAndroid + '","chipModel":"' + oChipid + '","memorySize":"' + oMemory + '"}}';
+		console.log("lxw "+node);
 		sendHTTPRequest("/api/configmananger/search", node, searchResource);
 	}
 
