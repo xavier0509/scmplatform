@@ -58,15 +58,21 @@ configfileSchema.statics.searchBy = function (searchStr, callback) {
             // console.log("DevInfo." + key + ":" + l[key]);
             // {DevInfo.productModel:1},{DevInfo.platformModel:2},{DevInfo.androidVersion:3},{DevInfo.chipModel:4},{DevInfo.memorySize:5},
             // "DevInfo.productModel":"1","DevInfo.platformModel":"2","DevInfo.androidVersion":"3","DevInfo.chipModel":"4","DevInfo.memorySize":"5",
-            m += "\"" + "DevInfo." + key + "\"" + ":" + "\"" + l[key] + "\"" + ",";
+            m += "\"" + "DevInfo." + key + "\"" + ":" + "{$regex:/" + l[key] + "/i}"+ ",";
         }
     }
     console.log(" 6--> " + m);
+
     var newstr = m.substring(0, m.length - 1);
     console.log(" 7--> " + "{" + newstr + "}");
-    var newjson = JSON.parse("{" + newstr + "}");
+    // var newjson = JSON.parse("{" + newstr + "}");
 
-    this.model("Configfile").find(newjson, {"DevInfo": 1}, callback);
+    // 6-->            "DevInfo.androidVersion":"android6.0","DevInfo.chipModel":"海思502","DevInfo.memorySize":"512M",
+    // 7-->           {"DevInfo.androidVersion":"android6.0","DevInfo.chipModel":"海思502","DevInfo.memorySize":"512M"}
+    // var whereStr = {"DevInfo.androidVersion":{$regex:/android6.0/i},"DevInfo.productModel":{$regex:/a43/i},"DevInfo.platformModel":{$regex:/Hisi-8s61/i}};
+
+
+    this.model("Configfile").find(newstr, {"DevInfo": 1}, callback);
 };
 
 
