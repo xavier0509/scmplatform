@@ -9,6 +9,7 @@ $(function() {
 })
 
 function startSelect() {
+	console.log("xjr start select");
 	var oChip = document.getElementById('chip').value;
 	var oMode = document.getElementById('model').value;
 	var oMemory = document.getElementById('memory').value;
