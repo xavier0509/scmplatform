@@ -30,7 +30,6 @@
 						<label for="model" class="control-label col-xs-4">机型</label>
 						<input type="text" value="" id="model" class="col-xs-7 inputstyle">
 					</div>
-					
 				</div>
 				<div class="row text-right">
 					<div class="col-xs-4 form-group">
@@ -89,14 +88,14 @@
 		</div>
 		
 			
-		<!--新增、编辑、复制  共用一套div   执行的js不一样-->
-		<div class="modal fade" id="myAddModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<!--点击新增弹出新增的modal-->
+		<div class="modal fade" id="myAddModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
 			<div class="modalwidth" role="document">
 				<div class="modal-content">
 					<div class="modal-header myheader">
-						<button type="button" class="close myclose" aria-label="Close"><span aria-hidden="true">关闭</span></button>
-						<button type="button" class="close addOrEditsubmit" data-dismiss="modal"><span aria-hidden="true">提交</span></button>
-						<h4 class="modal-title" id="myAddModalLabel">新建机芯机型</h4>
+						<button type="button" class="close" aria-label="Close" id="myAddModalClose"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" id="myAddModalSubmit"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myAddModalLabel">新增</h4>
 					</div>
 					<div class="modal-body mybody">
 						<table class="table table-bordered mytable" id="myAddModalTable">
@@ -135,10 +134,10 @@
 							<tr>
 								<td style="padding: 0;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" id="mkButton" onclick="oButtonMKonclick('mkButton')">MK文件</button>
-										<button type="button" class="btn btn-default" id="configButton" onclick="oButtonConfigonclick('configButton')">config文件</button>
+										<button type="button" class="btn btn-default" id="myAddModalMkButton">MK文件</button>
+										<button type="button" class="btn btn-default" id="myAddModalConfigButton">config文件</button>
 									</div>
-									<table class="table table-bordered mytable" id="modal-mkTable">
+									<table class="table table-bordered mytable" id="myAddModalMkTable">
 										<tr>
 											<td>
 												<div title="APP1">App:</div>
@@ -335,7 +334,7 @@
 										</tr>
 									</table>
 
-									<table class="table table-bordered fontsize mytable" id="modal-configTable">
+									<table class="table table-bordered fontsize mytable" id="myAddModalConfigTable">
 										<tr>
 											<td>
 												<div>核心功能 :</div>
@@ -604,29 +603,29 @@
 						</table>
 					</div>
 					<div class="modal-footer myfooter">
-						<button type="button" class="btn btn-default addOrEditsubmit" data-dismiss="modal">提交</button>
+						<button type="button" class="btn btn-default" id="myAddModalSubmitTwo">提交</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--批量修改-->
+		<!--点击批量修改弹出批量修改的modal-->
 		<div class="modal fade" id="myMoreEditModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditModalLabel">
 			<div class="modalwidth" role="document">
 				<div class="modal-content">
 					<div class="modal-header myheader">
-						<button type="button" class="close myclose" aria-label="Close"><span aria-hidden="true">关闭</span></button>
-						<button type="button" class="close" id="myMoreDeleteSubmit" data-dismiss="modal"><span aria-hidden="true">提交</span></button>
+						<button type="button" class="close" aria-label="Close" id="myMoreEditModalClose"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" id="myMoreEditModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myMoreEditModalLabel">批量修改</h4>
 					</div>
 					<div class="modal-body mybody">
-						<table class="table table-bordered">
+						<table class="table table-bordered" id="myMoreEditModalTable">
 							<tr>
 								<td style="padding: 0;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" id="mkAdminButton" onclick="oButtonMKonclick('mkAdminButton')">批量编辑MK文件</button>
-										<button type="button" class="btn btn-default" id="configAdminButton" onclick="oButtonConfigonclick('configAdminButton')">批量编辑config文件</button>
+										<button type="button" class="btn btn-default" id="myMoreEditModalMkButton" >批量编辑MK文件</button>
+										<button type="button" class="btn btn-default" id="myMoreEditModalConfigButton" >批量编辑config文件</button>
 									</div>
-									<table class="table table-bordered mytable" id="modal-mkAdminTable">
+									<table class="table table-bordered mytable" id="myMoreEditModalMkTable">
 										<tr>
 											<td>
 												<div>App:</div>
@@ -959,7 +958,7 @@
 										</tr>
 									</table>
 
-									<table class="table table-bordered fontsize mytable" id="modal-configAdminTable">
+									<table class="table table-bordered fontsize mytable" id="myMoreEditModalConfigTable">
 										<tr>
 											<td>
 												<div>核心功能 :</div>
@@ -1228,13 +1227,1071 @@
 						</table>
 					</div>
 					<div class="modal-footer myfooter">
-						<button type="button" class="btn btn-default" data-dismiss="modal" id="MoreEditSubmit">保存</button>
+						<button type="button" class="btn btn-default" id="myMoreEditModalSubmitTwo">保存</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--删除、批量删除-->
+		<!--点击编辑弹出编辑的modal-->
+		<div class="modal fade" id="myEditModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" aria-label="Close" id="myEditModalClose"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" id="myEditModalSubmit"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myEditModalLabel">编辑</h4>
+					</div>
+					<div class="modal-body mybody">
+						<table class="table table-bordered mytable" id="myEditModalTable">
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newChip" class="control-label col-xs-4" title="oChip">机芯:</label>
+										<input type="text" value="" id="newChip" placeholder="newChip" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newModel" class="control-label col-xs-4" title="oModel">机型:</label>
+										<input type="text" value="" id="newModel" placeholder="newModel" class="col-xs-7 inputstyle">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newDevice" class="control-label col-xs-4" title="Device">Device:</label>
+										<input type="text" value="" id="newDevice" placeholder="newDevice" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="NewAndroidVersion" class="control-label col-xs-4" title="AndroidVersion">Android版本:</label>
+										<input type="text" value="" id="NewAndroidVersion" placeholder="NewAndroidVersion" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newChipMode" class="control-label col-xs-4" title="ChipMode">芯片型号:</label>
+										<input type="text" value="" id="newChipMode" placeholder="newChipMode" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newMemory" class="control-label col-xs-4" title="memory">内存:</label>
+										<input type="text" value="" id="newMemory" placeholder="newMemory" class="col-xs-7 inputstyle">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 0;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" id="myEditModalMkButton" >MK文件</button>
+										<button type="button" class="btn btn-default" id="myEditModalConfigButton">config文件</button>
+									</div>
+									<table class="table table-bordered mytable" id="myEditModalMkTable">
+										<tr>
+											<td>
+												<div title="APP1">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall0">酷开商城1</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall1">酷开商城2</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall2">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall3">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall4">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall5">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall6">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP2">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall7">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall8">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall9">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall10">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall11">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall12">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall13">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP3">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall14">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall15">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall16">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall17">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall18">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall19">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall20">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP4">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall21">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall22">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall23">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall24">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall25">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP5">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall26">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall27">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall28">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall29">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall30">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP6">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall31">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall32">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall33">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall34">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall35">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall36">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall37">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall38">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall39">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall40">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="table table-bordered fontsize mytable" id="myEditModalConfigTable">
+										<tr>
+											<td>
+												<div>核心功能 :</div>
+												<div class="col-xs-6">
+													<span title="PANEL">PANEL(屏幕) :</span>
+													<input type="text" name="PANEL" value="" placeholder="FHD|3D|LCD">
+												</div>
+												<div class="col-xs-6">
+													<span title="NETWORK">NETWORK(网络) :</span>
+													<input type="text" name="NETWORK" value="" placeholder="ETHERNET|WIFI">
+												</div>
+												<div class="col-xs-6">
+													<span title="Source">Source(通道) :</span>
+													<input type="text" name="Source" value="" placeholder="ATV|DTMB|AV|HDMI@0|HDMI@1">
+												</div>
+												<div class="col-xs-6">
+													<span title="BleRemote">BleRemote(蓝牙遥控) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="H.265">H.265(H.265解码) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Log_appender">Log_appender(打印等级) :</span>
+													<select>
+														<option value="info">error</option>
+														<option value="debug">debug</option>
+														<option value="info">info</option>
+														<option value="warning">warning</option>
+														<option value="warning">none</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Ota_path">Ota_path(升级包路径) :</span>
+													<input type="text" name="Ota_path" value="" placeholder="/skyota">
+												</div>
+												<div class="col-xs-6">
+													<span title="Boot_flow">Boot_flow(新开机流程) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Homepage">Homepage(首页) :</span>
+													<input type="text" name="Homepage" value="" placeholder="com.coocaa.homeshell/com.coocaa.homeshell.CoocaaHomeShellActivity">
+												</div>
+												<div class="col-xs-6">
+													<span title="ScreenSaver">ScreenSaver(屏保) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="ChildMode">ChildMode(儿童模式) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Dolby DD+">Dolby DD+(杜比DD认证) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Server">Server(基础服务后台) :</span>
+													<input type="text" name="Server" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="TCServer">TCServer(TC后台) :</span>
+													<input type="text" name="TCServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PushServer">PushServer(推送后台) :</span>
+													<input type="text" name="PushServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PayServer">PayServer(支付后台) :</span>
+													<input type="text" name="PayServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PassServer">PassServer(账号后台) :</span>
+													<input type="text" name="PassServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="LogServer">LogServer(日志后台) :</span>
+													<input type="text" name="LogServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="MovieServer">MovieServer(影视后台) :</span>
+													<input type="text" name="MovieServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="WebServer">WebServer(网页后台) :</span>
+													<input type="text" name="WebServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="DEServer">DEServer(DE后台) :</span>
+													<input type="text" name="DEServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="ADServer">ADServer(AD后台) :</span>
+													<input type="text" name="ADServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="BootAD">BootAD(开机广告) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="SingalDelay">SingalDelay(无信号延时) :</span>
+													<input type="text" name="SingalDelay" value="">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>其他功能:</div>
+												<div class="col-xs-6">
+													<span title="HDMIDelay">HDMIDelay(HDMI延时) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="SourceSwitch">SourceSwitch(信源自切换) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="DTVSubTitle">DTVSubTitle(数字通道字幕) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="DTVView">DTVView(DTV场景实现) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Audio">Audio(音频格式) :</span>
+													<input type="text" name="Audio" value="" placeholder="mp3|wav|midi|AAC|m4a|flac">
+												</div>
+												<div class="col-xs-6">
+													<span title="Picture">Picture(图片格式) :</span>
+													<input type="text" name="Picture" value="" placeholder="jpg|jpeg|png|bmp|gif">
+												</div>
+												<div class="col-xs-6">
+													<span title="Video">Video(视频格式) :</span>
+													<input type="text" name="Picture" value="" placeholder="avi|dat|mpeg|mpe|mpg|vob|mp4|mov|mkv|ts|tp|m2ts|mts|m4v|f4v|flv|wm|rmvb|rm|asf|3gp">
+												</div>
+												<div class="col-xs-6">
+													<span title="BitmapSize">BitmapSize(图片解码阀值) :</span>
+													<input type="text" name="BitmapSize" value=""placeholder="15000000">
+												</div>
+												<div class="col-xs-6">
+													<span title="NewSubtitle">NewSubtitle(新字幕标准) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Samba">Samba(Samba) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="PicturePreview">PicturePreview(图片预览) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="VideoPreview">VideoPreview(视频预览) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="MediaSort">MediaSort(媒体分类) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="MusicDuration">MusicDuration(音乐时间开关) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="HomeNetwork">HomeNetwork(家庭网络) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="PlayerKernel">PlayerKernel(播放器实现) :</span>
+													<select>
+														<option value="mediaplayer">mediaplayer</option>
+														<option value="platform">platform</option>
+														<option value="bj_decoder">bj_decoder</option>
+														<option value="bj_decoder_soft">bj_decoder_soft</option>
+														<option value="bj_decoder_hard">bj_decoder_hard</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="BrowserHome">BrowserHome(浏览器地址) :</span>
+													<input type="text" name="BrowserHome" value="" placeholder="http://www.bing.com">
+												</div>
+												<div class="col-xs-6">
+													<span title="BrowserLabel">BrowserLabel(浏览器标签数) :</span>
+													<input type="text" name="BrowserLabel" value="" placeholder="http://www.bing.com">
+												</div>
+												<div class="col-xs-6">
+													<span title="AirPlay">AirPlay(AirPlay) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="AirMirror">AirMirror(AirMirror) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="AppInstall">AppInstall(应用自由安装) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" id="myEditModalSubmitTwo">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--点击复制弹出复制的modal-->
+		<div class="modal fade" id="myCopyModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myCopyModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" id="myCopyModalSubmit"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myCopyModalLabel">新建机芯机型</h4>
+					</div>
+					<div class="modal-body mybody">
+						<table class="table table-bordered mytable" id="myCopyModalTable">
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newChip" class="control-label col-xs-4" title="oChip">机芯:</label>
+										<input type="text" value="" id="newChip" placeholder="newChip" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newModel" class="control-label col-xs-4" title="oModel">机型:</label>
+										<input type="text" value="" id="newModel" placeholder="newModel" class="col-xs-7 inputstyle">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newDevice" class="control-label col-xs-4" title="Device">Device:</label>
+										<input type="text" value="" id="newDevice" placeholder="newDevice" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="NewAndroidVersion" class="control-label col-xs-4" title="AndroidVersion">Android版本:</label>
+										<input type="text" value="" id="NewAndroidVersion" placeholder="NewAndroidVersion" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newChipMode" class="control-label col-xs-4" title="ChipMode">芯片型号:</label>
+										<input type="text" value="" id="newChipMode" placeholder="newChipMode" class="col-xs-7 inputstyle">
+									</div>
+									<div class="col-xs-6 form-group text-right">
+										<label for="newMemory" class="control-label col-xs-4" title="memory">内存:</label>
+										<input type="text" value="" id="newMemory" placeholder="newMemory" class="col-xs-7 inputstyle">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 0;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" id="myCopyModalMkButton">MK文件</button>
+										<button type="button" class="btn btn-default" id="myCopyModalConfigButton">config文件</button>
+									</div>
+									<table class="table table-bordered mytable" id="myCopyModalMkTable">
+										<tr>
+											<td>
+												<div title="APP1">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall0">酷开商城1</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall1">酷开商城2</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall2">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall3">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall4">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall5">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall6">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP2">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall7">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall8">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall9">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall10">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall11">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall12">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall13">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP3">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall14">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall15">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall16">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall17">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall18">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall19">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall20">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP4">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall21">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall22">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall23">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall24">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall25">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP5">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall26">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall27">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall28">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall29">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall30">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div title="APP6">App:</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall31">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall32">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall33">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall34">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall35">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall36">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall37">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall38">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall39">酷开商城</span>
+												</div>
+												<div class="col-xs-3">
+													<input type="checkbox" value="">
+													<span title="SKYCCMall40">酷开商城</span>
+												</div>
+											</td>
+										</tr>
+									</table>
+
+									<table class="table table-bordered fontsize mytable" id="myCopyModalConfigTable">
+										<tr>
+											<td>
+												<div>核心功能 :</div>
+												<div class="col-xs-6">
+													<span title="PANEL">PANEL(屏幕) :</span>
+													<input type="text" name="PANEL" value="" placeholder="FHD|3D|LCD">
+												</div>
+												<div class="col-xs-6">
+													<span title="NETWORK">NETWORK(网络) :</span>
+													<input type="text" name="NETWORK" value="" placeholder="ETHERNET|WIFI">
+												</div>
+												<div class="col-xs-6">
+													<span title="Source">Source(通道) :</span>
+													<input type="text" name="Source" value="" placeholder="ATV|DTMB|AV|HDMI@0|HDMI@1">
+												</div>
+												<div class="col-xs-6">
+													<span title="BleRemote">BleRemote(蓝牙遥控) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="H.265">H.265(H.265解码) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Log_appender">Log_appender(打印等级) :</span>
+													<select>
+														<option value="info">error</option>
+														<option value="debug">debug</option>
+														<option value="info">info</option>
+														<option value="warning">warning</option>
+														<option value="warning">none</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Ota_path">Ota_path(升级包路径) :</span>
+													<input type="text" name="Ota_path" value="" placeholder="/skyota">
+												</div>
+												<div class="col-xs-6">
+													<span title="Boot_flow">Boot_flow(新开机流程) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Homepage">Homepage(首页) :</span>
+													<input type="text" name="Homepage" value="" placeholder="com.coocaa.homeshell/com.coocaa.homeshell.CoocaaHomeShellActivity">
+												</div>
+												<div class="col-xs-6">
+													<span title="ScreenSaver">ScreenSaver(屏保) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="ChildMode">ChildMode(儿童模式) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Dolby DD+">Dolby DD+(杜比DD认证) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Server">Server(基础服务后台) :</span>
+													<input type="text" name="Server" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="TCServer">TCServer(TC后台) :</span>
+													<input type="text" name="TCServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PushServer">PushServer(推送后台) :</span>
+													<input type="text" name="PushServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PayServer">PayServer(支付后台) :</span>
+													<input type="text" name="PayServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="PassServer">PassServer(账号后台) :</span>
+													<input type="text" name="PassServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="LogServer">LogServer(日志后台) :</span>
+													<input type="text" name="LogServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="MovieServer">MovieServer(影视后台) :</span>
+													<input type="text" name="MovieServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="WebServer">WebServer(网页后台) :</span>
+													<input type="text" name="WebServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="DEServer">DEServer(DE后台) :</span>
+													<input type="text" name="DEServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="ADServer">ADServer(AD后台) :</span>
+													<input type="text" name="ADServer" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="BootAD">BootAD(开机广告) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="SingalDelay">SingalDelay(无信号延时) :</span>
+													<input type="text" name="SingalDelay" value="">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div>其他功能:</div>
+												<div class="col-xs-6">
+													<span title="HDMIDelay">HDMIDelay(HDMI延时) :</span>
+													<input type="text" name="HDMIDelay" value="">
+												</div>
+												<div class="col-xs-6">
+													<span title="SourceSwitch">SourceSwitch(信源自切换) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="DTVSubTitle">DTVSubTitle(数字通道字幕) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="DTVView">DTVView(DTV场景实现) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Audio">Audio(音频格式) :</span>
+													<input type="text" name="Audio" value="" placeholder="mp3|wav|midi|AAC|m4a|flac">
+												</div>
+												<div class="col-xs-6">
+													<span title="Picture">Picture(图片格式) :</span>
+													<input type="text" name="Picture" value="" placeholder="jpg|jpeg|png|bmp|gif">
+												</div>
+												<div class="col-xs-6">
+													<span title="Video">Video(视频格式) :</span>
+													<input type="text" name="Picture" value="" placeholder="avi|dat|mpeg|mpe|mpg|vob|mp4|mov|mkv|ts|tp|m2ts|mts|m4v|f4v|flv|wm|rmvb|rm|asf|3gp">
+												</div>
+												<div class="col-xs-6">
+													<span title="BitmapSize">BitmapSize(图片解码阀值) :</span>
+													<input type="text" name="BitmapSize" value=""placeholder="15000000">
+												</div>
+												<div class="col-xs-6">
+													<span title="NewSubtitle">NewSubtitle(新字幕标准) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="Samba">Samba(Samba) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="PicturePreview">PicturePreview(图片预览) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="VideoPreview">VideoPreview(视频预览) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="MediaSort">MediaSort(媒体分类) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="MusicDuration">MusicDuration(音乐时间开关) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="HomeNetwork">HomeNetwork(家庭网络) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="PlayerKernel">PlayerKernel(播放器实现) :</span>
+													<select>
+														<option value="mediaplayer">mediaplayer</option>
+														<option value="platform">platform</option>
+														<option value="bj_decoder">bj_decoder</option>
+														<option value="bj_decoder_soft">bj_decoder_soft</option>
+														<option value="bj_decoder_hard">bj_decoder_hard</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="BrowserHome">BrowserHome(浏览器地址) :</span>
+													<input type="text" name="BrowserHome" value="" placeholder="http://www.bing.com">
+												</div>
+												<div class="col-xs-6">
+													<span title="BrowserLabel">BrowserLabel(浏览器标签数) :</span>
+													<input type="text" name="BrowserLabel" value="" placeholder="http://www.bing.com">
+												</div>
+												<div class="col-xs-6">
+													<span title="AirPlay">AirPlay(AirPlay) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="AirMirror">AirMirror(AirMirror) :</span>
+													<select>
+														<option value="true">true</option>
+														<option value="false">false</option>
+													</select>
+												</div>
+												<div class="col-xs-6">
+													<span title="AppInstall">AppInstall(应用自由安装) :</span>
+													<select>
+														<option value="false">false</option>
+														<option value="true">true</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" id="myCopyModalSubmitTwo">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--点击批量删除弹出批量删除的modal-->
 		<div class="modal fade col-xs-8" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
+			<div class="modal-delete" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="myMoreDeleteModalLabel">批量删除</h4>
+					</div>
+					<div class="modal-body">
+						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="myMoreDeleteModalEnsure">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--点击删除弹出删除的modal-->
+		<div class="modal fade col-xs-8" id="myDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel">
 			<div class="modal-delete" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1245,7 +2302,7 @@
 						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary ensureTrue" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-primary" id="myDeleteModalEnsure">确定</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 					</div>
 				</div>
@@ -1267,14 +2324,14 @@
 						<p style="font-size: 16px;margin-left: 20%;">配置了：<span>屏幕(PHD)</span></p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-primary" id="MoreEditSaveSubmit">确定</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--新增、编辑、复制、批量复制的关闭按钮的确认框-->
-		<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditSubmitModalLabel">
+		<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
 			<div class="modal-delete" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1285,7 +2342,7 @@
 						<p style="font-size: 24px;text-align: center;">确认要关闭吗？</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary ensureTrue" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-primary" id="myEditEnsureModalEnsure">确定</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 					</div>
 				</div>

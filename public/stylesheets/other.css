@@ -159,30 +159,51 @@ td{
 	padding-left: 5px;
 	padding-right: 0px;
 }
-
-#modal-configAdminTable div{
+#myCopyModalConfigTable div{
 	margin-bottom: 5px;
 }
-#modal-configAdminTable div select{
+#myCopyModalConfigTable div select{
 	width: 36%;
 	float: right;
 }
-#modal-configAdminTable div input{
+#myCopyModalConfigTable div input{
+	width: 36%;
+	float: right;
+}
+#myEditModalConfigTable div{
+	margin-bottom: 5px;
+}
+#myEditModalConfigTable div select{
+	width: 36%;
+	float: right;
+}
+#myEditModalConfigTable div input{
+	width: 36%;
+	float: right;
+}
+#myAddModalConfigTable div{
+	margin-bottom: 5px;
+}
+#myAddModalConfigTable div select{
+	width: 36%;
+	float: right;
+}
+#myAddModalConfigTable div input{
+	width: 36%;
+	float: right;
+}
+#myMoreEditModalConfigTable div{
+	margin-bottom: 5px;
+}
+#myMoreEditModalConfigTable div select{
+	width: 36%;
+	float: right;
+}
+#myMoreEditModalConfigTable div input{
 	width: 36%;
 	float: right;
 }
 
-#modal-configTable div{
-	margin-bottom: 5px;
-}
-#modal-configTable div select{
-	width: 36%;
-	float: right;
-}
-#modal-configTable div input{
-	width: 36%;
-	float: right;
-}
 
 /*chip-mode*/
 #inputChipOrMode{

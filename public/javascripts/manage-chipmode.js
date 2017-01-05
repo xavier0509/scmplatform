@@ -18,7 +18,7 @@ function AfterChipModeHtmlInfo() {
 			$('#myModeChipAddModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		/*机芯机型板块-机芯-修改*/
+	/*机芯机型板块-机芯-修改*/
 	var oTableA = $("#chip-mkTable").find("a");
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
@@ -28,6 +28,8 @@ function AfterChipModeHtmlInfo() {
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
+		//给保存按钮传参
+		toSaveButton(this.index);
 	}
 	/*机芯机型板块-机型-修改*/
 	var oTableA = $("#modal-mkTable").find("a");
@@ -40,17 +42,19 @@ function AfterChipModeHtmlInfo() {
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
 	}
-
 	/*机芯机型板块-机芯-增加-关闭*/
 	var hipOrModeClose = document.getElementById("inputChipOrModeClose");
 	hipOrModeClose.onclick = function() {
 			console.log("lxw " + "in inputChipOrModeClose");
-		}
-	/*机芯机型板块-机芯-增加-保存*/
-	var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
-	ChipOrModeSubmit.onclick = function() {
-		console.log("lxw " + "in inputChipOrModeSubmit");
 	}
+	/*机芯机型板块-机芯-增加-保存*/
+	function toSaveButton(index){
+		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
+		ChipOrModeSubmit.onclick = function() {
+			console.log("lxw " + "in inputChipOrModeSubmit");
+		}
+	}
+	
 
 }
 
