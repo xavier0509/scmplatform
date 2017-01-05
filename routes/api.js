@@ -5,6 +5,7 @@ var router = express.Router();
 var User = require("../models/User");
 var Model = require("../models/Model");
 var Product = require("../models/Product");
+var Module = require("../models/Module");
 
 var Configfile = require("../models/Configfile");
 
@@ -412,5 +413,39 @@ router.post('/createproductmodel', function (req, res) {
     }
 });
 
+// 新增模块
+router.post('/createmodule', function (req, res) {
+    "use strict";
+    var moduleName;
+    var modulePath;
+    var moduleDescription;
+    var moduleCategory;
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        moduleName = req.body.moduleName;
+        modulePath = req.body.modulePath;
+        moduleDescription = req.body.moduleDescription;
+        moduleCategory = req.body.moduleCategory;
+
+        console.log(moduleName);
+        console.log(modulePath);
+        console.log(moduleDescription);
+        console.log(moduleCategory);
+
+        if (moduleName.trim() !== null || typeof moduleName.trim() !== "undefined" ||
+            moduleName.trim() !== "") {
+            Module.create({
+                "moduleName": moduleName,
+                "modulePath": modulePath,
+                "moduleDescription": moduleDescription,
+                "moduleCategory": moduleCategory
+            }, function (error) {
+                res.json(success);
+            });
+        } else {
+            res.json(failure);
+        }
+    }
+});
 
 module.exports = router;
