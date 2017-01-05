@@ -310,8 +310,6 @@ router.post('/configmananger/add', function (req, res) {
     }, function (error) {
         res.json(success);
     });
-
-
     /*
      if (username.trim() !== null || typeof username.trim() !== "undefined" ||username.trim() !== "") {
      User.create({"username": username, "password": password, "adminFlag": adminFlag}, function (error) {
@@ -326,60 +324,85 @@ router.post('/configmananger/add', function (req, res) {
 
 router.post('/configmananger/search', function (req, res) {
     "use strict";
-
-
-    console.log("1233333");
-
-
     var productModel = req.body.productModel;
     var platformModel = req.body.platformModel;
     var androidVersion = req.body.androidVersion;
     var chipModel = req.body.chipModel;
     var memorySize = req.body.memorySize;
-    var pendingReview = req.body.pendingReview;
 
+    console.log(productModel);
+    console.log(platformModel);
+    console.log(androidVersion);
+    console.log(chipModel);
+    console.log(memorySize);
 
+    // var searchStr = [productModel, platformModel, androidVersion, chipModel, memorySize];
 
+    var searchStr = {
+        "data": [
+            {"productModel": productModel},
+            {"platformModel": platformModel},
+            {"androidVersion": androidVersion},
+            {"chipModel": chipModel},
+            {"memorySize": memorySize},
+        ]
+    };
 
-
-
-
-
-
-
-
-
-
-
-
-    if (productModel == null || platformModel == null || androidVersion == null || chipModel == null || memorySize == null || pendingReview == null) {
-        console.log("没有参数啊,应该返回所有记录");
-        Configfile.searchAll(function (err, result) {
-            if (result[0] == null) {
-                res.json(failure);
-            } else {
-                res.json({"code": 1, "msg": "success", "data": result});
-            }
-        });
-    }else {
-        Configfile.searchBy(productModel, platformModel, function (err, result) {
-            // console.log("result:"+result);
-            if (result[0] == null) {
-                res.json(failure);
-            } else {
-                res.json({"code": 1, "msg": "success", "data": result});
-            }
-        });
-
-
-
-
-
-
+    // console.log(" 1--> " + JSON.stringify(searchStr));
+    if (productModel == null) {
+        // removeByValue(searchStr, "productModel");
+        delete searchStr.data[0];
+    } else if (platformModel == null) {
+        // removeByValue(searchStr, "platformModel");
+        delete searchStr.data[1];
+    } else if (androidVersion == null) {
+        // removeByValue(searchStr, "androidVersion");
+        delete searchStr.data[2];
+    } else if (chipModel == null) {
+        // removeByValue(searchStr, "chipModel");
+        delete searchStr.data[3];
+    } else if (memorySize == null) {
+        // removeByValue(searchStr, "memorySize");
+        delete searchStr.data[4];
+    } else {
+        console.log("参数都不为空");
     }
 
+    console.log(" 2--> " + JSON.stringify(searchStr));
+    /*
+     2--> {"data":[{"productModel":"1"},{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
+     2--> {"data":[null,{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
+     2--> {"data":[null,{},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
+     2--> {"data":[null,{},{},{"chipModel":"4"},{"memorySize":"5"}]}
+     2--> {"data":[null,{},{},{},{"memorySize":"5"}]}
+     2--> {"data":[null,{},{},{},{}]}
+
+     */
+    Configfile.searchBy(searchStr, function (err, result) {
+        // res.json(result);
+
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
 
 
-});
+    /*
+     console.log("---->正常查询<----");
+     Configfile.searchBy(productModel, platformModel, androidVersion, chipModel, memorySize, function (err, result) {
+     // console.log("result:"+result);
+     if (result[0] == null) {
+     res.json(failure);
+     } else {
+     res.json({"code": 1, "msg": "success", "data": result});
+     }
+     });
+     */
+
+
+})
+;
 
 module.exports = router;

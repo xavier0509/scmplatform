@@ -19,7 +19,6 @@ userSchema.statics.zhaoren = function (username, callback) {
 
 // 创建静态方法
 userSchema.statics.zhaoren1 = function (username, password, callback) {
-    console.log(username+":"+password);
     this.model("User").find({"username": username, "password": password}, callback);
 };
 

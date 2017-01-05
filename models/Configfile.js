@@ -23,19 +23,50 @@ var configfileSchema = new mongoose.Schema({
 });
 
 
-
 // 查询所有记录
 configfileSchema.statics.searchAll = function (callback) {
-    this.model("Configfile").find({},{"DevInfo":1}, callback);
+    this.model("Configfile").find({}, {"DevInfo": 1}, callback);
 };
 
 // 创建静态方法
-configfileSchema.statics.searchBy = function (productModel, platformModel, callback) {
-    console.log("find---->" + productModel+ "," + platformModel + "<----");
-    this.model("Configfile").find({
-        "DevInfo.productModel": productModel,
-        "DevInfo.platformModel": platformModel
-    }, callback);
+// 1,2,3,4
+// 0,2,3,4
+
+
+configfileSchema.statics.searchBy = function (searchStr, callback) {
+    var s = [];
+    var l = {};
+    var m = "";
+    for (var index = 0; index < searchStr.data.length; index++) {
+        for (var a in searchStr.data[index]) {
+            if (a !== null) {
+                l[a] = searchStr.data[index][a];
+            }
+        }
+
+        s[index] = l;
+    }
+    console.log(" 5--> " + JSON.stringify(l));
+
+    // {"platformModel":"102","androidVersion":"102","chipModel":"102","memorySize":"102"}
+
+    for (var key in l) {
+        if (l[key] == "" || l[key] == undefined) {
+            console.log(key + " :这个要干掉");
+            delete l[key];
+        } else {
+            // console.log("DevInfo." + key + ":" + l[key]);
+            // {DevInfo.productModel:1},{DevInfo.platformModel:2},{DevInfo.androidVersion:3},{DevInfo.chipModel:4},{DevInfo.memorySize:5},
+            // "DevInfo.productModel":"1","DevInfo.platformModel":"2","DevInfo.androidVersion":"3","DevInfo.chipModel":"4","DevInfo.memorySize":"5",
+            m += "\"" + "DevInfo." + key + "\"" + ":" + "\"" + l[key] + "\"" + ",";
+        }
+    }
+    console.log(" 6--> " + m);
+    var newstr = m.substring(0, m.length - 1);
+    console.log(" 7--> " + "{" + newstr + "}");
+    var newjson = JSON.parse("{" + newstr + "}");
+
+    this.model("Configfile").find(newjson, {"DevInfo": 1}, callback);
 };
 
 
