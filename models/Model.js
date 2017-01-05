@@ -10,6 +10,17 @@ var modelSchema = new mongoose.Schema({
 });
 
 
+// 查询所有记录
+modelSchema.statics.searchAll = function ( callback) {
+    this.model("Model").find({},{"name":1,"_id":0}, callback);
+};
+
+// 修改
+modelSchema.statics.xiugai = function (conditions, update, options, callback) {
+    this.model("Model").update(conditions, update, options, callback);
+};
+
+
 // 类是基于schema创建的。
 var modelModel = db.model("Model", modelSchema);
 

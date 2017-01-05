@@ -395,6 +395,29 @@ router.post('/createplatformmodel', function (req, res) {
     }
 });
 
+// 查询机芯
+router.post('/searchplatformmodel', function (req, res) {
+    Model.searchAll( function (err, result) {
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
+});
+
+// 修改机芯
+router.post('/modifyplatformmodel', function (req, res) {
+    console.log("1");
+
+
+
+
+    Model.xiugai({"name": "1"}, {$set: {"name": "2"}}, {}, function () {
+        console.log("修改机芯成功");
+    });
+});
+
 // 新增机型
 router.post('/createproductmodel', function (req, res) {
     "use strict";
@@ -425,6 +448,36 @@ router.post('/createmodule', function (req, res) {
         moduleName = req.body.moduleName;
         modulePath = req.body.modulePath;
         moduleDescription = req.body.moduleDescription;
+        moduleCategory = req.body.moduleCategory;
+
+        console.log(moduleName);
+        console.log(modulePath);
+        console.log(moduleDescription);
+        console.log(moduleCategory);
+
+        if (moduleName.trim() !== null || typeof moduleName.trim() !== "undefined" ||
+            moduleName.trim() !== "") {
+            Module.create({
+                "moduleName": moduleName,
+                "modulePath": modulePath,
+                "moduleDescription": moduleDescription,
+                "moduleCategory": moduleCategory
+            }, function (error) {
+                res.json(success);
+            });
+        } else {
+            res.json(failure);
+        }
+    }
+});
+
+// 新增配置
+router.post('/createconfig', function (req, res) {
+    "use strict";
+
+    var moduleCategory;
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
         moduleCategory = req.body.moduleCategory;
 
         console.log(moduleName);
