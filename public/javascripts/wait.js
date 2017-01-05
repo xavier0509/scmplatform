@@ -2,7 +2,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	waitHtmlInfo(); //获取后台数据
+	// waitHtmlInfo(); //获取后台数据
 	AfterWaitHtmlinfo(); //具体细节操作
 })
 
@@ -32,8 +32,29 @@ function AfterWaitHtmlinfo() {
 			console.log("this.responseText = " + this.responseText);
 			if(this.status == 200) {
 				var data = JSON.parse(this.responseText);
-				// loginId = data.data;
-				// printlog(loginId);
+				var datalength = data.data;
+				console.log(datalength);
+				for (var i = 0; i < datalength.length; i++) {
+					var objData = datalength[i].DevInfo;
+					console.log(objData);
+					for(var j = 0; j < objData.length; j++) {
+						_row = document.getElementById("wait-tablebody").insertRow(0);
+						var _cell0 = _row.insertCell(0);
+						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+						var _cell1 = _row.insertCell(1);
+						_cell1.innerHTML = objData[j].platformModel;
+						var _cell2 = _row.insertCell(2);
+						_cell2.innerHTML = objData[j].productModel;
+						var _cell3 = _row.insertCell(3);
+						_cell3.innerHTML = objData[j].androidVersion;
+						var _cell3 = _row.insertCell(4);
+						_cell3.innerHTML = objData[j].chipModel;
+						var _cell3 = _row.insertCell(5);
+						_cell3.innerHTML = objData[j].memorySize;
+						var _cell4 = _row.insertCell(6);
+						_cell4.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+					};
+				};
 
 			}
 		}
