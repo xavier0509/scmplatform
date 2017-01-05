@@ -4,6 +4,8 @@ var router = express.Router();
 // 定义了一个模型，用户模型
 var User = require("../models/User");
 var Model = require("../models/Model");
+var Product = require("../models/Product");
+
 var Configfile = require("../models/Configfile");
 
 var success = {"code": 1, "msg": "success"};
@@ -391,5 +393,24 @@ router.post('/createplatformModel', function (req, res) {
         }
     }
 });
+
+// 新增机型
+router.post('/createproductmodel', function (req, res) {
+    "use strict";
+    var name;
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        name = req.body.data.productModel;
+        if (name.trim() !== null || typeof name.trim() !== "undefined" ||
+            name.trim() !== "") {
+            Product.create({"name": name}, function (error) {
+                res.json(success);
+            });
+        } else {
+            res.json(failure);
+        }
+    }
+});
+
 
 module.exports = router;
