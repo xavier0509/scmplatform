@@ -330,11 +330,11 @@ router.post('/configmananger/search', function (req, res) {
     var chipModel = req.body.chipModel;
     var memorySize = req.body.memorySize;
 
-    console.log(productModel);
+    /*console.log(productModel);
     console.log(platformModel);
     console.log(androidVersion);
     console.log(chipModel);
-    console.log(memorySize);
+    console.log(memorySize);*/
 
     // var searchStr = [productModel, platformModel, androidVersion, chipModel, memorySize];
 
@@ -368,7 +368,7 @@ router.post('/configmananger/search', function (req, res) {
         console.log("参数都不为空");
     }
 
-    console.log(" 2--> " + JSON.stringify(searchStr));
+    // console.log(" 2--> " + JSON.stringify(searchStr));
     /*
      2--> {"data":[{"productModel":"1"},{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
      2--> {"data":[null,{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
@@ -376,7 +376,6 @@ router.post('/configmananger/search', function (req, res) {
      2--> {"data":[null,{},{},{"chipModel":"4"},{"memorySize":"5"}]}
      2--> {"data":[null,{},{},{},{"memorySize":"5"}]}
      2--> {"data":[null,{},{},{},{}]}
-
      */
     Configfile.searchBy(searchStr, function (err, result) {
         // res.json(result);
