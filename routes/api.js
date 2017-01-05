@@ -324,83 +324,58 @@ router.post('/configmananger/add', function (req, res) {
 
 router.post('/configmananger/search', function (req, res) {
     "use strict";
-    var productModel = req.body.productModel;
-    var platformModel = req.body.platformModel;
-    var androidVersion = req.body.androidVersion;
-    var chipModel = req.body.chipModel;
-    var memorySize = req.body.memorySize;
 
-    /*console.log(productModel);
-    console.log(platformModel);
-    console.log(androidVersion);
-    console.log(chipModel);
-    console.log(memorySize);*/
+    var productModel;
+    var platformModel;
+    var androidVersion;
+    var chipModel;
+    var memorySize;
 
-    // var searchStr = [productModel, platformModel, androidVersion, chipModel, memorySize];
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        productModel = req.body.productModel;
+        platformModel = req.body.platformModel;
+        androidVersion = req.body.androidVersion;
+        chipModel = req.body.chipModel;
+        memorySize = req.body.memorySize;
 
-    var searchStr = {
-        "data": [
-            {"productModel": productModel},
-            {"platformModel": platformModel},
-            {"androidVersion": androidVersion},
-            {"chipModel": chipModel},
-            {"memorySize": memorySize},
-        ]
-    };
+        console.log("productModel->" + productModel);
+        console.log("platformModel->" + platformModel);
+        console.log("androidVersion->" + androidVersion);
+        console.log("chipModel->" + chipModel);
+        console.log("memorySize->" + memorySize);
 
-    // console.log(" 1--> " + JSON.stringify(searchStr));
-    if (productModel == null) {
-        // removeByValue(searchStr, "productModel");
-        delete searchStr.data[0];
-    } else if (platformModel == null) {
-        // removeByValue(searchStr, "platformModel");
-        delete searchStr.data[1];
-    } else if (androidVersion == null) {
-        // removeByValue(searchStr, "androidVersion");
-        delete searchStr.data[2];
-    } else if (chipModel == null) {
-        // removeByValue(searchStr, "chipModel");
-        delete searchStr.data[3];
-    } else if (memorySize == null) {
-        // removeByValue(searchStr, "memorySize");
-        delete searchStr.data[4];
-    } else {
-        console.log("参数都不为空");
-    }
+        var searchStr = {
+            "data": [
+                {"productModel": productModel},
+                {"platformModel": platformModel},
+                {"androidVersion": androidVersion},
+                {"chipModel": chipModel},
+                {"memorySize": memorySize},
+            ]
+        };
 
-    // console.log(" 2--> " + JSON.stringify(searchStr));
-    /*
-     2--> {"data":[{"productModel":"1"},{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
-     2--> {"data":[null,{"platformModel":"2"},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
-     2--> {"data":[null,{},{"androidVersion":"3"},{"chipModel":"4"},{"memorySize":"5"}]}
-     2--> {"data":[null,{},{},{"chipModel":"4"},{"memorySize":"5"}]}
-     2--> {"data":[null,{},{},{},{"memorySize":"5"}]}
-     2--> {"data":[null,{},{},{},{}]}
-     */
-    Configfile.searchBy(searchStr, function (err, result) {
-        // res.json(result);
-
-        if (result[0] == null) {
-            res.json(failure);
+        if (productModel == null) {
+            delete searchStr.data[0];
+        } else if (platformModel == null) {
+            delete searchStr.data[1];
+        } else if (androidVersion == null) {
+            delete searchStr.data[2];
+        } else if (chipModel == null) {
+            delete searchStr.data[3];
+        } else if (memorySize == null) {
+            delete searchStr.data[4];
         } else {
-            res.json({"code": 1, "msg": "success", "data": result});
+            console.log("参数都不为空");
         }
-    });
-
-
-    /*
-     console.log("---->正常查询<----");
-     Configfile.searchBy(productModel, platformModel, androidVersion, chipModel, memorySize, function (err, result) {
-     // console.log("result:"+result);
-     if (result[0] == null) {
-     res.json(failure);
-     } else {
-     res.json({"code": 1, "msg": "success", "data": result});
-     }
-     });
-     */
-
-
+        Configfile.searchBy(searchStr, function (err, result) {
+            if (result[0] == null) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success", "data": result});
+            }
+        });
+    }
 })
 ;
 

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6314ce2-e029-4b18-81f9-7f9d377824ff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Configfile.js" afterPath="$PROJECT_DIR$/models/Configfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions/WxzknYujBvXd8JJj1z1l79N-0sxgoAKC.json" afterPath="$PROJECT_DIR$/sessions/WxzknYujBvXd8JJj1z1l79N-0sxgoAKC.json" />
     </list>
     <ignored path="scmplatform.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Configfile.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Configfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/Configfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
+            <state relative-caret-position="180">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#34#0" expanded="false" />
               </folding>
@@ -51,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="336" column="30" selection-start-line="332" selection-start-column="4" selection-end-line="336" selection-end-column="30" />
+            <state relative-caret-position="-2833">
+              <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
               <folding>
                 <element signature="e#273#315#0" expanded="false" />
                 <element signature="e#364#1303#0" expanded="false" />
@@ -123,8 +120,8 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/models/User.js" />
         <option value="$PROJECT_DIR$/models/test.js" />
-        <option value="$PROJECT_DIR$/routes/api.js" />
         <option value="$PROJECT_DIR$/models/Configfile.js" />
+        <option value="$PROJECT_DIR$/routes/api.js" />
       </list>
     </option>
   </component>
@@ -320,16 +317,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483416744878</updated>
-      <workItem from="1483416747136" duration="63149000" />
+      <workItem from="1483416747136" duration="64137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63149000" />
+    <option name="totallyTimeSpent" value="64137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="28" y="23" width="1219" height="777" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24123539" sideWeight="0.49074075" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -338,7 +335,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36934307" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36934307" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24123539" sideWeight="0.5092593" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -501,10 +498,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/Configfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#34#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="336" column="30" selection-start-line="332" selection-start-column="4" selection-end-line="336" selection-end-column="30" />
+        <state relative-caret-position="-2833">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
           <folding>
             <element signature="e#273#315#0" expanded="false" />
             <element signature="e#364#1303#0" expanded="false" />
@@ -519,24 +534,6 @@
             <element signature="e#8934#9442#0" expanded="false" />
             <element signature="e#9466#10194#0" expanded="false" />
             <element signature="e#10214#10501#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/Configfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#34#0" expanded="false" />
           </folding>
         </state>
       </provider>
