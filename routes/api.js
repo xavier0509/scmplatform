@@ -333,11 +333,11 @@ router.post('/configmananger/search', function (req, res) {
 
     if (req.body.data) {
         //能正确解析 json 格式的post参数
-        productModel = req.body.productModel;
-        platformModel = req.body.platformModel;
-        androidVersion = req.body.androidVersion;
-        chipModel = req.body.chipModel;
-        memorySize = req.body.memorySize;
+        productModel   = req.body.data.productModel;
+        platformModel  = req.body.data.platformModel;
+        androidVersion = req.body.data.androidVersion;
+        chipModel      = req.body.data.chipModel;
+        memorySize     = req.body.data.memorySize;
 
         console.log("productModel->" + productModel);
         console.log("platformModel->" + platformModel);
