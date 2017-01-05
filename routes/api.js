@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-
 // 定义了一个模型，用户模型
 var User = require("../models/User");
+var Model = require("../models/Model");
 var Configfile = require("../models/Configfile");
 
-var success = {};
+var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
-
 
 router.get('/', function (req, res) {
     "use strict";
@@ -16,38 +15,37 @@ router.get('/', function (req, res) {
 });
 
 router.post('/register', function (req, res) {
-        "use strict";
-        var username = req.body.username;
-        var password = req.body.password;
-        var adminFlag = req.body.adminFlag;
-        if (username.trim() !== null || typeof username.trim() !== "undefined" ||
-            username.trim() !== "") {
-            User.create({"username": username, "password": password, "adminFlag": adminFlag}, function (error) {
-                res.json(success);
-            });
-        } else {
-            res.json(failure);
-        }
-        /*
-         // 实例化了一个用户类,需要再调用save()
-         var xiaoming = new User({"username": username, "password": password, "adminFlag": adminFlag});
-         // 保存这个学生类
-         xiaoming.save(function (err) {
-         if (err) {
-         res.json({
-         "code": 0,
-         "msg": "failure"
-         })
-         } else {
-         res.json({
-         "code": 1,
-         "msg": "success"
-         });
-         }
-         });
-         */
+    "use strict";
+    var username = req.body.username;
+    var password = req.body.password;
+    var adminFlag = req.body.adminFlag;
+    if (username.trim() !== null || typeof username.trim() !== "undefined" ||
+        username.trim() !== "") {
+        User.create({"username": username, "password": password, "adminFlag": adminFlag}, function (error) {
+            res.json(success);
+        });
+    } else {
+        res.json(failure);
     }
-);
+    /*
+     // 实例化了一个用户类,需要再调用save()
+     var xiaoming = new User({"username": username, "password": password, "adminFlag": adminFlag});
+     // 保存这个学生类
+     xiaoming.save(function (err) {
+     if (err) {
+     res.json({
+     "code": 0,
+     "msg": "failure"
+     })
+     } else {
+     res.json({
+     "code": 1,
+     "msg": "success"
+     });
+     }
+     });
+     */
+});
 
 router.post('/login', function (req, res) {
     "use strict";
@@ -115,15 +113,13 @@ router.post('/login', function (req, res) {
      })
      }
      */
-})
-;
+});
 
 router.get('/xiugai', function (req, res) {
     User.xiugai({"username": "liujinpeng"}, {$set: {"password": "1234567"}}, {}, function () {
         console.log("密码修改成功");
     });
 });
-
 
 router.post('/configmananger/add', function (req, res) {
     "use strict";
@@ -333,11 +329,11 @@ router.post('/configmananger/search', function (req, res) {
 
     if (req.body.data) {
         //能正确解析 json 格式的post参数
-        productModel   = req.body.data.productModel;
-        platformModel  = req.body.data.platformModel;
+        productModel = req.body.data.productModel;
+        platformModel = req.body.data.platformModel;
         androidVersion = req.body.data.androidVersion;
-        chipModel      = req.body.data.chipModel;
-        memorySize     = req.body.data.memorySize;
+        chipModel = req.body.data.chipModel;
+        memorySize = req.body.data.memorySize;
 
         console.log("productModel->" + productModel);
         console.log("platformModel->" + platformModel);
@@ -376,7 +372,24 @@ router.post('/configmananger/search', function (req, res) {
             }
         });
     }
-})
-;
+});
+
+// 新增机芯
+router.post('/createplatformModel', function (req, res) {
+    "use strict";
+    var name;
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        name = req.body.data.platformModel;
+        if (name.trim() !== null || typeof name.trim() !== "undefined" ||
+            name.trim() !== "") {
+            Model.create({"name": name}, function (error) {
+                res.json(success);
+            });
+        } else {
+            res.json(failure);
+        }
+    }
+});
 
 module.exports = router;
