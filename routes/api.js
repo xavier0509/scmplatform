@@ -377,7 +377,7 @@ router.post('/configmananger/search', function (req, res) {
 });
 
 // 新增机芯
-router.post('/createplatformModel', function (req, res) {
+router.post('/createplatformmodel', function (req, res) {
     "use strict";
     var name;
     if (req.body.data) {
