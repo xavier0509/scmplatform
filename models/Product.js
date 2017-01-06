@@ -10,6 +10,11 @@ var productSchema = new mongoose.Schema({
 });
 
 
+// 查询记录
+productSchema.statics.searchBy = function (name, callback) {
+    this.model("Product").find({"name": name}, {"name": 1, "_id": 0}, callback);
+};
+
 // 查询所有记录
 productSchema.statics.searchAll = function ( callback) {
     this.model("Product").find({},{"name":1,"_id":0}, callback);

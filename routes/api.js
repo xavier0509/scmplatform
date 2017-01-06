@@ -11,6 +11,8 @@ var Configfile = require("../models/Configfile");
 
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
+var failure1 = {"code": 0, "msg": "failure", "reason": "xxxx 已存在"};
+
 
 router.get('/', function (req, res) {
     "use strict";
@@ -423,8 +425,8 @@ router.post('/modifyplatformmodel', function (req, res) {
         //能正确解析 json 格式的post参数
         before = req.body.data.before;
         after = req.body.data.after;
-        let beforeObj = {"name": before};
-        let afterObj = {"name": after};
+        var beforeObj = {"name": before};
+        var afterObj = {"name": after};
         Model.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
             if (result.nModified == 0) {
                 res.json(failure);
@@ -444,8 +446,14 @@ router.post('/createproductmodel', function (req, res) {
         name = req.body.data.productModel;
         if (name.trim() !== null || typeof name.trim() !== "undefined" ||
             name.trim() !== "") {
-            Product.create({"name": name}, function (error) {
-                res.json(success);
+            Product.searchBy(name, function (err, result) {
+                if (result[0] == null) {
+                    Product.create({"name": name}, function (error) {
+                        res.json(success);
+                    });
+                } else {
+                    res.json(failure);
+                }
             });
         } else {
             res.json(failure);
@@ -474,8 +482,8 @@ router.post('/modifyproductmodel', function (req, res) {
         //能正确解析 json 格式的post参数
         before = req.body.data.before;
         after = req.body.data.after;
-        let beforeObj = {"name": before};
-        let afterObj = {"name": after};
+        var beforeObj = {"name": before};
+        var afterObj = {"name": after};
         console.log(before);
         console.log(after);
         Product.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
@@ -487,16 +495,6 @@ router.post('/modifyproductmodel', function (req, res) {
         });
     }
 });
-
-
-
-
-
-
-
-
-
-
 
 
 // 新增模块
