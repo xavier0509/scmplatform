@@ -33,13 +33,19 @@ td{
 #modal-mkTable a{
 	text-decoration: underline;
 }
-#modal-mkTable div{
+#modal-mkTable tr td{
+	border: 0;
+}
+#modal-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
 }
 
 #chip-mkTable a{
 	text-decoration: underline;
+}
+#chip-mkTable tr td{
+	border: 0;
 }
 #chip-mkTable tr td div{
 	margin-bottom: 5px;
