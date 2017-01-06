@@ -33,13 +33,19 @@ td{
 #modal-mkTable a{
 	text-decoration: underline;
 }
-#modal-mkTable div{
+#modal-mkTable tr td{
+	border: 0;
+}
+#modal-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
 }
 
 #chip-mkTable a{
 	text-decoration: underline;
+}
+#chip-mkTable tr td{
+	border: 0;
 }
 #chip-mkTable tr td div{
 	margin-bottom: 5px;
@@ -52,11 +58,12 @@ td{
 #module-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
-	text-align: center;
+	padding-left: 5%;
 }
 #module-mkTable tr td div:nth-child(1){
 	color: red;
-	margin-left: 4%;
+	margin-left: 3%;
+	padding-left: 0;
 	text-align: left;
 }
 
@@ -80,7 +87,12 @@ td{
 #mkTable,#modal-mkTable,#modal-mkAdminTable,#configString{
 	display: block;
 }
-
+#myAddModalMkTable,#myMoreEditModalMkTable,#myEditModalMkTable,#myCopyModalMkTable{
+	display: block;
+}
+#myAddModalConfigTable,#myMoreEditModalConfigTable,#myEditModalConfigTable,#myCopyModalConfigTable{
+	display: none;
+}
 .bottomStyle{
 	border-bottom: 10px;
 }
