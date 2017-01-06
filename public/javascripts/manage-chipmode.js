@@ -2,7 +2,6 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 $(function() {
 	sendHTTPRequest("/api/searchplatformmodel", '{"data":""}', ChipHtmlInfo);
-	sendHTTPRequest("/api/searchproductmodel", '{"data":""}', ModeHtmlInfo);
 	//ChipModeHtmlInfo();
 	//AfterChipModeHtmlInfo();
 })
@@ -77,7 +76,8 @@ function ChipHtmlInfo() {
 			}
 		};
 	}
-	AfterChipModeHtmlInfo();
+	sendHTTPRequest("/api/searchproductmodel", '{"data":""}', ModeHtmlInfo);
+	//AfterChipModeHtmlInfo();
 }
 /*机型-获取数据*/
 function ModeHtmlInfo() {
