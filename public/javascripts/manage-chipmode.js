@@ -1,5 +1,8 @@
+document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
+
 $(function() {
-	ChipModeHtmlInfo();
+	sendHTTPRequest("/api/searchplatformmodel", '{"data":""}', ChipModeHtmlInfo);
+	//ChipModeHtmlInfo();
 	AfterChipModeHtmlInfo();
 })
 
@@ -61,4 +64,48 @@ function AfterChipModeHtmlInfo() {
 /*点击机芯机型管理，获取数据*/
 function ChipModeHtmlInfo() {
 	console.log("lxw " + "ChipModeHtmlInfo");
+	console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        console.log("this.status = " + this.status);
+        console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+        	var data = JSON.parse(this.responseText);
+            console.log("lxw "+data);
+        };
+        // loginId = data.data;
+        // printlog(loginId);
+        }
+    }
+	
+	var currentData = {
+		"chip":[{"chipName":"8S61"}
+			,{"chipName":"8S62"}
+			,{"chipName":"8S63"}
+			,{"chipName":"8S64"}
+			,{"chipName":"8S65"}
+			,{"chipName":"8S66"}
+			,{"chipName":"8S67"}
+			,{"chipName":"8S68"}
+			,{"chipName":"8S69"}
+			,{"chipName":"8S60"}]
+		,"model":[{"modelName":"A01"}
+			,{"modelName":"A02"}
+			,{"modelName":"A03"}
+			,{"modelName":"A04"}
+			,{"modelName":"A05"}
+			,{"modelName":"A06"}
+			,{"modelName":"A07"}
+			,{"modelName":"A08"}
+			,{"modelName":"A09"}
+			,{"modelName":"A10"}]};
+	console.log("lxw " + currentData.chip.length);
+	var _rowChip = document.getElementById("chipManageAdd-td");
+	for(var i = 0; i < currentData.chip.length; i++) {
+		_rowChip.innerHTML += "<div class='col-xs-4'><a>"+currentData.chip[i].chipName+"</a></div>";
+	}
+	var _rowModal = document.getElementById("modalManageAdd-td");
+	for(var i = 0; i < currentData.model.length; i++) {
+		_rowModal.innerHTML += "<div class='col-xs-4'><a>"+currentData.model[i].modelName+"</a></div>";
+	}
 }
