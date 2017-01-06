@@ -57,7 +57,8 @@ app.use(session({
     secret: "123",
     key: 'sid',
     store: new MongoStore({
-        url: 'mongodb://localhost/session',
+        // url: 'mongodb://localhost/session',
+        url: 'mongodb://172.20.132.225/session',
     }),
     resave: true,
     saveUninitialized: true,
