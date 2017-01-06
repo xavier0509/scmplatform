@@ -367,7 +367,7 @@ router.post('/configmananger/search', function (req, res) {
         } else if (memorySize == null) {
             delete searchStr.data[4];
         } else {
-            console.log("参数都不为空");
+            console.log("参数都为空");
         }
         Configfile.searchBy(searchStr, function (err, result) {
             if (result[0] == null) {
@@ -378,6 +378,27 @@ router.post('/configmananger/search', function (req, res) {
         });
     }
 });
+
+/*
+ * 查询待审核内容
+ * 参数说明
+ * DevInfo.pendingReview: 审核标识
+ * 0 : 创建
+ * 1 : 修改
+ * 2 : 删除
+ * 3 : 已审核
+ *
+* */
+router.post('/review', function (req, res) {
+    Configfile.searchByPendingReview({}, function (err, result) {
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
+});
+
 
 // 新增机芯
 router.post('/createplatformmodel', function (req, res) {
@@ -495,7 +516,6 @@ router.post('/modifyproductmodel', function (req, res) {
         });
     }
 });
-
 
 // 新增模块
 router.post('/createmodule', function (req, res) {

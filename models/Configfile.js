@@ -33,16 +33,10 @@ var configfileSchema = new mongoose.Schema({
     }
 });
 
-
 // 查询所有记录
 configfileSchema.statics.searchAll = function (callback) {
     this.model("Configfile").find({}, {"DevInfo": 1}, callback);
 };
-
-// 创建静态方法
-// 1,2,3,4
-// 0,2,3,4
-
 
 configfileSchema.statics.searchBy = function (searchStr, callback) {
     var s = [];
@@ -78,6 +72,11 @@ configfileSchema.statics.searchBy = function (searchStr, callback) {
 
     var obj = (eval('(' + newstr + ')'));
     this.model("Configfile").find(obj, {"DevInfo": 1}, callback);
+};
+
+// 查询未审核记录
+configfileSchema.statics.searchByPendingReview = function (searchStr, callback) {
+    this.model("Configfile").find({"DevInfo.pendingReview":{$in:["0","1","2"]}}, {"DevInfo": 1}, callback);
 };
 
 
