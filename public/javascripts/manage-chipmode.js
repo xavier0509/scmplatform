@@ -22,7 +22,7 @@ function AfterChipModeHtmlInfo() {
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
 		/*机芯机型板块-机芯-修改*/
-	var oTableA = $("#chip-mkTable").find("a");
+	var oTableA = $("#chipManager-mkTable").find("a");
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
@@ -35,7 +35,7 @@ function AfterChipModeHtmlInfo() {
 		toSaveButton(this.index);
 	}
 	/*机芯机型板块-机型-修改*/
-	var oTableA = $("#modal-mkTable").find("a");
+	var oTableA = $("#modalManager-mkTable").find("a");
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++){
 		oTableA[i].index = i;
@@ -77,8 +77,6 @@ function ChipHtmlInfo() {
 		};
 		sendHTTPRequest("/api/searchproductmodel", '{"data":""}', ModeHtmlInfo);
 	}
-	
-	//AfterChipModeHtmlInfo();
 }
 /*机型-获取数据*/
 function ModeHtmlInfo() {

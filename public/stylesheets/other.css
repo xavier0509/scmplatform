@@ -30,24 +30,24 @@ td{
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
 
-#modal-mkTable a{
+#modeManager-mkTable a{
 	text-decoration: underline;
 }
-#modal-mkTable tr td{
+#modeManager-mkTable tr td{
 	border: 0;
 }
-#modal-mkTable tr td div{
+#modeManager-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
 }
 
-#chip-mkTable a{
+#chipManager-mkTable a{
 	text-decoration: underline;
 }
-#chip-mkTable tr td{
+#chipManager-mkTable tr td{
 	border: 0;
 }
-#chip-mkTable tr td div{
+#chipManager-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
 }
