@@ -70,10 +70,13 @@ function ChipModeHtmlInfo() {
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data);
+			console.log("lxw " + data.data.length);
+			var _rowChip = document.getElementById("chipManageAdd-td");
+			for(var i = 0; i < data.data.length; i++) {
+				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+			}
+			
 		};
-		// loginId = data.data;
-		// printlog(loginId);
 	}
 }
 
@@ -122,11 +125,8 @@ var currentData = {
 	}]
 };
 console.log("lxw " + currentData.chip.length);
-var _rowChip = document.getElementById("chipManageAdd-td");
-for(var i = 0; i < currentData.chip.length; i++) {
-	_rowChip.innerHTML += "<div class='col-xs-4'><a>" + currentData.chip[i].chipName + "</a></div>";
-}
-var _rowModal = document.getElementById("modalManageAdd-td");
-for(var i = 0; i < currentData.model.length; i++) {
-	_rowModal.innerHTML += "<div class='col-xs-4'><a>" + currentData.model[i].modelName + "</a></div>";
-}
+
+//var _rowModal = document.getElementById("modalManageAdd-td");
+//for(var i = 0; i < currentData.model.length; i++) {
+//	_rowModal.innerHTML += "<div class='col-xs-4'><a>" + currentData.model[i].modelName + "</a></div>";
+//}
