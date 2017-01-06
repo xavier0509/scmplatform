@@ -9,10 +9,14 @@ var modelSchema = new mongoose.Schema({
     name: {type: String},
 });
 
+// 查询记录
+modelSchema.statics.searchBy = function (name, callback) {
+    this.model("Model").find({"name": name}, {"name": 1, "_id": 0}, callback);
+};
 
 // 查询所有记录
-modelSchema.statics.searchAll = function ( callback) {
-    this.model("Model").find({},{"name":1,"_id":0}, callback);
+modelSchema.statics.searchAll = function (callback) {
+    this.model("Model").find({}, {"name": 1, "_id": 0}, callback);
 };
 
 // 修改

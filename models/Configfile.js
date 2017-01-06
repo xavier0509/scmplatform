@@ -73,19 +73,10 @@ configfileSchema.statics.searchBy = function (searchStr, callback) {
 
         }
     }
-    console.log(" 6--> " + m);
     var newstr = "{" + m.substring(0, m.length - 1) + "}";
-    console.log(newstr);
+    console.log(newstr);   // {"DevInfo.productModel":{$regex:/a43/i}}
 
-    // newjson = JSON.parse("{" + newstr + "}");
-    // console.log(" 8--> " + newjson);
-
-    // "DevInfo.chipModel":{$regex:/海思500/i}
-    // {"DevInfo.productModel":{$regex:/A55/i}}
-    // {"DevInfo.productModel":{$regex:/A55/i}}
-    // { str: '{"DevInfo.productModel":{$regex:/A88/i}}' }
     var obj = (eval('(' + newstr + ')'));
-    console.log(typeof (eval('(' + newstr + ')'))); //->[object Object]
     this.model("Configfile").find(obj, {"DevInfo": 1}, callback);
 };
 

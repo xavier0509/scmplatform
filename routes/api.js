@@ -386,8 +386,15 @@ router.post('/createplatformmodel', function (req, res) {
         name = req.body.data.platformModel;
         if (name.trim() !== null || typeof name.trim() !== "undefined" ||
             name.trim() !== "") {
-            Model.create({"name": name}, function (error) {
-                res.json(success);
+            Model.searchBy(name, function (err, result) {
+                console.log(result);
+                if (result[0] == null) {
+                    Model.create({"name": name}, function (error) {
+                        res.json(success);
+                    });
+                } else {
+                    res.json(failure);
+                }
             });
         } else {
             res.json(failure);
@@ -397,7 +404,7 @@ router.post('/createplatformmodel', function (req, res) {
 
 // 查询机芯
 router.post('/searchplatformmodel', function (req, res) {
-    Model.searchAll( function (err, result) {
+    Model.searchAll(function (err, result) {
         if (result[0] == null) {
             res.json(failure);
         } else {
@@ -408,14 +415,24 @@ router.post('/searchplatformmodel', function (req, res) {
 
 // 修改机芯
 router.post('/modifyplatformmodel', function (req, res) {
-    console.log("1");
-
-
-
-
-    Model.xiugai({"name": "1"}, {$set: {"name": "2"}}, {}, function () {
-        console.log("修改机芯成功");
-    });
+    "use strict";
+    var before;
+    var after;
+    // '{"data":{"before":"A55","after":"14A55"}}';
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        before = req.body.before;
+        after = req.body.after;
+        let beforeObj = {"name": before};
+        let afterObj = {"name": after};
+        Model.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
+            if (result.nModified == 0) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success"});
+            }
+        });
+    }
 });
 
 // 新增机型
@@ -435,6 +452,43 @@ router.post('/createproductmodel', function (req, res) {
         }
     }
 });
+
+// 查询机型
+router.post('/searchproductmodel', function (req, res) {
+    Product.searchAll(function (err, result) {
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
+});
+
+// 修改机型
+router.post('/modifyproductmodel', function (req, res) {
+    "use strict";
+    var before;
+    var after;
+    // var result = '{"data":{"before":"A43","after":"14A43"}}';
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        before = req.body.before;
+        after = req.body.after;
+        let beforeObj = {"name": before};
+        let afterObj = {"name": after};
+        console.log(before);
+        console.log(after);
+        Product.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
+            console.log("1")
+            if (result.nModified == 0) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success"});
+            }
+        });
+    }
+});
+
 
 // 新增模块
 router.post('/createmodule', function (req, res) {
