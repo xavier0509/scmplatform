@@ -12,25 +12,67 @@ function reviewlist(){
         console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
+
+            var title=document.getElementById("reviewmytable"); //获取tbody的表格内容
+            for (var i = title.childNodes.length-1; i > 0; i--) {
+                title.removeChild(title.childNodes[i]); //删除掉每个子节点的内容
+            };          
+
             var data = JSON.parse(this.responseText);
             var _row;
-            console.log(data.length);
-            for (var i = 0; i < data.length; i++) {
-                _row = document.getElementById("reviewmytable").insertRow(0);  
-                var _cell0 = _row.insertCell(0); 
-                _cell0.innerHTML = data[i]. chip;
-                var _cell1 = _row.insertCell(1);
-                _cell1.innerHTML = data[i].android;
-                var _cell2 = _row.insertCell(2);
-                _cell2.innerHTML = data[i].chipid;
-                var _cell3 = _row.insertCell(3);
-                if (level == 1) {
-                    _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
-                }
-                else{
-                    _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
-                }
-            };
+
+            var msg = data.msg;
+            if (msg == "success") {
+                var datalength = data.data;
+                console.log(datalength);
+                for (var i = 0; i < datalength.length; i++) {
+                    var objData = datalength[i].DevInfo;
+                    console.log(objData);
+                    for(var j = 0; j < objData.length; j++) {
+                        _row = document.getElementById("wait-tablebody").insertRow(0);
+                        var _cell0 = _row.insertCell(0);
+                        _cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+                        var _cell1 = _row.insertCell(1);
+                        _cell1.innerHTML = objData[j].platformModel;
+                        var _cell2 = _row.insertCell(2);
+                        _cell2.innerHTML = objData[j].productModel;
+                        var _cell3 = _row.insertCell(3);
+                        _cell3.innerHTML = objData[j].androidVersion;
+                        var _cell4 = _row.insertCell(4);
+                        _cell4.innerHTML = objData[j].chipModel;
+                        var _cell5 = _row.insertCell(5);
+                        _cell5.innerHTML = objData[j].memorySize;
+                        var _cell6 = _row.insertCell(6);
+                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+                    };
+                };
+            }
+            else{
+                //查询为空
+
+            }
+
+
+
+
+
+            // console.log(data.length);
+            // for (var i = 0; i < data.length; i++) {
+            //     _row = document.getElementById("reviewmytable").insertRow(0);  
+            //     var _cell0 = _row.insertCell(0); 
+            //     _cell0.innerHTML = data[i]. chip;
+            //     var _cell1 = _row.insertCell(1);
+            //     _cell1.innerHTML = data[i].android;
+            //     var _cell2 = _row.insertCell(2);
+            //     _cell2.innerHTML = data[i].chipid;
+            //     var _cell3 = _row.insertCell(3);
+            //     if (level == 1) {
+            //         _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
+            //     }
+            //     else{
+            //         _cell3.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+            //     }
+            // };
             // loginId = data.data;
             // printlog(loginId);
             
