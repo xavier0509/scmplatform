@@ -388,15 +388,36 @@ router.post('/configmananger/search', function (req, res) {
  * 2 : 删除
  * 3 : 已审核
  *
-* */
+ * */
+
+
 router.post('/review', function (req, res) {
-    Configfile.searchByPendingReview({}, function (err, result) {
-        if (result[0] == null) {
-            res.json(failure);
+    "use strict";
+    var author;
+    var adminFlag;
+    if (req.body.data) {
+        //能正确解析 json 格式的post参数
+        author = req.body.data.author;
+        adminFlag = req.body.data.adminFlag;
+        if (adminFlag === "1") {
+            // 是管理员
+            Configfile.searchByPendingReview({}, function (err, result) {
+                if (result[0] == null) {
+                    res.json(failure);
+                } else {
+                    res.json({"code": 1, "msg": "success", "data": result});
+                }
+            });
         } else {
-            res.json({"code": 1, "msg": "success", "data": result});
+            Configfile.searchByPendingReviewOwn(author, function (err, result) {
+                if (result[0] == null) {
+                    res.json(failure);
+                } else {
+                    res.json({"code": 1, "msg": "success", "data": result});
+                }
+            });
         }
-    });
+    }
 });
 
 

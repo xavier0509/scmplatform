@@ -25,7 +25,6 @@ productSchema.statics.xiugai = function (conditions, update, options, callback) 
     this.model("Product").update(conditions, update, options, callback);
 };
 
-// 类是基于schema创建的。
 var productModel = db.model("Product", productSchema);
 
 // 向外暴露

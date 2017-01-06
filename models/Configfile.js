@@ -79,6 +79,12 @@ configfileSchema.statics.searchByPendingReview = function (searchStr, callback) 
     this.model("Configfile").find({"DevInfo.pendingReview":{$in:["0","1","2"]}}, {"DevInfo": 1}, callback);
 };
 
+// 查询未审核记录,自己的
+configfileSchema.statics.searchByPendingReviewOwn = function (name, callback) {
+    console.log("the "+name);
+    this.model("Configfile").find({"DevInfo.pendingReview":{$in:["0","1","2"]}, "author":name}, {"DevInfo": 1,"author":1,"_id":0}, callback);
+};
+
 
 // 类是基于schema创建的。
 var configfileModel = db.model("Configfile", configfileSchema);

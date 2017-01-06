@@ -12,23 +12,21 @@ var userSchema = new mongoose.Schema({
 });
 
 
-// 创建静态方法
+// 查询记录,username
 userSchema.statics.zhaoren = function (username, callback) {
     this.model("User").find({"username": username}, callback);
 };
 
-// 创建静态方法
+// 查询记录,username,password
 userSchema.statics.zhaoren1 = function (username, password, callback) {
     this.model("User").find({"username": username, "password": password}, callback);
 };
 
-// 修改静态方法
+// 修改记录
 userSchema.statics.xiugai = function (conditions, update, options, callback) {
     this.model("User").update(conditions, update, options, callback);
 };
 
-// 类是基于schema创建的。
 var userModel = db.model("User", userSchema);
 
-// 向外暴露
 module.exports = userModel;
