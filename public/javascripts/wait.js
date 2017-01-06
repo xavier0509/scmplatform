@@ -4,7 +4,7 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 $(function() {
 	// waitHtmlInfo(); //获取后台数据
 	startSelect();//打开就获取数据
-	AfterWaitHtmlinfo(); //具体细节操作
+	
 
 })
 
@@ -48,12 +48,12 @@ function searchResource() {
 						_cell2.innerHTML = objData[j].productModel;
 						var _cell3 = _row.insertCell(3);
 						_cell3.innerHTML = objData[j].androidVersion;
-						var _cell3 = _row.insertCell(4);
-						_cell3.innerHTML = objData[j].chipModel;
-						var _cell3 = _row.insertCell(5);
-						_cell3.innerHTML = objData[j].memorySize;
-						var _cell4 = _row.insertCell(6);
-						_cell4.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+						var _cell4 = _row.insertCell(4);
+						_cell4.innerHTML = objData[j].chipModel;
+						var _cell5 = _row.insertCell(5);
+						_cell5.innerHTML = objData[j].memorySize;
+						var _cell6 = _row.insertCell(6);
+						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
 					};
 				};
 			}
@@ -63,6 +63,7 @@ function searchResource() {
 			}
 		}
 	}
+	AfterWaitHtmlinfo(); //具体细节操作
 }
 
 function AfterWaitHtmlinfo() {
