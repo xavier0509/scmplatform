@@ -2,7 +2,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function () {
-    sendHTTPRequest("/review", '{"data":""}', reviewlist);
+    sendHTTPRequest("/api/review", '{"data":""}', reviewlist);
 })
 
 function reviewlist(){

@@ -29,7 +29,7 @@
 						<div class="panel panel-default">
 							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<ul class="list-group">
-									<a href="javascript:void(0);" data-addtab="userMenu1" url="wait.html" class="list-group-item"><b>配置文件管理</b></a>
+									<a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="list-group-item" ><b>配置文件管理</b></a>
                             		<a href="javascript:void(0);" data-addtab="userMenu2" url="review.html" class="list-group-item"><b>待审核文件</b></a>
 									<span class="list-group-item" id="_hidden1"><b>配置内容管理</b></span>
 									<a href="javascript:void(0);" data-addtab="userMenu4" url="manage-chipmode.html" class="list-group-item" id="_hidden2">　机芯机型管理</a>
@@ -47,11 +47,14 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs" role="tablist">
 								<li role="presentation" class="active">
-									<a href="#home" url="wait.html" aria-controls="home" role="tab" data-toggle="tab">配置文件管理</a>
+									<a href="#home"  aria-controls="home" role="tab" data-toggle="tab">配置文件管理</a>
 								</li>
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content" id="main">
+								<div role="tabpanel" class="tab-pane active" id="home">
+                            		<iframe src="wait.html" width="100%;"height="500px" border="0" frameborder="no"></iframe>
+                        		</div>
 							</div>
 						</div>
 					</div>
