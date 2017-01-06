@@ -75,8 +75,9 @@ function ChipHtmlInfo() {
 				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
 		};
+		sendHTTPRequest("/api/searchproductmodel", '{"data":""}', ModeHtmlInfo);
 	}
-	sendHTTPRequest("/api/searchproductmodel", '{"data":""}', ModeHtmlInfo);
+	
 	//AfterChipModeHtmlInfo();
 }
 /*机型-获取数据*/
