@@ -41,7 +41,7 @@ function reviewlist(){
                         var _cell5 = _row.insertCell(4);
                         _cell5.innerHTML = objData[j].memorySize;
                         var _cell6 = _row.insertCell(5);
-                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     };
                 };
             }
