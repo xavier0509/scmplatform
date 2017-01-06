@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6314ce2-e029-4b18-81f9-7f9d377824ff" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/4CJoOMw98zWtDtiWsJyFYN0Jl7kxk86a.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/Joe2e9fTf6NRXDaw9xSpGh1NL5iai4oF.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/L9FiDl8jVxO1ivDACgRowf-PA23NpR-Y.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/SXmzuX4_CSkVGM-cYpyznHZhOtxLI__w.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/WxzknYujBvXd8JJj1z1l79N-0sxgoAKC.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/ZP3rJgu4GgOOLHXMkI-3aL4T7cvC1eHu.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sessions/turPOs3Q1R6Z7E6rSsUPkZez1QvMYJbM.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Configfile.js" afterPath="$PROJECT_DIR$/models/Configfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Model.js" afterPath="$PROJECT_DIR$/models/Model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Product.js" afterPath="$PROJECT_DIR$/models/Product.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
     </list>
     <ignored path="scmplatform.iws" />
@@ -93,8 +83,8 @@
       <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="467" column="11" selection-start-line="467" selection-start-column="11" selection-end-line="467" selection-end-column="11" />
+            <state relative-caret-position="207">
+              <caret line="480" column="80" selection-start-line="480" selection-start-column="80" selection-end-line="480" selection-end-column="80" />
               <folding>
                 <element signature="e#425#467#0" expanded="false" />
                 <element signature="e#516#1331#0" expanded="false" />
@@ -110,12 +100,11 @@
                 <element signature="e#11670#13406#0" expanded="false" />
                 <element signature="e#13474#14150#0" expanded="false" />
                 <element signature="e#14218#14434#0" expanded="false" />
-                <element signature="e#14502#15075#0" expanded="false" />
-                <element signature="e#15142#15561#0" expanded="false" />
-                <element signature="e#15628#15846#0" expanded="false" />
-                <element signature="e#15913#16587#0" expanded="false" />
-                <element signature="e#16649#17644#0" expanded="false" />
-                <element signature="e#17705#18494#0" expanded="false" />
+                <element signature="e#14502#15085#0" expanded="false" />
+                <element signature="e#15152#15571#0" expanded="false" />
+                <element signature="e#15638#15856#0" expanded="false" />
+                <element signature="e#16650#17645#0" expanded="false" />
+                <element signature="e#17706#18495#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -167,7 +156,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-44" />
+    <option name="x" value="224" />
     <option name="y" value="23" />
     <option name="width" value="1219" />
     <option name="height" value="678" />
@@ -338,15 +327,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483416744878</updated>
-      <workItem from="1483416747136" duration="78730000" />
+      <workItem from="1483416747136" duration="78895000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78730000" />
+    <option name="totallyTimeSpent" value="78895000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-44" y="23" width="1219" height="678" extended-state="0" />
+    <frame x="224" y="23" width="1219" height="678" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24123539" sideWeight="0.6979167" order="0" side_tool="false" content_ui="combo" />
@@ -576,8 +565,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="467" column="11" selection-start-line="467" selection-start-column="11" selection-end-line="467" selection-end-column="11" />
+        <state relative-caret-position="207">
+          <caret line="480" column="80" selection-start-line="480" selection-start-column="80" selection-end-line="480" selection-end-column="80" />
           <folding>
             <element signature="e#425#467#0" expanded="false" />
             <element signature="e#516#1331#0" expanded="false" />
@@ -593,12 +582,11 @@
             <element signature="e#11670#13406#0" expanded="false" />
             <element signature="e#13474#14150#0" expanded="false" />
             <element signature="e#14218#14434#0" expanded="false" />
-            <element signature="e#14502#15075#0" expanded="false" />
-            <element signature="e#15142#15561#0" expanded="false" />
-            <element signature="e#15628#15846#0" expanded="false" />
-            <element signature="e#15913#16587#0" expanded="false" />
-            <element signature="e#16649#17644#0" expanded="false" />
-            <element signature="e#17705#18494#0" expanded="false" />
+            <element signature="e#14502#15085#0" expanded="false" />
+            <element signature="e#15152#15571#0" expanded="false" />
+            <element signature="e#15638#15856#0" expanded="false" />
+            <element signature="e#16650#17645#0" expanded="false" />
+            <element signature="e#17706#18495#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -421,8 +421,8 @@ router.post('/modifyplatformmodel', function (req, res) {
     // '{"data":{"before":"A55","after":"14A55"}}';
     if (req.body.data) {
         //能正确解析 json 格式的post参数
-        before = req.body.before;
-        after = req.body.after;
+        before = req.body.data.before;
+        after = req.body.data.after;
         let beforeObj = {"name": before};
         let afterObj = {"name": after};
         Model.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
@@ -472,14 +472,13 @@ router.post('/modifyproductmodel', function (req, res) {
     // var result = '{"data":{"before":"A43","after":"14A43"}}';
     if (req.body.data) {
         //能正确解析 json 格式的post参数
-        before = req.body.before;
-        after = req.body.after;
+        before = req.body.data.before;
+        after = req.body.data.after;
         let beforeObj = {"name": before};
         let afterObj = {"name": after};
         console.log(before);
         console.log(after);
         Product.xiugai(beforeObj, {$set: afterObj}, {}, function (err, result) {
-            console.log("1")
             if (result.nModified == 0) {
                 res.json(failure);
             } else {
@@ -488,6 +487,16 @@ router.post('/modifyproductmodel', function (req, res) {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+
 
 
 // 新增模块
