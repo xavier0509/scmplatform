@@ -19,6 +19,8 @@ function reviewlist(){
             };          
 
             var data = JSON.parse(this.responseText);
+            var level = parent.adminFlag;
+            console.log("level:"+level)
             var _row;
 
             var msg = data.msg;
@@ -41,7 +43,12 @@ function reviewlist(){
                         var _cell5 = _row.insertCell(4);
                         _cell5.innerHTML = objData[j].memorySize;
                         var _cell6 = _row.insertCell(5);
-                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
+                        if (level == 1) {
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
+                        }
+                        else{
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+                        }
                     };
                 };
             }
@@ -79,12 +86,13 @@ function reviewlist(){
 }
 
 function review(obj){
-    var node = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    console.log(node);
-    sendHTTPRequest("/reviewcontent", '{"data":""}', reviewresult);
+    var chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
+    var model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
 }
 
 function reviewresult(){
+    var level = parent.adminFlag;
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         console.log("this.status = " + this.status);
@@ -157,7 +165,7 @@ function reviewresult(){
             };
 
 //如果是管理员，不允许修改
-            if(false){
+            if(level == 1){
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
                 console.log("inputcounts="+inputcounts.length);
