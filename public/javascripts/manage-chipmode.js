@@ -75,7 +75,8 @@ function AfterChipModeHtmlInfo() {
 			} else if(name=="model"){
 				if (index == "-1") {
 					console.log("lxw " + "新增机型的保存按钮"+currentChipOrModelName);
-					var creatModel = '{"data":{"platformModel":"' + currentChipOrModelName + '"}}';
+					var creatModel = '{"data":{"productModel":"' + currentChipOrModelName + '"}}';
+					console.log("lxw "+creatModel);
 					sendHTTPRequest("/api/createproductmodel", creatModel, CreatModelInfo);
 				} else{
 					console.log("lxw " + "修改机型的保存按钮"+currentChipOrModelName);
