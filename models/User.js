@@ -27,6 +27,7 @@ userSchema.statics.xiugai = function (conditions, update, options, callback) {
     this.model("User").update(conditions, update, options, callback);
 };
 
+// 通过Schema创建Model
 var userModel = db.model("User", userSchema);
 
 module.exports = userModel;

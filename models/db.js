@@ -11,5 +11,9 @@ db.once("open", function (callback) {
     console.log("数据库成功连接");
 });
 
+db.on("error", function (error) {
+    console.log("数据库连接失败：" + error);
+});
+
 // 向外暴露这个db对象
 module.exports = db;

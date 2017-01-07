@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+// var db = require("./db");
+
 
 // 定义了一个模型，用户模型
 var User = require("../models/User");
@@ -27,8 +29,15 @@ router.post('/register', function (req, res) {
     var adminFlag = req.body.adminFlag;
     if (username.trim() !== null || typeof username.trim() !== "undefined" ||
         username.trim() !== "") {
-        User.create({"username": username, "password": password, "adminFlag": adminFlag}, function (error) {
-            res.json(success);
+        var doc = {"username": username, "password": password, "adminFlag": adminFlag}
+        User.create(doc, function (error) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('save ok');
+            }
+            // 关闭数据库链接
+            db.close();
         });
     } else {
         res.json(failure);
@@ -153,10 +162,11 @@ router.post('/logout', function (req, res) {
     });
 });
 
-
+// 保存session
 router.post('/session', function (req, res) {
     if (req.session.username) {
-        res.json(success)
+        var doc = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
+        res.json(doc)
     } else {
         res.json({"code": 0, "msg": "failure", "reason": "7"});
     }
