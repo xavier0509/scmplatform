@@ -1,14 +1,16 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
+document.write("<script language=javascript src='../javascripts/session.js' charset=\"utf-8\"></script>");
 
-$(function() {
+ function afterSession{
+	var username = parent.document.getElementById("sessionname").value;
+	console.log("username  ====" +username);
 	// waitHtmlInfo(); //获取后台数据
 	startSelect();//打开就获取数据
-	
-
-})
+}
 
 function startSelect() {
+
 	console.log("xjr start select");
 	var oChip = document.getElementById('chip').value;
 	var oMode = document.getElementById('model').value;
@@ -67,10 +69,12 @@ function searchResource() {
 }
 
 function AfterWaitHtmlinfo() {
-	//console.log("admin="+parent.adminFlag);
-	//if (parent.adminFlag != "1") {
-	//	document.getElementById("wait-change").style.display="none";
-	//};
+
+	console.log("admin="+parent.adminFlag);
+	if (parent.adminFlag == "1") {
+		document.getElementById("wait-change").style.display="block";
+	};
+
 
 	//查询searchInfo
 	var mySearchInfo = document.getElementById("searchInfo");
