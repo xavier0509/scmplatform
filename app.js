@@ -3,29 +3,35 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+
+// 将 cookie 信息保存到 mongodb 中
 var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+var MongoStore = require('connect-mongo')(session);
+var setting = require('./setting');
+// var FileStore = require('session-file-store')(session);
+
 
 var bodyParser = require('body-parser');
 var consolidate = require('consolidate');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var api = require('./routes/api');
 
+
 var app = express();
 
 
- // 允许跨越请求
- // app.all('*', function(req, res, next) {
- // res.header("Access-Control-Allow-Origin", "*");
- // res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
- // res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
- // res.header("X-Powered-By",' 3.2.1');
- // if(req.method=="OPTIONS") res.sendStatus(200);
- // else  next();
- // });
-
+// 允许跨越请求
+app.all('*', function(req, res, next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+res.header("X-Powered-By",' 3.2.1');
+if(req.method=="OPTIONS") res.sendStatus(200);
+else  next();
+});
 
 
 // view engine setup
@@ -46,11 +52,36 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+// session store
 app.use(session({
-    store: new FileStore(),  // 将session存储到一个文件中，比如浏览器关闭后session无效的问题
-    cookie: {maxAge: 2000 * 1000},  // 过期时间20秒
-    secret: "dingxing"
+    secret: "123",
+    key: 'sid',
+    store: new MongoStore({
+        url: 'mongodb://172.20.132.225/session',
+    }),
+    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+    resave: true,
+    saveUninitialized: true,
 }));
+
+
+/*app.use(session({
+ // store: new FileStore(),  // 存储到文件中
+ // cookie: {maxAge: 2000 * 1000},  // 过期时间20秒
+ // secret: "dingxing"
+ }));*/
+
+
+/*app.use(session({
+ secret: 'myblog',
+ key: "cookie11111",//cookie name
+ cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+ resave: false,
+ saveUninitialized: true,
+ store: new MongoStore({
+ url: 'mongodb://localhost/session'
+ })
+ }));*/
 
 
 
@@ -59,6 +90,8 @@ app.use(session({
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

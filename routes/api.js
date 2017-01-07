@@ -12,6 +12,7 @@ var Configfile = require("../models/Configfile");
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
 var failure1 = {"code": 0, "msg": "failure", "reason": "xxxx 已存在"};
+var failure2 = {"code": 0, "msg": "failure"};
 
 
 router.get('/', function (req, res) {
@@ -56,6 +57,7 @@ router.post('/login', function (req, res) {
     "use strict";
     var username;
     var password;
+    var session = req.session;
     if (req.body.data) {
         //能正确解析 json 格式的post参数
         username = req.body.data.username;
@@ -63,43 +65,65 @@ router.post('/login', function (req, res) {
         console.log("username->" + username);
         console.log("password->" + password);
         User.zhaoren1(username, password, function (err, result) {
-            console.log(result);
             if (result[0] == null) {
                 res.json(failure);
             } else {
-                res.json({"code": 1, "msg": "success", "data": result});
-                // 保存session信息
-                req.session.logined = true;
-                req.session.username = username;
-                req.session.adminFlag = result[0].adminFlag;
-            }
-        });
-    }
-    else {
-        //不能正确解析json 格式的post参数
-        var body = '', jsonStr;
-        req.on('data', function (chunk) {
-            body += chunk; //读取参数流转化为字符串
-        });
-        req.on('end', function () {
-            //读取参数流结束后将转化的body字符串解析成 JSON 格式
-            try {
-                jsonStr = JSON.parse(body);
-            } catch (err) {
-                jsonStr = null;
-            }
-            username = jsonStr.data.username;
-            password = jsonStr.data.password;
-            User.zhaoren1(username, password, function (err, result) {
-                console.log(result);
-                if (result[0] == null) {
-                    res.json(failure);
-                } else {
-                    res.json({"code": 1, "msg": "success", "data": result});
+                if (req.session.username) {
+                    console.log('Last page was: ' + req.session.username + ".");
                 }
-            });
+                req.session.username = username;
+
+                console.log("the session id " + req.session.id);
+                console.log(req.session.username);
+
+                req.session.regenerate(function (err) {
+                    if (err) console.log("session重新初始化失败.");
+                    else console.log("session被重新初始化.");
+                });
+                req.session.username = username;
+                req.session.regenerate(function (err) {
+                    if (err) {
+                        return res.json({code: 2, ret_msg: '登录失败'});
+                    }
+                    // 保存session信息
+                    req.session.logined = true;
+                    req.session.username = username;
+                    req.session.adminFlag = result[0].adminFlag;
+                    res.json({"code": 1, "msg": "success", "data": result});
+                    console.log("set session username =" + req.session.username);
+                });
+            }
         });
     }
+    /*
+
+     else {
+     //不能正确解析json 格式的post参数
+     var body = '', jsonStr;
+     req.on('data', function (chunk) {
+     body += chunk; //读取参数流转化为字符串
+     });
+     req.on('end', function () {
+     //读取参数流结束后将转化的body字符串解析成 JSON 格式
+     try {
+     jsonStr = JSON.parse(body);
+     } catch (err) {
+     jsonStr = null;
+     }
+     username = jsonStr.data.username;
+     password = jsonStr.data.password;
+     User.zhaoren1(username, password, function (err, result) {
+     console.log(result);
+     if (result[0] == null) {
+     res.json(failure);
+     } else {
+     res.json({"code": 1, "msg": "success", "data": result});
+     }
+     });
+     });
+     }
+     */
+
     /*
      if ("liujinpeng" === username.toLocaleLowerCase()) {
      res.json({
@@ -119,6 +143,25 @@ router.post('/login', function (req, res) {
      }
      */
 });
+
+// 退出登录
+router.post('/logout', function (req, res) {
+    req.session.destroy(function (err, result) {
+        if (err) {
+            res.json({"code": 0, "msg": "failure", "reason": "7"});
+        }
+    });
+});
+
+
+router.post('/session', function (req, res) {
+    if (req.session.username) {
+        res.json(success)
+    } else {
+        res.json({"code": 0, "msg": "failure", "reason": "7"});
+    }
+});
+
 
 router.get('/xiugai', function (req, res) {
     User.xiugai({"username": "liujinpeng"}, {$set: {"password": "1234567"}}, {}, function () {
