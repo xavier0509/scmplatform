@@ -412,4 +412,8 @@ td{
 
 #wait-change{
 	display: none;
+	float: left;
+}
+#wait-add{
+	float: left;
 }
