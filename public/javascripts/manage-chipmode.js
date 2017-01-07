@@ -47,7 +47,7 @@ function AfterChipModeHtmlInfo() {
 			var thisIndexName = oTableB[this.index].innerText;
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-			toSaveButton("nodel", this.index, thisIndexName);
+			toSaveButton("model", this.index, thisIndexName);
 		}
 	}
 	/*机芯机型板块-机芯-增加-关闭*/
@@ -194,9 +194,15 @@ function ChangeModelInfo() {
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
-			console.log("lxw " + "change modelinfo success");
-			//修改成功后刷新当前页面。
-			freshHtml();
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				//新增成功后刷新当前页面。
+				freshHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
 		};
 	}
 }
