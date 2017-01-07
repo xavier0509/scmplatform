@@ -1,12 +1,38 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
-document.write("<script language=javascript src='../javascripts/session.js' charset=\"utf-8\"></script>");
 
- function afterSession{
-	var username = parent.document.getElementById("sessionname").value;
-	console.log("username  ====" +username);
+$(function() {
 	// waitHtmlInfo(); //获取后台数据
-	startSelect();//打开就获取数据
+	forsession();
+})
+
+function forsession(){
+    sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
+}
+
+function sessionresult(){
+	console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        console.log("this.status = " + this.status);
+        console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg == "success") {
+                loginusername = data.data.data.author;
+                if (data.data.data.adminFlag == "1") {
+                    adminFlag = 1;   //非管理员标志位                
+                    // console.log(loginusername);
+					//隐藏左边管理员的部分
+                    document.getElementById("wait-change").style.display="block";
+                }
+                else if (data.data.data.adminFlag == "0") {
+                    adminFlag = 0;
+                }
+            };            
+        }
+        startSelect();//打开就获取数据
+    }
 }
 
 function startSelect() {
@@ -70,8 +96,8 @@ function searchResource() {
 
 function AfterWaitHtmlinfo() {
 
-	console.log("admin="+parent.adminFlag);
-	if (parent.adminFlag == "1") {
+	console.log("admin="+adminFlag);
+	if (adminFlag == "1") {
 		document.getElementById("wait-change").style.display="block";
 	};
 
