@@ -128,80 +128,81 @@ function CreatChipInfo() {
 			};
 		}
 	}
-	/*机芯-修改数据*/
-	function ChangeChipInfo() {
-		console.log("lxw " + "ChangeChipInfo");
-		console.log("this.readyState = " + this.readyState);
-		if(this.readyState == 4) {
-			console.log("this.status = " + this.status);
-			console.log("this.responseText = " + this.responseText);
-			if(this.status == 200) //TODO
-			{
-				var data = JSON.parse(this.responseText);
-				console.log("lxw " + "change chipinfo success");
-				if(data.msg == "success") {
-					console.log("lxw " + "修改成功");
-					//新增成功后刷新当前页面。
-					freshHtml();
-				} else if(data.msg == "failure") {
-					console.log("lxw " + "修改失败");
-				};
-			};
-		}
-	}
-	/*机型-查询数据*/
-	function SearchModeInfo() {
-		console.log("lxw " + "SearchModeInfo");
-		console.log("this.readyState = " + this.readyState);
-		if(this.readyState == 4) {
-			console.log("this.status = " + this.status);
-			console.log("this.responseText = " + this.responseText);
-			if(this.status == 200) //TODO
-			{
-				var data = JSON.parse(this.responseText);
-				console.log("lxw " + data.data.length);
-				var _rowMode = document.getElementById("modalManageAdd-td");
-				for(var i = 0; i < data.data.length; i++) {
-					_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
-				}
-			};
-			AfterChipModeHtmlInfo();
-		}
-
-	}
-	/*机型-新增数据*/
-	function CreatModelInfo() {
-		console.log("lxw " + "CreatModelInfo");
-		console.log("this.readyState = " + this.readyState);
-		if(this.readyState == 4) {
-			console.log("this.status = " + this.status);
-			console.log("this.responseText = " + this.responseText);
-			if(this.status == 200) //TODO
-			{
-				console.log("lxw " + "creat modelinfo success");
+}
+/*机芯-修改数据*/
+function ChangeChipInfo() {
+	console.log("lxw " + "ChangeChipInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
 				//新增成功后刷新当前页面。
 				freshHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
 			};
-		}
+		};
 	}
-	/*机型-修改数据*/
-	function ChangeModelInfo() {
-		console.log("lxw " + "ChangeModelInfo");
-		console.log("this.readyState = " + this.readyState);
-		if(this.readyState == 4) {
-			console.log("this.status = " + this.status);
-			console.log("this.responseText = " + this.responseText);
-			if(this.status == 200) //TODO
-			{
-				console.log("lxw " + "change modelinfo success");
-				//修改成功后刷新当前页面。
-				freshHtml();
-			};
-		}
+}
+/*机型-查询数据*/
+function SearchModeInfo() {
+	console.log("lxw " + "SearchModeInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			var _rowMode = document.getElementById("modalManageAdd-td");
+			for(var i = 0; i < data.data.length; i++) {
+				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+			}
+		};
+		AfterChipModeHtmlInfo();
 	}
-	/*刷新页面*/
-	function freshHtml() {
-		var htmlObject = parent.document.getElementById("tab_userMenu4");
-		console.log("lxw " + htmlObject.firstChild.src);
-		htmlObject.firstChild.src = "manage-chipmode.html";
+
+}
+/*机型-新增数据*/
+function CreatModelInfo() {
+	console.log("lxw " + "CreatModelInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			console.log("lxw " + "creat modelinfo success");
+			//新增成功后刷新当前页面。
+			freshHtml();
+		};
 	}
+}
+/*机型-修改数据*/
+function ChangeModelInfo() {
+	console.log("lxw " + "ChangeModelInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			console.log("lxw " + "change modelinfo success");
+			//修改成功后刷新当前页面。
+			freshHtml();
+		};
+	}
+}
+/*刷新页面*/
+function freshHtml() {
+	var htmlObject = parent.document.getElementById("tab_userMenu4");
+	console.log("lxw " + htmlObject.firstChild.src);
+	htmlObject.firstChild.src = "manage-chipmode.html";
+}
