@@ -26,6 +26,8 @@ function sessionresult(){
         if (this.status == 200) //TODO
         {
             var data = JSON.parse(this.responseText);
+            console.log("msg="+data.msg);
+            console.log("users"+data.data.author);
             if (data.msg == "success") {
                 loginusername = data.data.author;
                 if (data.data.adminFlag == "0") {
