@@ -179,9 +179,16 @@ function CreatModelInfo() {
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
-			console.log("lxw " + "creat modelinfo success");
-			//新增成功后刷新当前页面。
-			freshHtml();
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				//新增成功后刷新当前页面。
+				freshHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+				//给出错误信息提示
+			};
 		};
 	}
 }
