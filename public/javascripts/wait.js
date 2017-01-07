@@ -2,8 +2,8 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	var username = parent.document.getElementById("sessionname").value;
-	console.log("username  ====" +username);
+	// var username = parent.document.getElementById("sessionname").value;
+	// console.log("username  ====" +username);
 	// waitHtmlInfo(); //获取后台数据
 	startSelect();//打开就获取数据
 	
