@@ -117,11 +117,16 @@ function CreatChipInfo(){
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
+			var data = JSON.parse(this.responseText);
 			console.log("lxw "+"creat chipinfo success");
-			//新增成功后刷新当前页面。
-			freshHtml();
-		};
-		//修改失败后给出提示。
+			if (data.msg == "success") {
+				console.log("lxw "+"新增成功");
+				//新增成功后刷新当前页面。
+				freshHtml();
+            }
+            else if (data.msg == "failure") {
+				console.log("lxw "+"新增失败");
+			};
 	}
 }
 /*机芯-修改数据*/
@@ -133,11 +138,17 @@ function ChangeChipInfo(){
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
+			var data = JSON.parse(this.responseText);
 			console.log("lxw "+"change chipinfo success");
-			//修改成功后刷新当前页面。
-			freshHtml();
+			if (data.msg == "success") {
+				console.log("lxw "+"修改成功");
+				//新增成功后刷新当前页面。
+				freshHtml();
+            }
+            else if (data.msg == "failure") {
+				console.log("lxw "+"修改失败");
+			};
 		};
-		//修改失败后给出提示。
 	}
 }
 /*机型-查询数据*/
