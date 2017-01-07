@@ -307,12 +307,14 @@ td{
 	margin: auto;
 }
 .configlable{
+	width: 40%;
 	margin-bottom: 0px;
-	margin-left: 10%;
+	padding-left: 10%;
 	margin-top: -8%;
 	font-size: 16px;
 	color: #FFFFFF;
 }
+
 .configinput{
 	display: block;
 	width: 80%;
@@ -324,11 +326,13 @@ td{
 
 #myConfigBorder div label:nth-child(2){
 	margin-top: 3%;
+	float: left;
 	margin-bottom: 0;
 }
 #myConfigBorder div label:nth-child(3){
 	margin-top: 3%;
-	margin-left: 24%;
+	margin-left: 1%;
+	float: left;
 	margin-bottom: 0;
 }
 #myConfigBorder div input:nth-child(5){
@@ -388,11 +392,9 @@ td{
 	margin-bottom: 3%;
 	display: none;
 }
-
-#configEnumerateTable,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
+#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
 	margin: auto;
 }
-
 .loginmycenter{padding-top: 18%;}
 
 #logintxt,#pwdmessage,#usermessage{color: red}
@@ -403,17 +405,25 @@ td{
 #reviewconfigfile{
 	display: none;
 }
-
-
-
 #_hidden1,#_hidden2,#_hidden3,#_hidden4{
 	display: none;
 }
-
 #wait-change{
 	display: none;
 	float: left;
 }
 #wait-add{
 	float: left;
+}
+#ADCSEfficient{
+	height: 96px;
+	overflow-y: auto;
+}
+.menuUnitInput{
+	/*background-color: red;*/
+    display: block;
+    float: left;
+    height: 32px;
+    width: 50%;
+    padding-left: 3%;
 }

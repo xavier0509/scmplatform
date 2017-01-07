@@ -61,14 +61,22 @@ function AferConfigHtmlInfo() {
 			console.log(this.index); //点击的是第几个
 			if(this.index == 0) {
 				console.log("lxw " + "点击的是添加");
+				var appendObject = document.getElementById("ADCSEfficient");
+				//_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+				//<tr><td><input type="text" value="" placeholder="选项名称"></td><td><input type="text" value="" placeholder="Value"></td></tr>
+				
+				appendObject.innerHTML += "<div class='menuUnit'><input type='text' class='menuUnitInput' value='' placeholder='选项名称'/><input type='text' class='menuUnitInput' value='' placeholder='Value'/></div>"
 			} else if(this.index == 1) {
 				console.log("lxw " + "点击的是向上");
 			} else if(this.index == 2) {
 				console.log("lxw " + "点击的是向下");
 			} else if(this.index == 3) {
 				console.log("lxw " + "点击的是删除");
+				console.log("lxw "+$(this).parent().attr("id"));
 			} else if(this.index == 4) {
 				console.log("lxw " + "点击的是全部删除");
+				var appendObject = document.getElementById("ADCSEfficient");
+				appendObject.innerHTML = "";
 			}
 		}
 	}

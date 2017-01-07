@@ -46,24 +46,23 @@
 							<button class="configDefaultedOption">枚举</button>
 							<textarea id="configString" rows="3" cols="" class="configtextarea"></textarea><br/>
 							<div class="tableBox">
-								<span class="menuEdit glyphicon glyphicon-plus"></span>
-								<span class="menuEdit glyphicon glyphicon-arrow-up"></span>
-								<span class="menuEdit glyphicon glyphicon-arrow-down"></span>
-								<span class="menuEdit glyphicon glyphicon-remove"></span>
-								<span class="menuEdit glyphicon glyphicon-remove-circle"></span>
-								<table class="table table-bordered" id="configEnumerateTable">
-									<tbody>
-										<tr>
-											<td><input type="text" value="" placeholder="选项名称"></td>
-											<td><input type="text" value="" placeholder="Value"></td>
-										</tr>
-										<tr>
-											<td><input type="text" value="" placeholder="选项名称"></td>
-											<td><input type="text" value="" placeholder="Value"></td>
-										</tr>
-									</tbody>
-								</table>
-
+								<div id="ADCSAction">
+									<span class="menuEdit glyphicon glyphicon-plus"></span>
+									<span class="menuEdit glyphicon glyphicon-arrow-up"></span>
+									<span class="menuEdit glyphicon glyphicon-arrow-down"></span>
+									<span class="menuEdit glyphicon glyphicon-remove"></span>
+									<span class="menuEdit glyphicon glyphicon-remove-circle"></span>
+								</div>
+								<div id="ADCSEfficient">
+									<div class="menuUnit">
+										<input type="text" class="menuUnitInput" value="" placeholder="选项名称"/>
+										<input type="text" class="menuUnitInput" value="" placeholder="Value"/>
+									</div>
+									<div class="menuUnit">
+										<input type="text" class="menuUnitInput" value="" placeholder="选项名称">
+										<input type="text" class="menuUnitInput" value="" placeholder="Value">
+									</div>
+								</div>
 							</div>
 						</div>
 						<label for="configInstr" class="control-label configlable">描述：</label><br/>
