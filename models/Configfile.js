@@ -36,6 +36,8 @@ var configfileSchema = new mongoose.Schema({
 // 查询所有记录
 configfileSchema.statics.searchAll = function (callback) {
     this.model("Configfile").find({}, {"DevInfo": 1}, callback);
+    //关闭数据库链接
+    db.close();
 };
 
 configfileSchema.statics.searchBy = function (searchStr, callback) {
@@ -77,12 +79,16 @@ configfileSchema.statics.searchBy = function (searchStr, callback) {
 // 查询未审核记录
 configfileSchema.statics.searchByPendingReview = function (searchStr, callback) {
     this.model("Configfile").find({"DevInfo.pendingReview":{$in:["0","1","2"]}}, {"DevInfo": 1}, callback);
+    //关闭数据库链接
+    db.close();
 };
 
 // 查询未审核记录,自己的
 configfileSchema.statics.searchByPendingReviewOwn = function (name, callback) {
     console.log("the "+name);
     this.model("Configfile").find({"DevInfo.pendingReview":{$in:["0","1","2"]}, "author":name}, {"DevInfo": 1,"author":1,"_id":0}, callback);
+    //关闭数据库链接
+    db.close();
 };
 
 

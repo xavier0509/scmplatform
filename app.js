@@ -24,14 +24,14 @@ var app = express();
 
 
 // 允许跨越请求
-// app.all('*', function(req, res, next) {
-// res.header("Access-Control-Allow-Origin", "*");
-// res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-// res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-// res.header("X-Powered-By",' 3.2.1');
-// if(req.method=="OPTIONS") res.sendStatus(200);
-// else  next();
-// });
+app.all('*', function(req, res, next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+res.header("X-Powered-By",' 3.2.1');
+if(req.method=="OPTIONS") res.sendStatus(200);
+else  next();
+});
 
 
 // view engine setup
@@ -57,20 +57,18 @@ app.use(session({
     secret: "123",
     key: 'sid',
     store: new MongoStore({
-        // url: 'mongodb://localhost/session',
         url: 'mongodb://172.20.132.225/session',
     }),
+    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
     resave: true,
     saveUninitialized: true,
 }));
 
 
 /*app.use(session({
- // store: new FileStore(),  // 将session存储到一个文件中，比如浏览器关闭后session无效的问题
+ // store: new FileStore(),  // 存储到文件中
  // cookie: {maxAge: 2000 * 1000},  // 过期时间20秒
  // secret: "dingxing"
-
-
  }));*/
 
 
@@ -81,25 +79,12 @@ app.use(session({
  resave: false,
  saveUninitialized: true,
  store: new MongoStore({
- // url: db_config.module.dbUrl //这里就是coding连接信息的uri
  url: 'mongodb://localhost/session'
  })
-
  }));*/
 
 
-/*var sessionStore = new MongoStore({
- host: '127.0.0.1',
- port: '27017',
- db: 'session',
- url: 'mongodb://localhost:27017/demo'
- });
 
- //session store:
- app.use(express.session({
- secret: 'my secret sign key',
- store: sessionStore
- }));*/
 
 
 app.use('/', index);

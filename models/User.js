@@ -20,6 +20,7 @@ userSchema.statics.zhaoren = function (username, callback) {
 // 查询记录,username,password
 userSchema.statics.zhaoren1 = function (username, password, callback) {
     this.model("User").find({"username": username, "password": password}, callback);
+    db.close();
 };
 
 // 修改记录
