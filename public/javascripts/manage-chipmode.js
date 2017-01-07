@@ -10,6 +10,7 @@ function AfterChipModeHtmlInfo() {
 	/*机芯机型板块-机芯-增加*/
 	var oButtonAdd = document.getElementById("manage-chipAdd");
 	oButtonAdd.onclick = function() {
+		console.log("点击增加机芯按钮");
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		toSaveButton("chip","-1","");
@@ -58,6 +59,7 @@ function AfterChipModeHtmlInfo() {
 	function toSaveButton(name,index,newname){
 		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
 		ChipOrModeSubmit.onclick = function(){
+			console.log("点击了保存按钮"+name+"--"+index+"--"+newname);
 			var currentChipOrModelName = document.getElementById("chipOrMode").value;
 			if (name=="chip") {
 				if (index == "-1") {
