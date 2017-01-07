@@ -26,18 +26,18 @@ function sessionresult(){
         if (this.status == 200) //TODO
         {
             var data = JSON.parse(this.responseText);
-            console.log("msg="+data.msg);
-            console.log("users"+data.data.author);
+            // console.log("msg="+data.msg);
+            // console.log("users"+data.data.data.author);
             if (data.msg == "success") {
-                loginusername = data.data.author;
-                if (data.data.adminFlag == "0") {
+                loginusername = data.data.data.author;
+                if (data.data.data.adminFlag == "0") {
                     adminFlag = 0;   //非管理员标志位                
                     console.log(loginusername);
                     for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
                         document.getElementById("_hidden"+i).style.display="none";
                     };
                 }
-                else if (data.data.adminFlag == "1") {
+                else if (data.data.data.adminFlag == "1") {
                     adminFlag = 1;
                 }
             };
