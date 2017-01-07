@@ -1,23 +1,47 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
-// tabå¯¼èˆªæ 
+// tabµ¼º½À¸
 $(function () {
     $('#tabs').addtabs({contextmenu:true});
 })
 
-var adminFlag = null;   //è®¿é—®sessionä¹‹åå­˜å–ç®¡ç†å‘˜æ ‡å¿—ä½
-var loginusername = null;  //è®¿é—®sessionä¹‹åå­˜å–ç™»å½•ç”¨æˆ·å
+var adminFlag = null;   //·ÃÎÊsessionÖ®ºó´æÈ¡¹ÜÀíÔ±±êÖ¾Î»
+var loginusername = null;  //·ÃÎÊsessionÖ®ºó´æÈ¡µÇÂ¼ÓÃ»§Ãû
 
-//è®¿é—®sessionæ¥å£
+//·ÃÎÊsession½Ó¿Ú
 // function forsession(){
 //     sendHTTPRequest("/users", '{"data":""}', sessionresult);
 // }
 
-//è®¿é—®sessionæ¥å£
+// //session·µ»ØÊı¾İ
+// function sessionresult(){
+//     console.log("this.readyState = " + this.readyState);
+//     if (this.readyState == 4) {
+//         console.log("this.status = " + this.status);
+//         console.log("this.responseText = " + this.responseText);
+//         if (this.status == 200) //TODO
+//         {
+//             var data = JSON.parse(this.responseText);
+//             loginusername = data.username;
+//             if (data.adminFlag == "0") {
+//                 adminFlag = 0;   //¹ÜÀíÔ±±êÖ¾Î»                
+//                 console.log(loginusername);
+//                 for (var i = 1; i < 5; i++) {//Òş²Ø×ó±ß¹ÜÀíÔ±µÄ²¿·Ö
+//                     document.getElementById("_hidden"+i).style.display="none";
+//                 };
+//             }
+//             else if (data.adminFlag == "1") {
+//                 adminFlag = 1;
+//         };
+//         }
+//     }
+// }
+
+//·ÃÎÊsession½Ó¿Ú
 function forsession(){
     sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
 }
 
-//sessionè¿”å›æ•°æ®
+//session·µ»ØÊı¾İ
 function sessionresult(){
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
@@ -25,21 +49,18 @@ function sessionresult(){
         console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
-            var data = JSON.parse(this.responseText);
-            if (data.msg == "success") {
-                loginusername = data.data.author;
-                if (data.data.adminFlag == "0") {
-                    adminFlag = 0;   //éç®¡ç†å‘˜æ ‡å¿—ä½                
-                    console.log(loginusername);
-                    for (var i = 1; i < 5; i++) {//éšè—å·¦è¾¹ç®¡ç†å‘˜çš„éƒ¨åˆ†
-                        document.getElementById("_hidden"+i).style.display="none";
-                    };
-                }
-                else if (data.data.adminFlag == "1") {
-                    adminFlag = 1;
-                }
-            };
-            
+            // var data = JSON.parse(this.responseText);
+            // loginusername = data.username;
+            // if (data.adminFlag == "0") {
+            //     adminFlag = 0;   //¹ÜÀíÔ±±êÖ¾Î»                
+            //     console.log(loginusername);
+            //     for (var i = 1; i < 5; i++) {//Òş²Ø×ó±ß¹ÜÀíÔ±µÄ²¿·Ö
+            //         document.getElementById("_hidden"+i).style.display="none";
+            //     };
+            // }
+            // else if (data.adminFlag == "1") {
+            //     adminFlag = 1;
+            // };
         }
     }
 }
