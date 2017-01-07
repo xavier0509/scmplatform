@@ -165,8 +165,8 @@ router.post('/logout', function (req, res) {
 // 保存session
 router.post('/session', function (req, res) {
     if (req.session.username) {
-        var doc = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
-        res.json(doc)
+        var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
+        res.json({"code": 1, "msg": "success", "data": data})
     } else {
         res.json({"code": 0, "msg": "failure", "reason": "7"});
     }
