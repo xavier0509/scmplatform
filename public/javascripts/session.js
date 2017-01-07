@@ -28,15 +28,11 @@ function sessionresult(){
                     for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
                         document.getElementById("_hidden"+i).style.display="block";
                     };
-                    document.getElementById("sessionname").innerHTML = loginusername;
                 }
                 else if (data.data.data.adminFlag == "0") {
                     adminFlag = 0;
                 }
-            };
-            
+            };            
         }
-        afterSession();
-
     }
 }
