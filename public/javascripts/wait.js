@@ -9,6 +9,12 @@ $(function() {
 })
 
 function startSelect() {
+
+	console.log("admin="+parent.adminFlag);
+	if (parent.adminFlag == "1") {
+		document.getElementById("wait-change").style.display="block";
+	};
+
 	console.log("xjr start select");
 	var oChip = document.getElementById('chip').value;
 	var oMode = document.getElementById('model').value;
@@ -67,10 +73,6 @@ function searchResource() {
 }
 
 function AfterWaitHtmlinfo() {
-	//console.log("admin="+parent.adminFlag);
-	//if (parent.adminFlag != "1") {
-	//	document.getElementById("wait-change").style.display="none";
-	//};
 
 	//查询searchInfo
 	var mySearchInfo = document.getElementById("searchInfo");

@@ -409,3 +409,7 @@ td{
 #_hidden1,#_hidden2,#_hidden3,#_hidden4{
 	display: none;
 }
+
+#wait-change{
+	display: none;
+}
