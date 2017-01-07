@@ -5,7 +5,7 @@ $(function () {
     var level = parent.adminFlag;
     var loginusername = parent.loginusername;
     console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
-    sendHTTPRequest("/review", '{"data":{"author":"'+loginusername+'","adminFlag":"'+level+'"}}', reviewlist);
+    sendHTTPRequest("/api/review", '{"data":{"author":"'+loginusername+'","adminFlag":"'+level+'"}}', reviewlist);
 })
 
 function reviewlist(){
