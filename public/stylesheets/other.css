@@ -390,6 +390,7 @@ td{
 	margin: auto;
 	padding: 1% 2% 1% 2%;
 	margin-bottom: 3%;
+	border: 1px solid skyblue;
 	display: none;
 }
 #myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
