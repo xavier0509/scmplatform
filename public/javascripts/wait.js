@@ -359,7 +359,7 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("新增机芯机型");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			getEditInfoInterface(thisIndex);//获取点击单项复制时，获取后台的数据，生成单项复制页
+			getCopyInfoInterface(thisIndex);//获取点击单项复制时，获取后台的数据，生成单项复制页
 			copyPageButtons(thisIndex); //后期可能会传参给页面里的点击事件
 		}
 	}
@@ -727,7 +727,7 @@ function editConfigInfoInput(data){
 	}
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
-function getCopyInfoInterface(){
+function getCopyInfoInterface(index){
 	var myData = {
     "msg": "success",
     "code": "1",
