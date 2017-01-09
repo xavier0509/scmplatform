@@ -2,7 +2,6 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	// waitHtmlInfo(); //获取后台数据
 	forsession();
 })
 
@@ -356,7 +355,7 @@ function AfterWaitHtmlinfo() {
 		oClassButtonCopy[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			$("#myCopyModalLabel").text("新增机芯机型");
+			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
 			getCopyInfoInterface(thisIndex);//获取点击单项复制时，获取后台的数据，生成单项复制页
@@ -511,7 +510,7 @@ function addDeviceInfoInput(data){
 }
 function addMkInfoInput(data){
 	var _myAddTableMKInsertInfo = "";
-	var myAddTableMKInsert = document.getElementById("myAddModalMkTable");
+	var myAddTableMKInsert = document.getElementById("myAddModalMkTableTbody");
 	myAddTableMKInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
@@ -529,7 +528,7 @@ function addMkInfoInput(data){
 }
 function addConfigInfoInput(data){
 	var _myAddTableConfigInsertInfo = "";
-	var myAddTableMConfigInsert = document.getElementById("myAddModalConfigTable");
+	var myAddTableMConfigInsert = document.getElementById("myAddModalConfigTableTbody");
 	myAddTableMConfigInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
@@ -670,7 +669,7 @@ function editDeviceInfoInput(data){
 }
 function editMkInfoInput(data){
 	var _myEditTableMKInsertInfo = "";
-	var myEditTableMKInsert = document.getElementById("myEditModalMkTable");
+	var myEditTableMKInsert = document.getElementById("myEditModalMkTableTbody");
 	myEditTableMKInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
@@ -688,7 +687,7 @@ function editMkInfoInput(data){
 }
 function editConfigInfoInput(data){
 	var _myEditTableConfigInsertInfo = "";
-	var myEditTableMConfigInsert = document.getElementById("myEditModalConfigTable");
+	var myEditTableMConfigInsert = document.getElementById("myEditModalConfigTableTbody");
 	myEditTableMConfigInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
@@ -828,7 +827,7 @@ function copyDeviceInfoInput(data){
 }
 function copyMkInfoInput(data){
 	var _myCopyTableMKInsertInfo = "";
-	var myCopyTableMKInsert = document.getElementById("myCopyModalMkTable");
+	var myCopyTableMKInsert = document.getElementById("myCopyModalMkTableTbody");
 	myCopyTableMKInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
@@ -846,7 +845,7 @@ function copyMkInfoInput(data){
 }
 function copyConfigInfoInput(data){
 	var _myCopyTableConfigInsertInfo = "";
-	var myCopyTableMConfigInsert = document.getElementById("myCopyModalConfigTable");
+	var myCopyTableMConfigInsert = document.getElementById("myCopyModalConfigTableTbody");
 	myCopyTableMConfigInsert.innerHTML = "";
 	var key, counter = 0;
 	for(key in data){
