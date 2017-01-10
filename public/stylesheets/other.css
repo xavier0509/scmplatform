@@ -97,7 +97,7 @@ td{
 	border-bottom: 10px;
 }
 .fontsize{
-	font-size: 16px;
+	font-size: 18px;
 }
 .fontsize input{
 	height: 20px;
@@ -134,8 +134,11 @@ td{
 	width: 5%;
 	margin-right: 5px;
 }
-
-.mybody,.mytable{
+.mytable{
+	padding-bottom: 0px;
+	font-size: 18px;
+}
+.mybody{
 	padding-bottom: 0px;
 }
 .myfooter{
