@@ -1,0 +1,119 @@
+<!--内容列表-->
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>待审核</title>
+
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <fieldset id="_rowlist" >
+        <legend>内容列表</legend>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr id="reviewtableTR">
+                        <th>机芯</th>
+                        <th>机型</th>
+                        <th>Android版本</th>
+                        <th>芯片版本</th>
+                        <th>内存</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="reviewmytable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+    <!--审核内容-->
+    <div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
+        <div class="modalwidth" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span><tton>                    
+                </div>
+                <div class="modal-body">
+                        <fieldset id="_container">
+                            <legend>新建机芯机型</legend>
+                            <div class="row text-right" >
+                                <div class="col-xs-5 form-group" >
+                                    <label for="chip" class="control-label">机芯:　　</label>
+                                    <input type="text" id="chip" disabled value="">
+                                </div>
+                                <div class="col-xs-5 form-group">
+                                    <label for="model" class="control-label">机型:　　</label>
+                                    <input type="text" value="" id="model" disabled>
+                                </div>
+                                <div class="col-xs-12"><hr></div>          
+                            </div>
+                            <div class="row text-right">
+                                <div class="col-xs-5 form-group">
+                                    <label for="device" class="control-label">Device:　　</label>
+                                    <input type="text" value="" id="device">
+                                </div>
+                                <div class="col-xs-5 form-group">
+                                    <label for="android" class="control-label">Android版本:　　</label>
+                                    <input type="text" value="" id="android">
+                                </div>
+                                <div class="col-xs-5 form-group">
+                                    <label for="chipid" class="control-label">芯片型号:　　</label>
+                                    <input type="text" value="" id="chipid">
+                                </div>
+                                <div class="col-xs-5 form-group">
+                                    <label for="memory" class="control-label">内存:　　</label>
+                                    <input type="text" value="" id="memory">
+                                </div>
+                                <div class="col-xs-12"><hr></div> 
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" id="mkbutton">MK文件</button>
+                                <button type="button" class="btn btn-default" id="configbutton">config文件</button>
+                            </div>
+                    <!-- mk文件内容 -->
+                            <div id="reviewmkfile">
+                                <h3>App:</h3>
+                                <div class="row text-left" id="appcont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>AppStore:</h3>
+                                <div class="row text-left" id="appstorecont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>HomePage:</h3>
+                                <div class="row text-left" id="homecont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>IME:</h3>
+                                <div class="row text-left" id="imecont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>Service:</h3>
+                                <div class="row text-left" id="servicecont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>SysApp:</h3>
+                                <div class="row text-left" id="syscont"></div>
+                            </div>
+                    <!-- mk文件内容 -->
+                            <div id="reviewconfigfile">
+                                <h3>核心功能:</h3>
+                                <div class="row text-left" id="maincont"></div>
+                                <div class="col-xs-12"><hr></div>
+                                <h3>其他功能:</h3>
+                                <div class="row text-left" id="othercont"></div>
+                            </div>
+                        </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存<tton>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../javascripts/review.js"></script>
+</body>
+</html>
