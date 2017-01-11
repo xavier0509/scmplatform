@@ -122,11 +122,13 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
 		oButtonEditEnsure.onclick = function() {
 			console.log("新增页-提交按钮一");
+			addPageSubmitData();
 			$("#myAddModal").modal('hide');
 		}
 		var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
 		oButtonEditEnsure.onclick = function() {
 			console.log("新增页-提交按钮二");
+			addPageSubmitData();
 			$("#myAddModal").modal('hide');
 		}
 		var oButtonAdd = document.getElementById("myAddModalClose");
@@ -307,11 +309,13 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myEditModalSubmit");
 		oButtonEditEnsure.onclick = function() {
 			console.log("单项编辑页-提交按钮一");
+			editPageSubmitData();
 			$("#myEditModal").modal('hide');
 		}
 		var oButtonEditEnsure = document.getElementById("myEditModalSubmitTwo");
 		oButtonEditEnsure.onclick = function() {
 			console.log("单项编辑页-提交按钮二");
+			editPageSubmitData();
 			$("#myEditModal").modal('hide');
 		}
 		var oButtonAdd = document.getElementById("myEditModalClose");
@@ -367,11 +371,13 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myCopyModalSubmit");
 		oButtonEditEnsure.onclick = function() {
 			console.log("单项复制页-提交按钮一");
+			copyPageSubmitData();
 			$("#myCopyModal").modal('hide');
 		}
 		var oButtonEditEnsure = document.getElementById("myCopyModalSubmitTwo");
 		oButtonEditEnsure.onclick = function() {
 			console.log("单项复制页-提交按钮二");
+			copyPageSubmitData();
 			$("#myCopyModal").modal('hide');
 		}
 		var oButtonAdd = document.getElementById("myCopyModalClose");
@@ -416,12 +422,12 @@ function getAddInfoInterface(){
     "data": {
         "DevInfo": [
             {
-                "platformModel": "chip001",
-                "productModel": "model001",
-                "androidVersion": "5.0.5",
-                "chipModel": "14A55",
-                "memorySize": "5G",
-                "pendingReview": "芯片型号"
+                "platformModel": "",
+                "productModel": "",
+                "androidVersion": "",
+                "chipModel": "",
+                "memorySize": "",
+                "pendingReview": ""
             }
         ],
         "mkFile": {
@@ -429,38 +435,38 @@ function getAddInfoInterface(){
                 {"name": "酷开商城","state": "1","pkgname": "SkyCCMall"},
                 {"name": "教育中心","state": "0","pkgname": "SkyEDU"},
                 {"name": "电子说明书","state": "0","pkgname": "SkyManual"},
-                {"name": "影视中心","state": "1","pkgname": "SkyMovie"},
-                {"name": "二维码","state": "1","pkgname": "SkyQrcode"},
-                {"name": "远程服务","state": "1","pkgname": "SkyTVAgent"},
-                {"name": "亲友圈","state": "1","pkgname": "SkyTVQQ"},
-                {"name": "酷开用户","state": "1","pkgname": "SkyUser"},
-                {"name": "天气","state": "1","pkgname": "SkyWeather"},
-                {"name": "智慧家庭","state": "1","pkgname": "SkyCCMall"},
-                {"name": "搜狗语音","state": "1","pkgname": "SkyVoice"}
+                {"name": "影视中心","state": "0","pkgname": "SkyMovie"},
+                {"name": "二维码","state": "0","pkgname": "SkyQrcode"},
+                {"name": "远程服务","state": "0","pkgname": "SkyTVAgent"},
+                {"name": "亲友圈","state": "0","pkgname": "SkyTVQQ"},
+                {"name": "酷开用户","state": "0","pkgname": "SkyUser"},
+                {"name": "天气","state": "0","pkgname": "SkyWeather"},
+                {"name": "智慧家庭","state": "0","pkgname": "SkyCCMall"},
+                {"name": "搜狗语音","state": "0","pkgname": "SkyVoice"}
             ],
             "AppStore": [
-                {"name": "应用圈","state": "1","pkgname": "SkyAppStore"},
+                {"name": "应用圈","state": "0","pkgname": "SkyAppStore"},
                 {"name": "应用圈OEM版本","state": "0","pkgname": "SkyAppStore_OEM"},
                 {"name": "应用圈海外版本","state": "0","pkgname": "SkyAppStore_Oversea"},
-                {"name": "应用圈外包版本","state": "1","pkgname": "SkyAppStore_PE"},
-                {"name": "运营大厅","state": "1","pkgname": "SkyHall"},
-                {"name": "Opera浏览器","state": "1","pkgname": "OperaStore"}
+                {"name": "应用圈外包版本","state": "0","pkgname": "SkyAppStore_PE"},
+                {"name": "运营大厅","state": "0","pkgname": "SkyHall"},
+                {"name": "Opera浏览器","state": "0","pkgname": "OperaStore"}
             ],
             "HomePage": [
-                {"name": "简易首页4.4","state": "1","pkgname": "SimpleHome5+.0"},
+                {"name": "简易首页4.4","state": "0","pkgname": "SimpleHome5+.0"},
                 {"name": "简易首页5.0","state": "0","pkgname": "SimpleHomepage"},
                 {"name": "简易首页OEM","state": "0","pkgname": "SimpleHomepage_OEM"},
-                {"name": "常规首页","state": "1","pkgname": "SkyHomeShell"},
-                {"name": "海外首页","state": "1","pkgname": "SkyOverseaHomepage"},
-                {"name": "松下首页","state": "1","pkgname": "SkyPanasonicHome"}
+                {"name": "常规首页","state": "0","pkgname": "SkyHomeShell"},
+                {"name": "海外首页","state": "0","pkgname": "SkyOverseaHomepage"},
+                {"name": "松下首页","state": "0","pkgname": "SkyPanasonicHome"}
             ],
             "IME": [
-                {"name": "Android输入法","state": "1","pkgname": "AndroidKeyboard"},
+                {"name": "Android输入法","state": "0","pkgname": "AndroidKeyboard"},
                 {"name": "酷开系统输入法","state": "0","pkgname": "SkyTianciIME"},
                 {"name": "搜狗输入法","state": "0","pkgname": "SogouIME"}
             ],
             "Service": [
-                {"name": "广告服务","state": "1","pkgname": "SkyADService"},
+                {"name": "广告服务","state": "0","pkgname": "SkyADService"},
                 {"name": "设备服务","state": "0","pkgname": "SkyDEService"},
                 {"name": "数据采集服务","state": "0","pkgname": "SkyDataService"},
                 {"name": "通讯服务","state": "0","pkgname": "SkyIPCService"},
@@ -471,19 +477,19 @@ function getAddInfoInterface(){
         },
         "configFile": {
             "main": [
-                {"name": "屏幕","type": "input","pkgname": "PANEL","value":"FHD|3D","options":[]},
-                {"name": "网络","type": "input","pkgname": "NETWORK","value":"WIFI","options":[]},
-                {"name": "通道","type": "input","pkgname": "Source","value":"ATV","options":[]},
-                {"name": "蓝牙遥控","type": "select","pkgname": "BleRemote","value":"false","options":["false","true"]},
-                {"name": "H.265解码","type": "select","pkgname": "H+.265","value":"three","options":["one","two","three"]},
-                {"name": "打印等级","type": "select","pkgname": "Log_appender","value":"2","options":["1","2","3","4"]},
-                {"name": "升级包路径","type": "input","pkgname": "Ota_path","value":"COM.COOCAA","options":[]}
+                {"name": "屏幕","type": "input","pkgname": "PANEL","value":"","options":[]},
+                {"name": "网络","type": "input","pkgname": "NETWORK","value":"","options":[]},
+                {"name": "通道","type": "input","pkgname": "Source","value":"","options":[]},
+                {"name": "蓝牙遥控","type": "select","pkgname": "BleRemote","value":"","options":["false","true"]},
+                {"name": "H.265解码","type": "select","pkgname": "H+.265","value":"","options":["one","two","three"]},
+                {"name": "打印等级","type": "select","pkgname": "Log_appender","value":"","options":["1","2","3","4"]},
+                {"name": "升级包路径","type": "input","pkgname": "Ota_path","value":"","options":[]}
             ],
             "other": [
-                {"name": "HDMI延时","type": "input","pkgname": "HDMIDelay","value":"xxxx","options":[]},
-                {"name": "信源自切换","type": "select","pkgname": "SourceSwitch","value":"false","options":["true","false"]},
-                {"name": "数字通道字幕","type": "select","pkgname": "DTVSubTitle","value":"hanyu","options":["english","chinese","hanyu"]},
-                {"name": "DTV场景实现","type": "input","pkgname": "DTVView","value":"fuck","options":[]}
+                {"name": "HDMI延时","type": "input","pkgname": "HDMIDelay","value":"","options":[]},
+                {"name": "信源自切换","type": "select","pkgname": "SourceSwitch","value":"","options":["true","false"]},
+                {"name": "数字通道字幕","type": "select","pkgname": "DTVSubTitle","value":"","options":["english","chinese","hanyu"]},
+                {"name": "DTV场景实现","type": "input","pkgname": "DTVView","value":"","options":[]}
             ]
         	}
     	}
@@ -516,9 +522,9 @@ function addMkInfoInput(data){
 	for(key in data){
 		counter++;
 		console.log("lxw counter = "+counter+"--"+key);
-		_myAddTableMKInsertInfo = "<tr><td><div>"+key+":</div>";
+		_myAddTableMKInsertInfo = "<tr><td><div>"+key+"</div>";
 		for (var j=0;j<data[key].length;j++) {
-			_myAddTableMKInsertInfo += "<div class='col-xs-3'><input type='checkbox' value=''><span>"+data[key][j].name+"</span></div>";
+			_myAddTableMKInsertInfo += "<div class='col-xs-3' title='"+data[key][j].pkgname+"'><input type='checkbox' value=''><span>"+data[key][j].name+"</span></div>";
 			console.log("lxw "+ _myAddTableMKInsertInfo);
 		}
 		_myAddTableMKInsertInfo += "</td></tr>";
@@ -565,6 +571,57 @@ function addConfigInfoInput(data){
 		_myAddTableConfigInsertInfo += "</td></tr>";
 		myAddTableMConfigInsert.innerHTML += _myAddTableConfigInsertInfo;
 	}
+}
+function addPageSubmitData(){
+	var data,devInfoData,configFileData = null;
+    devInfoData = {
+        "platformModel": document.getElementById("newAddChip").value,
+        "productModel": document.getElementById("newAddModel").value,
+        "androidVersion": document.getElementById("newAddDevice").value,
+        "chipModel": document.getElementById("NewAddAndroidVersion").value,
+        "memorySize": document.getElementById("newAddMemory").value,
+        "pendingReview": document.getElementById("newAddChipMode").value
+    };
+    var mkFileData = {};
+    var trlength = document.getElementById("myAddModalMkTableTbody").childNodes;
+    console.log("lxw "+trlength.length);
+   	var thisindex = null;
+    var trTdDiv = new Array();
+    for (var i=0; i<trlength.length; i++) {
+    	var arrayInfo = [];
+    	var innerHtml = "";
+    	trTdDiv = $("#myAddModalMkTableTbody").find("tr:eq("+i+")").find("div");
+    	console.log("lxw "+ trTdDiv.length);
+    	for (var j=0;j<trTdDiv.length; j++) {
+    		var stuInfo = {"name": "","state": "","pkgname": ""};
+    		thisindex = j;
+    		if (j == 0) {
+    			console.log(trTdDiv[thisindex].innerHTML);
+    			innerHtml = trTdDiv[thisindex].innerHTML;
+    		} else{
+    			stuInfo.name = trTdDiv[thisindex].childNodes[1].innerHTML;
+    			stuInfo.pkgname = trTdDiv[thisindex].title;
+    			if (trTdDiv[thisindex].childNodes[0].checked) {
+    				stuInfo.state = 1;
+    			} else{
+    				stuInfo.state = 0;
+    			}
+    			//console.log(stuInfo);
+    			arrayInfo.push(stuInfo);
+    		}
+    	}
+    	//console.log(arrayInfo);
+    	mkFileData[innerHtml]=arrayInfo;
+    	console.log(mkFileData);
+    }
+    
+    data={
+        "DevInfo": [devInfoData],//参数：{"platformModel": "","productModel": ""}
+        "mkFile": mkFileData,//参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
+        "configFile": configFileData//参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
+    };
+    console.log(data);	
+    
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index){
@@ -725,6 +782,9 @@ function editConfigInfoInput(data){
 		myEditTableMConfigInsert.innerHTML += _myEditTableConfigInsertInfo;
 	}
 }
+function editPageSubmitData(){
+	
+}
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInterface(index){
 	var myData = {
@@ -881,6 +941,10 @@ function copyConfigInfoInput(data){
 		myCopyTableMConfigInsert.innerHTML += _myCopyTableConfigInsertInfo;
 	}
 }
+function copyPageSubmitData(){
+	
+}
+
 //新增页保存，向后台传递数据
 //function modalAddSave(){
 //	var currentObject = document.getElementsByClassName("addOrEditsubmit");
