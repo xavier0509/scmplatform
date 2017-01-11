@@ -19,6 +19,7 @@ function returnInfo(){
         {
             var mydata = JSON.parse(this.responseText);
             console.log("lxw "+ mydata);
+            document.getElementById("return").value = mydata;
         }
     }
 }
