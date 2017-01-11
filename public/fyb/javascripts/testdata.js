@@ -6,8 +6,8 @@ myButton.onclick = function(){
 	var mysrc = document.getElementById("interface").value;
 	var mypara = document.getElementById("parameter").value;
 	var node = document.getElementById("return").value;
-	//机芯机型查询
-	//eg：var node = '{"data":{"platformModel":"","productModel":"","androidVersion":"","chipModel":"","memorySize":""}}';
+	//鏈鸿姱鏈哄瀷鏌ヨ
+	//eg锛歷ar node = '{"data":{"platformModel":"","productModel":"","androidVersion":"","chipModel":"","memorySize":""}}';
 	console.log("lxw "+node);
 	
 	sendHTTPRequest(mysrc, node, returnInfo);
