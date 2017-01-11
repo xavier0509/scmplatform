@@ -4,8 +4,8 @@ var myButton = document.getElementById("ensure");
 
 myButton.onclick = function(){
 	var mysrc = document.getElementById("interface").value;
-	var mypara = document.getElementById("parameter").value;
-	var node = document.getElementById("return").value;
+	var node = document.getElementById("parameter").value;
+	//var return = document.getElementById("return").value;
 	//机芯机型查询
 	//eg：var node = '{"data":{"platformModel":"","productModel":"","androidVersion":"","chipModel":"","memorySize":""}}';
 	console.log("lxw "+node);
