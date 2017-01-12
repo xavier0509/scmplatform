@@ -162,10 +162,10 @@ function SearchModeInfo() {
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
-//			var _rowMode = document.getElementById("modalManageAdd-td");
-//			for(var i = 0; i < data.data.length; i++) {
-//				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
-//			}
+			var _rowMode = document.getElementById("modalManageAdd-td");
+			for(var i = 0; i < data.data.length; i++) {
+				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+			}
 		};
 		AfterChipModeHtmlInfo();
 	}
