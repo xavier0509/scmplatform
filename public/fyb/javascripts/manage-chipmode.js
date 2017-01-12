@@ -2,7 +2,8 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 $(function() {
 	//AfterChipModeHtmlInfo();
-	sendHTTPRequest("/api/searchplatformmodel", '{"data":""}', SearchChipInfo);
+	//sendHTTPRequest("/api/searchplatformmodel", '{"data":""}', SearchChipInfo);
+	sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', SearchChipInfo);
 })
 
 function AfterChipModeHtmlInfo() {
@@ -105,7 +106,7 @@ function SearchChipInfo() {
 				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
 		};
-		sendHTTPRequest("/api/searchproductmodel", '{"data":""}', SearchModeInfo);
+		sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', SearchModeInfo);
 	}
 }
 /*机芯-新增数据*/
@@ -161,10 +162,10 @@ function SearchModeInfo() {
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
-			var _rowMode = document.getElementById("modalManageAdd-td");
-			for(var i = 0; i < data.data.length; i++) {
-				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
-			}
+//			var _rowMode = document.getElementById("modalManageAdd-td");
+//			for(var i = 0; i < data.data.length; i++) {
+//				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+//			}
 		};
 		AfterChipModeHtmlInfo();
 	}
