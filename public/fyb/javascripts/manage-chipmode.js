@@ -78,7 +78,7 @@ function AfterChipModeHtmlInfo() {
 					console.log("lxw " + "新增机型的保存按钮" + currentChipOrModelName);
 					var creatModel = '{"data":{"model":"' + currentChipOrModelName + '"}}';
 					console.log("lxw " + creatModel);
-					sendHTTPRequest("/fyb_api/chipAdd", creatModel, CreatModelInfo);
+					sendHTTPRequest("/fyb_api/modelAdd", creatModel, CreatModelInfo);
 				} else {
 					console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
 					var changeModel = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
