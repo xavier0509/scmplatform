@@ -106,7 +106,7 @@ function SearchChipInfo() {
 				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
 		};
-		sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', SearchModeInfo);
+		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', SearchModeInfo);
 	}
 }
 /*机芯-新增数据*/
