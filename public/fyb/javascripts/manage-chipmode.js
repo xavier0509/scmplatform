@@ -65,25 +65,25 @@ function AfterChipModeHtmlInfo() {
 			if(name == "chip") {
 				if(index == "-1") {
 					console.log("lxw " + "新增机芯的保存按钮" + currentChipOrModelName);
-					var creatChip = '{"data":{"platformModel":"' + currentChipOrModelName + '"}}';
-					sendHTTPRequest("/api/createplatformmodel", creatChip, CreatChipInfo);
+					var creatChip = '{"data":{"chip":"' + currentChipOrModelName + '"}}';
+					sendHTTPRequest("/fyb_api/chipAdd", creatChip, CreatChipInfo);
 				} else {
 					console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
-					var changeChip = '{"data":{"before":"' + newname + '","after":"' + currentChipOrModelName + '"}}';
+					var changeChip = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
 					console.log("lxw " + changeChip);
-					sendHTTPRequest("/api/modifyplatformmodel", changeChip, ChangeChipInfo);
+					sendHTTPRequest("/fyb_api/chipUpdate", changeChip, ChangeChipInfo);
 				}
 			} else if(name == "model") {
 				if(index == "-1") {
 					console.log("lxw " + "新增机型的保存按钮" + currentChipOrModelName);
-					var creatModel = '{"data":{"productModel":"' + currentChipOrModelName + '"}}';
+					var creatModel = '{"data":{"model":"' + currentChipOrModelName + '"}}';
 					console.log("lxw " + creatModel);
-					sendHTTPRequest("/api/createproductmodel", creatModel, CreatModelInfo);
+					sendHTTPRequest("/fyb_api/chipAdd", creatModel, CreatModelInfo);
 				} else {
 					console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
-					var changeModel = '{"data":{"before":"' + newname + '","after":"' + currentChipOrModelName + '"}}';
+					var changeModel = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
 					console.log("lxw " + changeModel);
-					sendHTTPRequest("/api/modifyproductmodel", changeModel, ChangeModelInfo);
+					sendHTTPRequest("/fyb_api/modelUpdate", changeModel, ChangeModelInfo);
 				}
 			}
 		}
