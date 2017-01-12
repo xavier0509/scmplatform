@@ -62,18 +62,20 @@ function AferConfigHtmlInfo() {
 			if(this.index == 0) {
 				console.log("lxw " + "点击的是添加");
 				var appendObject = document.getElementById("ADCSEfficient");
-				//_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
-				//<tr><td><input type="text" value="" placeholder="选项名称"></td><td><input type="text" value="" placeholder="Value"></td></tr>
-				
 				appendObject.innerHTML += "<div class='menuUnit'><input type='text' class='menuUnitInput' value='' placeholder='选项名称'/><input type='text' class='menuUnitInput' value='' placeholder='Value'/></div>"
 			} else if(this.index == 1) {
-				console.log("lxw " + "点击的是向上");
-			} else if(this.index == 2) {
-				console.log("lxw " + "点击的是向下");
-			} else if(this.index == 3) {
 				console.log("lxw " + "点击的是删除");
-				console.log("lxw "+$(this).parent().attr("id"));
-			} else if(this.index == 4) {
+				var forDeleteObject = document.getElementById("ADCSEfficient");
+				var deleteObject = document.getElementsByClassName("menuUnit");
+				var curLength = deleteObject.length;
+				console.log("lxw "+ curLength);
+				if (curLength!=0) {
+					forDeleteObject.removeChild(document.getElementsByClassName("menuUnit")[curLength-1]);
+				} else{
+					console.log("lxw 已经删除完...");
+				}
+				//appendObject.removeChild();
+			} else if(this.index == 2) {
 				console.log("lxw " + "点击的是全部删除");
 				var appendObject = document.getElementById("ADCSEfficient");
 				appendObject.innerHTML = "";
