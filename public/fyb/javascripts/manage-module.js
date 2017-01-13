@@ -12,6 +12,7 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		toSaveButton(-1);
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
@@ -27,10 +28,11 @@ function AfterModuleHtmlInfo() {
 		toSaveButton(this.index);
 	}
 	/*模块管理板块-保存*/
-	function toSaveButton(index){
+	function toSaveButton(myindex){
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
 		ModualSubmit.onclick = function() {
 			console.log("lxw " + "in inputModuleSubmit");
+			console.log("lxw "+myindex);
 		}
 	}
 }
@@ -99,17 +101,10 @@ function searchModalInfo() {
 					console.log("Other:"+kk);
 					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
 				}
-				//_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
-
-
-
-
 		};
 		AfterModuleHtmlInfo();
 	}
-	
-	
 //	var key, counter = 0;
 //	var _rowmodelInfo = "";
 //	var _rowmodel = document.getElementById("module-mkTable");
@@ -124,5 +119,4 @@ function searchModalInfo() {
 //		_rowmodelInfo += "</td></tr>";
 //	}
 //	_rowmodel.innerHTML+= _rowmodelInfo;
-
 }
