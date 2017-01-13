@@ -12,23 +12,25 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		toSaveButton(-1);
+		toSaveButton(-1,null);
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
-	var oTableA = $("#module-mkTable").find("a")
+	var oTableA = $("#module-mkTable").find("a");
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
-			console.log("ok " + this.index); //点击的是第几个
+			console.log("ok " + this.index+"--"+oTableA[i]); //点击的是第几个
+			var englishName = $("#module-mkTable").find("div")[i].name;
+			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-			toSaveButton(this.index);
+			toSaveButton(this.index,englishName);
 		}
 	}
 	/*模块管理板块-保存*/
-	function toSaveButton(myindex){
+	function toSaveButton(myindex,englishName){
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
 		
 		ModualSubmit.onclick = function() {
@@ -86,35 +88,35 @@ function searchModalInfo() {
 				if (data.data[i].category == "App") {
 					kk = i;
 					console.log("App:"+kk);
-					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleApp.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				} else if(data.data[i].category == "Service"){
 					kk = i;
 					console.log("Service:"+kk);
-					_rowModuleService.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleService.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "AppStore"){
 					kk = i;
 					console.log("AppStore:"+kk);
-					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleAppStore.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "HomePage"){
 					kk = i;
 					console.log("HomePage:"+kk);
-					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleHomePage.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "IME"){
 					kk = i;
 					console.log("IME:"+kk);
-					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleIME.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "SysApp"){
 					kk = i;
 					console.log("SysApp:"+kk);
-					_rowModuleSysApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleSysApp.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "TV"){
 					kk = i;
 					console.log("TV:"+kk);
-					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleTV.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "Other"){
 					kk = i;
 					console.log("Other:"+kk);
-					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleOther.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
 				}
 			}
 		};
