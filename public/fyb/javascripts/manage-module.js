@@ -21,11 +21,11 @@ function AfterModuleHtmlInfo() {
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
-			console.log("ok" + this.index); //点击的是第几个
+			console.log("ok " + this.index); //点击的是第几个
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			toSaveButton(this.index);
 		}
-		toSaveButton(this.index);
 	}
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex){
