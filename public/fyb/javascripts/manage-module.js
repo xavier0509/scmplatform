@@ -46,6 +46,7 @@ function searchModalInfo() {
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
+			var kk = 0;
 			//{"data":{"cnName":"酷开商城","engName": "SkyCCMall","gitPath": "/SkyworthApp/App/SkyCCMall","desc": "1","category": "App"}}
 			//{"data":{"cnName":"应用圈","engName": "SkyAppStore","gitPath": "/SkyworthApp/AppStore/SkyAppStore","desc": "2","category": "AppStore"}}
 			//{"data":{"cnName":"简易首页4.4","engName": "SimpleHome5.0","gitPath": "/SkyworthApp/HomePage/SimpleHome5.0","desc": "3","category": "HomePage"}}
@@ -65,9 +66,9 @@ function searchModalInfo() {
 			var _rowModuleOther = document.getElementById("moduleTableOther");
 			for(var i = 0; i < data.data.length; i++) {
 				if (data.data[i].category = "App") {
-					data.data[i].index = i;
-					console.log("App:"+this.index);
-					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
+					kk = i;
+					console.log("App:"+kk);
+					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
 				} else if(data.data[i].category = "Service"){
 					data.data[i].index = i;
 					console.log("Service:"+this.index);
