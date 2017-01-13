@@ -42,11 +42,11 @@ function AfterModuleHtmlInfo() {
 			if (myindex == -1) {
 				console.log("lxw "+myindex);
 				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-				//var node = '{"data":{"cnName":"广告服务","engName": "SkyPushService","gitPath": "/System/APP/SkyADService","desc": "1234","category": "Service"}}';
 				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw "+myindex);
-				//sendHTTPRequest("/fyb_api/configUpdate", node, searchModalInfo);
+				var node = '{"data":{"condition":{"engName":"'+newModuleEnName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
 			}
 		}
 	}
@@ -136,7 +136,7 @@ function searchModalInfo() {
 //	_rowmodel.innerHTML+= _rowmodelInfo;
 }
 function returnAddInfo(){
-	console.log("lxw " + "ModalHtmlInfo");
+	console.log("lxw " + "returnAddInfo");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
@@ -144,7 +144,39 @@ function returnAddInfo(){
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				freshModuleAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
 		};
 	}
+}
+function returnChangeInfo(){
+	console.log("lxw " + "returnChangeInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				freshModuleAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+	}
+}
+
+/*刷新页面*/
+function freshModuleAddHtml() {
+	var htmlObject = parent.document.getElementById("tab_userMenu4");
+	console.log("lxw " + htmlObject.firstChild.src);
+	htmlObject.firstChild.src = "manage-module.html";
 }
