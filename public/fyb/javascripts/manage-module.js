@@ -47,7 +47,7 @@ function AfterModuleHtmlInfo() {
 				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw "+myindex);
-				var node = '{"data":{"condition":{"engName":"'+newModuleEnName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
 				sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
 			}
 		}
