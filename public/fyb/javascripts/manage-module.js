@@ -48,7 +48,7 @@ function AfterModuleHtmlInfo() {
 			} else{
 				console.log("lxw "+myindex);
 				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
-				sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
+				sendHTTPRequest("/fyb_api/moduleUpdate", node, returnChangeInfo);
 			}
 		}
 	}
@@ -116,7 +116,7 @@ function searchModalInfo() {
 				}else if(data.data[i].category == "Other"){
 					kk = i;
 					console.log("Other:"+kk);
-					_rowModuleOther.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}
 			}
 		};
