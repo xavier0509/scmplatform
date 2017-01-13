@@ -33,17 +33,20 @@ function AfterModuleHtmlInfo() {
 		
 		ModualSubmit.onclick = function() {
 			console.log("lxw " + "in inputModuleSubmit");
-			var newModuleName = document.getElementById("moduleName").value;
-		var newModuleSrc = document.getElementById("moduleSrc").value;
-		var newModuleInstr = document.getElementById("moduleInstr").value;
-		var newModuleSelect = document.getElementById("moduleSelect").value;
-			console.log("lxw "+newModuleName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
+			var newModuleCzName = document.getElementById("moduleCzName").value;
+			var newModuleEnName = document.getElementById("moduleEnName").value;
+			var newModuleSrc = document.getElementById("moduleSrc").value;
+			var newModuleInstr = document.getElementById("moduleInstr").value;
+			var newModuleSelect = document.getElementById("moduleSelect").value;
+			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
 			if (myindex == 0) {
 				console.log("lxw "+myindex);
-				//sendHTTPRequest("/fyb_api/moduleAdd", '{"data":""}', searchModalInfo);
+				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
+				//var node = '{"data":{"cnName":"广告服务","engName": "SkyPushService","gitPath": "/System/APP/SkyADService","desc": "1234","category": "Service"}}';
+				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw "+myindex);
-				//sendHTTPRequest("/fyb_api/configUpdate", '{"data":""}', searchModalInfo);
+				//sendHTTPRequest("/fyb_api/configUpdate", node, searchModalInfo);
 			}
 		}
 	}
@@ -131,4 +134,17 @@ function searchModalInfo() {
 //		_rowmodelInfo += "</td></tr>";
 //	}
 //	_rowmodel.innerHTML+= _rowmodelInfo;
+}
+function returnAddInfo(){
+	console.log("lxw " + "ModalHtmlInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
+		};
+	}
 }
