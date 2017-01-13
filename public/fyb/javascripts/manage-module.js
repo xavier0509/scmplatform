@@ -65,35 +65,36 @@ function searchModalInfo() {
 			var _rowModuleTV = document.getElementById("moduleTableTV");
 			var _rowModuleOther = document.getElementById("moduleTableOther");
 			for(var i = 0; i < data.data.length; i++) {
-				if (data.data[i].category = "App") {
+				console.log("lxw "+data.data[i].category);
+				if (data.data[i].category == "App") {
 					kk = i;
 					console.log("App:"+kk);
 					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[kk].cnName + "</a></div>";
-				} else if(data.data[i].category = "Service"){
+				} else if(data.data[i].category == "Service"){
 					data.data[i].index = i;
 					console.log("Service:"+this.index);
 					_rowModuleService.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "AppStore"){
+				}else if(data.data[i].category == "AppStore"){
 					data.data[i].index = i;
 					console.log("AppStore:"+this.index);
 					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "HomePage"){
+				}else if(data.data[i].category == "HomePage"){
 					data.data[i].index = i;
 					console.log("HomePage:"+this.index);
 					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "IME"){
+				}else if(data.data[i].category == "IME"){
 					data.data[i].index = i;
 					console.log("IME:"+this.index);
 					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "SysApp"){
+				}else if(data.data[i].category == "SysApp"){
 					data.data[i].index = i;
 					console.log("SysApp:"+this.index);
 					_rowModuleSysApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "TV"){
+				}else if(data.data[i].category == "TV"){
 					data.data[i].index = i;
 					console.log("TV:"+this.index);
 					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
-				}else if(data.data[i].category = "Other"){
+				}else if(data.data[i].category == "Other"){
 					data.data[i].index = i;
 					console.log("Other:"+this.index);
 					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
