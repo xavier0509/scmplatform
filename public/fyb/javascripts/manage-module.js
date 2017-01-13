@@ -30,13 +30,14 @@ function AfterModuleHtmlInfo() {
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex){
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
-		var newModuleName = document.getElementById("moduleName").value;
+		
+		ModualSubmit.onclick = function() {
+			console.log("lxw " + "in inputModuleSubmit");
+			var newModuleName = document.getElementById("moduleName").value;
 		var newModuleSrc = document.getElementById("moduleSrc").value;
 		var newModuleInstr = document.getElementById("moduleInstr").value;
 		var newModuleSelect = document.getElementById("moduleSelect").value;
-		console.log("lxw "+newModuleName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
-		ModualSubmit.onclick = function() {
-			console.log("lxw " + "in inputModuleSubmit");
+			console.log("lxw "+newModuleName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
 			if (myindex == 0) {
 				console.log("lxw "+myindex);
 				//sendHTTPRequest("/fyb_api/moduleAdd", '{"data":""}', searchModalInfo);
