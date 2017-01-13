@@ -21,8 +21,8 @@ function AfterModuleHtmlInfo() {
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
-			console.log("ok " + this.index+"--"+oTableA[i]); //点击的是第几个
-			var englishName = $("#module-mkTable").find("div")[i].name;
+			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
+			var englishName = this.name;
 			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
@@ -88,23 +88,23 @@ function searchModalInfo() {
 				if (data.data[i].category == "App") {
 					kk = i;
 					console.log("App:"+kk);
-					_rowModuleApp.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				} else if(data.data[i].category == "Service"){
 					kk = i;
 					console.log("Service:"+kk);
-					_rowModuleService.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleService.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "AppStore"){
 					kk = i;
 					console.log("AppStore:"+kk);
-					_rowModuleAppStore.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "HomePage"){
 					kk = i;
 					console.log("HomePage:"+kk);
-					_rowModuleHomePage.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "IME"){
 					kk = i;
 					console.log("IME:"+kk);
-					_rowModuleIME.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "SysApp"){
 					kk = i;
 					console.log("SysApp:"+kk);
@@ -112,7 +112,7 @@ function searchModalInfo() {
 				}else if(data.data[i].category == "TV"){
 					kk = i;
 					console.log("TV:"+kk);
-					_rowModuleTV.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a></div>";
+					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
 				}else if(data.data[i].category == "Other"){
 					kk = i;
 					console.log("Other:"+kk);
