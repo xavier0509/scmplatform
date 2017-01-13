@@ -67,35 +67,35 @@ function searchModalInfo() {
 				if (data.data[i].category = "App") {
 					data.data[i].index = i;
 					console.log("App:"+this.index);
-					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				} else if(data.data[i].category = "Service"){
 					data.data[i].index = i;
 					console.log("Service:"+this.index);
-					_rowModuleService.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleService.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "AppStore"){
 					data.data[i].index = i;
 					console.log("AppStore:"+this.index);
-					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "HomePage"){
 					data.data[i].index = i;
 					console.log("HomePage:"+this.index);
-					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "IME"){
 					data.data[i].index = i;
 					console.log("IME:"+this.index);
-					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "SysApp"){
 					data.data[i].index = i;
 					console.log("SysApp:"+this.index);
-					_rowModuleSysApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleSysApp.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "TV"){
 					data.data[i].index = i;
 					console.log("TV:"+this.index);
-					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}else if(data.data[i].category = "Other"){
 					data.data[i].index = i;
 					console.log("Other:"+this.index);
-					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].name + "</a></div>";
+					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a>" + data.data[this.index].cnName + "</a></div>";
 				}
 				//_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
