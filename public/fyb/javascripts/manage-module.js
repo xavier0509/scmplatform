@@ -39,7 +39,7 @@ function AfterModuleHtmlInfo() {
 			var newModuleInstr = document.getElementById("moduleInstr").value;
 			var newModuleSelect = document.getElementById("moduleSelect").value;
 			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
-			if (myindex == 0) {
+			if (myindex == -1) {
 				console.log("lxw "+myindex);
 				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
 				//var node = '{"data":{"cnName":"广告服务","engName": "SkyPushService","gitPath": "/System/APP/SkyADService","desc": "1234","category": "Service"}}';
