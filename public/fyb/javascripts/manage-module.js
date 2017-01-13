@@ -178,7 +178,7 @@ function returnChangeInfo(){
 
 /*刷新页面*/
 function freshModuleAddHtml() {
-	var htmlObject = parent.document.getElementById("tab_userMenu4");
+	var htmlObject = parent.document.getElementById("tab_userMenu5");
 	console.log("lxw " + htmlObject.firstChild.src);
 	htmlObject.firstChild.src = "manage-module.html";
 }
