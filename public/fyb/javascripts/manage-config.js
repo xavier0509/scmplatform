@@ -1,6 +1,6 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 $(function() {
-	sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', searchConfigInfo);
+	sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', searchConfigInfo);
 })
 
 function AferConfigHtmlInfo() {
