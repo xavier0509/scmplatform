@@ -22,7 +22,7 @@ function AferConfigHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			//var keyValue = this.name;
 			keyValue = oTableA[i].nextSibling.value;
-			console.log("lxw "+keyValue);
+			console.log("lxw "+keyValue[0]._id);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			toSaveButton(this.index,keyValue);
