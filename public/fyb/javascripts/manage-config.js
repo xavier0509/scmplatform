@@ -46,7 +46,7 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","options":""}}';
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":""}}';
 			}
 			
 			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
@@ -69,7 +69,7 @@ function AferConfigHtmlInfo() {
 				}
 				//menuElementStr = JSON.stringify(menuElement);
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","options":"'+newConfigMenu+'","desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":"'+newConfigMenu+'","desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 			} else{
 				newConfigMenu = null;
 			}
@@ -77,7 +77,7 @@ function AferConfigHtmlInfo() {
 			if (myindex == null) {
 				console.log("lxw in add");
 				console.log("lxw "+ node);
-				//{"data":{"cnName": "DTV场景实现","engName": "1111","type":"value", "desc":"1234","value":"1234", "opt": []}}
+				//{"data":{"cnName": "2","engName": "2", "configKey":"2", "type": "string", "desc": "2", "category": "other", "value": "2", "opt": []}
 				//var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
 				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
