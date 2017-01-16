@@ -67,10 +67,11 @@ function AferConfigHtmlInfo() {
 					//menuElement[valueOne] = valueTwo;
 					//menuElementStr.push(JSON.stringify(menuElement));
 					newConfigMenu.push(valueTwo);
+					console.log("lxw"+newConfigMenu);
 				}
 				//menuElementStr = JSON.stringify(menuElement);
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":'+newConfigMenu+',"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":"['+newConfigMenu+']","desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 			} else{
 				newConfigMenu = null;
 			}
