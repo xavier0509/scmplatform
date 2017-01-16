@@ -13,7 +13,7 @@ function AferConfigHtmlInfo() {
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
-	var oTableA = $("#config-mkTable").find("a")
+	var oTableA = $("#config-mkTable").find("a");
 	console.log(oTableA.length);
 	var keyValue = "";
 	for(var i = 0; i < oTableA.length; i++) {
@@ -22,7 +22,7 @@ function AferConfigHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			//var keyValue = this.name;
 			keyValue = oTableA[i].nextSibling.value;
-			console.log("lxw "+keyValue);
+			console.log("lxw "+keyValue.engName);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			toSaveButton(this.index,keyValue);
