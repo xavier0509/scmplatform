@@ -129,7 +129,7 @@ function moduleResult(){
                     var text = document.createTextNode(name[i].cnName);
                     var input = document.createElement("input");
                     input.setAttribute('value',name[i].engName);
-                    // input.setAttribute('type','checkbox');
+                    input.setAttribute('type','checkbox');
                     // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
                     child.appendChild(input);
                     child.appendChild(text);
