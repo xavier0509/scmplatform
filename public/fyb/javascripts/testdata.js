@@ -22,7 +22,7 @@ function returnInfo(){
         {
             var mydata = JSON.parse(this.responseText);
             console.log("lxw "+ mydata);
-            document.getElementById("return").value = this.responseText;
+            document.getElementById("return").innerhtml = this.responseText;
         }
     }
 }
