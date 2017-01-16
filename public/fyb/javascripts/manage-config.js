@@ -20,7 +20,7 @@ function AferConfigHtmlInfo() {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
-			keyValue = oTableA[i].nextSibling.value;
+			keyValue = oTableA[this.index].nextSibling.value;
 			console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
 			console.log("lxw "+keyValueObj);
