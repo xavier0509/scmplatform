@@ -198,5 +198,5 @@ function returnAddInfo(){
 function freshConfigAddHtml() {
 	var htmlObject = parent.document.getElementById("tab_userMenu6");
 	console.log("lxw " + htmlObject.firstChild.src);
-	htmlObject.firstChild.src = "manage-config.html";
+	htmlObject.firstChild.src = "manage-configure.html";
 }
