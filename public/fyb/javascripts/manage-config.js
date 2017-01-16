@@ -159,11 +159,11 @@ function searchConfigInfo() {
 				if (data.data[i].category == "main") {
 					kk = i;
 					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='disaply:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='display:none'></div>";
 				} else if(data.data[i].category == "other"){
 					kk = i;
 					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='disaply:block'></div>";
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='display:block'></div>";
 				}
 			}
 		};
