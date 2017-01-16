@@ -15,14 +15,14 @@ function AferConfigHtmlInfo() {
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
 	var oTableA = $("#config-mkTable").find("a");
 	console.log(oTableA.length);
-	var keyValue = "";
+	var keyValue,keyValueObj = null;
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
-			//var keyValue = this.name;
 			keyValue = oTableA[i].nextSibling.value;
-			var keyValueObj = JSON.parse(keyValue[0]);
+			console.log("lxw "+keyValue);
+			keyValueObj = JSON.parse(keyValue[0]);
 			console.log("lxw "+keyValueObj._id);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
