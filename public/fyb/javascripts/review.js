@@ -13,6 +13,9 @@ $(function () {
     }    
 })
 
+var chip = null;
+var model = null;
+
 function reviewlist(){
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
@@ -74,8 +77,8 @@ function reviewlist(){
 }
 
 function review(obj){
-    var chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    var model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);
     // sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
 }
@@ -129,6 +132,7 @@ function moduleResult(){
                     var text = document.createTextNode(name[i].cnName);
                     var input = document.createElement("input");
                     input.setAttribute('value',name[i].engName);
+                    input.setAttribute('id',name[i].engName);
                     input.setAttribute('type','checkbox');
                     // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
                     child.appendChild(input);
@@ -140,7 +144,6 @@ function moduleResult(){
     sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
     }
 }
-
 function configResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
@@ -166,7 +169,7 @@ function configResult(){
                 for (var i = 0; i < name.length; i++) {
                     var cont = document.getElementById(divname);
                     var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-6 form-group text-right');
+                    child.setAttribute('class','col-sm-5 form-group text-right');
                     var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
@@ -195,7 +198,7 @@ function configResult(){
                 }
             }
         }
-    // sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
+    sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }    
 }
 
@@ -213,65 +216,19 @@ function reviewresult(){
 
             var data = JSON.parse(this.responseText);
             // console.log(data[0]);
-            var app = data.app;
-            var appstore = data.appstore;
-            var main = data.main;
+            document.getElementById("chip").value=data.data[0].chip;
+            document.getElementById("model").value=data.data[0].model;
+            document.getElementById("device").value=data.data[0].targetProduct;
+            document.getElementById("android").value=data.data[0].androidVersion;
+            document.getElementById("chipid").value=data.data[0].chipModel;
+            document.getElementById("memory").value=data.data[0].memorySize;
 
-            console.log(appstore);
-            document.getElementById("appcont").innerHTML="";
-            document.getElementById("appstorecont").innerHTML="";
-            document.getElementById("maincont").innerHTML="";
-            //mk文件生成
-            for (var i = 0; i < app.length; i++) {
-                var appcont = document.getElementById("appcont");
-                var child = document.createElement("div");
-                child.setAttribute('class','col-sm-3 form-group');
-                var text = document.createTextNode(app[i].name);
-                var input = document.createElement("input");
-                input.setAttribute('type','checkbox');
-                if (app[i].state == 1) {input.setAttribute('checked','');};//勾选状态
-                child.appendChild(input);
-                child.appendChild(text);
-                appcont.appendChild(child);
+            var mkfile = data.data[0].mkFile;
+            for (var i = 0; i < mkfile.length; i++) {
+                document.getElementById(mkfile[i].engName).setAttribute('checked','');
             };
-            for (var i = 0; i < appstore.length; i++) {
-                var appstorecont = document.getElementById("appstorecont");
-                var child = document.createElement("div");
-                child.setAttribute('class','col-sm-3 form-group');
-                var text = document.createTextNode(appstore[i].name);
-                var input = document.createElement("input");
-                input.setAttribute('type','checkbox');
-                if (appstore[i].state == 1) {input.setAttribute('checked','');};
-                child.appendChild(input);
-                child.appendChild(text);
-                appstorecont.appendChild(child);
-            };
-            //config生成
-            for (var i = 0; i < main.length; i++) {
-                var maincont = document.getElementById("maincont");
-                var child = document.createElement("div");
-                child.setAttribute('class','col-sm-5 form-group text-right');
-                var text = document.createTextNode(main[i].name);
-                if (main[i].type == "text") {
-                    var input = document.createElement("input");
-                    input.value = main[i].value;
-                }
-                else if (main[i].type == "select"){
-                    var input = document.createElement("select");
-                    input.setAttribute("class","form-group");
-                    for (var j = 0; j< main[i].option.length; j++) {
-                        var txt = main[i].option[j];
-                        var option =document.createElement("option");
-                        option.setAttribute("value",txt);
-                        var txtvalue = document.createTextNode(txt);
-                        option.appendChild(txtvalue);
-                        input.appendChild(option);
-                    };
-                }
-                child.appendChild(text);
-                child.appendChild(input);
-                maincont.appendChild(child);
-            };
+
+            
 
 //如果是管理员，不允许修改
             if(level == 1){
