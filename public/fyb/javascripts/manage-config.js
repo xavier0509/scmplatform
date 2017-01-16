@@ -46,7 +46,8 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":[]}}';
+				//node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":[]}}';
+				node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "opt": []}}';
 			}
 			
 			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
