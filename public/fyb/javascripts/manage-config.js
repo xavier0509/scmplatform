@@ -190,7 +190,6 @@ function returnAddInfo(){
 				console.log("lxw " + "修改失败");
 			};
 		};
-		freshHtml();
 	}
 }
 
