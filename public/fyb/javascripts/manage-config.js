@@ -84,10 +84,9 @@ function AferConfigHtmlInfo() {
 				console.log(nodeObj.data);
 				var nodeObjString = JSON.stringify(nodeObj.data);
 				console.log(nodeObjString);
-				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+node+'}}';
+				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
 				console.log("lxw "+ newNode);
-				//var node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
-				//sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
+				sendHTTPRequest("/fyb_api/configUpdate", newNode, returnAddInfo);
 			}
 			
 		}
