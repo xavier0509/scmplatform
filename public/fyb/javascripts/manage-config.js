@@ -152,7 +152,9 @@ function searchConfigInfo() {
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + JSON.stringify(data.data));
+			var SaveData = JSON.stringify(data.data);
+			console.log(SaveData);
+			console.log(SaveData[0]);
 			var kk = 0;
 			//[{"cnName":"HDMI延时","engName":"HDMIDelay","type":"value","value":"4321","vategory":"main","options":[]},
 			//{"cnName":"信源自切换","engName":"SourceSwitch","type":"enum","value":"false","vategory":"other","options":["true","false","undefined"]},
