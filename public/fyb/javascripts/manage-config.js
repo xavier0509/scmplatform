@@ -22,7 +22,7 @@ function AferConfigHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			//var keyValue = this.name;
 			keyValue = oTableA[i].nextSibling.value;
-			console.log("lxw "+JSON.stringify(keyValue));
+			console.log("lxw "+keyValue);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			toSaveButton(this.index,keyValue);
@@ -150,7 +150,7 @@ function searchConfigInfo() {
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data.length);
+			console.log("lxw " + JSON.stringify(data.data));
 			var kk = 0;
 			//[{"cnName":"HDMI延时","engName":"HDMIDelay","type":"value","value":"4321","vategory":"main","options":[]},
 			//{"cnName":"信源自切换","engName":"SourceSwitch","type":"enum","value":"false","vategory":"other","options":["true","false","undefined"]},
@@ -161,11 +161,11 @@ function searchConfigInfo() {
 				if (data.data[i].category == "main") {
 					kk = i;
 					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='display:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data)+"' style='display:none'></div>";
 				} else if(data.data[i].category == "other"){
 					kk = i;
 					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+data.data+"' style='display:block'></div>";
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data)+"' style='display:block'></div>";
 				}
 			}
 		};
