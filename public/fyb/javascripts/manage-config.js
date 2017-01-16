@@ -174,7 +174,7 @@ function searchConfigInfo() {
 	}
 }
 function returnAddInfo(){
-	console.log("lxw " + "searchConfigInfo");
+	console.log("lxw " + "returnChangeInfo");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
@@ -182,31 +182,20 @@ function returnAddInfo(){
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data.length);
-			var kk = 0;
-			//[{"cnName":"HDMI延时","engName":"HDMIDelay","type":"value","value":"4321","vategory":"main","options":[]},
-			//{"cnName":"信源自切换","engName":"SourceSwitch","type":"enum","value":"false","vategory":"other","options":["true","false","undefined"]},
-			var _rowConfigMain = document.getElementById("configMkTableTdOne");
-			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
-			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw "+data.data[i].category);
-				if (data.data[i].category == "main") {
-					kk = i;
-					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
-				} else if(data.data[i].category == "other"){
-					kk = i;
-					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
-				}
-			}
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				freshConfigAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
 		};
 		freshHtml();
 	}
 }
 
 /*刷新页面*/
-function freshModuleAddHtml() {
+function freshConfigAddHtml() {
 	var htmlObject = parent.document.getElementById("tab_userMenu6");
 	console.log("lxw " + htmlObject.firstChild.src);
 	htmlObject.firstChild.src = "manage-config.html";
