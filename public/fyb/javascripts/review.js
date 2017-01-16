@@ -6,10 +6,10 @@ $(function () {
     var loginusername = parent.loginusername;
     console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1}}}', reviewlist);
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1}}}', reviewlist);
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}', reviewlist);
     }    
 })
 
@@ -48,11 +48,19 @@ function reviewlist(){
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].memorySize;
                     var _cell6 = _row.insertCell(5);
+                    var operateType = datalength[i].operateType;
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
                     else{
-                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+                        if (operateType == 2) {
+                             _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>恢复</button></div>";
+
+                        }
+                        else{
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+
+                        }
                     }
                 };
             }
@@ -68,7 +76,68 @@ function reviewlist(){
 function review(obj){
     var chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     var model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
+    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{""}}', moduleResult);
+    // sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
+}
+
+function moduleResult(){
+    if (this.readyState == 4) {
+        // console.log("this.status = " + this.status);
+        console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            $('#myMoreDeleteModal').modal();
+
+            var app = [];
+            var appstore = [];
+            var homepage = [];
+            var ime = [];
+            var service = [];
+            var sysapp = [];
+            var main = [];
+            var other = [];
+
+            var data = JSON.parse(this.responseText);
+            for (var i = 0; i < data.data.length; i++) {
+                if(data.data[i].category == "App"){app.push(data.data[i]);}
+                else if (data.data[i].category == "AppStore") {appstore.push(data.data[i]);}
+                else if (data.data[i].category == "HomePage") {homepage.push(data.data[i]);}
+                else if (data.data[i].category == "IME") {ime.push(data.data[i]);}
+                else if (data.data[i].category == "Service") {service.push(data.data[i]);}
+                else if (data.data[i].category == "SysApp") {sysapp.push(data.data[i]);}
+            };
+
+            document.getElementById("appcont").innerHTML="";
+            document.getElementById("appstorecont").innerHTML="";
+            document.getElementById("homecont").innerHTML="";
+            document.getElementById("imecont").innerHTML="";
+            document.getElementById("servicecont").innerHTML="";
+            document.getElementById("syscont").innerHTML="";
+
+            creatMK(app,"appcont");
+            creatMK(appstore,"appstorecont");
+            creatMK(homepage,"homecont");
+            creatMK(ime,"imecont");
+            creatMK(service,"servicecont");
+            creatMK(sysapp,"syscont");
+
+            function creatMK(name,divname){
+                for (var i = 0; i < name.length; i++) {
+                    var cont = document.getElementById(divname);
+                    var child = document.createElement("div");
+                    child.setAttribute('class','col-sm-3 form-group');
+                    var text = document.createTextNode(name[i].name);
+                    var input = document.createElement("input");
+                    input.setAttribute('value',name[i].pkgname);
+                    input.setAttribute('type','checkbox');
+                    if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
+                    child.appendChild(input);
+                    child.appendChild(text);
+                    cont.appendChild(child);
+                }
+            }
+        }
+    }
 }
 
 function reviewresult(){
