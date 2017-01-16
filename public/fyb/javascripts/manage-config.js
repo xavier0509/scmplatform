@@ -80,6 +80,8 @@ function AferConfigHtmlInfo() {
 				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw in edit"+keylue);
+				var nodeObj = JSON.parse(node);
+				console.log(nodeObj.data);
 				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+node+'}}';
 				console.log("lxw "+ newNode);
 				//var node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
