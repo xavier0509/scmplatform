@@ -76,7 +76,7 @@ function reviewlist(){
 function review(obj){
     var chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     var model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{""}}', moduleResult);
+    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);
     // sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
 }
 
