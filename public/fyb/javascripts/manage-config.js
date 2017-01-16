@@ -32,17 +32,54 @@ function AferConfigHtmlInfo() {
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("lxw " + "in inputConfigSubmit");
-			var newConfigCzName = document.getElementById("configChineseName").value;
-			var newConfigEnName = document.getElementById("configEnglishName").value;
-			var newConfigSrc = document.getElementById("configSrc").value;
-			var newConfigInstr = document.getElementById("configInstr").value;
-			var newConfigSelect = document.getElementById("configSelect").value;
-			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
+			var node = null;//向后台传递的数据
+			var newConfigCzName = document.getElementById("configChineseName").value;//中文名
+			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
+			var newConfigSrc = document.getElementById("configSrc").value;//config信息
+			var newConfigInstr = document.getElementById("configInstr").value;//描述
+			var newConfigSelect = document.getElementById("configSelect").value;//下拉列表
+			
+			var configStringDisplay = document.getElementById("configString").style.display;
+			var newConfigString = null;
+			if (configStringDisplay == "none") {
+				newConfigString = null;
+			} else{
+				newConfigString = document.getElementById("configString").value;//value值是字符串
+				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","options":""}}';
+			}
+			
+			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
+			var newConfigMenu = new Array();//value值是枚举,值放入数组
+			var newConfigMenuObject = document.getElementsByClassName("menuUnit");
+			var newConfigMenuDiv = document.getElementById("ADCSEfficient");
+			//var menuElementStr = new Array();//json数组
+			var thisOneIndex,thisTwoIndex,valueOne,valueTwo = null;
+			if (configMenuDisplay == "block") {
+				for (var i=0; i<newConfigMenuObject.length;i++) {
+					//var menuElement = {};//json对象
+					thisOneIndex = 2*i;
+					thisTwoIndex = 2*i + 1;
+					valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
+					valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[thisTwoIndex].value;
+					console.log("lxw "+valueOne +":"+ valueTwo);
+					//menuElement[valueOne] = valueTwo;
+					//menuElementStr.push(JSON.stringify(menuElement));
+					newConfigMenu.push(valueTwo);
+				}
+				//menuElementStr = JSON.stringify(menuElement);
+				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","options":"'+newConfigMenu+'","desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+			} else{
+				newConfigMenu = null;
+			}
+			
 			if (myindex == null) {
 				console.log("lxw in add");
+				console.log("lxw "+ node);
 				//{"data":{"cnName": "DTV场景实现","engName": "1111","type":"value", "desc":"1234","value":"1234", "opt": []}}
 				//var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-				//sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
+				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw in edit");
 				//var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
@@ -135,4 +172,42 @@ function searchConfigInfo() {
 		};
 		AferConfigHtmlInfo();
 	}
+}
+function newConfigInstr(){
+	console.log("lxw " + "searchConfigInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			var kk = 0;
+			//[{"cnName":"HDMI延时","engName":"HDMIDelay","type":"value","value":"4321","vategory":"main","options":[]},
+			//{"cnName":"信源自切换","engName":"SourceSwitch","type":"enum","value":"false","vategory":"other","options":["true","false","undefined"]},
+			var _rowConfigMain = document.getElementById("configMkTableTdOne");
+			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw "+data.data[i].category);
+				if (data.data[i].category == "main") {
+					kk = i;
+					console.log("main:"+kk);
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "other"){
+					kk = i;
+					console.log("other:"+kk);
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a></div>";
+				}
+			}
+		};
+		freshHtml();
+	}
+}
+
+/*刷新页面*/
+function freshModuleAddHtml() {
+	var htmlObject = parent.document.getElementById("tab_userMenu6");
+	console.log("lxw " + htmlObject.firstChild.src);
+	htmlObject.firstChild.src = "manage-config.html";
 }
