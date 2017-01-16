@@ -23,16 +23,16 @@ function AferConfigHtmlInfo() {
 			keyValue = oTableA[i].nextSibling.value;
 			console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
-			console.log("lxw "+keyValueObj._id);
+			console.log("lxw "+keyValueObj);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-			toSaveButton(this.index,keyValueObj._id);
+			toSaveButton(this.index,keyValueObj);
 		}
 	}
 
 	/*模块管理板块-保存*/
-	function toSaveButton(myindex,keyValue) {
-		console.log(myindex+"---"+keyValue);
+	function toSaveButton(myindex,keylue) {
+		console.log(myindex+"---"+keylue);
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("lxw " + "in inputConfigSubmit");
@@ -79,9 +79,9 @@ function AferConfigHtmlInfo() {
 				console.log("lxw "+ node);
 				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
-				console.log("lxw in edit");
-				node = '{"data":{"condition":{"engName":"'+keyValue+'"},"update":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}}';
-				console.log("lxw "+ node);
+				console.log("lxw in edit"+keylue);
+				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+node+'}}';
+				console.log("lxw "+ newNode);
 				//var node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 				//sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
 			}
