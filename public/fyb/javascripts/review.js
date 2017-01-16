@@ -144,7 +144,6 @@ function moduleResult(){
     sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
     }
 }
-
 function configResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
