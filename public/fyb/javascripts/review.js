@@ -126,11 +126,11 @@ function moduleResult(){
                     var cont = document.getElementById(divname);
                     var child = document.createElement("div");
                     child.setAttribute('class','col-sm-3 form-group');
-                    var text = document.createTextNode(name[i].name);
+                    var text = document.createTextNode(name[i].cnName);
                     var input = document.createElement("input");
-                    input.setAttribute('value',name[i].pkgname);
-                    input.setAttribute('type','checkbox');
-                    if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
+                    input.setAttribute('value',name[i].engName);
+                    // input.setAttribute('type','checkbox');
+                    // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
                     child.appendChild(input);
                     child.appendChild(text);
                     cont.appendChild(child);
