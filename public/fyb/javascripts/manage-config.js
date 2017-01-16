@@ -154,12 +154,7 @@ function searchConfigInfo() {
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			//var SaveData = JSON.stringify(data.data);
-			//console.log(SaveData);
-			//console.log(SaveData[0]);
 			var kk = 0;
-			//[{"cnName":"HDMI延时","engName":"HDMIDelay","type":"value","value":"4321","vategory":"main","options":[]},
-			//{"cnName":"信源自切换","engName":"SourceSwitch","type":"enum","value":"false","vategory":"other","options":["true","false","undefined"]},
 			var _rowConfigMain = document.getElementById("configMkTableTdOne");
 			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
 			for(var i = 0; i < data.data.length; i++) {
@@ -167,11 +162,11 @@ function searchConfigInfo() {
 				if (data.data[i].category == "main") {
 					kk = i;
 					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[0])+"' style='display:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[kk])+"' style='display:none'></div>";
 				} else if(data.data[i].category == "other"){
 					kk = i;
 					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[0])+"' style='display:block'></div>";
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[kk])+"' style='display:block'></div>";
 				}
 			}
 		};
