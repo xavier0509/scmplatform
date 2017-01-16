@@ -46,7 +46,7 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":""}}';
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":[]}}';
 			}
 			
 			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
@@ -69,7 +69,7 @@ function AferConfigHtmlInfo() {
 				}
 				//menuElementStr = JSON.stringify(menuElement);
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":"'+newConfigMenu+'","desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":newConfigMenu,"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 			} else{
 				newConfigMenu = null;
 			}
