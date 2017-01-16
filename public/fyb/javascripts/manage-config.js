@@ -82,6 +82,8 @@ function AferConfigHtmlInfo() {
 				console.log("lxw in edit"+keylue);
 				var nodeObj = JSON.parse(node);
 				console.log(nodeObj.data);
+				var nodeObjString = JSON.stringify(nodeObj.data);
+				console.log(nodeObjString);
 				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+node+'}}';
 				console.log("lxw "+ newNode);
 				//var node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
