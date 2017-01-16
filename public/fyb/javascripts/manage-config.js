@@ -164,7 +164,7 @@ function searchConfigInfo() {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:block'></div>";
 				} else if(data.data[i].category == "other"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
