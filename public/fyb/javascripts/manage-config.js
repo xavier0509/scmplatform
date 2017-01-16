@@ -29,6 +29,7 @@ function AferConfigHtmlInfo() {
 
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex,keyValue) {
+		console.log(myindex+"---"+keyValue);
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("lxw " + "in inputConfigSubmit");
@@ -46,7 +47,6 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				//node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"input","value":"'+newConfigString+'",desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'","opt":[]}}';
 				node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "opt": []}}';
 			}
 			
@@ -54,22 +54,17 @@ function AferConfigHtmlInfo() {
 			var newConfigMenu = [];//value值是枚举,值放入数组
 			var newConfigMenuObject = document.getElementsByClassName("menuUnit");
 			var newConfigMenuDiv = document.getElementById("ADCSEfficient");
-			//var menuElementStr = new Array();//json数组
 			var thisOneIndex,thisTwoIndex,valueOne,valueTwo = null;
 			if (configMenuDisplay == "block") {
 				for (var i=0; i<newConfigMenuObject.length;i++) {
-					//var menuElement = {};//json对象
 					thisOneIndex = 2*i;
 					thisTwoIndex = 2*i + 1;
 					valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
 					valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[thisTwoIndex].value;
 					console.log("lxw "+valueOne +":"+ valueTwo);
-					//menuElement[valueOne] = valueTwo;
-					//menuElementStr.push(JSON.stringify(menuElement));
 					newConfigMenu.push(valueTwo);
 					console.log("lxw"+newConfigMenu);
 				}
-				//menuElementStr = JSON.stringify(menuElement);
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
 				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 			} else{
@@ -79,12 +74,12 @@ function AferConfigHtmlInfo() {
 			if (myindex == null) {
 				console.log("lxw in add");
 				console.log("lxw "+ node);
-				//{"data":{"cnName": "2","engName": "2", "configKey":"2", "type": "string", "desc": "2", "category": "other", "value": "2", "opt": []}
-				//var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
 				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw in edit");
-				//var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				node = '{"data":{"condition":{"engName":"'+keyValue+'"},"update":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}}';
+				console.log("lxw "+ node);
+				//var node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"select", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 				//sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
 			}
 			
