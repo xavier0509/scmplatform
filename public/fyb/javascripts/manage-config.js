@@ -51,7 +51,7 @@ function AferConfigHtmlInfo() {
 			}
 			
 			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
-			var newConfigMenu = new Array();//value值是枚举,值放入数组
+			var newConfigMenu = [];//value值是枚举,值放入数组
 			var newConfigMenuObject = document.getElementsByClassName("menuUnit");
 			var newConfigMenuDiv = document.getElementById("ADCSEfficient");
 			//var menuElementStr = new Array();//json数组
