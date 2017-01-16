@@ -173,7 +173,7 @@ function searchConfigInfo() {
 		AferConfigHtmlInfo();
 	}
 }
-function newConfigInstr(){
+function returnAddInfo(){
 	console.log("lxw " + "searchConfigInfo");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
