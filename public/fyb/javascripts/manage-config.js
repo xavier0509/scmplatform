@@ -23,8 +23,8 @@ function AferConfigHtmlInfo() {
 			console.log("lxw "+keyValue);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			toSaveButton(this.index,keyValue);
 		}
-		toSaveButton(this.index,keyValue);
 	}
 
 	/*模块管理板块-保存*/
