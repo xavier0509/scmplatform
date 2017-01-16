@@ -9,6 +9,7 @@ function AferConfigHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myConfigAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		toSaveButton(this.index,null);
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
@@ -18,17 +19,36 @@ function AferConfigHtmlInfo() {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
+			var keyValue = this.name;
+			console.log("lxw "+keyValue);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		toSaveButton(this.index);
+		toSaveButton(this.index,keyValue);
 	}
 
 	/*模块管理板块-保存*/
-	function toSaveButton(index) {
+	function toSaveButton(myindex,keyValue) {
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("lxw " + "in inputConfigSubmit");
+			var newConfigCzName = document.getElementById("configChineseName").value;
+			var newConfigEnName = document.getElementById("configEnglishName").value;
+			var newConfigSrc = document.getElementById("configSrc").value;
+			var newConfigInstr = document.getElementById("configInstr").value;
+			var newConfigSelect = document.getElementById("configSelect").value;
+			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
+			if (myindex == null) {
+				console.log("lxw in add");
+				//{"data":{"cnName": "DTV场景实现","engName": "1111","type":"value", "desc":"1234","value":"1234", "opt": []}}
+				//var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
+				//sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
+			} else{
+				console.log("lxw in edit");
+				//var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				//sendHTTPRequest("/fyb_api/configUpdate", node, returnChangeInfo);
+			}
+			
 		}
 	}
 
@@ -87,84 +107,6 @@ function AferConfigHtmlInfo() {
 /*点击配置管理，获取数据*/
 function searchConfigInfo() {
 	console.log("lxw " + "searchConfigInfo");
-//	var currentData = {
-//		"MainFunction": [{
-//			"EnglishName": "PANEL",
-//			"ChineseName": "屏幕"
-//		}, {
-//			"EnglishName": "NETWORK_SUPPORT_DEVICES",
-//			"ChineseName": "网络"
-//		}, {
-//			"EnglishName": "CONFIG_SOURCE_LIST",
-//			"ChineseName": "通道"
-//		}, {
-//			"EnglishName": "SUPPORT_BLE_REMOTE",
-//			"ChineseName": "蓝牙遥控"
-//		}, {
-//			"EnglishName": "SUPPORT_H265",
-//			"ChineseName": "H.265解码"
-//		}, {
-//			"EnglishName": "LOG_APPENDER",
-//			"ChineseName": "打印等级"
-//		}, {
-//			"EnglishName": "OTA_PATH",
-//			"ChineseName": "升级包路径"
-//		}, {
-//			"EnglishName": "NEW_BOOT_FLOW",
-//			"ChineseName": "新开机流程"
-//		}, {
-//			"EnglishName": "DEFAULT_HOMEPAGE",
-//			"ChineseName": "首页"
-//		}, {
-//			"EnglishName": "SUPPORT_SCREENSAVER",
-//			"ChineseName": "屏保"
-//		}, {
-//			"EnglishName": "SUPPORT_CHILDMODE",
-//			"ChineseName": "儿童模式"
-//		}, {
-//			"EnglishName": "DOLBY_DD_SUPPORT",
-//			"ChineseName": "杜比DD认证"
-//		}, {
-//			"EnglishName": "CURRENT_SERVER",
-//			"ChineseName": "基础服务后台"
-//		}],
-//		"OyherFunction": [{
-//			"EnglishName": "BITMAP_DECODE_MAX_SIZE",
-//			"ChineseName": "图片解码阀值"
-//		}, {
-//			"EnglishName": "SUPPORT_NEW_SUBTITLE",
-//			"ChineseName": "新字幕标准"
-//		}, {
-//			"EnglishName": "SUPPORT_SAMBA",
-//			"ChineseName": "Samba"
-//		}, {
-//			"EnglishName": "SUPPORT_PIC_PREVIEW",
-//			"ChineseName": "图片预览"
-//		}, {
-//			"EnglishName": "SUPPORT_VIDEO_PREVIEW",
-//			"ChineseName": "视频预览"
-//		}, {
-//			"EnglishName": "SUPPORT_SORT_FUNCTION",
-//			"ChineseName": "媒体分类"
-//		}]
-//	};
-//
-//	var key, counter = 0;
-//	var _rowconfigInfo = "";
-//	var _rowconfig = document.getElementById("config-mkTable");
-//	for(key in currentData) {
-//		counter++;
-//		//console.log("lxw " + key + "---" + currentData[key].length);
-//		_rowconfigInfo += "<tr><td><div>" + key + ":</div>";
-//		for(var j = 0; j < currentData[key].length; j++) {
-//			_rowconfigInfo += "<div class='col-xs-4'><a>" + currentData[key][j].ChineseName + "</a></div>";
-//			//console.log("lxw " + _rowconfigInfo);
-//		}
-//		_rowconfigInfo += "</td></tr>";
-//	}
-//	_rowconfig.innerHTML += _rowconfigInfo;
-
-	console.log("lxw " + "ModalHtmlInfo");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
