@@ -155,18 +155,21 @@ function searchConfigInfo() {
 		{
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
+			var pullDataOne,pullDataTwo =null;
 			var _rowConfigMain = document.getElementById("configMkTableTdOne");
 			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw "+data.data[i].category);
 				if (data.data[i].category == "main") {
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[kk])+"' style='display:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				} else if(data.data[i].category == "other"){
 					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+JSON.stringify(data.data[kk])+"' style='display:block'></div>";
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:block'></div>";
 				}
 			}
 		};
