@@ -401,15 +401,15 @@ function getAddInfoInfOne() {
 			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
 			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
 			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
-			_rowAddPageApp.innerHTML="<div>App:</div>";
-			_rowAddPageService.innerHTML="<div>Service:</div>";
-			_rowAddPageAppStore.innerHTML="<div>AppStore:</div>";
-			_rowAddPageHomePage.innerHTML="<div>HomePage:</div>";
-			_rowAddPageIME.innerHTML="<div>IME:</div>";
-			_rowAddPageSysApp.innerHTML="<div>SysApp:</div>";
-			_rowAddPageTV.innerHTML="<div>TV:</div>";
-			_rowAddPageOther.innerHTML="<div>Other:</div>";
-			
+			_rowAddPageApp.innerHTML = "<div>App:</div>";
+			_rowAddPageService.innerHTML = "<div>Service:</div>";
+			_rowAddPageAppStore.innerHTML = "<div>AppStore:</div>";
+			_rowAddPageHomePage.innerHTML = "<div>HomePage:</div>";
+			_rowAddPageIME.innerHTML = "<div>IME:</div>";
+			_rowAddPageSysApp.innerHTML = "<div>SysApp:</div>";
+			_rowAddPageTV.innerHTML = "<div>TV:</div>";
+			_rowAddPageOther.innerHTML = "<div>Other:</div>";
+
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
@@ -464,16 +464,31 @@ function getAddInfoInfTwo() {
 			var pullDataOne, pullDataTwo = null;
 			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdOne");
 			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdTwo");
-			_rowAddPageConfigMain.innerHTML ="<div>核心功能：</div>";
+			_rowAddPageConfigMain.innerHTML = "<div>核心功能：</div>";
 			_rowAddPageConfigOther.innerHTML = "<div>其他功能：</div>";
-			
+
 			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw " + data.data[i].category);
+				console.log("lxw " + data.data[i].category + data.data[i].type);
 				if(data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
-					_rowAddPageConfigMain.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].engName + "'>" + data.data[kk].cnName + " :</span><input type='text' name='" + data[key][j].type + "' value='" + data[key][j].value + "' placeholder='****'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myfirstselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myfirstselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myfirstselect = "<div class='col-xs-6'><span title='name'>" + data.data[kk].cnName + " :</span>" + _myfirstselect + "</select></div>";
+						console.log("lxw " + _myfirstselect);
+						_rowAddPageConfigOther.innerHTML += _myfirstselect;
+					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
@@ -542,8 +557,6 @@ function addConfigInfoInput(data) {
 					} else {
 						_myfirstselect += "<option value='" + data[key][j].options[k] + "'>" + data[key][j].options[k] + "</option>";
 					}
-
-					//console.log("lxw "+ data[key][j].pkgname+"---"+data[key][j].value);
 				}
 				_myfirstselect = "<div class='col-xs-6'><span title='name'>" + data[key][j].name + " :</span>" + _myfirstselect + "</select></div>";
 				console.log("lxw " + _myfirstselect);
@@ -1528,13 +1541,13 @@ function addPageButtons() {
 	}
 	var oButtonAdd = document.getElementById("myAddModalClose");
 	oButtonAdd.onclick = function() {
-		console.log("新增页-关闭按钮");
-		$('#myEditEnsureModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
-		//传参-关闭父页  
-		closeparentpage("#myAddModal");
-	}
-	//新增页mk-config button的点击
+			console.log("新增页-关闭按钮");
+			$('#myEditEnsureModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			//传参-关闭父页  
+			closeparentpage("#myAddModal");
+		}
+		//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 }
 
