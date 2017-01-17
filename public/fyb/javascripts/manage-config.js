@@ -33,6 +33,7 @@ function AferConfigHtmlInfo() {
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex,keylue) {
 		console.log(myindex+"---"+keylue);
+		
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("lxw " + "in inputConfigSubmit");
@@ -50,7 +51,13 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "opt": []}}';
+				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
+					//有一项为空时添加失败，后面做处理
+					node = null;
+				} else{
+					node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "opt": []}}';
+				}
+				
 			}
 			
 			var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
@@ -69,21 +76,28 @@ function AferConfigHtmlInfo() {
 					console.log("lxw"+newConfigMenu);
 				}
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-				node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
+					//有一项为空时添加失败，后面做处理
+					node = null;
+				} else{
+					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+				}
+				
 			} else{
 				newConfigMenu = null;
 			}
 			
 			if (myindex == null) {
-				console.log("lxw in add");
+				console.log("lxw in add 新增");
 				console.log("lxw "+ node);
 				sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 			} else{
-				console.log("lxw in edit"+keylue);
+				console.log("lxw in edit 单项编辑"+keylue);
 				var nodeObj = JSON.parse(node);
 				console.log(nodeObj.data);
 				var nodeObjString = JSON.stringify(nodeObj.data);
 				console.log(nodeObjString);
+				
 				var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
 				console.log("lxw "+ newNode);
 				sendHTTPRequest("/fyb_api/configUpdate", newNode, returnAddInfo);

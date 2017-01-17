@@ -42,9 +42,15 @@ function startSelect() {
 	var oMemory = document.getElementById('memory').value;
 	var oAndroid = document.getElementById('androidVersion').value;
 	var oChipid = document.getElementById('chipid').value;
-	var node = '{"data":{"platformModel":"' + oChip + '","productModel":"' + oMode + '","androidVersion":"' + oAndroid + '","chipModel":"' + oChipid + '","memorySize":"' + oMemory + '"}}';
+	var node = null;
+	if (oChip==null||oMode==null||oMemory==null||oAndroid==null||oChipid==null) {
+		//进来就查询，全查
+		node = '{"data":{"condition":{},"option":{}}}';
+	} else{
+		node = '{"data":{"condition":{"chip":"8A22"},"option":{"chip":1,"model":1}}}';
+	}
 	console.log("lxw "+node);
-	sendHTTPRequest("/api/configmananger/search", node, searchResource);
+	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
 }
 
 function searchResource() {
@@ -60,32 +66,32 @@ function searchResource() {
 			var data = JSON.parse(this.responseText);
 			var msg = data.msg;
 			if (msg == "success") {
-				var datalength = data.data;
-				console.log(datalength);
+				var mySearchData = data.data;
+				console.log(mySearchData+"--"+mySearchData.length);
 				for (var i = 0; i < datalength.length; i++) {
-					var objData = datalength[i].DevInfo;
-					console.log(objData);
-					for(var j = 0; j < objData.length; j++) {
-						_row = document.getElementById("wait-tablebody").insertRow(0);
-						var _cell0 = _row.insertCell(0);
-						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
-						var _cell1 = _row.insertCell(1);
-						_cell1.innerHTML = objData[j].platformModel;
-						var _cell2 = _row.insertCell(2);
-						_cell2.innerHTML = objData[j].productModel;
-						var _cell3 = _row.insertCell(3);
-						_cell3.innerHTML = objData[j].androidVersion;
-						var _cell4 = _row.insertCell(4);
-						_cell4.innerHTML = objData[j].chipModel;
-						var _cell5 = _row.insertCell(5);
-						_cell5.innerHTML = objData[j].memorySize;
-						var _cell6 = _row.insertCell(6);
-						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
-					};
+//					var objData = datalength[i].DevInfo;
+//					console.log(objData);
+//					for(var j = 0; j < objData.length; j++) {
+//						_row = document.getElementById("wait-tablebody").insertRow(0);
+//						var _cell0 = _row.insertCell(0);
+//						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+//						var _cell1 = _row.insertCell(1);
+//						_cell1.innerHTML = objData[j].platformModel;
+//						var _cell2 = _row.insertCell(2);
+//						_cell2.innerHTML = objData[j].productModel;
+//						var _cell3 = _row.insertCell(3);
+//						_cell3.innerHTML = objData[j].androidVersion;
+//						var _cell4 = _row.insertCell(4);
+//						_cell4.innerHTML = objData[j].chipModel;
+//						var _cell5 = _row.insertCell(5);
+//						_cell5.innerHTML = objData[j].memorySize;
+//						var _cell6 = _row.insertCell(6);
+//						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+//					};
 				};
 			}
 			else{
-				//查询为空
+				//查询失败
 
 			}
 		}
