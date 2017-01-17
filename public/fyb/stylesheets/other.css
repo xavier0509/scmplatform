@@ -163,6 +163,8 @@ td{
 .mytable span{
 	display: block;
     float: left;
+    width: 40%;
+    text-align: right;
     margin-left: 5%;
     font-size: 17px;
 }
