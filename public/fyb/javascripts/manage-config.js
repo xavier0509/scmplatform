@@ -51,12 +51,12 @@ function AferConfigHtmlInfo() {
 			} else{
 				newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
-					//有一项为空时添加失败，后面做处理
-					node = null;
-				} else{
+//				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
+//					//有一项为空时添加失败，后面做处理
+//					node = null;
+//				} else{
 					node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "opt": []}}';
-				}
+//				}
 				
 			}
 			
@@ -76,12 +76,12 @@ function AferConfigHtmlInfo() {
 					console.log("lxw"+newConfigMenu);
 				}
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
-					//有一项为空时添加失败，后面做处理
-					node = null;
-				} else{
+//				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
+//					//有一项为空时添加失败，后面做处理
+//					node = null;
+//				} else{
 					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","opt":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
-				}
+				//}
 				
 			} else{
 				newConfigMenu = null;
@@ -94,6 +94,8 @@ function AferConfigHtmlInfo() {
 			} else{
 				console.log("lxw in edit 单项编辑"+keylue);
 				var nodeObj = JSON.parse(node);
+				console.log("lxw "+ node);
+				console.log(nodeObj);
 				console.log(nodeObj.data);
 				var nodeObjString = JSON.stringify(nodeObj.data);
 				console.log(nodeObjString);
