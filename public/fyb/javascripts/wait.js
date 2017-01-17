@@ -48,13 +48,14 @@ function startSelect() {
 		//进来就查询，全查
 		node = '{"data":{"condition":{},"option":{}}}';
 	} else {
-		if(oChip!=""){myNeedObj[chip] = oChip;}
-		if(oMode!=""){myNeedObj[model] = oMode;}
-		if(oAndroid!=""){myNeedObj[androidVersion] = oAndroid;}
-		//if(oChipid!=""){myNeedObj[chipModel] = oChipid;}
-		if(oMemory!=""){myNeedObj[memorySize] = oMemory;}
-		console.log("lxw --->"+ myNeedObj);
-		node = '{"data":{"condition":'+myNeedObj+',"option":{}}}';
+		if(oChip!=""){myNeedObj['chip'] = oChip;}
+		if(oMode!=""){myNeedObj['model'] = oMode;}
+		if(oAndroid!=""){myNeedObj['androidVersion'] = oAndroid;}
+		if(oChipid!=""){myNeedObj['chipModel'] = oChipid;}
+		if(oMemory!=""){myNeedObj['memorySize'] = oMemory;}
+		console.log("lxw --->"+JSON.stringify(myNeedObj));
+		var myNeedString = JSON.stringify(myNeedObj);
+		node = '{"data":{"condition":'+myNeedString+',"option":{}}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
