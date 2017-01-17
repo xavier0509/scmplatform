@@ -70,9 +70,8 @@ function searchResource() {
 				var mySearchData = data.data;
 				console.log(mySearchData);
 				console.log(mySearchData.length);
+				console.log(mySearchData[0].memorySize);
 				for (var i = 0; i < mySearchData.length; i++) {
-//					var objData = datalength[i].DevInfo;
-//					console.log(objData);
 //					for(var j = 0; j < objData.length; j++) {
 //						_row = document.getElementById("wait-tablebody").insertRow(0);
 //						var _cell0 = _row.insertCell(0);
