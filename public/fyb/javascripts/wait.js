@@ -48,14 +48,24 @@ function startSelect() {
 		//进来就查询，全查
 		node = '{"data":{"condition":{},"option":{}}}';
 	} else {
-		if(oChip!=""){myNeedObj['chip'] = oChip;}
-		if(oMode!=""){myNeedObj['model'] = oMode;}
-		if(oAndroid!=""){myNeedObj['androidVersion'] = oAndroid;}
-		if(oChipid!=""){myNeedObj['chipModel'] = oChipid;}
-		if(oMemory!=""){myNeedObj['memorySize'] = oMemory;}
-		console.log("lxw --->"+JSON.stringify(myNeedObj));
+		if(oChip != "") {
+			myNeedObj['chip'] = oChip;
+		}
+		if(oMode != "") {
+			myNeedObj['model'] = oMode;
+		}
+		if(oAndroid != "") {
+			myNeedObj['androidVersion'] = oAndroid;
+		}
+		if(oChipid != "") {
+			myNeedObj['chipModel'] = oChipid;
+		}
+		if(oMemory != "") {
+			myNeedObj['memorySize'] = oMemory;
+		}
+		console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":'+myNeedString+'}';
+		node = '{"data":' + myNeedString + '}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
@@ -119,35 +129,8 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		getAddInfoInterface(); //获取点击新增时，获取后台的数据，生成新增页
-		addPageButtons(); //后期可能会传参给页面里的点击事件
-	}
-	/*点击新增-弹框里的各个按钮*/
-	function addPageButtons() {
-		var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
-		oButtonEditEnsure.onclick = function() {
-			console.log("新增页-提交按钮一");
-			addPageSubmitData();
-			$("#myAddModal").modal('hide');
-		}
-		var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
-		oButtonEditEnsure.onclick = function() {
-			console.log("新增页-提交按钮二");
-			addPageSubmitData();
-			$("#myAddModal").modal('hide');
-		}
-		var oButtonAdd = document.getElementById("myAddModalClose");
-		oButtonAdd.onclick = function() {
-			console.log("新增页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			//传参-关闭父页  
-			closeparentpage("#myAddModal");
-		}
-
-		//新增页mk-config button的点击
-		functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
-
+		//getAddInfoInterface(); //点击新增时，获取后台的数据，生成新增页
+		sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
 	/*批量修改*/
@@ -285,7 +268,7 @@ function AfterWaitHtmlinfo() {
 			}
 			moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
 		}
-	/*点击多项删除-弹框里的各个按钮*/
+		/*点击多项删除-弹框里的各个按钮*/
 	function moreDeletePageButtons() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
@@ -420,240 +403,95 @@ function AfterWaitHtmlinfo() {
 	}
 }
 //新增-获取后台接口数据，动态加载新增页面
-function getAddInfoInterface() {
-	var myData = {
-		"msg": "success",
-		"code": "1",
-		"data": {
-			"DevInfo": [{
-				"platformModel": "",
-				"productModel": "",
-				"androidVersion": "",
-				"chipModel": "",
-				"memorySize": "",
-				"pendingReview": ""
-			}],
-			"mkFile": {
-				"App": [{
-					"name": "酷开商城",
-					"state": "1",
-					"pkgname": "SkyCCMall"
-				}, {
-					"name": "教育中心",
-					"state": "0",
-					"pkgname": "SkyEDU"
-				}, {
-					"name": "电子说明书",
-					"state": "0",
-					"pkgname": "SkyManual"
-				}, {
-					"name": "影视中心",
-					"state": "0",
-					"pkgname": "SkyMovie"
-				}, {
-					"name": "二维码",
-					"state": "0",
-					"pkgname": "SkyQrcode"
-				}, {
-					"name": "远程服务",
-					"state": "0",
-					"pkgname": "SkyTVAgent"
-				}, {
-					"name": "亲友圈",
-					"state": "0",
-					"pkgname": "SkyTVQQ"
-				}, {
-					"name": "酷开用户",
-					"state": "0",
-					"pkgname": "SkyUser"
-				}, {
-					"name": "天气",
-					"state": "0",
-					"pkgname": "SkyWeather"
-				}, {
-					"name": "智慧家庭",
-					"state": "0",
-					"pkgname": "SkyCCMall"
-				}, {
-					"name": "搜狗语音",
-					"state": "0",
-					"pkgname": "SkyVoice"
-				}],
-				"AppStore": [{
-					"name": "应用圈",
-					"state": "0",
-					"pkgname": "SkyAppStore"
-				}, {
-					"name": "应用圈OEM版本",
-					"state": "0",
-					"pkgname": "SkyAppStore_OEM"
-				}, {
-					"name": "应用圈海外版本",
-					"state": "0",
-					"pkgname": "SkyAppStore_Oversea"
-				}, {
-					"name": "应用圈外包版本",
-					"state": "0",
-					"pkgname": "SkyAppStore_PE"
-				}, {
-					"name": "运营大厅",
-					"state": "0",
-					"pkgname": "SkyHall"
-				}, {
-					"name": "Opera浏览器",
-					"state": "0",
-					"pkgname": "OperaStore"
-				}],
-				"HomePage": [{
-					"name": "简易首页4.4",
-					"state": "0",
-					"pkgname": "SimpleHome5+.0"
-				}, {
-					"name": "简易首页5.0",
-					"state": "0",
-					"pkgname": "SimpleHomepage"
-				}, {
-					"name": "简易首页OEM",
-					"state": "0",
-					"pkgname": "SimpleHomepage_OEM"
-				}, {
-					"name": "常规首页",
-					"state": "0",
-					"pkgname": "SkyHomeShell"
-				}, {
-					"name": "海外首页",
-					"state": "0",
-					"pkgname": "SkyOverseaHomepage"
-				}, {
-					"name": "松下首页",
-					"state": "0",
-					"pkgname": "SkyPanasonicHome"
-				}],
-				"IME": [{
-					"name": "Android输入法",
-					"state": "0",
-					"pkgname": "AndroidKeyboard"
-				}, {
-					"name": "酷开系统输入法",
-					"state": "0",
-					"pkgname": "SkyTianciIME"
-				}, {
-					"name": "搜狗输入法",
-					"state": "0",
-					"pkgname": "SogouIME"
-				}],
-				"Service": [{
-					"name": "广告服务",
-					"state": "0",
-					"pkgname": "SkyADService"
-				}, {
-					"name": "设备服务",
-					"state": "0",
-					"pkgname": "SkyDEService"
-				}, {
-					"name": "数据采集服务",
-					"state": "0",
-					"pkgname": "SkyDataService"
-				}, {
-					"name": "通讯服务",
-					"state": "0",
-					"pkgname": "SkyIPCService"
-				}, {
-					"name": "推送服务",
-					"state": "0",
-					"pkgname": "SkyPushService"
-				}, {
-					"name": "智慧启动",
-					"state": "0",
-					"pkgname": "SkySSService"
-				}, {
-					"name": "系统服务",
-					"state": "0",
-					"pkgname": "SkySystemService"
-				}]
-			},
-			"configFile": {
-				"main": [{
-					"name": "屏幕",
-					"type": "input",
-					"pkgname": "PANEL",
-					"value": "",
-					"options": []
-				}, {
-					"name": "网络",
-					"type": "input",
-					"pkgname": "NETWORK",
-					"value": "",
-					"options": []
-				}, {
-					"name": "通道",
-					"type": "input",
-					"pkgname": "Source",
-					"value": "",
-					"options": []
-				}, {
-					"name": "蓝牙遥控",
-					"type": "select",
-					"pkgname": "BleRemote",
-					"value": "",
-					"options": ["false", "true"]
-				}, {
-					"name": "H.265解码",
-					"type": "select",
-					"pkgname": "H+.265",
-					"value": "",
-					"options": ["one", "two", "three"]
-				}, {
-					"name": "打印等级",
-					"type": "select",
-					"pkgname": "Log_appender",
-					"value": "",
-					"options": ["1", "2", "3", "4"]
-				}, {
-					"name": "升级包路径",
-					"type": "input",
-					"pkgname": "Ota_path",
-					"value": "",
-					"options": []
-				}],
-				"other": [{
-					"name": "HDMI延时",
-					"type": "input",
-					"pkgname": "HDMIDelay",
-					"value": "",
-					"options": []
-				}, {
-					"name": "信源自切换",
-					"type": "select",
-					"pkgname": "SourceSwitch",
-					"value": "",
-					"options": ["true", "false"]
-				}, {
-					"name": "数字通道字幕",
-					"type": "select",
-					"pkgname": "DTVSubTitle",
-					"value": "",
-					"options": ["english", "chinese", "hanyu"]
-				}, {
-					"name": "DTV场景实现",
-					"type": "input",
-					"pkgname": "DTVView",
-					"value": "",
-					"options": []
-				}]
+function getAddInfoInfOne() {
+	console.log("lxw " + "getAddInfoInfOne");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data);
+			var kk = 0;
+			var _rowAddPageApp = document.getElementById("myAddModalMkTableApp");
+			var _rowAddPageService = document.getElementById("myAddModalMkTableService");
+			var _rowAddPageAppStore = document.getElementById("myAddModalMkTableAppStore");
+			var _rowAddPageHomePage = document.getElementById("myAddModalMkTableHomePage");
+			var _rowAddPageIME = document.getElementById("myAddModalMkTableIME");
+			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
+			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
+			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw " + data.data[i].category);
+				if(data.data[i].category == "App") {
+					kk = i;
+					console.log("App:" + kk);
+					_rowAddPageApp.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "Service") {
+					kk = i;
+					console.log("Service:" + kk);
+					_rowAddPageService.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "AppStore") {
+					kk = i;
+					console.log("AppStore:" + kk);
+					_rowAddPageAppStore.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "HomePage") {
+					kk = i;
+					console.log("HomePage:" + kk);
+					_rowAddPageHomePage.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "IME") {
+					kk = i;
+					console.log("IME:" + kk);
+					_rowAddPageIME.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "SysApp") {
+					kk = i;
+					console.log("SysApp:" + kk);
+					_rowAddPageSysApp.innerHTML += "<div class='col-xs-4' name='" + data.data[kk].engName + "'><a>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "TV") {
+					kk = i;
+					console.log("TV:" + kk);
+					_rowAddPageTV.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				} else if(data.data[i].category == "Other") {
+					kk = i;
+					console.log("Other:" + kk);
+					_rowAddPageOther.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a></div>";
+				}
 			}
-		}
-	};
+		};
+		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getAddInfoInfTwo);
+	}
+}
 
-	var key, counter = 0;
-	for(key in myData.data) {
-		if(key == "DevInfo") {
-			addDeviceInfoInput(myData.data.DevInfo);
-		} else if(key == "mkFile") {
-			addMkInfoInput(myData.data.mkFile);
-		} else if(key == "configFile") {
-			addConfigInfoInput(myData.data.configFile);
-		}
+function getAddInfoInfTwo() {
+	console.log("lxw " + "searchConfigInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			var kk = 0;
+			var pullDataOne, pullDataTwo = null;
+			var _rowConfigMain = document.getElementById("configMkTableTdOne");
+			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw " + data.data[i].category);
+				if(data.data[i].category == "main") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("main:" + kk);
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
+				} else if(data.data[i].category == "other") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataTwo + "' style='display:none'></div>";
+				}
+			}
+		};
+		addPageButtons(); //后期可能会传参给页面里的点击事件
 	}
 }
 
@@ -1683,9 +1521,30 @@ function copyPageSubmitData() {
 //	}
 //}
 //
-////删除、批量删除弹出框确认按钮的点击
-//
-//function modalDelete(name){
-//	
-//}
-//
+/*点击新增-弹框里的各个按钮*/
+function addPageButtons() {
+	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
+	oButtonEditEnsure.onclick = function() {
+		console.log("新增页-提交按钮一");
+		addPageSubmitData();
+		$("#myAddModal").modal('hide');
+	}
+	var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
+	oButtonEditEnsure.onclick = function() {
+		console.log("新增页-提交按钮二");
+		addPageSubmitData();
+		$("#myAddModal").modal('hide');
+	}
+	var oButtonAdd = document.getElementById("myAddModalClose");
+	oButtonAdd.onclick = function() {
+		console.log("新增页-关闭按钮");
+		$('#myEditEnsureModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		//传参-关闭父页  
+		closeparentpage("#myAddModal");
+	}
+
+	//新增页mk-config button的点击
+	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
+
+}
