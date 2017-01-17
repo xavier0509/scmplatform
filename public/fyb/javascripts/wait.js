@@ -51,7 +51,7 @@ function startSelect() {
 		if(oChip!=""){myNeedObj[chip] = oChip;}
 		if(oMode!=""){myNeedObj[model] = oMode;}
 		if(oAndroid!=""){myNeedObj[androidVersion] = oAndroid;}
-		if(oChipid!=""){myNeedObj[chipModel] = oChipid;}
+		//if(oChipid!=""){myNeedObj[chipModel] = oChipid;}
 		if(oMemory!=""){myNeedObj[memorySize] = oMemory;}
 		console.log("lxw --->"+ myNeedObj);
 		node = '{"data":{"condition":'+myNeedObj+',"option":{}}}';
