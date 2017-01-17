@@ -80,12 +80,12 @@ function reviewlist(){
 function recover(obj){
     var rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     var remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0"}}}',recoverResult);
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
 
 }
 
 function recoverResult(){
-    
+
 }
 
 function review(obj){
