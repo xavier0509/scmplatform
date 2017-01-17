@@ -42,12 +42,19 @@ function startSelect() {
 	var oAndroid = document.getElementById('androidVersion').value;
 	var oChipid = document.getElementById('chipid').value;
 	var node = null;
+	var myNeedObj = {};
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
-	if(oChip == "" || oMode == "" || oMemory == "" || oAndroid == "" || oChipid == "") {
+	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
 		node = '{"data":{"condition":{},"option":{}}}';
 	} else {
-		node = '{"data":{"condition":{"chip":"8A22"},"option":{"chip":1,"model":1}}}';
+		if(oChip!=""){myNeedObj[chip] = oChip;}
+		if(oMode!=""){myNeedObj[model] = oMode;}
+		if(oAndroid!=""){myNeedObj[androidVersion] = oAndroid;}
+		if(oChipid!=""){myNeedObj[chipModel] = oChipid;}
+		if(oMemory!=""){myNeedObj[memorySize] = oMemory;}
+		console.log("lxw "+ myNeedObj);
+		node = '{"data":{"condition":'+myNeedObj+',"option":{}}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
@@ -68,11 +75,6 @@ function searchResource() {
 			if(msg == "success") {
 				var mySearchData = data.data;
 				console.log(mySearchData);
-				console.log("机芯：" + mySearchData[0].chip);
-				console.log("机型：" + mySearchData[0].model);
-				console.log("android版本：" + mySearchData[0].androidVersion);
-				console.log("芯片版本：" + mySearchData[0].chipModel);
-				console.log("内存：" + mySearchData[0].memorySize);
 				for(var j = 0; j < mySearchData.length; j++) {
 					_row = document.getElementById("wait-tablebody").insertRow(0);
 					var _cell0 = _row.insertCell(0);
@@ -92,15 +94,13 @@ function searchResource() {
 				};
 			} else {
 				//查询失败
-
 			}
 		}
+		AfterWaitHtmlinfo(); //具体细节操作
 	}
-	AfterWaitHtmlinfo(); //具体细节操作
 }
 
 function AfterWaitHtmlinfo() {
-
 	console.log("admin=" + adminFlag);
 	if(adminFlag == "1") {
 		document.getElementById("wait-change").style.display = "block";
@@ -113,15 +113,15 @@ function AfterWaitHtmlinfo() {
 	/*点击新增按钮*/
 	var oButtonAdd = document.getElementById("wait-add");
 	oButtonAdd.onclick = function() {
-			var currentParentName = oButtonAdd.id;
-			var thisIndex = null;
-			$("#myAddModalLabel").text("新增");
-			$("#myAddModal").modal("toggle");
-			$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-			getAddInfoInterface(); //获取点击新增时，获取后台的数据，生成新增页
-			addPageButtons(); //后期可能会传参给页面里的点击事件
-		}
-		/*点击新增-弹框里的各个按钮*/
+		var currentParentName = oButtonAdd.id;
+		var thisIndex = null;
+		$("#myAddModalLabel").text("新增");
+		$("#myAddModal").modal("toggle");
+		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+		getAddInfoInterface(); //获取点击新增时，获取后台的数据，生成新增页
+		addPageButtons(); //后期可能会传参给页面里的点击事件
+	}
+	/*点击新增-弹框里的各个按钮*/
 	function addPageButtons() {
 		var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
 		oButtonEditEnsure.onclick = function() {
@@ -284,7 +284,7 @@ function AfterWaitHtmlinfo() {
 			}
 			moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
 		}
-		/*点击多项删除-弹框里的各个按钮*/
+	/*点击多项删除-弹框里的各个按钮*/
 	function moreDeletePageButtons() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
