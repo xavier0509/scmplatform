@@ -55,7 +55,7 @@ function startSelect() {
 		if(oMemory!=""){myNeedObj['memorySize'] = oMemory;}
 		console.log("lxw --->"+JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":'+myNeedString+',"option":{}}}';
+		node = '{"data":'+myNeedString+'}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
