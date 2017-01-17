@@ -61,7 +61,7 @@ function reviewlist(){
 
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>编辑</button></div>";
 
                         }
                     }
@@ -76,10 +76,22 @@ function reviewlist(){
     }
 }
 
+//点击恢复按钮执行函数-----将待审核状态置0
+function recover(obj){
+    var rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
+    var remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0"}}}',recoverResult);
+
+}
+
+function recoverResult(){
+    
+}
+
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);
+    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    //查询模块信息接口
     // sendHTTPRequest("/reviewcontent", '{"data":{"platformModel":"'+chip+'","productModel":"'+model+'"}}', reviewresult);
 }
 
@@ -141,67 +153,69 @@ function moduleResult(){
                 }
             }
         }
-    // sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
+    // 查询对应机芯机型的配置信息
     sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
-function configResult(){
-    if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
-        // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
-        {
-            var main = [];
-            var other = [];
 
-            var data = JSON.parse(this.responseText);
-            for (var i = 0; i < data.data.length; i++) {
-                if(data.data[i].category == "main"){main.push(data.data[i]);}
-                else if (data.data[i].category == "other") {other.push(data.data[i]);}
-            };
 
-            document.getElementById("maincont").innerHTML="";
-            document.getElementById("othercont").innerHTML="";
+// function configResult(){
+//     if (this.readyState == 4) {
+//         // console.log("this.status = " + this.status);
+//         // console.log("this.responseText = " + this.responseText);
+//         if (this.status == 200) //TODO
+//         {
+//             var main = [];
+//             var other = [];
 
-            creatConfig(main,"maincont");
-            creatConfig(other,"othercont");
+//             var data = JSON.parse(this.responseText);
+//             for (var i = 0; i < data.data.length; i++) {
+//                 if(data.data[i].category == "main"){main.push(data.data[i]);}
+//                 else if (data.data[i].category == "other") {other.push(data.data[i]);}
+//             };
 
-            function creatConfig(name,divname){
-                for (var i = 0; i < name.length; i++) {
-                    var cont = document.getElementById(divname);
-                    var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-5 form-group text-right');
-                    var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
-                    if (name[i].type == "string") {
-                        var input = document.createElement("input");
-                        input.setAttribute("title",name[i].engName);
-                        input.value = name[i].value;
-                    }
-                    else if (name[i].type == "enum"){
-                        var input = document.createElement("select");
-                        input.setAttribute("title",name[i].engName);
-                        input.setAttribute("class","form-group");
-                        for (var j = 0; j< name[i].options.length; j++) {
-                            var txt = name[i].options[j];
-                            var option =document.createElement("option");
-                            option.setAttribute("value",txt);
-                            if (txt == name[i].value) {
-                                option.setAttribute("selected","")
-                            };
-                            var txtvalue = document.createTextNode(txt);
-                            option.appendChild(txtvalue);
-                            input.appendChild(option);
-                        };
-                    }
-                    child.appendChild(text);
-                    child.appendChild(input);
-                    cont.appendChild(child);
-                }
-            }
-        }
-    sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
-    }    
-}
+//             document.getElementById("maincont").innerHTML="";
+//             document.getElementById("othercont").innerHTML="";
+
+//             creatConfig(main,"maincont");
+//             creatConfig(other,"othercont");
+
+//             function creatConfig(name,divname){
+//                 for (var i = 0; i < name.length; i++) {
+//                     var cont = document.getElementById(divname);
+//                     var child = document.createElement("div");
+//                     child.setAttribute('class','col-sm-5 form-group text-right');
+//                     var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
+//                     if (name[i].type == "string") {
+//                         var input = document.createElement("input");
+//                         input.setAttribute("title",name[i].engName);
+//                         input.value = name[i].value;
+//                     }
+//                     else if (name[i].type == "enum"){
+//                         var input = document.createElement("select");
+//                         input.setAttribute("title",name[i].engName);
+//                         input.setAttribute("class","form-group");
+//                         for (var j = 0; j< name[i].options.length; j++) {
+//                             var txt = name[i].options[j];
+//                             var option =document.createElement("option");
+//                             option.setAttribute("value",txt);
+//                             if (txt == name[i].value) {
+//                                 option.setAttribute("selected","")
+//                             };
+//                             var txtvalue = document.createTextNode(txt);
+//                             option.appendChild(txtvalue);
+//                             input.appendChild(option);
+//                         };
+//                     }
+//                     child.appendChild(text);
+//                     child.appendChild(input);
+//                     cont.appendChild(child);
+//                 }
+//             }
+//         }
+//     sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+//     }    
+// }
 
 
 function reviewresult(){
