@@ -158,11 +158,11 @@ td{
 }
 .mytable input{
 	display: block;
-    float: right;
+    float: left;
 }
 .mytable span{
 	display: block;
-    float: right;
+    float: left;
     margin-left: 5%;
 }
 .mybody{
