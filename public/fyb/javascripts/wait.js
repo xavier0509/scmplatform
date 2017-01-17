@@ -53,7 +53,7 @@ function startSelect() {
 		if(oAndroid!=""){myNeedObj[androidVersion] = oAndroid;}
 		if(oChipid!=""){myNeedObj[chipModel] = oChipid;}
 		if(oMemory!=""){myNeedObj[memorySize] = oMemory;}
-		console.log("lxw "+ myNeedObj);
+		console.log("lxw --->"+ myNeedObj);
 		node = '{"data":{"condition":'+myNeedObj+',"option":{}}}';
 	}
 	console.log("lxw " + node);
