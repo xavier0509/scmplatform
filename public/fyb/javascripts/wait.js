@@ -380,27 +380,6 @@ function AfterWaitHtmlinfo() {
 		//复制页mk-config button的点击
 		functionMkConfigTable("myCopyModalMkButton", "myCopyModalMkTable", "myCopyModalConfigButton", "myCopyModalConfigTable");
 	}
-
-	function closeparentpage(pageName) {
-		var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
-		oButtonObject.onclick = function() {
-			$(pageName).modal('hide');
-			$("#myEditEnsureModal").modal('hide');
-		}
-	}
-
-	function functionMkConfigTable(name1, table1, name2, table2) {
-		var oMkButtonObject = document.getElementById(name1);
-		oMkButtonObject.onclick = function() {
-			document.getElementById(table1).style.display = "block";
-			document.getElementById(table2).style.display = "none";
-		}
-		var oConfigButtonObject = document.getElementById(name2);
-		oConfigButtonObject.onclick = function() {
-			document.getElementById(table2).style.display = "block";
-			document.getElementById(table1).style.display = "none";
-		}
-	}
 }
 //新增-获取后台接口数据，动态加载新增页面
 function getAddInfoInfOne() {
@@ -1543,8 +1522,27 @@ function addPageButtons() {
 		//传参-关闭父页  
 		closeparentpage("#myAddModal");
 	}
-
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
+}
 
+function functionMkConfigTable(name1, table1, name2, table2) {
+	var oMkButtonObject = document.getElementById(name1);
+	oMkButtonObject.onclick = function() {
+		document.getElementById(table1).style.display = "block";
+		document.getElementById(table2).style.display = "none";
+	}
+	var oConfigButtonObject = document.getElementById(name2);
+	oConfigButtonObject.onclick = function() {
+		document.getElementById(table2).style.display = "block";
+		document.getElementById(table1).style.display = "none";
+	}
+}
+
+function closeparentpage(pageName) {
+	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
+	oButtonObject.onclick = function() {
+		$(pageName).modal('hide');
+		$("#myEditEnsureModal").modal('hide');
+	}
 }
