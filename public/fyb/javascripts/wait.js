@@ -67,8 +67,9 @@ function searchResource() {
 			var msg = data.msg;
 			if (msg == "success") {
 				var mySearchData = data.data;
-				console.log(mySearchData+"--"+mySearchData.length);
-				for (var i = 0; i < datalength.length; i++) {
+				console.log(mySearchData);
+				console.log(mySearchData.length);
+				for (var i = 0; i < mySearchData.length; i++) {
 //					var objData = datalength[i].DevInfo;
 //					console.log(objData);
 //					for(var j = 0; j < objData.length; j++) {
