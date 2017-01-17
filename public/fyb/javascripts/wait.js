@@ -43,6 +43,7 @@ function startSelect() {
 	var oAndroid = document.getElementById('androidVersion').value;
 	var oChipid = document.getElementById('chipid').value;
 	var node = null;
+	console.log(oChip+"--"+oMode+"--"+oMemory+"--"+oAndroid+"--"+oChipid);
 	if (oChip==null||oMode==null||oMemory==null||oAndroid==null||oChipid==null) {
 		//进来就查询，全查
 		node = '{"data":{"condition":{},"option":{}}}';
