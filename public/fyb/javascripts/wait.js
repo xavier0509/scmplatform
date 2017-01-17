@@ -69,26 +69,29 @@ function searchResource() {
 			if (msg == "success") {
 				var mySearchData = data.data;
 				console.log(mySearchData);
-				console.log(mySearchData.length);
-				console.log(mySearchData[0].memorySize);
+				console.log("机芯："+mySearchData[0].chip);
+				console.log("机型："+mySearchData[0].model);
+				console.log("android版本："+mySearchData[0].androidVersion);
+				console.log("芯片版本："+mySearchData[0].chipModel);
+				console.log("内存："+mySearchData[0].memorySize);
 				for (var i = 0; i < mySearchData.length; i++) {
-//					for(var j = 0; j < objData.length; j++) {
-//						_row = document.getElementById("wait-tablebody").insertRow(0);
-//						var _cell0 = _row.insertCell(0);
-//						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
-//						var _cell1 = _row.insertCell(1);
-//						_cell1.innerHTML = objData[j].platformModel;
-//						var _cell2 = _row.insertCell(2);
-//						_cell2.innerHTML = objData[j].productModel;
-//						var _cell3 = _row.insertCell(3);
-//						_cell3.innerHTML = objData[j].androidVersion;
-//						var _cell4 = _row.insertCell(4);
-//						_cell4.innerHTML = objData[j].chipModel;
-//						var _cell5 = _row.insertCell(5);
-//						_cell5.innerHTML = objData[j].memorySize;
-//						var _cell6 = _row.insertCell(6);
-//						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
-//					};
+					for(var j = 0; j < objData.length; j++) {
+						_row = document.getElementById("wait-tablebody").insertRow(0);
+						var _cell0 = _row.insertCell(0);
+						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+						var _cell1 = _row.insertCell(1);
+						_cell1.innerHTML = mySearchData[j].chip;
+						var _cell2 = _row.insertCell(2);
+						_cell2.innerHTML = mySearchData[j].model;
+						var _cell3 = _row.insertCell(3);
+						_cell3.innerHTML = mySearchData[j].androidVersion;
+						var _cell4 = _row.insertCell(4);
+						_cell4.innerHTML = mySearchData[j].chipModel;
+						var _cell5 = _row.insertCell(5);
+						_cell5.innerHTML = mySearchData[j].memorySize;
+						var _cell6 = _row.insertCell(6);
+						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+					};
 				};
 			}
 			else{
