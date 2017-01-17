@@ -480,14 +480,14 @@ function getAddInfoInfTwo() {
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myfirstselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
 							} else {
-								_myfirstselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myfirstselect = "<div class='col-xs-6'><span title='name'>" + data.data[kk].cnName + " :</span>" + _myfirstselect + "</select></div>";
-						console.log("lxw " + _myfirstselect);
-						_rowAddPageConfigOther.innerHTML += _myfirstselect;
+						_myAddselect = "<div class='col-xs-6'><span title='name'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigOther.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
