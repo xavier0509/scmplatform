@@ -57,11 +57,11 @@ function reviewlist(){
                     }
                     else{
                         if (operateType == 2) {
-                             _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>恢复</button></div>";
+                             _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
 
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>编辑</button></div>";
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this)'>编辑</button></div>";
 
                         }
                     }
