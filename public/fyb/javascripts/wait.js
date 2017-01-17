@@ -44,7 +44,7 @@ function startSelect() {
 	var oChipid = document.getElementById('chipid').value;
 	var node = null;
 	console.log(oChip+"--"+oMode+"--"+oMemory+"--"+oAndroid+"--"+oChipid);
-	if (oChip==null||oMode==null||oMemory==null||oAndroid==null||oChipid==null) {
+	if (oChip==""||oMode==""||oMemory==""||oAndroid==""||oChipid=="") {
 		//进来就查询，全查
 		node = '{"data":{"condition":{},"option":{}}}';
 	} else{
