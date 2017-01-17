@@ -401,6 +401,15 @@ function getAddInfoInfOne() {
 			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
 			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
 			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
+			_rowAddPageApp.innerHTML="";
+			_rowAddPageService.innerHTML="";
+			_rowAddPageAppStore.innerHTML="";
+			_rowAddPageHomePage.innerHTML="";
+			_rowAddPageIME.innerHTML="";
+			_rowAddPageSysApp.innerHTML="";
+			_rowAddPageTV.innerHTML="";
+			_rowAddPageOther.innerHTML="";
+			
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
