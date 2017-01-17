@@ -487,7 +487,7 @@ function getAddInfoInfTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6'><span title='name'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						console.log("lxw " + _myAddselect);
-						_rowAddPageConfigOther.innerHTML += _myAddselect;
+						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
