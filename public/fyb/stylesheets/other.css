@@ -210,44 +210,52 @@ td{
 }
 #myCopyModalConfigTable div select{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myCopyModalConfigTable div input{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myEditModalConfigTable div{
 	margin-bottom: 5px;
 }
 #myEditModalConfigTable div select{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myEditModalConfigTable div input{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myAddModalConfigTable div{
 	margin-bottom: 5px;
 }
 #myAddModalConfigTable div select{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myAddModalConfigTable div input{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myMoreEditModalConfigTable div{
 	margin-bottom: 5px;
 }
 #myMoreEditModalConfigTable div select{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 #myMoreEditModalConfigTable div input{
 	width: 36%;
-	float: right;
+	float: left;
+	margin-left: 5%;
 }
 
 
