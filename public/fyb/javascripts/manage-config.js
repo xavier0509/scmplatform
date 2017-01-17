@@ -72,7 +72,7 @@ function AferConfigHtmlInfo() {
 					valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
 					valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[thisTwoIndex].value;
 					console.log("lxw "+valueOne +":"+ valueTwo);
-					newConfigMenu.push(valueTwo);
+					newConfigMenu.push("+valueTwo+");
 					console.log("lxw"+newConfigMenu);
 				}
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
