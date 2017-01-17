@@ -19,8 +19,8 @@ var model = null;
 function reviewlist(){
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
 
@@ -86,7 +86,7 @@ function review(obj){
 function moduleResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
+        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
             $('#myMoreDeleteModal').modal();
@@ -141,13 +141,14 @@ function moduleResult(){
                 }
             }
         }
-    sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
+    // sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult);   
+    sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 function configResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
+        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
             var main = [];
@@ -176,7 +177,7 @@ function configResult(){
                         input.setAttribute("title",name[i].engName);
                         input.value = name[i].value;
                     }
-                    else if (name[i].type == "select"){
+                    else if (name[i].type == "enum"){
                         var input = document.createElement("select");
                         input.setAttribute("title",name[i].engName);
                         input.setAttribute("class","form-group");
@@ -207,8 +208,8 @@ function reviewresult(){
     var level = parent.adminFlag;
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
 
@@ -216,6 +217,8 @@ function reviewresult(){
 
             var data = JSON.parse(this.responseText);
             // console.log(data[0]);
+
+            //更新设备信息
             document.getElementById("chip").value=data.data[0].chip;
             document.getElementById("model").value=data.data[0].model;
             document.getElementById("device").value=data.data[0].targetProduct;
@@ -223,10 +226,62 @@ function reviewresult(){
             document.getElementById("chipid").value=data.data[0].chipModel;
             document.getElementById("memory").value=data.data[0].memorySize;
 
+
+            //更新mk文件信息
             var mkfile = data.data[0].mkFile;
             for (var i = 0; i < mkfile.length; i++) {
                 document.getElementById(mkfile[i].engName).setAttribute('checked','');
             };
+
+            //生成config文件
+
+            var configfile = data.data[0].configFile;
+            var main = [];
+            var other = [];
+
+            for (var i = 0; i < configfile.length; i++) {
+                if(configfile[i].category == "main"){main.push(configfile[i]);}
+                else if (configfile[i].category == "other") {other.push(configfile[i]);}
+            };
+
+            document.getElementById("maincont").innerHTML="";
+            document.getElementById("othercont").innerHTML="";
+
+            creatConfig(main,"maincont");
+            creatConfig(other,"othercont");
+
+            function creatConfig(name,divname){
+                for (var i = 0; i < name.length; i++) {
+                    var cont = document.getElementById(divname);
+                    var child = document.createElement("div");
+                    child.setAttribute('class','col-sm-5 form-group text-right');
+                    var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
+                    if (name[i].type == "string") {
+                        var input = document.createElement("input");
+                        input.setAttribute("title",name[i].engName);
+                        input.value = name[i].value;
+                    }
+                    else if (name[i].type == "enum"){
+                        var input = document.createElement("select");
+                        input.setAttribute("title",name[i].engName);
+                        input.setAttribute("class","form-group");
+                        for (var j = 0; j< name[i].options.length; j++) {
+                            var txt = name[i].options[j];
+                            var option =document.createElement("option");
+                            option.setAttribute("value",txt);
+                            if (txt == name[i].value) {
+                                option.setAttribute("selected","")
+                            };
+                            var txtvalue = document.createTextNode(txt);
+                            option.appendChild(txtvalue);
+                            input.appendChild(option);
+                        };
+                    }
+                    child.appendChild(text);
+                    child.appendChild(input);
+                    cont.appendChild(child);
+                }
+            }
 
             
 
