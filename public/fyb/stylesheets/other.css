@@ -156,6 +156,10 @@ td{
 	padding-bottom: 0px;
 	font-size: 18px;
 }
+.mytable span{
+	display: block;
+    float: right;
+}
 .mybody{
 	padding-bottom: 0px;
 }
