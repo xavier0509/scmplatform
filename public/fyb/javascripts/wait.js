@@ -680,7 +680,7 @@ function addPageSubmitData() {
 	
 	//获取config里的数据
 	var addConfigFile = [];
-	var oAconfigTrlength = document.getElementById("myAddModalConfigTableTbody").childNodes;
+	var oAconfigTrlength = document.getElementById("myAddModalConfigTableTbody").find("tr");
 	console.log("lxw " + oAconfigTrlength.length);
 	var thisConfigindex = null;
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
