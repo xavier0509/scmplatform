@@ -494,7 +494,7 @@ function getAddInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].engName + "'>" + data.data[kk].cnName + " :</span><input type='text' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='****'></div>";
+						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='"+data.data[kk].engName+"' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='****'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -505,7 +505,7 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='name'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='"+data.data[kk].engName+"' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						console.log("lxw " + _myAddselect);
 						_rowAddPageConfigOther.innerHTML += _myAddselect;
 					}
