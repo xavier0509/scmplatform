@@ -619,7 +619,9 @@ function addPageSubmitData() {
 		var thisConfigindex = null;
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 		//console.log("lxw" +oAconfigTrDiv.length);
-		var oAstuInfo = {
+		for(var j = 0; j < oAconfigTrDiv.length; j++) {
+			var oAopt = [];
+			var oAstuInfo = {
 				"cnName": "",
 				"engName": "",
 				"type": "",
@@ -628,8 +630,6 @@ function addPageSubmitData() {
 				"desc": "XXXXX",
 				"opt": []
 			};
-		for(var j = 0; j < oAconfigTrDiv.length; j++) {
-			var oAopt = [];
 			thisConfigindex = j;
 			if(j == 0) {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
@@ -652,7 +652,7 @@ function addPageSubmitData() {
 				}
 				oAstuInfo.opt = oAopt;
 			}
-			//console.log("lxw "+JSON.stringify(oAstuInfo));
+			console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(oAstuInfo);
 		}
 	}
