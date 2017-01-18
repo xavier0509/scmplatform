@@ -401,9 +401,13 @@ function reviewEdit(){
     };
     console.log("更新的config信息："+JSON.stringify(configdataarry));
 
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+'}}}',reviewEditResult);
+
 }
 
-
+function reviewEditResult(){
+    
+}
 
 
 
