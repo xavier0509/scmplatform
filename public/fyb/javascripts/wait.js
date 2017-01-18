@@ -694,7 +694,7 @@ function addPageSubmitData() {
 				oAstuInfo.opt = oAopt;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfo));
-			addConfigFile.push(JSON.stringify(oAstuInfo));
+			addConfigFile.push(oAstuInfo);
 		}
 	}
 	console.log("lxw "+addConfigFile);
