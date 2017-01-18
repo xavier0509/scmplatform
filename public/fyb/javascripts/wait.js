@@ -816,6 +816,7 @@ function getEditInforesult() {
 				console.log("lxw " + data.data[0].mkFile.length); //mk
 				for(var i = 0; i < data.data[0].mkFile.length; i++) {
 					console.log("lxw "+data.data[0].mkFile[i].engName);
+					document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
 
