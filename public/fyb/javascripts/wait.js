@@ -1103,7 +1103,7 @@ function copyPageSubmitData(){
 	for(var i = 0; i < oCconfigTrlength.length; i++) {
 		var oCConfigobj = {};
 		var thisConfigindex = null;
-		oEconfigTrDiv = $("#myCopyModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		oCconfigTrDiv = $("#myCopyModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 		console.log("lxw" + oCconfigTrDiv.length);
 		for(var j = 1; j < oCconfigTrDiv.length; j++) {
 			var oCopt = [];
