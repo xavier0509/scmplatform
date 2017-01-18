@@ -242,7 +242,7 @@ function reviewresult(){
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
                         input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",opt);
+                        input.setAttribute("opt",opt);
                         input.setAttribute("cnName",name[i].cnName);
                         input.setAttribute("value",name[i].value);
                         input.setAttribute("class","form-group");
