@@ -14,7 +14,7 @@ function sessionresult() {
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
@@ -101,7 +101,7 @@ function searchResource() {
 					var _cell5 = _row.insertCell(5);
 					_cell5.innerHTML = mySearchData[j].memorySize;
 					var _cell6 = _row.insertCell(6);
-					_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit'>编辑</button><button type='button' class='btn btn-default eachdelete'>删除</button><button type='button' class='btn btn-default eachcopy'>复制</button></div>";
+					_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='"+mySearchData[j].chip+"' model='"+mySearchData[j].model+"'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='"+mySearchData[j].chip+"' model='"+mySearchData[j].model+"'>删除</button><button type='button' class='btn btn-default eachcopy' chip='"+mySearchData[j].chip+"' model='"+mySearchData[j].model+"'>复制</button></div>";
 				};
 			} else {
 				//查询失败
@@ -376,7 +376,6 @@ function AfterWaitHtmlinfo() {
 			//传参-关闭父页  
 			closeparentpage("#myCopyModal");
 		}
-
 		//复制页mk-config button的点击
 		functionMkConfigTable("myCopyModalMkButton", "myCopyModalMkTable", "myCopyModalConfigButton", "myCopyModalConfigTable");
 	}
@@ -388,7 +387,7 @@ function getAddInfoInfOne() {
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
@@ -457,7 +456,7 @@ function getAddInfoInfTwo() {
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200) 
 		{
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -513,73 +512,6 @@ function getAddInfoInfTwo() {
 			}
 		};
 		addPageButtons(); //后期可能会传参给页面里的点击事件
-	}
-}
-
-function addDeviceInfoInput(data) {
-	document.getElementById("newAddChip").value = data[0].platformModel;
-	document.getElementById("newAddModel").value = data[0].productModel;
-	document.getElementById("newAddDevice").value = data[0].chipModel;
-	document.getElementById("NewAddAndroidVersion").value = data[0].androidVersion;
-	document.getElementById("newAddMemory").value = data[0].memorySize;
-	document.getElementById("newAddChipMode").value = data[0].pendingReview;
-}
-
-function addMkInfoInput(data) {
-	var _myAddTableMKInsertInfo = "";
-	var myAddTableMKInsert = document.getElementById("myAddModalMkTableTbody");
-	myAddTableMKInsert.innerHTML = "";
-	var key, counter = 0;
-	for(key in data) {
-		counter++;
-		console.log("lxw counter = " + counter + "--" + key);
-		_myAddTableMKInsertInfo = "<tr><td><div>" + key + "</div>";
-		for(var j = 0; j < data[key].length; j++) {
-			_myAddTableMKInsertInfo += "<div class='col-xs-3' title='" + data[key][j].pkgname + "'><input type='checkbox' value=''><span>" + data[key][j].name + "</span></div>";
-			console.log("lxw " + _myAddTableMKInsertInfo);
-		}
-		_myAddTableMKInsertInfo += "</td></tr>";
-		console.log("lxw " + counter);
-		myAddTableMKInsert.innerHTML += _myAddTableMKInsertInfo;
-	}
-}
-
-function addConfigInfoInput(data) {
-	var _myAddTableConfigInsertInfo = "";
-	var myAddTableMConfigInsert = document.getElementById("myAddModalConfigTableTbody");
-	myAddTableMConfigInsert.innerHTML = "";
-	var key, counter = 0;
-	for(key in data) {
-		counter++;
-		console.log("lxw counter = " + counter + "--" + key);
-		if(key == "main") {
-			_myAddTableConfigInsertInfo = "<tr><td><div title='" + key + "'>核心功能</div>";
-		} else if(key == "other") {
-			_myAddTableConfigInsertInfo = "<tr><td><div title='" + key + "'>其他功能</div>";
-		}
-
-		for(var j = 0; j < data[key].length; j++) {
-			console.log("lxw " + data[key][j].name);
-			console.log("lxw " + data[key][j].type);
-			if(data[key][j].type == "input") {
-				_myAddTableConfigInsertInfo += "<div class='col-xs-6'><span title='" + data[key][j].pkgname + "'>" + data[key][j].name + " :</span><input type='text' name='" + data[key][j].type + "' value='" + data[key][j].value + "' placeholder='****'></div>";
-			} else if(data[key][j].type == "select") {
-				var _myfirstselect = "<select id='" + data[key][j].pkgname + "' name='" + data[key][j].type + "'>";
-				console.log("lxw " + data[key][j].options.length);
-				for(var k = 0; k < data[key][j].options.length; k++) {
-					if(data[key][j].options[k] == data[key][j].value) {
-						_myfirstselect += "<option value='" + data[key][j].options[k] + "'selected>" + data[key][j].options[k] + "</option>";
-					} else {
-						_myfirstselect += "<option value='" + data[key][j].options[k] + "'>" + data[key][j].options[k] + "</option>";
-					}
-				}
-				_myfirstselect = "<div class='col-xs-6'><span title='name'>" + data[key][j].name + " :</span>" + _myfirstselect + "</select></div>";
-				console.log("lxw " + _myfirstselect);
-				_myAddTableConfigInsertInfo += _myfirstselect;
-			}
-		}
-		_myAddTableConfigInsertInfo += "</td></tr>";
-		myAddTableMConfigInsert.innerHTML += _myAddTableConfigInsertInfo;
 	}
 }
 
@@ -710,7 +642,7 @@ function productAddresult(){
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
