@@ -285,13 +285,16 @@ function AfterWaitHtmlinfo() {
 		oClassButtonEdit[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			console.log(oClassButtonEdit[thisIndex].getAttribute("chip"));
+			var ochip = oClassButtonEdit[thisIndex].getAttribute("chip");
+			var omodel = oClassButtonEdit[thisIndex].getAttribute("model");
+			console.log("lxw "+ochip+"--"+omodel);
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 			//getEditInfoInterface(thisIndex,this.chip,this.model); //获取点击单项编辑时，获取后台的数据，生成单项编辑页
-			//var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-			//sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
+			//{"data":{"condition":{"chip":"8A22","model":"8A22"},"option":{}}}
+			var node = '{"data":{"condition":{"chip":"'+ochip+'","model":"'+omodel+'"},"option":{}}}';
+			sendHTTPRequest("/fyb_api/productQuery", node, getEditInforesult);
 			editPageButtonsOnclick(thisIndex);
 		}
 	}
@@ -640,7 +643,6 @@ function addPageSubmitData() {
 }
 
 function productAddresult(){
-	console.log("lxw " + "添加的结果反馈");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
@@ -660,14 +662,26 @@ function productAddresult(){
 		};
 	}
 }
-//function freshHoneAddHtml(){
-//	var htmlObject = parent.document.getElementById("home");
-//	console.log("lxw " + htmlObject.firstChild.src);
-//	htmlObject.firstChild.src = "wait.html";
-//}
+
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
-function getEditInfoInterface(index,chip,model) {
-	
+function getEditInforesult() {
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "访问成功");
+				console.log("lxw "+ data.data);
+				
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "访问失败");
+			};
+		};
+	}
 }
 
 
