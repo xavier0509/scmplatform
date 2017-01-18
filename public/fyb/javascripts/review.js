@@ -373,9 +373,18 @@ function reviewEdit(){
                     opt.push(child[i].value);
                 };
                 console.log(opt);
-                var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
-                console.log(data);
-                array2.push(JSON.parse(data));
+                var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
+                data.engName = engName;
+                data.value = value;
+                data.cnName = cnName;
+                data.configkey = configkey;
+                data.desc = desc;
+                data.category = category;
+                data.options = opt;
+                data.type = type;
+                // var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
+                console.log(JSON.stringify(data));
+                array2.push(data);
 
             }
             // console.log(JSON.stringify(array2));
