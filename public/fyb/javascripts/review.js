@@ -87,6 +87,19 @@ function recover(obj){
 
 //恢复的回调函数
 function recoverResult(){
+    // console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                freshConfigAddHtml();
+            };
+
+        }
+    }
 
 }
 
@@ -294,7 +307,19 @@ function reviewresult(){
 
 //点击审核通过的回调
 function passResult(){
+    // console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                freshConfigAddHtml();
+            };
 
+        }
+    }
 }
 
 //点击编辑提交的函数
@@ -406,8 +431,26 @@ function reviewEdit(){
 }
 
 function reviewEditResult(){
-    
+    // console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                freshConfigAddHtml();
+            };
+
+        }
+    }
 }
+
+function freshConfigAddHtml() {
+    var htmlObject = parent.document.getElementById("tab_userMenu2");
+    // console.log("lxw " + htmlObject.firstChild.src);
+    htmlObject.firstChild.src = "review.html";
+}   
 
 
 
