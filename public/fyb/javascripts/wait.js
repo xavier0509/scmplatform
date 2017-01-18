@@ -669,26 +669,24 @@ function addPageSubmitData() {
 		console.log("lxw" +oAMkTrDiv.length);
 		
 		for(var j = 1; j < oAMkTrDiv.length; j++) {
-			var oAoptTwo = [];
-			var oAstuInfoTwo = {
-				"cnName": "",
-				"engName": "",
-				"gitPath": "",
-				"category": "",
-				"desc": "XXXXX",//后期做“”的处理。
-			};
 			oAMkindex = j;
-			oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
-			oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].innerHTML;
-			oAstuInfoTwo.engName = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("name");
-			oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
 			if (oAMkTrDiv[oAMkindex].childNodes[0].checked == true) {
+				var oAoptTwo = [];
+				var oAstuInfoTwo = {
+					"cnName": "",
+					"engName": "",
+					"gitPath": "",
+					"category": "",
+					"desc": "XXXXX",//后期做“”的处理。
+				};
+				oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
+				oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].innerHTML;
+				oAstuInfoTwo.engName = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("name");
+				oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
 				oAstuInfoTwo.value = 1;
 				addMkFile.push(oAstuInfoTwo);
-			} else{
-				oAstuInfoTwo.value = 0;
+				console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 			}
-			console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 		}
 	}
 	console.log("lxw "+JSON.stringify(addMkFile));
