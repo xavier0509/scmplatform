@@ -688,7 +688,7 @@ function addPageSubmitData() {
 			} else{
 				oAstuInfoTwo.value = 0;
 			}
-			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
+			console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 		}
 	}
 	console.log("lxw "+JSON.stringify(addMkFile));
