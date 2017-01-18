@@ -706,7 +706,7 @@ function addPageSubmitData() {
 			var oAoptTwo = [];
 			oAMkindex = j;
 			oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
-			oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].value;
+			oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].innerHTML;
 			oAstuInfoTwo.engName = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("name");
 			oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
 			if (oAMkTrDiv[oAMkindex].childNodes[0].checked == true) {
@@ -715,9 +715,9 @@ function addPageSubmitData() {
 				oAstuInfoTwo.value = 0;
 			}
 			console.log("lxw "+JSON.stringify(oAstuInfoTwo));
-			addMkFile.push(JSON.stringify(oAstuInfo));
+			addMkFile.push(JSON.stringify(oAstuInfoTwo));
 		}
-		console.log("lxw "+addMkFile);
+		//console.log("lxw "+addMkFile);
 	}
 	
 	dataObj = {
