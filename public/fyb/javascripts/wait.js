@@ -665,12 +665,12 @@ function addPageSubmitData() {
 	var oAMkindex = null;
 	for(var i = 0; i < oAMkTrDiv.length; i++) {
 		var oAMkobj = {};
-		oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" +oAMkTrDiv.length);
+		oAMkTrDivTwo = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" +oAMkTrDivTwo.length);
 		
-		for(var j = 1; j < oAMkTrDiv.length; j++) {
+		for(var j = 1; j < oAMkTrDivTwo.length; j++) {
 			oAMkindex = j;
-			if (oAMkTrDiv[oAMkindex].childNodes[0].checked == true) {
+			if (oAMkTrDivTwo[oAMkindex].childNodes[0].checked == true) {
 				var oAoptTwo = [];
 				var oAstuInfoTwo = {
 					"cnName": "",
@@ -679,10 +679,10 @@ function addPageSubmitData() {
 					"category": "",
 					"desc": "XXXXX",//后期做“”的处理。
 				};
-				oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
-				oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].innerHTML;
-				oAstuInfoTwo.engName = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("name");
-				oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
+				oAstuInfoTwo.category = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("category");
+				oAstuInfoTwo.cnName = oAMkTrDivTwo[oAMkindex].childNodes[1].innerHTML;
+				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
+				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
 				oAstuInfoTwo.value = 1;
 				addMkFile.push(oAstuInfoTwo);
 				console.log("lxw "+JSON.stringify(oAstuInfoTwo));
