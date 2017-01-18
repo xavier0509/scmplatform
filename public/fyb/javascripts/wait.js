@@ -633,7 +633,6 @@ function addPageSubmitData() {
 			thisConfigindex = j;
 			if(j == 0) {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
-				//console.log("lxw "+ oAstuInfo.category);
 			} else {
 				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
@@ -652,7 +651,6 @@ function addPageSubmitData() {
 				}
 				oAstuInfo.options = oAopt;
 			}
-			//console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(oAstuInfo);
 		}
 	}
@@ -667,7 +665,6 @@ function addPageSubmitData() {
 		var oAMkobj = {};
 		oAMkTrDivTwo = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
 		console.log("lxw" +oAMkTrDivTwo.length);
-		
 		for(var j = 1; j < oAMkTrDivTwo.length; j++) {
 			oAMkindex = j;
 			if (oAMkTrDivTwo[oAMkindex].childNodes[0].checked == true) {
