@@ -748,7 +748,32 @@ function addPageSubmitData() {
 	console.log("lxw" +JSON.stringify(dataObj));
 	//var node = '{"data":{'+ +'}}';
 	var oAnode = '{"data":'+JSON.stringify(dataObj)+'}';
-	sendHTTPRequest("/fyb_api/productAdd", oAnode, sessionresult);
+	sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
+}
+
+function productAddresult(){
+	console.log("lxw " + "添加的结果反馈");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "添加成功");
+				freshHoneAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+	}
+}
+function freshHoneAddHtml(){
+	var htmlObject = parent.document.getElementById("main");
+	console.log("lxw " + htmlObject.firstChild.src);
+	htmlObject.firstChild.src = "wait.html";
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
