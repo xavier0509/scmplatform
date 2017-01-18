@@ -567,9 +567,9 @@ function addPageSubmitData() {
 				"options": []
 			};
 			thisConfigindex = j;
-//			if(j == 0) {
+			//if(j == 0) {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
-//			} else {
+			//} else {
 				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 				console.log("lxw" + oAstuInfo.engName);
@@ -586,7 +586,7 @@ function addPageSubmitData() {
 					}
 				}
 				oAstuInfo.options = oAopt;
-			}
+			//}
 			addConfigFile.push(oAstuInfo);
 		}
 	}
