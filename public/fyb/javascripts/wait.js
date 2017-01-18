@@ -825,7 +825,6 @@ function getEditInforesult() {
 					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value',data.data[0].configFile[i].value);
 				}
-
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
@@ -834,7 +833,123 @@ function getEditInforesult() {
 }
 
 function editPageSubmitData() {
+	var dataObj = {
+		"configFile": "",
+		"mkFile": "",
+		"memorySize": "",
+		"chipModel": "",
+		"androidVersion": "",
+		"model": "",
+		"chip": "",
+		"targetProduct": "",
+		"gerritState": "0", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
+		"userName": "xxxxx",
+		"desc": "enenen"
+	};
+	// 获取DeviceInfo里的信息
+	var oEchip = document.getElementById("newEditChip").value;
+	var oEmodel = document.getElementById("newEditModel").value;
+	var oEandroidVersion = document.getElementById("NewEditAndroidVersion").value;
+	var oEchipModel = document.getElementById("newEditChipMode").value;
+	var oEmemorySize = document.getElementById("newEditMemory").value;
+	var oEtargetProduct = document.getElementById("newEditDevice").value;
+	var oEgerritState = "0";
+	var oEoperateType = "1";
+	var userName = "xxxxx";
+	var desc = "enheng";
 
+	//获取config里的数据
+	var editConfigFile = [];
+	var oEconfigTrlength = $("#myEditModalConfigTableTbody").find("tr");
+	console.log("lxw " + oEconfigTrlength.length);
+	for(var i = 0; i < oEconfigTrlength.length; i++) {
+		var oEConfigobj = {};
+		var thisConfigindex = null;
+		oEconfigTrDiv = $("#myEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" +oEconfigTrDiv.length);
+		for(var j = 1; j < oEconfigTrDiv.length; j++) {
+			var oEopt = [];
+			var oEstuInfo = {
+				"cnName": "",
+				"engName": "",
+				"type": "",
+				"value": "",
+				"category": "",
+				"desc": "XXXXX",
+				"options": []
+			};
+			thisConfigindex = j;
+				oEstuInfo.category = oEconfigTrDiv[thisConfigindex].title;
+				oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
+				oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+				console.log("lxw" + oEstuInfo.engName);
+				oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
+				oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
+				if(oEstuInfo.type == "string") {
+					oEopt = [];
+				} else if(oEstuInfo.type == "enum") {
+					var jjlength = oEconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
+					console.log("lxw " + jjlength.length);
+					for(var jj = 0; jj < jjlength.length; jj++) {
+						var optValue = jjlength[jj].value;
+						oEopt.push(optValue);
+					}
+				}
+				oEstuInfo.options = oEopt;
+			//}
+			editConfigFile.push(oEstuInfo);
+		}
+	}
+	console.log("lxw " + JSON.stringify(editConfigFile));
+
+	//获取mkFile里的信息
+	var editMkFile = [];
+	var oEMkTrDiv = $("#myEditModalMkTableTbody").find("tr");
+	console.log("lxw " + oEMkTrDiv.length);
+	var oEMkindex = null;
+	for(var i = 0; i < oEMkTrDiv.length; i++) {
+		var oEMkobj = {};
+		oEMkTrDivTwo = $("#myEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oEMkTrDivTwo.length);
+		for(var j = 1; j < oEMkTrDivTwo.length; j++) {
+			oEMkindex = j;
+			if(oEMkTrDivTwo[oEMkindex].childNodes[0].checked == true) {
+				var oEoptTwo = [];
+				var oEstuInfoTwo = {
+					"cnName": "",
+					"engName": "",
+					"gitPath": "",
+					"category": "",
+					"desc": "XXXXX", //后期做“”的处理。
+				};
+				oEInfoTwo.category = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("category");
+				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
+				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
+				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
+				editMkFile.push(oEstuInfoTwo);
+				console.log("lxw " + JSON.stringify(oEstuInfoTwo));
+			}
+		}
+	}
+	console.log("lxw " + JSON.stringify(editMkFile));
+	dataObj.configFile = editConfigFile;
+	dataObj.mkFile = editMkFile;
+	dataObj.memorySize = oEmemorySize;
+	dataObj.chipModel = oEchipModel;
+	dataObj.androidVersion = oEandroidVersion;
+	dataObj.model = oEmodel;
+	dataObj.chip = oEchip;
+	dataObj.targetProduct = oEtargetProduct;
+	dataObj.gerritState = "0"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
+	dataObj.userName = "xxxxx";
+	dataObj.desc = "enenen";
+
+	console.log("lxw" + JSON.stringify(dataObj));
+	var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
+	console.log("lxw "+oEnode);
+	//sendHTTPRequest("/fyb_api/productAdd", oEnode, productAddresult);
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInterface(index) {
