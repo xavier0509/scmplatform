@@ -242,7 +242,7 @@ function reviewresult(){
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
                         input.setAttribute("category",name[i].category);
-                        input.setAttribute("opt",opt);
+                        input.setAttribute("options",opt);
                         input.setAttribute("cnName",name[i].cnName);
                         input.setAttribute("value",name[i].value);
                         input.setAttribute("class","form-group");
@@ -312,8 +312,8 @@ function reviewEdit(){
     getmkdata("#imecont");
     getmkdata("#servicecont");
     getmkdata("#syscont");
-    // getconfigdata("#maincont");
-    // getconfigdata("#othercont");
+    getconfigdata("#maincont");
+    getconfigdata("#othercont");
 
     //获取mk文件数据
     function getmkdata(name){
@@ -347,19 +347,25 @@ function reviewEdit(){
     console.log("更新的mk信息："+JSON.stringify(mkdataarry))
 
     //获取config文件数据
-    // function getconfigdata(name){
-    //     $size = $(name).find("div");
-    //     var array2 = [];
-    //     for (var i = 0; i < $size.length; i++) {
-    //         var pkgname = $size[i].childNodes[1].title;
-    //         var value = $size[i].childNodes[1].value;
-    //         var data = '{"pkgname":"'+pkgname+'","value":"'+value+'"}';
-    //         console.log(data);
-    //         array2.push(JSON.parse(data));
-    //     };
-    //     dataarry.push(array2);
-    //     console.log(dataarry);
-    // }
+    function getconfigdata(name){
+        $size = $(name).find("div");
+        var array2 = [];
+        for (var i = 0; i < $size.length; i++) {
+            var engName = $size[i].childNodes[1].engName;
+            var value = $size[i].childNodes[1].value;
+            var cnName = $size[i].childNodes[1].cnName;
+            var configkey = $size[i].childNodes[1].configkey;
+            var desc = $size[i].childNodes[1].desc;
+            var category = $size[i].childNodes[1].category;
+            var options = $size[i].childNodes[1].options;
+            var type = $size[i].childNodes[1].type;
+            var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+options+'","type":"'+type+'"}';
+            console.log(data);
+            array2.push(JSON.parse(data));
+        };
+        configdd.push(array2);
+        console.log(configdd);
+    }
 
 }
 
