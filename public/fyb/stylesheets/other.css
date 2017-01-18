@@ -171,6 +171,23 @@ td{
 .mytable div{
 	margin-bottom: 4px;
 }
+/*新增页mk和config的布局*/
+#myAddModalMkTableTbody input{
+	display: block;
+    float: left;
+}
+#myAddModalMkTableTbody span{
+	display: block;
+    float: left;
+    width: 72%;
+    text-align: right;
+    margin-left: 1%;
+    font-size: 17px;
+}
+#myAddModalMkTableTbody div{
+	margin-bottom: 4px;
+}
+
 .mybody{
 	padding-bottom: 0px;
 }
