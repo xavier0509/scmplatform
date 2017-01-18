@@ -359,9 +359,11 @@ function reviewEdit(){
             var category = $size[i].childNodes[1].getAttribute("category");
             var opt = $size[i].childNodes[1].getAttribute("options");
             var options = opt.split(",");
+            console.log("opt==="+opt+"&&&&&&&options:"+options);
             var type = $size[i].childNodes[1].getAttribute("type");
             if (type == "string") {
                 var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":[],"type":"'+type+'"}';
+                console.log(data);
                 array2.push(JSON.parse(data));
             }
             else{
