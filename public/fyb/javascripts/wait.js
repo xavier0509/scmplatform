@@ -302,8 +302,6 @@ function AfterWaitHtmlinfo() {
 	oClassButtonDelete = document.getElementsByClassName("eachdelete");
 	for(var i = 0; i < oClassButtonDelete.length; i++) {
 		oClassButtonDelete[i].index = i;
-		TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
-		TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
 		oClassButtonDelete[i].onclick = function() {
 			console.log("in delete");
 			console.log(this.index); //点击的是第几个
