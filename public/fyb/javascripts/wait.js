@@ -789,7 +789,7 @@ function getEditInfoInfTwo() {
 				}
 			}
 		};
-		var node = '{"data":{"condition":{"chip":"' + ochip + '","model":"' + omodel + '"},"option":{}}}';
+		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
 		sendHTTPRequest("/fyb_api/productQuery", node, getEditInforesult);
 		//editPageButtonsOnclick(); //后期可能会传参给页面里的点击事件
 	}
