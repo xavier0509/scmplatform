@@ -625,7 +625,20 @@ function addPageSubmitData() {
 //		"configFile": configFileData //参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
 //	};
 //	console.log(data);
-	var dataObj = null;
+	var dataObj = {
+		"configFile": [],
+		"mkFile": [],
+		"memorySize": "",
+	    "chipModel": "",
+	    "androidVersion": "",
+	    "model": "",
+	    "chip": "",
+	    "targetProduct": "",
+	    "gerritState": "0",   // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	    "operateType": "1",   // 0表示无状态，1表示增加，2表示删除，3表示修改
+	    "userName": "xxxxx",
+	    "desc": "enenen"
+	};
 	// 获取DeviceInfo里的信息
 	var oAchip = document.getElementById("newAddChip").value;
 	var oAmodel = document.getElementById("newAddModel").value;
@@ -719,21 +732,18 @@ function addPageSubmitData() {
 		}
 	}
 	console.log("lxw "+addMkFile);
-	
-	dataObj = {
-		"configFile": addConfigFile,
-		"mkFile": addMkFile,
-		"memorySize": oAmemorySize,
-	    "chipModel": oAchipModel,
-	    "androidVersion": oAandroidVersion,
-	    "model": oAmodel,
-	    "chip": oAchip,
-	    "targetProduct": oAtargetProduct,
-	    "gerritState": "0",   // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
-	    "operateType": "1",   // 0表示无状态，1表示增加，2表示删除，3表示修改
-	    "userName": "xxxxx",
-	    "desc": "enenen"
-	};
+	dataObj.configFile = addConfigFile;
+	dataObj.mkFile = addMkFile;
+	dataObj.memorySize = oAmemorySize;
+	dataObj.chipModel = oAchipModel;
+	dataObj.androidVersion = oAandroidVersion;
+	dataObj.model = oAmodel;
+	dataObj.chip = oAchip;
+	dataObj.targetProduct = oAtargetProduct;
+	dataObj.gerritState = "0";// 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	dataObj.operateType = "1";// 0表示无状态，1表示增加，2表示删除，3表示修改
+	dataObj.userName = "xxxxx";
+	dataObj.desc = "enenen";
 	console.log("lxw" +JSON.stringify(dataObj));
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
