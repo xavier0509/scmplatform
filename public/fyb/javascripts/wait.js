@@ -732,8 +732,8 @@ function addPageSubmitData() {
 		}
 	}
 	console.log("lxw "+addMkFile);
-	dataObj.configFile = addConfigFile;
-	dataObj.mkFile = addMkFile;
+	dataObj.configFile = JSON.stringify(addConfigFile);
+	dataObj.mkFile =  JSON.stringify(addMkFile);
 	dataObj.memorySize = oAmemorySize;
 	dataObj.chipModel = oAchipModel;
 	dataObj.androidVersion = oAandroidVersion;
