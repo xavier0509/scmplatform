@@ -290,7 +290,7 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
-			console.log("lxw "+ochip+"--"+omodel);
+			console.log("lxw "+TwiceTransferChip+"--"+TwiceTransferModel);
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
