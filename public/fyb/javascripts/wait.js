@@ -689,7 +689,7 @@ function addPageSubmitData() {
 		console.log(lxw +oAconfigTrDiv.length);
 		for(var j = 0; j < oAconfigTrDiv.length; j++) {
 			var oAstuInfo = {
-				"cnName": "",获取一下参数
+				"cnName": "",
 				"engName": "",
 				"type": "",
 				"value": "",
