@@ -360,13 +360,13 @@ function reviewEdit(){
             var opt = $size[i].childNodes[1].getAttribute("options");
             var options = opt.split(",");
             var type = $size[i].childNodes[1].getAttribute("type");
-            var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+options+'","type":"'+type+'"}';
+            var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":'+options+',"type":"'+type+'"}';
             // console.log(data);
             array2.push(JSON.parse(data));
             // console.log(JSON.stringify(array2));
         };
         configdd.push(array2);
-        console.log(JSON.stringify(configdd));
+        // console.log(JSON.stringify(configdd));
     }
     for (var i = 0; i < configdd.length; i++) {
         if (configdd[i].length>0) {
