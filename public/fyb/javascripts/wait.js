@@ -771,7 +771,7 @@ function productAddresult(){
 	}
 }
 function freshHoneAddHtml(){
-	var htmlObject = parent.document.getElementById("main");
+	var htmlObject = parent.document.getElementById("home");
 	console.log("lxw " + htmlObject.firstChild.src);
 	htmlObject.firstChild.src = "wait.html";
 }
