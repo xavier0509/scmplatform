@@ -294,7 +294,6 @@ function AfterWaitHtmlinfo() {
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 			//getEditInfoInterface(thisIndex,this.chip,this.model); //获取点击单项编辑时，获取后台的数据，生成单项编辑页
-			//sendHTTPRequest("/fyb_api/productQuery", node, getEditInforesult);
 			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 			editPageButtonsOnclick(thisIndex);
 		}
@@ -790,6 +789,7 @@ function getEditInfoInfTwo() {
 				}
 			}
 		};
+		var node = '{"data":{"condition":{"chip":"' + ochip + '","model":"' + omodel + '"},"option":{}}}';
 		sendHTTPRequest("/fyb_api/productQuery", node, getEditInforesult);
 		//editPageButtonsOnclick(); //后期可能会传参给页面里的点击事件
 	}
@@ -1218,100 +1218,6 @@ function copyPageSubmitData() {
 	console.log(data);
 }
 
-//新增页保存，向后台传递数据
-//function modalAddSave(){
-//	var currentObject = document.getElementsByClassName("addOrEditsubmit");
-//	for (var i=0;i<currentObject.length; i++) {
-//		currentObject[i].onclick = function(){
-//			console.log("lxw "+"新增页点击保存，向后台传递数据");
-//			//获取每个表格的tr有多少行 myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber= 最外层有多少行
-//			var myAddModalTableTrNumber = $("#myAddModalTable").find("tr").length;
-//			var modalMkTableTrNumber = $("#modal-mkTable").find("tr").length;
-//			var modalConfigTableTrNumber = $("#modal-configTable").find("tr").length;
-//			//console.log("lxw 1"+myAddModalTableTrNumber+"lxw 2"+modalMkTableTrNumber+"lxw 3"+modalConfigTableTrNumber);
-//			var firstVar = myAddModalTableTrNumber-modalMkTableTrNumber-modalConfigTableTrNumber;
-//			var jsonarray=[];
-//			var arr = {"name" : "","type" : "","value" : ""}
-//			for (var i=0; i<firstVar; i++) {
-//				if (i==0) {
-//					var trTdDiv = $("#myAddModalTable").find("tr:first").find("div");
-//					//console.log("lxw "+trTdDiv.length);
-//					for (var j=0; j<trTdDiv.length; j++) {
-//						//var oName = trTdDiv[j].children[0].innerHTML;//中文
-//						var oName = trTdDiv[j].children[0].title;//英文
-//						var oType = trTdDiv[j].children[0].nodeName;//标签名
-//						//console.log("lxw "+ oType);
-//						var oValue = trTdDiv[j].children[1].value;
-//						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
-//						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-//						jsonarray.push(arr);
-//					}
-//				}else if(i==1){
-//					var trTdDiv = $("#myAddModalTable").find("tr:eq(1)").find("div");
-//					//console.log("lxw "+trTdDiv.length);
-//					for (var j=0; j<trTdDiv.length; j++) {
-//						var oName = trTdDiv[j].children[0].title;//英文
-//						var oType = trTdDiv[j].children[0].nodeName;//标签名
-//						var oValue = trTdDiv[j].children[1].value;
-//						//console.log("lxw "+trTdDiv[j].children[0].title+"--"+trTdDiv[j].children[1].name);
-//						arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-//						jsonarray.push(arr);
-//					}
-//				}else if(i==2){
-//					var tableTr = $("#modal-mkTable").find("tr");
-//					//console.log("lxw "+tableTr.length);
-//					for (var j=0; j<tableTr.length; j++) {
-//						var tableTrDiv = $("#modal-mkTable").find("tr:eq("+j+")").find("div");
-//						//console.log("lxw "+ tableTrDiv.length);
-//						for (var k=0;k<tableTrDiv.length;k++) {
-//							if (k==0) {
-//								console.log("lxw "+ tableTrDiv[0].title);
-//							} else{
-//								var oName = tableTrDiv[k].children[1].title;//英文
-//								var oType = tableTrDiv[k].children[0].type;//标签名
-//								var oValue = tableTrDiv[k].children[0].checked;
-//								//console.log("lxw "+ tableTrDiv[k].children[0].nodeName+"--"+tableTrDiv[k].children[1].nodeName);
-//								//console.log("lxw "+ tableTrDiv[k].children[0].checked+"--"+tableTrDiv[k].children[1].innerHTML);
-//								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-//								jsonarray.push(arr);
-//							}
-//							
-//						}
-//					}
-//					
-//					var tableTrTwo = $("#modal-configTable").find("tr");
-//					console.log("lxw "+tableTrTwo.length);
-//					for (var jj=0; jj<tableTrTwo.length; jj++) {
-//						var tableTrDivTwo = $("#modal-configTable").find("tr:eq("+jj+")").find("div");
-//						console.log("lxw "+ tableTrDivTwo.length);
-//						for (var kk=0;kk<tableTrDivTwo.length;kk++) {
-//							if (kk==0) {
-//								console.log("lxw "+ tableTrDivTwo[0].title);
-//							} else{
-//								var oName = tableTrDivTwo[kk].children[0].title;//英文
-//								var oNodeName = tableTrDivTwo[kk].children[1].nodeName;//标签名
-//								if (oNodeName == "INPUT") {
-//									var oType = tableTrDivTwo[kk].children[1].type;//标签名
-//									var oValue = tableTrDivTwo[kk].children[1].value;
-//								} else if(oNodeName == "SELECT"){
-//									var oType = tableTrDivTwo[kk].children[1].nodeName;
-//									var index = tableTrDivTwo[kk].children[1].selectedIndex;
-//									var oValue = tableTrDivTwo[kk].children[1].options[index].value;
-//								}
-//								console.log("lxw "+ oName+"--"+oNodeName+"--"+oType+"--"+oValue);
-//								//console.log("lxw "+ tableTrDivTwo[kk].children[0].checked+"--"+tableTrDivTwo[kk].children[1].innerHTML);
-//								arr = '{"name" : '+oName+',"type" : '+oType+',"value" : '+oValue+'}';
-//								jsonarray.push(arr);
-//							}							
-//						}
-//					}
-//				}
-//			}
-//			console.log("lxw "+ jsonarray);
-//		}
-//	}
-//}
-//
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
