@@ -626,8 +626,8 @@ function addPageSubmitData() {
 //	};
 //	console.log(data);
 	var dataObj = {
-		"configFile": [],
-		"mkFile": [],
+		"configFile": "",
+		"mkFile": "",
 		"memorySize": "",
 	    "chipModel": "",
 	    "androidVersion": "",
