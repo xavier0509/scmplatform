@@ -675,7 +675,13 @@ function getEditInforesult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw "+JSON.stringify(data.data));
+				console.log("lxw "+JSON.stringify(data.data)) = ;
+				document.getElementById("newEditChip").value = chip;
+				document.getElementById("newEditModel").value = model;
+				document.getElementById("NewEditAndroidVersion").value = androidVersion;
+				document.getElementById("newEditChipMode").value = chipModel;
+				document.getElementById("newEditMemory").value = memorySize;
+				document.getElementById("newEditDevice").value = targetProduct;
 				
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
