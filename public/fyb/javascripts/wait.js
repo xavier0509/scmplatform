@@ -713,8 +713,12 @@ function addPageSubmitData() {
 				if (oAstuInfo.type == "string") {
 					oAstuInfo.opt = [];
 				} else if(oAstuInfo.type == "enum"){
-					console.log("lxw "+oAconfigTrDiv[thisConfigindex].childNodes[1].childNodes.length);
-				
+					var jjlength = oAconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
+					console.log("lxw "+jjlength.length);
+					for (var jj=0; jj<jjlength.length; jj++) {
+						var optValue = jjlength[jj].value;
+						oAstuInfo.opt.push('"'+optValue+'"');
+					}
 				}
 				//oAstuInfo.opt.push(oAstuInfo);
 			}
