@@ -401,49 +401,49 @@ function getAddInfoInfOne() {
 			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
 			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
 			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
-			_rowAddPageApp.innerHTML = "<div>App:</div>";
-			_rowAddPageService.innerHTML = "<div>Service:</div>";
-			_rowAddPageAppStore.innerHTML = "<div>AppStore:</div>";
-			_rowAddPageHomePage.innerHTML = "<div>HomePage:</div>";
-			_rowAddPageIME.innerHTML = "<div>IME:</div>";
-			_rowAddPageSysApp.innerHTML = "<div>SysApp:</div>";
-			_rowAddPageTV.innerHTML = "<div>TV:</div>";
-			_rowAddPageOther.innerHTML = "<div>Other:</div>";
+			_rowAddPageApp.innerHTML = "<div title='App'>App:</div>";
+			_rowAddPageService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowAddPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowAddPageHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowAddPageIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowAddPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowAddPageTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowAddPageOther.innerHTML = "<div title='Other'>Other:</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
 					console.log("App:" + kk);
-					_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
 					console.log("Service:" + kk);
-					_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
 					console.log("AppStore:" + kk);
-					_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
 					console.log("HomePage:" + kk);
-					_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
 					console.log("IME:" + kk);
-					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
 					console.log("SysApp:" + kk);
-					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					console.log("TV:" + kk);
-					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					console.log("Other:" + kk);
-					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value=''><span gitPath='"+data.data[kk].gitPath+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
@@ -585,14 +585,6 @@ function addConfigInfoInput(data) {
 
 function addPageSubmitData() {
 //	var data, devInfoData = null;
-//	devInfoData = {
-//		"platformModel": document.getElementById("newAddChip").value,
-//		"productModel": document.getElementById("newAddModel").value,
-//		"androidVersion": document.getElementById("newAddDevice").value,
-//		"chipModel": document.getElementById("NewAddAndroidVersion").value,
-//		"memorySize": document.getElementById("newAddMemory").value,
-//		"pendingReview": document.getElementById("newAddChipMode").value
-//	};
 //	var mkFileData = {};
 //	var mkTrlength = document.getElementById("myAddModalMkTableTbody").childNodes;
 //	console.log("lxw " + mkTrlength.length);
@@ -627,38 +619,6 @@ function addPageSubmitData() {
 //		mkFileData[innerHtml] = arrayInfo;
 //		console.log(mkFileData);
 //	}
-//
-//	var configFileData = {};
-//	var configTrlength = document.getElementById("myAddModalConfigTableTbody").childNodes;
-//	console.log("lxw " + configTrlength.length);
-//	var thisConfigindex = null;
-//	var configTrTdDiv = new Array();
-//	for(var i = 0; i < configTrlength.length; i++) {
-//		var arrayInfo = [];
-//		var innerHtml = "";
-//		configTrTdDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-//		for(var j = 0; j < configTrTdDiv.length; j++) {
-//			var stuInfo = {
-//				"name": "",
-//				"type": "",
-//				"value": ""
-//			};
-//			thisConfigindex = j;
-//			if(j == 0) {
-//				console.log(configTrTdDiv[thisConfigindex].name);
-//				innerHtml = configTrTdDiv[thisConfigindex].title;
-//			} else {
-//				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
-//				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
-//				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
-//				arrayInfo.push(stuInfo);
-//			}
-//		}
-//		//console.log(arrayInfo);
-//		configFileData[innerHtml] = arrayInfo;
-//		console.log(configFileData);
-//	}
-//
 //	data = {
 //		"DevInfo": [devInfoData], //参数：{"platformModel": "","productModel": ""}
 //		"mkFile": mkFileData, //参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
@@ -681,12 +641,12 @@ function addPageSubmitData() {
 	//获取config里的数据
 	var addConfigFile = [];
 	var oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr");
-	console.log("lxw " + oAconfigTrlength.length);
+	//console.log("lxw " + oAconfigTrlength.length);
 	var thisConfigindex = null;
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
 		var oAConfigobj = {};
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" +oAconfigTrDiv.length);
+		//console.log("lxw" +oAconfigTrDiv.length);
 		var oAstuInfo = {
 				"cnName": "",
 				"engName": "",
@@ -697,13 +657,11 @@ function addPageSubmitData() {
 				"opt": []
 			};
 		for(var j = 0; j < oAconfigTrDiv.length; j++) {
-			var oAcnName,oAengName,oAtype,oAvalue,oAcategory,oAdesc = null;
 			var oAopt = [];
-			
 			thisConfigindex = j;
 			if(j == 0) {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
-				console.log("lxw "+ oAstuInfo.category);
+				//console.log("lxw "+ oAstuInfo.category);
 			} else {
 				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
@@ -722,7 +680,7 @@ function addPageSubmitData() {
 				}
 				oAstuInfo.opt = oAopt;
 			}
-			console.log("lxw "+JSON.stringify(oAstuInfo));
+			//console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
 		console.log("lxw "+addConfigFile);
@@ -730,10 +688,41 @@ function addPageSubmitData() {
 	
 	//获取mkFile里的信息
 	var AddMkFile = [];
+	var oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr");
+	console.log("lxw " + oAMkTrDiv.length);
+	var oAMkindex = null;
+	for(var i = 0; i < oAMkTrDiv.length; i++) {
+		var oAMkobj = {};
+		oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" +oAMkTrDiv.length);
+		var oAstuInfoTwo = {
+				"cnName": "",
+				"engName": "",
+				"gitPath": "",
+				"category": "",
+				"desc": "XXXXX",//后期做“”的处理。
+			};
+		for(var j = 0; j < oAMkTrDiv.length; j++) {
+			var oAoptTwo = [];
+			oAMkindex = j;
+			if(j == 0) {
+				oAstuInfoTwo.category = oAconfigTrDiv[oAMkindex].title;
+				console.log("lxw "+ oAstuInfoTwo.category);
+			} else {
+				//oAstuInfoTwo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
+				//oAstuInfoTwo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+				//oAstuInfoTwo.gitPath = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
+				//oAstuInfoTwo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
+			}
+			console.log("lxw "+JSON.stringify(oAstuInfoTwo));
+			//addConfigFile.push(JSON.stringify(oAstuInfo));
+		}
+		console.log("lxw "+addMkFile);
+	}
 	
 	dataObj = {
 		"configFile": addConfigFile,
-		"mkFile": AddMkFile,
+		"mkFile": addMkFile,
 		"memorySize": oAmemorySize,
 	    "chipModel": oAchipModel,
 	    "androidVersion": oAandroidVersion,
@@ -744,9 +733,8 @@ function addPageSubmitData() {
 	    "operateType": "1",   // 0表示无状态，1表示增加，2表示删除，3表示修改
 	    "userName": "xxxxx",
 	    "desc": "enenen"
-
 	};
-	
+	console.log("lxw" +dataObj);
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
