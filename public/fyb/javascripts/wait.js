@@ -67,7 +67,7 @@ function startSelect() {
 		}
 		console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":' + myNeedString + '}';
+		node = '{"data":{"condition":' + myNeedString + '},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
@@ -447,7 +447,7 @@ function getAddInfoInfOne() {
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					console.log("Other:" + kk);
-					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' id='" + data.data[kk].engName + ">" + data.data[kk].cnName + "</span></div>";
+					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
@@ -799,7 +799,7 @@ function getEditInforesult() {
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
@@ -815,7 +815,7 @@ function getEditInforesult() {
 
 				console.log("lxw " + data.data[0].mkFile.length); //mk
 				for(var i = 0; i < data.data[0].mkFile.length; i++) {
-
+					console.log("lxw "+data.data[0].mkFile[i].engName);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
 
