@@ -584,47 +584,6 @@ function addConfigInfoInput(data) {
 }
 
 function addPageSubmitData() {
-//	var data, devInfoData = null;
-//	var mkFileData = {};
-//	var mkTrlength = document.getElementById("myAddModalMkTableTbody").childNodes;
-//	console.log("lxw " + mkTrlength.length);
-//	var thisMkindex = null;
-//	var mkTrTdDiv = new Array();
-//	for(var i = 0; i < mkTrlength.length; i++) {
-//		var arrayInfo = [];
-//		var innerHtml = "";
-//		mkTrTdDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-//		for(var j = 0; j < mkTrTdDiv.length; j++) {
-//			var stuInfo = {
-//				"name": "",
-//				"state": "",
-//				"pkgname": ""
-//			};
-//			thisMkindex = j;
-//			if(j == 0) {
-//				console.log(mkTrTdDiv[thisMkindex].innerHTML);
-//				innerHtml = mkTrTdDiv[thisMkindex].innerHTML;
-//			} else {
-//				stuInfo.name = mkTrTdDiv[thisMkindex].childNodes[1].innerHTML;
-//				stuInfo.pkgname = mkTrTdDiv[thisMkindex].title;
-//				if(mkTrTdDiv[thisMkindex].childNodes[0].checked) {
-//					stuInfo.state = "1";
-//				} else {
-//					stuInfo.state = "0";
-//				}
-//				arrayInfo.push(stuInfo);
-//			}
-//		}
-//		//console.log(arrayInfo);
-//		mkFileData[innerHtml] = arrayInfo;
-//		console.log(mkFileData);
-//	}
-//	data = {
-//		"DevInfo": [devInfoData], //参数：{"platformModel": "","productModel": ""}
-//		"mkFile": mkFileData, //参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
-//		"configFile": configFileData //参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
-//	};
-//	console.log(data);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
