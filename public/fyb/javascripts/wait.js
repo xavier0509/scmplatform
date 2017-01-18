@@ -820,6 +820,11 @@ function getEditInforesult() {
 					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked','');
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
+				for(var i = 0; i < data.data[0].configFile.length; i++) {
+					console.log("lxw "+data.data[0].configFile[i].engName);
+					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
+					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value',data.data[0].configFile[i].value);
+				}
 
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
