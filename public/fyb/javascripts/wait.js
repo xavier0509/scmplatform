@@ -685,7 +685,7 @@ function getEditInforesult() {
 				
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
-			};
+			}
 		};
 	}
 }
