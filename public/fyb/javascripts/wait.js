@@ -697,7 +697,7 @@ function addPageSubmitData() {
 			addConfigFile.push(oAstuInfo);
 		}
 	}
-	console.log("lxw "+addConfigFile);
+	console.log("lxw "+JSON.stringify(addConfigFile));
 	
 	//获取mkFile里的信息
 	var addMkFile = [];
@@ -731,7 +731,7 @@ function addPageSubmitData() {
 			addMkFile.push(oAstuInfoTwo);
 		}
 	}
-	console.log("lxw "+addMkFile);
+	console.log("lxw "+JSON.stringify(addMkFile));
 	dataObj.configFile = addConfigFile;
 	dataObj.mkFile = addMkFile;
 	dataObj.memorySize = oAmemorySize;
