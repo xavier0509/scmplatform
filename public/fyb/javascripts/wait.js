@@ -285,6 +285,7 @@ function AfterWaitHtmlinfo() {
 		oClassButtonEdit[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
+			console.log(this.chip+"--"+this.model);
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
