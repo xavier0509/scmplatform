@@ -676,13 +676,14 @@ function getEditInforesult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
 				console.log("lxw "+JSON.stringify(data.data));
-				document.getElementById("newEditChip").value = chip;
-				document.getElementById("newEditModel").value = model;
-				document.getElementById("NewEditAndroidVersion").value = androidVersion;
-				document.getElementById("newEditChipMode").value = chipModel;
-				document.getElementById("newEditMemory").value = memorySize;
-				document.getElementById("newEditDevice").value = targetProduct;
-
+				document.getElementById("newEditChip").value = data.data.chip;
+				document.getElementById("newEditModel").value = data.data.model;
+				document.getElementById("NewEditAndroidVersion").value = data.data.androidVersion;
+				document.getElementById("newEditChipMode").value = data.data.chipModel;
+				document.getElementById("newEditMemory").value = data.data.memorySize;
+				document.getElementById("newEditDevice").value = data.data.targetProduct;
+				console.log("lxw "+data.data.mkFile.length);
+				console.log("lxw "+data.data.configFile.length);
 
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
