@@ -705,8 +705,9 @@ function addPageSubmitData() {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
 				console.log("lxw "+ oAstuInfo.category);
 			} else {
-				oAstuInfo.czName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
+				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].name;
+				console.log("lxw"+oAstuInfo.engName);
 				oAstuInfo.type = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
 				oAstuInfo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
 				if (oAstuInfo.type == "string") {
