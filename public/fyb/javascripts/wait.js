@@ -614,9 +614,9 @@ function addPageSubmitData() {
 	var addConfigFile = [];
 	var oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr");
 	//console.log("lxw " + oAconfigTrlength.length);
-	var thisConfigindex = null;
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
 		var oAConfigobj = {};
+		var thisConfigindex = null;
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 		//console.log("lxw" +oAconfigTrDiv.length);
 		var oAstuInfo = {
@@ -722,8 +722,8 @@ function productAddresult(){
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				//freshHoneAddHtml();
-				var oooNode = '{"data":{"gerritState":"1"}}';
-				sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
+				//var oooNode = '{"data":{"gerritState":"1"}}';
+				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 			};
