@@ -683,8 +683,8 @@ function addPageSubmitData() {
 			//console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
-		console.log("lxw "+addConfigFile);
 	}
+	console.log("lxw "+addConfigFile);
 	
 	//获取mkFile里的信息
 	var addMkFile = [];
@@ -717,8 +717,8 @@ function addPageSubmitData() {
 			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 			addMkFile.push(JSON.stringify(oAstuInfoTwo));
 		}
-		console.log("lxw "+addMkFile);
 	}
+	console.log("lxw "+addMkFile);
 	
 	dataObj = {
 		"configFile": addConfigFile,
