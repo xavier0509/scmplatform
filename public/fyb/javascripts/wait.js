@@ -683,11 +683,11 @@ function addPageSubmitData() {
 			//console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
-		console.log("lxw "+addConfigFile);
+		//console.log("lxw "+addConfigFile);
 	}
 	
 	//获取mkFile里的信息
-	var AddMkFile = [];
+	var addMkFile = [];
 	var oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr");
 	console.log("lxw " + oAMkTrDiv.length);
 	var oAMkindex = null;
@@ -734,7 +734,7 @@ function addPageSubmitData() {
 	    "userName": "xxxxx",
 	    "desc": "enenen"
 	};
-	console.log("lxw" +dataObj);
+	//console.log("lxw" +dataObj);
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
