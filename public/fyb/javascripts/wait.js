@@ -683,6 +683,7 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = memorySize;
 				document.getElementById("newEditDevice").value = targetProduct;
 				
+				
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
