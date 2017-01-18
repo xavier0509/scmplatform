@@ -313,7 +313,7 @@ function AfterWaitHtmlinfo() {
 			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		singleDeletePageButtons(chip,model); //后期可能会传参给页面里的点击事件
+		singleDeletePageButtons(TwiceTransferChip,TwiceTransferModel); //后期可能会传参给页面里的点击事件
 	}
 	/*单项复制*/
 	var oClassButtonCopy = new Array();
@@ -1265,11 +1265,12 @@ function editPageButtonsOnclick() {
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
 }
 /*点击单项删除-弹框里的各个按钮*/
-function singleDeletePageButtons() {
+function singleDeletePageButtons(chip,mode) {
 	var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
-		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+		console.log("lxw "+ chip+"--"+model);
+		//var node = '{"data":{"condition":{"chip":"' + chip + '","model":"' + mode + '"},"option":{}}}';
 		//sendHTTPRequest("/fyb_api/productQuery", node, getDeleteInforesult);
 		$("#myDeleteModal").modal('hide');
 	}
