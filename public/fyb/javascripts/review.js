@@ -283,7 +283,11 @@ function passResult(){
 function reviewEdit(){
     console.log("开始提交数据");
 
-    var dataarry = [];//用于存放全部数据（包括mk和config）
+    var mkdataarry = [];//用于存放全部数据
+    var mkdd =[];
+    var configdataarry = [];
+    var configdd =[];
+
     getmkdata("#appcont");
     getmkdata("#appstorecont");
     getmkdata("#homecont");
@@ -306,14 +310,24 @@ function reviewEdit(){
                 var gitPath = $size[i].childNodes[0].getAttribute("gitPath");
                 var category = $size[i].childNodes[0].getAttribute("category");
                 var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
-                console.log(data);
+                // console.log(data);
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         };
-        console.log(JSON.stringify(array1));
-        dataarry.push(array1);//将分类之后的数组存到一个数组中
-        console.log(dataarry[0]);
-        console.log(JSON.stringify(dataarry));
+        // console.log(JSON.stringify(array1));
+        mkdd.push(array1);//将分类之后的数组存到一个数组中
+        // console.log(mkdd[0]);
+        // console.log(JSON.stringify(mkdd));
+        for (var i = 0; i < mkdd.length; i++) {
+            if (mkdd[i].length>0) {
+                for (var j = 0; j < mkdd[i].length; j++) {
+                    mkdataarry.push(mkdd[i][j]);
+                }
+            };
+        };
+        console.log("更新的mk信息："+JSON.stringify(mkdataarry))
+
+
     }
 
     //获取config文件数据
