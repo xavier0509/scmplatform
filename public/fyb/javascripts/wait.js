@@ -675,7 +675,7 @@ function getEditInforesult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw "+ data.data);
+				console.log("lxw "+JSON.stringify(data.data));
 				
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
