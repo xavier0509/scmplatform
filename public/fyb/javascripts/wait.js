@@ -694,7 +694,7 @@ function addPageSubmitData() {
 				oAstuInfo.opt = oAopt;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfo));
-			addConfigFile.push(oAstuInfo);
+			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
 	}
 	console.log("lxw "+addConfigFile);
@@ -728,12 +728,12 @@ function addPageSubmitData() {
 				oAstuInfoTwo.value = 0;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
-			addMkFile.push(oAstuInfoTwo);
+			addMkFile.push(JSON.stringify(oAstuInfoTwo));
 		}
 	}
 	console.log("lxw "+addMkFile);
 	dataObj.configFile = addConfigFile;
-	dataObj.mkFile =  addMkFile;
+	dataObj.mkFile = addMkFile;
 	dataObj.memorySize = oAmemorySize;
 	dataObj.chipModel = oAchipModel;
 	dataObj.androidVersion = oAandroidVersion;
@@ -744,6 +744,7 @@ function addPageSubmitData() {
 	dataObj.operateType = "1";// 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
+	
 	console.log("lxw" +JSON.stringify(dataObj));
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
