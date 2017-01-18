@@ -549,13 +549,13 @@ function addPageSubmitData() {
 	//获取config里的数据
 	var addConfigFile = [];
 	var oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr");
-	//console.log("lxw " + oAconfigTrlength.length);
+	console.log("lxw " + oAconfigTrlength.length);
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
 		var oAConfigobj = {};
 		var thisConfigindex = null;
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 		//console.log("lxw" +oAconfigTrDiv.length);
-		for(var j = 0; j < oAconfigTrDiv.length; j++) {
+		for(var j = 1; j < oAconfigTrDiv.length; j++) {
 			var oAopt = [];
 			var oAstuInfo = {
 				"cnName": "",
@@ -567,9 +567,9 @@ function addPageSubmitData() {
 				"options": []
 			};
 			thisConfigindex = j;
-			if(j == 0) {
+//			if(j == 0) {
 				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
-			} else {
+//			} else {
 				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 				console.log("lxw" + oAstuInfo.engName);
