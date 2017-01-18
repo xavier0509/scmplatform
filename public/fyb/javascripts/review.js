@@ -318,17 +318,15 @@ function reviewEdit(){
         mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
         // console.log(JSON.stringify(mkdd));
-        for (var i = 0; i < mkdd.length; i++) {
-            if (mkdd[i].length>0) {
-                for (var j = 0; j < mkdd[i].length; j++) {
-                    mkdataarry.push(mkdd[i][j]);
-                }
-            };
-        };
-        console.log("更新的mk信息："+JSON.stringify(mkdataarry))
-
-
     }
+    for (var i = 0; i < mkdd.length; i++) {
+        if (mkdd[i].length>0) {
+            for (var j = 0; j < mkdd[i].length; j++) {
+                mkdataarry.push(mkdd[i][j]);
+            }
+        };
+    };
+    console.log("更新的mk信息："+JSON.stringify(mkdataarry))
 
     //获取config文件数据
     // function getconfigdata(name){
