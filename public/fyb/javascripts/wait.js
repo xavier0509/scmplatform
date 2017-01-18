@@ -714,7 +714,7 @@ function addPageSubmitData() {
 			} else{
 				oAstuInfoTwo.value = 0;
 			}
-			console.log("lxw "+JSON.stringify(oAstuInfoTwo));
+			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 			addMkFile.push(JSON.stringify(oAstuInfoTwo));
 		}
 		//console.log("lxw "+addMkFile);
@@ -734,7 +734,7 @@ function addPageSubmitData() {
 	    "userName": "xxxxx",
 	    "desc": "enenen"
 	};
-	//console.log("lxw" +dataObj);
+	console.log("lxw" +dataObj);
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
