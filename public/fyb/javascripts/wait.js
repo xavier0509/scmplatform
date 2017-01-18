@@ -706,7 +706,7 @@ function addPageSubmitData() {
 				console.log("lxw "+ oAstuInfo.category);
 			} else {
 				oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
-				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].name;
+				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 				console.log("lxw"+oAstuInfo.engName);
 				oAstuInfo.type = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
 				oAstuInfo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
