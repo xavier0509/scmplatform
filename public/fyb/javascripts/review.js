@@ -332,7 +332,7 @@ function reviewEdit(){
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         };
-        // console.log(JSON.stringify(array1));
+        console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
         mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
         // console.log(JSON.stringify(mkdd));
@@ -362,9 +362,10 @@ function reviewEdit(){
             var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+options+'","type":"'+type+'"}';
             console.log(data);
             array2.push(JSON.parse(data));
+            console.log(JSON.stringify(array2))
         };
         configdd.push(array2);
-        console.log(configdd);
+        console.log(JSON.stringify(configdd));
     }
 
 }
