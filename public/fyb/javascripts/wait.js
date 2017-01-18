@@ -464,8 +464,8 @@ function getAddInfoInfTwo() {
 			var pullDataOne, pullDataTwo = null;
 			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdOne");
 			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdTwo");
-			_rowAddPageConfigMain.innerHTML = "<div title='"+data.data[i].category+"'>核心功能：</div>";
-			_rowAddPageConfigOther.innerHTML = "<div title='"+data.data[i].category+"'>其他功能：</div>";
+			_rowAddPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
+			_rowAddPageConfigOther.innerHTML = "<div title='other'>其他功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category + data.data[i].type);
