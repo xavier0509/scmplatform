@@ -221,12 +221,25 @@ function reviewresult(){
                     var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
-                        input.setAttribute("title",name[i].engName);
+                        input.setAttribute("engName",name[i].engName);
+                        input.setAttribute("configKey",name[i].configKey);
+                        input.setAttribute("type",name[i].type);
+                        input.setAttribute("desc",name[i].desc);
+                        input.setAttribute("category",name[i].category);
+                        input.setAttribute("options",name[i].options);
+                        input.setAttribute("cnName",name[i].cnName);
                         input.value = name[i].value;
                     }
                     else if (name[i].type == "enum"){
                         var input = document.createElement("select");
-                        input.setAttribute("title",name[i].engName);
+                        input.setAttribute("engName",name[i].engName);
+                        input.setAttribute("configKey",name[i].configKey);
+                        input.setAttribute("type",name[i].type);
+                        input.setAttribute("desc",name[i].desc);
+                        input.setAttribute("category",name[i].category);
+                        input.setAttribute("options",name[i].options);
+                        input.setAttribute("cnName",name[i].cnName);
+                        input.setAttribute("value",name[i].value);
                         input.setAttribute("class","form-group");
                         for (var j = 0; j< name[i].options.length; j++) {
                             var txt = name[i].options[j];
