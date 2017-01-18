@@ -290,8 +290,8 @@ function reviewEdit(){
     getmkdata("#imecont");
     getmkdata("#servicecont");
     getmkdata("#syscont");
-    getconfigdata("#maincont");
-    getconfigdata("#othercont");
+    // getconfigdata("#maincont");
+    // getconfigdata("#othercont");
 
     //获取mk文件数据
     function getmkdata(name){
@@ -302,9 +302,9 @@ function reviewEdit(){
             if($size[i].childNodes[0].checked){
                 var cnName = $size[i].innerText;
                 var engName = $size[i].childNodes[0].value;
-                var desc = $size[i].childNodes[0].desc;
-                var gitPath = $size[i].childNodes[0].gitPath;
-                var category = $size[i].childNodes[0].category;
+                var desc = $size[i].childNodes[0].getAttribute("desc") ;
+                var gitPath = $size[i].childNodes[0].getAttribute("gitPath");
+                var category = $size[i].childNodes[0].getAttribute("category");
                 var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
                 console.log(data);
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
