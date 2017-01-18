@@ -180,13 +180,35 @@ td{
 	display: block;
     float: left;
     width: 72%;
-    text-align: right;
-    margin-left: 1%;
+    text-align: left;
+    margin-left: 5%;
     font-size: 17px;
 }
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
 }
+#myAddModalConfigTableTbody input{
+	display: block;
+    float: left;
+}
+#myAddModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 50%;
+    text-align: right;
+    margin-left: 5%;
+    font-size: 17px;
+    overflow: hidden;
+}
+#myAddModalConfigTableTbody select{
+	width: 36%;
+	float: left;
+	margin-left: 5%;
+}
+#myAddModalConfigTableTbody div{
+	margin-bottom: 4px;
+}
+
 
 .mybody{
 	padding-bottom: 0px;
