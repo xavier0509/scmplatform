@@ -1183,7 +1183,7 @@ function copyPageSubmitData(){
 	dataObj.desc = "enenen";
 
 	console.log("lxw" + JSON.stringify(dataObj));
-	var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
+	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
 	//sendHTTPRequest("/fyb_api/productAdd", oEnode, productAddresult);
 }
