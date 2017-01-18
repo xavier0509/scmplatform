@@ -763,11 +763,14 @@ function productAddresult(){
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
-				freshHoneAddHtml();
+				//freshHoneAddHtml();
+				var oooNode = '{"data":{"gerritState":"1"}}';
+				sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 			};
 		};
+		
 	}
 }
 function freshHoneAddHtml(){
