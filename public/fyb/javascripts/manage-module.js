@@ -66,15 +66,6 @@ function searchModalInfo() {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
 			var kk = 0;
-			//{"data":{"cnName":"酷开商城","engName": "SkyCCMall","gitPath": "/SkyworthApp/App/SkyCCMall","desc": "1","category": "App"}}
-			//{"data":{"cnName":"应用圈","engName": "SkyAppStore","gitPath": "/SkyworthApp/AppStore/SkyAppStore","desc": "2","category": "AppStore"}}
-			//{"data":{"cnName":"简易首页4.4","engName": "SimpleHome5.0","gitPath": "/SkyworthApp/HomePage/SimpleHome5.0","desc": "3","category": "HomePage"}}
-			//{"data":{"cnName":"Android输入法","engName": "AndroidKeyboard","gitPath": "/SkyworthApp/IME/AndroidKeyboard","desc": "4","category": "IME"}}
-			//{"data":{"cnName":"广告服务","engName": "SkyADService","gitPath": "/SkyworthApp/Service/SkyADService","desc": "5","category": "Service"}}
-			//{"data":{"cnName":"自动安装器","engName": "SkyAutoInstaller","gitPath": "/SkyworthApp/SysApp/SkyAutoInstaller","desc": "6","category": "SysApp"}}
-			//{"data":{"cnName":"数字外挂DTV","engName": "SkyDigitalDTV","gitPath": "/SkyworthApp/TV/SkyDigitalDTV","desc": "7","category": "TV"}}
-			//{"data":{"cnName":"贝瓦儿童乐园","engName": "Beiwa","gitPath": "/Beiwa","desc": "8","category": "Other"}}
-			//var _rowModule = document.getElementById("moduleTableTbody");
 			var _rowModuleApp = document.getElementById("moduleTableApp");
 			var _rowModuleService = document.getElementById("moduleTableService");
 			var _rowModuleAppStore = document.getElementById("moduleTableAppStore");
@@ -122,20 +113,6 @@ function searchModalInfo() {
 		};
 		AfterModuleHtmlInfo();
 	}
-//	var key, counter = 0;
-//	var _rowmodelInfo = "";
-//	var _rowmodel = document.getElementById("module-mkTable");
-//	for(key in currentData){
-//		counter++;
-//		//console.log("lxw "+ key +"---"+ currentData[key].length);
-//		_rowmodelInfo += "<tr><td><div>"+key+":</div>";
-//		for (var j=0;j<currentData[key].length;j++) {
-//			_rowmodelInfo += "<div class='col-xs-4'><a>"+currentData[key][j].ChineseName+"</a></div>";
-//			//console.log("lxw "+ _rowmodelInfo);
-//		}
-//		_rowmodelInfo += "</td></tr>";
-//	}
-//	_rowmodel.innerHTML+= _rowmodelInfo;
 }
 function returnAddInfo(){
 	console.log("lxw " + "returnAddInfo");
