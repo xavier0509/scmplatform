@@ -1059,6 +1059,7 @@ function getCopyInforesult() {
 					console.log("lxw " + data.data[0].mkFile[i].engName);
 					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
+					console.log("lxw "+document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
 				for(var i = 0; i < data.data[0].configFile.length; i++) {
