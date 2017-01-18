@@ -694,7 +694,7 @@ function addPageSubmitData() {
 				oAstuInfo.opt = oAopt;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfo));
-			addConfigFile.push(JSON.stringify(oAstuInfo));
+			addConfigFile.push(oAstuInfo);
 		}
 	}
 	console.log("lxw "+addConfigFile);
@@ -728,12 +728,12 @@ function addPageSubmitData() {
 				oAstuInfoTwo.value = 0;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
-			addMkFile.push(JSON.stringify(oAstuInfoTwo));
+			addMkFile.push(oAstuInfoTwo);
 		}
 	}
 	console.log("lxw "+addMkFile);
-	dataObj.configFile = JSON.stringify(addConfigFile);
-	dataObj.mkFile =  JSON.stringify(addMkFile);
+	dataObj.configFile = addConfigFile;
+	dataObj.mkFile =  addMkFile;
 	dataObj.memorySize = oAmemorySize;
 	dataObj.chipModel = oAchipModel;
 	dataObj.androidVersion = oAandroidVersion;
