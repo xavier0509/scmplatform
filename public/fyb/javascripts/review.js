@@ -357,9 +357,9 @@ function reviewEdit(){
             var configkey = $size[i].childNodes[1].getAttribute("configkey");
             var desc = $size[i].childNodes[1].getAttribute("desc");
             var category = $size[i].childNodes[1].getAttribute("category");
-            var opt = $size[i].childNodes[1].getAttribute("options");
-            var options = opt.split(",");
-            console.log("opt==="+opt+"&&&&&&&options:"+options);
+            // var opt = $size[i].childNodes[1].getAttribute("options");
+            // var options = opt.split(",");
+            // console.log("opt==="+opt+"&&&&&&&options:"+options);
             var type = $size[i].childNodes[1].getAttribute("type");
             if (type == "string") {
                 var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":[],"type":"'+type+'"}';
@@ -367,9 +367,17 @@ function reviewEdit(){
                 array2.push(JSON.parse(data));
             }
             else{
-            var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":'+options+',"type":"'+type+'"}';
-            console.log(data);
-            array2.push(JSON.parse(data));}
+                var opt = [];
+                var child = $size[i].childNodes[1].childNodes;
+                for (var i = 0; i < child.length; i++) {
+                    opt.push(child[i].value);
+                };
+                console.log(opt);
+                var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":'+options+',"type":"'+type+'"}';
+                console.log(data);
+                array2.push(JSON.parse(data));
+
+            }
             // console.log(JSON.stringify(array2));
         };
         configdd.push(array2);
