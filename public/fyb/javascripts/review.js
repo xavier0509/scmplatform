@@ -361,7 +361,7 @@ function reviewEdit(){
             var options = opt.split(",");
             var type = $size[i].childNodes[1].getAttribute("type");
             var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":'+options+',"type":"'+type+'"}';
-            // console.log(data);
+            console.log(data);
             array2.push(JSON.parse(data));
             // console.log(JSON.stringify(array2));
         };
