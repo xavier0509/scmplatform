@@ -711,22 +711,21 @@ function addPageSubmitData() {
 				oAstuInfo.type = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
 				oAstuInfo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
 				if (oAstuInfo.type == "string") {
-					oAstuInfo.opt = [];
+					oAopt = [];
 				} else if(oAstuInfo.type == "enum"){
 					var jjlength = oAconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
 					console.log("lxw "+jjlength.length);
 					for (var jj=0; jj<jjlength.length; jj++) {
 						var optValue = jjlength[jj].value;
-						oAstuInfo.opt.push(optValue);
+						oAopt.push(optValue);
 					}
 				}
-				//oAstuInfo.opt.push(oAstuInfo);
+				oAstuInfo.opt = oAopt;
 			}
 			console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
 		console.log("lxw "+addConfigFile);
-		//configFileData[innerHtml] = arrayInfo;
 	}
 	
 	//获取mkFile里的信息
