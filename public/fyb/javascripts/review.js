@@ -234,6 +234,7 @@ function reviewresult(){
                         var opt = [];
                         for (var j = 0; j < name[i].options.length; j++) {
                             opt.push(name[i].options[j]);
+                            console.log(opt);
                         };
                         var input = document.createElement("select");
                         input.setAttribute("engName",name[i].engName);
