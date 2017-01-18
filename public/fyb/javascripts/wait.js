@@ -464,8 +464,8 @@ function getAddInfoInfTwo() {
 			var pullDataOne, pullDataTwo = null;
 			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdOne");
 			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdTwo");
-			_rowAddPageConfigMain.innerHTML = "<div>核心功能：</div>";
-			_rowAddPageConfigOther.innerHTML = "<div>其他功能：</div>";
+			_rowAddPageConfigMain.innerHTML = "<div title='"+data.data[i].category+"'>核心功能：</div>";
+			_rowAddPageConfigOther.innerHTML = "<div title='"+data.data[i].category+"'>其他功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category + data.data[i].type);
@@ -584,87 +584,153 @@ function addConfigInfoInput(data) {
 }
 
 function addPageSubmitData() {
-	var data, devInfoData = null;
-	devInfoData = {
-		"platformModel": document.getElementById("newAddChip").value,
-		"productModel": document.getElementById("newAddModel").value,
-		"androidVersion": document.getElementById("newAddDevice").value,
-		"chipModel": document.getElementById("NewAddAndroidVersion").value,
-		"memorySize": document.getElementById("newAddMemory").value,
-		"pendingReview": document.getElementById("newAddChipMode").value
-	};
-	var mkFileData = {};
-	var mkTrlength = document.getElementById("myAddModalMkTableTbody").childNodes;
-	console.log("lxw " + mkTrlength.length);
-	var thisMkindex = null;
-	var mkTrTdDiv = new Array();
-	for(var i = 0; i < mkTrlength.length; i++) {
-		var arrayInfo = [];
-		var innerHtml = "";
-		mkTrTdDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		for(var j = 0; j < mkTrTdDiv.length; j++) {
-			var stuInfo = {
-				"name": "",
-				"state": "",
-				"pkgname": ""
-			};
-			thisMkindex = j;
-			if(j == 0) {
-				console.log(mkTrTdDiv[thisMkindex].innerHTML);
-				innerHtml = mkTrTdDiv[thisMkindex].innerHTML;
-			} else {
-				stuInfo.name = mkTrTdDiv[thisMkindex].childNodes[1].innerHTML;
-				stuInfo.pkgname = mkTrTdDiv[thisMkindex].title;
-				if(mkTrTdDiv[thisMkindex].childNodes[0].checked) {
-					stuInfo.state = "1";
-				} else {
-					stuInfo.state = "0";
-				}
-				arrayInfo.push(stuInfo);
-			}
-		}
-		//console.log(arrayInfo);
-		mkFileData[innerHtml] = arrayInfo;
-		console.log(mkFileData);
-	}
-
-	var configFileData = {};
-	var configTrlength = document.getElementById("myAddModalConfigTableTbody").childNodes;
-	console.log("lxw " + configTrlength.length);
+//	var data, devInfoData = null;
+//	devInfoData = {
+//		"platformModel": document.getElementById("newAddChip").value,
+//		"productModel": document.getElementById("newAddModel").value,
+//		"androidVersion": document.getElementById("newAddDevice").value,
+//		"chipModel": document.getElementById("NewAddAndroidVersion").value,
+//		"memorySize": document.getElementById("newAddMemory").value,
+//		"pendingReview": document.getElementById("newAddChipMode").value
+//	};
+//	var mkFileData = {};
+//	var mkTrlength = document.getElementById("myAddModalMkTableTbody").childNodes;
+//	console.log("lxw " + mkTrlength.length);
+//	var thisMkindex = null;
+//	var mkTrTdDiv = new Array();
+//	for(var i = 0; i < mkTrlength.length; i++) {
+//		var arrayInfo = [];
+//		var innerHtml = "";
+//		mkTrTdDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+//		for(var j = 0; j < mkTrTdDiv.length; j++) {
+//			var stuInfo = {
+//				"name": "",
+//				"state": "",
+//				"pkgname": ""
+//			};
+//			thisMkindex = j;
+//			if(j == 0) {
+//				console.log(mkTrTdDiv[thisMkindex].innerHTML);
+//				innerHtml = mkTrTdDiv[thisMkindex].innerHTML;
+//			} else {
+//				stuInfo.name = mkTrTdDiv[thisMkindex].childNodes[1].innerHTML;
+//				stuInfo.pkgname = mkTrTdDiv[thisMkindex].title;
+//				if(mkTrTdDiv[thisMkindex].childNodes[0].checked) {
+//					stuInfo.state = "1";
+//				} else {
+//					stuInfo.state = "0";
+//				}
+//				arrayInfo.push(stuInfo);
+//			}
+//		}
+//		//console.log(arrayInfo);
+//		mkFileData[innerHtml] = arrayInfo;
+//		console.log(mkFileData);
+//	}
+//
+//	var configFileData = {};
+//	var configTrlength = document.getElementById("myAddModalConfigTableTbody").childNodes;
+//	console.log("lxw " + configTrlength.length);
+//	var thisConfigindex = null;
+//	var configTrTdDiv = new Array();
+//	for(var i = 0; i < configTrlength.length; i++) {
+//		var arrayInfo = [];
+//		var innerHtml = "";
+//		configTrTdDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+//		for(var j = 0; j < configTrTdDiv.length; j++) {
+//			var stuInfo = {
+//				"name": "",
+//				"type": "",
+//				"value": ""
+//			};
+//			thisConfigindex = j;
+//			if(j == 0) {
+//				console.log(configTrTdDiv[thisConfigindex].name);
+//				innerHtml = configTrTdDiv[thisConfigindex].title;
+//			} else {
+//				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
+//				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
+//				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
+//				arrayInfo.push(stuInfo);
+//			}
+//		}
+//		//console.log(arrayInfo);
+//		configFileData[innerHtml] = arrayInfo;
+//		console.log(configFileData);
+//	}
+//
+//	data = {
+//		"DevInfo": [devInfoData], //参数：{"platformModel": "","productModel": ""}
+//		"mkFile": mkFileData, //参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
+//		"configFile": configFileData //参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
+//	};
+//	console.log(data);
+	var dataObj = null;
+	// 获取DeviceInfo里的信息
+	var oAchip = document.getElementById("newAddChip").value;
+	var oAmodel = document.getElementById("newAddModel").value;
+	var oAandroidVersion = document.getElementById("NewAddAndroidVersion").value;
+	var oAchipModel = document.getElementById("newAddChipMode").value;
+	var oAmemorySize = document.getElementById("newAddMemory").value;
+	var oAtargetProduct = document.getElementById("newAddDevice").value;
+	var oAgerritState = "0";
+	var oAoperateType = "1";
+	var userName = "xxxxx";
+	var desc = "enheng";
+	
+	//获取config里的数据
+	var addConfigFile = [];
+	var oAconfigTrlength = document.getElementById("myAddModalConfigTableTbody").childNodes;
+	console.log("lxw " + oAconfigTrlength.length);
 	var thisConfigindex = null;
-	var configTrTdDiv = new Array();
-	for(var i = 0; i < configTrlength.length; i++) {
-		var arrayInfo = [];
-		var innerHtml = "";
-		configTrTdDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		for(var j = 0; j < configTrTdDiv.length; j++) {
-			var stuInfo = {
-				"name": "",
-				"type": "",
-				"value": ""
-			};
+	for(var i = 0; i < oAconfigTrlength.length; i++) {
+		var oAConfigobj = {};
+		oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		for(var j = 0; j < oAconfigTrlength.length; j++) {
+			var stuInfo = {};
+//				"cnName": "",获取一下参数
+//				"engName": "",
+//				"type": "",
+//				"value": "",
+//				"category": "",
+//				"desc": "",
+//				"opt": []
+			
 			thisConfigindex = j;
-			if(j == 0) {
-				console.log(configTrTdDiv[thisConfigindex].name);
-				innerHtml = configTrTdDiv[thisConfigindex].title;
-			} else {
-				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
-				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
-				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
-				arrayInfo.push(stuInfo);
-			}
+//			if(j == 0) {
+//				console.log(configTrTdDiv[thisConfigindex].name);
+//				innerHtml = configTrTdDiv[thisConfigindex].title;
+//			} else {
+//				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
+//				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
+//				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
+//				arrayInfo.push(stuInfo);
+//			}
 		}
 		//console.log(arrayInfo);
-		configFileData[innerHtml] = arrayInfo;
-		console.log(configFileData);
+		//configFileData[innerHtml] = arrayInfo;
+		//console.log(configFileData);
 	}
+	
+	//获取mkFile里的信息
+	var AddMkFile = [];
+	
+	dataObj = {
+		"configFile": addConfigFile,
+		"mkFile": AddMkFile,
+		"memorySize": oAmemorySize,
+	    "chipModel": oAchipModel,
+	    "androidVersion": oAandroidVersion,
+	    "model": oAmodel,
+	    "chip": oAchip,
+	    "targetProduct": oAtargetProduct,
+	    "gerritState": "0",   // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	    "operateType": "1",   // 0表示无状态，1表示增加，2表示删除，3表示修改
+	    "userName": "xxxxx",
+	    "desc": "enenen"
 
-	data = {
-		"DevInfo": [devInfoData], //参数：{"platformModel": "","productModel": ""}
-		"mkFile": mkFileData, //参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
-		"configFile": configFileData //参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
 	};
-	console.log(data);
+	
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
