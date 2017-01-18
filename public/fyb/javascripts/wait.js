@@ -46,7 +46,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"option":{}}}';
+		node = '{"data":{"condition":{},"options":{}}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -628,7 +628,7 @@ function addPageSubmitData() {
 				"value": "",
 				"category": "",
 				"desc": "XXXXX",
-				"opt": []
+				"options": []
 			};
 			thisConfigindex = j;
 			if(j == 0) {
@@ -650,9 +650,9 @@ function addPageSubmitData() {
 						oAopt.push(optValue);
 					}
 				}
-				oAstuInfo.opt = oAopt;
+				oAstuInfo.options = oAopt;
 			}
-			console.log("lxw "+JSON.stringify(oAstuInfo));
+			//console.log("lxw "+JSON.stringify(oAstuInfo));
 			addConfigFile.push(oAstuInfo);
 		}
 	}
@@ -667,15 +667,16 @@ function addPageSubmitData() {
 		var oAMkobj = {};
 		oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
 		console.log("lxw" +oAMkTrDiv.length);
-		var oAstuInfoTwo = {
+		
+		for(var j = 1; j < oAMkTrDiv.length; j++) {
+			var oAoptTwo = [];
+			var oAstuInfoTwo = {
 				"cnName": "",
 				"engName": "",
 				"gitPath": "",
 				"category": "",
 				"desc": "XXXXX",//后期做“”的处理。
 			};
-		for(var j = 1; j < oAMkTrDiv.length; j++) {
-			var oAoptTwo = [];
 			oAMkindex = j;
 			oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
 			oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].innerHTML;
