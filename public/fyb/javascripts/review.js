@@ -310,7 +310,7 @@ function reviewEdit(){
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         };
-        console.log(JSON.stringify(array));
+        console.log(JSON.stringify(array1));
         dataarry.push(array1);//将分类之后的数组存到一个数组中
         console.log(dataarry[0]);
         console.log(JSON.stringify(dataarry));
