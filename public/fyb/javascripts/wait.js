@@ -683,11 +683,11 @@ function addPageSubmitData() {
 			oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
 			if (oAMkTrDiv[oAMkindex].childNodes[0].checked == true) {
 				oAstuInfoTwo.value = 1;
+				addMkFile.push(oAstuInfoTwo);
 			} else{
 				oAstuInfoTwo.value = 0;
 			}
 			//console.log("lxw "+JSON.stringify(oAstuInfoTwo));
-			addMkFile.push(oAstuInfoTwo);
 		}
 	}
 	console.log("lxw "+JSON.stringify(addMkFile));
@@ -705,9 +705,8 @@ function addPageSubmitData() {
 	dataObj.desc = "enenen";
 	
 	console.log("lxw" +JSON.stringify(dataObj));
-	//var node = '{"data":{'+ +'}}';
 	var oAnode = '{"data":'+JSON.stringify(dataObj)+'}';
-	sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
+	//sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult(){
