@@ -162,7 +162,7 @@ function AfterWaitHtmlinfo() {
 			}
 			moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 		}
-		/*点击批量修改-弹框里的各个按钮*/
+	/*点击批量修改-弹框里的各个按钮*/
 	function moreEditPageButtons() {
 		var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 		oButtonEditEnsure.onclick = function() {
@@ -270,7 +270,7 @@ function AfterWaitHtmlinfo() {
 			}
 			moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
 		}
-		/*点击多项删除-弹框里的各个按钮*/
+	/*点击多项删除-弹框里的各个按钮*/
 	function moreDeletePageButtons() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
@@ -293,7 +293,6 @@ function AfterWaitHtmlinfo() {
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			//getEditInfoInterface(thisIndex,this.chip,this.model); //获取点击单项编辑时，获取后台的数据，生成单项编辑页
 			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
@@ -303,21 +302,20 @@ function AfterWaitHtmlinfo() {
 	oClassButtonDelete = document.getElementsByClassName("eachdelete");
 	for(var i = 0; i < oClassButtonDelete.length; i++) {
 		oClassButtonDelete[i].index = i;
+		TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
+		TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
 		oClassButtonDelete[i].onclick = function() {
 			console.log("in delete");
+			console.log(this.index); //点击的是第几个
+			var thisIndex = this.index;
+			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			console.log("lxw " + TwiceTransferChip + "--" + TwiceTransferModel);
 			$("#myDeleteModalLabel").text("删除");
 			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		singleDeletePageButtons(this.index); //后期可能会传参给页面里的点击事件
-	}
-	/*点击单项删除-弹框里的各个按钮*/
-	function singleDeletePageButtons(index) {
-		var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
-		oButtonEditEnsure.onclick = function() {
-			console.log("单项删除页-确认按钮");
-			$("#myDeleteModal").modal('hide');
-		}
+		singleDeletePageButtons(chip,model); //后期可能会传参给页面里的点击事件
 	}
 	/*单项复制*/
 	var oClassButtonCopy = new Array();
@@ -332,7 +330,6 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			//getCopyInfoInterface(thisIndex); //获取点击单项复制时，获取后台的数据，生成单项复制页
 			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
@@ -1074,397 +1071,125 @@ function getCopyInforesult() {
 	}
 }
 
-function copyPageSubmitData() {
-	
-}
-
-function getCopyInfoInterface(index) {
-	var myData = {
-		"msg": "success",
-		"code": "1",
-		"data": {
-			"DevInfo": [{
-				"platformModel": "chip001",
-				"productModel": "model001",
-				"androidVersion": "5.0.5",
-				"chipModel": "14A55",
-				"memorySize": "5G",
-				"pendingReview": "芯片型号"
-			}],
-			"mkFile": {
-				"App": [{
-					"name": "酷开商城",
-					"state": "1",
-					"pkgname": "SkyCCMall"
-				}, {
-					"name": "教育中心",
-					"state": "0",
-					"pkgname": "SkyEDU"
-				}, {
-					"name": "电子说明书",
-					"state": "0",
-					"pkgname": "SkyManual"
-				}, {
-					"name": "影视中心",
-					"state": "1",
-					"pkgname": "SkyMovie"
-				}, {
-					"name": "二维码",
-					"state": "1",
-					"pkgname": "SkyQrcode"
-				}, {
-					"name": "远程服务",
-					"state": "1",
-					"pkgname": "SkyTVAgent"
-				}, {
-					"name": "亲友圈",
-					"state": "1",
-					"pkgname": "SkyTVQQ"
-				}, {
-					"name": "酷开用户",
-					"state": "1",
-					"pkgname": "SkyUser"
-				}, {
-					"name": "天气",
-					"state": "1",
-					"pkgname": "SkyWeather"
-				}, {
-					"name": "智慧家庭",
-					"state": "1",
-					"pkgname": "SkyCCMall"
-				}, {
-					"name": "搜狗语音",
-					"state": "1",
-					"pkgname": "SkyVoice"
-				}],
-				"AppStore": [{
-					"name": "应用圈",
-					"state": "1",
-					"pkgname": "SkyAppStore"
-				}, {
-					"name": "应用圈OEM版本",
-					"state": "0",
-					"pkgname": "SkyAppStore_OEM"
-				}, {
-					"name": "应用圈海外版本",
-					"state": "0",
-					"pkgname": "SkyAppStore_Oversea"
-				}, {
-					"name": "应用圈外包版本",
-					"state": "1",
-					"pkgname": "SkyAppStore_PE"
-				}, {
-					"name": "运营大厅",
-					"state": "1",
-					"pkgname": "SkyHall"
-				}, {
-					"name": "Opera浏览器",
-					"state": "1",
-					"pkgname": "OperaStore"
-				}],
-				"HomePage": [{
-					"name": "简易首页4.4",
-					"state": "1",
-					"pkgname": "SimpleHome5+.0"
-				}, {
-					"name": "简易首页5.0",
-					"state": "0",
-					"pkgname": "SimpleHomepage"
-				}, {
-					"name": "简易首页OEM",
-					"state": "0",
-					"pkgname": "SimpleHomepage_OEM"
-				}, {
-					"name": "常规首页",
-					"state": "1",
-					"pkgname": "SkyHomeShell"
-				}, {
-					"name": "海外首页",
-					"state": "1",
-					"pkgname": "SkyOverseaHomepage"
-				}, {
-					"name": "松下首页",
-					"state": "1",
-					"pkgname": "SkyPanasonicHome"
-				}],
-				"IME": [{
-					"name": "Android输入法",
-					"state": "1",
-					"pkgname": "AndroidKeyboard"
-				}, {
-					"name": "酷开系统输入法",
-					"state": "0",
-					"pkgname": "SkyTianciIME"
-				}, {
-					"name": "搜狗输入法",
-					"state": "0",
-					"pkgname": "SogouIME"
-				}],
-				"Service": [{
-					"name": "广告服务",
-					"state": "1",
-					"pkgname": "SkyADService"
-				}, {
-					"name": "设备服务",
-					"state": "0",
-					"pkgname": "SkyDEService"
-				}, {
-					"name": "数据采集服务",
-					"state": "0",
-					"pkgname": "SkyDataService"
-				}, {
-					"name": "通讯服务",
-					"state": "0",
-					"pkgname": "SkyIPCService"
-				}, {
-					"name": "推送服务",
-					"state": "0",
-					"pkgname": "SkyPushService"
-				}, {
-					"name": "智慧启动",
-					"state": "0",
-					"pkgname": "SkySSService"
-				}, {
-					"name": "系统服务",
-					"state": "0",
-					"pkgname": "SkySystemService"
-				}]
-			},
-			"configFile": {
-				"main": [{
-					"name": "屏幕",
-					"type": "input",
-					"pkgname": "PANEL",
-					"value": "FHD|3D",
-					"options": []
-				}, {
-					"name": "网络",
-					"type": "input",
-					"pkgname": "NETWORK",
-					"value": "WIFI",
-					"options": []
-				}, {
-					"name": "通道",
-					"type": "input",
-					"pkgname": "Source",
-					"value": "ATV",
-					"options": []
-				}, {
-					"name": "蓝牙遥控",
-					"type": "select",
-					"pkgname": "BleRemote",
-					"value": "false",
-					"options": ["false", "true"]
-				}, {
-					"name": "H.265解码",
-					"type": "select",
-					"pkgname": "H+.265",
-					"value": "three",
-					"options": ["one", "two", "three"]
-				}, {
-					"name": "打印等级",
-					"type": "select",
-					"pkgname": "Log_appender",
-					"value": "2",
-					"options": ["1", "2", "3", "4"]
-				}, {
-					"name": "升级包路径",
-					"type": "input",
-					"pkgname": "Ota_path",
-					"value": "COM.COOCAA",
-					"options": []
-				}],
-				"other": [{
-					"name": "HDMI延时",
-					"type": "input",
-					"pkgname": "HDMIDelay",
-					"value": "xxxx",
-					"options": []
-				}, {
-					"name": "信源自切换",
-					"type": "select",
-					"pkgname": "SourceSwitch",
-					"value": "false",
-					"options": ["true", "false"]
-				}, {
-					"name": "数字通道字幕",
-					"type": "select",
-					"pkgname": "DTVSubTitle",
-					"value": "hanyu",
-					"options": ["english", "chinese", "hanyu"]
-				}, {
-					"name": "DTV场景实现",
-					"type": "input",
-					"pkgname": "DTVView",
-					"value": "fuck",
-					"options": []
-				}]
-			}
-		}
+function copyPageSubmitData(){
+	var dataObj = {
+		"configFile": "",
+		"mkFile": "",
+		"memorySize": "",
+		"chipModel": "",
+		"androidVersion": "",
+		"model": "",
+		"chip": "",
+		"targetProduct": "",
+		"gerritState": "0", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
+		"userName": "xxxxx",
+		"desc": "enenen"
 	};
+	// 获取DeviceInfo里的信息
+	var oCchip = document.getElementById("newCopyChip").value;
+	var oCmodel = document.getElementById("newCopyModel").value;
+	var oCandroidVersion = document.getElementById("NewCopyAndroidVersion").value;
+	var oCchipModel = document.getElementById("newCopyChipMode").value;
+	var oCmemorySize = document.getElementById("newCopyMemory").value;
+	var oCtargetProduct = document.getElementById("newCopyDevice").value;
+	var oCgerritState = "0";
+	var oCoperateType = "1";
+	var userName = "xxxxx";
+	var desc = "enheng";
 
-	var key, counter = 0;
-	for(key in myData.data) {
-		if(key == "DevInfo") {
-			copyDeviceInfoInput(myData.data.DevInfo);
-		} else if(key == "mkFile") {
-			copyMkInfoInput(myData.data.mkFile);
-		} else if(key == "configFile") {
-			copyConfigInfoInput(myData.data.configFile);
-		}
-	}
-}
-
-function copyDeviceInfoInput(data) {
-	document.getElementById("newCopyChip").value = data[0].platformModel;
-	document.getElementById("newCopyModel").value = data[0].productModel;
-	document.getElementById("newCopyDevice").value = data[0].chipModel;
-	document.getElementById("NewCopyAndroidVersion").value = data[0].androidVersion;
-	document.getElementById("newCopyMemory").value = data[0].memorySize;
-	document.getElementById("newCopyChipMode").value = data[0].pendingReview;
-}
-
-function copyMkInfoInput(data) {
-	var _myCopyTableMKInsertInfo = "";
-	var myCopyTableMKInsert = document.getElementById("myCopyModalMkTableTbody");
-	myCopyTableMKInsert.innerHTML = "";
-	var key, counter = 0;
-	for(key in data) {
-		counter++;
-		console.log("lxw counter = " + counter + "--" + key);
-		_myCopyTableMKInsertInfo = "<tr><td><div>" + key + ":</div>";
-		for(var j = 0; j < data[key].length; j++) {
-			_myCopyTableMKInsertInfo += "<div class='col-xs-3'><input type='checkbox' value=''><span>" + data[key][j].name + "</span></div>";
-			console.log("lxw " + _myCopyTableMKInsertInfo);
-		}
-		_myCopyTableMKInsertInfo += "</td></tr>";
-		console.log("lxw " + counter);
-		myCopyTableMKInsert.innerHTML += _myCopyTableMKInsertInfo;
-	}
-}
-
-function copyConfigInfoInput(data) {
-	var _myCopyTableConfigInsertInfo = "";
-	var myCopyTableMConfigInsert = document.getElementById("myCopyModalConfigTableTbody");
-	myCopyTableMConfigInsert.innerHTML = "";
-	var key, counter = 0;
-	for(key in data) {
-		counter++;
-		console.log("lxw counter = " + counter + "--" + key);
-		if(key == "main") {
-			_myCopyTableConfigInsertInfo = "<tr><td><div>核心功能:</div>";
-		} else if(key == "other") {
-			_myCopyTableConfigInsertInfo = "<tr><td><div>其他功能:</div>";
-		}
-
-		for(var j = 0; j < data[key].length; j++) {
-			console.log("lxw " + data[key][j].name);
-			console.log("lxw " + data[key][j].type);
-			if(data[key][j].type == "input") {
-				_myCopyTableConfigInsertInfo += "<div class='col-xs-6'><span title='name'>" + data[key][j].name + " :</span><input type='text' name='name' value='" + data[key][j].value + "' placeholder='****'></div>";
-			} else if(data[key][j].type == "select") {
-				var _myfirstselect = "<select id='" + data[key][j].pkgname + "'>";
-				console.log("lxw " + data[key][j].options.length);
-				for(var k = 0; k < data[key][j].options.length; k++) {
-					if(data[key][j].options[k] == data[key][j].value) {
-						_myfirstselect += "<option value='" + data[key][j].options[k] + "'selected>" + data[key][j].options[k] + "</option>";
-					} else {
-						_myfirstselect += "<option value='" + data[key][j].options[k] + "'>" + data[key][j].options[k] + "</option>";
-					}
-				}
-				_myfirstselect = "<div class='col-xs-6'><span title='name'>" + data[key][j].name + " :</span>" + _myfirstselect + "</select></div>";
-				console.log("lxw " + _myfirstselect);
-				_myCopyTableConfigInsertInfo += _myfirstselect;
-			}
-		}
-		_myCopyTableConfigInsertInfo += "</td></tr>";
-		myCopyTableMConfigInsert.innerHTML += _myCopyTableConfigInsertInfo;
-	}
-}
-
-function copyPageSubmitData() {
-	var data, devInfoData = null;
-	devInfoData = {
-		"platformModel": document.getElementById("newCopyChip").value,
-		"productModel": document.getElementById("newCopyModel").value,
-		"androidVersion": document.getElementById("newCopyDevice").value,
-		"chipModel": document.getElementById("NewCopyAndroidVersion").value,
-		"memorySize": document.getElementById("newCopyMemory").value,
-		"pendingReview": document.getElementById("newCopyChipMode").value
-	};
-	var mkFileData = {};
-	var mkTrlength = document.getElementById("myCopyModalMkTableTbody").childNodes;
-	console.log("lxw " + mkTrlength.length);
-	var thisMkindex = null;
-	var mkTrTdDiv = new Array();
-	for(var i = 0; i < mkTrlength.length; i++) {
-		var arrayInfo = [];
-		var innerHtml = "";
-		mkTrTdDiv = $("#myCopyModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		for(var j = 0; j < mkTrTdDiv.length; j++) {
-			var stuInfo = {
-				"name": "",
-				"state": "",
-				"pkgname": ""
-			};
-			thisMkindex = j;
-			if(j == 0) {
-				console.log(mkTrTdDiv[thisMkindex].innerHTML);
-				innerHtml = mkTrTdDiv[thisMkindex].innerHTML;
-			} else {
-				stuInfo.name = mkTrTdDiv[thisMkindex].childNodes[1].innerHTML;
-				stuInfo.pkgname = mkTrTdDiv[thisMkindex].title;
-				if(mkTrTdDiv[thisMkindex].childNodes[0].checked) {
-					stuInfo.state = "1";
-				} else {
-					stuInfo.state = "0";
-				}
-				arrayInfo.push(stuInfo);
-			}
-		}
-		//console.log(arrayInfo);
-		mkFileData[innerHtml] = arrayInfo;
-		console.log(mkFileData);
-	}
-
-	var configFileData = {};
-	var configTrlength = document.getElementById("myCopyModalConfigTableTbody").childNodes;
-	console.log("lxw " + configTrlength.length);
-	var thisConfigindex = null;
-	var configTrTdDiv = new Array();
-	for(var i = 0; i < configTrlength.length; i++) {
-		var arrayInfo = [];
-		var innerHtml = "";
-		configTrTdDiv = $("#myCopyModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		for(var j = 0; j < configTrTdDiv.length; j++) {
-			var stuInfo = {
-				"name": "",
+	//获取config里的数据
+	var copyConfigFile = [];
+	var oCconfigTrlength = $("#myCopyModalConfigTableTbody").find("tr");
+	console.log("lxw " + oCconfigTrlength.length);
+	for(var i = 0; i < oCconfigTrlength.length; i++) {
+		var oCConfigobj = {};
+		var thisConfigindex = null;
+		oEconfigTrDiv = $("#myCopyModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oCconfigTrDiv.length);
+		for(var j = 1; j < oCconfigTrDiv.length; j++) {
+			var oCopt = [];
+			var oCstuInfo = {
+				"cnName": "",
+				"engName": "",
 				"type": "",
-				"value": ""
+				"value": "",
+				"category": "",
+				"desc": "XXXXX",
+				"options": []
 			};
 			thisConfigindex = j;
-			if(j == 0) {
-				console.log(configTrTdDiv[thisConfigindex].name);
-				innerHtml = configTrTdDiv[thisConfigindex].title;
-			} else {
-				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
-				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
-				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
-				arrayInfo.push(stuInfo);
+			oCstuInfo.category = oCconfigTrDiv[thisConfigindex].title;
+			oCstuInfo.cnName = oCconfigTrDiv[thisConfigindex].childNodes[0].title;
+			oCstuInfo.engName = oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+			console.log("lxw" + oCstuInfo.engName);
+			oCstuInfo.type = oCconfigTrDiv[thisConfigindex].childNodes[1].name;
+			oCstuInfo.value = oCconfigTrDiv[thisConfigindex].childNodes[1].value;
+			if(oCstuInfo.type == "string") {
+				oCopt = [];
+			} else if(oCstuInfo.type == "enum") {
+				var jjlength = oCconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
+				console.log("lxw " + jjlength.length);
+				for(var jj = 0; jj < jjlength.length; jj++) {
+					var optValue = jjlength[jj].value;
+					oCopt.push(optValue);
+				}
+			}
+			oCstuInfo.options = oCopt;
+			copyConfigFile.push(oCstuInfo);
+		}
+	}
+	console.log("lxw " + JSON.stringify(copyConfigFile));
+
+	//获取mkFile里的信息
+	var copyMkFile = [];
+	var oCMkTrDiv = $("#myCopyModalMkTableTbody").find("tr");
+	console.log("lxw " + oCMkTrDiv.length);
+	var oCMkindex = null;
+	for(var i = 0; i < oCMkTrDiv.length; i++) {
+		var oCMkobj = {};
+		oCMkTrDivTwo = $("#myCopyModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oCMkTrDivTwo.length);
+		for(var j = 1; j < oCMkTrDivTwo.length; j++) {
+			oCMkindex = j;
+			if(oCMkTrDivTwo[oCMkindex].childNodes[0].checked == true) {
+				var oCoptTwo = [];
+				var oCstuInfoTwo = {
+					"cnName": "",
+					"engName": "",
+					"gitPath": "",
+					"category": "",
+					"desc": "XXXXX", //后期做“”的处理。
+				};
+				oCstuInfoTwo.category = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("category");
+				oCstuInfoTwo.cnName = oCMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
+				oCstuInfoTwo.engName = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name");
+				oCstuInfoTwo.gitPath = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
+				copyMkFile.push(oCstuInfoTwo);
+				console.log("lxw " + JSON.stringify(oCstuInfoTwo));
 			}
 		}
-		//console.log(arrayInfo);
-		configFileData[innerHtml] = arrayInfo;
-		console.log(configFileData);
 	}
+	console.log("lxw " + JSON.stringify(copyMkFile));
+	dataObj.configFile = copyConfigFile;
+	dataObj.mkFile = copyMkFile;
+	dataObj.memorySize = oCmemorySize;
+	dataObj.chipModel = oCchipModel;
+	dataObj.androidVersion = oCandroidVersion;
+	dataObj.model = oCmodel;
+	dataObj.chip = oCchip;
+	dataObj.targetProduct = oCtargetProduct;
+	dataObj.gerritState = "0"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
+	dataObj.userName = "xxxxx";
+	dataObj.desc = "enenen";
 
-	data = {
-		"DevInfo": [devInfoData], //参数：{"platformModel": "","productModel": ""}
-		"mkFile": mkFileData, //参数：{"App": [{"name": "酷开商城","pkgname": "SkyCCMall"},{"name": "搜狗语音","pkgname": "SkyVoice"}]}
-		"configFile": configFileData //参数：{"main": [{"name": "屏幕","value":"","options":[]},{"name": "升级包","value":"","options":[]}]};
-	};
-	console.log(data);
+	console.log("lxw" + JSON.stringify(dataObj));
+	var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
+	console.log("lxw " + oCnode);
+	//sendHTTPRequest("/fyb_api/productAdd", oEnode, productAddresult);
 }
+
 
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
@@ -1541,7 +1266,16 @@ function editPageButtonsOnclick() {
 		//编辑页mk-config button的点击
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
 }
-
+/*点击单项删除-弹框里的各个按钮*/
+function singleDeletePageButtons() {
+	var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
+	oButtonEditEnsure.onclick = function() {
+		console.log("单项删除页-确认按钮");
+		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+		//sendHTTPRequest("/fyb_api/productQuery", node, getDeleteInforesult);
+		$("#myDeleteModal").modal('hide');
+	}
+}
 
 function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
