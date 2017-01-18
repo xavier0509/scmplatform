@@ -305,7 +305,7 @@ function reviewEdit(){
                 var desc = $size[i].childNodes[0].desc;
                 var gitPath = $size[i].childNodes[0].gitPath;
                 var category = $size[i].childNodes[0].category;
-                var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engNname+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
+                var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
                 console.log(data);
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
