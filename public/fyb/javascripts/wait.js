@@ -685,29 +685,39 @@ function addPageSubmitData() {
 	var thisConfigindex = null;
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
 		var oAConfigobj = {};
-		oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		for(var j = 0; j < oAconfigTrlength.length; j++) {
-			var stuInfo = {};
-//				"cnName": "",获取一下参数
-//				"engName": "",
-//				"type": "",
-//				"value": "",
-//				"category": "",
-//				"desc": "",
-//				"opt": []
+		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log(lxw +oAconfigTrDiv.length);
+		for(var j = 0; j < oAconfigTrDiv.length; j++) {
+			var oAstuInfo = {
+				"cnName": "",获取一下参数
+				"engName": "",
+				"type": "",
+				"value": "",
+				"category": "",
+				"desc": "XXXXX",
+				"opt": []
+			};
+			var oAcnName,oAengName,oAtype,oAvalue,oAcategory,oAdesc = null;
+			var oAopt = [];
 			
 			thisConfigindex = j;
-//			if(j == 0) {
-//				console.log(configTrTdDiv[thisConfigindex].name);
-//				innerHtml = configTrTdDiv[thisConfigindex].title;
-//			} else {
-//				stuInfo.name = configTrTdDiv[thisConfigindex].childNodes[0].innerHTML;
-//				stuInfo.type = configTrTdDiv[thisConfigindex].childNodes[1].name;
-//				stuInfo.value = configTrTdDiv[thisConfigindex].childNodes[1].value;
-//				arrayInfo.push(stuInfo);
-//			}
+			if(j == 0) {
+				oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
+				console.log("lxw "+ oAstuInfo.category);
+			} else {
+				oAstuInfo.czName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
+				oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].name;
+				oAstuInfo.type = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
+				oAstuInfo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
+				if (oAstuInfo.type == "string") {
+					oAstuInfo.opt = [];
+				} else if(oAstuInfo.type == "enum"){
+					console.log("lxw "+oAconfigTrDiv[thisConfigindex].childNodes[1].childNodes.length);
+				}
+				//arrayInfo.push(stuInfo);
+			}
 		}
-		//console.log(arrayInfo);
+		console.log("lxw "+oAstuInfo);
 		//configFileData[innerHtml] = arrayInfo;
 		//console.log(configFileData);
 	}
