@@ -686,7 +686,7 @@ function addPageSubmitData() {
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
 		var oAConfigobj = {};
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log(lxw +oAconfigTrDiv.length);
+		console.log("lxw" +oAconfigTrDiv.length);
 		for(var j = 0; j < oAconfigTrDiv.length; j++) {
 			var oAstuInfo = {
 				"cnName": "",
