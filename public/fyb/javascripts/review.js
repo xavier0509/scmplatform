@@ -351,14 +351,14 @@ function reviewEdit(){
         $size = $(name).find("div");
         var array2 = [];
         for (var i = 0; i < $size.length; i++) {
-            var engName = $size[i].childNodes[1].engName;
+            var engName = $size[i].childNodes[1].getAttribute("engName");
             var value = $size[i].childNodes[1].value;
-            var cnName = $size[i].childNodes[1].cnName;
-            var configkey = $size[i].childNodes[1].configkey;
-            var desc = $size[i].childNodes[1].desc;
-            var category = $size[i].childNodes[1].category;
-            var options = $size[i].childNodes[1].options;
-            var type = $size[i].childNodes[1].type;
+            var cnName = $size[i].childNodes[1].getAttribute("cnName");
+            var configkey = $size[i].childNodes[1].getAttribute("configkey");
+            var desc = $size[i].childNodes[1].getAttribute("desc");
+            var category = $size[i].childNodes[1].getAttribute("category");
+            var options = $size[i].childNodes[1].getAttribute("options");
+            var type = $size[i].childNodes[1].getAttribute("type");
             var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+options+'","type":"'+type+'"}';
             console.log(data);
             array2.push(JSON.parse(data));
