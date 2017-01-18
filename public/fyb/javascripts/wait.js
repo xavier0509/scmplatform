@@ -717,7 +717,7 @@ function addPageSubmitData() {
 					console.log("lxw "+jjlength.length);
 					for (var jj=0; jj<jjlength.length; jj++) {
 						var optValue = jjlength[jj].value;
-						oAstuInfo.opt.push('"'+optValue+'"');
+						oAstuInfo.opt.push(optValue);
 					}
 				}
 				//oAstuInfo.opt.push(oAstuInfo);
