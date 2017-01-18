@@ -675,15 +675,15 @@ function getEditInforesult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw "+JSON.stringify(data.data));
-				document.getElementById("newEditChip").value = data.data.chip;
-				document.getElementById("newEditModel").value = data.data.model;
-				document.getElementById("NewEditAndroidVersion").value = data.data.androidVersion;
-				document.getElementById("newEditChipMode").value = data.data.chipModel;
-				document.getElementById("newEditMemory").value = data.data.memorySize;
-				document.getElementById("newEditDevice").value = data.data.targetProduct;
-				console.log("lxw "+data.data.mkFile.length);
-				console.log("lxw "+data.data.configFile.length);
+				console.log("lxw "+JSON.stringify(data.data[0]));
+				document.getElementById("newEditChip").value = data.data[0].chip;
+				document.getElementById("newEditModel").value = data.data[0].model;
+				document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
+				document.getElementById("newEditChipMode").value = data.data[0].chipModel;
+				document.getElementById("newEditMemory").value = data.data[0].memorySize;
+				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
+				console.log("lxw "+data.data[0].mkFile.length);
+				console.log("lxw "+data.data[0].configFile.length);
 
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
