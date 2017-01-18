@@ -923,7 +923,7 @@ function editPageSubmitData() {
 					"category": "",
 					"desc": "XXXXX", //后期做“”的处理。
 				};
-				oEInfoTwo.category = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("category");
+				oEstuInfoTwo.category = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("category");
 				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
 				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
 				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
