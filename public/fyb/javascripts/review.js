@@ -332,7 +332,7 @@ function reviewEdit(){
                 array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         };
-        console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
+        // console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
         mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
         // console.log(JSON.stringify(mkdd));
@@ -344,7 +344,7 @@ function reviewEdit(){
             }
         };
     };
-    console.log("更新的mk信息："+JSON.stringify(mkdataarry))
+    console.log("更新的mk信息："+JSON.stringify(mkdataarry));
 
     //获取config文件数据
     function getconfigdata(name){
@@ -357,16 +357,25 @@ function reviewEdit(){
             var configkey = $size[i].childNodes[1].getAttribute("configkey");
             var desc = $size[i].childNodes[1].getAttribute("desc");
             var category = $size[i].childNodes[1].getAttribute("category");
-            var options = $size[i].childNodes[1].getAttribute("options");
+            var opt = $size[i].childNodes[1].getAttribute("options");
+            var options = opt.split(",");
             var type = $size[i].childNodes[1].getAttribute("type");
             var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+options+'","type":"'+type+'"}';
-            console.log(data);
+            // console.log(data);
             array2.push(JSON.parse(data));
-            console.log(JSON.stringify(array2))
+            // console.log(JSON.stringify(array2));
         };
         configdd.push(array2);
         console.log(JSON.stringify(configdd));
     }
+    for (var i = 0; i < configdd.length; i++) {
+        if (configdd[i].length>0) {
+            for (var j = 0; j < configdd[i].length; j++) {
+                configdataarry.push(configdd[i][j]);
+            }
+        };
+    };
+    console.log("更新的config信息："+JSON.stringify(configdataarry));
 
 }
 
