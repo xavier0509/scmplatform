@@ -683,7 +683,6 @@ function addPageSubmitData() {
 				oAstuInfoTwo.cnName = oAMkTrDivTwo[oAMkindex].childNodes[1].innerHTML;
 				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
 				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
-				oAstuInfoTwo.value = 1;
 				addMkFile.push(oAstuInfoTwo);
 				console.log("lxw "+JSON.stringify(oAstuInfoTwo));
 			}
