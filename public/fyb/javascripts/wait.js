@@ -705,11 +705,11 @@ function addPageSubmitData() {
 		for(var j = 1; j < oAMkTrDiv.length; j++) {
 			var oAoptTwo = [];
 			oAMkindex = j;
-			oAstuInfoTwo.category = oAconfigTrDiv[oAMkindex].childNodes[1].getAttribute("category");
-			oAstuInfoTwo.cnName = oAconfigTrDiv[oAMkindex].childNodes[1].value;
-			oAstuInfoTwo.engName = oAconfigTrDiv[oAMkindex].childNodes[1].getAttribute("name");
-			oAstuInfoTwo.gitPath = oAconfigTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
-			if (oAconfigTrDiv[oAMkindex].childNodes[0].checked == true) {
+			oAstuInfoTwo.category = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("category");
+			oAstuInfoTwo.cnName = oAMkTrDiv[oAMkindex].childNodes[1].value;
+			oAstuInfoTwo.engName = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("name");
+			oAstuInfoTwo.gitPath = oAMkTrDiv[oAMkindex].childNodes[1].getAttribute("gitPath");
+			if (oAMkTrDiv[oAMkindex].childNodes[0].checked == true) {
 				oAstuInfoTwo.value = 1;
 			} else{
 				oAstuInfoTwo.value = 0;
