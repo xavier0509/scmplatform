@@ -231,13 +231,17 @@ function reviewresult(){
                         input.value = name[i].value;
                     }
                     else if (name[i].type == "enum"){
+                        var opt = [];
+                        for (var j = 0; j < name[i].options.length; j++) {
+                            opt.push(name[i].options[j]);
+                        };
                         var input = document.createElement("select");
                         input.setAttribute("engName",name[i].engName);
                         input.setAttribute("configKey",name[i].configKey);
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
                         input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",name[i].options);
+                        input.setAttribute("options",opt);
                         input.setAttribute("cnName",name[i].cnName);
                         input.setAttribute("value",name[i].value);
                         input.setAttribute("class","form-group");
