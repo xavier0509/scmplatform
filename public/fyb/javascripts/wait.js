@@ -734,7 +734,7 @@ function addPageSubmitData() {
 	    "userName": "xxxxx",
 	    "desc": "enenen"
 	};
-	console.log("lxw" +dataObj);
+	console.log("lxw" +JSON.stringify(dataObj));
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInterface(index) {
