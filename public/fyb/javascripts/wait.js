@@ -687,8 +687,7 @@ function addPageSubmitData() {
 		var oAConfigobj = {};
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 		console.log("lxw" +oAconfigTrDiv.length);
-		for(var j = 0; j < oAconfigTrDiv.length; j++) {
-			var oAstuInfo = {
+		var oAstuInfo = {
 				"cnName": "",
 				"engName": "",
 				"type": "",
@@ -697,6 +696,7 @@ function addPageSubmitData() {
 				"desc": "XXXXX",
 				"opt": []
 			};
+		for(var j = 0; j < oAconfigTrDiv.length; j++) {
 			var oAcnName,oAengName,oAtype,oAvalue,oAcategory,oAdesc = null;
 			var oAopt = [];
 			
@@ -713,13 +713,15 @@ function addPageSubmitData() {
 					oAstuInfo.opt = [];
 				} else if(oAstuInfo.type == "enum"){
 					console.log("lxw "+oAconfigTrDiv[thisConfigindex].childNodes[1].childNodes.length);
+				
 				}
-				//arrayInfo.push(stuInfo);
+				//oAstuInfo.opt.push(oAstuInfo);
 			}
+			console.log("lxw "+JSON.stringify(oAstuInfo));
+			addConfigFile.push(JSON.stringify(oAstuInfo));
 		}
-		console.log("lxw "+oAstuInfo);
+		console.log("lxw "+addConfigFile);
 		//configFileData[innerHtml] = arrayInfo;
-		//console.log(configFileData);
 	}
 	
 	//获取mkFile里的信息
