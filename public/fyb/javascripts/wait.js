@@ -479,7 +479,7 @@ function addPageSubmitData() {
 		"model": "",
 		"chip": "",
 		"targetProduct": "",
-		"gerritState": "0", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": "xxxxx",
 		"desc": "enenen"
@@ -491,7 +491,7 @@ function addPageSubmitData() {
 	var oAchipModel = document.getElementById("newAddChipMode").value;
 	var oAmemorySize = document.getElementById("newAddMemory").value;
 	var oAtargetProduct = document.getElementById("newAddDevice").value;
-	var oAgerritState = "0";
+	var oAgerritState = "1";
 	var oAoperateType = "1";
 	var userName = "xxxxx";
 	var desc = "enheng";
@@ -577,7 +577,7 @@ function addPageSubmitData() {
 	dataObj.model = oAmodel;
 	dataObj.chip = oAchip;
 	dataObj.targetProduct = oAtargetProduct;
-	dataObj.gerritState = "0"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
@@ -789,7 +789,7 @@ function editPageSubmitData() {
 		"model": "",
 		"chip": "",
 		"targetProduct": "",
-		"gerritState": "0", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": "xxxxx",
 		"desc": "enenen"
@@ -801,8 +801,8 @@ function editPageSubmitData() {
 	var oEchipModel = document.getElementById("newEditChipMode").value;
 	var oEmemorySize = document.getElementById("newEditMemory").value;
 	var oEtargetProduct = document.getElementById("newEditDevice").value;
-	var oEgerritState = "0";
-	var oEoperateType = "1";
+	var oEgerritState = "1";
+	var oEoperateType = "3";
 	var userName = "xxxxx";
 	var desc = "enheng";
 
@@ -1097,8 +1097,8 @@ function copyPageSubmitData(){
 		"model": "",
 		"chip": "",
 		"targetProduct": "",
-		"gerritState": "0", // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
-		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
+		"gerritState": "1", // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
+		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": "xxxxx",
 		"desc": "enenen"
 	};
@@ -1109,7 +1109,7 @@ function copyPageSubmitData(){
 	var oCchipModel = document.getElementById("newCopyChipMode").value;
 	var oCmemorySize = document.getElementById("newCopyMemory").value;
 	var oCtargetProduct = document.getElementById("newCopyDevice").value;
-	var oCgerritState = "0";
+	var oCgerritState = "1";
 	var oCoperateType = "1";
 	var userName = "xxxxx";
 	var desc = "enheng";
@@ -1195,7 +1195,7 @@ function copyPageSubmitData(){
 	dataObj.model = oCmodel;
 	dataObj.chip = oCchip;
 	dataObj.targetProduct = oCtargetProduct;
-	dataObj.gerritState = "0"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
