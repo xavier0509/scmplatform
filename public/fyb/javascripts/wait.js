@@ -599,7 +599,7 @@ function productAddresult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
-				//freshHoneAddHtml();
+				freshHtml("tab_userMenu2");
 				//var oooNode = '{"data":{"gerritState":"1"}}';
 				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
@@ -1317,5 +1317,17 @@ function closeparentpage(pageName) {
 	oButtonObject.onclick = function() {
 		$(pageName).modal('hide');
 		$("#myEditEnsureModal").modal('hide');
+	}
+}
+
+/*刷新页面*/
+function freshHtml(pageName) {
+	var htmlObject = parent.document.getElementById(pageName);
+	console.log("lxw "+ htmlObject);
+	if (htmlObject == null) {
+		console.log("该页面没有被点击出来，不需要刷新");
+	} else{
+		console.log("lxw " + htmlObject.firstChild.src);
+		htmlObject.firstChild.src = "manage-chipmode.html";
 	}
 }
