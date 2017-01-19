@@ -891,7 +891,7 @@ function editPageSubmitData() {
 	//console.log("lxw" + JSON.stringify(dataObj));
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":'+oEmemorySize+',"chipModel":'+oEchipModel+',"androidVersion":'+oEandroidVersion+',"targetProduct":'+oEtargetProduct+',"gerritState":"1","operateType":"3","androidVersion":'+oEandroidVersion+',"mkFile":'+JSON.stringify(editConfigFile)+',"configFile":'+JSON.stringify(editMkFile)+'}}}';
 	console.log("lxw " + oEnode);
-	sendHTTPRequest("/fyb_api/productUpdate",node,productEditresult);
+	sendHTTPRequest("/fyb_api/productUpdate",oEnode,productEditresult);
 }
 function productEditresult(){
 	console.log("lxw in productEditresult");
