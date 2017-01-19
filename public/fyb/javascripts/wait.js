@@ -717,7 +717,7 @@ function getEditInforesult() {
 	                    var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
 	                    for (var j = 0; j < childSelect.length; j++) {
 	                        childSelect[j].removeAttribute("selected");
-	                        if (childSelect[j].value == configfile[i].value) {
+	                        if (childSelect[j].value == data.data[0].configFile[i].value) {
 	                            childSelect[j].setAttribute("selected","");
 	                        }
 	                    };
