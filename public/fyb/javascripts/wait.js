@@ -138,7 +138,6 @@ function AfterWaitHtmlinfo() {
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
-		/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
 		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
@@ -154,13 +153,13 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			
+			//sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
 			$('#myDeleteDialogModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		//moreEditPageButtons(); //后期可能会传参给页面里的点击事件
+		moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 	}
 
 	/*多项删除*/
@@ -184,7 +183,6 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreDeleteModalLabel").text("多项删除");
 			$('#myMoreDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			//sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
 			$('#myDeleteDialogModal').modal();
