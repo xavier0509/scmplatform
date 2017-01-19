@@ -1423,9 +1423,11 @@ function moreEditPageButtons() {
 				omybuttonAddstyle[number].innerHTML = "取消新增";
 				omybuttonDelstyle[number].style.color = "";
 				omybuttonDelstyle[number].innerHTML = "批量删除";
+				document.getElementById(id).style.color = "red";
 			} else{
 				omybuttonAddstyle[number].style.color = "";
 				omybuttonAddstyle[number].innerHTML = "批量新增";
+				document.getElementById(id).style.color = "";
 			}
 		}
 		omybuttonDelstyle[number].onclick = function() {
@@ -1435,9 +1437,11 @@ function moreEditPageButtons() {
 				omybuttonDelstyle[number].innerHTML = "取消删除";
 				omybuttonAddstyle[number].style.color = "";
 				omybuttonAddstyle[number].innerHTML = "批量新增";
+				document.getElementById(id).style.color = "red";
 			} else{
 				omybuttonDelstyle[number].style.color = "";
 				omybuttonDelstyle[number].innerHTML = "批量删除";
+				document.getElementById(id).style.color = "";
 			}
 			
 		}
