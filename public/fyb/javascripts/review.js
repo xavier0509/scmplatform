@@ -66,10 +66,20 @@ function reviewlist(){
 
                         }
                     }
-                    var _cell7 = _row.insertCell(6);
                     var operateType = datalength[i].operateType;
-                    _cell7.innerHTML = operateType;
-                    _cell7.style.display="none";
+                    var _cell7 = _row.insertCell(6); 
+                    if (operateType == 1) {                  
+                        _cell7.innerHTML = "新增";
+                    }
+                    else if (operateType == 2) {
+                        _cell7.innerHTML = "删除";
+                    }
+                    else if (operateType == 3) {
+                        _cell7.innerHTML = "修改";
+                    }
+                    var _cell8 = _row.insertCell(7);
+                    _cell8.innerHTML = operateType;
+                    _cell8.style.display="none";
                 };
             }
             else{
