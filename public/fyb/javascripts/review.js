@@ -15,7 +15,7 @@ $(function () {
 
 var chip = null;
 var model = null;
-var operateType = null;
+var operate = null;
 
 //在待审核页面出现列表
 function reviewlist(){
@@ -52,8 +52,7 @@ function reviewlist(){
                     _cell4.innerHTML = datalength[i].chipModel;
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].memorySize;
-                    var _cell6 = _row.insertCell(5);
-                    operateType = datalength[i].operateType;
+                    var _cell6 = _row.insertCell(5);                    
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
@@ -67,6 +66,10 @@ function reviewlist(){
 
                         }
                     }
+                    var _cell7 = _row.insertCell(6);
+                    var operateType = datalength[i].operateType;
+                    _cell7.innerHTML = operateType;
+                    _cell7.style.display="none";
                 };
             }
             else{
@@ -79,17 +82,19 @@ function reviewlist(){
 }
 
 //恢复提示框
+var rechip = null;
+var remodel = null;
 function recover(obj){
     $('#mydialog').modal();
+    rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
+    remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
     document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
     document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
 
 }
 //点击恢复按钮执行函数-----将待审核状态置0
-function recoverSure(obj){
-    var rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    var remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+function recoverSure(obj){    
     sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
 
 }
@@ -116,6 +121,7 @@ function recoverResult(){
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[6].innerHTML;
     //查询模块信息接口
     sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    
     
@@ -307,8 +313,8 @@ function reviewresult(){
                 for (var i = 0; i < selectcounts.length; i++) {
                     selectcounts[i].setAttribute('disabled','')
                 }
-                console.log("操作状态:"+operateType);
-                if (operateType == 2) {
+                console.log("操作状态:"+operate);
+                if (operate == 2) {
                     document.getElementById("reviewSubmit").innerHTML = "确认删除";
                     document.getElementById("reButton").innerHTML = "确认删除";
                     document.getElementById("btn_submit").onclick = deleteIssue;
