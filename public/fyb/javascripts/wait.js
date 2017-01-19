@@ -1321,9 +1321,6 @@ function getMoreEditInfoEnd(){
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
 	for(var i = 0; i < oMEMkTrDiv.length; i++) {
-		var oMEMkAddobj = {};
-		var oMEMkDelobj = {};
-		var oMEMkEditobj = {};//用于后期config文件
 		oMEMkTrDivTwo = $("#myMoreEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
 		console.log("lxw" + oMEMkTrDivTwo.length);
 		for(var j = 1; j < oMEMkTrDivTwo.length; j++) {
@@ -1344,11 +1341,29 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
 				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
-				console.log("lxw " + moreEditMkAddFile);
+				//console.log("lxw " + moreEditMkAddFile);
+			}
+			if(ooValue == "2") {//删除
+				console.log("lxw "+ oMEMkindex);
+				console.log("lxw "+ oMEMkindex + "--"+ oMEMkTrDivTwo[oMEMkindex].childNodes[0].id+"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
+				var oCstuInfoTwo = {
+					"cnName": "",
+					"engName": "",
+					"gitPath": "",
+					"category": "",
+					"desc": "XXXXX", //后期做“”的处理。
+				};
+				oCstuInfoTwo.category = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("category");
+				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
+				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
+				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
+				moreEditMkDelFile.push(JSON.stringify(oCstuInfoTwo));
+				//console.log("lxw " + moreEditMkAddFile);
 			}
 		}
 	}
 	console.log("lxw " + moreEditMkAddFile);
+	console.log("lxw " + moreEditMkDelFile);
 	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 }
 
