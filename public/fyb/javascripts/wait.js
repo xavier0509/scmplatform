@@ -153,13 +153,12 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			//sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
+			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
 			$('#myDeleteDialogModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 	}
 
 	/*多项删除*/
@@ -1128,7 +1127,7 @@ function copyPageSubmitData() {
 	console.log("lxw " + oCnode);
 	sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
 }
-
+//多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne(){
 	console.log("lxw " + "getMoreEditInfoOne");
 	console.log("this.readyState = " + this.readyState);
@@ -1139,64 +1138,128 @@ function getMoreEditInfoOne(){
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
 			var kk = 0;
-			var _rowEditPageApp = document.getElementById("myEditModalMkTableApp");
-			var _rowEditPageService = document.getElementById("myEditModalMkTableService");
-			var _rowEditPageAppStore = document.getElementById("myEditModalMkTableAppStore");
-			var _rowEditPageHomePage = document.getElementById("myEditModalMkTableHomePage");
-			var _rowEditPageIME = document.getElementById("myEditModalMkTableIME");
-			var _rowEditPageSysApp = document.getElementById("myEditModalMkTableSysApp");
-			var _rowEditPageTV = document.getElementById("myEditModalMkTableTV");
-			var _rowEditPageOther = document.getElementById("myEditModalMkTableOther");
-			_rowEditPageApp.innerHTML = "<div title='App'>App:</div>";
-			_rowEditPageService.innerHTML = "<div title='Service'>Service:</div>";
-			_rowEditPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
-			_rowEditPageHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
-			_rowEditPageIME.innerHTML = "<div title='IME'>IME:</div>";
-			_rowEditPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
-			_rowEditPageTV.innerHTML = "<div title='TV'>TV:</div>";
-			_rowEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
+			var _rowMEditPageApp = document.getElementById("myMoreEditModalMkTableApp");
+			var _rowMEditPageService = document.getElementById("myMoreEditModalMkTableService");
+			var _rowMEditPageAppStore = document.getElementById("myMoreEditModalMkTableAppStore");
+			var _rowMEditPageHomePage = document.getElementById("myMoreEditModalMkTableHomePage");
+			var _rowMEditPageIME = document.getElementById("myMoreEditModalMkTableIME");
+			var _rowMEditPageSysApp = document.getElementById("myMoreEditModalMkTableSysApp");
+			var _rowMEditPageTV = document.getElementById("myMoreEditModalMkTableTV");
+			var _rowMEditPageOther = document.getElementById("myMoreEditModalMkTableOther");
+			_rowMEditPageApp.innerHTML = "<div title='App'>App:</div>";
+			_rowMEditPageService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowMEditPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowMEditPageHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowMEditPageIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowMEditPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowMEditPageTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowMEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
 					console.log("App:" + kk);
-					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
 					console.log("Service:" + kk);
-					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
 					console.log("AppStore:" + kk);
-					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
 					console.log("HomePage:" + kk);
-					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
 					console.log("IME:" + kk);
-					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
 					console.log("SysApp:" + kk);
-					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					console.log("TV:" + kk);
-					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					console.log("Other:" + kk);
-					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowMEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
-		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getEditInfoInfTwo);
+		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getMoreEditInfoTwo);
 	}
 }
+function getMoreEditInfoTwo(){
+	console.log("lxw " + "getMoreEditInfoTwo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			var kk = 0;
+			var pullDataOne, pullDataTwo = null;
+			var _rowMEditPageConfigMain = document.getElementById("myMoreEditModalConfigTableTdOne");
+			var _rowMEditPageConfigOther = document.getElementById("myMoreEditModalConfigTableTdTwo");
+			_rowMEditPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
+			_rowMEditPageConfigOther.innerHTML = "<div title='other'>其他功能：</div>";
 
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw " + data.data[i].category + data.data[i].type);
+				if(data.data[i].category == "main") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("main:" + kk);
+					if(data.data[i].type == "string") {
+						_rowMEditPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='****'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowMEditPageConfigMain.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "other") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowMEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='11111'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowMEditPageConfigOther.innerHTML += _myAddselect;
+					}
+				}
+			}
+		};
+		moreEditPageButtons(); //后期可能会传参给页面里的点击事件
+		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+		//sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
+	}
+}
 
 
 /*点击新增-弹框里的各个按钮*/
@@ -1313,7 +1376,7 @@ function moreEditPageButtons() {
 			$("#myMoreEditModal").modal('hide');
 			$("#myMoreEditSubmitModal").modal('hide');
 		}
-		//批量修改页mk-config button的点击
+	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
 	/*批量修改页-单项*/
