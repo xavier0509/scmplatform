@@ -4,6 +4,9 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 $(function() {
 	forsession();
 })
+var level = parent.adminFlag;
+var loginusername = parent.loginusername;
+console.log("lxw "+level+"--"+loginusername);
 
 var TwiceTransferChip = null;
 var TwiceTransferModel = null;
