@@ -1311,6 +1311,33 @@ function getMoreEditInfoTwo(){
 		//sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
 	}
 }
+function getMoreEditInfo(){
+	//获取mkFile里的信息
+	var mEMkAddCzName = [];
+	var mEMkDelCzName = [];
+	var mEMkEditCzName = [];//config文件用
+	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
+	console.log("lxw " + oMEMkTrDiv.length);
+	var oMEMkindex = null;
+	for(var i = 0; i < oMEMkTrDiv.length; i++) {
+		oMEMkTrDivTwo = $("#myMoreEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oMEMkTrDivTwo.length);
+		for(var j = 1; j < oMEMkTrDivTwo.length; j++) {
+			oMEMkindex = j;
+			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
+			if(ooValue == "1") {//新增
+				console.log("lxw "+ oMEMkindex +"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
+				mEMkAddCzName.push(oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
+			}
+			if(ooValue == "2") {//删除
+				console.log("lxw "+ oMEMkindex +"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
+				mEMkDelCzName.push(oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
+			}
+		}
+	}
+	console.log("lxw "+mEMkAddCzName);
+	console.log("lxw "+mEMkDelCzName);
+}
 function getMoreEditInfoEnd(){
 	//获取mkFile里的信息
 	var moreEditMkAddFile = [];
@@ -1464,16 +1491,14 @@ function moreEditPageButtons() {
 		console.log("批量修改页-提交按钮一");
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		
-		//getMoreEditInfoEnd();
+		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮二");
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		
-		//getMoreEditInfoEnd();
+		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
