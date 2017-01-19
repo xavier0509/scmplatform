@@ -842,7 +842,6 @@ function editPageSubmitData() {
 				}
 			}
 			oEstuInfo.options = oEopt;
-			//}
 			editConfigFile.push(oEstuInfo);
 		}
 	}
@@ -889,13 +888,30 @@ function editPageSubmitData() {
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
-
 	//console.log("lxw" + JSON.stringify(dataObj));
-	//var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":'+oEmemorySize+',"chipModel":'+oEchipModel+',"androidVersion":'+oEandroidVersion+',"targetProduct":'+oEtargetProduct+',"gerritState":"1","operateType":"3","androidVersion":'+oEandroidVersion+',"mkFile":'+JSON.stringify(editConfigFile)+',"configFile":'+JSON.stringify(editMkFile)+'}}}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fyb_api/productUpdate",node,reviewEditResult);
-
+	sendHTTPRequest("/fyb_api/productUpdate",node,productEditresult);
+}
+function productEditresult(){
+	console.log("lxw in productEditresult");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				//freshHoneAddHtml();
+				//var oooNode = '{"data":{"gerritState":"1"}}';
+				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+	}
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
