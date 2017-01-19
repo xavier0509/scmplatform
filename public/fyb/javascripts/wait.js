@@ -825,7 +825,7 @@ function editPageSubmitData() {
 				"options": []
 			};
 			thisConfigindex = j;
-			oEstuInfo.category = oEconfigTrDiv[thisConfigindex].title;
+			oEstuInfo.category = oEconfigTrDiv[0].title;
 			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			console.log("lxw" + oEstuInfo.engName);
@@ -890,11 +890,10 @@ function editPageSubmitData() {
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
 
-	console.log("lxw" + JSON.stringify(dataObj));
+	//console.log("lxw" + JSON.stringify(dataObj));
 	//var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":'+oEmemorySize+',"chipModel":'+oEchipModel+',"androidVersion":'+oEandroidVersion+',"targetProduct":'+oEtargetProduct+',"gerritState":"1","operateType":"3","androidVersion":'+oEandroidVersion+',"mkFile":'+JSON.stringify(editConfigFile)+',"configFile":'+JSON.stringify(editMkFile)+'}}}';
 	console.log("lxw " + oEnode);
-	console.log("lxw " + JSON.stringify(oEnode));
 	//sendHTTPRequest("/fyb_api/productUpdate",node,reviewEditResult);
 
 }
