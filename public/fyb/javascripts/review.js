@@ -366,7 +366,7 @@ function passSure(){
 }
 
 //删除操作
-function passSure(){
+function deleteSure(){
     sendHTTPRequest("/fyb_api/productDelete",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
 }
 
