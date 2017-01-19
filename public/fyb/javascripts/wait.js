@@ -1279,7 +1279,42 @@ function getMoreEditInfoTwo(){
 		//sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
 	}
 }
-
+function getMoreEditInfoEnd(){
+	console.log("lxw "+ChipModelArray);
+	//获取mkFile里的信息
+	var moreEditMkFile = [];
+	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
+	console.log("lxw " + oMEMkTrDiv.length);
+	var oMEMkindex = null;
+	for(var i = 0; i < oMEMkTrDiv.length; i++) {
+		var oMEMkobj = {};
+		oMEMkTrDivTwo = $("#myMoreEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oMEMkTrDivTwo.length);
+		for(var j = 1; j < oMEMkTrDivTwo.length; j++) {
+			oMEMkindex = j;
+			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
+			if(ooValue == "1") {//新增
+				console.log("lxw "+ oMEMkindex);
+//				var oMEoptTwo = [];
+//				var oCstuInfoTwo = {
+//					"cnName": "",
+//					"engName": "",
+//					"gitPath": "",
+//					"category": "",
+//					"desc": "XXXXX", //后期做“”的处理。
+//				};
+//				oCstuInfoTwo.category = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("category");
+//				oCstuInfoTwo.cnName = oCMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
+//				oCstuInfoTwo.engName = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name");
+//				oCstuInfoTwo.gitPath = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
+//				copyMkFile.push(oCstuInfoTwo);
+//				console.log("lxw " + JSON.stringify(oCstuInfoTwo));
+			}
+		}
+	}
+//	console.log("lxw " + JSON.stringify(copyMkFile));
+	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
+}
 
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
@@ -1376,17 +1411,15 @@ function moreEditPageButtons() {
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		
+		getMoreEditInfoEnd();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮二");
-		
-		
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		console.log("lxw "+ChipModelArray);
-		document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 		
+		getMoreEditInfoEnd();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
