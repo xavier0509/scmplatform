@@ -517,7 +517,7 @@ function reviewEdit(){
     var chipid = document.getElementById("chipid").value;
     var memory = document.getElementById("memory").value;
 
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":'+target_product+',"androidVersion":'+android+',"chipModel":'+chipid+',"memorySize":'+memory+',mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+'}}}',reviewEditResult);
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":"'+target_product+'","androidVersion":"'+android+'","chipModel":"'+chipid+'","memorySize":"'+memory+'",mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+'}}}',reviewEditResult);
 
 }
 
