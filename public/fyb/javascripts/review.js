@@ -349,7 +349,13 @@ function reviewresult(){
             //更新mk文件信息，匹配后勾选
             var mkfile = data.data[0].mkFile;
             for (var i = 0; i < mkfile.length; i++) {
-                document.getElementById(mkfile[i].engName).setAttribute('checked','');
+                if (document.getElementById(mkfile[i].engName)) {
+                    document.getElementById(mkfile[i].engName).setAttribute('checked','');
+                }
+                else{
+                    alert("当前数据库中MK配置表没有"+mkfile[i].engName);
+                }
+                
             };
 
             //生成config文件
@@ -374,63 +380,6 @@ function reviewresult(){
                 }
                 
             };
-
-            // document.getElementById("maincont").innerHTML="";
-            // document.getElementById("othercont").innerHTML="";
-
-            // creatConfig(main,"maincont");
-            // creatConfig(other,"othercont");
-
-            // function creatConfig(name,divname){
-            //     for (var i = 0; i < name.length; i++) {
-            //         var cont = document.getElementById(divname);
-            //         var child = document.createElement("div");
-            //         child.setAttribute('class','col-sm-5 form-group text-right');
-            //         var text = document.createTextNode(name[i].cnName);
-            //         if (name[i].type == "string") {
-            //             var input = document.createElement("input");
-            //             input.setAttribute("engName",name[i].engName);
-            //             input.setAttribute("configKey",name[i].configKey);
-            //             input.setAttribute("type",name[i].type);
-            //             input.setAttribute("desc",name[i].desc);
-            //             input.setAttribute("category",name[i].category);
-            //             input.setAttribute("options",name[i].options);
-            //             input.setAttribute("cnName",name[i].cnName);
-            //             input.value = name[i].value;
-            //         }
-            //         else if (name[i].type == "enum"){
-            //             var opt = [];
-            //             for (var j = 0; j < name[i].options.length; j++) {
-            //                 opt.push(name[i].options[j]);
-            //                 console.log(opt);
-            //             };
-            //             var input = document.createElement("select");
-            //             input.setAttribute("engName",name[i].engName);
-            //             input.setAttribute("configKey",name[i].configKey);
-            //             input.setAttribute("type",name[i].type);
-            //             input.setAttribute("desc",name[i].desc);
-            //             input.setAttribute("category",name[i].category);
-            //             input.setAttribute("options",opt);
-            //             input.setAttribute("cnName",name[i].cnName);
-            //             input.setAttribute("value",name[i].value);
-            //             input.setAttribute("class","form-group");
-            //             for (var j = 0; j< name[i].options.length; j++) {
-            //                 var txt = name[i].options[j];
-            //                 var option =document.createElement("option");
-            //                 option.setAttribute("value",txt);
-            //                 if (txt == name[i].value) {
-            //                     option.setAttribute("selected","")
-            //                 };
-            //                 var txtvalue = document.createTextNode(txt);
-            //                 option.appendChild(txtvalue);
-            //                 input.appendChild(option);
-            //             };
-            //         }
-            //         child.appendChild(text);
-            //         child.appendChild(input);
-            //         cont.appendChild(child);
-            //     }
-            // }
 
             
 
