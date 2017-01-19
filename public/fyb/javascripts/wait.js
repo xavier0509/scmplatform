@@ -4,9 +4,8 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 $(function() {
 	forsession();
 })
-var level = parent.adminFlag;
-var loginusername = parent.loginusername;
-console.log("lxw "+level+"--"+loginusername);
+var adminFlag = null;
+var loginusername = null;
 
 var TwiceTransferChip = null;
 var TwiceTransferModel = null;
@@ -136,7 +135,6 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		//getAddInfoInterface(); //点击新增时，获取后台的数据，生成新增页
 		sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
@@ -473,6 +471,7 @@ function getAddInfoInfTwo() {
 }
 
 function addPageSubmitData() {
+	console.log("lxw "+loginusername+"--"+adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -783,6 +782,7 @@ function getEditInforesult() {
 }
 
 function editPageSubmitData() {
+	console.log("lxw "+loginusername+"--"+adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1091,6 +1091,7 @@ function getCopyInforesult() {
 }
 
 function copyPageSubmitData(){
+	console.log("lxw "+loginusername+"--"+adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
