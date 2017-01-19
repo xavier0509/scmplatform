@@ -155,7 +155,7 @@ function AfterWaitHtmlinfo() {
 				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
 				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("chip");
-				ChipModelArray.push(chipModelObj);
+				ChipModelArray.push(JSON.stringify(chipModelObj));
 			}
 		}
 		console.log("lxw "+ChipModelArray);
