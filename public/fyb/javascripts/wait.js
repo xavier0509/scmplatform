@@ -1328,6 +1328,6 @@ function freshHtml(pageName) {
 		console.log("该页面没有被点击出来，不需要刷新");
 	} else{
 		console.log("lxw " + htmlObject.firstChild.src);
-		htmlObject.firstChild.src = "manage-chipmode.html";
+		htmlObject.firstChild.src = "review.html";
 	}
 }
