@@ -1337,6 +1337,7 @@ function getMoreEditInfo(){
 	}
 	console.log("lxw "+mEMkAddCzName);
 	console.log("lxw "+mEMkDelCzName);
+	document.getElementById("AimAtChipAndModel").innerHTML = ChipModelArray;
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 }
