@@ -481,9 +481,9 @@ function reviewEdit(){
                 var opt = [];
                 var child = $size[i].childNodes[1].childNodes;
                 console.log(child.length+"内容是："+child[1].value);
-                // for (var i = 0; i < child.length; i++) {
-                //     opt.push(child[i].value);
-                // };
+                for (var i = 0; i < child.length; i++) {
+                    opt.push(child[i].value);
+                };
                 console.log(opt);
                 var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
                 data.engName = engName;
