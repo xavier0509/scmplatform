@@ -1393,6 +1393,7 @@ function moreEditPageButtons() {
 		oAFlagStatus[i] = true;
 		oClassAClicks[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
+			var currentId = oClassAClicks[this.index].id;
 			console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
 			for(var j = 0; j < oClassAClicks.length; j++) {
 				omybuttonAddstyle[j].style.display = "none";
@@ -1408,13 +1409,13 @@ function moreEditPageButtons() {
 
 			oAFlagStatus[this.index] = !oAFlagStatus[this.index];
 
-			AddOrDelButtonFunction(this.index);
+			AddOrDelButtonFunction(this.index,currentId);
 		}
 
 	}
 	/*批量删除或新增的点击*/
-	function AddOrDelButtonFunction(number) {
-		console.log("lxw" + "in AddOrDelButtonFunction" + number);
+	function AddOrDelButtonFunction(number,id) {
+		console.log("lxw" + "in AddOrDelButtonFunction" + number+"--"+id);
 		omybuttonAddstyle[number].onclick = function() {
 			console.log("lxw" + "批量新增的点击" + number);
 			if (omybuttonAddstyle[number].innerHTML == "批量新增") {
