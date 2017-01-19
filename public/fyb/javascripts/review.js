@@ -307,6 +307,7 @@ function reviewresult(){
                 for (var i = 0; i < selectcounts.length; i++) {
                     selectcounts[i].setAttribute('disabled','')
                 }
+                console.log("操作状态:"+operateType);
                 if (operateType == 2) {
                     document.getElementById("reviewSubmit").innerHTML = "确认删除";
                     document.getElementById("reButton").innerHTML = "确认删除";
@@ -379,6 +380,7 @@ function deleteResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
+                console.log("删除成功！！！！");
                 freshReviewHtml();
             };
 
@@ -396,6 +398,7 @@ function passResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
+                console.log("审核成功！！！！");
                 freshReviewHtml();
             };
 
@@ -528,6 +531,7 @@ function reviewEditResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
+                console.log("编辑提交成功！！！！");
                 freshReviewHtml();
             };
 
