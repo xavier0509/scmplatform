@@ -1010,7 +1010,7 @@ function getCopyInforesult() {
 					console.log("lxw " + data.data[0].mkFile[i].engName);
 					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-					data.data[0].mkFile[i].engName).checked = true;
+					data.data[0].mkFile[i].engName.checked = true;
 					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
