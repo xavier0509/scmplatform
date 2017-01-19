@@ -52,7 +52,8 @@ function reviewlist(){
                     _cell4.innerHTML = datalength[i].chipModel;
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].memorySize;
-                    var _cell6 = _row.insertCell(5);                    
+                    var _cell6 = _row.insertCell(5); 
+                    var operateType = datalength[i].operateType;                   
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
@@ -66,7 +67,7 @@ function reviewlist(){
 
                         }
                     }
-                    var operateType = datalength[i].operateType;
+                    
                     var _cell7 = _row.insertCell(6); 
                     if (operateType == 1) {                  
                         _cell7.innerHTML = "新增";
@@ -562,6 +563,12 @@ function reviewEdit(){
     getmkdata("#mkothercont");
     getconfigdata("#maincont");
     getconfigdata("#othercont");
+    getconfigdata("#hardwarecont");
+    getconfigdata("#serveripcont");
+    getconfigdata("#adcont");
+    getconfigdata("#channelcont");
+    getconfigdata("#localmediacont");
+    getconfigdata("#browsercont");
 
     //获取mk文件数据
     function getmkdata(name){
