@@ -480,7 +480,7 @@ function reviewEdit(){
             else{
                 var opt = [];
                 var child = $size[i].childNodes[1].childNodes;
-                console.log(child.length+"内容是："+child[1]);
+                console.log(child.length+"内容是："+child[1].value);
                 // for (var i = 0; i < child.length; i++) {
                 //     opt.push(child[i].value);
                 // };
