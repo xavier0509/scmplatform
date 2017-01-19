@@ -517,7 +517,7 @@ function addPageSubmitData() {
 				"options": []
 			};
 			thisConfigindex = j;
-			oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
+			oAstuInfo.category = oAconfigTrDiv[0].title;
 			oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			console.log("lxw" + oAstuInfo.engName);
@@ -1135,7 +1135,7 @@ function copyPageSubmitData(){
 				"options": []
 			};
 			thisConfigindex = j;
-			oCstuInfo.category = oCconfigTrDiv[thisConfigindex].title;
+			oCstuInfo.category = oCconfigTrDiv[0].title;
 			oCstuInfo.cnName = oCconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oCstuInfo.engName = oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			console.log("lxw" + oCstuInfo.engName);
