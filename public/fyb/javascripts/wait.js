@@ -141,6 +141,8 @@ function AfterWaitHtmlinfo() {
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
+		//每次点击时先将ChipModelArray置为空
+		ChipModelArray = null;
 		var chipModelObj = {
 			chip : "",
 			model : ""
@@ -1176,35 +1178,35 @@ function getMoreEditInfoOne(){
 				if(data.data[i].category == "App") {
 					kk = i;
 					console.log("App:" + kk);
-					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' value = 'false'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
 					console.log("Service:" + kk);
-					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
 					console.log("AppStore:" + kk);
-					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
 					console.log("HomePage:" + kk);
-					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
 					console.log("IME:" + kk);
-					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
 					console.log("SysApp:" + kk);
-					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					console.log("TV:" + kk);
-					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					console.log("Other:" + kk);
-					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				}
 			}
 		};
@@ -1378,10 +1380,13 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮二");
+		
+		
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		console.log("lxw "+ChipModelArray);
 		document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
+		
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
@@ -1443,10 +1448,12 @@ function moreEditPageButtons() {
 				omybuttonDelstyle[number].style.color = "";
 				omybuttonDelstyle[number].innerHTML = "批量删除";
 				document.getElementById(id).style.color = "red";
+				document.getElementById(id).setAttribute("curValue","1");
 			} else{
 				omybuttonAddstyle[number].style.color = "";
 				omybuttonAddstyle[number].innerHTML = "批量新增";
 				document.getElementById(id).style.color = "";
+				document.getElementById(id).setAttribute("curValue","0");
 			}
 		}
 		omybuttonDelstyle[number].onclick = function() {
@@ -1457,10 +1464,12 @@ function moreEditPageButtons() {
 				omybuttonAddstyle[number].style.color = "";
 				omybuttonAddstyle[number].innerHTML = "批量新增";
 				document.getElementById(id).style.color = "red";
+				document.getElementById(id).setAttribute("curValue","2");
 			} else{
 				omybuttonDelstyle[number].style.color = "";
 				omybuttonDelstyle[number].innerHTML = "批量删除";
 				document.getElementById(id).style.color = "";
+				document.getElementById(id).setAttribute("curValue","0");
 			}
 			
 		}
