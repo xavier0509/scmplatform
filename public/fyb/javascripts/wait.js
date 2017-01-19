@@ -4,11 +4,14 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 $(function() {
 	forsession();
 })
+//获取用户名
 var adminFlag = null;
 var loginusername = null;
-
+//编辑、修改、删除时 机芯机型参数的传递
 var TwiceTransferChip = null;
 var TwiceTransferModel = null;
+//定义一个数组，插入机芯机型对
+var ChipModelArray = new Array();
 
 function forsession() {
 	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
@@ -93,7 +96,7 @@ function searchResource() {
 					if(mySearchData[j].gerritState == "0") {
 						_row = document.getElementById("wait-tablebody").insertRow(0);
 						var _cell0 = _row.insertCell(0);
-						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
+						_cell0.innerHTML = "<input type='checkbox' chip='"+mySearchData[j].chip+"' model='"+mySearchData[j].model+"' class='checkboxstatus' value=''>";
 						var _cell1 = _row.insertCell(1);
 						_cell1.innerHTML = mySearchData[j].chip;
 						var _cell2 = _row.insertCell(2);
@@ -145,6 +148,7 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
+				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
 			}
 		}
 		console.log("lxw:" + myCheckedNumber);
@@ -361,7 +365,8 @@ function getAddInfoInfTwo() {
 						console.log("lxw " + _myAddselect);
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
-				} else if(data.data[i].category == "other") {
+//				} else if(data.data[i].category == "other") {
+				} else{
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
@@ -634,7 +639,8 @@ function getEditInfoInfTwo() {
 						console.log("lxw " + _myAddselect);
 						_rowEditPageConfigMain.innerHTML += _myAddselect;
 					}
-				} else if(data.data[i].category == "other") {
+//				} else if(data.data[i].category == "other") {
+				} else {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
@@ -942,7 +948,8 @@ function getCopyInfoInfTwo() {
 						console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigMain.innerHTML += _myAddselect;
 					}
-				} else if(data.data[i].category == "other") {
+//				} else if(data.data[i].category == "other") {
+				} else {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
@@ -1233,7 +1240,8 @@ function getMoreEditInfoTwo(){
 						console.log("lxw " + _myAddselect);
 						_rowMEditPageConfigMain.innerHTML += _myAddselect;
 					}
-				} else if(data.data[i].category == "other") {
+//				} else if(data.data[i].category == "other") {
+				} else{
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
@@ -1357,6 +1365,7 @@ function moreEditPageButtons() {
 		console.log("批量修改页-提交按钮一");
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
