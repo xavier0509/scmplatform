@@ -846,8 +846,6 @@ function editPageSubmitData() {
 			editConfigFile.push(oEstuInfo);
 		}
 	}
-	console.log("lxw " + JSON.stringify(editConfigFile));
-
 	//获取mkFile里的信息
 	var editMkFile = [];
 	var oEMkTrDiv = $("#myEditModalMkTableTbody").find("tr");
@@ -877,6 +875,7 @@ function editPageSubmitData() {
 			}
 		}
 	}
+	console.log("lxw " + JSON.stringify(editConfigFile));
 	console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
@@ -886,15 +885,18 @@ function editPageSubmitData() {
 	dataObj.model = oEmodel;
 	dataObj.chip = oEchip;
 	dataObj.targetProduct = oEtargetProduct;
-	dataObj.gerritState = "0"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
-	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
+	dataObj.gerritState = "1"; // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
+	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = "xxxxx";
 	dataObj.desc = "enenen";
 
 	console.log("lxw" + JSON.stringify(dataObj));
-	var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
+	//var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
+	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":'+oEmemorySize+',"chipModel":'+oEchipModel+',"androidVersion":'+oEandroidVersion+',"targetProduct":'+oEtargetProduct+',"gerritState":"1","operateType":"3","androidVersion":'+oEandroidVersion+',"mkFile":'+JSON.stringify(editConfigFile)+',"configFile":'+JSON.stringify(editMkFile)+'}}}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fyb_api/productUpdate", oEnode, productAddresult);
+	console.log("lxw " + JSON.stringify(oEnode));
+	//sendHTTPRequest("/fyb_api/productUpdate",node,reviewEditResult);
+
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
