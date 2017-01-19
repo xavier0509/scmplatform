@@ -1029,10 +1029,26 @@ function getCopyInforesult() {
 					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
-				for(var i = 0; i < data.data[0].configFile.length; i++) {
-					console.log("lxw " + data.data[0].configFile[i].engName);
-					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value', data.data[0].configFile[i].value);
-				}
+//				for(var i = 0; i < data.data[0].configFile.length; i++) {
+//					console.log("lxw " + data.data[0].configFile[i].engName);
+//					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value', data.data[0].configFile[i].value);
+//				}
+				for (var i = 0; i < data.data[0].configFile.length; i++) {
+	                if (data.data[0].configFile[i].type == "string") {
+	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+	                }
+	                else{
+	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+	                    var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
+	                    for (var j = 0; j < childSelect.length; j++) {
+	                        childSelect[j].removeAttribute("selected");
+	                        if (childSelect[j].value == data.data[0].configFile[i].value) {
+	                            childSelect[j].setAttribute("selected","");
+	                        }
+	                    };
+	                }
+	            }
+
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
