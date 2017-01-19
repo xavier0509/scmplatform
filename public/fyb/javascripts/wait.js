@@ -141,6 +141,10 @@ function AfterWaitHtmlinfo() {
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
+		var chipModelObj = {
+			chip : "",
+			model : ""
+		};
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
 		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
@@ -149,8 +153,12 @@ function AfterWaitHtmlinfo() {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
 				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
+				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("chip");
+				ChipModelArray.push(chipModelObj);
 			}
 		}
+		console.log("lxw "+ChipModelArray);
 		console.log("lxw:" + myCheckedNumber);
 		if(myCheckedNumber != 0) {
 			var thisIndex = null;
