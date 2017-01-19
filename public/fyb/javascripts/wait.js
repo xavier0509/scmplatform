@@ -1380,6 +1380,8 @@ function moreEditPageButtons() {
 		console.log("批量修改页-提交按钮二");
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		console.log("lxw "+ChipModelArray);
+		document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
@@ -1430,7 +1432,7 @@ function moreEditPageButtons() {
 		}
 
 	}
-	/*批量删除或新增的点击*/
+	/*批量删除或批量新增的点击*/
 	function AddOrDelButtonFunction(number,id) {
 		console.log("lxw" + "in AddOrDelButtonFunction" + number+"--"+id);
 		omybuttonAddstyle[number].onclick = function() {
