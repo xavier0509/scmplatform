@@ -1337,6 +1337,8 @@ function getMoreEditInfo(){
 	}
 	console.log("lxw "+mEMkAddCzName);
 	console.log("lxw "+mEMkDelCzName);
+	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
+	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 }
 function getMoreEditInfoEnd(){
 	//获取mkFile里的信息
