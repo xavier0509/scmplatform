@@ -515,9 +515,7 @@ function addPageSubmitData() {
 				"options": []
 			};
 			thisConfigindex = j;
-			//if(j == 0) {
 			oAstuInfo.category = oAconfigTrDiv[thisConfigindex].title;
-			//} else {
 			oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			console.log("lxw" + oAstuInfo.engName);
@@ -534,7 +532,6 @@ function addPageSubmitData() {
 				}
 			}
 			oAstuInfo.options = oAopt;
-			//}
 			addConfigFile.push(oAstuInfo);
 		}
 	}
@@ -897,7 +894,7 @@ function editPageSubmitData() {
 	console.log("lxw" + JSON.stringify(dataObj));
 	var oEnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fyb_api/productAdd", oEnode, productAddresult);
+	//sendHTTPRequest("/fyb_api/productUpdate", oEnode, productAddresult);
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
@@ -1187,7 +1184,7 @@ function copyPageSubmitData(){
 	console.log("lxw" + JSON.stringify(dataObj));
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
-	//sendHTTPRequest("/fyb_api/productAdd", oEnode, productAddresult);
+	sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
 }
 
 
