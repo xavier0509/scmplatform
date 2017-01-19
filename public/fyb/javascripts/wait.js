@@ -909,7 +909,7 @@ function productEditresult(){
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
-				//freshHoneAddHtml();
+				freshHomeHtml();
 				//var oooNode = '{"data":{"gerritState":"1"}}';
 				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
@@ -1320,7 +1320,7 @@ function closeparentpage(pageName) {
 	}
 }
 
-/*刷新页面*/
+/*刷新审核页面*/
 function freshHtml(pageName) {
 	var htmlObject = parent.document.getElementById(pageName);
 	console.log("lxw "+ htmlObject);
@@ -1330,4 +1330,16 @@ function freshHtml(pageName) {
 		console.log("lxw " + htmlObject.firstChild.src);
 		htmlObject.firstChild.src = "review.html";
 	}
+}
+/*刷新当前页面*/
+function freshHomeHtml() {
+	var htmlObject = parent.document.getElementById("");
+	var htmlObjectTwo = document.getElementById("");
+	console.log("lxw "+ htmlObject+"--"+htmlObjectTwo);
+//	if (htmlObject == null) {
+//		console.log("该页面没有被点击出来，不需要刷新");
+//	} else{
+//		console.log("lxw " + htmlObject.firstChild.src);
+//		htmlObject.firstChild.src = "review.html";
+//	}
 }
