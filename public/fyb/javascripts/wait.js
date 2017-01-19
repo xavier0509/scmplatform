@@ -38,7 +38,6 @@ function sessionresult() {
 }
 
 function startSelect() {
-
 	console.log("xjr start select");
 	var oChip = document.getElementById('chip').value;
 	var oMode = document.getElementById('model').value;
@@ -91,7 +90,7 @@ function searchResource() {
 				var mySearchData = data.data;
 				console.log(mySearchData);
 				for(var j = 0; j < mySearchData.length; j++) {
-					if(mySearchData[j].gerritState == "0"){
+					if(mySearchData[j].gerritState == "0") {
 						_row = document.getElementById("wait-tablebody").insertRow(0);
 						var _cell0 = _row.insertCell(0);
 						_cell0.innerHTML = "<input type='checkbox' class='checkboxstatus' value=''>";
@@ -109,8 +108,6 @@ function searchResource() {
 						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button></div>";
 					}
 				};
-			} else {
-				//查询失败
 			}
 		}
 		AfterWaitHtmlinfo(); //具体细节操作
@@ -141,138 +138,61 @@ function AfterWaitHtmlinfo() {
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
-			/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
-			var myCheckboxChecked = new Array();
-			var myCheckedNumber = 0;
-			myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
-			console.log("lxw:" + myCheckboxChecked.length);
-			for(var i = 0; i < myCheckboxChecked.length; i++) {
-				if($('.checkboxstatus')[i].checked == true) {
-					myCheckedNumber++;
-				}
+		/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
+		var myCheckboxChecked = new Array();
+		var myCheckedNumber = 0;
+		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
+		console.log("lxw:" + myCheckboxChecked.length);
+		for(var i = 0; i < myCheckboxChecked.length; i++) {
+			if($('.checkboxstatus')[i].checked == true) {
+				myCheckedNumber++;
 			}
-			console.log("lxw:" + myCheckedNumber);
-			if(myCheckedNumber != 0) {
-				var thisIndex = null;
-				$("#myMoreEditModalLabel").text("批量修改");
-				$('#myMoreEditModal').modal();
-				$(".modal-backdrop").addClass("new-backdrop");
-				//myCloseEnsure("#myMoreEditModal","#wait-change",thisIndex);
-			} else {
-				$("#myDeleteDialogModalLabel").text("请注意：");
-				$('#myDeleteDialogModal').modal();
-				$(".modal-backdrop").addClass("new-backdrop");
-			}
-			moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 		}
-	/*点击批量修改-弹框里的各个按钮*/
-	function moreEditPageButtons() {
-		var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
-		oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交按钮一");
-			$('#myMoreEditSubmitModal').modal();
+		console.log("lxw:" + myCheckedNumber);
+		if(myCheckedNumber != 0) {
+			var thisIndex = null;
+			$("#myMoreEditModalLabel").text("批量修改");
+			$('#myMoreEditModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			
+		} else {
+			$("#myDeleteDialogModalLabel").text("请注意：");
+			$('#myDeleteDialogModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
-		var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
-		oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交按钮二");
-			$('#myMoreEditSubmitModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-		}
-		var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
-		oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			closeparentpage("#myMoreEditModal");
-		}
-		var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
-		oButtonEditEnsure.onclick = function() {
-				console.log("批量修改页-提交确认按钮");
-				$("#myMoreEditModal").modal('hide');
-				$("#myMoreEditSubmitModal").modal('hide');
-			}
-			//批量修改页mk-config button的点击
-		functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
-
-		/*批量修改页-单项*/
-		var oClassAClicks = new Array();
-		var omybuttonAddstyle = new Array();
-		var omybuttonDelstyle = new Array();
-		var oAFlagStatus = new Array();
-		oClassAClicks = document.getElementsByClassName("aFlagToButton");
-		omybuttonAddstyle = document.getElementsByClassName("mybuttonAddstyle");
-		omybuttonDelstyle = document.getElementsByClassName("mybuttonDelstyle");
-		for(var i = 0; i < oClassAClicks.length; i++) {
-			oClassAClicks[i].index = i;
-			oAFlagStatus[i] = true;
-			oClassAClicks[i].onclick = function() {
-				console.log(this.index); //点击的是第几个
-				console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
-				for(var j = 0; j < oClassAClicks.length; j++) {
-					omybuttonAddstyle[j].style.display = "none";
-					omybuttonDelstyle[j].style.display = "none";
-				}
-				if(oAFlagStatus[this.index] == true) {
-					omybuttonAddstyle[this.index].style.display = "block";
-					omybuttonDelstyle[this.index].style.display = "block";
-				} else {
-					omybuttonAddstyle[this.index].style.display = "none";
-					omybuttonDelstyle[this.index].style.display = "none";
-				}
-
-				oAFlagStatus[this.index] = !oAFlagStatus[this.index];
-
-				AddOrDelButtonFunction(this.index);
-			}
-
-		}
-		/*批量删除或新增的点击*/
-		function AddOrDelButtonFunction(number) {
-			console.log("lxw" + "in AddOrDelButtonFunction" + number);
-			omybuttonAddstyle[number].onclick = function() {
-				console.log("lxw" + "批量新增的点击" + number);
-				omybuttonAddstyle[number].style.color = "red";
-				omybuttonDelstyle[number].style.color = "";
-			}
-			omybuttonDelstyle[number].onclick = function() {
-					console.log("lxw" + "批量删除的点击" + number);
-					omybuttonDelstyle[number].style.color = "red";
-					omybuttonAddstyle[number].style.color = "";
-				}
-				/*执行保存按钮的动作*/
-		}
+		//moreEditPageButtons(); //后期可能会传参给页面里的点击事件
 	}
 
 	/*多项删除*/
 	var oButtonDelete = document.getElementById("wait-delete");
 	oButtonDelete.onclick = function() {
-			console.log("in delete");
-			var currentParentName = oButtonDelete.id;
-			/*需要添加前提条件，点击多项删除时需选中至少一项 wait-tablebody*/
-			var myCheckboxChecked = new Array();
-			var myCheckedNumber = 0;
-			var myDeleArray = new Array();
-			myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
-			console.log("lxw:" + myCheckboxChecked.length);
-			for(var i = 0; i < myCheckboxChecked.length; i++) {
-				if($('.checkboxstatus')[i].checked == true) {
-					myCheckedNumber++;
-					myDeleArray.push(i);
-				}
+		console.log("in delete");
+		var currentParentName = oButtonDelete.id;
+		var myCheckboxChecked = new Array();
+		var myCheckedNumber = 0;
+		var myDeleArray = new Array();
+		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
+		console.log("lxw:" + myCheckboxChecked.length);
+		for(var i = 0; i < myCheckboxChecked.length; i++) {
+			if($('.checkboxstatus')[i].checked == true) {
+				myCheckedNumber++;
+				myDeleArray.push(i);
 			}
-			console.log("lxw:" + myCheckedNumber);
-			if(myCheckedNumber != 0) {
-				$("#myMoreDeleteModalLabel").text("多项删除");
-				$('#myMoreDeleteModal').modal();
-				$(".modal-backdrop").addClass("new-backdrop");
-			} else {
-				$("#myDeleteDialogModalLabel").text("请注意：");
-				$('#myDeleteDialogModal').modal();
-				$(".modal-backdrop").addClass("new-backdrop");
-			}
-			moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
 		}
+		console.log("lxw:" + myCheckedNumber);
+		if(myCheckedNumber != 0) {
+			$("#myMoreDeleteModalLabel").text("多项删除");
+			$('#myMoreDeleteModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			//sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
+		} else {
+			$("#myDeleteDialogModalLabel").text("请注意：");
+			$('#myDeleteDialogModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
+		moreDeletePageButtons(); //后期可能会传参给页面里的点击事件
+	}
+	
 	/*点击多项删除-弹框里的各个按钮*/
 	function moreDeletePageButtons() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
@@ -315,10 +235,10 @@ function AfterWaitHtmlinfo() {
 			$("#myDeleteModalLabel").text("删除");
 			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			
-			singleDeletePageButtons(TwiceTransferChip,TwiceTransferModel); //后期可能会传参给页面里的点击事件
+
+			singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel); //后期可能会传参给页面里的点击事件
 		}
-		
+
 	}
 	/*单项复制*/
 	var oClassButtonCopy = new Array();
@@ -471,7 +391,7 @@ function getAddInfoInfTwo() {
 }
 
 function addPageSubmitData() {
-	console.log("lxw "+loginusername+"--"+adminFlag);
+	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -783,7 +703,7 @@ function getEditInforesult() {
 }
 
 function editPageSubmitData() {
-	console.log("lxw "+loginusername+"--"+adminFlag);
+	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -895,11 +815,12 @@ function editPageSubmitData() {
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 	//console.log("lxw" + JSON.stringify(dataObj));
-	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":"'+oEmemorySize+'","chipModel":"'+oEchipModel+'","androidVersion":"'+oEandroidVersion+'","targetProduct":"'+oEtargetProduct+'","gerritState":"1","operateType":"3","androidVersion":"'+oEandroidVersion+'","mkFile":'+JSON.stringify(editMkFile)+',"configFile":'+JSON.stringify(editConfigFile)+'}}}';
+	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	sendHTTPRequest("/fyb_api/productUpdate",oEnode,productEditresult);
+	sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
 }
-function productEditresult(){
+
+function productEditresult() {
 	console.log("lxw in productEditresult");
 	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
@@ -1074,7 +995,7 @@ function getCopyInforesult() {
 					console.log("lxw " + data.data[0].mkFile[i].engName);
 					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-					console.log("lxw "+document.getElementById(data.data[0].mkFile[i].engName).checked);
+					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
 				for(var i = 0; i < data.data[0].configFile.length; i++) {
@@ -1090,8 +1011,8 @@ function getCopyInforesult() {
 	}
 }
 
-function copyPageSubmitData(){
-	console.log("lxw "+loginusername+"--"+adminFlag);
+function copyPageSubmitData() {
+	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1210,6 +1131,75 @@ function copyPageSubmitData(){
 	sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
 }
 
+function getMoreEditInfoOne(){
+	console.log("lxw " + "getMoreEditInfoOne");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data);
+			var kk = 0;
+			var _rowEditPageApp = document.getElementById("myEditModalMkTableApp");
+			var _rowEditPageService = document.getElementById("myEditModalMkTableService");
+			var _rowEditPageAppStore = document.getElementById("myEditModalMkTableAppStore");
+			var _rowEditPageHomePage = document.getElementById("myEditModalMkTableHomePage");
+			var _rowEditPageIME = document.getElementById("myEditModalMkTableIME");
+			var _rowEditPageSysApp = document.getElementById("myEditModalMkTableSysApp");
+			var _rowEditPageTV = document.getElementById("myEditModalMkTableTV");
+			var _rowEditPageOther = document.getElementById("myEditModalMkTableOther");
+			_rowEditPageApp.innerHTML = "<div title='App'>App:</div>";
+			_rowEditPageService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowEditPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowEditPageHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowEditPageIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowEditPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowEditPageTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
+
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw " + data.data[i].category);
+				if(data.data[i].category == "App") {
+					kk = i;
+					console.log("App:" + kk);
+					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "Service") {
+					kk = i;
+					console.log("Service:" + kk);
+					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "AppStore") {
+					kk = i;
+					console.log("AppStore:" + kk);
+					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "HomePage") {
+					kk = i;
+					console.log("HomePage:" + kk);
+					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "IME") {
+					kk = i;
+					console.log("IME:" + kk);
+					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "SysApp") {
+					kk = i;
+					console.log("SysApp:" + kk);
+					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "TV") {
+					kk = i;
+					console.log("TV:" + kk);
+					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "Other") {
+					kk = i;
+					console.log("Other:" + kk);
+					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+				}
+			}
+		};
+		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getEditInfoInfTwo);
+	}
+}
+
+
 
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
@@ -1287,15 +1277,93 @@ function editPageButtonsOnclick() {
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
 }
 /*点击单项删除-弹框里的各个按钮*/
-function singleDeletePageButtons(olchip,olmode) {
+function singleDeletePageButtons(olchip, olmode) {
 	var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
-		console.log("lxw "+ olchip+"--"+olmode);
+		console.log("lxw " + olchip + "--" + olmode);
 		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
 		console.log("lxw " + ooEnode);
-		sendHTTPRequest("/fyb_api/productUpdate",ooEnode,productEditresult);
+		sendHTTPRequest("/fyb_api/productUpdate", ooEnode, productEditresult);
 		$("#myDeleteModal").modal('hide');
+	}
+}
+/*点击批量修改-弹框里的各个按钮*/
+function moreEditPageButtons() {
+	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-提交按钮一");
+		$('#myMoreEditSubmitModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+	}
+	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-提交按钮二");
+		$('#myMoreEditSubmitModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+	}
+	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-关闭按钮");
+		$('#myEditEnsureModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		closeparentpage("#myMoreEditModal");
+	}
+	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
+	oButtonEditEnsure.onclick = function() {
+			console.log("批量修改页-提交确认按钮");
+			$("#myMoreEditModal").modal('hide');
+			$("#myMoreEditSubmitModal").modal('hide');
+		}
+		//批量修改页mk-config button的点击
+	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
+
+	/*批量修改页-单项*/
+	var oClassAClicks = new Array();
+	var omybuttonAddstyle = new Array();
+	var omybuttonDelstyle = new Array();
+	var oAFlagStatus = new Array();
+	oClassAClicks = document.getElementsByClassName("aFlagToButton");
+	omybuttonAddstyle = document.getElementsByClassName("mybuttonAddstyle");
+	omybuttonDelstyle = document.getElementsByClassName("mybuttonDelstyle");
+	for(var i = 0; i < oClassAClicks.length; i++) {
+		oClassAClicks[i].index = i;
+		oAFlagStatus[i] = true;
+		oClassAClicks[i].onclick = function() {
+			console.log(this.index); //点击的是第几个
+			console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
+			for(var j = 0; j < oClassAClicks.length; j++) {
+				omybuttonAddstyle[j].style.display = "none";
+				omybuttonDelstyle[j].style.display = "none";
+			}
+			if(oAFlagStatus[this.index] == true) {
+				omybuttonAddstyle[this.index].style.display = "block";
+				omybuttonDelstyle[this.index].style.display = "block";
+			} else {
+				omybuttonAddstyle[this.index].style.display = "none";
+				omybuttonDelstyle[this.index].style.display = "none";
+			}
+
+			oAFlagStatus[this.index] = !oAFlagStatus[this.index];
+
+			AddOrDelButtonFunction(this.index);
+		}
+
+	}
+	/*批量删除或新增的点击*/
+	function AddOrDelButtonFunction(number) {
+		console.log("lxw" + "in AddOrDelButtonFunction" + number);
+		omybuttonAddstyle[number].onclick = function() {
+			console.log("lxw" + "批量新增的点击" + number);
+			omybuttonAddstyle[number].style.color = "red";
+			omybuttonDelstyle[number].style.color = "";
+		}
+		omybuttonDelstyle[number].onclick = function() {
+				console.log("lxw" + "批量删除的点击" + number);
+				omybuttonDelstyle[number].style.color = "red";
+				omybuttonAddstyle[number].style.color = "";
+			}
+			/*执行保存按钮的动作*/
 	}
 }
 
@@ -1323,15 +1391,11 @@ function closeparentpage(pageName) {
 /*刷新审核页面*/
 function freshHtml(pageName) {
 	var htmlObject = parent.document.getElementById(pageName);
-	console.log("lxw "+ htmlObject);
-	if (htmlObject == null) {
+	console.log("lxw " + htmlObject);
+	if(htmlObject == null) {
 		console.log("该页面没有被点击出来，不需要刷新");
-	} else{
+	} else {
 		console.log("lxw " + htmlObject.firstChild.src);
 		htmlObject.firstChild.src = "review.html";
 	}
-}
-/*刷新当前页面*/
-function freshHomeHtml() {
-
 }
