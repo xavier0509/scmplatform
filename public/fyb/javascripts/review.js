@@ -15,6 +15,7 @@ $(function () {
 
 var chip = null;
 var model = null;
+var operateType = null;
 
 //在待审核页面出现列表
 function reviewlist(){
@@ -52,7 +53,7 @@ function reviewlist(){
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].memorySize;
                     var _cell6 = _row.insertCell(5);
-                    var operateType = datalength[i].operateType;
+                    operateType = datalength[i].operateType;
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
@@ -77,8 +78,16 @@ function reviewlist(){
     }
 }
 
-//点击恢复按钮执行函数-----将待审核状态置0
+//恢复提示框
 function recover(obj){
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
+    document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
+    document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
+
+}
+//点击恢复按钮执行函数-----将待审核状态置0
+function recoverSure(){
     var rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     var remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
@@ -95,7 +104,7 @@ function recoverResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshConfigAddHtml();
+                freshReviewHtml();
             };
 
         }
@@ -279,7 +288,7 @@ function reviewresult(){
 
             
 
-//如果是管理员，不允许修改
+//如果是管理员，不允许修改-----------更改提示框
             if(level == 1){
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
@@ -290,28 +299,83 @@ function reviewresult(){
                 for (var i = 0; i < selectcounts.length; i++) {
                     selectcounts[i].setAttribute('disabled','')
                 }
-                document.getElementById("reviewSubmit").innerHTML = "审核通过";
-                document.getElementById("btn_submit").onclick = function(){
-                    $('#mydialog').modal();
-                    document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
-                    document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
-                    
-                    document.getElementById("myDeleteModalEnsure").onclick = passSure;
-                    // sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+                if (operateType == 2) {
+                    document.getElementById("reviewSubmit").innerHTML = "确认删除";
+                    document.getElementById("reButton").innerHTML = "确认删除";
+                    document.getElementById("btn_submit").onclick = deleteIssue;
+                    document.getElementById("button_submit").onclick = deleteIssue;
                 }
-                
+                else{
+                    document.getElementById("reviewSubmit").innerHTML = "审核通过";
+                    document.getElementById("reButton").innerHTML = "审核通过";
+                    document.getElementById("btn_submit").onclick = passIssue;
+                    document.getElementById("button_submit").onclick = passIssue;
+                }               
             }
             else{
                 document.getElementById("reviewSubmit").innerHTML = "提交";
-                document.getElementById("btn_submit").onclick = reviewEdit;
+                document.getElementById("reButton").innerHTML = "提交";
+                // document.getElementById("btn_submit").onclick = reviewEdit;
+                document.getElementById("btn_submit").onclick = editIssue;
+                document.getElementById("button_submit").onclick = editIssue;
             }
             
         }
     }
 }
 
+//删除弹窗
+function passIssue(){
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "删除操作";
+    document.getElementById("dialogword").innerHTML = "确认要删除该配置信息吗？";
+    
+    document.getElementById("myDeleteModalEnsure").onclick = deleteSure;
+}
+
+//审核弹窗
+function passIssue(){
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
+    document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
+    
+    document.getElementById("myDeleteModalEnsure").onclick = passSure;
+}
+
+//编辑提交弹窗
+function editIssue(){
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
+    document.getElementById("dialogword").innerHTML = "确认提交该修改吗？";
+    
+    document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;    
+}
+
+//审核通过（针对编辑）
 function passSure(){
     sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+}
+
+//删除操作
+function passSure(){
+    sendHTTPRequest("/fyb_api/productDelete",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
+}
+
+//点击删除的回调
+function passResult(){
+    // console.log("this.readyState = " + this.readyState);
+    if (this.readyState == 4) {
+        // console.log("this.status = " + this.status);
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                freshReviewHtml();
+            };
+
+        }
+    }
 }
 
 //点击审核通过的回调
@@ -324,7 +388,7 @@ function passResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshConfigAddHtml();
+                freshReviewHtml();
             };
 
         }
@@ -446,6 +510,7 @@ function reviewEdit(){
 
 }
 
+
 function reviewEditResult(){
     // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
@@ -455,14 +520,16 @@ function reviewEditResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshConfigAddHtml();
+                freshReviewHtml();
             };
 
         }
     }
 }
 
-function freshConfigAddHtml() {
+
+//刷新当前iframe
+function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
