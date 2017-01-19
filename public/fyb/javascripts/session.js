@@ -32,11 +32,12 @@ function sessionresult(){
                 else if (data.data.data.adminFlag == "0") {
                     adminFlag = 0;
                 }
-                else if (data.code == "0"){
-                    console.log("未登录");
-                    document.location.href="login.html" ;  
-                }
-            };            
+
+            }
+            else if (data.code == "0"){
+                console.log("未登录");
+                document.location.href="login.html" ;  
+            }            
         }
     }
 }
