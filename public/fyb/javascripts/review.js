@@ -563,6 +563,12 @@ function reviewEdit(){
     getmkdata("#mkothercont");
     getconfigdata("#maincont");
     getconfigdata("#othercont");
+    getconfigdata("#hardwarecont");
+    getconfigdata("#serveripcont");
+    getconfigdata("#adcont");
+    getconfigdata("#channelcont");
+    getconfigdata("#localmediacont");
+    getconfigdata("#browsercont");
 
     //获取mk文件数据
     function getmkdata(name){
