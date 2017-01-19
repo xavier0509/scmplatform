@@ -483,7 +483,7 @@ function addPageSubmitData() {
 		"targetProduct": "",
 		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
-		"userName": "xxxxx",
+		"userName": loginusername,
 		"desc": "enenen"
 	};
 	// 获取DeviceInfo里的信息
@@ -495,7 +495,7 @@ function addPageSubmitData() {
 	var oAtargetProduct = document.getElementById("newAddDevice").value;
 	var oAgerritState = "1";
 	var oAoperateType = "1";
-	var userName = "xxxxx";
+	var userName = loginusername;
 	var desc = "enheng";
 
 	//获取config里的数据
@@ -581,7 +581,7 @@ function addPageSubmitData() {
 	dataObj.targetProduct = oAtargetProduct;
 	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
-	dataObj.userName = "xxxxx";
+	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 
 	console.log("lxw" + JSON.stringify(dataObj));
@@ -794,7 +794,7 @@ function editPageSubmitData() {
 		"targetProduct": "",
 		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
-		"userName": "xxxxx",
+		"userName": loginusername,
 		"desc": "enenen"
 	};
 	// 获取DeviceInfo里的信息
@@ -806,7 +806,7 @@ function editPageSubmitData() {
 	var oEtargetProduct = document.getElementById("newEditDevice").value;
 	var oEgerritState = "1";
 	var oEoperateType = "3";
-	var userName = "xxxxx";
+	var userName = loginusername;
 	var desc = "enheng";
 
 	//获取config里的数据
@@ -891,7 +891,7 @@ function editPageSubmitData() {
 	dataObj.targetProduct = oEtargetProduct;
 	dataObj.gerritState = "1"; // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
-	dataObj.userName = "xxxxx";
+	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 	//console.log("lxw" + JSON.stringify(dataObj));
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":"'+oEmemorySize+'","chipModel":"'+oEchipModel+'","androidVersion":"'+oEandroidVersion+'","targetProduct":"'+oEtargetProduct+'","gerritState":"1","operateType":"3","androidVersion":"'+oEandroidVersion+'","mkFile":'+JSON.stringify(editMkFile)+',"configFile":'+JSON.stringify(editConfigFile)+'}}}';
@@ -1103,7 +1103,7 @@ function copyPageSubmitData(){
 		"targetProduct": "",
 		"gerritState": "1", // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
-		"userName": "xxxxx",
+		"userName": loginusername,
 		"desc": "enenen"
 	};
 	// 获取DeviceInfo里的信息
@@ -1115,7 +1115,7 @@ function copyPageSubmitData(){
 	var oCtargetProduct = document.getElementById("newCopyDevice").value;
 	var oCgerritState = "1";
 	var oCoperateType = "1";
-	var userName = "xxxxx";
+	var userName = loginusername;
 	var desc = "enheng";
 
 	//获取config里的数据
@@ -1201,7 +1201,7 @@ function copyPageSubmitData(){
 	dataObj.targetProduct = oCtargetProduct;
 	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
-	dataObj.userName = "xxxxx";
+	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 
 	console.log("lxw" + JSON.stringify(dataObj));
