@@ -477,28 +477,29 @@ function reviewEdit(){
                 console.log(data);
                 array2.push(JSON.parse(data));
             }
-            // else{
-            //     var opt = [];
-            //     var child = $size[i].childNodes[1].childNodes;
-            //     for (var i = 0; i < child.length; i++) {
-            //         opt.push(child[i].value);
-            //     };
-            //     console.log(opt);
-            //     var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
-            //     data.engName = engName;
-            //     data.value = value;
-            //     data.cnName = cnName;
-            //     data.configkey = configkey;
-            //     data.desc = desc;
-            //     data.category = category;
-            //     data.options = opt;
-            //     data.type = type;
-            //     // var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
-            //     console.log(JSON.stringify(data));
-            //     array2.push(data);
+            else{
+                var opt = [];
+                var child = $size[i].childNodes[1].childNodes;
+                console.log(child.length+"内容是："+child);
+                // for (var i = 0; i < child.length; i++) {
+                //     opt.push(child[i].value);
+                // };
+                console.log(opt);
+                var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
+                data.engName = engName;
+                data.value = value;
+                data.cnName = cnName;
+                data.configkey = configkey;
+                data.desc = desc;
+                data.category = category;
+                data.options = opt;
+                data.type = type;
+                // var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
+                console.log(JSON.stringify(data));
+                array2.push(data);
 
-            // }
-            // console.log(JSON.stringify(array2));
+            }
+            console.log(JSON.stringify(array2));
         };
         configdd.push(array2);
         // console.log(JSON.stringify(configdd));
