@@ -600,6 +600,7 @@ function productAddresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				freshHtml("tab_userMenu2");
+				startSelect();
 				//var oooNode = '{"data":{"gerritState":"1"}}';
 				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
@@ -910,8 +911,6 @@ function productEditresult(){
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				startSelect();
-				//var oooNode = '{"data":{"gerritState":"1"}}';
-				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 			};
@@ -1086,6 +1085,7 @@ function getCopyInforesult() {
 				console.log("lxw " + "访问失败");
 			}
 		};
+		startSelect();
 		copyPageButtons();
 	}
 }
