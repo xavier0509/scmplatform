@@ -136,6 +136,8 @@ function moduleResult(){
             var ime = [];
             var service = [];
             var sysapp = [];
+            var tv = [];
+            var mkother = [];
             var main = [];
             var other = [];
 
@@ -147,6 +149,8 @@ function moduleResult(){
                 else if (data.data[i].category == "IME") {ime.push(data.data[i]);}
                 else if (data.data[i].category == "Service") {service.push(data.data[i]);}
                 else if (data.data[i].category == "SysApp") {sysapp.push(data.data[i]);}
+                else if (data.data[i].category == "TV") {tv.push(data.data[i]);}
+                else if (data.data[i].category == "Other") {mkother.push(data.data[i]);}
             };
 
             document.getElementById("appcont").innerHTML="";
@@ -155,6 +159,8 @@ function moduleResult(){
             document.getElementById("imecont").innerHTML="";
             document.getElementById("servicecont").innerHTML="";
             document.getElementById("syscont").innerHTML="";
+            document.getElementById("tvcont").innerHTML="";
+            document.getElementById("mkothercont").innerHTML="";
 
             creatMK(app,"appcont");
             creatMK(appstore,"appstorecont");
@@ -162,6 +168,8 @@ function moduleResult(){
             creatMK(ime,"imecont");
             creatMK(service,"servicecont");
             creatMK(sysapp,"syscont");
+            creatMK(tv,"tvcont");
+            creatMK(mkother,"mkothercont");
 
             function creatMK(name,divname){
                 for (var i = 0; i < name.length; i++) {
