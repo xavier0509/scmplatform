@@ -142,7 +142,7 @@ function AfterWaitHtmlinfo() {
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
 		//每次点击时先将ChipModelArray置为空
-		ChipModelArray = null;
+		ChipModelArray = [];
 		var chipModelObj = {
 			chip : "",
 			model : ""
