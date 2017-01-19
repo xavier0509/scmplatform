@@ -263,8 +263,8 @@ function reviewresult(){
                 for (var i = 0; i < name.length; i++) {
                     var cont = document.getElementById(divname);
                     var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-5 form-group text-right');
-                    var text = document.createTextNode(name[i].cnName+"("+name[i].engName+")　");
+                    child.setAttribute('class','col-sm-6 form-group text-right');
+                    var text = document.createTextNode(name[i].cnName);
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
                         input.setAttribute("engName",name[i].engName);
