@@ -1314,7 +1314,9 @@ function getMoreEditInfoTwo(){
 function getMoreEditInfoEnd(){
 	console.log("lxw "+ChipModelArray);
 	//获取mkFile里的信息
-	var moreEditMkFile = [];
+	var moreEditMkAddFile = [];
+	var moreEditMkDelFile = [];
+	var moreEditMkEditFile = [];//config文件用
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
@@ -1341,12 +1343,12 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("id");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
-//				copyMkFile.push(oCstuInfoTwo);
-//				console.log("lxw " + JSON.stringify(oCstuInfoTwo));
+				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
+				//console.log("lxw " + JSON.stringify(oCstuInfoTwo));
 			}
 		}
 	}
-//	console.log("lxw " + JSON.stringify(copyMkFile));
+	console.log("lxw " + JSON.stringify(moreEditMkAddFile));
 	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 }
 
