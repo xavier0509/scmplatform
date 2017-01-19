@@ -268,6 +268,7 @@ function configResult(){
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
                         input.setAttribute("engName",name[i].engName);
+                        input.setAttribute("id",name[i].engName);
                         input.setAttribute("configKey",name[i].configKey);
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
@@ -357,6 +358,19 @@ function reviewresult(){
             // var other = [];
 
             for (var i = 0; i < configfile.length; i++) {
+                if (configfile[i].type == "string") {
+                    document.getElementById(configfile[i].engName).value = configfile[i].value;
+                }
+                else{
+                    document.getElementById(configfile[i].engName).value = configfile[i].value;
+                    var childSelect = document.getElementById(configfile[i].engName).childNodes;
+                    for (var j = 0; j < childSelect.length; j++) {
+                        childSelect[j].removeAttribute("selected");
+                        if (childSelect[j].value == configfile[i].value) {
+                            childSelect[j].setAttribute("selected","");
+                        }
+                    };
+                }
                 
             };
 
