@@ -1339,10 +1339,10 @@ function getMoreEditInfoEnd(){
 					"category": "",
 					"desc": "XXXXX", //后期做“”的处理。
 				};
-				oCstuInfoTwo.category = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("category");
-				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
-				oCstuInfoTwo.engName = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("id");
-				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
+				oCstuInfoTwo.category = oMEMkTrDivTwo[oMEMkindex].childNodes[1].getAttribute("category");
+				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[1].innerHTML;
+				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[1].getAttribute("id");
+				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[1].getAttribute("gitPath");
 				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
 				console.log("lxw " + moreEditMkAddFile);
 			}
