@@ -1366,17 +1366,8 @@ function getMoreEditInfoEnd(){
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
 	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
 	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
-	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
-	
-	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
-	oButtonEditEnsure.onclick = function() {
-		console.log("批量修改页-提交确认按钮");
-		$("#myMoreEditModal").modal('hide');
-		$("#myMoreEditSubmitModal").modal('hide');
-		console.log("lxw "+ addNode);
-		console.log("lxw "+ delNode);
-		//sendHTTPRequest("/fyb_api/productQuery", , reviewlist);
-	}
+	console.log("lxw "+ addNode);
+	console.log("lxw "+ delNode);
 }
 
 /*点击新增-弹框里的各个按钮*/
@@ -1474,7 +1465,7 @@ function moreEditPageButtons() {
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		
-		getMoreEditInfoEnd();
+		//getMoreEditInfoEnd();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
@@ -1482,7 +1473,7 @@ function moreEditPageButtons() {
 		$('#myMoreEditSubmitModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		
-		getMoreEditInfoEnd();
+		//getMoreEditInfoEnd();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
@@ -1491,7 +1482,13 @@ function moreEditPageButtons() {
 		$(".modal-backdrop").addClass("new-backdrop");
 		closeparentpage("#myMoreEditModal");
 	}
-	
+	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-提交确认按钮");
+		getMoreEditInfoEnd();
+		$("#myMoreEditModal").modal('hide');
+		$("#myMoreEditSubmitModal").modal('hide');
+	}
 	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
