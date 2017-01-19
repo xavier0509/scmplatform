@@ -1312,7 +1312,6 @@ function getMoreEditInfoTwo(){
 	}
 }
 function getMoreEditInfoEnd(){
-	console.log("lxw "+ChipModelArray);
 	//获取mkFile里的信息
 	var moreEditMkAddFile = [];
 	var moreEditMkDelFile = [];
@@ -1362,8 +1361,13 @@ function getMoreEditInfoEnd(){
 			}
 		}
 	}
-	console.log("lxw " + moreEditMkAddFile);
-	console.log("lxw " + moreEditMkDelFile);
+	//console.log("lxw " + moreEditMkAddFile);
+	//console.log("lxw " + moreEditMkDelFile);
+	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
+	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
+	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
+	console.log("lxw "+ addNode);
+	console.log("lxw "+ delNode);
 	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 }
 
