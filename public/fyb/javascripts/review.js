@@ -546,7 +546,7 @@ function reviewEditResult(){
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
-    var indexObject = parent.document.getElementById("tab_userMenu1");
+    var indexObject = parent.document.getElementById("home");
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
     indexObject.firstChild.src = "wait.html";
