@@ -1344,11 +1344,11 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("id");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
 				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
-				//console.log("lxw " + JSON.stringify(oCstuInfoTwo));
+				console.log("lxw " + moreEditMkAddFile);
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(moreEditMkAddFile));
+	console.log("lxw " + moreEditMkAddFile);
 	document.getElementById("AimAtChipAndModel").innerHTML ="A2\A2, A3\A3";
 }
 
