@@ -1161,8 +1161,7 @@ function getMoreEditInfoOne(){
 				if(data.data[i].category == "App") {
 					kk = i;
 					console.log("App:" + kk);
-					//_rowMEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' value = 'false'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
 					console.log("Service:" + kk);
@@ -1374,10 +1373,10 @@ function moreEditPageButtons() {
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
 	oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交确认按钮");
-			$("#myMoreEditModal").modal('hide');
-			$("#myMoreEditSubmitModal").modal('hide');
-		}
+		console.log("批量修改页-提交确认按钮");
+		$("#myMoreEditModal").modal('hide');
+		$("#myMoreEditSubmitModal").modal('hide');
+	}
 	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
@@ -1418,15 +1417,30 @@ function moreEditPageButtons() {
 		console.log("lxw" + "in AddOrDelButtonFunction" + number);
 		omybuttonAddstyle[number].onclick = function() {
 			console.log("lxw" + "批量新增的点击" + number);
-			omybuttonAddstyle[number].style.color = "red";
-			omybuttonDelstyle[number].style.color = "";
+			if (omybuttonAddstyle[number].innerHTML == "批量新增") {
+				omybuttonAddstyle[number].style.color = "red";
+				omybuttonAddstyle[number].innerHTML = "取消新增";
+				omybuttonDelstyle[number].style.color = "";
+				omybuttonDelstyle[number].innerHTML = "批量删除";
+			} else{
+				omybuttonAddstyle[number].style.color = "";
+				omybuttonAddstyle[number].innerHTML = "批量新增";
+			}
 		}
 		omybuttonDelstyle[number].onclick = function() {
-				console.log("lxw" + "批量删除的点击" + number);
+			console.log("lxw" + "批量删除的点击" + number);
+			if (omybuttonDelstyle[number].innerHTML == "批量删除") {
 				omybuttonDelstyle[number].style.color = "red";
+				omybuttonDelstyle[number].innerHTML = "取消删除";
 				omybuttonAddstyle[number].style.color = "";
+				omybuttonAddstyle[number].innerHTML = "批量新增";
+			} else{
+				omybuttonDelstyle[number].style.color = "";
+				omybuttonDelstyle[number].innerHTML = "批量删除";
 			}
-			/*执行保存按钮的动作*/
+			
+		}
+	/*执行保存按钮的动作*/
 	}
 }
 
