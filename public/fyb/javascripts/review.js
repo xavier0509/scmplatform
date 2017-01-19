@@ -533,7 +533,10 @@ function reviewEditResult(){
             if (data.msg=="success") {
                 console.log("编辑提交成功！！！！");
                 freshReviewHtml();
-            };
+            }
+            else{
+                freshReviewHtml();
+            }
 
         }
     }
@@ -543,8 +546,10 @@ function reviewEditResult(){
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
+    var indexObject = parent.document.getElementById("tab_userMenu1");
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
+    indexObject.firstChild.src = "wait.html";
 }   
 
 
