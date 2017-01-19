@@ -1295,6 +1295,7 @@ function getMoreEditInfoEnd(){
 			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
 			if(ooValue == "1") {//新增
 				console.log("lxw "+ oMEMkindex);
+				console.log("lxw "+ oMEMkindex + "--"+ oMEMkTrDivTwo[oMEMkindex].childNodes[0].id+"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
 //				var oMEoptTwo = [];
 //				var oCstuInfoTwo = {
 //					"cnName": "",
