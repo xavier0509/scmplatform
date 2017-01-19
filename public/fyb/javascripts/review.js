@@ -207,8 +207,7 @@ function moduleResult(){
                 }
             }
         }
-    // 查询对应机芯机型的配置信息
-    // sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+    
     //查询config信息接口
     sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult); 
     }
@@ -281,10 +280,11 @@ function configResult(){
                         var opt = [];
                         for (var j = 0; j < name[i].options.length; j++) {
                             opt.push(name[i].options[j]);
-                            console.log(opt);
+                            // console.log(opt);
                         };
                         var input = document.createElement("select");
                         input.setAttribute("engName",name[i].engName);
+                        input.setAttribute("id",name[i].engName);
                         input.setAttribute("configKey",name[i].configKey);
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
@@ -314,6 +314,9 @@ function configResult(){
             
 
         }
+    
+        // 查询对应机芯机型的配置信息
+    sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
@@ -350,70 +353,69 @@ function reviewresult(){
             //生成config文件
 
             var configfile = data.data[0].configFile;
-            var main = [];
-            var other = [];
+            // var main = [];
+            // var other = [];
 
             for (var i = 0; i < configfile.length; i++) {
-                if(configfile[i].category == "main"){main.push(configfile[i]);}
-                else if (configfile[i].category == "other") {other.push(configfile[i]);}
+                
             };
 
-            document.getElementById("maincont").innerHTML="";
-            document.getElementById("othercont").innerHTML="";
+            // document.getElementById("maincont").innerHTML="";
+            // document.getElementById("othercont").innerHTML="";
 
-            creatConfig(main,"maincont");
-            creatConfig(other,"othercont");
+            // creatConfig(main,"maincont");
+            // creatConfig(other,"othercont");
 
-            function creatConfig(name,divname){
-                for (var i = 0; i < name.length; i++) {
-                    var cont = document.getElementById(divname);
-                    var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-5 form-group text-right');
-                    var text = document.createTextNode(name[i].cnName);
-                    if (name[i].type == "string") {
-                        var input = document.createElement("input");
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("configKey",name[i].configKey);
-                        input.setAttribute("type",name[i].type);
-                        input.setAttribute("desc",name[i].desc);
-                        input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",name[i].options);
-                        input.setAttribute("cnName",name[i].cnName);
-                        input.value = name[i].value;
-                    }
-                    else if (name[i].type == "enum"){
-                        var opt = [];
-                        for (var j = 0; j < name[i].options.length; j++) {
-                            opt.push(name[i].options[j]);
-                            console.log(opt);
-                        };
-                        var input = document.createElement("select");
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("configKey",name[i].configKey);
-                        input.setAttribute("type",name[i].type);
-                        input.setAttribute("desc",name[i].desc);
-                        input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",opt);
-                        input.setAttribute("cnName",name[i].cnName);
-                        input.setAttribute("value",name[i].value);
-                        input.setAttribute("class","form-group");
-                        for (var j = 0; j< name[i].options.length; j++) {
-                            var txt = name[i].options[j];
-                            var option =document.createElement("option");
-                            option.setAttribute("value",txt);
-                            if (txt == name[i].value) {
-                                option.setAttribute("selected","")
-                            };
-                            var txtvalue = document.createTextNode(txt);
-                            option.appendChild(txtvalue);
-                            input.appendChild(option);
-                        };
-                    }
-                    child.appendChild(text);
-                    child.appendChild(input);
-                    cont.appendChild(child);
-                }
-            }
+            // function creatConfig(name,divname){
+            //     for (var i = 0; i < name.length; i++) {
+            //         var cont = document.getElementById(divname);
+            //         var child = document.createElement("div");
+            //         child.setAttribute('class','col-sm-5 form-group text-right');
+            //         var text = document.createTextNode(name[i].cnName);
+            //         if (name[i].type == "string") {
+            //             var input = document.createElement("input");
+            //             input.setAttribute("engName",name[i].engName);
+            //             input.setAttribute("configKey",name[i].configKey);
+            //             input.setAttribute("type",name[i].type);
+            //             input.setAttribute("desc",name[i].desc);
+            //             input.setAttribute("category",name[i].category);
+            //             input.setAttribute("options",name[i].options);
+            //             input.setAttribute("cnName",name[i].cnName);
+            //             input.value = name[i].value;
+            //         }
+            //         else if (name[i].type == "enum"){
+            //             var opt = [];
+            //             for (var j = 0; j < name[i].options.length; j++) {
+            //                 opt.push(name[i].options[j]);
+            //                 console.log(opt);
+            //             };
+            //             var input = document.createElement("select");
+            //             input.setAttribute("engName",name[i].engName);
+            //             input.setAttribute("configKey",name[i].configKey);
+            //             input.setAttribute("type",name[i].type);
+            //             input.setAttribute("desc",name[i].desc);
+            //             input.setAttribute("category",name[i].category);
+            //             input.setAttribute("options",opt);
+            //             input.setAttribute("cnName",name[i].cnName);
+            //             input.setAttribute("value",name[i].value);
+            //             input.setAttribute("class","form-group");
+            //             for (var j = 0; j< name[i].options.length; j++) {
+            //                 var txt = name[i].options[j];
+            //                 var option =document.createElement("option");
+            //                 option.setAttribute("value",txt);
+            //                 if (txt == name[i].value) {
+            //                     option.setAttribute("selected","")
+            //                 };
+            //                 var txtvalue = document.createTextNode(txt);
+            //                 option.appendChild(txtvalue);
+            //                 input.appendChild(option);
+            //             };
+            //         }
+            //         child.appendChild(text);
+            //         child.appendChild(input);
+            //         cont.appendChild(child);
+            //     }
+            // }
 
             
 
