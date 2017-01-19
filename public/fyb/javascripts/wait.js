@@ -1095,7 +1095,7 @@ function copyPageSubmitData(){
 		"model": "",
 		"chip": "",
 		"targetProduct": "",
-		"gerritState": "0", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"gerritState": "0", // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": "xxxxx",
 		"desc": "enenen"
@@ -1286,8 +1286,9 @@ function singleDeletePageButtons(olchip,olmode) {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
 		console.log("lxw "+ olchip+"--"+olmode);
-		//var node = '{"data":{"condition":{"chip":"' + chip + '","model":"' + mode + '"},"option":{}}}';
-		//sendHTTPRequest("/fyb_api/productQuery", node, getDeleteInforesult);
+		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
+		console.log("lxw " + ooEnode);
+		sendHTTPRequest("/fyb_api/productUpdate",ooEnode,productEditresult);
 		$("#myDeleteModal").modal('hide');
 	}
 }
