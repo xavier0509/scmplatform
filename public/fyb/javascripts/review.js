@@ -333,7 +333,7 @@ function reviewresult(){
 }
 
 //删除弹窗
-function passIssue(){
+function deleteIssue(){
     $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "删除操作";
     document.getElementById("dialogword").innerHTML = "确认要删除该配置信息吗？";
@@ -370,7 +370,7 @@ function passSure(){
 }
 
 //点击删除的回调
-function passResult(){
+function deleteResult(){
     // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
