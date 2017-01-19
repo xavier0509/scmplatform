@@ -498,3 +498,6 @@ td{
     width: 50%;
     padding-left: 3%;
 }
+#maincont input,#maincont select{
+	width: 36%;
+}
