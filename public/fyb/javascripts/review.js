@@ -292,7 +292,12 @@ function reviewresult(){
                 }
                 document.getElementById("reviewSubmit").innerHTML = "审核通过";
                 document.getElementById("btn_submit").onclick = function(){
-                    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+                    $('#mydialog').modal();
+                    document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
+                    document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
+                    
+                    document.getElementById("myDeleteModalEnsure").onclick = passSure;
+                    // sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
                 }
                 
             }
@@ -303,6 +308,10 @@ function reviewresult(){
             
         }
     }
+}
+
+function passSure(){
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
 }
 
 //点击审核通过的回调
@@ -337,6 +346,8 @@ function reviewEdit(){
     getmkdata("#imecont");
     getmkdata("#servicecont");
     getmkdata("#syscont");
+    getmkdata("#tvcont");
+    getmkdata("#mkothercont");
     getconfigdata("#maincont");
     getconfigdata("#othercont");
 
@@ -426,7 +437,12 @@ function reviewEdit(){
     };
     console.log("更新的config信息："+JSON.stringify(configdataarry));
 
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+'}}}',reviewEditResult);
+    var target_product = document.getElementById("device").value;
+    var android = document.getElementById("android").value;
+    var chipid = document.getElementById("chipid").value;
+    var memory = document.getElementById("memory").value;
+
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":'+target_product+',"androidVersion":'+android+',"chipModel":'+chipid+',"memorySize":'+memory+',mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+'}}}',reviewEditResult);
 
 }
 
