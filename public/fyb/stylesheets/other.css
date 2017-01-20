@@ -259,6 +259,15 @@ td{
 #myEditModalConfigTableTbody tr td div:nth-child(1){
 	/*background-color: white;*/
 }
+#myEditModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 40%;
+    text-align: right;
+    margin-left: 0;
+    font-size: 17px;
+    overflow: hidden;
+}
 
 #myAddModalConfigTableTbody div{
 	margin-bottom: 4px;
@@ -281,8 +290,15 @@ td{
 #myAddModalConfigTableTbody tr td div:nth-child(1){
 	/*background-color: white;*/
 }
-
-
+#myAddModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 40%;
+    text-align: right;
+    margin-left: 0;
+    font-size: 17px;
+    overflow: hidden;
+}
 #myAddModalMkTableTbody input{
 	display: block;
     float: left;
@@ -297,15 +313,6 @@ td{
 }
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
-}
-#myAddModalConfigTableTbody span{
-	display: block;
-    float: left;
-    width: 40%;
-    text-align: right;
-    margin-left: 0;
-    font-size: 17px;
-    overflow: hidden;
 }
 
 #myMoreEditModalConfigTable div{
