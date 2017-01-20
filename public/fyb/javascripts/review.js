@@ -390,11 +390,11 @@ function reviewresult(){
                 console.log("inputcounts="+inputcounts.length);
                 for (var i = 0; i < inputcounts.length; i++) {
                     inputcounts[i].setAttribute('disabled','');
-                    inputcounts[i].style.color = "#F9F9F9";
+                    inputcounts[i].style.backgroundColor = "#ebebe4";
                 }
                 for (var i = 0; i < selectcounts.length; i++) {
                     selectcounts[i].setAttribute('disabled','');
-                    inputcounts[i].style.color = "#F9F9F9";
+                    inputcounts[i].style.backgroundColor = "#ebebe4";
                 }
                 console.log("操作状态:"+operate);
                 if (operate == 2) {
