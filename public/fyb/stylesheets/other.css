@@ -244,6 +244,7 @@ td{
 #myAddModalConfigTableTbody div select{
 	width: 50%;
 	float: left;
+	height: 30px;
 	margin-left: 5%;
 }
 #myAddModalConfigTableTbody div input{
@@ -526,10 +527,9 @@ td{
 }
 
 #myAddModalConfigTableTbody tr td div{
-	background-color: red;
 	display: block;
     height: 30px;
 }
 #myAddModalConfigTableTbody tr td div:nth-child(1){
-	background-color: white;
+	/*background-color: white;*/
 }
