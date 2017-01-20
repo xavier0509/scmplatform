@@ -1236,7 +1236,7 @@ function getCopyInfoInfTwo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
-			var _rowCopyPageConfigMain = document.getElementById("myCopyModalConfigTableTdOne");
+			var _rowCopyPageConfigMain = document.getElementById("myCopyModalConfigTableTdMain");
 			var _rowCopyPageConfigHardware = document.getElementById("myCopyModalConfigTableTdHardware");
 			var _rowCopyPageConfigServerip = document.getElementById("myCopyModalConfigTableTdServerip");
 			var _rowCopyPageConfigAd = document.getElementById("myCopyModalConfigTableTdAd");
