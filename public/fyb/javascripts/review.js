@@ -647,7 +647,7 @@ function freshReviewHtml() {
 }   
 
 
-document.getElementById("close").onclick=closeFun;
+document.getElementById("closeReview").onclick=closeFun;
 function closeFun(){
      $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
