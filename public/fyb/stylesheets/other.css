@@ -507,8 +507,11 @@ td{
 #reviewconfigfile div div{height: 30px;}
 
 .productInfo{
-	margin-left: -2%;
+	margin-left: -6%;
 }
-.configInput{
-	margin-left: -8%;
+.reviewconfigInput{
+	margin-left: -6%;
+}
+.reviewconfigInput input{
+	width: 40%;
 }
