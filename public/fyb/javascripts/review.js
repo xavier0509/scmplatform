@@ -389,10 +389,12 @@ function reviewresult(){
                 var selectcounts = document.getElementsByTagName("select");
                 console.log("inputcounts="+inputcounts.length);
                 for (var i = 0; i < inputcounts.length; i++) {
-                    inputcounts[i].setAttribute('disabled','')
+                    inputcounts[i].setAttribute('disabled','');
+                    inputcounts[i].style.color = "#F9F9F9";
                 }
                 for (var i = 0; i < selectcounts.length; i++) {
-                    selectcounts[i].setAttribute('disabled','')
+                    selectcounts[i].setAttribute('disabled','');
+                    inputcounts[i].style.color = "#F9F9F9";
                 }
                 console.log("操作状态:"+operate);
                 if (operate == 2) {
