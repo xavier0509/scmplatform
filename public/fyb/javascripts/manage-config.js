@@ -212,7 +212,7 @@ function searchConfigInfo() {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigChannel.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "localmedia"){
 					kk = i;
