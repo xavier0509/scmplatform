@@ -394,7 +394,7 @@ function reviewresult(){
                 }
                 for (var i = 0; i < selectcounts.length; i++) {
                     selectcounts[i].setAttribute('disabled','');
-                    inputcounts[i].style.backgroundColor = "#ebebe4";
+                    selectcounts[i].style.backgroundColor = "#ebebe4";
                 }
                 console.log("操作状态:"+operate);
                 if (operate == 2) {
