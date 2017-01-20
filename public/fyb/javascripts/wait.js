@@ -221,7 +221,8 @@ function AfterWaitHtmlinfo() {
 			console.log("多项删除页-确认按钮");
 			$("#myMoreDeleteModal").modal('hide');
 			console.log("lxw " + ChipModelArray);
-			
+			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
+			sendHTTPRequest("/fyb_api/productUpdate", deleNode, moreDeleteresult);
 		}
 	}
 
@@ -1411,6 +1412,25 @@ function getMoreEditInfoEnd(){
 	console.log("lxw "+ delNode);
 }
 
+//多项删除的返回结果
+function moreDeleteresult(){
+	console.log("lxw in moreDeleteresult");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + "change chipinfo success");
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				startSelect();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+	}
+}
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
