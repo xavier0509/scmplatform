@@ -360,10 +360,23 @@ function getAddInfoInfTwo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
-			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdOne");
-			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdTwo");
+			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdMain");
+			var _rowAddPageConfigHardware = document.getElementById("myAddModalConfigTableTdHardware");
+			var _rowAddPageConfigServerip = document.getElementById("myAddModalConfigTableTdServerip");
+			var _rowAddPageConfigAd = document.getElementById("myAddModalConfigTableTdAd");
+			var _rowAddPageConfigChannel = document.getElementById("myAddModalConfigTableTdChannel");
+			var _rowAddPageConfigLocalmedia = document.getElementById("myAddModalConfigTableTdLocalmedia");
+			var _rowAddPageConfigBrowser = document.getElementById("myAddModalConfigTableTdBrowser");
+			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdOther");
+			
 			_rowAddPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowAddPageConfigOther.innerHTML = "<div title='other'>其他功能：</div>";
+			_rowAddPageConfigHardware.innerHTML = "<div title='main'>硬件配置信息：</div>";
+			_rowAddPageConfigServerip.innerHTML = "<div title='main'>服务器IP配置：</div>";
+			_rowAddPageConfigAd.innerHTML = "<div title='main'> 广告配置：</div>";
+			_rowAddPageConfigChannel.innerHTML = "<div title='main'>TV通道：</div>";
+			_rowAddPageConfigLocalmedia.innerHTML = "<div title='main'>本地媒体：</div>";
+			_rowAddPageConfigBrowser.innerHTML = "<div title='main'>浏览器配置：</div>";
+			_rowAddPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category + data.data[i].type);
@@ -372,7 +385,7 @@ function getAddInfoInfTwo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='****'></div>";
+						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -387,13 +400,139 @@ function getAddInfoInfTwo() {
 						console.log("lxw " + _myAddselect);
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
-//				} else if(data.data[i].category == "other") {
-				} else{
+				}
+				else if(data.data[i].category == "hardware"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='11111'></div>";
+						_rowAddPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigHardware.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "serverip"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigServerip.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "ad"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigAd.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "channel"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigChannel.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "localmedia"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigLocalmedia.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "browser"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						console.log("lxw " + _myAddselect);
+						_rowAddPageConfigBrowser.innerHTML += _myAddselect;
+					}
+				}
+				else if(data.data[i].category == "other"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
