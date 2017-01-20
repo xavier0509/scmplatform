@@ -351,6 +351,7 @@ function reviewresult(){
             for (var i = 0; i < mkfile.length; i++) {
                 if (document.getElementById(mkfile[i].engName)) {
                     document.getElementById(mkfile[i].engName).setAttribute('checked','');
+                    document.getElementById(mkfile[i].engName).parentNode.style="font-weight:bold";
                 }
                 else{
                     alert("当前数据库中MK配置表没有"+mkfile[i].engName);
