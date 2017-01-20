@@ -525,6 +525,12 @@ td{
 #reviewBottom{
 	text-align: center;
 }
+#reviewDialog{
+    width: 51%;
+    margin-left: 42%;
+    padding-top: 24%;
+    margin: 0 auto;
+}
 
 #myAddModalConfigTableTbody tr td div{
 	display: block;
