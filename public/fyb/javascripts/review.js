@@ -646,6 +646,9 @@ function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
     console.log("页面1:"+htmlObject.firstChild);
     var indexObject = parent.document.getElementById("home");
+    var iframe = indexObject.getElementsByTagName("iframe");
+    console.log("页面："+iframe[0]);
+    console.log("页面："+iframe);
     console.log("页面2:"+indexObject.firstChild);
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
