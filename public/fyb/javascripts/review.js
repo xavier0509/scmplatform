@@ -653,7 +653,7 @@ function freshReviewHtml() {
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
     console.log("要刷新主页了！！！！");
-    indexObject.firstChild.src = "review.html";
+    iframe[0].src = "review.html";
 }   
 
 
