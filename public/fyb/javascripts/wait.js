@@ -1452,8 +1452,13 @@ function getCopyInforesult() {
 				console.log("lxw " + data.data[0].mkFile.length); //mk
 				for(var i = 0; i < data.data[0].mkFile.length; i++) {
 					console.log("lxw " + data.data[0].mkFile[i].engName);
-					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
-					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
+					if(document.getElementById(data.data[0].mkFile[i].engName)){
+						document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
+					}
+					else{
+						alert("没有："+data.data[0].mkFile[i].engName);
+					}
+					
 					data.data[0].mkFile[i].engName.checked = true;
 					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
