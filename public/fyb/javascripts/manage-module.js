@@ -26,10 +26,15 @@ function AfterModuleHtmlInfo() {
 			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
 			var englishName = this.name;
 			var data = oTableInput[this.index].value;
-			console.log("xjr"+data);
+			// console.log("xjr"+data);
+			var jsonData = JSON.parse(data);
 			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("moduleCzName").value = jsonData.cnName;
+			document.getElementById("moduleEnName").value = jsonData.engName;
+			document.getElementById("moduleSrc").value = jsonData.gitPath;
+			document.getElementById("moduleInstr").value = jsonData.desc;
 			toSaveButton(this.index,englishName);
 		}
 	}
