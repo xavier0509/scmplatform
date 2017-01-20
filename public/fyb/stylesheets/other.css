@@ -225,7 +225,7 @@ td{
 	float: left;
 	margin-left: 5%;
 }
-#myEditModalConfigTable div{
+/*#myEditModalConfigTable div{
 	margin-bottom: 5px;
 }
 #myEditModalConfigTable div select{
@@ -237,7 +237,29 @@ td{
 	width: 36%;
 	float: left;
 	margin-left: 5%;
+}*/
+#myEditModalConfigTableTbody div{
+	margin-bottom: 4px;
 }
+#myEditModalConfigTableTbody div select{
+	width: 50%;
+	float: left;
+	height: 30px;
+	margin-left: 5%;
+}
+#myEditModalConfigTableTbody div input{
+	width: 50%;
+	float: left;
+	margin-left: 5%;
+}
+#myEditModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
+#myEditModalConfigTableTbody tr td div:nth-child(1){
+	/*background-color: white;*/
+}
+
 #myAddModalConfigTableTbody div{
 	margin-bottom: 4px;
 }
@@ -252,6 +274,15 @@ td{
 	float: left;
 	margin-left: 5%;
 }
+#myAddModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
+#myAddModalConfigTableTbody tr td div:nth-child(1){
+	/*background-color: white;*/
+}
+
+
 #myAddModalMkTableTbody input{
 	display: block;
     float: left;
@@ -532,15 +563,3 @@ td{
     margin: 0 auto;
 }
 
-#myAddModalConfigTableTbody tr td div{
-	display: block;
-    height: 30px;
-}
-#myAddModalConfigTableTbody tr td div:nth-child(1){
-	/*background-color: white;*/
-}
-
-#myEditModalConfigTableTbody tr td div{
-	display: block;
-    height: 30px;
-}
