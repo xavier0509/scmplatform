@@ -497,16 +497,13 @@ td{
     width: 50%;
     padding-left: 3%;
 }
-<<<<<<< HEAD
-
 .floatright{
 	margin-right: 2%;
-=======
+}
 #reviewconfigfile input,#reviewconfigfile select{
 	width: 40%;
 	box-sizing:border-box;
 	height:24px;
->>>>>>> d925622d579c29b569db0e637ddcafc4bbec1b9a
 }
 
 #reviewconfigfile div div{height: 30px;}
