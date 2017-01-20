@@ -212,7 +212,7 @@ td{
 	padding-right: 0px;
 }
 
-#myCopyModalConfigTable div{
+/*#myCopyModalConfigTable div{
 	margin-bottom: 5px;
 }
 #myCopyModalConfigTable div select{
@@ -224,6 +224,51 @@ td{
 	width: 36%;
 	float: left;
 	margin-left: 5%;
+}*/
+#myCopyModalConfigTableTbody div{
+	margin-bottom: 4px;
+}
+#myCopyModalConfigTableTbody div select{
+	width: 50%;
+	float: left;
+	height: 30px;
+	margin-left: 5%;
+}
+#myCopyModalConfigTableTbody div input{
+	width: 50%;
+	float: left;
+	margin-left: 5%;
+}
+#myCopyModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
+#myCopyModalConfigTableTbody tr td div:nth-child(1){
+	/*background-color: white;*/
+}
+#myCopyModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 40%;
+    text-align: right;
+    margin-left: 0;
+    font-size: 17px;
+    overflow: hidden;
+}
+#myCopyModalMkTableTbody input{
+	display: block;
+    float: left;
+}
+#myCopyModalMkTableTbody span{
+	display: block;
+    float: left;
+    width: 72%;
+    text-align: left;
+    margin-left: 5%;
+    font-size: 17px;
+}
+#myCopyModalMkTableTbody div{
+	margin-bottom: 4px;
 }
 /*#myEditModalConfigTable div{
 	margin-bottom: 5px;
