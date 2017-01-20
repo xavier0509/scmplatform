@@ -1934,3 +1934,11 @@ function freshHtml(pageName) {
 		htmlObject.firstChild.src = "review.html";
 	}
 }
+document.getElementById("reset").onclick = waitReset;
+function waitReset(){
+	document.getElementById("chip").value="";
+	document.getElementById("model").value="";
+	document.getElementById("androidVersion").value="";
+	document.getElementById("chipid").value="";
+	document.getElementById("memory").value="";
+}
