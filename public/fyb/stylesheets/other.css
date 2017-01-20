@@ -505,3 +505,10 @@ td{
 }
 
 #reviewconfigfile div div{height: 30px;}
+
+.productInfo{
+	margin-left: -2%;
+}
+.configInput{
+	margin-left: -8%;
+}
