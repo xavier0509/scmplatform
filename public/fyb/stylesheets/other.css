@@ -617,3 +617,7 @@ td{
     margin: 0 auto;
 }
 
+#chipMangInfo{
+	text-align: center;
+	color: red;
+}
