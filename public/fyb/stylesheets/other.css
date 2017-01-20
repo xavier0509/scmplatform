@@ -528,3 +528,6 @@ td{
 #myAddModalConfigTableTbody tr td div{
 	background-color: red;
 }
+#myAddModalConfigTableTbody tr td div:nth-child(1){
+	background-color: white;
+}
