@@ -551,6 +551,42 @@ function getAddInfoInfTwo() {
 			}
 		};
 		addPageButtons(); //后期可能会传参给页面里的点击事件
+		sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+	}
+}
+function checkChipInfo(){
+	console.log("lxw " + "SearchChipInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			for (var i=0; i< data.data.length; i++) {
+				allChipArray.push(data.data[i].name);
+			}
+			console.log("lxw "+ allChipArray);
+		};
+		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', checkModelInfo);
+	}
+}
+function checkModelInfo(){
+	console.log("lxw " + "SearchChipInfo");
+	console.log("this.readyState = " + this.readyState);
+	if(this.readyState == 4) {
+		console.log("this.status = " + this.status);
+		console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) //TODO
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			for (var i=0; i< data.data.length; i++) {
+				allModelArray.push(data.data[i].name);
+			}
+			console.log("lxw "+ allModelArray);
+		};
 	}
 }
 
@@ -694,6 +730,23 @@ function productAddresult() {
 	}
 }
 
+function chipModeldataCheck(){
+	var nullChip = document.getElementById("newAddChip").value;
+	var nullModel = document.getElementById("newAddModel").value;
+	var nullDevice = document.getElementById("newAddDevice").value;
+	var nullAndroid = document.getElementById("NewAddAndroidVersion").value;
+	var nullChipMode = document.getElementById("newAddChipMode").value;
+	var nullMemory = document.getElementById("newAddMemory").value;
+	console.log("lxw "+ allChipArray +"--"+allModelArray);
+	//		if (非空&&机芯机型存在) {
+//			addPageSubmitData();
+//			$("#myAddModal").modal('hide');
+//		} else{
+//			alert("输入项不能为空或者该机芯机型不存在。");
+//		}
+	
+	
+}
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInfOne() {
 	console.log("lxw " + "getEditInfoInfOne");
@@ -1858,14 +1911,14 @@ function addPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("新增页-提交按钮一");
-		addPageSubmitData();
-		$("#myAddModal").modal('hide');
+		chipModeldataCheck();
 	}
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("新增页-提交按钮二");
-		addPageSubmitData();
-		$("#myAddModal").modal('hide');
+		chipModeldataCheck();
+		//addPageSubmitData();
+		//$("#myAddModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myAddModalClose");
 	oButtonAdd.onclick = function() {
