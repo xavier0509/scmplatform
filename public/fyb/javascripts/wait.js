@@ -404,7 +404,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "hardware"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -425,7 +425,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "serverip"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -446,7 +446,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "ad"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -467,7 +467,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "channel"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -488,7 +488,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "localmedia"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -509,7 +509,7 @@ function getAddInfoInfTwo() {
 				else if(data.data[i].category == "browser"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {

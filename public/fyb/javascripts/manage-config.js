@@ -172,8 +172,16 @@ function searchConfigInfo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne,pullDataTwo =null;
-			var _rowConfigMain = document.getElementById("configMkTableTdOne");
-			var _rowConfigOther = document.getElementById("configMkTableTdTwo");
+			var _rowConfigMain = document.getElementById("configMkTableTdMain");
+			var _rowConfigHardware = document.getElementById("configMkTableTdHardware");
+			var _rowConfigServerip = document.getElementById("configMkTableTdServerip");
+			var _rowConfigAd = document.getElementById("configMkTableTdAd");
+			var _rowConfigChannel = document.getElementById("configMkTableTdChannel");
+			var _rowConfigLocalmedia = document.getElementById("configMkTableTdLocalmedia");
+			var _rowConfigBrowser = document.getElementById("configMkTableTdBrowser");
+			var _rowConfigOther = document.getElementById("configMkTableTdOther");
+			
+			
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw "+data.data[i].category);
 				if (data.data[i].category == "main") {
@@ -181,7 +189,44 @@ function searchConfigInfo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:"+kk);
 					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
-				} else if(data.data[i].category == "other"){
+				}
+				else if(data.data[i].category == "hardware"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("hardware:"+kk);
+					_rowConfigHardware.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "serverip"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("serverip:"+kk);
+					_rowConfigServerip.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "ad"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("ad:"+kk);
+					_rowConfigAd.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "channel"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("channel:"+kk);
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "localmedia"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("localmedia:"+kk);
+					_rowConfigLocalmedia.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "browser"){
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("browser:"+kk);
+					_rowConfigBrowser.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+				}
+				else if(data.data[i].category == "other"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:"+kk);
