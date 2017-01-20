@@ -398,6 +398,8 @@ function reviewresult(){
                 if (operate == 2) {
                     document.getElementById("reviewSubmit").innerHTML = "确认删除";
                     document.getElementById("reButton").innerHTML = "确认删除";
+                    document.getElementById("reviewSubmit").color = "red";
+                    document.getElementById("reButton").color = "red";
                     document.getElementById("btn_submit").onclick = deleteIssue;
                     document.getElementById("button_submit").onclick = deleteIssue;
                 }

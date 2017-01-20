@@ -518,3 +518,6 @@ td{
 .reviewconfigInput input{
 	width: 40%;
 }
+#reviewBottom{
+	text-align: center;
+}
