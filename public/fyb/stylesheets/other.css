@@ -539,3 +539,8 @@ td{
 #myAddModalConfigTableTbody tr td div:nth-child(1){
 	/*background-color: white;*/
 }
+
+#myEditModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
