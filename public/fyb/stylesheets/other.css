@@ -31,10 +31,13 @@ td{
 	border: solid 2px #A6A6A6;
 	background-color: rgba(255, 255, 255, 1);
 }
-
+.inputdiv{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 .inputstyle{
 	padding-left: 2px;
-	padding-right: 2px;
+	padding-right: 0px;
 }
 .divstyle{
 	padding-left: 8px;
