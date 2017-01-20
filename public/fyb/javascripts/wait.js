@@ -180,6 +180,12 @@ function AfterWaitHtmlinfo() {
 	var oButtonDelete = document.getElementById("wait-delete");
 	oButtonDelete.onclick = function() {
 		console.log("in delete");
+		//每次点击时先将ChipModelArray置为空
+		ChipModelArray = [];
+		var chipModelObj = {
+			chip : "",
+			model : ""
+		};
 		var currentParentName = oButtonDelete.id;
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
@@ -189,7 +195,10 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
-				myDeleArray.push(i);
+				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
+				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("chip");
+				ChipModelArray.push(JSON.stringify(chipModelObj));
 			}
 		}
 		console.log("lxw:" + myCheckedNumber);
@@ -211,6 +220,8 @@ function AfterWaitHtmlinfo() {
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
 			$("#myMoreDeleteModal").modal('hide');
+			console.log("lxw " + ChipModelArray);
+			
 		}
 	}
 
