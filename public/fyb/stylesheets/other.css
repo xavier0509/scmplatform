@@ -524,3 +524,7 @@ td{
 #reviewBottom{
 	text-align: center;
 }
+
+#myAddModalConfigTableTbody tr td div{
+	background-color: red;
+}
