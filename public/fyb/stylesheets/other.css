@@ -499,7 +499,7 @@ td{
     padding-left: 3%;
 }
 #reviewconfigfile input,#reviewconfigfile select{
-	width: 36%;
+	width: 40%;
 	box-sizing:border-box;
 	height:24px;
 }
