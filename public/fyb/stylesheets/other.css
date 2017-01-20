@@ -491,12 +491,15 @@ td{
 	overflow-y: auto;
 }
 .menuUnitInput{
-	/*background-color: red;*/
     display: block;
     float: left;
     height: 32px;
     width: 50%;
     padding-left: 3%;
+}
+.floatright{
+	margin-right: 2%;
+	float: right;
 }
 #reviewconfigfile input,#reviewconfigfile select{
 	width: 40%;
