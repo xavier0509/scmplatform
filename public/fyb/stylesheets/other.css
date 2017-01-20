@@ -499,6 +499,7 @@ td{
 }
 .floatright{
 	margin-right: 2%;
+	padding-left: -4%;
 	float: right;
 }
 #reviewconfigfile input,#reviewconfigfile select{
