@@ -21,7 +21,7 @@ function AfterModuleHtmlInfo() {
 	console.log("xjr"+oTableInput.length);
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
-		oTableA[i].index = i;
+		// oTableA[i].index = i;
 		oTableA[i].onclick = function() {
 			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
 			var englishName = this.name;
