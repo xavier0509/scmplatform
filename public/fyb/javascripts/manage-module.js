@@ -78,34 +78,42 @@ function searchModalInfo() {
 				console.log("lxw "+data.data[i].category);
 				if (data.data[i].category == "App") {
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("App:"+kk);
 					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				} else if(data.data[i].category == "Service"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("Service:"+kk);
 					_rowModuleService.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "AppStore"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("AppStore:"+kk);
 					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "HomePage"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("HomePage:"+kk);
 					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "IME"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("IME:"+kk);
 					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "SysApp"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("SysApp:"+kk);
 					_rowModuleSysApp.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "TV"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("TV:"+kk);
 					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}else if(data.data[i].category == "Other"){
 					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("Other:"+kk);
 					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}
