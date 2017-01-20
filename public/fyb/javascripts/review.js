@@ -132,7 +132,7 @@ function recoverResult(){
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[6].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
     //查询模块信息接口
     sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    
     
