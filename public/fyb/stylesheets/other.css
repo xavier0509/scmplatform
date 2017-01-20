@@ -527,6 +527,8 @@ td{
 
 #myAddModalConfigTableTbody tr td div{
 	background-color: red;
+	display: block;
+    height: 30px;
 }
 #myAddModalConfigTableTbody tr td div:nth-child(1){
 	background-color: white;
