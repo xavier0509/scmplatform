@@ -644,9 +644,12 @@ function reviewEditResult(){
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
+    console.log("页面1:"+htmlObject);
     var indexObject = parent.document.getElementById("home");
+    console.log("页面2:"+indexObject);
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
+    console.log("要刷新主页了！！！！");
     indexObject.firstChild.src = "review.html";
 }   
 
