@@ -26,7 +26,7 @@ function AfterModuleHtmlInfo() {
 			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
 			var englishName = this.name;
 			// var data = oTableInput[i].value;
-			console.log("xjr"+data);
+			// console.log("xjr"+data);
 			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
