@@ -647,7 +647,7 @@ function freshReviewHtml() {
     var indexObject = parent.document.getElementById("home");
     // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
-    indexObject.firstChild.src = "wait.html";
+    indexObject.firstChild.src = "review.html";
 }   
 
 
