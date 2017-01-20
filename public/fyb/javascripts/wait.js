@@ -12,6 +12,9 @@ var TwiceTransferChip = null;
 var TwiceTransferModel = null;
 //定义一个数组，插入机芯机型对
 var ChipModelArray = new Array();
+//定义两个数组，插入所有的机芯和机型
+var allChipArray = new Array();
+var allModelArray = new Array();
 
 function forsession() {
 	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
@@ -114,6 +117,7 @@ function searchResource() {
 			}
 		}
 		AfterWaitHtmlinfo(); //具体细节操作
+		
 	}
 }
 
@@ -1857,7 +1861,6 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
 				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
-				//console.log("lxw " + moreEditMkAddFile);
 			}
 			if(ooValue == "2") {//删除
 				console.log("lxw "+ oMEMkindex);
@@ -1874,12 +1877,9 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
 				moreEditMkDelFile.push(JSON.stringify(oCstuInfoTwo));
-				//console.log("lxw " + moreEditMkAddFile);
 			}
 		}
 	}
-	//console.log("lxw " + moreEditMkAddFile);
-	//console.log("lxw " + moreEditMkDelFile);
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
 	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
 	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
