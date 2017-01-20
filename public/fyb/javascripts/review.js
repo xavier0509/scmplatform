@@ -265,7 +265,7 @@ function configResult(){
                     var cont = document.getElementById(divname);
                     var child = document.createElement("div");
                     child.setAttribute('class','col-sm-5 form-group text-right');
-                    var text = document.createTextNode(name[i].cnName);
+                    var text = document.createTextNode(name[i].cnName+":　");
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
                         input.setAttribute("engName",name[i].engName);

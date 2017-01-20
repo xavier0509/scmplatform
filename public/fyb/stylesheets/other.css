@@ -500,4 +500,5 @@ td{
 }
 #reviewconfigfile input,#reviewconfigfile select{
 	width: 36%;
+	box-sizing:border-box;
 }
