@@ -807,10 +807,8 @@ function chipModeldataCheck(number){
 				addPageSubmitData();
 			}else if(number == 2){
 				copyPageSubmitData();
-				$("#myCopyModal").modal('hide');
 			}else if(number == 3){
 				editPageSubmitData();
-				$("#myEditModal").modal('hide');
 			}
 		}
 	}
@@ -1272,10 +1270,14 @@ function productEditresult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
+				$("#myEditModal").modal('hide');
 				startSelect();
 				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "该产品已存在"
+				setTimeout("spanhidden()", 3000);
 			};
 		};
 	}
