@@ -52,7 +52,7 @@ function AferConfigHtmlInfo() {
 				document.getElementById("configTableBoxEnum").style.display = "block";
 				document.getElementById("configString").value = "";
 				var oOpt = jsonData.options;
-				document.getElementById(ADCSEfficient).innerHTML="";
+				document.getElementById("ADCSEfficient").innerHTML="";
 				for (var j = 0; j < oOpt.length; j++) {
 					var parentDiv = document.getElementById("ADCSEfficient");
 					var child1 = document.createElement("div");
