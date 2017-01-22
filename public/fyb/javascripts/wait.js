@@ -564,7 +564,7 @@ function checkChipInfo(){
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
@@ -582,7 +582,7 @@ function checkModelInfo(){
 	if(this.readyState == 4) {
 		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
@@ -734,14 +734,32 @@ function productAddresult() {
 	}
 }
 
-function chipModeldataCheck(){
+function chipModeldataCheck(number){
+	//读参number：1-新增页 2-复制页 3-编辑页
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
-	nullChip = document.getElementById("newAddChip").value;
-	nullModel = document.getElementById("newAddModel").value;
-	nullDevice = document.getElementById("newAddDevice").value;
-	nullAndroid = document.getElementById("NewAddAndroidVersion").value;
-	nullChipMode = document.getElementById("newAddChipMode").value;
-	nullMemory = document.getElementById("newAddMemory").value;
+	if (number==1) {
+		nullChip = document.getElementById("newAddChip").value;
+		nullModel = document.getElementById("newAddModel").value;
+		nullDevice = document.getElementById("newAddDevice").value;
+		nullAndroid = document.getElementById("NewAddAndroidVersion").value;
+		nullChipMode = document.getElementById("newAddChipMode").value;
+		nullMemory = document.getElementById("newAddMemory").value;
+	} else if(number==2){
+		nullChip = document.getElementById("newCopyChip").value;
+		nullModel = document.getElementById("newCopyModel").value;
+		nullDevice = document.getElementById("newCopyDevice").value;
+		nullAndroid = document.getElementById("NewCopyAndroidVersion").value;
+		nullChipMode = document.getElementById("newCopyChipMode").value;
+		nullMemory = document.getElementById("newCopyMemory").value;
+	}
+	else if(number==3){
+		nullChip = document.getElementById("newEditChip").value;
+		nullModel = document.getElementById("newEditModel").value;
+		nullDevice = document.getElementById("newEditDevice").value;
+		nullAndroid = document.getElementById("NewEditAndroidVersion").value;
+		nullChipMode = document.getElementById("newEditChipMode").value;
+		nullMemory = document.getElementById("newEditMemory").value;
+	}
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
@@ -755,8 +773,17 @@ function chipModeldataCheck(){
 		}
 		else{
 			console.log("lxw 提交数据，判断是否隐藏。");
-			addPageSubmitData();
-			$("#myAddModal").modal('hide');
+			if(number == 1){
+				addPageSubmitData();
+				$("#myAddModal").modal('hide');
+			}else if(number == 2){
+				copyPageSubmitData();
+				$("#myCopyModal").modal('hide');
+			}else if(number == 3){
+				editPageSubmitData();
+				$("#myEditModal").modal('hide');
+			}
+			
 		}
 	}
 	
@@ -1922,12 +1949,13 @@ function addPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("新增页-提交按钮一");
-		chipModeldataCheck();
+		chipModeldataCheck(1);
 	}
 	var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("新增页-提交按钮二");
-		chipModeldataCheck();
+		//传参：1-新增页 2-复制页 3-编辑页
+		chipModeldataCheck(1);
 		//addPageSubmitData();
 		//$("#myAddModal").modal('hide');
 	}
@@ -1947,14 +1975,18 @@ function copyPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myCopyModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项复制页-提交按钮一");
-		copyPageSubmitData();
-		$("#myCopyModal").modal('hide');
+		//传参：1-新增页 2-复制页 3-编辑页
+		chipModeldataCheck(2);
+		//copyPageSubmitData();
+		//$("#myCopyModal").modal('hide');
 	}
 	var oButtonEditEnsure = document.getElementById("myCopyModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项复制页-提交按钮二");
-		copyPageSubmitData();
-		$("#myCopyModal").modal('hide');
+		//传参：1-新增页 2-复制页 3-编辑页
+		chipModeldataCheck(2);
+		//copyPageSubmitData();
+		//$("#myCopyModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myCopyModalClose");
 	oButtonAdd.onclick = function() {
@@ -1972,14 +2004,18 @@ function editPageButtonsOnclick() {
 	var oButtonEditEnsure = document.getElementById("myEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮一");
-		editPageSubmitData();
-		$("#myEditModal").modal('hide');
+		//传参：1-新增页 2-复制页 3-编辑页
+		chipModeldataCheck(3);
+		//editPageSubmitData();
+		//$("#myEditModal").modal('hide');
 	}
 	var oButtonEditEnsure = document.getElementById("myEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
-		editPageSubmitData();
-		$("#myEditModal").modal('hide');
+		//传参：1-新增页 2-复制页 3-编辑页
+		chipModeldataCheck(3);
+		//editPageSubmitData();
+		//$("#myEditModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myEditModalClose");
 	oButtonAdd.onclick = function() {
