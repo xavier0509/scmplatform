@@ -391,6 +391,7 @@ function reviewresult(){
 
 //如果是管理员，不允许修改-----------更改提示框
             if(level == 1){
+                document.getElementById("noPassReview").style.display="block";
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
                 console.log("inputcounts="+inputcounts.length);
@@ -420,6 +421,7 @@ function reviewresult(){
                 }               
             }
             else{
+                document.getElementById("noPassReview").style.display="none";
                 document.getElementById("reviewSubmit").innerHTML = "提交";
                 document.getElementById("reButton").innerHTML = "提交";
                 // document.getElementById("btn_submit").onclick = reviewEdit;
