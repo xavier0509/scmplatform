@@ -69,7 +69,7 @@ function AferConfigHtmlInfo() {
 					child1.appendChild(child3);
 					parentDiv.appendChild(child1);
 				};
-				for (var k = 0; k < Things.length; k++) {
+				for (var k = 0; k < oOpt.length; k++) {
 					var menuInput = document.getElementsByClassName("menuUnitInput");
 					var k1 = k*2; var k2 = k1 + 1;
 					menuInput[k1].value = oOpt[k];
