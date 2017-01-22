@@ -39,10 +39,10 @@ function AferConfigHtmlInfo() {
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
 			if (jsonData.type == "string") {
-				document.getElementById("configInstr").value = jsonData.value;
+				document.getElementById("configString").value = jsonData.value;
 			}
 			else{}
-			document.getElementById("configString").value = jsonData.desc;
+			document.getElementById("configInstr").value = jsonData.desc;
 			var categoryClass = jsonData.category;
 			var opt = document.getElementById("configSelect").getElementsByTagName("option");
 			for (var j = 0; j < opt.length; j++) {
