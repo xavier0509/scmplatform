@@ -755,8 +755,8 @@ function chipModeldataCheck(){
 		}
 		else{
 			console.log("lxw 提交数据，判断是否隐藏。");
-			//addPageSubmitData();
-			//$("#myAddModal").modal('hide');
+			addPageSubmitData();
+			$("#myAddModal").modal('hide');
 		}
 	}
 	
