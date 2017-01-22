@@ -39,9 +39,37 @@ function AferConfigHtmlInfo() {
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
 			if (jsonData.type == "string") {
+				document.getElementById("configString").style.display = "block";
+				document.getElementById("configTableBoxEnum").style.display = "none";
 				document.getElementById("configString").value = jsonData.value;
+				var menuUnitInputCheck =document.getElementsByClassName("menuUnitInput");
+				for (var i = 0; i < menuUnitInputCheck.length; i++) {
+					menuUnitInputCheck[i].value = "";
+				};
 			}
-			else{}
+			else{
+				document.getElementById("configString").style.display = "none";
+				document.getElementById("configTableBoxEnum").style.display = "block";
+				document.getElementById("configString").value = "";
+				var oOpt = jsonData.options;
+				for (var i = 2; i < oOpt.length; i++) {
+					var parentDiv = document.getElementById("ADCSEfficient");
+					var child1 = document.createElement("div");
+					child1.setAttribute("class","menuUnit");
+					var child2 = document.createElement("input");
+					child2.setAttribute("type","text");
+					child2.setAttribute("class","menuUnitInput");
+					child2.setAttribute("placeholder","选项名称");
+					var child3 = document.createElement("input");
+					child3.setAttribute("type","text");
+					child3.setAttribute("class","menuUnitInput");
+					child3.setAttribute("placeholder","Value");
+					child1.appendChild(child2);
+					child1.appendChild(child3);
+					parentDiv.appendChild(child1);
+				};
+
+			}
 			document.getElementById("configInstr").value = jsonData.desc;
 			var categoryClass = jsonData.category;
 			var opt = document.getElementById("configSelect").getElementsByTagName("option");
