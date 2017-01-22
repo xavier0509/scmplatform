@@ -782,7 +782,7 @@ function chipModeldataCheck(number){
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].czName)
 			if (InputInfoArray[jj].value=="") {
-				document.getElementsByClassName("myModalErrorInfo").style.display = "block";
+				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
 				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空。"
 				jj = InputInfoArray.length;
 				setTimeout("spanhidden()", 3000);
@@ -809,7 +809,7 @@ function chipModeldataCheck(number){
 	}
 }
 function spanhidden(){
-	document.getElementsByClassName("myModalErrorInfo").style.display = "none";
+	document.getElementsByClassName("myModalErrorInfo")[0].style.display = "none";
 }
 
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
