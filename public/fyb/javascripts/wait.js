@@ -735,17 +735,18 @@ function productAddresult() {
 }
 
 function chipModeldataCheck(){
-	var nullChip = document.getElementById("newAddChip").value;
-	var nullModel = document.getElementById("newAddModel").value;
-	var nullDevice = document.getElementById("newAddDevice").value;
-	var nullAndroid = document.getElementById("NewAddAndroidVersion").value;
-	var nullChipMode = document.getElementById("newAddChipMode").value;
-	var nullMemory = document.getElementById("newAddMemory").value;
+	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
+	nullChip = document.getElementById("newAddChip").value;
+	nullModel = document.getElementById("newAddModel").value;
+	nullDevice = document.getElementById("newAddDevice").value;
+	nullAndroid = document.getElementById("NewAddAndroidVersion").value;
+	nullChipMode = document.getElementById("newAddChipMode").value;
+	nullMemory = document.getElementById("newAddMemory").value;
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+ChipInArray+"--"+ModelInArray);
-	console.log(typeof(nullChip));
+	console.log(nullChip);
 	if (nullChip==null||nullModel==null||nullDevice==null||nullAndroid==null||nullChipMode==null||nullMemory==null) {
 		alert("输入项不能为空。");
 	} else{
