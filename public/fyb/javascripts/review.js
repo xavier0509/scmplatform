@@ -6,11 +6,11 @@ $(function () {
     var loginusername = parent.loginusername;
     console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}', reviewlist);
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}', reviewlist);
-    }    
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}', reviewlist);
+    }                                                        
 })
 
 var chip = null;
@@ -53,7 +53,8 @@ function reviewlist(){
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].memorySize;
                     var _cell6 = _row.insertCell(5); 
-                    var operateType = datalength[i].operateType;                   
+                    var operateType = datalength[i].operateType;   
+                    var gerritState = datalength[i].gerritState;                
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
@@ -69,14 +70,18 @@ function reviewlist(){
                     }
                     
                     var _cell7 = _row.insertCell(6); 
-                    if (operateType == 1) {                  
-                        _cell7.innerHTML = "新增";
+                    if (operateType == 1) {  
+                        if(gerritState == 1){_cell7.innerHTML = "新增(待审核)";}
+                        else{_cell7.innerHTML = "新增(审核未通过)";}                
+                       
                     }
                     else if (operateType == 2) {
-                        _cell7.innerHTML = "删除";
+                        if(gerritState == 1){_cell7.innerHTML = "删除(待审核)";}
+                        else{_cell7.innerHTML = "删除(审核未通过)";}
                     }
                     else if (operateType == 3) {
-                        _cell7.innerHTML = "修改";
+                        if(gerritState == 1){_cell7.innerHTML = "修改(待审核)";}
+                        else{_cell7.innerHTML = "修改(审核未通过)";}
                     }
                     var _cell8 = _row.insertCell(7);
                     _cell8.innerHTML = operateType;
@@ -389,6 +394,7 @@ function reviewresult(){
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
                 console.log("inputcounts="+inputcounts.length);
+                document.getElementById("noPassReview").onclick = noPassIssue;
                 for (var i = 0; i < inputcounts.length; i++) {
                     inputcounts[i].setAttribute('disabled','');
                     inputcounts[i].style.backgroundColor = "#ebebe4";
@@ -443,6 +449,15 @@ function passIssue(){
     document.getElementById("myDeleteModalEnsure").onclick = passSure;
 }
 
+//审核不通过弹窗
+function noPassIssue(){
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
+    document.getElementById("dialogword").innerHTML = "是否确认不通过该文件？";
+    
+    document.getElementById("myDeleteModalEnsure").onclick = noPassSure;
+}
+
 //编辑提交弹窗
 function editIssue(){
     $('#mydialog').modal();
@@ -455,6 +470,11 @@ function editIssue(){
 //审核通过（针对编辑）
 function passSure(){
     sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+}
+
+//审核不通过
+function noPassSure(){
+    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passResult);
 }
 
 //删除操作
