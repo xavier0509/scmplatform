@@ -791,11 +791,11 @@ function chipModeldataCheck(number){
 	} else{
 		if(ChipInArray==-1){
 			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机芯：" + InputInfoArray[jj].value + "不存在";
+			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机芯：" + nullChip + "不存在";
 			setTimeout("spanhidden()", 3000);
 		}else if(ChipInArray!=-1 && ModelInArray==-1){
 			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机型：" + InputInfoArray[jj].value + "不存在"
+			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机型：" + nullModel + "不存在"
 			setTimeout("spanhidden()", 3000);
 		}else{
 			console.log("lxw 提交数据，判断是否隐藏。");
