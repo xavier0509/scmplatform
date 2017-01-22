@@ -224,7 +224,7 @@ function AfterWaitHtmlinfo() {
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
 			console.log("lxw " + ChipModelArray);
-			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
+			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"userName":"'+loginusername+'","gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fyb_api/productUpdate", deleNode, moreDeleteresult);
 		}
@@ -795,8 +795,6 @@ function chipModeldataCheck(number){
 				console.log("lxw "+mySpanId);
 				document.getElementById(mySpanId).style.display = "block";
 				document.getElementById(mySpanId).innerHTML = InputInfoArray[jj].cnName + "项不能为空";
-				//document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				//document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
 				jj = InputInfoArray.length;
 				setTimeout("spanhidden()", 3000);
 			}
@@ -1266,7 +1264,7 @@ function editPageSubmitData() {
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 	//console.log("lxw" + JSON.stringify(dataObj));
-	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
 }
@@ -2044,7 +2042,7 @@ function singleDeletePageButtons(olchip, olmode) {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
 		console.log("lxw " + olchip + "--" + olmode);
-		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
+		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"'+loginusername+'","gerritState":"1","operateType":"2"}}}';
 		console.log("lxw " + ooEnode);
 		sendHTTPRequest("/fyb_api/productUpdate", ooEnode, productEditresult);
 	}
