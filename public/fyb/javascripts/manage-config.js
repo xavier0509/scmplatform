@@ -125,16 +125,9 @@ function AferConfigHtmlInfo() {
 				setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
 			}
 			else{
+				console.log("枚举型是否为空："+inputNumState);
 				console.log("lxw " + "in inputConfigSubmit");
 				var node = null;//向后台传递的数据
-				
-				
-				// var configStringDisplay = document.getElementById("configString").style.display;
-				// var newConfigString = null;
-				// if (configStringDisplay == "none") {
-				// 	newConfigString = null;
-				// } else{
-				// newConfigString = document.getElementById("configString").value;//value值是字符串
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
 				if (newConfigString !="" && inputNumState == 1) {
 					document.getElementById("configPostInfo").innerHTML = "输入有误，请确保字符串与枚举型的唯一！";
