@@ -28,6 +28,7 @@ function AferConfigHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			keyValue = oTableA[this.index].nextSibling.value;
 			var data = oTableInput[this.index].value;
+			var jsonData = JSON.parse(data);
 			console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
 			console.log("lxw "+keyValueObj);
@@ -40,7 +41,18 @@ function AferConfigHtmlInfo() {
 			if (jsonData.type == "string") {
 				document.getElementById("configInstr").value = jsonData.value;
 			}
+			else{}
 			document.getElementById("configString").value = jsonData.desc;
+			var categoryClass = jsonData.category;
+			var opt = document.getElementById("configSelect").getElementsByTagName("option");
+			for (var j = 0; j < opt.length; j++) {
+				opt[j].removeAttribute("selected");
+				if(opt[j].value == categoryClass){
+					opt[j].setAttribute("selected","");
+				}
+			};
+
+			var categoryClass = jsonData.category;
 
 			toSaveButton(this.index,keyValueObj);
 		}
