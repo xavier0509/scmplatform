@@ -9,11 +9,17 @@ function AferConfigHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myConfigAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("configChineseName").value = "";
+		document.getElementById("configEnglishName").value = "";
+		document.getElementById("configSrc").value = "";
+		document.getElementById("configInstr").value = "";
+		document.getElementById("configString").value = "";
 		toSaveButton(this.index,null);
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
 	var oTableA = $("#config-mkTable").find("a");
+	var oTableInput = $("#module-mkTable").find("input");
 	console.log(oTableA.length);
 	var keyValue,keyValueObj = null;
 	for(var i = 0; i < oTableA.length; i++) {
@@ -21,11 +27,21 @@ function AferConfigHtmlInfo() {
 		oTableA[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
 			keyValue = oTableA[this.index].nextSibling.value;
+			var data = oTableInput[this.index].value;
 			console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
 			console.log("lxw "+keyValueObj);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+
+			document.getElementById("configChineseName").value = jsonData.cnName;
+			document.getElementById("configEnglishName").value = jsonData.engName;
+			document.getElementById("configSrc").value = jsonData.configKey;
+			if (jsonData.type == "string") {
+				document.getElementById("configInstr").value = jsonData.value;
+			}
+			document.getElementById("configString").value = jsonData.desc;
+
 			toSaveButton(this.index,keyValueObj);
 		}
 	}
