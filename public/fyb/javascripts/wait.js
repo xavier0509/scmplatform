@@ -734,6 +734,8 @@ function productAddresult() {
 
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
+	var InputInfoArray = new Array();
+	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = {};
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
@@ -758,12 +760,30 @@ function chipModeldataCheck(number){
 		nullChipMode = document.getElementById("newEditChipMode").value;
 		nullMemory = document.getElementById("newEditMemory").value;
 	}
+	ChipObj['czName'] = "机芯";ChipObj['value'] = nullChip;
+	ModelObj['czName'] = "机型";ModelObj['value'] = nullModel;
+	DeviceObj['czName'] = "机芯";DeviceObj['value'] = nullDevice;
+	AndroidObj['czName'] = "机芯";AndroidObj['value'] = nullAndroid;
+	ChipModeObj['czName'] = "机芯";ChipModeObj['value'] = nullChipMode;
+	MemoryObj['czName'] = "机芯";MemoryObj['value'] = nullMemory;
+	
+	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
+	console.log("lxw " + InputInfoArray);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
 	console.log(nullChip);
 	if (nullChip==""||nullModel==""||nullDevice==""||nullAndroid==""||nullChipMode==""||nullMemory=="") {
+		for (var jj=0; jj<InputInfoArray.length; jj++) {
+			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].czName)
+			if (InputInfoArray[jj].value=="") {
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "'+InputInfoArray[jj].czName+'项不能为空。"
+				jj = InputInfoArray.length;
+			} else{
+				
+			}
+		}
 		alert("输入项不能为空。");
 	} else{
 		if(ChipInArray==-1||ModelInArray==-1){
