@@ -746,6 +746,7 @@ function chipModeldataCheck(number){
 	var myChipModeObj = {"cnName": "001","value": "001"};
 	var myMemoryObj = {"cnName": "001","value": "001"};
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
+	var mySpanId = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
 		nullModel = document.getElementById("newAddModel").value;
@@ -753,6 +754,7 @@ function chipModeldataCheck(number){
 		nullAndroid = document.getElementById("NewAddAndroidVersion").value;
 		nullChipMode = document.getElementById("newAddChipMode").value;
 		nullMemory = document.getElementById("newAddMemory").value;
+		mySpanId = "myAddModalErrorInfo";
 	} else if(number==2){
 		nullChip = document.getElementById("newCopyChip").value;
 		nullModel = document.getElementById("newCopyModel").value;
@@ -760,14 +762,15 @@ function chipModeldataCheck(number){
 		nullAndroid = document.getElementById("NewCopyAndroidVersion").value;
 		nullChipMode = document.getElementById("newCopyChipMode").value;
 		nullMemory = document.getElementById("newCopyMemory").value;
-	}
-	else if(number==3){
+		mySpanId = "myCopyModalErrorInfo";
+	} else if(number==3){
 		nullChip = document.getElementById("newEditChip").value;
 		nullModel = document.getElementById("newEditModel").value;
 		nullDevice = document.getElementById("newEditDevice").value;
 		nullAndroid = document.getElementById("NewEditAndroidVersion").value;
 		nullChipMode = document.getElementById("newEditChipMode").value;
 		nullMemory = document.getElementById("newEditMemory").value;
+		mySpanId = "myEditModalErrorInfo";
 	}
 	myChipObj.cnName = "机芯";myChipObj.value = nullChip;
 	myModelObj.cnName = "机型";myModelObj.value = nullModel;
@@ -786,8 +789,8 @@ function chipModeldataCheck(number){
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].cnName)
 			if (InputInfoArray[jj].value=="") {
-				console.log("lxw "+jj);
-				console.log(document.getElementsByClassName("myModalErrorInfo")[0].style.display);
+				console.log("lxw "+mySpanId);
+				document.getElementById(mySpanId).style.display = "block";
 				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
 				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
 				jj = InputInfoArray.length;
