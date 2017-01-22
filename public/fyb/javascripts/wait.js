@@ -728,8 +728,10 @@ function productAddresult() {
 				startSelect();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "该产品已存在"
+				document.getElementById("myAddModalErrorInfo").style.display = "block";
+				document.getElementById("myAddModalErrorInfo").innerHTML = "该产品已存在";
+				document.getElementById("myCopyModalErrorInfo").style.display = "block";
+				document.getElementById("myCopyModalErrorInfo").innerHTML = "该产品已存在";
 				setTimeout("spanhidden()", 3000);
 			};
 		};
@@ -800,12 +802,12 @@ function chipModeldataCheck(number){
 		}
 	} else{
 		if(ChipInArray==-1){
-			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机芯：" + nullChip + "不存在";
+			document.getElementById(mySpanId).style.display = "block";
+			document.getElementById(mySpanId).innerHTML = "机芯：" + nullChip + "不存在";
 			setTimeout("spanhidden()", 3000);
 		}else if(ChipInArray!=-1 && ModelInArray==-1){
-			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机型：" + nullModel + "不存在"
+			document.getElementById(mySpanId).style.display = "block";
+			document.getElementById(mySpanId).innerHTML = "机型：" + nullModel + "不存在"
 			setTimeout("spanhidden()", 3000);
 		}else{
 			console.log("lxw 提交数据，判断是否隐藏。");
@@ -1281,8 +1283,8 @@ function productEditresult() {
 				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "该产品已存在"
+				document.getElementById("myEditModalErrorInfo").style.display = "block";
+				document.getElementById("myEditModalErrorInfo").innerHTML = "该产品已存在"
 				setTimeout("spanhidden()", 3000);
 			};
 		};
@@ -1991,8 +1993,6 @@ function addPageButtons() {
 		console.log("新增页-提交按钮二");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(1);
-		//addPageSubmitData();
-		//$("#myAddModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myAddModalClose");
 	oButtonAdd.onclick = function() {
@@ -2012,16 +2012,12 @@ function copyPageButtons() {
 		console.log("单项复制页-提交按钮一");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(2);
-		//copyPageSubmitData();
-		//$("#myCopyModal").modal('hide');
 	}
 	var oButtonEditEnsure = document.getElementById("myCopyModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项复制页-提交按钮二");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(2);
-		//copyPageSubmitData();
-		//$("#myCopyModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myCopyModalClose");
 	oButtonAdd.onclick = function() {
