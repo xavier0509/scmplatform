@@ -19,7 +19,7 @@ function AferConfigHtmlInfo() {
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
 	var oTableA = $("#config-mkTable").find("a");
-	var oTableInput = $("#module-mkTable").find("input");
+	var oTableInput = $("#config-mkTable").find("input");
 	console.log(oTableA.length);
 	var keyValue,keyValueObj = null;
 	for(var i = 0; i < oTableA.length; i++) {
