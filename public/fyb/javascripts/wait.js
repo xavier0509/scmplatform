@@ -223,7 +223,6 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
-			$("#myMoreDeleteModal").modal('hide');
 			console.log("lxw " + ChipModelArray);
 			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
@@ -824,7 +823,10 @@ function chipModeldataCheck(number){
 	}
 }
 function spanhidden(){
-	document.getElementsByClassName("myModalErrorInfo")[0].style.display = "none";
+	var spanStyleObj = document.getElementsByClassName("myModalErrorInfo");
+	for (var i=0; i<spanStyleObj.length; i++) {
+		spanStyleObj[i].style.display = "none";
+	}
 }
 
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
@@ -1281,6 +1283,7 @@ function productEditresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myEditModal").modal('hide');
+				$("#myDeleteModal").modal('hide');
 				startSelect();
 				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
@@ -1973,9 +1976,14 @@ function moreDeleteresult(){
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
+				$("#myMoreDeleteModal").modal('hide');
+				freshHtml("tab_userMenu2");
 				startSelect();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementById("myMDModalErrorInfo").style.display = "block";
+				document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
+				setTimeout("spanhidden()", 3000);
 			};
 		};
 	}
