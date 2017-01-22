@@ -772,7 +772,7 @@ function chipModeldataCheck(number){
 	myChipModeObj.cnName = "芯片型号";myChipModeObj.value = nullChipMode;
 	myMemoryObj.cnName = "内存";myMemoryObj.value = nullMemory;
 	
-	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
+	InputInfoArray = [myChipObj,myModelObj,myDeviceObj,myAndroidObj,myChipModeObj,myMemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
 	console.log("lxw " + InputInfoArray);
 	console.log("lxw " + InputInfoArray[0]);
