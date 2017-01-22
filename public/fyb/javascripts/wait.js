@@ -735,7 +735,7 @@ function productAddresult() {
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
-	var ChipObj, ModelObj, DeviceObj, AndroidObj, ChipModeObj, MemoryObj = {
+	var ChipObj = {
 		"cnName": "001",
 		"value": "001"
 		};
