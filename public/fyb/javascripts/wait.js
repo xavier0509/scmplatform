@@ -735,7 +735,7 @@ function productAddresult() {
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
-	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = new Object();
+	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = {czName:"",value:18};
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
