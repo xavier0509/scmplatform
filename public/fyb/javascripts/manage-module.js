@@ -61,9 +61,9 @@ function AfterModuleHtmlInfo() {
 		
 		ModualSubmit.onclick = function() {
 			var cnNa = document.getElementById("moduleCzName");
-			var enNa document.getElementById("moduleEnName");
-			var path document.getElementById("moduleSrc");
-			var des document.getElementById("moduleInstr");
+			var enNa = document.getElementById("moduleEnName");
+			var path = document.getElementById("moduleSrc");
+			var des = document.getElementById("moduleInstr");
 
 			if (cnName == "" || enNa == "" || path == "" || des == "") {
 				document.getElementById("postInfo").innerHTML = "请确保所有项目均不为空！";
