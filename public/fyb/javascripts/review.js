@@ -6,16 +6,17 @@ $(function () {
     var loginusername = parent.loginusername;
     console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}', reviewlist);
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}', reviewlist);
+        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }                                                        
 })
 
 var chip = null;
 var model = null;
 var operate = null;
+var fileUsername = null;
 
 //在待审核页面出现列表
 function reviewlist(){
@@ -54,7 +55,8 @@ function reviewlist(){
                     _cell5.innerHTML = datalength[i].memorySize;
                     var _cell6 = _row.insertCell(5); 
                     var operateType = datalength[i].operateType;   
-                    var gerritState = datalength[i].gerritState;                
+                    var gerritState = datalength[i].gerritState;  
+                    var userName = datalength[i].userName;              
                     if (level == 1) {
                         _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
                     }
@@ -86,6 +88,9 @@ function reviewlist(){
                     var _cell8 = _row.insertCell(7);
                     _cell8.innerHTML = operateType;
                     _cell8.style.display="none";
+                    var _cell9 = _row.insertCell(8);
+                    _cell9.innerHTML = userName;
+                    _cell9.style.display="none";
                 };
             }
             else{
@@ -138,6 +143,7 @@ function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     //查询模块信息接口
     sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    
     
@@ -391,7 +397,12 @@ function reviewresult(){
 
 //如果是管理员，不允许修改-----------更改提示框
             if(level == 1){
-                document.getElementById("noPassReview").style.display="block";
+                if (fileUsername == "liujinpeng") {
+                    document.getElementById("noPassReview").style.display="none";
+                }
+                else{
+                    document.getElementById("noPassReview").style.display="block";
+                }                
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
                 console.log("inputcounts="+inputcounts.length);
