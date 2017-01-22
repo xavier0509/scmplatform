@@ -725,8 +725,6 @@ function productAddresult() {
 				console.log("lxw " + "添加成功");
 				freshHtml("tab_userMenu2");
 				startSelect();
-				//var oooNode = '{"data":{"gerritState":"1"}}';
-				//sendHTTPRequest("/fyb_api/productRegexQuery", oooNode, searchResource);
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 			};
@@ -783,11 +781,8 @@ function chipModeldataCheck(number){
 				editPageSubmitData();
 				$("#myEditModal").modal('hide');
 			}
-			
 		}
 	}
-	
-	
 }
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInfOne() {
@@ -1084,15 +1079,9 @@ function getEditInforesult() {
 				console.log("lxw " + data.data[0].mkFile.length); //mk
 				for(var i = 0; i < data.data[0].mkFile.length; i++) {
 					console.log("lxw " + data.data[0].mkFile[i].engName);
-					//document.getElementById(data.data[0].mkFile[i].engName).checked = true;
 					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
-//				for(var i = 0; i < data.data[0].configFile.length; i++) {
-//					console.log("lxw " + data.data[0].configFile[i].engName);
-//					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value', data.data[0].configFile[i].value);
-//					
-//				}
 				for (var i = 0; i < data.data[0].configFile.length; i++) {
 	                if (data.data[0].configFile[i].type == "string") {
 	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
@@ -1113,6 +1102,9 @@ function getEditInforesult() {
 			}
 		};
 		editPageButtonsOnclick();
+		if(allChipArray.length==0||allModelArray.length==0){
+			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+		}
 	}
 }
 
@@ -1558,10 +1550,6 @@ function getCopyInforesult() {
 					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
 				}
 				console.log("lxw " + data.data[0].configFile.length); //config
-//				for(var i = 0; i < data.data[0].configFile.length; i++) {
-//					console.log("lxw " + data.data[0].configFile[i].engName);
-//					document.getElementById(data.data[0].configFile[i].engName).setAttribute('value', data.data[0].configFile[i].value);
-//				}
 				for (var i = 0; i < data.data[0].configFile.length; i++) {
 	                if (data.data[0].configFile[i].type == "string") {
 	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
@@ -1584,6 +1572,9 @@ function getCopyInforesult() {
 		};
 		startSelect();
 		copyPageButtons();
+		if(allChipArray.length==0||allModelArray.length==0){
+			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+		}
 	}
 }
 
