@@ -747,7 +747,7 @@ function chipModeldataCheck(){
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
 	console.log(nullChip);
-	if (nullChip==null||nullModel==null||nullDevice==null||nullAndroid==null||nullChipMode==null||nullMemory==null) {
+	if (nullChip==""||nullModel==""||nullDevice==""||nullAndroid==""||nullChipMode==""||nullMemory=="") {
 		alert("输入项不能为空。");
 	} else{
 		if(ChipInArray==-1||ModelInArray==-1){
