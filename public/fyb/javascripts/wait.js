@@ -745,13 +745,13 @@ function chipModeldataCheck(){
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
-	console.log("lxw "+ChipInArray+"--"+ModelInArray);
+	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
 	console.log(nullChip);
 	if (nullChip==null||nullModel==null||nullDevice==null||nullAndroid==null||nullChipMode==null||nullMemory==null) {
 		alert("输入项不能为空。");
 	} else{
 		if(ChipInArray==-1||ModelInArray==-1){
-			
+			alert("该机芯或者机型不存在。");
 		}
 		else{
 			console.log("lxw 提交数据，判断是否隐藏。");
