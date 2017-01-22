@@ -12,6 +12,10 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("moduleCzName").value = "";
+		document.getElementById("moduleEnName").value = "";
+		document.getElementById("moduleSrc").value = "";
+		document.getElementById("moduleInstr").value = "";
 		toSaveButton(-1,null);
 	}
 
@@ -35,6 +39,13 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleEnName").value = jsonData.engName;
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
+			var categoryClass = jsonData.category;
+			var opt = document.getElementById("moduleSelect").childNodes;
+			for (var j = 0; j < opt.length; j++) {
+				if(opt[j].value == categoryClass){
+					opt[j].setAttribute("selected","");
+				}
+			};
 			toSaveButton(this.index,englishName);
 		}
 	}
