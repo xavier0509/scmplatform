@@ -783,16 +783,21 @@ function chipModeldataCheck(number){
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].cnName)
 			if (InputInfoArray[jj].value=="") {
 				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空"
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
 				jj = InputInfoArray.length;
 				setTimeout("spanhidden()", 3000);
 			}
 		}
 	} else{
-		if(ChipInArray==-1||ModelInArray==-1){
-			alert("该机芯或者机型不存在。");
-		}
-		else{
+		if(ChipInArray==-1){
+			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
+			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机芯：" + InputInfoArray[jj].value + "不存在";
+			setTimeout("spanhidden()", 3000);
+		}else if(ChipInArray!=-1 && ModelInArray==-1){
+			document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
+			document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "机型：" + InputInfoArray[jj].value + "不存在"
+			setTimeout("spanhidden()", 3000);
+		}else{
 			console.log("lxw 提交数据，判断是否隐藏。");
 			if(number == 1){
 				addPageSubmitData();
