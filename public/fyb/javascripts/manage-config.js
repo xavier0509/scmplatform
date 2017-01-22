@@ -52,7 +52,8 @@ function AferConfigHtmlInfo() {
 				document.getElementById("configTableBoxEnum").style.display = "block";
 				document.getElementById("configString").value = "";
 				var oOpt = jsonData.options;
-				for (var i = 2; i < oOpt.length; i++) {
+				document.getElementById(ADCSEfficient).innerHTML="";
+				for (var j = 0; j < oOpt.length; j++) {
 					var parentDiv = document.getElementById("ADCSEfficient");
 					var child1 = document.createElement("div");
 					child1.setAttribute("class","menuUnit");
@@ -67,6 +68,12 @@ function AferConfigHtmlInfo() {
 					child1.appendChild(child2);
 					child1.appendChild(child3);
 					parentDiv.appendChild(child1);
+				};
+				for (var k = 0; k < Things.length; k++) {
+					var menuInput = document.getElementsByClassName("menuUnitInput");
+					var k1 = k*2; var k2 = k1 + 1;
+					menuInput[k1].value = oOpt[k];
+					menuInput[k2].value = oOpt[k];
 				};
 
 			}
