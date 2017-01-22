@@ -735,10 +735,7 @@ function productAddresult() {
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
-	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = {
-		"czName": "",
-		"value" : ""
-	};
+	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = new Object();
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
@@ -765,10 +762,10 @@ function chipModeldataCheck(number){
 	}
 	ChipObj.czName = "机芯";ChipObj.value = nullChip;
 	ModelObj.czName = "机型";ModelObj.value = nullModel;
-	DeviceObj.czName = "机芯";DeviceObj.value = nullDevice;
-	AndroidObj.czName = "机芯";AndroidObj.value = nullAndroid;
-	ChipModeObj.czName = "机芯";ChipModeObj.value = nullChipMode;
-	MemoryObj.czName = "机芯";MemoryObj.value = nullMemory;
+	DeviceObj.czName = "TARGET_PRODUCT";DeviceObj.value = nullDevice;
+	AndroidObj.czName = "安卓版本";AndroidObj.value = nullAndroid;
+	ChipModeObj.czName = "芯片型号";ChipModeObj.value = nullChipMode;
+	MemoryObj.czName = "内存";MemoryObj.value = nullMemory;
 	
 	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
