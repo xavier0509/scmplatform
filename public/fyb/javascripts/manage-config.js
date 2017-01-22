@@ -267,7 +267,14 @@ function searchConfigInfo() {
 			var _rowConfigLocalmedia = document.getElementById("configMkTableTdLocalmedia");
 			var _rowConfigBrowser = document.getElementById("configMkTableTdBrowser");
 			var _rowConfigOther = document.getElementById("configMkTableTdOther");
-			
+			_rowConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
+			_rowConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+			_rowConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
+			_rowConfigAd.innerHTML = "<div title='ad'>广告配置：</div>";
+			_rowConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
+			_rowConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
+			_rowConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
+			_rowConfigOther.innerHTML = "<div title='other'>其他功能：</div>";
 			
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw "+data.data[i].category);
