@@ -741,13 +741,14 @@ function chipModeldataCheck(){
 	var nullAndroid = document.getElementById("NewAddAndroidVersion").value;
 	var nullChipMode = document.getElementById("newAddChipMode").value;
 	var nullMemory = document.getElementById("newAddMemory").value;
-	console.log("lxw "+ allChipArray +"--"+allModelArray);
-	//		if (非空&&机芯机型存在) {
-//			addPageSubmitData();
-//			$("#myAddModal").modal('hide');
-//		} else{
-//			alert("输入项不能为空或者该机芯机型不存在。");
-//		}
+	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
+	console.log(jQuery.inArray(nullChip,allChipArray));
+//	if (非空&&机芯机型存在) {
+//		addPageSubmitData();
+//		$("#myAddModal").modal('hide');
+//	} else{
+//		alert("输入项不能为空或者该机芯机型不存在。");
+//	}
 	
 	
 }
