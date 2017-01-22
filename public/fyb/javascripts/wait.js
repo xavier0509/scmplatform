@@ -742,13 +742,21 @@ function chipModeldataCheck(){
 	var nullChipMode = document.getElementById("newAddChipMode").value;
 	var nullMemory = document.getElementById("newAddMemory").value;
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
-	console.log(jQuery.inArray(nullChip,allChipArray));
-//	if (非空&&机芯机型存在) {
-//		addPageSubmitData();
-//		$("#myAddModal").modal('hide');
-//	} else{
-//		alert("输入项不能为空或者该机芯机型不存在。");
-//	}
+	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
+	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
+	console.log("lxw "+ChipInArray+"--"+ModelInArray);
+	if (nullChip==null||nullModel==null||nullDevice==null||nullAndroid==null||nullChipMode==null||nullMemory==null) {
+		alert("输入项不能为空。");
+	} else{
+		if(ChipInArray==-1||ModelInArray==-1){
+			
+		}
+		else{
+			console.log("lxw 提交数据，判断是否隐藏。");
+			//addPageSubmitData();
+			//$("#myAddModal").modal('hide');
+		}
+	}
 	
 	
 }
