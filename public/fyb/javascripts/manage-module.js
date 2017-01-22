@@ -41,7 +41,8 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleInstr").value = jsonData.desc;
 			var categoryClass = jsonData.category;
 			console.log("分类是："+categoryClass);
-			var opt = document.getElementById("moduleSelect").childNodes;
+			var opt = document.getElementById("moduleSelect").getElementsByTagName("option");
+			console.log("分类数目："+opt.length);
 			for (var j = 0; j < opt.length; j++) {
 				opt[j].removeAttribute("selected");
 				if(opt[j].value == categoryClass){
