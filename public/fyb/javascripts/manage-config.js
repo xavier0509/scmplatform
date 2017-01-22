@@ -126,6 +126,7 @@ function AferConfigHtmlInfo() {
 			}
 			else{
 				console.log("枚举型是否为空："+inputNumState);
+				console.log("字符串内容："+newConfigString);
 				console.log("lxw " + "in inputConfigSubmit");
 				var node = null;//向后台传递的数据
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
