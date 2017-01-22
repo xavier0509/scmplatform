@@ -91,7 +91,7 @@
 						<button type="button" class="close" aria-label="Close" id="myAddModalClose"><span aria-hidden="true">关闭</span></button>
 						<button type="button" class="close" id="myAddModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myAddModalLabel">新增</h4>
-						<div id="myAddModalErrorInfo"></div>
+						<span id="myAddModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
 					<div class="modal-body mybody">
 						<table class="table table-bordered mytable" id="myAddModalTable">
@@ -284,6 +284,7 @@
 						<button type="button" class="close" aria-label="Close" id="myEditModalClose"><span aria-hidden="true">关闭</span></button>
 						<button type="button" class="close" id="myEditModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myEditModalLabel">编辑</h4>
+						<span id="myEditModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
 					<div class="modal-body mybody">
 						<table class="table table-bordered mytable" id="myEditModalTable">
@@ -403,6 +404,7 @@
 						<button type="button" class="close" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
 						<button type="button" class="close" id="myCopyModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myCopyModalLabel">新建机芯机型</h4>
+						<span id="myCopyModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
 					<div class="modal-body mybody">
 						<table class="table table-bordered mytable" id="myCopyModalTable">
@@ -521,6 +523,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 						<h4 class="modal-title" id="myMoreDeleteModalLabel">批量删除</h4>
+						<span id="myMDModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
 					<div class="modal-body">
 						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
@@ -539,6 +542,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 						<h4 class="modal-title" id="myDeleteModalLabel">批量删除</h4>
+						<span id="myDeleteModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
 					<div class="modal-body">
 						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
