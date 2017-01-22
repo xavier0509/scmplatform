@@ -131,13 +131,16 @@ function AferConfigHtmlInfo() {
 				var node = null;//向后台传递的数据
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
 				if (newConfigString !="" && inputNumState == 1) {
+					console.log("字符串型不为空，枚举型不为空！！！冲突！！！！");
 					document.getElementById("configPostInfo").innerHTML = "输入有误，请确保字符串与枚举型的唯一！";
 					setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
 				}
 				else if (newConfigString !="" && inputNumState == 0) {
+					console.log("枚举型为空，字符串型！！！");
 					node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "options": []}}';
 				}
-				else{
+				else if(newConfigString =="" && inputNumState == 1){
+					console.log("枚举型不为为空，字符串型为空！！！");
 					var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
 					var newConfigMenu = [];//value值是枚举,值放入数组
 					var newConfigMenuObject = document.getElementsByClassName("menuUnit");
