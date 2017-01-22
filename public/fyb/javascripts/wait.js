@@ -723,10 +723,14 @@ function productAddresult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
+				$("#myAddModal").modal('hide');
 				freshHtml("tab_userMenu2");
 				startSelect();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "该产品已存在"
+				setTimeout("spanhidden()", 3000);
 			};
 		};
 	}
@@ -801,7 +805,6 @@ function chipModeldataCheck(number){
 			console.log("lxw 提交数据，判断是否隐藏。");
 			if(number == 1){
 				addPageSubmitData();
-				$("#myAddModal").modal('hide');
 			}else if(number == 2){
 				copyPageSubmitData();
 				$("#myCopyModal").modal('hide');
