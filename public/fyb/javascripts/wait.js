@@ -735,10 +735,12 @@ function productAddresult() {
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
-	var ChipObj = {
-		"cnName": "001",
-		"value": "001"
-		};
+	var myChipObj = {"cnName": "001","value": "001"};
+	var myModelInfoObj = {"cnName": "001","value": "001"};
+	var myDeviceObj = {"cnName": "001","value": "001"};
+	var myAndroidObj = {"cnName": "001","value": "001"};
+	var myChipModeObj = {"cnName": "001","value": "001"};
+	var myMemoryObj = {"cnName": "001","value": "001"};
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
@@ -763,19 +765,18 @@ function chipModeldataCheck(number){
 		nullChipMode = document.getElementById("newEditChipMode").value;
 		nullMemory = document.getElementById("newEditMemory").value;
 	}
-	console.log("lxw "+ ChipObj);
-	console.log("lxw "+ ChipObj.cnName);
-	console.log("lxw "+ ChipObj.value);
-//	ChipObj.cnName = "机芯";ChipObj.value = nullChip;
-//	ModelObj.cnName = "机型";ModelObj.value = nullModel;
-//	DeviceObj.cnName = "TARGET_PRODUCT";DeviceObj.value = nullDevice;
-//	AndroidObj.cnName = "安卓版本";AndroidObj.value = nullAndroid;
-//	ChipModeObj.cnName = "芯片型号";ChipModeObj.value = nullChipMode;
-//	MemoryObj.cnName = "内存";MemoryObj.value = nullMemory;
+	myChipObj.cnName = "机芯";myChipObj.value = nullChip;
+	myModelObj.cnName = "机型";myModelObj.value = nullModel;
+	myDeviceObj.cnName = "TARGET_PRODUCT";myDeviceObj.value = nullDevice;
+	myAndroidObj.cnName = "安卓版本";myAndroidObj.value = nullAndroid;
+	myChipModeObj.cnName = "芯片型号";myChipModeObj.value = nullChipMode;
+	myMemoryObj.cnName = "内存";myMemoryObj.value = nullMemory;
 	
 	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
 	console.log("lxw " + InputInfoArray);
+	console.log("lxw " + InputInfoArray[0]);
+	console.log("lxw " + InputInfoArray[0].cnName);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
