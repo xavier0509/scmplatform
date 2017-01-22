@@ -760,12 +760,12 @@ function chipModeldataCheck(number){
 		nullChipMode = document.getElementById("newEditChipMode").value;
 		nullMemory = document.getElementById("newEditMemory").value;
 	}
-	ChipObj['czName'] = "机芯";ChipObj['value'] = nullChip;
-	ModelObj['czName'] = "机型";ModelObj['value'] = nullModel;
-	DeviceObj['czName'] = "机芯";DeviceObj['value'] = nullDevice;
-	AndroidObj['czName'] = "机芯";AndroidObj['value'] = nullAndroid;
-	ChipModeObj['czName'] = "机芯";ChipModeObj['value'] = nullChipMode;
-	MemoryObj['czName'] = "机芯";MemoryObj['value'] = nullMemory;
+	ChipObj["czName"] = "机芯";ChipObj["value"] = nullChip;
+	ModelObj["czName"] = "机型";ModelObj["value"] = nullModel;
+	DeviceObj["czName"] = "机芯";DeviceObj["value"] = nullDevice;
+	AndroidObj["czName"] = "机芯";AndroidObj["value"] = nullAndroid;
+	ChipModeObj["czName"] = "机芯";ChipModeObj["value"] = nullChipMode;
+	MemoryObj["czName"] = "机芯";MemoryObj["value"] = nullMemory;
 	
 	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
@@ -780,8 +780,6 @@ function chipModeldataCheck(number){
 			if (InputInfoArray[jj].value=="") {
 				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "'+InputInfoArray[jj].czName+'项不能为空。"
 				jj = InputInfoArray.length;
-			} else{
-				
 			}
 		}
 		alert("输入项不能为空。");
