@@ -786,6 +786,7 @@ function chipModeldataCheck(number){
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].cnName)
 			if (InputInfoArray[jj].value=="") {
+				console.log(document.getElementsByClassName("myModalErrorInfo")[0].style.display);
 				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
 				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
 				jj = InputInfoArray.length;
