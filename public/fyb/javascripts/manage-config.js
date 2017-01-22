@@ -149,8 +149,8 @@ function AferConfigHtmlInfo() {
 					for (var i=0; i<newConfigMenuObject.length;i++) {
 						thisOneIndex = 2*i;
 						thisTwoIndex = 2*i + 1;
-						valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
-						valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[thisTwoIndex].value;
+						// valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
+						valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[i].value;
 						console.log("lxw "+valueOne +":"+ valueTwo);
 						newConfigMenu.push('"'+valueTwo+'"');
 						console.log("lxw"+newConfigMenu);
