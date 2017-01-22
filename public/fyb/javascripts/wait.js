@@ -1273,13 +1273,10 @@ function editPageSubmitData() {
 
 function productEditresult() {
 	console.log("lxw in productEditresult");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myEditModal").modal('hide');
@@ -1298,10 +1295,8 @@ function productEditresult() {
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
 	console.log("lxw " + "getCopyInfoInfOne");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
@@ -1366,10 +1361,8 @@ function getCopyInfoInfOne() {
 
 function getCopyInfoInfTwo() {
 	console.log("lxw " + "getCopyInfoInfTwo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -1570,9 +1563,7 @@ function getCopyInfoInfTwo() {
 }
 
 function getCopyInforesult() {
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
 		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
@@ -1656,16 +1647,13 @@ function copyPageSubmitData() {
 	var oCoperateType = "1";
 	var userName = loginusername;
 	var desc = "enheng";
-
 	//获取config里的数据
 	var copyConfigFile = [];
 	var oCconfigTrlength = $("#myCopyModalConfigTableTbody").find("tr");
-	console.log("lxw " + oCconfigTrlength.length);
 	for(var i = 0; i < oCconfigTrlength.length; i++) {
 		var oCConfigobj = {};
 		var thisConfigindex = null;
 		oCconfigTrDiv = $("#myCopyModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" + oCconfigTrDiv.length);
 		for(var j = 1; j < oCconfigTrDiv.length; j++) {
 			var oCopt = [];
 			var oCstuInfo = {
@@ -1688,7 +1676,6 @@ function copyPageSubmitData() {
 				oCopt = [];
 			} else if(oCstuInfo.type == "enum") {
 				var jjlength = oCconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
-				console.log("lxw " + jjlength.length);
 				for(var jj = 0; jj < jjlength.length; jj++) {
 					var optValue = jjlength[jj].value;
 					oCopt.push(optValue);
@@ -1701,12 +1688,10 @@ function copyPageSubmitData() {
 	//获取mkFile里的信息
 	var copyMkFile = [];
 	var oCMkTrDiv = $("#myCopyModalMkTableTbody").find("tr");
-	console.log("lxw " + oCMkTrDiv.length);
 	var oCMkindex = null;
 	for(var i = 0; i < oCMkTrDiv.length; i++) {
 		var oCMkobj = {};
 		oCMkTrDivTwo = $("#myCopyModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" + oCMkTrDivTwo.length);
 		for(var j = 1; j < oCMkTrDivTwo.length; j++) {
 			oCMkindex = j;
 			if(oCMkTrDivTwo[oCMkindex].childNodes[0].checked == true) {
@@ -1739,8 +1724,7 @@ function copyPageSubmitData() {
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
-
-	console.log("lxw" + JSON.stringify(dataObj));
+	//console.log("lxw" + JSON.stringify(dataObj));
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
 	sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
@@ -1748,10 +1732,8 @@ function copyPageSubmitData() {
 //多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne(){
 	console.log("lxw " + "getMoreEditInfoOne");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
@@ -1815,10 +1797,8 @@ function getMoreEditInfoOne(){
 }
 function getMoreEditInfoTwo(){
 	console.log("lxw " + "getMoreEditInfoTwo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -1966,14 +1946,10 @@ function getMoreEditInfoEnd(){
 
 //多项删除的返回结果
 function moreDeleteresult(){
-	console.log("lxw in moreDeleteresult");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myMoreDeleteModal").modal('hide');
@@ -2009,7 +1985,7 @@ function addPageButtons() {
 			//传参-关闭父页  
 			closeparentpage("#myAddModal");
 		}
-		//新增页mk-config button的点击
+	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 }
 /*点击单项复制-弹框里的各个按钮*/
@@ -2044,26 +2020,22 @@ function editPageButtonsOnclick() {
 		console.log("单项编辑页-提交按钮一");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
-		//editPageSubmitData();
-		//$("#myEditModal").modal('hide');
 	}
 	var oButtonEditEnsure = document.getElementById("myEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
-		//editPageSubmitData();
-		//$("#myEditModal").modal('hide');
 	}
 	var oButtonAdd = document.getElementById("myEditModalClose");
 	oButtonAdd.onclick = function() {
-			console.log("单项编辑页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			//传参-关闭父页  
-			closeparentpage("#myEditModal");
-		}
-		//编辑页mk-config button的点击
+		console.log("单项编辑页-关闭按钮");
+		$('#myEditEnsureModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		//传参-关闭父页  
+		closeparentpage("#myEditModal");
+	}
+	//编辑页mk-config button的点击
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
 }
 /*点击单项删除-弹框里的各个按钮*/
@@ -2075,7 +2047,6 @@ function singleDeletePageButtons(olchip, olmode) {
 		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
 		console.log("lxw " + ooEnode);
 		sendHTTPRequest("/fyb_api/productUpdate", ooEnode, productEditresult);
-		$("#myDeleteModal").modal('hide');
 	}
 }
 /*点击批量修改-弹框里的各个按钮*/
@@ -2125,7 +2096,7 @@ function moreEditPageButtons() {
 		oClassAClicks[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var currentId = oClassAClicks[this.index].id;
-			console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
+			//console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
 			for(var j = 0; j < oClassAClicks.length; j++) {
 				omybuttonAddstyle[j].style.display = "none";
 				omybuttonDelstyle[j].style.display = "none";
@@ -2178,9 +2149,7 @@ function moreEditPageButtons() {
 				document.getElementById(id).style.color = "";
 				document.getElementById(id).setAttribute("curValue","0");
 			}
-			
 		}
-	/*执行保存按钮的动作*/
 	}
 }
 

@@ -1,13 +1,10 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	//AfterChipModeHtmlInfo();
-	//sendHTTPRequest("/api/searchplatformmodel", '{"data":""}', SearchChipInfo);
 	sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', SearchChipInfo);
 })
 
 function AfterChipModeHtmlInfo() {
-
 	/*机芯机型板块-机芯-增加*/
 	var oButtonAdd = document.getElementById("manage-chipAdd");
 	oButtonAdd.onclick = function() {
@@ -16,15 +13,14 @@ function AfterChipModeHtmlInfo() {
 		$(".modal-backdrop").addClass("new-backdrop");
 		toSaveButton("chip", "-1", "");
 	}
-
 	/*机芯机型板块-机型-增加*/
 	var oButtonAdd = document.getElementById("manage-modeAdd");
 	oButtonAdd.onclick = function() {
-			$('#myModeChipAddModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			toSaveButton("model", "-1", "");
-		}
-		/*机芯机型板块-机芯-修改*/
+		$('#myModeChipAddModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		toSaveButton("model", "-1", "");
+	}
+	/*机芯机型板块-机芯-修改*/
 	var oTableA = $("#chipManager-mkTable").find("a");
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
@@ -40,7 +36,7 @@ function AfterChipModeHtmlInfo() {
 	}
 	/*机芯机型板块-机型-修改*/
 	var oTableB = $("#modeManager-mkTable").find("a");
-	console.log(oTableB.length);
+	//console.log(oTableB.length);
 	for(var i = 0; i < oTableB.length; i++) {
 		oTableB[i].index = i;
 		oTableB[i].onclick = function() {
@@ -54,9 +50,9 @@ function AfterChipModeHtmlInfo() {
 	/*机芯机型板块-机芯-增加-关闭*/
 	var hipOrModeClose = document.getElementById("inputChipOrModeClose");
 	hipOrModeClose.onclick = function() {
-			console.log("lxw " + "in inputChipOrModeClose");
-		}
-		/*机芯机型板块-机芯-增加-保存*/
+		console.log("lxw " + "in inputChipOrModeClose");
+	}
+	/*机芯机型板块-机芯-增加-保存*/
 	function toSaveButton(name, index, newname) {
 		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
 		ChipOrModeSubmit.onclick = function() {
@@ -100,11 +96,9 @@ function AfterChipModeHtmlInfo() {
 /*机芯-查询数据*/
 function SearchChipInfo() {
 	console.log("lxw " + "SearchChipInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
@@ -119,17 +113,14 @@ function SearchChipInfo() {
 /*机芯-新增数据*/
 function CreatChipInfo() {
 	console.log("lxw " + "CreatChipInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "creat chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "新增成功");
-				//新增成功后刷新当前页面。
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "新增失败");
@@ -140,17 +131,14 @@ function CreatChipInfo() {
 /*机芯-修改数据*/
 function ChangeChipInfo() {
 	console.log("lxw " + "ChangeChipInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
-				//新增成功后刷新当前页面。
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
@@ -160,12 +148,9 @@ function ChangeChipInfo() {
 }
 /*机型-查询数据*/
 function SearchModeInfo() {
-	console.log("lxw " + "SearchModeInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
@@ -181,14 +166,11 @@ function SearchModeInfo() {
 /*机型-新增数据*/
 function CreatModelInfo() {
 	console.log("lxw " + "CreatModelInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				//新增成功后刷新当前页面。

@@ -12,10 +12,6 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("moduleCzName").value = "";
-		document.getElementById("moduleEnName").value = "";
-		document.getElementById("moduleSrc").value = "";
-		document.getElementById("moduleInstr").value = "";
 		toSaveButton(-1,null);
 	}
 
@@ -39,19 +35,6 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleEnName").value = jsonData.engName;
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
-			var categoryClass = jsonData.category;
-			console.log("分类是："+categoryClass);
-			var opt = document.getElementById("moduleSelect").getElementsByTagName("option");
-			console.log("分类数目："+opt.length);
-			for (var j = 0; j < opt.length; j++) {
-				opt[j].removeAttribute("selected");
-				if(opt[j].value == categoryClass){
-					opt[j].setAttribute("selected","");
-				}
-				// else{
-				// 	opt[j].removeAttribute("selected");
-				// }
-			};
 			toSaveButton(this.index,englishName);
 		}
 	}
@@ -60,32 +43,21 @@ function AfterModuleHtmlInfo() {
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
 		
 		ModualSubmit.onclick = function() {
-			var cnNa = document.getElementById("moduleCzName").value;
-			var enNa = document.getElementById("moduleEnName").value;
-			var path = document.getElementById("moduleSrc").value;
-			var des = document.getElementById("moduleInstr").value;
-
-			if (cnNa == "" || enNa == "" || path == "" || des == "") {
-				document.getElementById("postInfo").innerHTML = "请确保所有项目均不为空！";
-				setTimeout("document.getElementById('postInfo').innerHTML = '请确保所有项目均不为空！'",3000);
-			}
-			else{
-				console.log("lxw " + "in inputModuleSubmit");
-				var newModuleCzName = document.getElementById("moduleCzName").value;
-				var newModuleEnName = document.getElementById("moduleEnName").value;
-				var newModuleSrc = document.getElementById("moduleSrc").value;
-				var newModuleInstr = document.getElementById("moduleInstr").value;
-				var newModuleSelect = document.getElementById("moduleSelect").value;
-				console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
-				if (myindex == -1) {
-					console.log("lxw "+myindex);
-					var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-					sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
-				} else{
-					console.log("lxw "+myindex);
-					var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
-					sendHTTPRequest("/fyb_api/moduleUpdate", node, returnChangeInfo);
-				}
+			console.log("lxw " + "in inputModuleSubmit");
+			var newModuleCzName = document.getElementById("moduleCzName").value;
+			var newModuleEnName = document.getElementById("moduleEnName").value;
+			var newModuleSrc = document.getElementById("moduleSrc").value;
+			var newModuleInstr = document.getElementById("moduleInstr").value;
+			var newModuleSelect = document.getElementById("moduleSelect").value;
+			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
+			if (myindex == -1) {
+				console.log("lxw "+myindex);
+				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
+				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
+			} else{
+				console.log("lxw "+myindex);
+				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				sendHTTPRequest("/fyb_api/moduleUpdate", node, returnChangeInfo);
 			}
 		}
 	}
@@ -111,6 +83,15 @@ function searchModalInfo() {
 			var _rowModuleSysApp = document.getElementById("moduleTableSysApp");
 			var _rowModuleTV = document.getElementById("moduleTableTV");
 			var _rowModuleOther = document.getElementById("moduleTableOther");
+			_rowModuleApp.innerHTML = "<div title='App'>App:</div>";
+			_rowModuleService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowModuleAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowModuleHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowModuleIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowModuleSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowModuleTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowModuleOther.innerHTML = "<div title='Other'>Other:</div>";
+			
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw "+data.data[i].category);
 				if (data.data[i].category == "App") {
