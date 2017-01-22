@@ -724,6 +724,7 @@ function productAddresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				$("#myAddModal").modal('hide');
+				$("#myCopyModal").modal('hide');
 				freshHtml("tab_userMenu2");
 				startSelect();
 			} else if(data.msg == "failure") {
@@ -1693,8 +1694,6 @@ function copyPageSubmitData() {
 			copyConfigFile.push(oCstuInfo);
 		}
 	}
-	console.log("lxw " + JSON.stringify(copyConfigFile));
-
 	//获取mkFile里的信息
 	var copyMkFile = [];
 	var oCMkTrDiv = $("#myCopyModalMkTableTbody").find("tr");
@@ -1720,7 +1719,6 @@ function copyPageSubmitData() {
 				oCstuInfoTwo.engName = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name");
 				oCstuInfoTwo.gitPath = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
 				copyMkFile.push(oCstuInfoTwo);
-				console.log("lxw " + JSON.stringify(oCstuInfoTwo));
 			}
 		}
 	}
