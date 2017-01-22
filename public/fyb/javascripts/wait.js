@@ -70,7 +70,7 @@ function startSelect() {
 			myNeedObj['chipModel'] = oChipid;
 		}
 		if(oMemory != "") {
-			myNeedObj['memory'] = oMemory;
+			myNeedObj['memorySize'] = oMemory;
 		}
 		console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
