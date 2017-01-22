@@ -222,8 +222,16 @@ function AferConfigHtmlInfo() {
 			console.log(this.index); //点击的是第几个
 			if(this.index == 0) {
 				console.log("lxw " + "点击的是添加");
-				var appendObject = document.getElementById("ADCSEfficient");
-				appendObject.innerHTML += "<div class='menuUnit'><input type='text' class='menuUnitInput' value='' placeholder='选项名称'/><input type='text' class='menuUnitInput' value='' placeholder='Value'/></div>"
+				var parentDiv = document.getElementById("ADCSEfficient");
+				// appendObject.innerHTML += "<div class='menuUnit'><input type='text' class='menuUnitInput' value='' placeholder='选项名称'/><input type='text' class='menuUnitInput' value='' placeholder='Value'/></div>"
+				var child1 = document.createElement("div");
+				child1.setAttribute("class","menuUnit");
+				var child2 = document.createElement("input");
+				child2.setAttribute("type","text");
+				child2.setAttribute("class","menuUnitInput");
+				child2.setAttribute("placeholder","Value");			
+				child1.appendChild(child2);
+				parentDiv.appendChild(child1);
 			} else if(this.index == 1) {
 				console.log("lxw " + "点击的是删除");
 				var forDeleteObject = document.getElementById("ADCSEfficient");
