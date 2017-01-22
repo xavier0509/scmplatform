@@ -639,3 +639,6 @@ td{
 	text-align: center;
 	color: red;
 }
+#myDeleteModal{
+	margin: auto;
+}
