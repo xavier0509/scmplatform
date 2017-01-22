@@ -168,17 +168,20 @@ function AferConfigHtmlInfo() {
 					console.log("lxw "+ node);
 					sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
 				} else{
-					console.log("lxw in edit 单项编辑"+keylue);
-					var nodeObj = JSON.parse(node);
-					console.log("lxw "+ node);
-					console.log(nodeObj);
-					console.log(nodeObj.data);
-					var nodeObjString = JSON.stringify(nodeObj.data);
-					console.log(nodeObjString);
-					
-					var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
-					console.log("lxw "+ newNode);
-					sendHTTPRequest("/fyb_api/configUpdate", newNode, returnAddInfo);
+					if (node == null) {}
+					else{
+						console.log("lxw in edit 单项编辑"+keylue);
+						var nodeObj = JSON.parse(node);
+						console.log("lxw "+ node);
+						console.log(nodeObj);
+						console.log(nodeObj.data);
+						var nodeObjString = JSON.stringify(nodeObj.data);
+						console.log(nodeObjString);
+						
+						var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
+						console.log("lxw "+ newNode);
+						sendHTTPRequest("/fyb_api/configUpdate", newNode, returnAddInfo);
+					}
 				}
 			}
 		}
