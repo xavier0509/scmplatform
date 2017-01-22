@@ -40,10 +40,14 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
 			var categoryClass = jsonData.category;
+			console.log("分类是："+categoryClass);
 			var opt = document.getElementById("moduleSelect").childNodes;
 			for (var j = 0; j < opt.length; j++) {
 				if(opt[j].value == categoryClass){
 					opt[j].setAttribute("selected","");
+				}
+				else{
+					opt[j].removeAttribute("selected");
 				}
 			};
 			toSaveButton(this.index,englishName);
