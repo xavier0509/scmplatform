@@ -226,6 +226,7 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreDeleteModal").modal('hide');
 			console.log("lxw " + ChipModelArray);
 			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"gerritState":"1","operateType":"2"}}}';
+			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fyb_api/productUpdate", deleNode, moreDeleteresult);
 		}
 	}
