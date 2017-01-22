@@ -774,9 +774,6 @@ function chipModeldataCheck(number){
 	
 	InputInfoArray = [myChipObj,myModelObj,myDeviceObj,myAndroidObj,myChipModeObj,myMemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
-	console.log("lxw " + InputInfoArray);
-	console.log("lxw " + InputInfoArray[0]);
-	console.log("lxw " + InputInfoArray[0].cnName);
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
@@ -785,7 +782,7 @@ function chipModeldataCheck(number){
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].czName)
 			if (InputInfoArray[jj].value=="") {
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "'+InputInfoArray[jj].cnName+'项不能为空。"
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空。"
 				jj = InputInfoArray.length;
 			}
 		}
