@@ -780,15 +780,14 @@ function chipModeldataCheck(number){
 	console.log(nullChip);
 	if (nullChip==""||nullModel==""||nullDevice==""||nullAndroid==""||nullChipMode==""||nullMemory=="") {
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
-			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].czName)
+			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].cnName)
 			if (InputInfoArray[jj].value=="") {
 				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空。"
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空"
 				jj = InputInfoArray.length;
 				setTimeout("spanhidden()", 3000);
 			}
 		}
-		//alert("输入项不能为空。");
 	} else{
 		if(ChipInArray==-1||ModelInArray==-1){
 			alert("该机芯或者机型不存在。");
