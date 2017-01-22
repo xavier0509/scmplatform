@@ -65,7 +65,7 @@ function AfterModuleHtmlInfo() {
 			var path = document.getElementById("moduleSrc");
 			var des = document.getElementById("moduleInstr");
 
-			if (cnName == "" || enNa == "" || path == "" || des == "") {
+			if (cnNa == "" || enNa == "" || path == "" || des == "") {
 				document.getElementById("postInfo").innerHTML = "请确保所有项目均不为空！";
 				setTimeout("document.getElementById('postInfo').innerHTML = '请确保所有项目均不为空！'",3000);
 			}
