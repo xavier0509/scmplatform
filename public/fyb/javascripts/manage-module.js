@@ -43,12 +43,13 @@ function AfterModuleHtmlInfo() {
 			console.log("分类是："+categoryClass);
 			var opt = document.getElementById("moduleSelect").childNodes;
 			for (var j = 0; j < opt.length; j++) {
+				opt[j].removeAttribute("selected");
 				if(opt[j].value == categoryClass){
 					opt[j].setAttribute("selected","");
 				}
-				else{
-					opt[j].removeAttribute("selected");
-				}
+				// else{
+				// 	opt[j].removeAttribute("selected");
+				// }
 			};
 			toSaveButton(this.index,englishName);
 		}
