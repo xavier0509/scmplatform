@@ -79,9 +79,9 @@ function AferConfigHtmlInfo() {
 				};
 				for (var k = 0; k < oOpt.length; k++) {
 					var menuInput = document.getElementsByClassName("menuUnitInput");
-					var k1 = k*2; var k2 = k1 + 1;
-					menuInput[k1].value = oOpt[k];
-					menuInput[k2].value = oOpt[k];
+					// var k1 = k*2; var k2 = k1 + 1;
+					// menuInput[k1].value = oOpt[k];
+					menuInput[k].value = oOpt[k];
 				};
 
 			}
