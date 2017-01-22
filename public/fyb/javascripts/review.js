@@ -72,6 +72,7 @@ function reviewlist(){
                     }
                     
                     var _cell7 = _row.insertCell(6); 
+                    _cell7.style.color="red";
                     if (operateType == 1) {  
                         if(gerritState == 1){_cell7.innerHTML = "新增(待审核)";}
                         else{_cell7.innerHTML = "新增(审核未通过)";}                
@@ -86,11 +87,12 @@ function reviewlist(){
                         else{_cell7.innerHTML = "修改(审核未通过)";}
                     }
                     var _cell8 = _row.insertCell(7);
-                    _cell8.innerHTML = operateType;
-                    _cell8.style.display="none";
+                    _cell8.innerHTML = userName;
+                    // _cell8.style.display="none";
                     var _cell9 = _row.insertCell(8);
-                    _cell9.innerHTML = userName;
+                    _cell9.innerHTML = operateType;
                     _cell9.style.display="none";
+                    
                 };
             }
             else{
@@ -142,8 +144,8 @@ function recoverResult(){
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
     //查询模块信息接口
     sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    
     
