@@ -60,10 +60,10 @@ function AfterModuleHtmlInfo() {
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
 		
 		ModualSubmit.onclick = function() {
-			var cnNa = document.getElementById("moduleCzName");
-			var enNa = document.getElementById("moduleEnName");
-			var path = document.getElementById("moduleSrc");
-			var des = document.getElementById("moduleInstr");
+			var cnNa = document.getElementById("moduleCzName").value;
+			var enNa = document.getElementById("moduleEnName").value;
+			var path = document.getElementById("moduleSrc").value;
+			var des = document.getElementById("moduleInstr").value;
 
 			if (cnNa == "" || enNa == "" || path == "" || des == "") {
 				document.getElementById("postInfo").innerHTML = "请确保所有项目均不为空！";
