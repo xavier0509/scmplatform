@@ -110,17 +110,17 @@ function AferConfigHtmlInfo() {
 			var newConfigCzName = document.getElementById("configChineseName").value;//中文名
 			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
 			var newConfigSrc = document.getElementById("configSrc").value;//config信息
-			var newConfigString1 = document.getElementById("configString").value;//默认值【string型】
+			var newConfigString = document.getElementById("configString").value;//默认值【string型】
 			var newConfigInstr = document.getElementById("configInstr").value;//描述
 			var newConfigSelect = document.getElementById("configSelect").value;//下拉列表
 			var inputNum = document.getElementsByClassName("menuUnitInput");
-			var inputNumState = 0;
+			var inputNumState = 0; //枚举型为空时的状态值
 			for (var i = 0; i < inputNum.length; i++) {
 				if (inputNum[i].value!=""){
 					inputNumState = 1;
 				}
 			}
-			if (newConfigCzName == "" || newConfigEnName == "" || newConfigSrc == "" || newConfigInstr =="" ||(newConfigString1 == "" && inputNumState == 0)) {
+			if (newConfigCzName == "" || newConfigEnName == "" || newConfigSrc == "" || newConfigInstr =="" ||(newConfigString == "" && inputNumState == 0)) {
 				document.getElementById("configPostInfo").innerHTML = "请确保所有项目不为空！";
 				setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
 			}
@@ -129,28 +129,26 @@ function AferConfigHtmlInfo() {
 				var node = null;//向后台传递的数据
 				
 				
-				var configStringDisplay = document.getElementById("configString").style.display;
-				var newConfigString = null;
-				if (configStringDisplay == "none") {
-					newConfigString = null;
-				} else{
-					newConfigString = document.getElementById("configString").value;//value值是字符串
-					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
-	//				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
-	//					//有一项为空时添加失败，后面做处理
-	//					node = null;
-	//				} else{
-						node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "options": []}}';
-	//				}
-					
+				// var configStringDisplay = document.getElementById("configString").style.display;
+				// var newConfigString = null;
+				// if (configStringDisplay == "none") {
+				// 	newConfigString = null;
+				// } else{
+				// newConfigString = document.getElementById("configString").value;//value值是字符串
+				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
+				if (newConfigString !="" && inputNumState == 1) {
+					document.getElementById("configPostInfo").innerHTML = "输入有误，请确保字符串与枚举型的唯一！";
+					setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
 				}
-				
-				var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
-				var newConfigMenu = [];//value值是枚举,值放入数组
-				var newConfigMenuObject = document.getElementsByClassName("menuUnit");
-				var newConfigMenuDiv = document.getElementById("ADCSEfficient");
-				var thisOneIndex,thisTwoIndex,valueOne,valueTwo = null;
-				if (configMenuDisplay == "block") {
+				else if (newConfigString !="" && inputNumState == 0) {
+					node = '{"data":{"cnName": "'+newConfigCzName+'","engName": "'+newConfigEnName+'", "configKey":"'+newConfigSrc+'", "type": "string", "value": "'+newConfigString+'", "desc": "'+newConfigInstr+'", "category": "'+newConfigSelect+'", "options": []}}';
+				}
+				else{
+					var configMenuDisplay = document.getElementsByClassName("tableBox")[0].style.display;
+					var newConfigMenu = [];//value值是枚举,值放入数组
+					var newConfigMenuObject = document.getElementsByClassName("menuUnit");
+					var newConfigMenuDiv = document.getElementById("ADCSEfficient");
+					var thisOneIndex,thisTwoIndex,valueOne,valueTwo = null;
 					for (var i=0; i<newConfigMenuObject.length;i++) {
 						thisOneIndex = 2*i;
 						thisTwoIndex = 2*i + 1;
@@ -161,16 +159,12 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-	//				if (newConfigCzName==null||newConfigEnName==null||newConfigSrc==null||newConfigString==null||newConfigInstr==null) {
-	//					//有一项为空时添加失败，后面做处理
-	//					node = null;
-	//				} else{
-						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
-					//}
+					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 					
-				} else{
-					newConfigMenu = null;
 				}
+
+				
+				
 				
 				if (myindex == null) {
 					console.log("lxw in add 新增");
