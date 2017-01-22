@@ -791,8 +791,9 @@ function chipModeldataCheck(number){
 			if (InputInfoArray[jj].value=="") {
 				console.log("lxw "+mySpanId);
 				document.getElementById(mySpanId).style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
+				document.getElementById(mySpanId).innerHTML = InputInfoArray[jj].cnName + "项不能为空";
+				//document.getElementsByClassName("myModalErrorInfo")[0].style.display = "block";
+				//document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = InputInfoArray[jj].cnName + "项不能为空";
 				jj = InputInfoArray.length;
 				setTimeout("spanhidden()", 3000);
 			}
