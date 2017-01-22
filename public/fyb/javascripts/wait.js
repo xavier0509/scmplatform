@@ -735,7 +735,10 @@ function productAddresult() {
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
-	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = {czName:"",value:18};
+	var ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj = {
+		"cnName": "",
+		"value": ""
+		};
 	var nullChip,nullModel,nullDevice,nullAndroid,nullChipMode = null;
 	if (number==1) {
 		nullChip = document.getElementById("newAddChip").value;
@@ -760,12 +763,12 @@ function chipModeldataCheck(number){
 		nullChipMode = document.getElementById("newEditChipMode").value;
 		nullMemory = document.getElementById("newEditMemory").value;
 	}
-	ChipObj.czName = "机芯";ChipObj.value = nullChip;
-	ModelObj.czName = "机型";ModelObj.value = nullModel;
-	DeviceObj.czName = "TARGET_PRODUCT";DeviceObj.value = nullDevice;
-	AndroidObj.czName = "安卓版本";AndroidObj.value = nullAndroid;
-	ChipModeObj.czName = "芯片型号";ChipModeObj.value = nullChipMode;
-	MemoryObj.czName = "内存";MemoryObj.value = nullMemory;
+	ChipObj.cnName = "机芯";ChipObj.value = nullChip;
+	ModelObj.cnName = "机型";ModelObj.value = nullModel;
+	DeviceObj.cnName = "TARGET_PRODUCT";DeviceObj.value = nullDevice;
+	AndroidObj.cnName = "安卓版本";AndroidObj.value = nullAndroid;
+	ChipModeObj.cnName = "芯片型号";ChipModeObj.value = nullChipMode;
+	MemoryObj.cnName = "内存";MemoryObj.value = nullMemory;
 	
 	InputInfoArray = [ChipObj,ModelObj,DeviceObj,AndroidObj,ChipModeObj,MemoryObj];
 	console.log("lxw " + nullChip +"--"+ allChipArray +"--"+allModelArray);
@@ -778,7 +781,7 @@ function chipModeldataCheck(number){
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].czName)
 			if (InputInfoArray[jj].value=="") {
-				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "'+InputInfoArray[jj].czName+'项不能为空。"
+				document.getElementsByClassName("myModalErrorInfo")[0].innerHTML = "'+InputInfoArray[jj].cnName+'项不能为空。"
 				jj = InputInfoArray.length;
 			}
 		}
