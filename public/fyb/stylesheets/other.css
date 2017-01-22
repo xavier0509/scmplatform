@@ -593,7 +593,7 @@ td{
     display: block;
     float: left;
     height: 32px;
-    width: 50%;
+    width: 100%;
     padding-left: 3%;
 }
 /*.floatright{
@@ -632,6 +632,10 @@ td{
 	color: red;
 }
 #postInfo{
+	text-align: center;
+	color: red;
+}
+#configPostInfo{
 	text-align: center;
 	color: red;
 }
