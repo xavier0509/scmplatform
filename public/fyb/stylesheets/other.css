@@ -361,6 +361,11 @@ td{
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
 }
+#myAddModalErrorInfo{
+	background-color: red;
+	width: 10px;
+	height: 10px;
+}
 
 #myMoreEditModalConfigTable div{
 	margin-bottom: 5px;

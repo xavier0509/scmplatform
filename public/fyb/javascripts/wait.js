@@ -1238,6 +1238,7 @@ function productEditresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				startSelect();
+				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 			};
