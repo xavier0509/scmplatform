@@ -158,9 +158,9 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
-				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
+				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
-				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
 				ChipModelArray.push(JSON.stringify(chipModelObj));
 			}
 		}
@@ -199,9 +199,9 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
-				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("chip"));
+				console.log("lxw "+ $('.checkboxstatus')[i].getAttribute("chip")+"--"+$('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
-				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
 				ChipModelArray.push(JSON.stringify(chipModelObj));
 			}
 		}
