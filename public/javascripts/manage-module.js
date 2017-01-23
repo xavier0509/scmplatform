@@ -1,6 +1,7 @@
+document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
+
 $(function() {
-	ModalHtmlInfo();
-	AfterModuleHtmlInfo();
+	sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', searchModalInfo);
 })
 
 function AfterModuleHtmlInfo() {
@@ -9,87 +10,171 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		toSaveButton(-1,null);
 	}
 
 	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
-	var oTableA = $("#module-mkTable").find("a")
+	var oTableA = $("#module-mkTable").find("a");
+	var oTableInput = $("#module-mkTable").find("input");
+	console.log("xjr"+oTableInput.length);
 	console.log(oTableA.length);
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
-			console.log("ok" + this.index); //点击的是第几个
+			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
+			var englishName = this.name;
+			var data = oTableInput[this.index].value;
+			// console.log("xjr"+data);
+			var jsonData = JSON.parse(data);
+			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("moduleCzName").value = jsonData.cnName;
+			document.getElementById("moduleEnName").value = jsonData.engName;
+			document.getElementById("moduleSrc").value = jsonData.gitPath;
+			document.getElementById("moduleInstr").value = jsonData.desc;
+			toSaveButton(this.index,englishName);
 		}
-		toSaveButton(this.index);
 	}
 	/*模块管理板块-保存*/
-	function toSaveButton(index){
+	function toSaveButton(myindex,englishName){
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
+		
 		ModualSubmit.onclick = function() {
 			console.log("lxw " + "in inputModuleSubmit");
+			var newModuleCzName = document.getElementById("moduleCzName").value;
+			var newModuleEnName = document.getElementById("moduleEnName").value;
+			var newModuleSrc = document.getElementById("moduleSrc").value;
+			var newModuleInstr = document.getElementById("moduleInstr").value;
+			var newModuleSelect = document.getElementById("moduleSelect").value;
+			console.log("lxw "+newModuleCzName+"--"+newModuleEnName+"--"+newModuleSrc+"--"+newModuleInstr+"--"+newModuleSelect);
+			if (myindex == -1) {
+				console.log("lxw "+myindex);
+				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
+				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
+			} else{
+				console.log("lxw "+myindex);
+				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				sendHTTPRequest("/fyb_api/moduleUpdate", node, returnChangeInfo);
+			}
 		}
 	}
 }
 
 /*点击模块管理，获取数据*/
-function ModalHtmlInfo() {
+function searchModalInfo() {
 	console.log("lxw " + "ModalHtmlInfo");
-	var currentData = {
-		"App":[{"DetaiSource":"SkyworthApp/App/SkyCCMall","ChineseName":"酷开商城"}
-			,{"DetaiSource":"SkyworthApp/App/SkyEDU","ChineseName":"教育中心"}
-			,{"DetaiSource":"SkyworthApp/App/SkyManual","ChineseName":"电子说明书"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyMovie","ChineseName":"影视中心"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyMovie6","ChineseName":"影视中心6.0"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyMovie-voole","ChineseName":"影视中心(U)"}
-			,{"DetaiSource":"SkyworthApp/App/SkyQrcode","ChineseName":"二维码"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyTVAgent","ChineseName":"远程服务"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyTVQQ","ChineseName":"亲友圈"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyUser","ChineseName":"酷开用户"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyWeather","ChineseName":"天气"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SmartHome","ChineseName":"智慧家庭"}
-			,{"DetaiSource":"SkyworthApp/App/SkyMovie/SkyVoice","ChineseName":"搜狗语音"}]
-		,"AppStore":[{"DetaiSource":"SkyworthApp/AppStore/SkyAppStore","ChineseName":"应用圈"}
-			,{"DetaiSource":"SkyworthApp/AppStore/SkyAppStore_OEM","ChineseName":"应用圈OEM版本"}
-			,{"DetaiSource":"SkyworthApp/AppStore/SkyAppStore_Oversea","ChineseName":"应用圈海外版本"}
-			,{"DetaiSource":"SkyworthApp/AppStore/SkyAppStore_PE","ChineseName":"应用圈外包版本"}
-			,{"DetaiSource":"SkyworthApp/AppStore/SkyHall","ChineseName":"运营大厅"}
-			,{"DetaiSource":"SkyworthApp/AppStore/OperaStore","ChineseName":"Opera"}]
-		,"HomePage":[{"AbsolutePath":"SkyworthApp/HomePage/SimpleHome5.0","ChineseName":"简易首页4.4"}
-			,{"AbsolutePath":"SkyworthApp/HomePage/SimpleHomepage","ChineseName":"简易首页5.0"}
-			,{"AbsolutePath":"SkyworthApp/HomePage/SimpleHomepage_OEM","ChineseName":"简易首页OEM"}
-			,{"AbsolutePath":"SkyworthApp/HomePage/SkyHomeShell","ChineseName":"常规首页"}
-			,{"AbsolutePath":"SkyworthApp/HomePage/SkyOverseaHomepage","ChineseName":"海外首页"}
-			,{"AbsolutePath":"SkyworthApp/HomePage/SkyPanasonicHome","ChineseName":"松下首页"}]
-		,"IME":[{"AbsolutePath":"SkyworthApp/IME/AndroidKeyboard","ChineseName":"Android输入法"}
-			,{"AbsolutePath":"SkyworthApp/IME/SkyTianciIME","ChineseName":"酷开系统输入法"}
-			,{"AbsolutePath":"SkyworthApp/IME/SogouIME","ChineseName":"搜狗输入法"}]
-		,"Service":[{"AbsolutePath":"SkyworthApp/Service/SkyADService","ChineseName":"广告服务"}
-			,{"AbsolutePath":"SkyworthApp/Service/SkyDEService","ChineseName":"设备服务"}
-			,{"AbsolutePath":"SkyworthApp/Service/SkyDataService","ChineseName":"数据采集服务"}]
-		,"SysApp":[{"AbsolutePath":"SkyworthApp/SysApp/SkyAutoInstaller","ChineseName":"自动安装器"}
-			,{"AbsolutePath":"SkyworthApp/SysApp/SkyAutoTest","ChineseName":"自动化测试"}
-			,{"AbsolutePath":"SkyworthApp/SysApp/SkyBrowser","ChineseName":"酷开浏览器"}]
-		,"TV":[{"AbsolutePath":"SkyworthApp/TV/SkyDigitalDTV","ChineseName":"数字外挂DTV"}
-			,{"AbsolutePath":"SkyworthApp/TV/SkyTV","ChineseName":"TV"}
-			,{"AbsolutePath":"SkyworthApp/TV/SkyTVCaUI","ChineseName":"TV_CA界面"}
-			,{"AbsolutePath":"SkyworthApp/TV/SkyTV_OverSea","ChineseName":"TV海外版"}]
-		,"Other":[{"AbsolutePath":"Beiwa","ChineseName":"贝瓦儿童乐园"}
-			,{"AbsolutePath":"GuoZheng_low","ChineseName":"勾正"}
-			,{"AbsolutePath":"Huanqiu","ChineseName":"环球购物"}]};
-	var key, counter = 0;
-	var _rowmodelInfo = "";
-	var _rowmodel = document.getElementById("module-mkTable");
-	for(key in currentData){
-		counter++;
-		//console.log("lxw "+ key +"---"+ currentData[key].length);
-		_rowmodelInfo += "<tr><td><div>"+key+":</div>";
-		for (var j=0;j<currentData[key].length;j++) {
-			_rowmodelInfo += "<div class='col-xs-4'><a>"+currentData[key][j].ChineseName+"</a></div>";
-			//console.log("lxw "+ _rowmodelInfo);
-		}
-		_rowmodelInfo += "</td></tr>";
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			var kk = 0;
+			var _rowModuleApp = document.getElementById("moduleTableApp");
+			var _rowModuleService = document.getElementById("moduleTableService");
+			var _rowModuleAppStore = document.getElementById("moduleTableAppStore");
+			var _rowModuleHomePage = document.getElementById("moduleTableHomePage");
+			var _rowModuleIME = document.getElementById("moduleTableIME");
+			var _rowModuleSysApp = document.getElementById("moduleTableSysApp");
+			var _rowModuleTV = document.getElementById("moduleTableTV");
+			var _rowModuleOther = document.getElementById("moduleTableOther");
+			_rowModuleApp.innerHTML = "<div title='App'>App:</div>";
+			_rowModuleService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowModuleAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowModuleHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowModuleIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowModuleSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowModuleTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowModuleOther.innerHTML = "<div title='Other'>Other:</div>";
+			
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw "+data.data[i].category);
+				if (data.data[i].category == "App") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("App:"+kk);
+					_rowModuleApp.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				} else if(data.data[i].category == "Service"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("Service:"+kk);
+					_rowModuleService.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "AppStore"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("AppStore:"+kk);
+					_rowModuleAppStore.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "HomePage"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("HomePage:"+kk);
+					_rowModuleHomePage.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "IME"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("IME:"+kk);
+					_rowModuleIME.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "SysApp"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("SysApp:"+kk);
+					_rowModuleSysApp.innerHTML += "<div class='col-xs-4' name='"+data.data[kk].engName+"'><a>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "TV"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("TV:"+kk);
+					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}else if(data.data[i].category == "Other"){
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("Other:"+kk);
+					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+				}
+			}
+		};
+		AfterModuleHtmlInfo();
 	}
-	_rowmodel.innerHTML+= _rowmodelInfo;
+}
+function returnAddInfo(){
+	console.log("lxw " + "returnAddInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "添加成功");
+				$("#myModuleAddChangeModal").modal('hide');
+				freshModuleAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "添加失败");
+				document.getElementById("moduleErrorInfo").style.display = "block";
+				document.getElementById("moduleErrorInfo").innerHTML = "添加失败！";
+			};
+		};
+	}
+}
+function returnChangeInfo(){
+	console.log("lxw " + "returnChangeInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				$("#myModuleAddChangeModal").modal('hide');
+				freshModuleAddHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+				document.getElementById("moduleErrorInfo").style.display = "block";
+				document.getElementById("moduleErrorInfo").innerHTML = "修改失败！";
+			};
+		};
+	}
+}
 
+/*刷新页面*/
+function freshModuleAddHtml() {
+	var htmlObject = parent.document.getElementById("tab_userMenu5");
+	console.log("lxw " + htmlObject.firstChild.src);
+	htmlObject.firstChild.src = "manage-module.html";
 }
