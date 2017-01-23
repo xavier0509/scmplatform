@@ -343,6 +343,19 @@ td{
 #myMoreEditModalMkTableTbody div{
 	margin-bottom: 4px;
 }
+/*#myMoreEditModalConfigTable div{
+	margin-bottom: 5px;
+}
+#myMoreEditModalConfigTable div select{
+	width: 36%;
+	float: left;
+	margin-left: 5%;
+}
+#myMoreEditModalConfigTable div input{
+	width: 36%;
+	float: left;
+	margin-left: 5%;
+}*/
 
 #myAddModalConfigTableTbody div{
 	margin-bottom: 4px;
@@ -396,20 +409,6 @@ td{
     overflow: hidden;
     text-align: center;
     color: red;
-}
-
-#myMoreEditModalConfigTable div{
-	margin-bottom: 5px;
-}
-#myMoreEditModalConfigTable div select{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
-}
-#myMoreEditModalConfigTable div input{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
 }
 
 #inputChipOrMode{
