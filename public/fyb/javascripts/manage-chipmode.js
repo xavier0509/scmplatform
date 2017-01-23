@@ -97,7 +97,6 @@ function AfterChipModeHtmlInfo() {
 function SearchChipInfo() {
 	console.log("lxw " + "SearchChipInfo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -114,7 +113,6 @@ function SearchChipInfo() {
 function CreatChipInfo() {
 	console.log("lxw " + "CreatChipInfo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
@@ -132,7 +130,6 @@ function CreatChipInfo() {
 function ChangeChipInfo() {
 	console.log("lxw " + "ChangeChipInfo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -149,7 +146,6 @@ function ChangeChipInfo() {
 /*机型-查询数据*/
 function SearchModeInfo() {
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -167,7 +163,6 @@ function SearchModeInfo() {
 function CreatModelInfo() {
 	console.log("lxw " + "CreatModelInfo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -177,7 +172,6 @@ function CreatModelInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				//给出错误信息提示
 				document.getElementById("chipMangInfo").style.display = "block";
 				document.getElementById("chipMangInfo").innerHTML = "添加失败";
 			};
@@ -187,18 +181,13 @@ function CreatModelInfo() {
 /*机型-修改数据*/
 function ChangeModelInfo() {
 	console.log("lxw " + "ChangeModelInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) //TODO
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myConfigAddChangeModal").modal('hide');
-				//修改成功后刷新当前页面。
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");

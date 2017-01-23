@@ -1,8 +1,6 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	//ModalHtmlInfo();
-	//AfterModuleHtmlInfo();
 	sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', searchModalInfo);
 })
 
@@ -66,11 +64,8 @@ function AfterModuleHtmlInfo() {
 /*点击模块管理，获取数据*/
 function searchModalInfo() {
 	console.log("lxw " + "ModalHtmlInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
@@ -142,14 +137,10 @@ function searchModalInfo() {
 }
 function returnAddInfo(){
 	console.log("lxw " + "returnAddInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				$("#myModuleAddChangeModal").modal('hide');
@@ -164,14 +155,10 @@ function returnAddInfo(){
 }
 function returnChangeInfo(){
 	console.log("lxw " + "returnChangeInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myModuleAddChangeModal").modal('hide');

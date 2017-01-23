@@ -21,10 +21,10 @@ function forsession() {
 }
 
 function sessionresult() {
-	console.log("this.readyState = " + this.readyState);
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
@@ -72,7 +72,7 @@ function startSelect() {
 		if(oMemory != "") {
 			myNeedObj['memorySize'] = oMemory;
 		}
-		console.log("lxw --->" + JSON.stringify(myNeedObj));
+		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
 		node = '{"data":{"condition":' + myNeedString + '},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}';
 	}
@@ -81,10 +81,10 @@ function startSelect() {
 }
 
 function searchResource() {
-	console.log("this.readyState = " + this.readyState);
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var title = document.getElementById("wait-tablebody"); //获取tbody的表格内容
 			for(var i = title.childNodes.length - 1; i > 0; i--) {
@@ -94,7 +94,7 @@ function searchResource() {
 			var msg = data.msg;
 			if(msg == "success") {
 				var mySearchData = data.data;
-				console.log(mySearchData);
+				//console.log(mySearchData);
 				for(var j = 0; j < mySearchData.length; j++) {
 					if(mySearchData[j].gerritState == "0") {
 						_row = document.getElementById("wait-tablebody").insertRow(0);
@@ -164,8 +164,7 @@ function AfterWaitHtmlinfo() {
 				ChipModelArray.push(JSON.stringify(chipModelObj));
 			}
 		}
-		console.log("lxw "+ChipModelArray);
-		console.log("lxw:" + myCheckedNumber);
+		console.log("lxw "+ChipModelArray +"--"+ myCheckedNumber);
 		if(myCheckedNumber != 0) {
 			var thisIndex = null;
 			$("#myMoreEditModalLabel").text("批量修改");
@@ -287,14 +286,14 @@ function AfterWaitHtmlinfo() {
 }
 //新增-获取后台接口数据，动态加载新增页面
 function getAddInfoInfOne() {
-	console.log("lxw " + "getAddInfoInfOne");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "getAddInfoInfOne");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data);
+			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowAddPageApp = document.getElementById("myAddModalMkTableApp");
 			var _rowAddPageService = document.getElementById("myAddModalMkTableService");
@@ -317,35 +316,35 @@ function getAddInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					console.log("App:" + kk);
+					//console.log("App:" + kk);
 					_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					console.log("Service:" + kk);
+					//console.log("Service:" + kk);
 					_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					console.log("AppStore:" + kk);
+					//console.log("AppStore:" + kk);
 					_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					console.log("HomePage:" + kk);
+					//console.log("HomePage:" + kk);
 					_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					console.log("IME:" + kk);
+					//console.log("IME:" + kk);
 					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					console.log("SysApp:" + kk);
+					//console.log("SysApp:" + kk);
 					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					console.log("TV:" + kk);
+					//console.log("TV:" + kk);
 					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					console.log("Other:" + kk);
+					//console.log("Other:" + kk);
 					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -355,11 +354,11 @@ function getAddInfoInfOne() {
 }
 
 function getAddInfoInfTwo() {
-	console.log("lxw " + "getAddInfoInfTwo");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "getAddInfoInfTwo");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -383,7 +382,7 @@ function getAddInfoInfTwo() {
 			_rowAddPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw " + data.data[i].category + data.data[i].type);
+				//console.log("lxw " + data.data[i].category + data.data[i].type);
 				if(data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
@@ -401,7 +400,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
 				}
@@ -422,7 +421,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -443,7 +442,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -464,7 +463,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -485,7 +484,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -506,7 +505,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -527,7 +526,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				}
@@ -548,22 +547,22 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
 			}
 		};
-		addPageButtons(); //后期可能会传参给页面里的点击事件
+		addPageButtons(); 
 		sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
 	}
 }
 function checkChipInfo(){
-	console.log("lxw " + "SearchChipInfo");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "SearchChipInfo");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -577,11 +576,11 @@ function checkChipInfo(){
 	}
 }
 function checkModelInfo(){
-	console.log("lxw " + "SearchChipInfo");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "SearchChipInfo");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -690,11 +689,11 @@ function addPageSubmitData() {
 				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
 				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
 				addMkFile.push(oAstuInfoTwo);
-				console.log("lxw " + JSON.stringify(oAstuInfoTwo));
+				//console.log("lxw " + JSON.stringify(oAstuInfoTwo));
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(addMkFile));
+	//console.log("lxw " + JSON.stringify(addMkFile));
 	dataObj.configFile = addConfigFile;
 	dataObj.mkFile = addMkFile;
 	dataObj.memorySize = oAmemorySize;
@@ -708,19 +707,19 @@ function addPageSubmitData() {
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 
-	console.log("lxw" + JSON.stringify(dataObj));
+	//console.log("lxw" + JSON.stringify(dataObj));
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
-	console.log("this.readyState = " + this.readyState);
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+	//	console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
+			//console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				$("#myAddModal").modal('hide');
@@ -787,7 +786,6 @@ function chipModeldataCheck(number){
 	var ChipInArray = jQuery.inArray(nullChip,allChipArray);
 	var ModelInArray = jQuery.inArray(nullModel,allModelArray);
 	console.log("lxw "+"|"+ChipInArray+"--"+"|"+ModelInArray);
-	console.log(nullChip);
 	if (nullChip==""||nullModel==""||nullDevice==""||nullAndroid==""||nullChipMode==""||nullMemory=="") {
 		for (var jj=0; jj<InputInfoArray.length; jj++) {
 			console.log("lxw "+InputInfoArray[jj].value+"--"+InputInfoArray[jj].cnName)
@@ -829,11 +827,11 @@ function spanhidden(){
 
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInfOne() {
-	console.log("lxw " + "getEditInfoInfOne");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "getEditInfoInfOne");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
@@ -859,35 +857,35 @@ function getEditInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					console.log("App:" + kk);
+					//console.log("App:" + kk);
 					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					console.log("Service:" + kk);
+					//console.log("Service:" + kk);
 					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					console.log("AppStore:" + kk);
+					//console.log("AppStore:" + kk);
 					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					console.log("HomePage:" + kk);
+					//console.log("HomePage:" + kk);
 					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					console.log("IME:" + kk);
+					//console.log("IME:" + kk);
 					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					console.log("SysApp:" + kk);
+					//console.log("SysApp:" + kk);
 					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					console.log("TV:" + kk);
+					//console.log("TV:" + kk);
 					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					console.log("Other:" + kk);
+					//console.log("Other:" + kk);
 					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -897,11 +895,11 @@ function getEditInfoInfOne() {
 }
 
 function getEditInfoInfTwo() {
-	console.log("lxw " + "searchConfigInfo");
-	console.log("this.readyState = " + this.readyState);
+	//console.log("lxw " + "searchConfigInfo");
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.status = " + this.status);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -943,7 +941,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigMain.innerHTML += _myAddselect;
 					}
 				} 
@@ -964,7 +962,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -985,7 +983,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -1006,7 +1004,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -1027,7 +1025,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -1048,7 +1046,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1069,7 +1067,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1090,7 +1088,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1102,13 +1100,13 @@ function getEditInfoInfTwo() {
 }
 
 function getEditInforesult() {
-	console.log("this.readyState = " + this.readyState);
+	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
+		//console.log("this.status = " + this.status);
 		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + "change chipinfo success");
+			//console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
 				console.log("lxw " + JSON.stringify(data.data[0]));
@@ -1249,8 +1247,8 @@ function editPageSubmitData() {
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(editConfigFile));
-	console.log("lxw " + JSON.stringify(editMkFile));
+	//console.log("lxw " + JSON.stringify(editConfigFile));
+	//console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
 	dataObj.memorySize = oEmemorySize;
@@ -1272,7 +1270,7 @@ function editPageSubmitData() {
 function productEditresult() {
 	console.log("lxw in productEditresult");
 	if(this.readyState == 4) {
-		console.log("this.responseText = " + this.responseText);
+		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
@@ -1297,7 +1295,7 @@ function getCopyInfoInfOne() {
 		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data);
+			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowCopyPageApp = document.getElementById("myCopyModalMkTableApp");
 			var _rowCopyPageService = document.getElementById("myCopyModalMkTableService");
@@ -1320,35 +1318,35 @@ function getCopyInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					console.log("App:" + kk);
+					//console.log("App:" + kk);
 					_rowCopyPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					console.log("Service:" + kk);
+					//console.log("Service:" + kk);
 					_rowCopyPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					console.log("AppStore:" + kk);
+					//console.log("AppStore:" + kk);
 					_rowCopyPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					console.log("HomePage:" + kk);
+					//console.log("HomePage:" + kk);
 					_rowCopyPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					console.log("IME:" + kk);
+					//console.log("IME:" + kk);
 					_rowCopyPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					console.log("SysApp:" + kk);
+					//console.log("SysApp:" + kk);
 					_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					console.log("TV:" + kk);
+					//console.log("TV:" + kk);
 					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					console.log("Other:" + kk);
+					//console.log("Other:" + kk);
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -1402,7 +1400,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigMain.innerHTML += _myAddselect;
 					}
 				} 
@@ -1423,7 +1421,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -1444,7 +1442,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -1465,7 +1463,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -1486,7 +1484,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -1507,7 +1505,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1528,7 +1526,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				}
@@ -1549,7 +1547,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
+						//console.log("lxw " + _myAddselect);
 						_rowCopyPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1709,7 +1707,7 @@ function copyPageSubmitData() {
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(copyMkFile));
+	//console.log("lxw " + JSON.stringify(copyMkFile));
 	dataObj.configFile = copyConfigFile;
 	dataObj.mkFile = copyMkFile;
 	dataObj.memorySize = oCmemorySize;
@@ -1734,7 +1732,7 @@ function getMoreEditInfoOne(){
 		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data);
+			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowMEditPageApp = document.getElementById("myMoreEditModalMkTableApp");
 			var _rowMEditPageService = document.getElementById("myMoreEditModalMkTableService");
@@ -1757,35 +1755,27 @@ function getMoreEditInfoOne(){
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					console.log("App:" + kk);
 					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					console.log("Service:" + kk);
 					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					console.log("AppStore:" + kk);
 					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					console.log("HomePage:" + kk);
 					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					console.log("IME:" + kk);
 					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					console.log("SysApp:" + kk);
 					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					console.log("TV:" + kk);
 					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					console.log("Other:" + kk);
 					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				}
 			}
@@ -1796,7 +1786,6 @@ function getMoreEditInfoOne(){
 function getMoreEditInfoTwo(){
 	console.log("lxw " + "getMoreEditInfoTwo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -1825,7 +1814,6 @@ function getMoreEditInfoTwo(){
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
 						_rowMEditPageConfigMain.innerHTML += _myAddselect;
 					}
 //				} else if(data.data[i].category == "other") {
@@ -1846,7 +1834,6 @@ function getMoreEditInfoTwo(){
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						console.log("lxw " + _myAddselect);
 						_rowMEditPageConfigOther.innerHTML += _myAddselect;
 					}
 				}

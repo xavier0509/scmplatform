@@ -41,9 +41,9 @@ function AferConfigHtmlInfo() {
 			keyValue = oTableA[this.index].nextSibling.value;
 			var data = oTableInput[this.index].value;
 			var jsonData = JSON.parse(data);
-			console.log("lxw "+keyValue);
+			//console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
-			console.log("lxw "+keyValueObj);
+			//console.log("lxw "+keyValueObj);
 			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 
@@ -79,8 +79,6 @@ function AferConfigHtmlInfo() {
 				};
 				for (var k = 0; k < oOpt.length; k++) {
 					var menuInput = document.getElementsByClassName("menuUnitInput");
-					// var k1 = k*2; var k2 = k1 + 1;
-					// menuInput[k1].value = oOpt[k];
 					menuInput[k].value = oOpt[k];
 				};
 
@@ -250,11 +248,8 @@ function AferConfigHtmlInfo() {
 /*点击配置管理，获取数据*/
 function searchConfigInfo() {
 	console.log("lxw " + "searchConfigInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -333,11 +328,8 @@ function searchConfigInfo() {
 }
 function returnAddInfo(){
 	console.log("lxw " + "returnChangeInfo");
-	console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		console.log("this.status = " + this.status);
-		console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) //TODO
+		if(this.status == 200) 
 		{
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
