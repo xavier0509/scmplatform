@@ -173,11 +173,13 @@ function CreatModelInfo() {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
-				//新增成功后刷新当前页面。
+				$("#myConfigAddChangeModal").modal('hide');
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				//给出错误信息提示
+				document.getElementById("chipMangInfo").style.display = "block";
+				document.getElementById("chipMangInfo").innerHTML = "添加失败";
 			};
 		};
 	}
@@ -195,10 +197,13 @@ function ChangeModelInfo() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
-				//新增成功后刷新当前页面。
+				$("#myConfigAddChangeModal").modal('hide');
+				//修改成功后刷新当前页面。
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementById("chipMangInfo").style.display = "block";
+				document.getElementById("chipMangInfo").innerHTML = "修改失败";
 			};
 		};
 	}
