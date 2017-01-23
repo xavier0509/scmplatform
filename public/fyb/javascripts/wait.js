@@ -258,15 +258,8 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
-			console.log("lxw " + TwiceTransferChip + "--" + TwiceTransferModel);
-			$("#myDeleteModalLabel").text("删除");
-			$('#myDeleteModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
 			//校验机芯机型
-			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
-			
-			console.log("lxw "+allChipArray+"--"+allModelArray);
-			singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
+			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfoInDel);
 		}
 
 	}
@@ -563,6 +556,44 @@ function checkModelInfo(){
 			}
 			console.log("lxw "+ allModelArray);
 		};
+	}
+}
+function checkChipInfoInDel(){
+	console.log("lxw " + "SearchChipInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			for (var i=0; i< data.data.length; i++) {
+				allChipArray.push(data.data[i].name);
+			}
+			console.log("lxw "+ allChipArray);
+		};
+		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', checkModelInfoInDel);
+	}
+}
+function checkModelInfoInDel(){
+	console.log("lxw " + "in checkModelInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data.data.length);
+			for (var i=0; i< data.data.length; i++) {
+				allModelArray.push(data.data[i].name);
+			}
+			console.log("lxw "+ allModelArray);
+		};
+		console.log("lxw " + TwiceTransferChip + "--" + TwiceTransferModel);
+		$("#myDeleteModalLabel").text("删除");
+		$('#myDeleteModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		console.log("lxw "+allChipArray+"--"+allModelArray);
+		console.log("lxw "+TwiceTransferChip+"--"+TwiceTransferModel);
+		
+		
+		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
 	}
 }
 
