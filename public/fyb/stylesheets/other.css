@@ -330,6 +330,7 @@ td{
 }
 #myMoreEditModalMkTableTbody input{
 	display: block;
+	height: 30px;
     float: left;
 }
 #myMoreEditModalMkTableTbody span{
@@ -361,8 +362,6 @@ td{
 	width: 50%;
 	float: left;
 	margin-left: 5%;
-	display: block;
-    height: 30px;
 }
 #myAddModalConfigTableTbody tr td div{
 	display: block;
