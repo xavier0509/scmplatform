@@ -151,10 +151,13 @@ function returnAddInfo(){
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
-				console.log("lxw " + "修改成功");
+				console.log("lxw " + "添加成功");
+				$("#myModuleAddChangeModal").modal('hide');
 				freshModuleAddHtml();
 			} else if(data.msg == "failure") {
-				console.log("lxw " + "修改失败");
+				console.log("lxw " + "添加失败");
+				document.getElementById("moduleErrorInfo").style.display = "block";
+				document.getElementById("moduleErrorInfo").innerHTML = "添加失败！";
 			};
 		};
 	}
@@ -171,9 +174,12 @@ function returnChangeInfo(){
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
+				$("#myModuleAddChangeModal").modal('hide');
 				freshModuleAddHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementById("moduleErrorInfo").style.display = "block";
+				document.getElementById("moduleErrorInfo").innerHTML = "修改失败！";
 			};
 		};
 	}

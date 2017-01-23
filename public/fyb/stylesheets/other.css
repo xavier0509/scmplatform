@@ -642,3 +642,9 @@ td{
 #myDeleteModal{
 	margin: auto;
 }
+#moduleErrorInfo,#configErrorInfo{
+	display: none;
+	text-align: center;
+	color: red;
+	font-size: 20px;
+}

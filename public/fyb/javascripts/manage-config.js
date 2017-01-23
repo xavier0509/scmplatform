@@ -343,9 +343,12 @@ function returnAddInfo(){
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
+				$("#myConfigAddChangeModal").modal('hide');
 				freshConfigAddHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementById("configErrorInfo").style.display = "block";
+				document.getElementById("configErrorInfo").innerHTML = "该配置已存在";
 			};
 		};
 	}
