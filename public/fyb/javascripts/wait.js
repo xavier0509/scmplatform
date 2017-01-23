@@ -262,9 +262,11 @@ function AfterWaitHtmlinfo() {
 			$("#myDeleteModalLabel").text("删除");
 			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			
 			//校验机芯机型
-			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getDeleteInfoInfOne);
+			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+			
+			console.log("lxw "+allChipArray+"--"+allModelArray);
+			singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
 		}
 
 	}
@@ -1797,7 +1799,7 @@ function getMoreEditInfoTwo(){
 				}
 			}
 		};
-		moreEditPageButtons(); //后期可能会传参给页面里的点击事件
+		moreEditPageButtons();
 		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
 		//sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
 	}
@@ -1885,34 +1887,6 @@ function getMoreEditInfoEnd(){
 	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
-}
-//单项删除，校验机芯机型
-function getDeleteInfoInfOne(){
-	console.log("lxw " + "getDeleteInfoInfOne");
-	if(this.readyState == 4) {
-		if(this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			if(data.msg == "success") {
-				sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getDeleteInfoInfTwo);
-			} else if(data.msg == "failure") {
-				console.log("lxw " + "修改失败");
-			};
-		};
-	}
-}
-function getDeleteInfoInfTwo(){
-	console.log("lxw " + "getDeleteInfoInfTwo");
-	if(this.readyState == 4) {
-		if(this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			if(data.msg == "success") {
-				console.log(TwiceTransferChip+"--"+TwiceTransferModel);
-			} else if(data.msg == "failure") {
-				console.log("lxw " + "修改失败");
-			};
-		};
-		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
-	}
 }
 
 //多项删除的返回结果
