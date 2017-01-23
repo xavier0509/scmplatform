@@ -589,11 +589,14 @@ function checkModelInfoInDel(){
 		$("#myDeleteModalLabel").text("删除");
 		$('#myDeleteModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		console.log("lxw "+allChipArray+"--"+allModelArray);
-		console.log("lxw "+TwiceTransferChip+"--"+TwiceTransferModel);
+		document.getElementById("myDeleteModalErrorInfo").style.display = "none";
+		document.getElementById("myDeleteModalErrorInfo").innerHTML = "";
 		var ChipInArray = jQuery.inArray(TwiceTransferChip,allChipArray);
 		var ModelInArray = jQuery.inArray(TwiceTransferModel,allModelArray);
-		document.getElementById("myDeleteModalErrorInfo").innerHTML = "";
+		
+		console.log("lxw "+allChipArray+"--"+allModelArray);
+		console.log("lxw "+TwiceTransferChip+"--"+TwiceTransferModel);
+		console.log("lxw "+ChipInArray+"--"+ModelInArray);
 		if(ChipInArray==-1){
 			document.getElementById("myDeleteModalErrorInfo").style.display = "block";
 			document.getElementById("myDeleteModalErrorInfo").innerHTML = "机芯：" + TwiceTransferChip + "在数据库里不存在";
