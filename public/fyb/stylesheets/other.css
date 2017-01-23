@@ -565,7 +565,7 @@ td{
 #myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
 	margin: auto;
 }
-.loginmycenter{padding-top: 18%;}
+.loginmycenter{padding-top: 16%;}
 
 #logintxt,#pwdmessage,#usermessage{color: red}
 
