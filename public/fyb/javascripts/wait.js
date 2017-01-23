@@ -262,8 +262,9 @@ function AfterWaitHtmlinfo() {
 			$("#myDeleteModalLabel").text("删除");
 			$('#myDeleteModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-
-			singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel); //后期可能会传参给页面里的点击事件
+			
+			//校验机芯机型
+			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getDeleteInfoInfOne);
 		}
 
 	}
@@ -286,14 +287,10 @@ function AfterWaitHtmlinfo() {
 }
 //新增-获取后台接口数据，动态加载新增页面
 function getAddInfoInfOne() {
-	//console.log("lxw " + "getAddInfoInfOne");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "getAddInfoInfOne");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowAddPageApp = document.getElementById("myAddModalMkTableApp");
 			var _rowAddPageService = document.getElementById("myAddModalMkTableService");
@@ -316,35 +313,27 @@ function getAddInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					//console.log("App:" + kk);
 					_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					//console.log("Service:" + kk);
 					_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					//console.log("AppStore:" + kk);
 					_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					//console.log("HomePage:" + kk);
 					_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					//console.log("IME:" + kk);
 					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					//console.log("SysApp:" + kk);
 					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					//console.log("TV:" + kk);
 					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					//console.log("Other:" + kk);
 					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk].engName + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -354,11 +343,8 @@ function getAddInfoInfOne() {
 }
 
 function getAddInfoInfTwo() {
-	//console.log("lxw " + "getAddInfoInfTwo");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "getAddInfoInfTwo");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -382,7 +368,6 @@ function getAddInfoInfTwo() {
 			_rowAddPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				//console.log("lxw " + data.data[i].category + data.data[i].type);
 				if(data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
@@ -400,7 +385,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
 				}
@@ -421,7 +405,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -442,7 +425,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -463,7 +445,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -484,7 +465,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -505,7 +485,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -526,7 +505,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				}
@@ -547,7 +525,6 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowAddPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -558,11 +535,8 @@ function getAddInfoInfTwo() {
 	}
 }
 function checkChipInfo(){
-	//console.log("lxw " + "SearchChipInfo");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "SearchChipInfo");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -576,11 +550,8 @@ function checkChipInfo(){
 	}
 }
 function checkModelInfo(){
-	//console.log("lxw " + "SearchChipInfo");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "in checkModelInfo");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
@@ -629,7 +600,6 @@ function addPageSubmitData() {
 		var oAConfigobj = {};
 		var thisConfigindex = null;
 		oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		//console.log("lxw" +oAconfigTrDiv.length);
 		for(var j = 1; j < oAconfigTrDiv.length; j++) {
 			var oAopt = [];
 			var oAstuInfo = {
@@ -713,13 +683,10 @@ function addPageSubmitData() {
 }
 
 function productAddresult() {
-	//console.log("this.readyState = " + this.readyState);
+	console.log("in productAddresult");
 	if(this.readyState == 4) {
-	//	console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			//console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				$("#myAddModal").modal('hide');
@@ -827,11 +794,8 @@ function spanhidden(){
 
 //单项编辑-获取后台接口数据，动态加载单项编辑页面
 function getEditInfoInfOne() {
-	//console.log("lxw " + "getEditInfoInfOne");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "getEditInfoInfOne");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data);
@@ -895,11 +859,8 @@ function getEditInfoInfOne() {
 }
 
 function getEditInfoInfTwo() {
-	//console.log("lxw " + "searchConfigInfo");
-	//console.log("this.readyState = " + this.readyState);
+	console.log("lxw " + "searchConfigInfo");
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -1270,7 +1231,6 @@ function editPageSubmitData() {
 function productEditresult() {
 	console.log("lxw in productEditresult");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
@@ -1729,10 +1689,8 @@ function copyPageSubmitData() {
 function getMoreEditInfoOne(){
 	console.log("lxw " + "getMoreEditInfoOne");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowMEditPageApp = document.getElementById("myMoreEditModalMkTableApp");
 			var _rowMEditPageService = document.getElementById("myMoreEditModalMkTableService");
@@ -1927,6 +1885,34 @@ function getMoreEditInfoEnd(){
 	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
+}
+//单项删除，校验机芯机型
+function getDeleteInfoInfOne(){
+	console.log("lxw " + "getDeleteInfoInfOne");
+	if(this.readyState == 4) {
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getDeleteInfoInfTwo);
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+	}
+}
+function getDeleteInfoInfTwo(){
+	console.log("lxw " + "getDeleteInfoInfTwo");
+	if(this.readyState == 4) {
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log(TwiceTransferChip+"--"+TwiceTransferModel);
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+			};
+		};
+		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
+	}
 }
 
 //多项删除的返回结果
