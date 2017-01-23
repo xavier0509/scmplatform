@@ -212,19 +212,6 @@ td{
 	padding-right: 0px;
 }
 
-/*#myCopyModalConfigTable div{
-	margin-bottom: 5px;
-}
-#myCopyModalConfigTable div select{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
-}
-#myCopyModalConfigTable div input{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
-}*/
 #myCopyModalConfigTableTbody div{
 	margin-bottom: 4px;
 }
@@ -243,9 +230,7 @@ td{
 	display: block;
     height: 30px;
 }
-#myCopyModalConfigTableTbody tr td div:nth-child(1){
-	/*background-color: white;*/
-}
+
 #myCopyModalConfigTableTbody span{
 	display: block;
     float: left;
@@ -288,9 +273,7 @@ td{
 	display: block;
     height: 30px;
 }
-#myEditModalConfigTableTbody tr td div:nth-child(1){
-	/*background-color: white;*/
-}
+
 #myEditModalConfigTableTbody span{
 	display: block;
     float: left;
@@ -316,6 +299,51 @@ td{
 	margin-bottom: 4px;
 }
 
+
+#myMoreEditModalConfigTableTbody div{
+	margin-bottom: 4px;
+}
+#myMoreEditModalConfigTableTbody div select{
+	width: 50%;
+	float: left;
+	height: 30px;
+	margin-left: 5%;
+}
+#myMoreEditModalConfigTableTbody div input{
+	width: 50%;
+	float: left;
+	margin-left: 5%;
+}
+#myMoreEditModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
+
+#myMoreEditModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 40%;
+    text-align: right;
+    margin-left: 0;
+    font-size: 17px;
+    overflow: hidden;
+}
+#myMoreEditModalMkTableTbody input{
+	display: block;
+    float: left;
+}
+#myMoreEditModalMkTableTbody span{
+	display: block;
+    float: left;
+    width: 72%;
+    text-align: left;
+    margin-left: 5%;
+    font-size: 17px;
+}
+#myMoreEditModalMkTableTbody div{
+	margin-bottom: 4px;
+}
+
 #myAddModalConfigTableTbody div{
 	margin-bottom: 4px;
 }
@@ -333,9 +361,6 @@ td{
 #myAddModalConfigTableTbody tr td div{
 	display: block;
     height: 30px;
-}
-#myAddModalConfigTableTbody tr td div:nth-child(1){
-	/*background-color: white;*/
 }
 #myAddModalConfigTableTbody span{
 	display: block;
@@ -362,7 +387,6 @@ td{
 	margin-bottom: 4px;
 }
 .myModalErrorInfo{
-	/*background-color: #f5f5f5;*/
     display: none;
     margin-left: 20%;
     margin-top: -30px;

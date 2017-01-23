@@ -602,7 +602,7 @@ function checkModelInfoInDel(){
 			document.getElementById("myDeleteModalErrorInfo").innerHTML = "机芯：" + TwiceTransferChip + "不存在";
 		}else if(ChipInArray!=-1 && ModelInArray==-1){
 			document.getElementById("myDeleteModalErrorInfo").style.display = "block";
-			document.getElementById("myDeleteModalErrorInfo").innerHTML = "机型：" + TwiceTransferModel + "不存在"
+			document.getElementById("myDeleteModalErrorInfo").innerHTML = "机型：" + TwiceTransferModel + "不存在";
 		}
 		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
 	}
@@ -703,11 +703,9 @@ function addPageSubmitData() {
 				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
 				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
 				addMkFile.push(oAstuInfoTwo);
-				//console.log("lxw " + JSON.stringify(oAstuInfoTwo));
 			}
 		}
 	}
-	//console.log("lxw " + JSON.stringify(addMkFile));
 	dataObj.configFile = addConfigFile;
 	dataObj.mkFile = addMkFile;
 	dataObj.memorySize = oAmemorySize;
