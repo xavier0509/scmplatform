@@ -591,8 +591,15 @@ function checkModelInfoInDel(){
 		$(".modal-backdrop").addClass("new-backdrop");
 		console.log("lxw "+allChipArray+"--"+allModelArray);
 		console.log("lxw "+TwiceTransferChip+"--"+TwiceTransferModel);
-		
-		
+		var ChipInArray = jQuery.inArray(TwiceTransferChip,allChipArray);
+		var ModelInArray = jQuery.inArray(TwiceTransferModel,allModelArray);
+		if(ChipInArray==-1){
+			document.getElementById(myDeleteModalErrorInfo).style.display = "block";
+			document.getElementById(myDeleteModalErrorInfo).innerHTML = "机芯：" + TwiceTransferChip + "在数据库里不存在";
+		}else if(ChipInArray!=-1 && ModelInArray==-1){
+			document.getElementById(myDeleteModalErrorInfo).style.display = "block";
+			document.getElementById(myDeleteModalErrorInfo).innerHTML = "机型：" + TwiceTransferModel + "在数据库里不存在"
+		}
 		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
 	}
 }

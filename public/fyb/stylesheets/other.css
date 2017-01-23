@@ -642,7 +642,7 @@ td{
 #myDeleteModal{
 	margin: auto;
 }
-#moduleErrorInfo,#configErrorInfo{
+#moduleErrorInfo,#configErrorInfo,#myDeleteModalErrorInfo{
 	display: none;
 	text-align: center;
 	color: red;
