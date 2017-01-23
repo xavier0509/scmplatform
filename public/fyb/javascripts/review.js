@@ -4,7 +4,7 @@ document.write("<script language=javascript src='../javascripts/login.js' charse
 $(function () {
     var level = parent.adminFlag;
     var loginusername = parent.loginusername;
-    console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
+    // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
         sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }
@@ -20,7 +20,7 @@ var fileUsername = null;
 
 //在待审核页面出现列表
 function reviewlist(){
-    console.log("this.readyState = " + this.readyState);
+    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
@@ -34,13 +34,13 @@ function reviewlist(){
 
             var data = JSON.parse(this.responseText);
             var level = parent.adminFlag;
-            console.log("level:"+level)
+            // console.log("level:"+level)
             var _row;
 
             var msg = data.msg;
             if (msg == "success") {
                 var datalength = data.data;
-                console.log(datalength);
+                // console.log(datalength);
                 for (var i = 0; i < datalength.length; i++) {
                     _row = document.getElementById("reviewmytable").insertRow(0);
                     var _cell1 = _row.insertCell(0);
@@ -230,7 +230,7 @@ function moduleResult(){
 function configResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
-        console.log("this.responseText = " + this.responseText);
+        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
             var data = JSON.parse(this.responseText);
@@ -338,7 +338,7 @@ function configResult(){
 
 function reviewresult(){
     var level = parent.adminFlag;
-    console.log("this.readyState = " + this.readyState);
+    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
@@ -407,7 +407,7 @@ function reviewresult(){
                 }                
                 var inputcounts = document.getElementsByTagName("input");
                 var selectcounts = document.getElementsByTagName("select");
-                console.log("inputcounts="+inputcounts.length);
+                // console.log("inputcounts="+inputcounts.length);
                 document.getElementById("noPassReview").onclick = noPassIssue;
                 for (var i = 0; i < inputcounts.length; i++) {
                     inputcounts[i].setAttribute('disabled','');
@@ -417,7 +417,7 @@ function reviewresult(){
                     selectcounts[i].setAttribute('disabled','');
                     selectcounts[i].style.backgroundColor = "#ebebe4";
                 }
-                console.log("操作状态:"+operate);
+                // console.log("操作状态:"+operate);
                 if (operate == 2) {
                     document.getElementById("reviewSubmit").innerHTML = "确认删除";
                     document.getElementById("reButton").innerHTML = "确认删除";
@@ -507,7 +507,7 @@ function deleteResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                console.log("删除成功！！！！");
+                // console.log("删除成功！！！！");
                 freshReviewHtml();
             };
 
@@ -525,7 +525,7 @@ function passResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                console.log("审核成功！！！！");
+                // console.log("审核成功！！！！");
                 freshReviewHtml();
             };
 
@@ -535,7 +535,7 @@ function passResult(){
 
 //点击编辑提交的函数
 function reviewEdit(){
-    console.log("开始提交数据");
+    // console.log("开始提交数据");
 
     var mkdataarry = [];//用于存放全部数据
     var mkdd =[];
@@ -588,7 +588,7 @@ function reviewEdit(){
             }
         };
     };
-    console.log("更新的mk信息："+JSON.stringify(mkdataarry));
+    // console.log("更新的mk信息："+JSON.stringify(mkdataarry));
 
     //获取config文件数据
     function getconfigdata(name){
@@ -607,17 +607,17 @@ function reviewEdit(){
             var type = $size[i].childNodes[1].getAttribute("type");
             if (type == "string") {
                 var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":[],"type":"'+type+'"}';
-                console.log(data);
+                // console.log(data);
                 array2.push(JSON.parse(data));
             }
             else{
                 var opt = [];
                 var child = $size[i].childNodes[1].childNodes;
-                console.log(child.length+"内容是："+child[1].value);
+                // console.log(child.length+"内容是："+child[1].value);
                 for (var j = 0; j < child.length; j++) {
                     opt.push(child[j].value);
                 };
-                console.log(opt);
+                // console.log(opt);
                 var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
                 data.engName = engName;
                 data.value = value;
@@ -628,11 +628,11 @@ function reviewEdit(){
                 data.options = opt;
                 data.type = type;
                 // var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
-                console.log(JSON.stringify(data));
+                // console.log(JSON.stringify(data));
                 array2.push(data);
 
             }
-            console.log(JSON.stringify(array2));
+            // console.log(JSON.stringify(array2));
         };
         configdd.push(array2);
         // console.log(JSON.stringify(configdd));
@@ -644,7 +644,7 @@ function reviewEdit(){
             }
         };
     };
-    console.log("更新的config信息："+JSON.stringify(configdataarry));
+    // console.log("更新的config信息："+JSON.stringify(configdataarry));
 
     var target_product = document.getElementById("device").value;
     var android = document.getElementById("android").value;
@@ -665,7 +665,7 @@ function reviewEditResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                console.log("编辑提交成功！！！！");
+                // console.log("编辑提交成功！！！！");
                 freshReviewHtml();
             }
             else{
@@ -680,7 +680,7 @@ function reviewEditResult(){
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
-    console.log("页面1:"+htmlObject.firstChild);
+    // console.log("页面1:"+htmlObject.firstChild);
     var indexObject = parent.document.getElementById("home");
     var iframe = indexObject.getElementsByTagName("iframe");
     // console.log("页面："+iframe[0]);
