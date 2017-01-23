@@ -343,19 +343,10 @@ td{
 #myMoreEditModalMkTableTbody div{
 	margin-bottom: 4px;
 }
-/*#myMoreEditModalConfigTable div{
-	margin-bottom: 5px;
+#myMoreEditModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
 }
-#myMoreEditModalConfigTable div select{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
-}
-#myMoreEditModalConfigTable div input{
-	width: 36%;
-	float: left;
-	margin-left: 5%;
-}*/
 
 #myAddModalConfigTableTbody div{
 	margin-bottom: 4px;
