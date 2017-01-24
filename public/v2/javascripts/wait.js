@@ -1104,13 +1104,22 @@ function getEditInforesult() {
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
 				//console.log("lxw " + JSON.stringify(data.data[0].mkFile));
-				var key, counter = 0;
-				for(key in data.data[0].mkFile) {
-					counter++;
-					console.log("lxw counter = " + counter + "--" + key);
-					document.getElementById(key).setAttribute('checked', '');
+				var mkkey, mkcounter = 0;
+				for(mkkey in data.data[0].mkFile) {
+					mkcounter++;
+					console.log("lxw counter = " + mkcounter + "--" + mkkey);
+					document.getElementById(mkkey).setAttribute('checked', '');
 				}
-				console.log("lxw " + JSON.stringify(data.data[0].configFile)); //config
+				console.log("lxw " + JSON.stringify(data.data[0].configFile));
+				var configkey, configcounter = 0;
+				for(configkey in data.data[0].configFile) {
+					configcounter++;
+					console.log("lxw counter = " + configcounter + "--" + configkey);
+					console.log(data.data[0].configFile[configkey].type);
+					//if (data.data[0].configFile[i].type == "string") {
+	                 //   document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+	                //}
+				}
 				//for (var i = 0; i < data.data[0].configFile.length; i++) {
 	            //    if (data.data[0].configFile[i].type == "string") {
 	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
