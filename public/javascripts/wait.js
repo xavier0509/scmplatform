@@ -2304,4 +2304,5 @@ function waitReset(){
 	document.getElementById("androidVersion").value="";
 	document.getElementById("chipid").value="";
 	document.getElementById("memory").value="";
+	startSelect();
 }
