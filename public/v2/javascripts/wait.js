@@ -1100,14 +1100,13 @@ function getEditInforesult() {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw " + JSON.stringify(data));
-				console.log("lxw " + JSON.stringify(data.data));
-				//document.getElementById("newEditChip").value = data.data[0].chip;
-				//document.getElementById("newEditModel").value = data.data[0].model;
-				//document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
-				//document.getElementById("newEditChipMode").value = data.data[0].chipModel;
-				//document.getElementById("newEditMemory").value = data.data[0].memorySize;
-				//document.getElementById("newEditDevice").value = data.data[0].targetProduct;
+				console.log("lxw " + JSON.stringify(data.data[0]));
+				document.getElementById("newEditChip").value = data.data[0].chip;
+				document.getElementById("newEditModel").value = data.data[0].model;
+				document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
+				document.getElementById("newEditChipMode").value = data.data[0].chipModel;
+				document.getElementById("newEditMemory").value = data.data[0].memorySize;
+				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
 				//console.log("lxw " + data.data[0].mkFile.length); //mk
 				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
