@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="chipmodeManagePage">
+			<div class="col-xs-6 form-group">
+				<fieldset>
+					<legend>机芯列表</legend>
+					<div class="">
+						<button type="button" class="btn btn-default" id="manage-chipAdd">新增</button>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered" id="chipManager-mkTable">
+								<tr>
+									<td id="chipManageAdd-td"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="col-xs-6 form-group">
+				<fieldset>
+					<legend>机型列表</legend>
+					<div class="">
+						<button type="button" class="btn btn-default" id="manage-modeAdd">新增</button>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered" id="modeManager-mkTable">
+								<tr>
+									<td id="modalManageAdd-td"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		
+		<!--机芯机型-增加-->
+		<div class="modal fade " id="myModeChipAddModal" tabindex="-1" role="dialog" aria-labelledby="myModeChipAddModalLabel">
+			<div class="modal-dialog backstyle" role="document">
+				<div class="modal-content myModeChipAdd" id="inputChipOrMode">
+					<div class="modal-body">
+						<button type="button" id="inputChipOrModeClose" data-dismiss="modal">关闭</button>
+						<label for="chipOrMode" class="control-label">输入机芯(型)名称：</label><br/>
+						<input type="text" value="" id="chipOrMode">
+						<div id="chipMangInfo">　</div>
+						<button type="button" class="btn"  id="inputChipOrModeSubmit">保存</button>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		
+
+		<script src="../javascripts/manage-chipmode.js"></script>
+	</body>
+
+</html>

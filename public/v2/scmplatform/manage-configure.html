@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="configManagePage">
+			<div class="col-xs-12 form-group">
+				<fieldset>
+					<legend>配置列表</legend>
+					<div class="">
+						<button type="button" class="btn btn-default" id="manage-configAdd">新增</button>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<table class="table table-bordered" id="config-mkTable">
+								<tr>
+									<td id="configMkTableTdMain"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdHardware"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdServerip"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdAd"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdChannel"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdLocalmedia"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdBrowser"></td>
+								</tr>
+								<tr>
+									<td id="configMkTableTdOther"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+
+		<!--新增和编辑-->
+		<div class="modal fade" id="myConfigAddChangeModal" tabindex="-1" role="dialog" aria-labelledby="myConfigAddChangeModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content" id="myConfigBorder">
+					<div class="modal-body">
+						<button type="button" id="inputConfigClose" data-dismiss="modal">关闭</button>
+						<label for="configChineseName" class="control-label configlable">中文名称：</label>
+						<label for="configEnglishName" class="control-label configlable">英文名称：</label><br/>
+						<input type="text" value="" id="configChineseName" class="configinput">
+						<input type="text" value="" id="configEnglishName" class="configinput"><br/>
+						<label for="configSrc" class="control-label configlable">general_config：</label><br/>
+						<input type="text" value="" id="configSrc" class="configinput"><br/>
+						<label for="configDefaulted" class="control-label configlable">默认参考值：</label><br/>
+						<div id="configDefaulted">
+							<button class="configDefaultedOption">字符串</button>
+							<button class="configDefaultedOption">枚举</button>
+							<textarea id="configString" rows="3" cols="" class="configtextarea"></textarea><br/>
+							<div class="tableBox" id="configTableBoxEnum">
+								<div id="ADCSAction">
+									<span class="menuEdit glyphicon glyphicon-plus"></span>
+									<span class="menuEdit glyphicon glyphicon-remove"></span>
+									<span class="menuEdit glyphicon glyphicon-remove-circle"></span>
+								</div>
+								<div id="ADCSEfficient">
+									<div class="menuUnit">										
+										<input type="text" class="menuUnitInput" value="" placeholder="Value">
+									</div>
+									<div class="menuUnit">										
+										<input type="text" class="menuUnitInput" value="" placeholder="Value">
+									</div>
+								</div>
+							</div>
+						</div>
+						<label for="configInstr" class="control-label configlable">描述：</label><br/>
+						<textarea id="configInstr" rows="3" cols="" class="configtextarea"></textarea><br/>
+						<label for="configSelect" class="control-label configlable">所属分类：</label><br/>
+						<select id="configSelect" class="configselect">
+							<option value="main">核心功能</option>
+							<option value="hardware">硬件配置信息</option>
+							<option value="serverip">服务器IP配置</option>
+							<option value="ad"> 广告配置</option>
+							<option value="channel">TV通道</option>
+							<option value="localmedia">本地媒体</option>
+							<option value="browser">浏览器配置</option>
+							<option value="other">其他功能</option>
+						</select>
+						<button type="button" class="btn" id="inputConfigSubmit">保存</button>
+						<div id="configErrorInfo">hello</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../javascripts/manage-config.js"></script>
+	</body>
+
+</html>

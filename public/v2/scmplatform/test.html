@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../stylesheets/bootstrap.min.css">
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+		#mainpage{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+		#content{
+			position: absolute;
+			left: 25%;
+			top: 15%;
+			height: 60%;
+			width: 50%;
+			background-color: white;
+			font-size: 24px;
+		}
+		#content lable{
+			text-align: center;
+			background-color: skyblue;
+		}
+		#content input{
+			width: 100%;
+			background-color: skyblue;
+		}
+		#return{
+			width: 100%;
+			height: 70%;
+			font-size: 16px;
+			overflow: auto;
+			background-color: skyblue;
+		}
+		#floot{
+			position: absolute;
+			left: 45%;
+			top: 86%;
+			height: 10%;
+			width: 50%;
+			background-color: white;
+			font-size: 24px;
+		}
+	</style>
+	<body>
+		<div id="mainpage">
+			<div id="content">
+				<label for="interface">接口名称</label>
+				<input type="text" value="" id="interface"><br/>
+				<label for="parameter">传递参数</label>
+				<input type="text" value="" id="parameter"><br/>
+				<label for="return">返回结果</label>
+				<textarea type="text" value="" id="return"></textarea><br/>
+			</div>
+			<div id="floot">
+				<button id="ensure">确定</button>
+			</div>
+		</div>
+		<script src="../javascripts/testdata.js"></script>
+	</body>
+	
+	
+</html>

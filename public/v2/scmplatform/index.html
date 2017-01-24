@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>配置信息管理平台</title>
+
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../stylesheets/bootstrap-select.css">
+		<link rel="stylesheet" href="../stylesheets/bootstrap.addtabs.css" type="text/css" media="screen" />
+		<script src="../javascripts/jquery.min.js"></script>
+		<script src="../javascripts/bootstrap.min.js"></script>
+		<script src="../javascripts/bootstrap-treeview.min.js"></script>
+    	<script type="text/javascript" src="../javascripts/bootstrap.addtabs.js"></script>
+		<script type="text/javascript" src="../javascripts/head.js"></script>
+		<script type="text/javascript" src="../javascripts/session.js"></script>
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+</head>
+<body onload="forsession()">
+    <nav class="navbar navbar-default container" role="navigation">       
+                <a class="navbar-brand" >
+                    <span style="font-size:30px">配置信息管理平台</span>
+                </a>     
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!--左侧-->
+				<div class="col-lg-2 col-xs-2 col-md-2">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<ul class="list-group">
+									<a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="list-group-item" ><b>配置文件管理</b></a>
+                            		<a href="javascript:void(0);" data-addtab="userMenu2" url="review.html" class="list-group-item"><b>待审核文件</b></a>
+									<span class="list-group-item" id="_hidden1"><b>配置内容管理</b></span>
+									<a href="javascript:void(0);" data-addtab="userMenu4" url="manage-chipmode.html" class="list-group-item" id="_hidden2">　机芯机型管理</a>
+									<a href="javascript:void(0);" data-addtab="userMenu5" url="manage-module.html" class="list-group-item" id="_hidden3">　模块管理</a>
+									<a href="javascript:void(0);" data-addtab="userMenu6" url="manage-configure.html" class="list-group-item" id="_hidden4">　配置管理</a>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--右侧-->
+				<div class="col-lg-10 col-xs-10 col-md-10">
+					<div class="main">
+						<div id="tabs">
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active">
+									<a href="#home"  aria-controls="home" role="tab" data-toggle="tab">配置文件管理</a>
+								</li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content" id="main">
+								<div role="tabpanel" class="tab-pane active" id="home">
+                            		<iframe src="wait.html" width="100%;"height="900px" border="0" frameborder="no"></iframe>
+                        		</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+	</body>
+
+</html>
