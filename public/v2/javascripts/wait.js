@@ -1560,7 +1560,8 @@ function getCopyInforesult() {
 				for(mkkey in data.data[0].mkFile) {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
-					document.getElementById(mkkey).setAttribute('checked', 'checked');
+					//document.getElementById(mkkey).setAttribute('checked', 'checked');
+					document.getElementById(mkkey).checked="checked";
 					console.log(document.getElementById(mkkey).checked);
 				};
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
