@@ -544,8 +544,8 @@ td{
 	position: absolute;
 	right: 0;
 	top: 0;
-	height: 6%;
-	width: 10%;
+	height: 35px;
+	width: 45px;
 }
 #inputConfigSubmit{
 	display: block;
