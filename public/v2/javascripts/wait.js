@@ -1108,7 +1108,20 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = data.data[0].memorySize;
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				console.log("lxw " + JSON.stringify(data.data[0].mkFile)); 
+				console.log("lxw " + JSON.stringify(data.data[0].mkFile));
+				var key, counter = 0;
+				for(key in data.data[0].mkFile) {
+					counter++;
+					console.log("lxw counter = " + counter + "--" + key);
+					//_myAddTableMKInsertInfo = "<tr><td><div>" + key + "</div>";
+					for(var j = 0; j < data[key].length; j++) {
+						//_myAddTableMKInsertInfo += "<div class='col-xs-3' title='" + data[key][j].pkgname + "'><input type='checkbox' value=''><span>" + data[key][j].name + "</span></div>";
+						console.log("lxw " + data[key]);
+					}
+					//_myAddTableMKInsertInfo += "</td></tr>";
+					console.log("lxw " + counter);
+					//myAddTableMKInsert.innerHTML += _myAddTableMKInsertInfo;
+				}
 				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
 				//	console.log("lxw " + data.data[0].mkFile[i].engName);
 				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
