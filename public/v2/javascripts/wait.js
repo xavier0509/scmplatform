@@ -1172,48 +1172,48 @@ function editPageSubmitData() {
 	var desc = "enheng";
 
 	//获取config里的数据
-	var editConfigFile = [];
-	var oEconfigTrlength = $("#myEditModalConfigTableTbody").find("tr");
-	console.log("lxw " + oEconfigTrlength.length);
-	for(var i = 0; i < oEconfigTrlength.length; i++) {
-		var oEConfigobj = {};
-		var thisConfigindex = null;
-		oEconfigTrDiv = $("#myEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" + oEconfigTrDiv.length);
-		for(var j = 1; j < oEconfigTrDiv.length; j++) {
-			var oEopt = [];
-			var oEstuInfo = {
-				"cnName": "",
-				"engName": "",
-				"type": "",
-				"value": "",
-				"category": "",
-				"desc": "XXXXX",
-				"options": []
-			};
-			thisConfigindex = j;
-			oEstuInfo.category = oEconfigTrDiv[0].title;
-			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
-			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
-			console.log("lxw" + oEstuInfo.engName);
-			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
-			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
-			if(oEstuInfo.type == "string") {
-				oEopt = [];
-			} else if(oEstuInfo.type == "enum") {
-				var jjlength = oEconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
-				console.log("lxw " + jjlength.length);
-				for(var jj = 0; jj < jjlength.length; jj++) {
-					var optValue = jjlength[jj].value;
-					oEopt.push(optValue);
-				}
-			}
-			oEstuInfo.options = oEopt;
-			editConfigFile.push(oEstuInfo);
-		}
-	}
+//	var editConfigFile = {};
+//	var oEconfigTrlength = $("#myEditModalConfigTableTbody").find("tr");
+//	console.log("lxw " + oEconfigTrlength.length);
+//	for(var i = 0; i < oEconfigTrlength.length; i++) {
+//		var oEConfigobj = {};
+//		var thisConfigindex = null;
+//		oEconfigTrDiv = $("#myEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+//		console.log("lxw" + oEconfigTrDiv.length);
+//		for(var j = 1; j < oEconfigTrDiv.length; j++) {
+//			var oEopt = [];
+//			var oEstuInfo = {
+//				"cnName": "",
+//				"engName": "",
+//				"type": "",
+//				"value": "",
+//				"category": "",
+//				"desc": "XXXXX",
+//				"options": []
+//			};
+//			thisConfigindex = j;
+//			oEstuInfo.category = oEconfigTrDiv[0].title;
+//			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
+//			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+//			console.log("lxw" + oEstuInfo.engName);
+//			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
+//			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
+//			if(oEstuInfo.type == "string") {
+//				oEopt = [];
+//			} else if(oEstuInfo.type == "enum") {
+//				var jjlength = oEconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
+//				console.log("lxw " + jjlength.length);
+//				for(var jj = 0; jj < jjlength.length; jj++) {
+//					var optValue = jjlength[jj].value;
+//					oEopt.push(optValue);
+//				}
+//			}
+//			oEstuInfo.options = oEopt;
+//			editConfigFile.push(oEstuInfo);
+//		}
+//	}
 	//获取mkFile里的信息
-	var editMkFile = [];
+	var editMkFile = {};
 	var oEMkTrDiv = $("#myEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oEMkTrDiv.length);
 	var oEMkindex = null;
@@ -1236,12 +1236,12 @@ function editPageSubmitData() {
 				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
 				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
 				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
-				editMkFile.push(oEstuInfoTwo);
 				console.log("lxw " + JSON.stringify(oEstuInfoTwo));
+				editMkFile[oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name")] = oEstuInfoTwo;
 			}
 		}
 	}
-	//console.log("lxw " + JSON.stringify(editConfigFile));
+	console.log("lxw " + JSON.stringify(editConfigFile));
 	//console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
@@ -1256,9 +1256,9 @@ function editPageSubmitData() {
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
 	//console.log("lxw" + JSON.stringify(dataObj));
-	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
-	console.log("lxw " + oEnode);
-	sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
+	//var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+	//console.log("lxw " + oEnode);
+	//sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
 }
 
 function productEditresult() {
@@ -1561,7 +1561,6 @@ function getCopyInforesult() {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
 					document.getElementById("oC"+mkkey).setAttribute('checked', '');
-					//document.getElementById(mkkey).checked="checked";
 					console.log(document.getElementById("oC"+mkkey).checked);
 				};
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
@@ -1582,20 +1581,6 @@ function getCopyInforesult() {
 	                    };
 					}
 				};
-//				console.log("lxw " + data.data[0].mkFile.length); //mk
-//				for(var i = 0; i < data.data[0].mkFile.length; i++) {
-//					console.log("lxw " + data.data[0].mkFile[i].engName);
-//					if(document.getElementById(data.data[0].mkFile[i].engName)){
-//						document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-//					}
-//					else{
-//						alert("没有："+data.data[0].mkFile[i].engName);
-//					}
-//					
-//					data.data[0].mkFile[i].engName.checked = true;
-//					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
-//				}
-//				console.log("lxw " + data.data[0].configFile.length); //config
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
