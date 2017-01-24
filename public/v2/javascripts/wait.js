@@ -1130,21 +1130,6 @@ function getEditInforesult() {
 	                    };
 					}
 				}
-				//for (var i = 0; i < data.data[0].configFile.length; i++) {
-	            //    if (data.data[0].configFile[i].type == "string") {
-	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	            //    }
-	            //    else{
-	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	            //        var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
-	            //        for (var j = 0; j < childSelect.length; j++) {
-	            //            childSelect[j].removeAttribute("selected");
-	            //            if (childSelect[j].value == data.data[0].configFile[i].value) {
-	            //                childSelect[j].setAttribute("selected","");
-	            //            }
-	            //        };
-	            //    }
-	            //}
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
@@ -1560,7 +1545,7 @@ function getCopyInforesult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw " + JSON.stringify(data.data[0]));
+				//console.log("lxw " + JSON.stringify(data.data[0]));
 				document.getElementById("newCopyChip").value = data.data[0].chip;
 				document.getElementById("newCopyModel").value = data.data[0].model;
 				document.getElementById("NewCopyAndroidVersion").value = data.data[0].androidVersion;
@@ -1568,36 +1553,47 @@ function getCopyInforesult() {
 				document.getElementById("newCopyMemory").value = data.data[0].memorySize;
 				document.getElementById("newCopyDevice").value = data.data[0].targetProduct;
 
-				console.log("lxw " + data.data[0].mkFile.length); //mk
-				for(var i = 0; i < data.data[0].mkFile.length; i++) {
-					console.log("lxw " + data.data[0].mkFile[i].engName);
-					if(document.getElementById(data.data[0].mkFile[i].engName)){
-						document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-					}
-					else{
-						alert("没有："+data.data[0].mkFile[i].engName);
-					}
-					
-					data.data[0].mkFile[i].engName.checked = true;
-					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
+				//console.log("lxw " + JSON.stringify(data.data[0].mkFile));
+				var mkkey, mkcounter = 0;
+				for(mkkey in data.data[0].mkFile) {
+					mkcounter++;
+					console.log("lxw counter = " + mkcounter + "--" + mkkey);
+					document.getElementById(mkkey).setAttribute('checked', '');
 				}
-				console.log("lxw " + data.data[0].configFile.length); //config
-				for (var i = 0; i < data.data[0].configFile.length; i++) {
-	                if (data.data[0].configFile[i].type == "string") {
-	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+				console.log("lxw " + JSON.stringify(data.data[0].configFile));
+				var configkey, configcounter = 0;
+				for(configkey in data.data[0].configFile) {
+					configcounter++;
+					console.log("lxw counter = " + configcounter + "--" + configkey);
+					console.log(data.data[0].configFile[configkey].type);
+					if (data.data[0].configFile[configkey].type == "string") {
+	                    document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
 	                }
-	                else{
-	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	                    var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
+					else{
+						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
 	                    for (var j = 0; j < childSelect.length; j++) {
 	                        childSelect[j].removeAttribute("selected");
-	                        if (childSelect[j].value == data.data[0].configFile[i].value) {
+	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
 	                            childSelect[j].setAttribute("selected","");
 	                        }
 	                    };
-	                }
-	            }
-
+					}
+				}
+//				console.log("lxw " + data.data[0].mkFile.length); //mk
+//				for(var i = 0; i < data.data[0].mkFile.length; i++) {
+//					console.log("lxw " + data.data[0].mkFile[i].engName);
+//					if(document.getElementById(data.data[0].mkFile[i].engName)){
+//						document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
+//					}
+//					else{
+//						alert("没有："+data.data[0].mkFile[i].engName);
+//					}
+//					
+//					data.data[0].mkFile[i].engName.checked = true;
+//					console.log("lxw " + document.getElementById(data.data[0].mkFile[i].engName).checked);
+//				}
+//				console.log("lxw " + data.data[0].configFile.length); //config
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
