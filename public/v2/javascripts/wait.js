@@ -1560,8 +1560,6 @@ function getCopyInforesult() {
 				for(mkkey in data.data[0].mkFile) {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
-					//document.getElementById(mkkey).setAttribute('checked', 'checked');
-					console.log(myParentObj);
 					document.getElementById("oC"+mkkey).setAttribute('checked', '');
 					//document.getElementById(mkkey).checked="checked";
 					console.log(document.getElementById("oC"+mkkey).checked);
