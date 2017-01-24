@@ -1108,7 +1108,8 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = data.data[0].memorySize;
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				//console.log("lxw " + data.data[0].mkFile.length); //mk
+				//console.log("lxw " + data.data[0].mkFile);
+				console.log("lxw " + data.data[0].mkFile.configFile); 
 				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
 				//	console.log("lxw " + data.data[0].mkFile[i].engName);
 				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
