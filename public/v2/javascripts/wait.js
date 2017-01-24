@@ -1116,9 +1116,19 @@ function getEditInforesult() {
 					configcounter++;
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
-					//if (data.data[0].configFile[i].type == "string") {
-	                 //   document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	                //}
+					if (data.data[0].configFile[configkey].type == "string") {
+	                    document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+	                }
+					else{
+						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
+	                    for (var j = 0; j < childSelect.length; j++) {
+	                        childSelect[j].removeAttribute("selected");
+	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
+	                            childSelect[j].setAttribute("selected","");
+	                        }
+	                    };
+					}
 				}
 				//for (var i = 0; i < data.data[0].configFile.length; i++) {
 	            //    if (data.data[0].configFile[i].type == "string") {
