@@ -1109,6 +1109,8 @@ function getEditInforesult() {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
 					document.getElementById(mkkey).setAttribute('checked', '');
+					document.getElementById(mkkey).checked = "true";
+					console.log(document.getElementById(mkkey).getAttribute("checked"));
 				}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
 				var configkey, configcounter = 0;
