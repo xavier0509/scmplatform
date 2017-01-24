@@ -1254,7 +1254,6 @@ function editPageSubmitData() {
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenene";
-	//console.log("lxw" + JSON.stringify(dataObj));
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	//sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
@@ -1620,7 +1619,7 @@ function copyPageSubmitData() {
 	var userName = loginusername;
 	var desc = "enheng";
 	//获取config里的数据
-	var copyConfigFile = [];
+	var copyConfigFile = {};
 	var oCconfigTrlength = $("#myCopyModalConfigTableTbody").find("tr");
 	for(var i = 0; i < oCconfigTrlength.length; i++) {
 		var oCConfigobj = {};
@@ -1654,11 +1653,11 @@ function copyPageSubmitData() {
 				}
 			}
 			oCstuInfo.options = oCopt;
-			copyConfigFile.push(oCstuInfo);
+			copyConfigFile[oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name")] = oCstuInfo;
 		}
 	}
 	//获取mkFile里的信息
-	var copyMkFile = [];
+	var copyMkFile = {};
 	var oCMkTrDiv = $("#myCopyModalMkTableTbody").find("tr");
 	var oCMkindex = null;
 	for(var i = 0; i < oCMkTrDiv.length; i++) {
@@ -1679,7 +1678,7 @@ function copyPageSubmitData() {
 				oCstuInfoTwo.cnName = oCMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
 				oCstuInfoTwo.engName = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name");
 				oCstuInfoTwo.gitPath = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
-				copyMkFile.push(oCstuInfoTwo);
+				copyMkFile[oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name")] = oCstuInfoTwo;
 			}
 		}
 	}
@@ -1696,10 +1695,9 @@ function copyPageSubmitData() {
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
-	//console.log("lxw" + JSON.stringify(dataObj));
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
-	sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
+	//sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne(){
