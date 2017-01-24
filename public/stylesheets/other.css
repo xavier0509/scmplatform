@@ -473,8 +473,8 @@ td{
 	position: absolute;
 	right: 0;
 	top: 0;
-	height: 8%;
-	width: 10%;
+	height: 35px;
+	width: 45px;
 }
 #inputModuleSubmit{
 	display: block;
