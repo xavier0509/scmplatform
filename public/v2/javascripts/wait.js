@@ -1104,11 +1104,13 @@ function getEditInforesult() {
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
 				//console.log("lxw " + JSON.stringify(data.data[0].mkFile));
-				var mkkey, mkcounter = 0;
-				for(mkkey in data.data[0].mkFile) {
+				var key, counter = 0;
+				for(key in data.data[0].mkFile) {
 					mkcounter++;
-					console.log("lxw counter = " + mkcounter + "--" + mkkey);
-					document.getElementById(mkkey).setAttribute('checked', '');
+					console.log("lxw counter = " + counter + "--" + key);
+					document.getElementById(key).setAttribute('checked', '');
+					document.getElementById(key).checked = "true";
+					console.log(document.getElementById(mkkey).getAttribute("checked"));
 				}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
 				var configkey, configcounter = 0;
@@ -1558,9 +1560,7 @@ function getCopyInforesult() {
 				for(mkkey in data.data[0].mkFile) {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
-					document.getElementById(mkkey).removeAttribute('checked','');
 					document.getElementById(mkkey).setAttribute('checked', '');
-					console.log(document.getElementById(mkkey).checked);
 				}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
 //				var configkey, configcounter = 0;
