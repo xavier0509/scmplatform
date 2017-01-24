@@ -1547,6 +1547,7 @@ function getCopyInforesult() {
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
+				var myParentObj = document.getElementById("myCopyModal");
 				//console.log("lxw " + JSON.stringify(data.data[0]));
 				document.getElementById("newCopyChip").value = data.data[0].chip;
 				document.getElementById("newCopyModel").value = data.data[0].model;
@@ -1561,6 +1562,7 @@ function getCopyInforesult() {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
 					//document.getElementById(mkkey).setAttribute('checked', 'checked');
+					console.log(myParentObj);
 					myParentObj.getElementById(mkkey).setAttribute('checked', '');
 					//document.getElementById(mkkey).checked="checked";
 					console.log(myParentObj.getElementById(mkkey).checked);
