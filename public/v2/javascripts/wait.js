@@ -1027,12 +1027,10 @@ function getEditInfoInfTwo() {
 				else if(data.data[i].category == "localmedia"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -1041,19 +1039,17 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
 						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
 				else if(data.data[i].category == "browser"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -1069,7 +1065,6 @@ function getEditInfoInfTwo() {
 				else if(data.data[i].category == "other"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='****'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -1113,15 +1108,11 @@ function getEditInforesult() {
 				for(key in data.data[0].mkFile) {
 					counter++;
 					console.log("lxw counter = " + counter + "--" + key);
-					//_myAddTableMKInsertInfo = "<tr><td><div>" + key + "</div>";
-					for(var j = 0; j < data[key].length; j++) {
-						//_myAddTableMKInsertInfo += "<div class='col-xs-3' title='" + data[key][j].pkgname + "'><input type='checkbox' value=''><span>" + data[key][j].name + "</span></div>";
-						console.log("lxw " + data[key]);
-					}
-					//_myAddTableMKInsertInfo += "</td></tr>";
-					console.log("lxw " + counter);
-					//myAddTableMKInsert.innerHTML += _myAddTableMKInsertInfo;
 				}
+				console.log("lxw " + counter);
+				//for(var j = 0; j < data.data[0].mkFile[key].length; j++) {
+				//	console.log("lxw " + data.data[0].mkFile[key]);
+				//}
 				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
 				//	console.log("lxw " + data.data[0].mkFile[i].engName);
 				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
