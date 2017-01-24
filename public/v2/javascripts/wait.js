@@ -1172,7 +1172,7 @@ function editPageSubmitData() {
 	var desc = "enheng";
 
 	//获取config里的数据
-//	var editConfigFile = {};
+	var editConfigFile = {};
 //	var oEconfigTrlength = $("#myEditModalConfigTableTbody").find("tr");
 //	console.log("lxw " + oEconfigTrlength.length);
 //	for(var i = 0; i < oEconfigTrlength.length; i++) {
