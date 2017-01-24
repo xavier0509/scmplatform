@@ -840,7 +840,7 @@ function getEditInfoInfOne() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data.data);
+			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowEditPageApp = document.getElementById("myEditModalMkTableApp");
 			var _rowEditPageService = document.getElementById("myEditModalMkTableService");
@@ -1100,7 +1100,7 @@ function getEditInforesult() {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
-				console.log("lxw " + JSON.stringify(data.data[0]));
+				//console.log("lxw " + JSON.stringify(data.data[0]));
 				document.getElementById("newEditChip").value = data.data[0].chip;
 				document.getElementById("newEditModel").value = data.data[0].model;
 				document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
@@ -1108,12 +1108,12 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = data.data[0].memorySize;
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				console.log("lxw " + data.data[0].mkFile); 
+				console.log("lxw " + JSON.stringify(data.data[0].mkFile)); 
 				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
 				//	console.log("lxw " + data.data[0].mkFile[i].engName);
 				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
 				//}
-				console.log("lxw " + data.data[0].configFile); //config
+				console.log("lxw " + JSON.stringify(data.data[0].configFile)); //config
 				//for (var i = 0; i < data.data[0].configFile.length; i++) {
 	            //    if (data.data[0].configFile[i].type == "string") {
 	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
