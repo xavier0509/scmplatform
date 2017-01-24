@@ -863,35 +863,27 @@ function getEditInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					//console.log("App:" + kk);
 					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					//console.log("Service:" + kk);
 					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					//console.log("AppStore:" + kk);
 					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					//console.log("HomePage:" + kk);
 					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					//console.log("IME:" + kk);
 					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					//console.log("SysApp:" + kk);
 					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					//console.log("TV:" + kk);
 					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					//console.log("Other:" + kk);
 					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -1108,6 +1100,7 @@ function getEditInforesult() {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
+				console.log("lxw " + JSON.stringify(data.data));
 				console.log("lxw " + JSON.stringify(data.data[0]));
 				document.getElementById("newEditChip").value = data.data[0].chip;
 				document.getElementById("newEditModel").value = data.data[0].model;
@@ -1288,12 +1281,10 @@ function productEditresult() {
 }
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
-	console.log("lxw " + "getCopyInfoInfOne");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
+		console.log("lxw " + "getCopyInfoInfOne");
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			//console.log("lxw " + data.data);
 			var kk = 0;
 			var _rowCopyPageApp = document.getElementById("myCopyModalMkTableApp");
 			var _rowCopyPageService = document.getElementById("myCopyModalMkTableService");
@@ -1316,35 +1307,27 @@ function getCopyInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					//console.log("App:" + kk);
 					_rowCopyPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					//console.log("Service:" + kk);
 					_rowCopyPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					//console.log("AppStore:" + kk);
 					_rowCopyPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					//console.log("HomePage:" + kk);
 					_rowCopyPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					//console.log("IME:" + kk);
 					_rowCopyPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					//console.log("SysApp:" + kk);
 					_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					//console.log("TV:" + kk);
 					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					//console.log("Other:" + kk);
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
@@ -1354,9 +1337,8 @@ function getCopyInfoInfOne() {
 }
 
 function getCopyInfoInfTwo() {
-	console.log("lxw " + "getCopyInfoInfTwo");
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
+		console.log("lxw " + "getCopyInfoInfTwo");
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -2078,13 +2060,13 @@ function moreDeleteresult(){
 }
 /*点击新增-弹框里的各个按钮*/
 function addPageButtons() {
-	var oButtonEditEnsure = document.getElementById("myAddModalSubmit");
-	oButtonEditEnsure.onclick = function() {
+	var oButtonAddEnsure = document.getElementById("myAddModalSubmit");
+	oButtonAddEnsure.onclick = function() {
 		console.log("新增页-提交按钮一");
 		chipModeldataCheck(1);
 	}
-	var oButtonEditEnsure = document.getElementById("myAddModalSubmitTwo");
-	oButtonEditEnsure.onclick = function() {
+	var oButtonAddEnsure = document.getElementById("myAddModalSubmitTwo");
+	oButtonAddEnsure.onclick = function() {
 		console.log("新增页-提交按钮二");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(1);
