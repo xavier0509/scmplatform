@@ -1562,25 +1562,25 @@ function getCopyInforesult() {
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
 					document.getElementById(mkkey).removeAttribute('checked');
 					document.getElementById(mkkey).setAttribute('checked', '');
-				}
+				};
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
-//				var configkey, configcounter = 0;
-//				for(configkey in data.data[0].configFile) {
-//					configcounter++;
-//					if (data.data[0].configFile[configkey].type == "string") {
-//	                    document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
-//	                }
-//					else{
-//						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
-//						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
-//	                    for (var j = 0; j < childSelect.length; j++) {
-//	                        childSelect[j].removeAttribute("selected");
-//	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
-//	                            childSelect[j].setAttribute("selected","");
-//	                        }
-//	                    };
-//					}
-//				}
+				var configkey, configcounter = 0;
+				for(configkey in data.data[0].configFile) {
+					configcounter++;
+					if (data.data[0].configFile[configkey].type == "string") {
+	                    document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+	                }
+					else{
+						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
+	                    for (var j = 0; j < childSelect.length; j++) {
+	                        childSelect[j].removeAttribute("selected");
+	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
+	                            childSelect[j].setAttribute("selected","");
+	                        }
+	                    };
+					}
+				};
 //				console.log("lxw " + data.data[0].mkFile.length); //mk
 //				for(var i = 0; i < data.data[0].mkFile.length; i++) {
 //					console.log("lxw " + data.data[0].mkFile[i].engName);
