@@ -1103,21 +1103,13 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = data.data[0].memorySize;
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				console.log("lxw " + JSON.stringify(data.data[0].mkFile));
+				//console.log("lxw " + JSON.stringify(data.data[0].mkFile));
 				var key, counter = 0;
 				for(key in data.data[0].mkFile) {
 					counter++;
 					console.log("lxw counter = " + counter + "--" + key);
 					document.getElementById(key).setAttribute('checked', '');
 				}
-				//console.log("lxw " + counter);
-				//for(var j = 0; j < data.data[0].mkFile[key].length; j++) {
-				//	console.log("lxw " + data.data[0].mkFile[key]);
-				//}
-				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
-				//	console.log("lxw " + data.data[0].mkFile[i].engName);
-				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-				//}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile)); //config
 				//for (var i = 0; i < data.data[0].configFile.length; i++) {
 	            //    if (data.data[0].configFile[i].type == "string") {
