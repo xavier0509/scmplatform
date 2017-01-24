@@ -1240,7 +1240,7 @@ function editPageSubmitData() {
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(editConfigFile));
+	//console.log("lxw " + JSON.stringify(editConfigFile));
 	//console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
@@ -1253,7 +1253,7 @@ function editPageSubmitData() {
 	dataObj.gerritState = "1"; // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
-	dataObj.desc = "enenen";
+	dataObj.desc = "enenene";
 	//console.log("lxw" + JSON.stringify(dataObj));
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
