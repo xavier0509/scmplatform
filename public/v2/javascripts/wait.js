@@ -637,7 +637,7 @@ function addPageSubmitData() {
 	var desc = "enheng";
 
 	//获取config里的数据
-	var addConfigFile = [];
+	var addConfigFile = {};
 	var oAconfigTrlength = $("#myAddModalConfigTableTbody").find("tr");
 	console.log("lxw " + oAconfigTrlength.length);
 	for(var i = 0; i < oAconfigTrlength.length; i++) {
@@ -673,13 +673,13 @@ function addPageSubmitData() {
 				}
 			}
 			oAstuInfo.options = oAopt;
-			addConfigFile.push(oAstuInfo);
+			addConfigFile[oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name")] = oAstuInfo;
 		}
 	}
-	console.log("lxw " + JSON.stringify(addConfigFile));
+	//console.log("lxw " + JSON.stringify(addConfigFile));
 
 	//获取mkFile里的信息
-	var addMkFile = [];
+	var addMkFile = {};
 	var oAMkTrDiv = $("#myAddModalMkTableTbody").find("tr");
 	console.log("lxw " + oAMkTrDiv.length);
 	var oAMkindex = null;
@@ -702,7 +702,7 @@ function addPageSubmitData() {
 				oAstuInfoTwo.cnName = oAMkTrDivTwo[oAMkindex].childNodes[1].innerHTML;
 				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
 				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
-				addMkFile.push(oAstuInfoTwo);
+				addMkFile[oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name")] = oAstuInfoTwo;
 			}
 		}
 	}
@@ -721,7 +721,8 @@ function addPageSubmitData() {
 
 	//console.log("lxw" + JSON.stringify(dataObj));
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
-	sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
+	console.log("lxw" + oAnode);
+	//sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
