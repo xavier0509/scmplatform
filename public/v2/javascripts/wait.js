@@ -1241,8 +1241,8 @@ function editPageSubmitData() {
 			}
 		}
 	}
-	console.log("lxw " + JSON.stringify(editConfigFile));
-	//console.log("lxw " + JSON.stringify(editMkFile));
+	//console.log("lxw " + JSON.stringify(editConfigFile));
+	console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
 	dataObj.memorySize = oEmemorySize;
