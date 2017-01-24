@@ -1100,36 +1100,36 @@ function getEditInforesult() {
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
+				console.log("lxw " + JSON.stringify(data));
 				console.log("lxw " + JSON.stringify(data.data));
-				console.log("lxw " + JSON.stringify(data.data[0]));
-				document.getElementById("newEditChip").value = data.data[0].chip;
-				document.getElementById("newEditModel").value = data.data[0].model;
-				document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
-				document.getElementById("newEditChipMode").value = data.data[0].chipModel;
-				document.getElementById("newEditMemory").value = data.data[0].memorySize;
-				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
+				//document.getElementById("newEditChip").value = data.data[0].chip;
+				//document.getElementById("newEditModel").value = data.data[0].model;
+				//document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
+				//document.getElementById("newEditChipMode").value = data.data[0].chipModel;
+				//document.getElementById("newEditMemory").value = data.data[0].memorySize;
+				//document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				console.log("lxw " + data.data[0].mkFile.length); //mk
-				for(var i = 0; i < data.data[0].mkFile.length; i++) {
-					console.log("lxw " + data.data[0].mkFile[i].engName);
-					document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
-				}
-				console.log("lxw " + data.data[0].configFile.length); //config
-				for (var i = 0; i < data.data[0].configFile.length; i++) {
-	                if (data.data[0].configFile[i].type == "string") {
-	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	                }
-	                else{
-	                    document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
-	                    var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
-	                    for (var j = 0; j < childSelect.length; j++) {
-	                        childSelect[j].removeAttribute("selected");
-	                        if (childSelect[j].value == data.data[0].configFile[i].value) {
-	                            childSelect[j].setAttribute("selected","");
-	                        }
-	                    };
-	                }
-	            }
+				//console.log("lxw " + data.data[0].mkFile.length); //mk
+				//for(var i = 0; i < data.data[0].mkFile.length; i++) {
+				//	console.log("lxw " + data.data[0].mkFile[i].engName);
+				//	document.getElementById(data.data[0].mkFile[i].engName).setAttribute('checked', '');
+				//}
+				//console.log("lxw " + data.data[0].configFile.length); //config
+				//for (var i = 0; i < data.data[0].configFile.length; i++) {
+	            //    if (data.data[0].configFile[i].type == "string") {
+	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+	            //    }
+	            //    else{
+	            //        document.getElementById(data.data[0].configFile[i].engName).value = data.data[0].configFile[i].value;
+	            //        var childSelect = document.getElementById(data.data[0].configFile[i].engName).childNodes;
+	            //        for (var j = 0; j < childSelect.length; j++) {
+	            //            childSelect[j].removeAttribute("selected");
+	            //            if (childSelect[j].value == data.data[0].configFile[i].value) {
+	            //                childSelect[j].setAttribute("selected","");
+	            //            }
+	            //        };
+	            //    }
+	            //}
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "访问失败");
 			}
