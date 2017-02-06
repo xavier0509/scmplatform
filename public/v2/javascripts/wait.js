@@ -1091,6 +1091,7 @@ function getEditInforesult() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
 				//console.log("lxw " + JSON.stringify(data.data[0]));
