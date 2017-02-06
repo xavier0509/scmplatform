@@ -330,7 +330,7 @@ function returnAddInfo(){
 		if(this.status == 200) 
 		{
 			var data = JSON.parse(this.responseText);
-			console.log("lxw " + data);
+			console.log(data);
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myConfigAddChangeModal").modal('hide');
