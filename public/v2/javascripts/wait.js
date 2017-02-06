@@ -1114,8 +1114,8 @@ function getEditInforesult() {
 	                    document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
 	                }
 					else{
-//						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
-//						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
+						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+						var childSelect = document.getElementById(configkey).childNodes;
 //	                    for (var j = 0; j < childSelect.length; j++) {
 //	                        childSelect[j].removeAttribute("selected");
 //	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
