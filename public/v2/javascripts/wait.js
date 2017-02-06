@@ -698,7 +698,7 @@ function addPageSubmitData() {
 				oAstuInfoTwo.cnName = oAMkTrDivTwo[oAMkindex].childNodes[1].innerHTML;
 				oAstuInfoTwo.engName = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name");
 				oAstuInfoTwo.gitPath = oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("gitPath");
-				addMkFile[oAMkTrDivTwo[oAMkindex].childNodes[1].getAttribute("name")] = oAstuInfoTwo;
+				addMkFile[oAMkTrDivTwo[oAMkindex].childNodes[0].getAttribute("id")] = oAstuInfoTwo;
 			}
 		}
 	}
