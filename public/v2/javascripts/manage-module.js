@@ -162,12 +162,12 @@ function returnChangeInfo(){
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myModuleAddChangeModal").modal('hide');
 				freshModuleAddHtml();
 			} else if(data.msg == "failure") {
-				console.log(JSON.parse(data));
 				console.log("lxw " + "修改失败");
 				document.getElementById("moduleErrorInfo").style.display = "block";
 				document.getElementById("moduleErrorInfo").innerHTML = "修改失败！";
