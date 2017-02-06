@@ -1,6 +1,6 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 $(function() {
-	sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', searchConfigInfo);
+	sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', searchConfigInfo);
 })
 
 function AferConfigHtmlInfo() {
@@ -119,7 +119,7 @@ function AferConfigHtmlInfo() {
 				}
 			}
 			if (newConfigCzName == "" || newConfigEnName == "" || newConfigSrc == "" || newConfigInstr =="" ||(newConfigString == "" && inputNumState == 0)) {
-				document.getElementById("configPostInfo").innerHTML = "请确保所有项目不为空！";
+				document.getElementById("configPostInfo").innerHTML = "请确保所有项不为空！";
 				setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
 			}
 			else{
@@ -158,13 +158,10 @@ function AferConfigHtmlInfo() {
 					
 				}
 
-				
-				
-				
 				if (myindex == null) {
 					console.log("lxw in add 新增");
 					console.log("lxw "+ node);
-					sendHTTPRequest("/fyb_api/configAdd", node, returnAddInfo);
+					sendHTTPRequest("/fybv2_api/configAdd", node, returnAddInfo);
 				} else{
 					if (node == null) {}
 					else{
@@ -176,9 +173,10 @@ function AferConfigHtmlInfo() {
 						var nodeObjString = JSON.stringify(nodeObj.data);
 						console.log(nodeObjString);
 						
-						var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
+						//var newNode = '{"data":{"condition":{"engName":"'+keylue.engName+'"},"update":'+nodeObjString+'}}';
+						var newNode = '{"data":{"_id":"'+ keylue._id +'","update":'+nodeObjString+'}}';
 						console.log("lxw "+ newNode);
-						sendHTTPRequest("/fyb_api/configUpdate", newNode, returnAddInfo);
+						sendHTTPRequest("/fybv2_api/configUpdate", newNode, returnAddInfo);
 					}
 				}
 			}
