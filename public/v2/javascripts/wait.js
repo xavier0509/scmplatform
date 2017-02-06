@@ -1117,17 +1117,18 @@ function getEditInforesult() {
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
 					if (data.data[0].configFile[configkey].type == "string") {
-	                    document.getElementById(data.data[0].configFile[configkey].oid).value = data.data[0].configFile[configkey].value;
+						
+	                    //document.getElementById(data.data[0].configFile[configkey].oid).value = data.data[0].configFile[configkey].value;
 	                }
 					else{
-						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
-						var childSelect = document.getElementById(configkey.engName).childNodes;
-	                    for (var j = 0; j < childSelect.length; j++) {
-	                        childSelect[j].removeAttribute("selected");
-	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
-	                            childSelect[j].setAttribute("selected","");
-	                        }
-	                    };
+//						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+//						var childSelect = document.getElementById(configkey.engName).childNodes;
+//	                    for (var j = 0; j < childSelect.length; j++) {
+//	                        childSelect[j].removeAttribute("selected");
+//	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
+//	                            childSelect[j].setAttribute("selected","");
+//	                        }
+//	                    };
 					}
 				}
 			} else if(data.msg == "failure") {
