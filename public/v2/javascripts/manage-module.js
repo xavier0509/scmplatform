@@ -25,18 +25,20 @@ function AfterModuleHtmlInfo() {
 			var englishName = this.name;
 			var data = oTableInput[this.index].value;
 			var jsonData = JSON.parse(data);
-			console.log("lxw "+englishName);
+			var thisId = jsonData._id;
+			console.log("lxw "+thisId);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			document.getElementById("moduleCzName").value = jsonData.cnName;
 			document.getElementById("moduleEnName").value = jsonData.engName;
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
-			toSaveButton(this.index,englishName);
+			
+			toSaveButton(this.index,thisId);
 		}
 	}
 	/*模块管理板块-保存*/
-	function toSaveButton(myindex,englishName){
+	function toSaveButton(myindex,idName){
 		var ModualSubmit = document.getElementById("inputModuleSubmit");
 		
 		ModualSubmit.onclick = function() {
@@ -53,7 +55,9 @@ function AfterModuleHtmlInfo() {
 				sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw "+myindex);
-				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				//{"data":{"_id":"5896f88dbd1da5559da02dbe","update":{"desc":"11"}}}
+				var node = '{"data":{"_id":"'+ idName +'","update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+				console.log("lxw "+ node);
 				sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
 			}
 		}
