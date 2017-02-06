@@ -338,6 +338,7 @@ function getAddInfoInfTwo() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
 			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdMain");
@@ -364,7 +365,7 @@ function getAddInfoInfTwo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' >" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -375,7 +376,7 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 					}
 				}
@@ -644,6 +645,7 @@ function addPageSubmitData() {
 			var oAopt = [];
 			var oAstuInfo = {
 				"cnName": "",
+				"configKey": "",
 				"engName": "",
 				"type": "",
 				"value": "",
@@ -655,6 +657,7 @@ function addPageSubmitData() {
 			oAstuInfo.category = oAconfigTrDiv[0].title;
 			oAstuInfo.cnName = oAconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oAstuInfo.engName = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+			oAstuInfo.configKey = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
 			console.log("lxw" + oAstuInfo.engName);
 			oAstuInfo.type = oAconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oAstuInfo.value = oAconfigTrDiv[thisConfigindex].childNodes[1].value;
