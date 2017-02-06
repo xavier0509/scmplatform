@@ -1,7 +1,7 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', searchModalInfo);
+	sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', searchModalInfo);
 })
 
 function AfterModuleHtmlInfo() {
@@ -24,7 +24,6 @@ function AfterModuleHtmlInfo() {
 			console.log("ok " + this.index+"--"+this.name); //点击的是第几个
 			var englishName = this.name;
 			var data = oTableInput[this.index].value;
-			// console.log("xjr"+data);
 			var jsonData = JSON.parse(data);
 			console.log("lxw "+englishName);
 			$('#myModuleAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
@@ -51,11 +50,11 @@ function AfterModuleHtmlInfo() {
 			if (myindex == -1) {
 				console.log("lxw "+myindex);
 				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-				sendHTTPRequest("/fyb_api/moduleAdd", node, returnAddInfo);
+				sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
 			} else{
 				console.log("lxw "+myindex);
 				var node = '{"data":{"condition":{"engName":"'+englishName+'"},"update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
-				sendHTTPRequest("/fyb_api/moduleUpdate", node, returnChangeInfo);
+				sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
 			}
 		}
 	}
