@@ -79,9 +79,7 @@ function startSelect() {
 }
 
 function searchResource() {
-	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
 		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var title = document.getElementById("wait-tablebody"); //获取tbody的表格内容
