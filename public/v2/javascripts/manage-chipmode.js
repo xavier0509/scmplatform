@@ -27,7 +27,8 @@ function AfterChipModeHtmlInfo() {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
-			var thisIndexName = oTableA[this.index].innerText;
+			var thisIndexName = oTableA[this.index].innerText;//通过englishName找到对应数据
+			//var thisIndexName = oTableA[this.index].name;//通过id找到对应数据
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			//给保存按钮传参
@@ -41,7 +42,8 @@ function AfterChipModeHtmlInfo() {
 		oTableB[i].index = i;
 		oTableB[i].onclick = function() {
 			console.log("ok" + this.index); //点击的是第几个
-			var thisIndexName = oTableB[this.index].innerText;
+			var thisIndexName = oTableB[this.index].innerText;//通过englishName找到对应数据
+			//var thisIndexName = oTableB[this.index].name;//通过id找到对应数据
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			toSaveButton("model", this.index, thisIndexName);
@@ -53,7 +55,7 @@ function AfterChipModeHtmlInfo() {
 		console.log("lxw " + "in inputChipOrModeClose");
 	}
 	/*机芯机型板块-机芯-增加-保存*/
-	function toSaveButton(name, index, newname) {
+	function toSaveButton(name, index, idname) {
 		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
 		ChipOrModeSubmit.onclick = function() {
 			console.log("点击了保存按钮" + name + "--" + index + "--" + newname);
@@ -70,7 +72,9 @@ function AfterChipModeHtmlInfo() {
 						sendHTTPRequest("/fybv2_api/chipAdd", creatChip, CreatChipInfo);
 					} else {
 						console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
-						var changeChip = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
+						var changeChip = '{"data":{"old":"' + idname + '","newer":"' + currentChipOrModelName + '"}}';
+						//{"data":{"id":"5896f88dbd1da5559da02dbe","update":{"desc":"11"}}}
+						//var changeChip = '{"data":{"id":"'+ idname +'","update":{"name":"' + currentChipOrModelName + '"}}}';
 						console.log("lxw " + changeChip);
 						sendHTTPRequest("/fybv2_api/chipUpdate", changeChip, ChangeChipInfo);
 					}
@@ -82,7 +86,8 @@ function AfterChipModeHtmlInfo() {
 						sendHTTPRequest("/fybv2_api/modelAdd", creatModel, CreatModelInfo);
 					} else {
 						console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
-						var changeModel = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
+						var changeModel = '{"data":{"old":"' + idname + '","newer":"' + currentChipOrModelName + '"}}';
+						//var changeModel = '{"data":{"id":"'+ idname +'","update":{"name":"' + currentChipOrModelName + '"}}}';
 						console.log("lxw " + changeModel);
 						sendHTTPRequest("/fybv2_api/modelUpdate", changeModel, ChangeModelInfo);
 					}
@@ -104,7 +109,7 @@ function SearchChipInfo() {
 			console.log("lxw " + data.data.length);
 			var _rowChip = document.getElementById("chipManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
-				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+				_rowChip.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
 		sendHTTPRequest("/fybv2_api/modelQuery", '{"data":""}', SearchModeInfo);
@@ -154,7 +159,7 @@ function SearchModeInfo() {
 			console.log("lxw " + data.data.length);
 			var _rowMode = document.getElementById("modalManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
-				_rowMode.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
+				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
 		AfterChipModeHtmlInfo();
@@ -184,7 +189,7 @@ function CreatModelInfo() {
 function ChangeModelInfo() {
 	console.log("lxw " + "ChangeModelInfo");
 	if(this.readyState == 4) {
-		if(this.status == 200) //TODO
+		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
