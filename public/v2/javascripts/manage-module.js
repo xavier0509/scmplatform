@@ -144,6 +144,7 @@ function returnAddInfo(){
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			if(data.msg == "success") {
 				console.log("lxw " + "添加成功");
 				$("#myModuleAddChangeModal").modal('hide');
