@@ -21,12 +21,10 @@ function forsession() {
 }
 
 function sessionresult() {
-	//console.log("this.readyState = " + this.readyState);
 	if(this.readyState == 4) {
-		//console.log("this.status = " + this.status);
-		//console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			if(data.msg == "success") {
 				loginusername = data.data.data.author;
 				if(data.data.data.adminFlag == "1") {
