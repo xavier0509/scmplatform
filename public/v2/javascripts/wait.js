@@ -75,7 +75,7 @@ function startSelect() {
 		node = '{"data":{"condition":' + myNeedString + '},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}';
 	}
 	console.log("lxw " + node);
-	sendHTTPRequest("/fyb_api/productRegexQuery", node, searchResource);
+	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
 }
 
 function searchResource() {
@@ -135,7 +135,7 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
+		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
 	/*批量修改*/
@@ -167,7 +167,7 @@ function AfterWaitHtmlinfo() {
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 			
-			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
+			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
 			$('#myDeleteDialogModal').modal();
@@ -221,7 +221,7 @@ function AfterWaitHtmlinfo() {
 			console.log("lxw " + ChipModelArray);
 			var deleNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"userName":"'+loginusername+'","gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
-			sendHTTPRequest("/fyb_api/productUpdate", deleNode, moreDeleteresult);
+			sendHTTPRequest("/fybv2_api/productUpdate", deleNode, moreDeleteresult);
 		}
 	}
 
@@ -239,7 +239,7 @@ function AfterWaitHtmlinfo() {
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
+			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
 
@@ -255,7 +255,7 @@ function AfterWaitHtmlinfo() {
 			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
 			//校验机芯机型
-			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfoInDel);
+			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfoInDel);
 		}
 
 	}
@@ -272,7 +272,7 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			sendHTTPRequest("/fyb_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
+			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
 }
@@ -329,7 +329,7 @@ function getAddInfoInfOne() {
 				}
 			}
 		};
-		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getAddInfoInfTwo);
+		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getAddInfoInfTwo);
 	}
 }
 
@@ -522,7 +522,7 @@ function getAddInfoInfTwo() {
 			}
 		};
 		addPageButtons(); 
-		sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+		sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 	}
 }
 function checkChipInfo(){
@@ -537,7 +537,7 @@ function checkChipInfo(){
 			}
 			console.log("lxw "+ allChipArray);
 		};
-		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', checkModelInfo);
+		sendHTTPRequest("/fybv2_api/modelQuery", '{"data":""}', checkModelInfo);
 	}
 }
 function checkModelInfo(){
@@ -566,7 +566,7 @@ function checkChipInfoInDel(){
 			}
 			console.log("lxw "+ allChipArray);
 		};
-		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', checkModelInfoInDel);
+		sendHTTPRequest("/fybv2_api/modelQuery", '{"data":""}', checkModelInfoInDel);
 	}
 }
 function checkModelInfoInDel(){
@@ -718,7 +718,7 @@ function addPageSubmitData() {
 	//console.log("lxw" + JSON.stringify(dataObj));
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
-	//sendHTTPRequest("/fyb_api/productAdd", oAnode, productAddresult);
+	//sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
@@ -885,7 +885,7 @@ function getEditInfoInfOne() {
 				}
 			}
 		};
-		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getEditInfoInfTwo);
+		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getEditInfoInfTwo);
 	}
 }
 
@@ -1135,7 +1135,7 @@ function getEditInforesult() {
 		};
 		editPageButtonsOnclick();
 		if(allChipArray.length==0||allModelArray.length==0){
-			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 		}
 	}
 }
@@ -1253,7 +1253,7 @@ function editPageSubmitData() {
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fyb_api/productUpdate", oEnode, productEditresult);
+	//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 }
 
 function productEditresult() {
@@ -1329,7 +1329,7 @@ function getCopyInfoInfOne() {
 				}
 			}
 		};
-		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getCopyInfoInfTwo);
+		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getCopyInfoInfTwo);
 	}
 }
 
@@ -1583,7 +1583,7 @@ function getCopyInforesult() {
 		startSelect();
 		copyPageButtons();
 		if(allChipArray.length==0||allModelArray.length==0){
-			sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', checkChipInfo);
+			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 		}
 	}
 }
@@ -1694,7 +1694,7 @@ function copyPageSubmitData() {
 	dataObj.desc = "enenen";
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
-	//sendHTTPRequest("/fyb_api/productAdd", oCnode, productAddresult);
+	//sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne(){
@@ -1749,7 +1749,7 @@ function getMoreEditInfoOne(){
 				}
 			}
 		};
-		sendHTTPRequest("/fyb_api/configQuery", '{"data":""}', getMoreEditInfoTwo);
+		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getMoreEditInfoTwo);
 	}
 }
 function getMoreEditInfoTwo(){
@@ -2132,7 +2132,7 @@ function singleDeletePageButtons(olchip, olmode) {
 		console.log("lxw " + olchip + "--" + olmode);
 		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"'+loginusername+'","gerritState":"1","operateType":"2"}}}';
 		console.log("lxw " + ooEnode);
-		sendHTTPRequest("/fyb_api/productUpdate", ooEnode, productEditresult);
+		sendHTTPRequest("/fybv2_api/productUpdate", ooEnode, productEditresult);
 	}
 }
 /*点击批量修改-弹框里的各个按钮*/
