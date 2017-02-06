@@ -1107,8 +1107,7 @@ function getEditInforesult() {
 				for(key in data.data[0].mkFile) {
 					counter++;
 					console.log("lxw counter = " + counter + "--" + key);
-					document.getElementById(key).setAttribute('checked', '');
-					document.getElementById(key).checked = "true";
+					//document.getElementById(key).setAttribute('checked', '');
 					console.log(document.getElementById(key).getAttribute("checked"));
 				}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
