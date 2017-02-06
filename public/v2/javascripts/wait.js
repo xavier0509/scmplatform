@@ -1082,7 +1082,7 @@ function getEditInfoInfTwo() {
 			}
 		};
 		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		sendHTTPRequest("/fyb_api/productQuery", node, getEditInforesult);
+		sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
 	}
 }
 
@@ -1531,7 +1531,7 @@ function getCopyInfoInfTwo() {
 			}
 		};
 		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
+		sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
 }
 
@@ -1942,7 +1942,7 @@ function getMoreEditInfoTwo(){
 		};
 		moreEditPageButtons();
 		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		//sendHTTPRequest("/fyb_api/productQuery", node, getCopyInforesult);
+		//sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
 }
 function getMoreEditInfo(){
