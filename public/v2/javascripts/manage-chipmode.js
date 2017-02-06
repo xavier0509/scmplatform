@@ -72,9 +72,8 @@ function AfterChipModeHtmlInfo() {
 						sendHTTPRequest("/fybv2_api/chipAdd", creatChip, CreatChipInfo);
 					} else {
 						console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
-						var changeChip = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
-						//{"data":{"_id":"5896f88dbd1da5559da02dbe","update":{"old":"11","newer":"22"}}}
-						//var changeChip = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
+						//var changeChip = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
+						var changeChip = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
 						console.log("lxw " + changeChip);
 						sendHTTPRequest("/fybv2_api/chipUpdate", changeChip, ChangeChipInfo);
 					}
@@ -86,8 +85,8 @@ function AfterChipModeHtmlInfo() {
 						sendHTTPRequest("/fybv2_api/modelAdd", creatModel, CreatModelInfo);
 					} else {
 						console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
-						var changeModel = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
-						//var changeModel = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
+						//var changeModel = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
+						var changeModel = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
 						console.log("lxw " + changeModel);
 						sendHTTPRequest("/fybv2_api/modelUpdate", changeModel, ChangeModelInfo);
 					}
