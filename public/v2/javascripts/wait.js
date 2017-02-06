@@ -669,7 +669,7 @@ function addPageSubmitData() {
 				}
 			}
 			oAstuInfo.options = oAopt;
-			addConfigFile[oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name")] = oAstuInfo;
+			addConfigFile[oAconfigTrDiv[thisConfigindex].childNodes[1].getAttribute("id")] = oAstuInfo;
 		}
 	}
 	//console.log("lxw " + JSON.stringify(addConfigFile));
