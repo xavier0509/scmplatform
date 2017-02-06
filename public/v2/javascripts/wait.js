@@ -1111,7 +1111,7 @@ function getEditInforesult() {
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
 					if (data.data[0].configFile[configkey].type == "string") {
-	                    //document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+	                    document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
 	                }
 					else{
 //						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
