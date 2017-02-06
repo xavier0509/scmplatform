@@ -1282,6 +1282,7 @@ function getCopyInfoInfOne() {
 		console.log("lxw " + "getCopyInfoInfOne");
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
+			console.log(data);
 			var kk = 0;
 			var _rowCopyPageApp = document.getElementById("myCopyModalMkTableApp");
 			var _rowCopyPageService = document.getElementById("myCopyModalMkTableService");
