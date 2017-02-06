@@ -717,7 +717,7 @@ function addPageSubmitData() {
 
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
-	//sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
+	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
