@@ -1116,12 +1116,12 @@ function getEditInforesult() {
 					else{
 						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
 						var childSelect = document.getElementById(configkey).childNodes;
-//	                    for (var j = 0; j < childSelect.length; j++) {
-//	                        childSelect[j].removeAttribute("selected");
-//	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
-//	                            childSelect[j].setAttribute("selected","");
-//	                        }
-//	                    };
+	                    for (var j = 0; j < childSelect.length; j++) {
+	                        childSelect[j].removeAttribute("selected");
+	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
+	                            childSelect[j].setAttribute("selected","");
+	                        }
+	                    };
 					}
 				}
 			} else if(data.msg == "failure") {
