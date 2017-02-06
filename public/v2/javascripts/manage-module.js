@@ -167,6 +167,7 @@ function returnChangeInfo(){
 				$("#myModuleAddChangeModal").modal('hide');
 				freshModuleAddHtml();
 			} else if(data.msg == "failure") {
+				console.log(JSON.parse(data));
 				console.log("lxw " + "修改失败");
 				document.getElementById("moduleErrorInfo").style.display = "block";
 				document.getElementById("moduleErrorInfo").innerHTML = "修改失败！";
