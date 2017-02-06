@@ -1107,8 +1107,7 @@ function getEditInforesult() {
 				for(key in data.data[0].mkFile) {
 					counter++;
 					console.log("lxw counter = " + counter + "--" + key);
-					//document.getElementById(key).setAttribute('checked', '');
-					//console.log(document.getElementById(key).getAttribute("checked"));
+					document.getElementById(key).setAttribute('checked', '');
 				}
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
 				var configkey, configcounter = 0;
@@ -1117,7 +1116,6 @@ function getEditInforesult() {
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
 					if (data.data[0].configFile[configkey].type == "string") {
-						
 	                    //document.getElementById(data.data[0].configFile[configkey].oid).value = data.data[0].configFile[configkey].value;
 	                }
 					else{
