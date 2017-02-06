@@ -1,7 +1,7 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 
 $(function() {
-	sendHTTPRequest("/fyb_api/chipQuery", '{"data":""}', SearchChipInfo);
+	sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', SearchChipInfo);
 })
 
 function AfterChipModeHtmlInfo() {
@@ -66,25 +66,25 @@ function AfterChipModeHtmlInfo() {
 				if(name == "chip") {
 					if(index == "-1") {
 						console.log("lxw " + "新增机芯的保存按钮" + currentChipOrModelName);
-						var creatChip = '{"data":{"chip":"' + currentChipOrModelName + '"}}';
-						sendHTTPRequest("/fyb_api/chipAdd", creatChip, CreatChipInfo);
+						var creatChip = '{"data":{"name":"' + currentChipOrModelName + '"}}';
+						sendHTTPRequest("/fybv2_api/chipAdd", creatChip, CreatChipInfo);
 					} else {
 						console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
 						var changeChip = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
 						console.log("lxw " + changeChip);
-						sendHTTPRequest("/fyb_api/chipUpdate", changeChip, ChangeChipInfo);
+						sendHTTPRequest("/fybv2_api/chipUpdate", changeChip, ChangeChipInfo);
 					}
 				} else if(name == "model") {
 					if(index == "-1") {
 						console.log("lxw " + "新增机型的保存按钮" + currentChipOrModelName);
-						var creatModel = '{"data":{"model":"' + currentChipOrModelName + '"}}';
+						var creatModel = '{"data":{"name":"' + currentChipOrModelName + '"}}';
 						console.log("lxw " + creatModel);
-						sendHTTPRequest("/fyb_api/modelAdd", creatModel, CreatModelInfo);
+						sendHTTPRequest("/fybv2_api/modelAdd", creatModel, CreatModelInfo);
 					} else {
 						console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
 						var changeModel = '{"data":{"old":"' + newname + '","newer":"' + currentChipOrModelName + '"}}';
 						console.log("lxw " + changeModel);
-						sendHTTPRequest("/fyb_api/modelUpdate", changeModel, ChangeModelInfo);
+						sendHTTPRequest("/fybv2_api/modelUpdate", changeModel, ChangeModelInfo);
 					}
 				}
 			}
@@ -100,13 +100,14 @@ function SearchChipInfo() {
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
 			console.log("lxw " + data.data.length);
 			var _rowChip = document.getElementById("chipManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
 				_rowChip.innerHTML += "<div class='col-xs-4'><a>" + data.data[i].name + "</a></div>";
 			}
 		};
-		sendHTTPRequest("/fyb_api/modelQuery", '{"data":""}', SearchModeInfo);
+		sendHTTPRequest("/fybv2_api/modelQuery", '{"data":""}', SearchModeInfo);
 	}
 }
 /*机芯-新增数据*/
@@ -149,6 +150,7 @@ function SearchModeInfo() {
 		if(this.status == 200)
 		{
 			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
 			console.log("lxw " + data.data.length);
 			var _rowMode = document.getElementById("modalManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
