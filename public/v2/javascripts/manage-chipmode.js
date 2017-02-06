@@ -55,7 +55,7 @@ function AfterChipModeHtmlInfo() {
 		console.log("lxw " + "in inputChipOrModeClose");
 	}
 	/*机芯机型板块-机芯-增加-保存*/
-	function toSaveButton(name, index, idname, oldname) {
+	function toSaveButton(name, index, oldname, idname) {
 		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
 		ChipOrModeSubmit.onclick = function() {
 			console.log("点击了保存按钮" + name + "--" + index +"--"+ idname + "--" + oldname);
