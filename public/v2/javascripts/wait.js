@@ -805,10 +805,12 @@ function chipModeldataCheck(number){
 		}
 	} else{
 		if(ChipInArray==-1){
+			console.log("I am here chip" + mySpanId);
 			document.getElementById(mySpanId).style.display = "block";
 			document.getElementById(mySpanId).innerHTML = "机芯：" + nullChip + "不存在";
 			setTimeout("spanhidden()", 3000);
 		}else if(ChipInArray!=-1 && ModelInArray==-1){
+			console.log("I am here model" + mySpanId);
 			document.getElementById(mySpanId).style.display = "block";
 			document.getElementById(mySpanId).innerHTML = "机型：" + nullModel + "不存在"
 			setTimeout("spanhidden()", 3000);
