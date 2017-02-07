@@ -2239,7 +2239,9 @@ function moreEditPageButtons() {
 	omyTextEditObj = document.getElementsByClassName("mytextedit");
 	console.log(omyTextEditObj.length);
 	for (var ii=0; ii<omyTextEditObj.length; ii++) {
-		console.log(omyTextEditObj[ii].childNodes[0].title); 
+		omyTextEditObj[ii].childNodes[1].onchange = function(){
+			console.log(omyTextEditObj[ii].childNodes[0].title);
+		};
 	}
 }
 
