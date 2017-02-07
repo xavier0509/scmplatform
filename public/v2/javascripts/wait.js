@@ -2021,7 +2021,7 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkDelFile['mkFile.'+curTwoId] = oCstuInfoTwo;
+				moreEditMkDelFile['mkFile.'+curTwoId] = 1;
 			}
 		}
 	}
