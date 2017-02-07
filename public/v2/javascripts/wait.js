@@ -2240,8 +2240,14 @@ function moreEditPageButtons() {
 	console.log(omyTextEditObj.length);
 	for (var ii=0; ii<omyTextEditObj.length; ii++) {
 		omyTextEditObj[ii].childNodes[1].onchange = function(){
-			console.log(document.getElementById(this.id).getAttribute("oldvalue"));
+			//console.log(document.getElementById(this.id).getAttribute("oldvalue"));
 			console.log(this.type+"---"+this.getAttribute("oldvalue")+"|"+this.value+"---"+this.previousSibling.title);
+			if (this.getAttribute("oldvalue") != this.value) {
+				//做了修改
+				this.previousSibling.setAttribute("color","red");
+			} else{
+				//没做修改
+			}
 		}
 	}
 }
