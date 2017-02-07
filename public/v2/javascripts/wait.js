@@ -1703,28 +1703,28 @@ function getMoreEditInfoOne(){
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk].engName + "' class='aFlagToButton' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='"+data.data[kk].cnName+"' cnName='"+data.data[kk].cnName+"' gitPath='"+data.data[kk].gitPath+"' category='"+data.data[kk].category+"' desc='"+data.data[kk].desc+"' curValue = '0'>"+data.data[kk].cnName+"</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				}
 			}
 		};
@@ -1762,9 +1762,9 @@ function getMoreEditInfoTwo(){
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1782,9 +1782,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1802,9 +1802,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1822,9 +1822,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1842,9 +1842,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1862,9 +1862,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1882,9 +1882,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1902,9 +1902,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1965,8 +1965,6 @@ function getMoreEditInfo(){
 			}
 		}
 	}
-	
-	
 	console.log("lxw "+mEMkAddCzName);
 	console.log("lxw "+mEMkDelCzName);
 	console.log("lxw "+mEConfigEditCzName);
@@ -1976,10 +1974,10 @@ function getMoreEditInfo(){
 	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
 }
 function getMoreEditInfoEnd(){
-	//获取mkFile里的信息
+	//获取mkFile、configFile里的信息
 	var moreEditMkAddFile = [];
 	var moreEditMkDelFile = [];
-	var moreEditMkEditFile = [];//config文件用
+	var moreEditConfigEditFile = [];//config文件用
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
@@ -2024,8 +2022,8 @@ function getMoreEditInfoEnd(){
 		}
 	}
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
-	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
-	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"push","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
+	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
+	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
 }
