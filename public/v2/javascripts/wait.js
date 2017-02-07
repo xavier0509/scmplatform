@@ -2060,7 +2060,7 @@ function getMoreEditInfoEnd() {
 	console.log("lxw " + addNode);
 	console.log("lxw " + delNode);
 	//console.log("lxw " + editNode);
-	//sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
+	sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
 	//sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
 	//sendHTTPRequest("/fybv2_api/productUpdate", editNode, moreEditResult);
 }
