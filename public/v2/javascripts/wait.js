@@ -1762,9 +1762,9 @@ function getMoreEditInfoTwo(){
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1782,9 +1782,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1802,9 +1802,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1822,9 +1822,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1842,9 +1842,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1862,9 +1862,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1882,9 +1882,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1902,9 +1902,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' curvalue='0'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
