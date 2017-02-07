@@ -1935,7 +1935,7 @@ function getMoreEditInfo(){
 	var oMEMkindex = null;
 	for(var i = 0; i < oMEMkTrDiv.length; i++) {
 		oMEMkTrDivTwo = $("#myMoreEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" + oMEMkTrDivTwo.length);
+		//console.log("lxw" + oMEMkTrDivTwo.length);
 		for(var j = 1; j < oMEMkTrDivTwo.length; j++) {
 			oMEMkindex = j;
 			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
@@ -1955,13 +1955,13 @@ function getMoreEditInfo(){
 	var oMEConfigindex = null;
 	for(var i = 0; i < oMEConfigTrDiv.length; i++) {
 		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		console.log("lxw" + oMEConfigTrDivTwo.length);
+		//console.log("lxw" + oMEConfigTrDivTwo.length);
 		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
 			oMEConfigindex = j;
 			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("curvalue");
 			if(ooValue == "1") {//修改
 				console.log("lxw "+ oMEConfigindex +"--"+oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value);
-				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value);
+				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].title);
 			}
 		}
 	}
