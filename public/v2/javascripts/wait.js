@@ -1950,21 +1950,21 @@ function getMoreEditInfo(){
 		}
 	}
 	
-//	var oMEConfigTrDiv = $("#myMoreEditModalConfigTableTbody").find("tr");
-//	console.log("lxw " + oMEConfigTrDiv.length);
-//	var oMEConfigindex = null;
-//	for(var i = 0; i < oMEConfigTrDiv.length; i++) {
-//		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-//		console.log("lxw" + oMEConfigTrDivTwo.length);
-//		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
-//			oMEConfigindex = j;
-//			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].getAttribute("curValue");
-//			if(ooValue == "1") {//修改
-//				console.log("lxw "+ oMEConfigindex +"--"+oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].innerHTML);
-//				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].innerHTML);
-//			}
-//		}
-//	}
+	var oMEConfigTrDiv = $("#myMoreEditModalConfigTableTbody").find("tr");
+	console.log("lxw " + oMEConfigTrDiv.length);
+	var oMEConfigindex = null;
+	for(var i = 0; i < oMEConfigTrDiv.length; i++) {
+		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oMEConfigTrDivTwo.length);
+		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
+			oMEConfigindex = j;
+			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("curvalue");
+			if(ooValue == "1") {//修改
+				console.log("lxw "+ oMEConfigindex +"--"+oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value);
+				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value);
+			}
+		}
+	}
 	
 	
 	console.log("lxw "+mEMkAddCzName);
@@ -2242,12 +2242,10 @@ function moreEditPageButtons() {
 		omyTextEditObj[ii].childNodes[1].onchange = function(){
 			//console.log(document.getElementById(this.id).getAttribute("oldvalue"));
 			console.log(this.type+"---"+this.getAttribute("oldvalue")+"|"+this.value+"---"+this.previousSibling.title);
-			if (this.getAttribute("oldvalue") != this.value) {
-				//做了修改
+			if (this.getAttribute("oldvalue") != this.value) {//做了修改
 				this.previousSibling.style.color = "red";
 				this.setAttribute("curvalue","1");
-			} else{
-				//没做修改
+			} else{//没做修改
 				this.previousSibling.style.color = "";
 				this.setAttribute("curvalue","0");
 			}
