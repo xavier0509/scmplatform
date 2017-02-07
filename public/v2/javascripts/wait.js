@@ -2015,18 +2015,20 @@ function getMoreEditInfoEnd(){
 					"desc": "XXXXX", //后期做“”的处理。
 				};
 				var curTwoId = null;
+				var myobj = null;
 				curTwoId = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.category = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("category");
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkDelFile['mkFile.'+curId] = oCstuInfoTwo;
+				myobj = 'mkFile.'+curTwoId;
+				moreEditMkDelFile.myobj = oCstuInfoTwo;
 			}
 		}
 	}
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
-	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{'+ moreEditMkAddFile + '}}}';
-	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{'+ moreEditMkDelFile + '}}}';
+	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{'+ JSON.stringify(moreEditMkAddFile) + '}}}';
+	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{'+ JSON.stringify(moreEditMkDelFile) + '}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
 }
