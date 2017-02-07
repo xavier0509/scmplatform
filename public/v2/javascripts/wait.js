@@ -1975,9 +1975,9 @@ function getMoreEditInfo(){
 }
 function getMoreEditInfoEnd(){
 	//获取mkFile、configFile里的信息
-	var moreEditMkAddFile = [];
-	var moreEditMkDelFile = [];
-	var moreEditConfigEditFile = [];//config文件用
+	var moreEditMkAddFile = {};
+	var moreEditMkDelFile = {};
+	var moreEditConfigEditFile = {};//config文件用
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
@@ -1988,7 +1988,6 @@ function getMoreEditInfoEnd(){
 			oMEMkindex = j;
 			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
 			if(ooValue == "1") {//新增
-				console.log("lxw "+ oMEMkindex);
 				console.log("lxw "+ oMEMkindex + "--"+ oMEMkTrDivTwo[oMEMkindex].childNodes[0].id+"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
 				var oCstuInfoTwo = {
 					"cnName": "",
@@ -1997,14 +1996,16 @@ function getMoreEditInfoEnd(){
 					"category": "",
 					"desc": "XXXXX", //后期做“”的处理。
 				};
+				var curId = null;
+				curId = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.category = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("category");
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
-				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
+				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
+				//moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
+				moreEditMkAddFile['mkFile.'+curId] = oCstuInfoTwo;
 			}
 			if(ooValue == "2") {//删除
-				console.log("lxw "+ oMEMkindex);
 				console.log("lxw "+ oMEMkindex + "--"+ oMEMkTrDivTwo[oMEMkindex].childNodes[0].id+"--"+oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML);
 				var oCstuInfoTwo = {
 					"cnName": "",
@@ -2013,17 +2014,19 @@ function getMoreEditInfoEnd(){
 					"category": "",
 					"desc": "XXXXX", //后期做“”的处理。
 				};
+				var curTwoId = null;
+				curTwoId = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
 				oCstuInfoTwo.category = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("category");
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
-				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("id");
+				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkDelFile.push(JSON.stringify(oCstuInfoTwo));
+				moreEditMkDelFile['mkFile.'+curId] = oCstuInfoTwo;
 			}
 		}
 	}
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
-	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{"mkFile":{"$each":['+moreEditMkAddFile +']}}}}';
-	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{"mkFile":{"$each":['+moreEditMkDelFile+']}}}}';
+	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{moreEditMkAddFile}}}';
+	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{moreEditMkDelFile}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
 }
