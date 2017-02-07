@@ -2025,8 +2025,8 @@ function getMoreEditInfoEnd(){
 		}
 	}
 	console.log("lxw "+ChipModelArray);//{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
-	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{moreEditMkAddFile}}}';
-	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{moreEditMkDelFile}}}';
+	var addNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"set","update":{'+ moreEditMkAddFile + '}}}';
+	var delNode = '{"data":{"condition":{"$or":['+ChipModelArray+']},"action":"unset","update":{'+ moreEditMkDelFile + '}}}';
 	console.log("lxw "+ addNode);
 	console.log("lxw "+ delNode);
 }
