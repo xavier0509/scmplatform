@@ -1124,6 +1124,7 @@ function getEditInforesult() {
 					configcounter++;
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
+					console.log(data.data[0].configFile.length);
 					if(configkey == 0) {
 						//MK没数据
 					} else {
