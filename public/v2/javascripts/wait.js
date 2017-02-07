@@ -1655,7 +1655,7 @@ function copyPageSubmitData() {
 				oCstuInfoTwo.cnName = oCMkTrDivTwo[oCMkindex].childNodes[1].innerHTML;
 				oCstuInfoTwo.engName = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("name");
 				oCstuInfoTwo.gitPath = oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("gitPath");
-				copyMkFile[oCMkTrDivTwo[oCMkindex].childNodes[1].getAttribute("id")] = oCstuInfoTwo;
+				copyMkFile[oCMkTrDivTwo[oCMkindex].childNodes[0].getAttribute("id")] = oCstuInfoTwo;
 			}
 		}
 	}
