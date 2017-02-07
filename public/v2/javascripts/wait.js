@@ -1107,18 +1107,20 @@ function getEditInforesult() {
 					configcounter++;
 					console.log("lxw counter = " + configcounter + "--" + configkey);
 					console.log(data.data[0].configFile[configkey].type);
-					if (data.data[0].configFile[configkey].type == "string") {
-	                    document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
-	                }
-					else{
-						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
-						var childSelect = document.getElementById(configkey).childNodes;
-	                    for (var j = 0; j < childSelect.length; j++) {
-	                        childSelect[j].removeAttribute("selected");
-	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
-	                            childSelect[j].setAttribute("selected","");
-	                        }
-	                    };
+					if(configkey!=0){
+						if (data.data[0].configFile[configkey].type == "string") {
+	                    	document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+	                	}
+						else{
+							document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+							var childSelect = document.getElementById(configkey).childNodes;
+	                    	for (var j = 0; j < childSelect.length; j++) {
+	                    	    childSelect[j].removeAttribute("selected");
+	                     	   if (childSelect[j].value == data.data[0].configFile[configkey].value) {
+	                      	      childSelect[j].setAttribute("selected","");
+	                      	  }
+	                    	};
+						}
 					}
 				}
 			} else if(data.msg == "failure") {
@@ -2027,11 +2029,9 @@ function getMoreEditInfoEnd(){
 	}
 	
 	var oMEConfigTrDiv = $("#myMoreEditModalConfigTableTbody").find("tr");
-	//console.log("lxw " + oMEConfigTrDiv.length);
 	var oMEConfigindex = null;
 	for(var i = 0; i < oMEMkTrDiv.length; i++) {
 		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		//console.log("lxw" + oMEConfigTrDivTwo.length);
 		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
 			oMEConfigindex = j;
 			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("curvalue");
