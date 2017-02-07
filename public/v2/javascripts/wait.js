@@ -2034,12 +2034,12 @@ function getMoreEditInfoEnd(){
 		//console.log("lxw" + oMEConfigTrDivTwo.length);
 		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
 			oMEConfigindex = j;
-			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].getAttribute("curvalue");
+			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("curvalue");
 			if(ooValue == "1") {//修改了
 				console.log("hello");
 				var curCTwoId = null;
 				curCTwoId = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("id");
-				moreEditConfigEditFile['configFile.'+curCTwoId+'.value'] = "hello";//oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
+				moreEditConfigEditFile['configFile.'+curCTwoId+'.value'] = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
 			}
 		}
 	}
