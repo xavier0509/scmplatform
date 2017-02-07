@@ -1762,7 +1762,7 @@ function getMoreEditInfoTwo(){
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1773,7 +1773,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigMain.innerHTML += _myAddselect;
 					}
 				}
@@ -1782,7 +1782,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1793,7 +1793,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -1802,7 +1802,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1813,7 +1813,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -1822,7 +1822,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1833,7 +1833,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -1842,7 +1842,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1853,7 +1853,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -1862,7 +1862,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1873,7 +1873,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1882,7 +1882,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1893,7 +1893,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				}
@@ -1902,7 +1902,7 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1913,7 +1913,7 @@ function getMoreEditInfoTwo(){
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1925,10 +1925,11 @@ function getMoreEditInfoTwo(){
 	}
 }
 function getMoreEditInfo(){
-	//获取mkFile里的信息
+	//获取mkFile、configFile里的信息
 	var mEMkAddCzName = [];
 	var mEMkDelCzName = [];
 	var mEConfigEditCzName = [];//config文件用
+	
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
@@ -1948,8 +1949,27 @@ function getMoreEditInfo(){
 			}
 		}
 	}
+	
+//	var oMEConfigTrDiv = $("#myMoreEditModalConfigTableTbody").find("tr");
+//	console.log("lxw " + oMEConfigTrDiv.length);
+//	var oMEConfigindex = null;
+//	for(var i = 0; i < oMEConfigTrDiv.length; i++) {
+//		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+//		console.log("lxw" + oMEConfigTrDivTwo.length);
+//		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
+//			oMEConfigindex = j;
+//			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].getAttribute("curValue");
+//			if(ooValue == "1") {//修改
+//				console.log("lxw "+ oMEConfigindex +"--"+oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].innerHTML);
+//				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].innerHTML);
+//			}
+//		}
+//	}
+	
+	
 	console.log("lxw "+mEMkAddCzName);
 	console.log("lxw "+mEMkDelCzName);
+	console.log("lxw "+mEConfigEditCzName);
 	document.getElementById("AimAtChipAndModel").innerHTML = ChipModelArray;
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
@@ -2148,7 +2168,7 @@ function moreEditPageButtons() {
 	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
-	/*批量修改页-单项*/
+	/*批量修改页-MK页*/
 	var oClassAClicks = new Array();
 	var omybuttonAddstyle = new Array();
 	var omybuttonDelstyle = new Array();
@@ -2162,7 +2182,6 @@ function moreEditPageButtons() {
 		oClassAClicks[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var currentId = oClassAClicks[this.index].id;
-			//console.log("lxw--oAFlagStatus[" + this.index + "] = " + oAFlagStatus[this.index]);
 			for(var j = 0; j < oClassAClicks.length; j++) {
 				omybuttonAddstyle[j].style.display = "none";
 				omybuttonDelstyle[j].style.display = "none";
@@ -2174,12 +2193,9 @@ function moreEditPageButtons() {
 				omybuttonAddstyle[this.index].style.display = "none";
 				omybuttonDelstyle[this.index].style.display = "none";
 			}
-
 			oAFlagStatus[this.index] = !oAFlagStatus[this.index];
-
 			AddOrDelButtonFunction(this.index,currentId);
 		}
-
 	}
 	/*批量删除或批量新增的点击*/
 	function AddOrDelButtonFunction(number,id) {
@@ -2216,6 +2232,14 @@ function moreEditPageButtons() {
 				document.getElementById(id).setAttribute("curValue","0");
 			}
 		}
+	}
+
+	/*批量修改页-Config页*/
+	var omyTextEditObj = new Array();
+	omyTextEditObj = document.getElementsByClassName("mytextedit");
+	console.log(omyTextEditObj.length);
+	for (var ii=0; ii<omyTextEditObj.length; ii++) {
+		console.log(omyTextEditObj[ii].childNodes[0].title); 
 	}
 }
 
