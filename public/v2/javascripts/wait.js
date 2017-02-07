@@ -2048,7 +2048,7 @@ function getMoreEditInfoEnd() {
 				console.log("hello");
 				var curCTwoId = null;
 				curCTwoId = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("id");
-				moreEditConfigEditFile['configFile.' + curCTwoId + '.value'] = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
+				moreEditMkAddFile['configFile.' + curCTwoId + '.value'] = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
 			}
 		}
 	}
@@ -2056,10 +2056,32 @@ function getMoreEditInfoEnd() {
 	console.log("lxw " + ChipModelArray); //{"chip":"123","model":"123"},{"chip":"S1","model":"S1"}
 	var addNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 	var delNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
-	var editNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditConfigEditFile) + '}}';
+	//var editNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditConfigEditFile) + '}}';
 	console.log("lxw " + addNode);
 	console.log("lxw " + delNode);
-	console.log("lxw " + editNode);
+	//console.log("lxw " + editNode);
+	sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
+	//sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
+	//sendHTTPRequest("/fybv2_api/productUpdate", editNode, moreEditResult);
+}
+function moreAddResult(){
+	if(this.readyState == 4) {
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "批量添加单项成功");
+				//$("#myMoreEditSubmitModal").modal('hide');
+				//freshHtml("tab_userMenu2");
+				//startSelect();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "批量添加单项失败");
+				//document.getElementById("myMDModalErrorInfo").style.display = "block";
+				//document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
+				//setTimeout("spanhidden()", 3000);
+			};
+		};
+	}
 }
 
 //多项删除的返回结果
@@ -2304,6 +2326,7 @@ function closeparentpage(pageName) {
 	oButtonObject.onclick = function() {
 		$(pageName).modal('hide');
 		$("#myEditEnsureModal").modal('hide');
+		//防止id重名带来的影响
 		if (pageName == "#myEditModal") {
 			document.getElementById("myEditModalMkTableApp").innerHTML = "";
 			document.getElementById("myEditModalMkTableService").innerHTML = "";
