@@ -1141,16 +1141,15 @@ function getEditInforesult() {
 						}
 					}
 				}
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "访问失败");
 			}
-		} else if(data.msg == "failure") {
-			console.log("lxw " + "访问失败");
+		};
+		editPageButtonsOnclick();
+		if(allChipArray.length == 0 || allModelArray.length == 0) {
+			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 		}
-	};
-	editPageButtonsOnclick();
-	if(allChipArray.length == 0 || allModelArray.length == 0) {
-		sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 	}
-}
 }
 
 function editPageSubmitData() {
