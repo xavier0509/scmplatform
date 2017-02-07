@@ -2245,9 +2245,11 @@ function moreEditPageButtons() {
 			if (this.getAttribute("oldvalue") != this.value) {
 				//做了修改
 				this.previousSibling.style.color = "red";
+				this.setAttribute("curvalue","1");
 			} else{
 				//没做修改
 				this.previousSibling.style.color = "";
+				this.setAttribute("curvalue","0");
 			}
 		}
 	}
