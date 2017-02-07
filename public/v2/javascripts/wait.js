@@ -15,6 +15,8 @@ var ChipModelArray = new Array();
 //定义两个数组，插入所有的机芯和机型
 var allChipArray = new Array();
 var allModelArray = new Array();
+//定义一个变量，保存批量删除的数据
+var moreDeleteData = null;
 
 function forsession() {
 	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
@@ -2059,10 +2061,8 @@ function getMoreEditInfoEnd() {
 	//var editNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditConfigEditFile) + '}}';
 	console.log("lxw " + addNode);
 	console.log("lxw " + delNode);
-	//console.log("lxw " + editNode);
+	moreDeleteData = delNode;
 	sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
-	//sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
-	//sendHTTPRequest("/fybv2_api/productUpdate", editNode, moreEditResult);
 }
 function moreAddResult(){
 	if(this.readyState == 4) {
@@ -2081,10 +2081,31 @@ function moreAddResult(){
 				//setTimeout("spanhidden()", 3000);
 			};
 		};
+		console.log(moreDeleteData); 
+		sendHTTPRequest("/fybv2_api/productUpdate", moreDeleteData, moreDelResult);
+	}
+}
+function moreDelResult(){
+	if(this.readyState == 4) {
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "批量删除单项成功");
+				//$("#myMoreEditSubmitModal").modal('hide');
+				//freshHtml("tab_userMenu2");
+				//startSelect();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "批量删除单项失败");
+				//document.getElementById("myMDModalErrorInfo").style.display = "block";
+				//document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
+				//setTimeout("spanhidden()", 3000);
+			};
+		};
 	}
 }
 
-//多项删除的返回结果
+//多项删除整条数据的返回结果
 function moreDeleteresult() {
 	if(this.readyState == 4) {
 		//console.log("this.responseText = " + this.responseText);
