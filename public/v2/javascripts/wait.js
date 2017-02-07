@@ -332,7 +332,6 @@ function getAddInfoInfOne() {
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getAddInfoInfTwo);
 	}
 }
-
 function getAddInfoInfTwo() {
 	console.log("lxw " + "getAddInfoInfTwo");
 	if(this.readyState == 4) {
@@ -604,7 +603,6 @@ function checkModelInfoInDel(){
 		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
 	}
 }
-
 function addPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
@@ -722,7 +720,6 @@ function addPageSubmitData() {
 	console.log("lxw" + oAnode);
 	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
-
 function productAddresult() {
 	console.log("in productAddresult");
 	if(this.readyState == 4) {
@@ -745,7 +742,6 @@ function productAddresult() {
 		};
 	}
 }
-
 function chipModeldataCheck(number){
 	//读参number：1-新增页 2-复制页 3-编辑页
 	var InputInfoArray = new Array();
@@ -892,7 +888,6 @@ function getEditInfoInfOne() {
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getEditInfoInfTwo);
 	}
 }
-
 function getEditInfoInfTwo() {
 	console.log("lxw " + "searchConfigInfo");
 	if(this.readyState == 4) {
@@ -926,7 +921,7 @@ function getEditInfoInfTwo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -937,8 +932,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigMain.innerHTML += _myAddselect;
 					}
 				} 
@@ -947,7 +941,7 @@ function getEditInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -958,7 +952,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -967,7 +961,7 @@ function getEditInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -978,7 +972,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -987,7 +981,7 @@ function getEditInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -998,7 +992,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -1007,7 +1001,7 @@ function getEditInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1018,7 +1012,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -1026,7 +1020,7 @@ function getEditInfoInfTwo() {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						for(var k = 0; k < data.data[kk].options.length; k++) {
@@ -1036,7 +1030,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1044,7 +1038,7 @@ function getEditInfoInfTwo() {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						for(var k = 0; k < data.data[kk].options.length; k++) {
@@ -1054,7 +1048,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1062,7 +1056,7 @@ function getEditInfoInfTwo() {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1073,7 +1067,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1083,7 +1077,6 @@ function getEditInfoInfTwo() {
 		sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
 	}
 }
-
 function getEditInforesult() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
@@ -1138,7 +1131,6 @@ function getEditInforesult() {
 		}
 	}
 }
-
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
@@ -1254,7 +1246,6 @@ function editPageSubmitData() {
 	console.log("lxw " + oEnode);
 	//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 }
-
 function productEditresult() {
 	console.log("lxw in productEditresult");
 	if(this.readyState == 4) {
@@ -1304,35 +1295,34 @@ function getCopyInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					_rowCopyPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					_rowCopyPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					_rowCopyPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					_rowCopyPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					_rowCopyPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='oC" + data.data[kk].engName + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getCopyInfoInfTwo);
 	}
 }
-
 function getCopyInfoInfTwo() {
 	if(this.readyState == 4) {
 		console.log("lxw " + "getCopyInfoInfTwo");
@@ -1365,9 +1355,9 @@ function getCopyInfoInfTwo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1376,8 +1366,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigMain.innerHTML += _myAddselect;
 					}
 				} 
@@ -1386,9 +1375,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1397,8 +1386,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigHardware.innerHTML += _myAddselect;
 					}
 				}
@@ -1407,9 +1395,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1418,8 +1406,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigServerip.innerHTML += _myAddselect;
 					}
 				}
@@ -1428,9 +1415,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1439,8 +1426,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigAd.innerHTML += _myAddselect;
 					}
 				}
@@ -1449,9 +1435,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1460,8 +1446,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigChannel.innerHTML += _myAddselect;
 					}
 				}
@@ -1470,9 +1455,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1481,8 +1466,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				}
@@ -1491,9 +1475,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1502,8 +1486,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				}
@@ -1512,9 +1495,9 @@ function getCopyInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='11111'></div>";
+						_rowCopyPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' placeholder='11111'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1523,8 +1506,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						//console.log("lxw " + _myAddselect);
+						_myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1534,15 +1516,13 @@ function getCopyInfoInfTwo() {
 		sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
 }
-
 function getCopyInforesult() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + "change chipinfo success");
 			if(data.msg == "success") {
-				console.log("lxw " + "访问成功");
-				//console.log("lxw " + JSON.stringify(data.data[0]));
+				console.log("lxw " + "复制成功");
 				document.getElementById("newCopyChip").value = data.data[0].chip;
 				document.getElementById("newCopyModel").value = data.data[0].model;
 				document.getElementById("NewCopyAndroidVersion").value = data.data[0].androidVersion;
@@ -1555,19 +1535,19 @@ function getCopyInforesult() {
 				for(mkkey in data.data[0].mkFile) {
 					mkcounter++;
 					console.log("lxw counter = " + mkcounter + "--" + mkkey);
-					document.getElementById("oC"+mkkey).setAttribute('checked', '');
-					console.log(document.getElementById("oC"+mkkey).checked);
+					document.getElementById(mkkey).setAttribute('checked', '');
+					console.log(document.getElementById(mkkey).checked);
 				};
 				console.log("lxw " + JSON.stringify(data.data[0].configFile));
 				var configkey, configcounter = 0;
 				for(configkey in data.data[0].configFile) {
 					configcounter++;
 					if (data.data[0].configFile[configkey].type == "string") {
-	                    document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
+	                    document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
 	                }
 					else{
-						document.getElementById(data.data[0].configFile[configkey].engName).value = data.data[0].configFile[configkey].value;
-						var childSelect = document.getElementById(data.data[0].configFile[configkey].engName).childNodes;
+						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+						var childSelect = document.getElementById(configkey).childNodes;
 	                    for (var j = 0; j < childSelect.length; j++) {
 	                        childSelect[j].removeAttribute("selected");
 	                        if (childSelect[j].value == data.data[0].configFile[configkey].value) {
@@ -1577,7 +1557,7 @@ function getCopyInforesult() {
 					}
 				};
 			} else if(data.msg == "failure") {
-				console.log("lxw " + "访问失败");
+				console.log("lxw " + "复制失败");
 			}
 		};
 		startSelect();
@@ -1587,7 +1567,6 @@ function getCopyInforesult() {
 		}
 	}
 }
-
 function copyPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
 	var dataObj = {
@@ -1627,6 +1606,7 @@ function copyPageSubmitData() {
 			var oCstuInfo = {
 				"cnName": "",
 				"engName": "",
+				"configKey": "",
 				"type": "",
 				"value": "",
 				"category": "",
@@ -1637,7 +1617,7 @@ function copyPageSubmitData() {
 			oCstuInfo.category = oCconfigTrDiv[0].title;
 			oCstuInfo.cnName = oCconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oCstuInfo.engName = oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
-			console.log("lxw" + oCstuInfo.engName);
+			oCstuInfo.configKey = oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
 			oCstuInfo.type = oCconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oCstuInfo.value = oCconfigTrDiv[thisConfigindex].childNodes[1].value;
 			if(oCstuInfo.type == "string") {
@@ -1650,7 +1630,7 @@ function copyPageSubmitData() {
 				}
 			}
 			oCstuInfo.options = oCopt;
-			copyConfigFile[oCconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name")] = oCstuInfo;
+			copyConfigFile[oCconfigTrDiv[thisConfigindex].childNodes[1].getAttribute("id")] = oCstuInfo;
 		}
 	}
 	//获取mkFile里的信息
