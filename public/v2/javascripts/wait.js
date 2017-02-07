@@ -2303,6 +2303,14 @@ function closeparentpage(pageName) {
 	oButtonObject.onclick = function() {
 		$(pageName).modal('hide');
 		$("#myEditEnsureModal").modal('hide');
+		document.getElementById("myEditModalMkTableApp").innerHTML = "";
+		document.getElementById("myEditModalMkTableService").innerHTML = "";
+		document.getElementById("myEditModalMkTableAppStore").innerHTML = "";
+		document.getElementById("myEditModalMkTableHomePage").innerHTML = "";
+		document.getElementById("myEditModalMkTableIME").innerHTML = "";
+		document.getElementById("myEditModalMkTableSysApp").innerHTML = "";
+		document.getElementById("myEditModalMkTableTV").innerHTML = "";
+		document.getElementById("myEditModalMkTableOther").innerHTML = "";
 	}
 }
 
