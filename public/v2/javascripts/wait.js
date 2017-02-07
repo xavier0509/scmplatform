@@ -2021,7 +2021,7 @@ function getMoreEditInfoEnd(){
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkDelFile['mkFile.'+curId] = oCstuInfoTwo;
+				moreEditMkDelFile['mkFile.'+curTwoId] = oCstuInfoTwo;
 			}
 		}
 	}
@@ -2039,7 +2039,7 @@ function getMoreEditInfoEnd(){
 				console.log("hello");
 				var curCTwoId = null;
 				curCTwoId = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("id");
-				moreEditConfigEditFile['configFile.'+curCTwoId+'.value'] = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
+				moreEditConfigEditFile['configFile.'+curCTwoId+'.value'] = "hello";//oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value;
 			}
 		}
 	}
