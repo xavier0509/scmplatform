@@ -1173,6 +1173,7 @@ function editPageSubmitData() {
 			var oEstuInfo = {
 				"cnName": "",
 				"engName": "",
+				"configKey": "",
 				"type": "",
 				"value": "",
 				"category": "",
@@ -1183,7 +1184,7 @@ function editPageSubmitData() {
 			oEstuInfo.category = oEconfigTrDiv[0].title;
 			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
 			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
-			console.log("lxw" + oEstuInfo.engName);
+			oEstuInfo.configKey = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
 			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
 			if(oEstuInfo.type == "string") {
@@ -1197,7 +1198,7 @@ function editPageSubmitData() {
 				}
 			}
 			oEstuInfo.options = oEopt;
-			editConfigFile[oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name")] = oEstuInfo;
+			editConfigFile[oEconfigTrDiv[thisConfigindex].childNodes[1].getAttribute("id")] = oEstuInfo;
 		}
 	}
 	//获取mkFile里的信息
@@ -1224,12 +1225,10 @@ function editPageSubmitData() {
 				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
 				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
 				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
-				editMkFile[oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name")] = oEstuInfoTwo;
+				editMkFile[oEMkTrDivTwo[oEMkindex].childNodes[0].getAttribute("id")] = oEstuInfoTwo;
 			}
 		}
 	}
-	//console.log("lxw " + JSON.stringify(editConfigFile));
-	//console.log("lxw " + JSON.stringify(editMkFile));
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
 	dataObj.memorySize = oEmemorySize;
@@ -1674,7 +1673,7 @@ function copyPageSubmitData() {
 	dataObj.desc = "enenen";
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
-	//sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
+	sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne(){
