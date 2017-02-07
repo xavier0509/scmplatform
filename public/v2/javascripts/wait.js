@@ -1243,7 +1243,7 @@ function editPageSubmitData() {
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"'+loginusername+'","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 }
 function productEditresult() {
 	console.log("lxw in productEditresult");
@@ -1762,9 +1762,9 @@ function getMoreEditInfoTwo(){
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1782,9 +1782,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1802,9 +1802,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1822,9 +1822,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1842,9 +1842,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1862,9 +1862,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1882,9 +1882,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1902,9 +1902,9 @@ function getMoreEditInfoTwo(){
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk].engName + "' name='" + data.data[kk].type + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -1928,7 +1928,7 @@ function getMoreEditInfo(){
 	//获取mkFile里的信息
 	var mEMkAddCzName = [];
 	var mEMkDelCzName = [];
-	var mEMkEditCzName = [];//config文件用
+	var mEConfigEditCzName = [];//config文件用
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
 	var oMEMkindex = null;
@@ -1953,6 +1953,7 @@ function getMoreEditInfo(){
 	document.getElementById("AimAtChipAndModel").innerHTML = ChipModelArray;
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
+	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
 }
 function getMoreEditInfoEnd(){
 	//获取mkFile里的信息
