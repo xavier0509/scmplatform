@@ -2244,9 +2244,10 @@ function moreEditPageButtons() {
 			console.log(this.type+"---"+this.getAttribute("oldvalue")+"|"+this.value+"---"+this.previousSibling.title);
 			if (this.getAttribute("oldvalue") != this.value) {
 				//做了修改
-				this.previousSibling.setAttribute("color","red");
+				this.previousSibling.style.color = "red";
 			} else{
 				//没做修改
+				this.previousSibling.style.color = "";
 			}
 		}
 	}
