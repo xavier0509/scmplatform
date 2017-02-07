@@ -2240,7 +2240,8 @@ function moreEditPageButtons() {
 	console.log(omyTextEditObj.length);
 	for (var ii=0; ii<omyTextEditObj.length; ii++) {
 		omyTextEditObj[ii].childNodes[1].onchange = function(){
-			console.log(this.type+"---"+$(this).getAttribute("oldvalue")+"|"+this.value+"---"+this.previousSibling.title);
+			console.log(document.getElementById(this.id).getAttribute("oldvalue"));
+			console.log(this.type+"---"+this.getAttribute("oldvalue")+"|"+this.value+"---"+this.previousSibling.title);
 		}
 	}
 }
