@@ -388,7 +388,8 @@ function reviewresult(){
                 console.log(configfile[configkey].type);
                 if(configfile[configkey].type == "string") {
                     document.getElementById(configkey).value = configfile[configkey].value;
-                } else {
+                } 
+                else {
                     document.getElementById(configkey).value = configfile[configkey].value;
                     var childSelect = document.getElementById(configkey).childNodes;
                     for(var j = 0; j < childSelect.length; j++) {
@@ -396,7 +397,7 @@ function reviewresult(){
                         if(childSelect[j].value == configfile[configkey].value) {
                             childSelect[j].setAttribute("selected", "");
                         }
-                    };
+                    }
                 }
             }
 
@@ -415,7 +416,7 @@ function reviewresult(){
             //         };
             //     }
                 
-            };
+            // };
 
             
 
