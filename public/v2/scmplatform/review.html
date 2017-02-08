@@ -1,48 +1,49 @@
 <!--内容列表-->
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title>待审核</title>
 
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-</head>
-<body>
-    <fieldset id="_rowlist" >
-        <legend>内容列表</legend>
-        <div class="row">
-            <div class="col-xs-12">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr id="reviewtableTR">
-                        <th>机芯</th>
-                        <th>机型</th>
-                        <th>Android版本</th>
-                        <th>芯片版本</th>
-                        <th>内存</th>
-                        <th>操作</th>
-                        <th>类型</th>
-                        <th>提交者</th>
-                    </tr>
-                    </thead>
-                    <tbody id="reviewmytable">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </fieldset>
-    <!--审核内容-->
-    <div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
+	<head>
+		<meta charset="utf-8" />
+		<title>待审核</title>
+
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</head>
+
+	<body>
+		<fieldset id="_rowlist">
+			<legend>内容列表</legend>
+			<div class="row">
+				<div class="col-xs-12">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr id="reviewtableTR">
+								<th>机芯</th>
+								<th>机型</th>
+								<th>Android版本</th>
+								<th>芯片版本</th>
+								<th>内存</th>
+								<th>操作</th>
+								<th>类型</th>
+								<th>提交者</th>
+							</tr>
+						</thead>
+						<tbody id="reviewmytable">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</fieldset>
+		<!--审核内容-->
+		<!--<div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
         <div class="modalwidth" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" id="button_submit"><span aria-hidden="true" id="reButton"></span><tton>  
                     <button type="button" class="close"  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过　</span><tton>
                     <button type="button" class="close"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭　</span><tton> 
-                                         
                 </div>
                 <div class="modal-body">
                         <fieldset id="_container">
@@ -82,7 +83,6 @@
                                 <button type="button" class="btn btn-default" id="mkbutton">MK文件</button>
                                 <button type="button" class="btn btn-default" id="configbutton">config文件</button>
                             </div>
-                    <!-- mk文件内容 -->
                             <div id="reviewmkfile">
                                 <h3>App:</h3>
                                 <div class="row text-left" id="appcont"></div>
@@ -108,7 +108,6 @@
                                 <h3>Other:</h3>
                                 <div class="row text-left" id="mkothercont"></div>
                             </div>
-                    <!-- mk文件内容 -->
                             <div id="reviewconfigfile">
                                 <h3>核心功能:</h3>
                                 <div class="row text-left" id="maincont"></div>
@@ -141,27 +140,148 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <!--点击删除弹出删除的modal-->
-    <div class="modal fade col-xs-12" id="mydialog" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel">
-        <div class="modal-delete" role="document" id="reviewDialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="myDeleteModalLabel"></h4>
-                </div>
-                <div class="modal-body">
-                    <p style="font-size: 24px;text-align: center;" id="dialogword"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="myDeleteModalEnsure">确定</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<!--点击新增弹出新增的modal-->
+		<div class="modal fade" id="myCheckModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" aria-label="Close" id="myAddModalClose"><span aria-hidden="true">关闭</span></button>
+						<button type="button" class="close" id="myAddModalSubmit"><span aria-hidden="true">提交</span></button>
+						<h4 class="modal-title" id="myAddModalLabel">审核</h4>
+						<span id="myAddModalErrorInfo" class="myModalErrorInfo"></span>
+					</div>
+					<div class="modal-body mybody">
+						<table class="table table-bordered mytable" id="myAddModalTable">
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group text-left inputdiv">
+										<label for="newAddChip" class="control-label col-xs-5 text-right inputdiv" title="oChip">机芯&nbsp;:</label>
+										<input type="text" value="" id="newAddChip" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+									<div class="col-xs-6 form-group text-left inputdiv">
+										<label for="newAddModel" class="control-label col-xs-5 text-right inputdiv" title="oModel">机型&nbsp;:</label>
+										<input type="text" value="" id="newAddModel" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="col-xs-6 form-group inputdiv">
+										<label for="newAddDevice" class="control-label col-xs-5 text-right inputdiv" title="TARGET_PRODUCT">TARGET_PRODUCT&nbsp;:</label>
+										<input type="text" value="" id="newAddDevice" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+									<div class="col-xs-6 form-group text-left inputdiv">
+										<label for="NewAddAndroidVersion" class="control-label col-xs-5 text-right inputdiv" title="AndroidVersion">Android版本&nbsp;:</label>
+										<input type="text" value="" id="NewAddAndroidVersion" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+									<div class="col-xs-6 form-group text-left inputdiv">
+										<label for="newAddChipMode" class="control-label col-xs-5 text-right inputdiv" title="ChipMode">芯片型号&nbsp;:</label>
+										<input type="text" value="" id="newAddChipMode" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+									<div class="col-xs-6 form-group text-left inputdiv">
+										<label for="newAddMemory" class="control-label col-xs-5 text-right inputdiv" title="memory">内存&nbsp;:</label>
+										<input type="text" value="" id="newAddMemory" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 0;">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" id="myAddModalMkButton">MK文件</button>
+										<button type="button" class="btn btn-default" id="myAddModalConfigButton">config文件</button>
+									</div>
+									<div class="col-xs-12 inputstyle" id="myAddModalMkTable">
+										<table class="table table-bordered mytable">
+											<tbody id="myAddModalMkTableTbody">
+												<tr>
+													<td id="myAddModalMkTableApp"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableService"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableAppStore"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableHomePage"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableIME"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableSysApp"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableTV"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalMkTableOther"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-xs-12 inputstyle" id="myAddModalConfigTable">
+										<table class="table table-bordered mytable">
+											<tbody id="myAddModalConfigTableTbody">
+												<tr>
+													<td id="myAddModalConfigTableTdMain"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdHardware"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdServerip"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdAd"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdChannel"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdLocalmedia"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdBrowser"></td>
+												</tr>
+												<tr>
+													<td id="myAddModalConfigTableTdOther"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" id="myAddModalSubmitTwo">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--点击删除弹出删除的modal-->
+		<div class="modal fade col-xs-12" id="mydialog" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel">
+			<div class="modal-delete" role="document" id="reviewDialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="myDeleteModalLabel"></h4>
+					</div>
+					<div class="modal-body">
+						<p style="font-size: 24px;text-align: center;" id="dialogword"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="myDeleteModalEnsure">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <script type="text/javascript" src="../javascripts/review.js"></script>
-</body>
+		<script type="text/javascript" src="../javascripts/review.js"></script>
+	</body>
+
 </html>
