@@ -579,7 +579,7 @@ td{
 	border: 1px solid skyblue;
 	display: none;
 }
-#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
+#myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
 .loginmycenter{padding-top: 16%;}
@@ -613,10 +613,6 @@ td{
     width: 100%;
     padding-left: 3%;
 }
-/*.floatright{
-	margin-right: 2%;
-	padding-left: -4%;
-}*/
 #reviewconfigfile input,#reviewconfigfile select{
 	width: 40%;
 	box-sizing:border-box;
@@ -656,9 +652,7 @@ td{
 	text-align: center;
 	color: red;
 }
-#myDeleteModal{
-	margin: auto;
-}
+
 #moduleErrorInfo,#configErrorInfo,#myDeleteModalErrorInfo{
 	display: none;
 	text-align: center;
@@ -667,7 +661,7 @@ td{
 }
 .moreEditDetail{
 	font-size: 18px;
-	margin:0 8%;
+	margin:1% 8%;
 }
 .moreEditDetail:nth-child(3){
 	display:block;
