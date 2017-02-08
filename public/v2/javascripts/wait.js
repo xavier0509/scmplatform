@@ -168,6 +168,7 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
+
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
@@ -182,10 +183,6 @@ function AfterWaitHtmlinfo() {
 		console.log("in delete");
 		//每次点击时先将ChipModelArray置为空
 		ChipModelArray = [];
-		var chipModelObj = {
-			chip: "",
-			model: ""
-		};
 		var currentParentName = oButtonDelete.id;
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
@@ -195,12 +192,15 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
-				var thisId = i;
-				console.log("lxw " + $('.checkboxstatus')[thisId].getAttribute("chip") + "--" + $('.checkboxstatus')[thisId].getAttribute("model"));
-				chipModelObj.chip = $('.checkboxstatus')[thisId].getAttribute("chip");
-				chipModelObj.model = $('.checkboxstatus')[thisId].getAttribute("model");
+				var chipModelObj = {
+					chip: "",
+					model: ""
+				};
+				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
+				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
+				ChipModelArray.push(chipModelObj);
 			}
-			ChipModelArray.push(chipModelObj);
 		}
 		console.log("lxw:" + myCheckedNumber);
 		if(myCheckedNumber != 0) {
