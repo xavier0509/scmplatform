@@ -600,7 +600,7 @@ function reviewEdit(){
 	// 获取DeviceInfo里的信息
 	var oEchip = document.getElementById("newCheckChip").value;
 	var oEmodel = document.getElementById("newCheckModel").value;
-	var oEandroidVersion = document.getElementById("NewCheckAndroidVersion").value;
+	var oEandroidVersion = document.getElementById("newCheckAndroidVersion").value;
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
 	var oEtargetProduct = document.getElementById("newCheckDevice").value;
