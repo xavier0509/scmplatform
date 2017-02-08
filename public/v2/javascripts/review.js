@@ -1,9 +1,12 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
+
+var level = null;
+var loginusername = null;
 //加载自执行，传递参数请求列表
 $(function () {
-    var level = parent.adminFlag;
-    var loginusername = parent.loginusername;
+    level = parent.adminFlag;
+    loginusername = parent.loginusername;
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
@@ -12,8 +15,6 @@ $(function () {
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }                                                        
 })
-var level = parent.adminFlag;
-var loginusername = parent.loginusername;
 var chip = null;
 var model = null;
 var operate = null;
@@ -599,7 +600,7 @@ function reviewEdit(){
 	// 获取DeviceInfo里的信息
 	var oEchip = document.getElementById("newCheckChip").value;
 	var oEmodel = document.getElementById("newCheckModel").value;
-	var oEandroidVersion = document.getElementById("NewCheckAndroidVersion").value;
+	var oEandroidVersion = document.getElementById("newCheckAndroidVersion").value;
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
 	var oEtargetProduct = document.getElementById("newCheckDevice").value;
