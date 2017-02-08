@@ -2013,6 +2013,7 @@ function getMoreEditInfo() {
 	}else{
 		showStatus[0].style.display = "block";
 		showStatus[1].style.display = "block";
+		showStatus[5].style.display = "none";
 	}
 }
 
