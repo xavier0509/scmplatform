@@ -12,7 +12,8 @@ $(function () {
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }                                                        
 })
-
+var level = parent.adminFlag;
+var loginusername = parent.loginusername;
 var chip = null;
 var model = null;
 var operate = null;
@@ -580,7 +581,7 @@ function passResult(){
 
 //点击编辑提交的函数
 function reviewEdit(){
-	console.log("lxw " + loginusername + "--" + adminFlag);
+	console.log("lxw " + loginusername + "--" + level);
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
