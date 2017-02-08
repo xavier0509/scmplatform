@@ -22,7 +22,7 @@ var fileUsername = null;
 function reviewlist(){
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             var title=document.getElementById("reviewmytable"); //获取tbody的表格内容
             for (var i = title.childNodes.length-1; i > 0; i--) {
@@ -122,7 +122,7 @@ function recoverResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
@@ -162,7 +162,7 @@ function review(obj){
 function moduleResult(){
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             $('#myCheckModal').modal();
             $(".modal-backdrop").addClass("new-backdrop");
@@ -223,7 +223,7 @@ function moduleResult(){
 function configResult(){
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
       	{
       		var data = JSON.parse(this.responseText);
 			var kk = 0;
@@ -412,7 +412,7 @@ function reviewresult(){
     var level = parent.adminFlag;
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
             //更新设备信息
@@ -504,7 +504,6 @@ function deleteIssue(){
     $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "删除操作";
     document.getElementById("dialogword").innerHTML = "确认要删除该配置信息吗？";
-    
     document.getElementById("myDeleteModalEnsure").onclick = deleteSure;
 }
 
@@ -513,7 +512,6 @@ function passIssue(){
     $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
-    
     document.getElementById("myDeleteModalEnsure").onclick = passSure;
 }
 
@@ -522,16 +520,15 @@ function noPassIssue(){
     $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "是否确认不通过该文件？";
-    
     document.getElementById("myDeleteModalEnsure").onclick = noPassSure;
 }
 
 //编辑提交弹窗
 function editIssue(){
     $('#mydialog').modal();
+    $(".modal-backdrop").addClass("new-backdrop");
     document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
     document.getElementById("dialogword").innerHTML = "确认提交该修改吗？";
-    
     document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;    
 }
 
@@ -552,29 +549,24 @@ function deleteSure(){
 
 //点击删除的回调
 function deleteResult(){
-    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("删除成功！！！！");
                 freshReviewHtml();
             };
-
         }
     }
 }
 
 //点击审核通过的回调
 function passResult(){
-    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
@@ -588,129 +580,118 @@ function passResult(){
 
 //点击编辑提交的函数
 function reviewEdit(){
-    // console.log("开始提交数据");
+	console.log("lxw " + loginusername + "--" + adminFlag);
+	var dataObj = {
+		"configFile": "",
+		"mkFile": "",
+		"memorySize": "",
+		"chipModel": "",
+		"androidVersion": "",
+		"model": "",
+		"chip": "",
+		"targetProduct": "",
+		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
+		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
+		"userName": loginusername,
+		"desc": "enenen"
+	};
+	// 获取DeviceInfo里的信息
+	var oEchip = document.getElementById("newCheckChip").value;
+	var oEmodel = document.getElementById("newCheckModel").value;
+	var oEandroidVersion = document.getElementById("NewCheckAndroidVersion").value;
+	var oEchipModel = document.getElementById("newCheckChipMode").value;
+	var oEmemorySize = document.getElementById("newCheckMemory").value;
+	var oEtargetProduct = document.getElementById("newCheckDevice").value;
+	var oEgerritState = "1";
+	var oEoperateType = "3";
+	var userName = loginusername;
+	var desc = "enheng";
 
-    var mkdataarry = [];//用于存放全部数据
-    var mkdd =[];
-    var configdataarry = [];
-    var configdd =[];
-
-    getmkdata("#appcont");
-    getmkdata("#appstorecont");
-    getmkdata("#homecont");
-    getmkdata("#imecont");
-    getmkdata("#servicecont");
-    getmkdata("#syscont");
-    getmkdata("#tvcont");
-    getmkdata("#mkothercont");
-    getconfigdata("#maincont");
-    getconfigdata("#othercont");
-    getconfigdata("#hardwarecont");
-    getconfigdata("#serveripcont");
-    getconfigdata("#adcont");
-    getconfigdata("#channelcont");
-    getconfigdata("#localmediacont");
-    getconfigdata("#browsercont");
-
-    //获取mk文件数据
-    var editMK = {};
-    function getmkdata(name){
-        $size = $(name).find("div");
-        // if ($size.length!=0) {console.log($size);}else{console.log("ddd")};        
-        // var array1 = [];//用于存放当前name分类下的数据
-        for (var i = 0; i < $size.length; i++) {
-            if($size[i].childNodes[0].checked){
-                var _id = $size[i].childNodes[0].getAttribute("id");
-                var cnName = $size[i].innerText;
-                var engName = $size[i].childNodes[0].value;
-                var desc = $size[i].childNodes[0].getAttribute("desc") ;
-                var gitPath = $size[i].childNodes[0].getAttribute("gitPath");
-                var category = $size[i].childNodes[0].getAttribute("category");
-                var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
-                console.log(data);
-                console.log(_id);
-                // editMK[_id] = JSON.parse(data);
-                // array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
-            }
-        }
-        console.log("mk文件信息是：" + editMK);
-        // console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
-        // mkdd.push(array1);//将分类之后的数组存到一个数组中
-        // console.log(mkdd[0]);
-        // console.log(JSON.stringify(mkdd));
-    }
-    // for (var i = 0; i < mkdd.length; i++) {
-    //     if (mkdd[i].length>0) {
-    //         for (var j = 0; j < mkdd[i].length; j++) {
-    //             mkdataarry.push(mkdd[i][j]);
-    //         }
-    //     };
-    // };
-    // console.log("更新的mk信息："+JSON.stringify(mkdataarry));
-
-    //获取config文件数据
-    function getconfigdata(name){
-        $size = $(name).find("div");
-        var array2 = [];
-        for (var i = 0; i < $size.length; i++) {
-            var engName = $size[i].childNodes[1].getAttribute("engName");
-            var value = $size[i].childNodes[1].value;
-            var cnName = $size[i].childNodes[1].getAttribute("cnName");
-            var configkey = $size[i].childNodes[1].getAttribute("configkey");
-            var desc = $size[i].childNodes[1].getAttribute("desc");
-            var category = $size[i].childNodes[1].getAttribute("category");
-            // var opt = $size[i].childNodes[1].getAttribute("options");
-            // var options = opt.split(",");
-            // console.log("opt==="+opt+"&&&&&&&options:"+options);
-            var type = $size[i].childNodes[1].getAttribute("type");
-            if (type == "string") {
-                var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":[],"type":"'+type+'"}';
-                // console.log(data);
-                array2.push(JSON.parse(data));
-            }
-            else{
-                var opt = [];
-                var child = $size[i].childNodes[1].childNodes;
-                // console.log(child.length+"内容是："+child[1].value);
-                for (var j = 0; j < child.length; j++) {
-                    opt.push(child[j].value);
-                };
-                // console.log(opt);
-                var data={"engName":"","value":"","cnName":"","configkey":"","desc":"","category":"","options":[],"type":""}
-                data.engName = engName;
-                data.value = value;
-                data.cnName = cnName;
-                data.configkey = configkey;
-                data.desc = desc;
-                data.category = category;
-                data.options = opt;
-                data.type = type;
-                // var data = '{"engName":"'+engName+'","value":"'+value+'","cnName":"'+cnName+'","configkey":"'+configkey+'","desc":"'+desc+'","category":"'+category+'","options":"'+opt+'","type":"'+type+'"}';
-                // console.log(JSON.stringify(data));
-                array2.push(data);
-
-            }
-            // console.log(JSON.stringify(array2));
-        };
-        configdd.push(array2);
-        // console.log(JSON.stringify(configdd));
-    }
-    for (var i = 0; i < configdd.length; i++) {
-        if (configdd[i].length>0) {
-            for (var j = 0; j < configdd[i].length; j++) {
-                configdataarry.push(configdd[i][j]);
-            }
-        };
-    };
-    // console.log("更新的config信息："+JSON.stringify(configdataarry));
-
-    var target_product = document.getElementById("device").value;
-    var android = document.getElementById("android").value;
-    var chipid = document.getElementById("chipid").value;
-    var memory = document.getElementById("memory").value;
-
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":"'+target_product+'","androidVersion":"'+android+'","chipModel":"'+chipid+'","memorySize":"'+memory+'","mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+',"gerritState":"1"}}}',reviewEditResult);
-
+	//获取config里的数据
+	var editConfigFile = {};
+	var oEconfigTrlength = $("#myCheckModalConfigTableTbody").find("tr");
+	console.log("lxw " + oEconfigTrlength.length);
+	for(var i = 0; i < oEconfigTrlength.length; i++) {
+		var oEConfigobj = {};
+		var thisConfigindex = null;
+		oEconfigTrDiv = $("#myCheckModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oEconfigTrDiv.length);
+		for(var j = 1; j < oEconfigTrDiv.length; j++) {
+			var oEopt = [];
+			var oEstuInfo = {
+				"cnName": "",
+				"engName": "",
+				"configKey": "",
+				"type": "",
+				"value": "",
+				"category": "",
+				"desc": "XXXXX",
+				"options": []
+			};
+			thisConfigindex = j;
+			oEstuInfo.category = oEconfigTrDiv[0].title;
+			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
+			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
+			oEstuInfo.configKey = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
+			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
+			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
+			if(oEstuInfo.type == "string") {
+				oEopt = [];
+			} else if(oEstuInfo.type == "enum") {
+				var jjlength = oEconfigTrDiv[thisConfigindex].childNodes[1].childNodes;
+				console.log("lxw " + jjlength.length);
+				for(var jj = 0; jj < jjlength.length; jj++) {
+					var optValue = jjlength[jj].value;
+					oEopt.push(optValue);
+				}
+			}
+			oEstuInfo.options = oEopt;
+			editConfigFile[oEconfigTrDiv[thisConfigindex].childNodes[1].getAttribute("id")] = oEstuInfo;
+		}
+	}
+	//获取mkFile里的信息
+	var editMkFile = {};
+	var oEMkTrDiv = $("#myCheckModalMkTableTbody").find("tr");
+	console.log("lxw " + oEMkTrDiv.length);
+	var oEMkindex = null;
+	for(var i = 0; i < oEMkTrDiv.length; i++) {
+		var oEMkobj = {};
+		oEMkTrDivTwo = $("#myCheckModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
+		console.log("lxw" + oEMkTrDivTwo.length);
+		for(var j = 1; j < oEMkTrDivTwo.length; j++) {
+			oEMkindex = j;
+			if(oEMkTrDivTwo[oEMkindex].childNodes[0].checked == true) {
+				var oEoptTwo = [];
+				var oEstuInfoTwo = {
+					"cnName": "",
+					"engName": "",
+					"gitPath": "",
+					"category": "",
+					"desc": "XXXXX", //后期做“”的处理。
+				};
+				oEstuInfoTwo.category = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("category");
+				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
+				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
+				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
+				editMkFile[oEMkTrDivTwo[oEMkindex].childNodes[0].getAttribute("id")] = oEstuInfoTwo;
+			}
+		}
+	}
+	dataObj.configFile = editConfigFile;
+	dataObj.mkFile = editMkFile;
+	dataObj.memorySize = oEmemorySize;
+	dataObj.chipModel = oEchipModel;
+	dataObj.androidVersion = oEandroidVersion;
+	dataObj.model = oEmodel;
+	dataObj.chip = oEchip;
+	dataObj.targetProduct = oEtargetProduct;
+	dataObj.gerritState = "1"; // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
+	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
+	dataObj.userName = loginusername;
+	dataObj.desc = "enenene";
+	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+	console.log("lxw " + oEnode);
+	//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 }
 
 
@@ -719,7 +700,7 @@ function reviewEditResult(){
     if (this.readyState == 4) {
         // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
-        if (this.status == 200) //TODO
+        if (this.status == 200)
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
