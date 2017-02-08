@@ -598,6 +598,7 @@ function reviewEdit(){
                 var category = $size[i].childNodes[0].getAttribute("category");
                 var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
                 console.log(data);
+                console.log(_id);
                 editMK[_id] = JSON.parse(data);
                 // array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
