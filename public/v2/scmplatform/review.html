@@ -147,8 +147,9 @@
 			<div class="modalwidth" role="document">
 				<div class="modal-content">
 					<div class="modal-header myheader">
-						<button type="button" class="close" aria-label="Close" id="myAddModalClose"><span aria-hidden="true">关闭</span></button>
-						<button type="button" class="close" id="myAddModalSubmit"><span aria-hidden="true">提交</span></button>
+						<button type="button" class="close" id="button_submit"><span aria-hidden="true" id="reButton"></span></button>  
+                    	<button type="button" class="close"  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过   </span></button>
+                    	<button type="button" class="close"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭　</span></button> 
 						<h4 class="modal-title" id="myAddModalLabel">审核</h4>
 						<span id="myAddModalErrorInfo" class="myModalErrorInfo"></span>
 					</div>
@@ -256,9 +257,9 @@
 							</tr>
 						</table>
 					</div>
-					<div class="modal-footer myfooter">
-						<button type="button" class="btn btn-default" id="myAddModalSubmitTwo">提交</button>
-					</div>
+					<div class="modal-footer" id="reviewBottom">
+                    	<button type="button" id="btn_submit" class="btn btn-default"><span class="" aria-hidden="true" id="reviewSubmit"></span ></button>
+                	</div>
 				</div>
 			</div>
 		</div>
