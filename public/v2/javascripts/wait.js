@@ -221,7 +221,7 @@ function AfterWaitHtmlinfo() {
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
 			console.log("lxw " + JSON.stringify(ChipModelArray));
-			var deleNode = '{"data":{"condition":{"$or":[' + JSON.stringify(ChipModelArray) + ']},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
+			var deleNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fybv2_api/productUpdate", deleNode, moreDeleteresult);
 		}
