@@ -220,7 +220,7 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
-			console.log("lxw " + ChipModelArray);
+			console.log("lxw " + JSON.stringify(ChipModelArray));
 			var deleNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fybv2_api/productUpdate", deleNode, moreDeleteresult);
