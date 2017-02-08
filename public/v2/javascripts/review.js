@@ -6,10 +6,10 @@ $(function () {
     var loginusername = parent.loginusername;
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }                                                        
 })
 
@@ -118,7 +118,7 @@ function recover(obj){
 }
 //点击恢复按钮执行函数-----将待审核状态置0
 function recoverSure(obj){    
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
 
 }
 
@@ -147,7 +147,7 @@ function review(obj){
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
     //查询模块信息接口
-    sendHTTPRequest("/fyb_api/moduleQuery", '{"data":{}}', moduleResult);    
+    sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
     
 }
 
@@ -223,7 +223,7 @@ function moduleResult(){
         }
     
     //查询config信息接口
-    sendHTTPRequest("/fyb_api/configQuery", '{"data":{}}', configResult); 
+    sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult); 
     }
 }
 
@@ -331,7 +331,7 @@ function configResult(){
         }
     
         // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fyb_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
@@ -484,17 +484,17 @@ function editIssue(){
 
 //审核通过（针对编辑）
 function passSure(){
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
 }
 
 //审核不通过
 function noPassSure(){
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passResult);
 }
 
 //删除操作
 function deleteSure(){
-    sendHTTPRequest("/fyb_api/productDelete",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
+    sendHTTPRequest("/fybv2_api/productDelete",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
 }
 
 //点击删除的回调
@@ -651,7 +651,7 @@ function reviewEdit(){
     var chipid = document.getElementById("chipid").value;
     var memory = document.getElementById("memory").value;
 
-    sendHTTPRequest("/fyb_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":"'+target_product+'","androidVersion":"'+android+'","chipModel":"'+chipid+'","memorySize":"'+memory+'","mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+',"gerritState":"1"}}}',reviewEditResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"targetProduct":"'+target_product+'","androidVersion":"'+android+'","chipModel":"'+chipid+'","memorySize":"'+memory+'","mkFile":'+JSON.stringify(mkdataarry)+',"configFile":'+JSON.stringify(configdataarry)+',"gerritState":"1"}}}',reviewEditResult);
 
 }
 
