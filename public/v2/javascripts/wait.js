@@ -2124,6 +2124,9 @@ function moreAddResult(){
 		console.log(moreDeleteData);
 		if(moreDeleteData!=0){//做了删除操作
 			sendHTTPRequest("/fybv2_api/productUpdate", moreDeleteData, moreDelResult);
+		}else{
+			//freshHtml(tab_userMenu2);
+			startSelect();
 		}
 	}
 }
@@ -2143,6 +2146,7 @@ function moreDelResult(){
 				//document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
 				//setTimeout("spanhidden()", 3000);
 			};
+			startSelect();
 		};
 	}
 }
