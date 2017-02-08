@@ -364,15 +364,12 @@ function reviewresult(){
 
             //更新mk文件信息，匹配后勾选
             var mkfile = data.data[0].mkFile;
-            for (var i = 0; i < mkfile.length; i++) {
+            var key, counter = 0;
+            for (key in mkfile) {
                 console.log("更新mk信息开始！！");
-                if (document.getElementById(mkfile[i].engName)) {
-                    document.getElementById(mkfile[i].engName).setAttribute('checked','');
-                    document.getElementById(mkfile[i].engName).parentNode.style="font-weight:bold";
-                }
-                else{
-                    alert("当前数据库中MK配置表没有"+mkfile[i].engName);
-                }
+                counter++;
+                console.log("counter = " + counter + "--" + key);
+                document.getElementById(key).setAttribute('checked', '');
                 
             };
 
