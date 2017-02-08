@@ -403,25 +403,18 @@ function configResult(){
 			}
       	}
     // 查询对应机芯机型的配置信息
-    //sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
 
 function reviewresult(){
     var level = parent.adminFlag;
-    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
-
-            $('#myMoreDeleteModal').modal();
-
             var data = JSON.parse(this.responseText);
-            // console.log(data[0]);
-
             //更新设备信息
             document.getElementById("chip").value=data.data[0].chip;
             document.getElementById("model").value=data.data[0].model;
@@ -430,66 +423,35 @@ function reviewresult(){
             document.getElementById("chipid").value=data.data[0].chipModel;
             document.getElementById("memory").value=data.data[0].memorySize;
             console.log("更新设备信息完毕！！");
-
-
             //更新mk文件信息，匹配后勾选
-            var mkfile = data.data[0].mkFile;
-            var key, counter = 0;
-            for (key in mkfile) {
-                console.log("更新mk信息开始！！");
-                counter++;
-                console.log("counter = " + counter + "--" + key);
-                document.getElementById(key).setAttribute('checked', '');
-                document.getElementById(key).parentNode.style="font-weight:bold";
-                
-            };
-
-            //生成config文件
-
-            var configfile = data.data[0].configFile;
-            // var main = [];
-            // var other = [];
-
-            var configkey, configcounter = 0;
-            for(configkey in configfile) {
-                configcounter++;
-                console.log("lxw counter = " + configcounter + "--" + configkey);
-                console.log(configfile[configkey].type);
-                if(configfile[configkey].type == "string") {
-                    document.getElementById(configkey).value = configfile[configkey].value;
-                } 
-                else {
-                    document.getElementById(configkey).value = configfile[configkey].value;
-                    var childSelect = document.getElementById(configkey).childNodes;
-                    for(var j = 0; j < childSelect.length; j++) {
-                        childSelect[j].removeAttribute("selected");
-                        if(childSelect[j].value == configfile[configkey].value) {
-                            childSelect[j].setAttribute("selected", "");
-                        }
-                    }
-                }
-            }
-
-            // for (var i = 0; i < configfile.length; i++) {
-            //     if (configfile[i].type == "string") {
-            //         document.getElementById(configfile[i].engName).value = configfile[i].value;
-            //     }
-            //     else{
-            //         document.getElementById(configfile[i].engName).value = configfile[i].value;
-            //         var childSelect = document.getElementById(configfile[i].engName).childNodes;
-            //         for (var j = 0; j < childSelect.length; j++) {
-            //             childSelect[j].removeAttribute("selected");
-            //             if (childSelect[j].value == configfile[i].value) {
-            //                 childSelect[j].setAttribute("selected","");
-            //             }
-            //         };
-            //     }
-                
-            // };
-
-            
-
-//如果是管理员，不允许修改-----------更改提示框
+            var mkkey, mkcounter = 0;
+			for(mkkey in data.data[0].mkFile) {
+				mkcounter++;
+				console.log("lxw counter = " + mkcounter + "--" + mkkey);
+				document.getElementById(mkkey).removeAttribute("checked");
+				//document.getElementById(mkkey).setAttribute('checked', '');
+				document.getElementById(mkkey).checked = true;
+				console.log(document.getElementById(mkkey).checked);
+			};
+			//生成config文件
+			//console.log("lxw " + JSON.stringify(data.data[0].configFile));
+			var configkey, configcounter = 0;
+			for(configkey in data.data[0].configFile) {
+				configcounter++;
+				if(data.data[0].configFile[configkey].type == "string") {
+					document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+				} else {
+					document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+					var childSelect = document.getElementById(configkey).childNodes;
+					for(var j = 0; j < childSelect.length; j++) {
+						childSelect[j].removeAttribute("selected");
+						if(childSelect[j].value == data.data[0].configFile[configkey].value) {
+							childSelect[j].setAttribute("selected", "");
+						}
+					};
+				}
+			};
+			//如果是管理员，不允许修改-----------更改提示框
             if(level == 1){
                 if (fileUsername == "liujinpeng") {
                     document.getElementById("noPassReview").style.display="none";
@@ -533,7 +495,6 @@ function reviewresult(){
                 document.getElementById("btn_submit").onclick = editIssue;
                 document.getElementById("button_submit").onclick = editIssue;
             }
-            
         }
     }
 }
