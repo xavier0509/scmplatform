@@ -694,8 +694,7 @@ td{
 }
 .moreEditDetail:nth-child(6){
 	font-size: 24px;
-	margin: 0;
 	margin-left: 8%;
+	text-align: center;
 	display: none;
-	background-color: red;
 }
