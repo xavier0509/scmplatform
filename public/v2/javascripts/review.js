@@ -140,6 +140,19 @@ function recoverResult(){
 
 }
 
+
+$('#configbutton').click(function(){
+    $("#reviewconfigfile").css("display","block");
+    $("#reviewmkfile").css("display","none");
+})
+
+$('#mkbutton').click(function(){
+    $("#reviewconfigfile").css("display","none");
+    $("#reviewmkfile").css("display","block");
+})
+
+
+
 //点击编辑、审核出现页面的执行函数
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
@@ -603,7 +616,7 @@ function reviewEdit(){
                 // array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         }
-        console.log("mk文件信息是："+editMK);
+        console.log("mk文件信息是：" + editMK);
         // console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
         // mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
@@ -732,12 +745,3 @@ function closeFun(){
 }
 
 
-$('#configbutton').click(function(){
-    $("#reviewconfigfile").css("display","block");
-    $("#reviewmkfile").css("display","none");
-})
-
-$('#mkbutton').click(function(){
-    $("#reviewconfigfile").css("display","none");
-    $("#reviewmkfile").css("display","block");
-})
