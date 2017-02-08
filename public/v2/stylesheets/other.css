@@ -663,6 +663,12 @@ td{
 	font-size: 18px;
 	margin:1% 8%;
 }
+.moreEditDetail:nth-child(2){
+	font-size: 24px;
+	margin: 0;
+	margin-left: 8%;
+	background-color: red;
+}
 .moreEditDetail:nth-child(3){
 	display:block;
 	white-space:nowrap; 
