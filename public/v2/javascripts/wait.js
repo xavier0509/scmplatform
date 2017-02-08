@@ -2002,6 +2002,7 @@ function getMoreEditInfo() {
 	}
 	if(mEMkAddCzName.length == 0&&mEMkDelCzName.length == 0&&mEConfigEditCzName.length == 0){
 		showStatus[0].innerHTML = "您未做任何操作...";
+		showStatus[0].style.margin = "auto";
 		showStatus[1].style.display = "none";
 	}
 }
