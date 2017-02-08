@@ -1990,6 +1990,16 @@ function getMoreEditInfo() {
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
+	var showStatus = document.getElementsByClassName("moreEditDetail");
+	if(mEMkAddCzName.length == 0){
+		showStatus[1].style.display = "none";
+	}
+	if(mEMkDelCzName.length == 0){
+		showStatus[2].style.display = "none";
+	}
+	if(mEConfigEditCzName.length == 0){
+		showStatus[3].style.display = "none";
+	}
 }
 
 function getMoreEditInfoEnd() {
