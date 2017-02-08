@@ -1983,7 +1983,7 @@ function getMoreEditInfo() {
 	console.log(JSON.stringify(ChipModelArray));
 	var infoArray = new Array();
 	for (var i=0; i<ChipModelArray.length; i++) {
-		infoArray.push(ChipModelArray[i].chip+"、"+ChipModelArray[i].model);
+		infoArray.push('"'+ChipModelArray[i].chip+"、"+ChipModelArray[i].model+'" ');
 	}
 	console.log(infoArray);
 	document.getElementById("AimAtChipAndModel").innerHTML = infoArray;
