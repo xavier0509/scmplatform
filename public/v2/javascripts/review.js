@@ -282,7 +282,8 @@ function configResult(){
                     if (name[i].type == "string") {
                         var input = document.createElement("input");
                         input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("id",name[i].engName);
+                        input.setAttribute("id",name[i]._id);
+                        input.setAttribute("engName",name[i].engName);
                         input.setAttribute("configKey",name[i].configKey);
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
@@ -299,7 +300,8 @@ function configResult(){
                         };
                         var input = document.createElement("select");
                         input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("id",name[i].engName);
+                        input.setAttribute("id",name[i]._id);
+                        input.setAttribute("engName",name[i].engName);
                         input.setAttribute("configKey",name[i].configKey);
                         input.setAttribute("type",name[i].type);
                         input.setAttribute("desc",name[i].desc);
@@ -357,11 +359,13 @@ function reviewresult(){
             document.getElementById("android").value=data.data[0].androidVersion;
             document.getElementById("chipid").value=data.data[0].chipModel;
             document.getElementById("memory").value=data.data[0].memorySize;
+            console.log("更新设备信息完毕！！");
 
 
             //更新mk文件信息，匹配后勾选
             var mkfile = data.data[0].mkFile;
             for (var i = 0; i < mkfile.length; i++) {
+                console.log("更新mk信息开始！！");
                 if (document.getElementById(mkfile[i].engName)) {
                     document.getElementById(mkfile[i].engName).setAttribute('checked','');
                     document.getElementById(mkfile[i].engName).parentNode.style="font-weight:bold";
