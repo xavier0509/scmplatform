@@ -416,12 +416,12 @@ function reviewresult(){
         {
             var data = JSON.parse(this.responseText);
             //更新设备信息
-            document.getElementById("chip").value=data.data[0].chip;
-            document.getElementById("model").value=data.data[0].model;
-            document.getElementById("device").value=data.data[0].targetProduct;
-            document.getElementById("android").value=data.data[0].androidVersion;
-            document.getElementById("chipid").value=data.data[0].chipModel;
-            document.getElementById("memory").value=data.data[0].memorySize;
+            document.getElementById("newCheckChip").value=data.data[0].chip;
+            document.getElementById("newCheckModel").value=data.data[0].model;
+            document.getElementById("newCheckDevice").value=data.data[0].targetProduct;
+            document.getElementById("newCheckAndroidVersion").value=data.data[0].androidVersion;
+            document.getElementById("newCheckChipMode").value=data.data[0].chipModel;
+            document.getElementById("newCheckMemory").value=data.data[0].memorySize;
             console.log("更新设备信息完毕！！");
             //更新mk文件信息，匹配后勾选
             var mkkey, mkcounter = 0;
