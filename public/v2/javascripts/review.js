@@ -693,20 +693,19 @@ function reviewEdit(){
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
 }
 
 
 function reviewEditResult(){
-    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200)
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("编辑提交成功！！！！");
+                $("#mydialog").modal('hide');
                 freshReviewHtml();
             }
             else{
