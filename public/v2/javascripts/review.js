@@ -161,186 +161,249 @@ function review(obj){
 //罗列出所有的mk信息
 function moduleResult(){
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
             $('#myCheckModal').modal();
-//          var app = [];
-//          var appstore = [];
-//          var homepage = [];
-//          var ime = [];
-//          var service = [];
-//          var sysapp = [];
-//          var tv = [];
-//          var mkother = [];
-            // var main = [];
-            // var other = [];
-
-//          var data = JSON.parse(this.responseText);
-//          for (var i = 0; i < data.data.length; i++) {
-//              if(data.data[i].category == "App"){app.push(data.data[i]);}
-//              else if (data.data[i].category == "AppStore") {appstore.push(data.data[i]);}
-//              else if (data.data[i].category == "HomePage") {homepage.push(data.data[i]);}
-//              else if (data.data[i].category == "IME") {ime.push(data.data[i]);}
-//              else if (data.data[i].category == "Service") {service.push(data.data[i]);}
-//              else if (data.data[i].category == "SysApp") {sysapp.push(data.data[i]);}
-//              else if (data.data[i].category == "TV") {tv.push(data.data[i]);}
-//              else if (data.data[i].category == "Other") {mkother.push(data.data[i]);}
-//          };
-
-//          document.getElementById("appcont").innerHTML="";
-//          document.getElementById("appstorecont").innerHTML="";
-//          document.getElementById("homecont").innerHTML="";
-//          document.getElementById("imecont").innerHTML="";
-//          document.getElementById("servicecont").innerHTML="";
-//          document.getElementById("syscont").innerHTML="";
-//          document.getElementById("tvcont").innerHTML="";
-//          document.getElementById("mkothercont").innerHTML="";
-
-//          creatMK(app,"appcont");
-//          creatMK(appstore,"appstorecont");
-//          creatMK(homepage,"homecont");
-//          creatMK(ime,"imecont");
-//          creatMK(service,"servicecont");
-//          creatMK(sysapp,"syscont");
-//          creatMK(tv,"tvcont");
-//          creatMK(mkother,"mkothercont");
-
-//          function creatMK(name,divname){
-//              for (var i = 0; i < name.length; i++) {
-//                  var cont = document.getElementById(divname);
-//                  var child = document.createElement("div");
-//                  child.setAttribute('class','col-sm-3 form-group');
-//                  var text = document.createTextNode(name[i].cnName);
-//                  var input = document.createElement("input");
-//                  input.setAttribute('value',name[i].engName);
-//                  input.setAttribute('id',name[i]._id);
-//                  input.setAttribute('engName',name[i].engName);
-//                  input.setAttribute('category',name[i].category);
-//                  input.setAttribute('gitPath',name[i].gitPath);
-//                  input.setAttribute('desc',name[i].desc);
-//                  input.setAttribute('type','checkbox');
-//                  // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
-//                  child.appendChild(input);
-//                  child.appendChild(text);
-//                  cont.appendChild(child);
-//              }
-//          }
+            $(".modal-backdrop").addClass("new-backdrop");
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            var kk = 0;
+			var _rowCheckPageApp = document.getElementById("myCheckModalMkTableApp");
+			var _rowCheckPageService = document.getElementById("myCheckModalMkTableService");
+			var _rowCheckPageAppStore = document.getElementById("myCheckModalMkTableAppStore");
+			var _rowCheckPageHomePage = document.getElementById("myCheckModalMkTableHomePage");
+			var _rowCheckPageIME = document.getElementById("myCheckModalMkTableIME");
+			var _rowCheckPageSysApp = document.getElementById("myCheckModalMkTableSysApp");
+			var _rowCheckPageTV = document.getElementById("myCheckModalMkTableTV");
+			var _rowCheckPageOther = document.getElementById("myCheckModalMkTableOther");
+			_rowCheckPageApp.innerHTML = "<div title='App'>App:</div>";
+			_rowCheckPageService.innerHTML = "<div title='Service'>Service:</div>";
+			_rowCheckPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
+			_rowCheckPageHomePage.innerHTML = "<div title='HomePage'>HomePage:</div>";
+			_rowCheckPageIME.innerHTML = "<div title='IME'>IME:</div>";
+			_rowCheckPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
+			_rowCheckPageTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowCheckPageOther.innerHTML = "<div title='Other'>Other:</div>";
+			
+			for(var i = 0; i < data.data.length; i++) {
+				console.log("lxw " + data.data[i].category);
+				if(data.data[i].category == "App") {
+					kk = i;
+					_rowCheckPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "Service") {
+					kk = i;
+					_rowCheckPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "AppStore") {
+					kk = i;
+					_rowCheckPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "HomePage") {
+					kk = i;
+					_rowCheckPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "IME") {
+					kk = i;
+					_rowCheckPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "SysApp") {
+					kk = i;
+					_rowCheckPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "TV") {
+					kk = i;
+					_rowCheckPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				} else if(data.data[i].category == "Other") {
+					kk = i;
+					_rowCheckPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+				}
+			}
       	}
-//  
-//查询config信息接口
-//  sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult); 
+	//查询config信息接口
+  	sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult); 
   	}
 }
 
 function configResult(){
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
-        {
-            var data = JSON.parse(this.responseText);
-            var configfile = data.data;
-            var main = [];
-            var other = [];
-            var hardware = [];
-            var ad = [];
-            var channel = [];
-            var localmedia = [];
-            var browser = [];
-            var serverip = [];
+      	{
+      		var data = JSON.parse(this.responseText);
+			var kk = 0;
+			var pullDataOne, pullDataTwo = null;
+			var _rowCheckPageConfigMain = document.getElementById("myCheckModalConfigTableTdMain");
+			var _rowCheckPageConfigHardware = document.getElementById("myCheckModalConfigTableTdHardware");
+			var _rowCheckPageConfigServerip = document.getElementById("myCheckModalConfigTableTdServerip");
+			var _rowCheckPageConfigAd = document.getElementById("myCheckModalConfigTableTdAd");
+			var _rowCheckPageConfigChannel = document.getElementById("myCheckModalConfigTableTdChannel");
+			var _rowCheckPageConfigLocalmedia = document.getElementById("myCheckModalConfigTableTdLocalmedia");
+			var _rowCheckPageConfigBrowser = document.getElementById("myCheckModalConfigTableTdBrowser");
+			var _rowCheckPageConfigOther = document.getElementById("myCheckModalConfigTableTdOther");
 
-            for (var i = 0; i < configfile.length; i++) {
-                if(configfile[i].category == "main"){main.push(configfile[i]);}
-                else if (configfile[i].category == "other") {other.push(configfile[i]);}
-                else if (configfile[i].category == "hardware") {hardware.push(configfile[i]);}
-                else if (configfile[i].category == "serverip") {serverip.push(configfile[i]);}
-                else if (configfile[i].category == "ad") {ad.push(configfile[i]);}
-                else if (configfile[i].category == "channel") {channel.push(configfile[i]);}
-                else if (configfile[i].category == "localmedia") {localmedia.push(configfile[i]);}
-                else if (configfile[i].category == "browser") {browser.push(configfile[i]);}
-            };
+			_rowCheckPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
+			_rowCheckPageConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+			_rowCheckPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
+			_rowCheckPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
+			_rowCheckPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
+			_rowCheckPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
+			_rowCheckPageConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
+			_rowCheckPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
-            document.getElementById("maincont").innerHTML="";
-            document.getElementById("hardwarecont").innerHTML="";
-            document.getElementById("serveripcont").innerHTML="";
-            document.getElementById("adcont").innerHTML="";
-            document.getElementById("channelcont").innerHTML="";
-            document.getElementById("localmediacont").innerHTML="";
-            document.getElementById("browsercont").innerHTML="";
-            document.getElementById("othercont").innerHTML="";
-
-            creatConfig(main,"maincont");
-            creatConfig(other,"othercont");
-            creatConfig(hardware,"hardwarecont");
-            creatConfig(serverip,"serveripcont");
-            creatConfig(ad,"adcont");
-            creatConfig(channel,"channelcont");
-            creatConfig(localmedia,"localmediacont");
-            creatConfig(browser,"browsercont");
-
-            function creatConfig(name,divname){
-                for (var i = 0; i < name.length; i++) {
-                    var cont = document.getElementById(divname);
-                    var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-6 form-group text-right reviewconfigInput');
-                    var text = document.createTextNode(name[i].cnName+":　");
-                    if (name[i].type == "string") {
-                        var input = document.createElement("input");
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("id",name[i]._id);
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("configKey",name[i].configKey);
-                        input.setAttribute("type",name[i].type);
-                        input.setAttribute("desc",name[i].desc);
-                        input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",name[i].options);
-                        input.setAttribute("cnName",name[i].cnName);
-                        input.value = name[i].value;
-                    }
-                    else if (name[i].type == "enum"){
-                        var opt = [];
-                        for (var j = 0; j < name[i].options.length; j++) {
-                            opt.push(name[i].options[j]);
-                            // console.log(opt);
-                        };
-                        var input = document.createElement("select");
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("id",name[i]._id);
-                        input.setAttribute("engName",name[i].engName);
-                        input.setAttribute("configKey",name[i].configKey);
-                        input.setAttribute("type",name[i].type);
-                        input.setAttribute("desc",name[i].desc);
-                        input.setAttribute("category",name[i].category);
-                        input.setAttribute("options",opt);
-                        input.setAttribute("cnName",name[i].cnName);
-                        input.setAttribute("value",name[i].value);
-                        input.setAttribute("class","form-group");
-                        for (var j = 0; j< name[i].options.length; j++) {
-                            var txt = name[i].options[j];
-                            var option =document.createElement("option");
-                            option.setAttribute("value",txt);
-                            if (txt == name[i].value) {
-                                option.setAttribute("selected","")
-                            };
-                            var txtvalue = document.createTextNode(txt);
-                            option.appendChild(txtvalue);
-                            input.appendChild(option);
-                        };
-                    }
-                    child.appendChild(text);
-                    child.appendChild(input);
-                    cont.appendChild(child);
-                }
-            }
-
-            
-
-        }
-    
-        // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+			for(var i = 0; i < data.data.length; i++) {
+				if(data.data[i].category == "main") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("main:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigMain.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "hardware") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("hardware:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigHardware.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "serverip") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("serverip:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigServerip.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "ad") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("ad:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigAd.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "channel") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("channel:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigChannel.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "localmedia") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("localmedia:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigLocalmedia.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "browser") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("browser:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigBrowser.innerHTML += _myAddselect;
+					}
+				} else if(data.data[i].category == "other") {
+					kk = i;
+					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
+					if(data.data[i].type == "string") {
+						_rowCheckPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+					} else if(data.data[i].type == "enum") {
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
+						console.log("lxw " + data.data[kk].options.length);
+						for(var k = 0; k < data.data[kk].options.length; k++) {
+							if(data.data[kk].options[k] == data.data[kk].value) {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+							} else {
+								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+							}
+						}
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_rowCheckPageConfigOther.innerHTML += _myAddselect;
+					}
+				}
+			}
+      	}
+    // 查询对应机芯机型的配置信息
+    //sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
