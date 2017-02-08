@@ -2065,7 +2065,7 @@ function getMoreEditInfoEnd() {
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
-				moreEditMkDelFile['mkFile.' + curTwoId] = 1;
+				moreEditMkDelFile['mkFile.' + curTwoId] = "1";
 			}
 		}
 	}
@@ -2091,11 +2091,11 @@ function getMoreEditInfoEnd() {
 	if(judge(moreEditMkAddFile)==true&&judge(moreEditMkDelFile)==true){
 		//添加或者修改、删除"userName":"' + loginusername + '","gerritState":"1","operateType":"2"
 		moreEditMkAddFile['userName'] = loginusername;
-		moreEditMkAddFile['gerritState'] = 1;
-		moreEditMkAddFile['operateType'] = 3;
+		moreEditMkAddFile['gerritState'] = "1";
+		moreEditMkAddFile['operateType'] = "3";
 		moreEditMkDelFile['userName'] = loginusername;
-		moreEditMkDelFile['gerritState'] = 1;
-		moreEditMkDelFile['operateType'] = 3;
+		moreEditMkDelFile['gerritState'] = "1";
+		moreEditMkDelFile['operateType'] = "3";
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + addNode);
@@ -2106,8 +2106,8 @@ function getMoreEditInfoEnd() {
 	if(judge(moreEditMkAddFile)==true&&judge(moreEditMkDelFile)==false){
 		//添加或者修改、未删除
 		moreEditMkAddFile['userName'] = loginusername;
-		moreEditMkAddFile['gerritState'] = 1;
-		moreEditMkAddFile['operateType'] = 3;
+		moreEditMkAddFile['gerritState'] = "1";
+		moreEditMkAddFile['operateType'] = "3";
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		console.log("lxw " + addNode);
 		moreDeleteData = 0;//表示未删除
@@ -2116,8 +2116,8 @@ function getMoreEditInfoEnd() {
 	if(judge(moreEditMkAddFile)==false&&judge(moreEditMkDelFile)==true){
 		//未添加或者修改、只删除
 		moreEditMkDelFile['userName'] = loginusername;
-		moreEditMkDelFile['gerritState'] = 1;
-		moreEditMkDelFile['operateType'] = 3;
+		moreEditMkDelFile['gerritState'] = "1";
+		moreEditMkDelFile['operateType'] = "3";
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + delNode);
 		sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
