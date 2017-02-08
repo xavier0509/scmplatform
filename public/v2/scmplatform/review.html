@@ -40,44 +40,8 @@
 		<!--<div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
         <div class="modalwidth" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" id="button_submit"><span aria-hidden="true" id="reButton"></span><tton>  
-                    <button type="button" class="close"  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过　</span><tton>
-                    <button type="button" class="close"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭　</span><tton> 
-                </div>
                 <div class="modal-body">
                         <fieldset id="_container">
-                            <legend>新建机芯机型</legend>
-                            <div class="row text-right " >
-                                <div class="col-xs-6 form-group productInfo" >
-                                    <label for="chip" class="control-label">机芯:　　</label>
-                                    <input type="text" id="chip" disabled value="">
-                                </div>
-                                <div class="col-xs-6 form-group productInfo">
-                                    <label for="model" class="control-label">机型:　　</label>
-                                    <input type="text" value="" id="model" disabled>
-                                </div>
-                                <div class="col-xs-12"><hr></div>          
-                            </div>
-                            <div class="row text-right ">
-                                <div class="col-xs-6 form-group productInfo">
-                                    <label for="device" class="control-label">TARGET_PRODUCT:　　</label>
-                                    <input type="text" value="" id="device">
-                                </div>
-                                <div class="col-xs-6 form-group productInfo">
-                                    <label for="android" class="control-label">Android版本:　　</label>
-                                    <input type="text" value="" id="android">
-                                </div>
-                                <div class="col-xs-6 form-group productInfo">
-                                    <label for="chipid" class="control-label">芯片型号:　　</label>
-                                    <input type="text" value="" id="chipid">
-                                </div>
-                                <div class="col-xs-6 form-group productInfo">
-                                    <label for="memory" class="control-label">内存:　　</label>
-                                    <input type="text" value="" id="memory">
-                                </div>
-                                <div class="col-xs-12"><hr></div> 
-                            </div>
 
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default" id="mkbutton">MK文件</button>
@@ -190,10 +154,10 @@
 							<tr>
 								<td style="padding: 0;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" id="myAddModalMkButton">MK文件</button>
-										<button type="button" class="btn btn-default" id="myAddModalConfigButton">config文件</button>
+										<button type="button" class="btn btn-default" id="mkbutton">MK文件</button>
+                               	 		<button type="button" class="btn btn-default" id="configbutton">config文件</button>
 									</div>
-									<div class="col-xs-12 inputstyle" id="myAddModalMkTable">
+									<div class="col-xs-12 inputstyle" id="reviewmkfile">
 										<table class="table table-bordered mytable">
 											<tbody id="myCheckModalMkTableTbody">
 												<tr>
@@ -223,7 +187,7 @@
 											</tbody>
 										</table>
 									</div>
-									<div class="col-xs-12 inputstyle" id="myAddModalConfigTable">
+									<div class="col-xs-12 inputstyle" id="reviewconfigfile">
 										<table class="table table-bordered mytable">
 											<tbody id="myAddModalConfigTableTbody">
 												<tr>
