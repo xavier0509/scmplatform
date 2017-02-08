@@ -2007,6 +2007,8 @@ function getMoreEditInfo() {
 		showStatus[4].style.display = "block";
 	}
 	if(mEMkAddCzName.length == 0&&mEMkDelCzName.length == 0&&mEConfigEditCzName.length == 0){
+		showStatus[0].style.display = "none";
+		showStatus[1].style.display = "none";
 		showStatus[5].style.display = "block";
 	}else{
 		showStatus[0].style.display = "block";
