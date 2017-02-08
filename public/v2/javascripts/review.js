@@ -371,6 +371,7 @@ function reviewresult(){
                 counter++;
                 console.log("counter = " + counter + "--" + key);
                 document.getElementById(key).setAttribute('checked', '');
+                document.getElementById(key).parentNode.style="font-weight:bold";
                 
             };
 
@@ -380,20 +381,39 @@ function reviewresult(){
             // var main = [];
             // var other = [];
 
-            for (var i = 0; i < configfile.length; i++) {
-                if (configfile[i].type == "string") {
-                    document.getElementById(configfile[i].engName).value = configfile[i].value;
-                }
-                else{
-                    document.getElementById(configfile[i].engName).value = configfile[i].value;
-                    var childSelect = document.getElementById(configfile[i].engName).childNodes;
-                    for (var j = 0; j < childSelect.length; j++) {
+            var configkey, configcounter = 0;
+            for(configkey in configfile) {
+                configcounter++;
+                console.log("lxw counter = " + configcounter + "--" + configkey);
+                console.log(configfile[configkey].type);
+                if(configfile[configkey].type == "string") {
+                    document.getElementById(configkey).value = configfile[configkey].value;
+                } else {
+                    document.getElementById(configkey).value = configfile[configkey].value;
+                    var childSelect = document.getElementById(configkey).childNodes;
+                    for(var j = 0; j < childSelect.length; j++) {
                         childSelect[j].removeAttribute("selected");
-                        if (childSelect[j].value == configfile[i].value) {
-                            childSelect[j].setAttribute("selected","");
+                        if(childSelect[j].value == configfile[configkey].value) {
+                            childSelect[j].setAttribute("selected", "");
                         }
                     };
                 }
+            }
+
+            // for (var i = 0; i < configfile.length; i++) {
+            //     if (configfile[i].type == "string") {
+            //         document.getElementById(configfile[i].engName).value = configfile[i].value;
+            //     }
+            //     else{
+            //         document.getElementById(configfile[i].engName).value = configfile[i].value;
+            //         var childSelect = document.getElementById(configfile[i].engName).childNodes;
+            //         for (var j = 0; j < childSelect.length; j++) {
+            //             childSelect[j].removeAttribute("selected");
+            //             if (childSelect[j].value == configfile[i].value) {
+            //                 childSelect[j].setAttribute("selected","");
+            //             }
+            //         };
+            //     }
                 
             };
 
