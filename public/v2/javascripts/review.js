@@ -583,34 +583,38 @@ function reviewEdit(){
     getconfigdata("#browsercont");
 
     //获取mk文件数据
+    var editMK = {};
     function getmkdata(name){
         $size = $(name).find("div");
         // if ($size.length!=0) {console.log($size);}else{console.log("ddd")};        
-        var array1 = [];//用于存放当前name分类下的数据
+        // var array1 = [];//用于存放当前name分类下的数据
         for (var i = 0; i < $size.length; i++) {
             if($size[i].childNodes[0].checked){
+                var _id = $size[i].childNodes[0].getAttribute("id");
                 var cnName = $size[i].innerText;
                 var engName = $size[i].childNodes[0].value;
                 var desc = $size[i].childNodes[0].getAttribute("desc") ;
                 var gitPath = $size[i].childNodes[0].getAttribute("gitPath");
                 var category = $size[i].childNodes[0].getAttribute("category");
                 var data = '{"cnName":"'+cnName+'","desc":"'+desc+'","engName":"'+engName+'","gitPath":"'+gitPath+'","category":"'+category+'"}';
-                // console.log(data);
-                array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
+                console.log(data);
+                editMK[_id] = JSON.parse(data);
+                // array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
-        };
+        }
+        console.log("mk文件信息是："+editMK);
         // console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
-        mkdd.push(array1);//将分类之后的数组存到一个数组中
+        // mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
         // console.log(JSON.stringify(mkdd));
     }
-    for (var i = 0; i < mkdd.length; i++) {
-        if (mkdd[i].length>0) {
-            for (var j = 0; j < mkdd[i].length; j++) {
-                mkdataarry.push(mkdd[i][j]);
-            }
-        };
-    };
+    // for (var i = 0; i < mkdd.length; i++) {
+    //     if (mkdd[i].length>0) {
+    //         for (var j = 0; j < mkdd[i].length; j++) {
+    //             mkdataarry.push(mkdd[i][j]);
+    //         }
+    //     };
+    // };
     // console.log("更新的mk信息："+JSON.stringify(mkdataarry));
 
     //获取config文件数据
