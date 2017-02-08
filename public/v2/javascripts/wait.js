@@ -159,7 +159,7 @@ function AfterWaitHtmlinfo() {
 				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
 				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
-				ChipModelArray.push(JSON.stringify(chipModelObj));
+				ChipModelArray.push(chipModelObj);
 			}
 		}
 		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
@@ -199,7 +199,7 @@ function AfterWaitHtmlinfo() {
 				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
 				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
-				ChipModelArray.push(JSON.stringify(chipModelObj));
+				ChipModelArray.push(chipModelObj);
 			}
 		}
 		console.log("lxw:" + myCheckedNumber);
