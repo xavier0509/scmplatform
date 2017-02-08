@@ -36,76 +36,6 @@
 				</div>
 			</div>
 		</fieldset>
-		<!--审核内容-->
-		<!--<div class="modal fade" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
-        <div class="modalwidth" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                        <fieldset id="_container">
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default" id="mkbutton">MK文件</button>
-                                <button type="button" class="btn btn-default" id="configbutton">config文件</button>
-                            </div>
-                            <div id="reviewmkfile">
-                                <h3>App:</h3>
-                                <div class="row text-left" id="appcont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>AppStore:</h3>
-                                <div class="row text-left" id="appstorecont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>HomePage:</h3>
-                                <div class="row text-left" id="homecont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>IME:</h3>
-                                <div class="row text-left" id="imecont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>Service:</h3>
-                                <div class="row text-left" id="servicecont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>SysApp:</h3>
-                                <div class="row text-left" id="syscont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>TV:</h3>
-                                <div class="row text-left" id="tvcont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>Other:</h3>
-                                <div class="row text-left" id="mkothercont"></div>
-                            </div>
-                            <div id="reviewconfigfile">
-                                <h3>核心功能:</h3>
-                                <div class="row text-left" id="maincont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>硬件配置信息:</h3>
-                                <div class="row text-left" id="hardwarecont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>服务器IP配置:</h3>
-                                <div class="row text-left" id="serveripcont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3> 广告配置:</h3>
-                                <div class="row text-left" id="adcont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>TV通道:</h3>
-                                <div class="row text-left" id="channelcont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>本地媒体:</h3>
-                                <div class="row text-left" id="localmediacont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>浏览器配置:</h3>
-                                <div class="row text-left" id="browsercont"></div>
-                                <div class="col-xs-12"><hr></div>
-                                <h3>其他功能:</h3>
-                                <div class="row text-left" id="othercont"></div>
-                            </div>
-                        </fieldset>
-                </div>
-                <div class="modal-footer" id="reviewBottom">
-                    <button type="button" id="btn_submit" class="btn btn-default"><span class="" aria-hidden="true" id="reviewSubmit"></span ></button>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
 		<!--点击新增弹出新增的modal-->
 		<div class="modal fade" id="myCheckModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
 			<div class="modalwidth" role="document">
@@ -122,32 +52,32 @@
 							<tr>
 								<td>
 									<div class="col-xs-6 form-group text-left inputdiv">
-										<label for="newAddChip" class="control-label col-xs-5 text-right inputdiv" title="oChip">机芯&nbsp;:</label>
-										<input type="text" value="" id="newAddChip" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="newCheckChip" class="control-label col-xs-5 text-right inputdiv" title="oChip">机芯&nbsp;:</label>
+										<input type="text" value="" id="newCheckChip" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
-										<label for="newAddModel" class="control-label col-xs-5 text-right inputdiv" title="oModel">机型&nbsp;:</label>
-										<input type="text" value="" id="newAddModel" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="newCheckModel" class="control-label col-xs-5 text-right inputdiv" title="oModel">机型&nbsp;:</label>
+										<input type="text" value="" id="newCheckModel" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<div class="col-xs-6 form-group inputdiv">
-										<label for="newAddDevice" class="control-label col-xs-5 text-right inputdiv" title="TARGET_PRODUCT">TARGET_PRODUCT&nbsp;:</label>
-										<input type="text" value="" id="newAddDevice" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="newCheckDevice" class="control-label col-xs-5 text-right inputdiv" title="TARGET_PRODUCT">TARGET_PRODUCT&nbsp;:</label>
+										<input type="text" value="" id="newCheckDevice" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
-										<label for="NewAddAndroidVersion" class="control-label col-xs-5 text-right inputdiv" title="AndroidVersion">Android版本&nbsp;:</label>
-										<input type="text" value="" id="NewAddAndroidVersion" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="NewCheckAndroidVersion" class="control-label col-xs-5 text-right inputdiv" title="AndroidVersion">Android版本&nbsp;:</label>
+										<input type="text" value="" id="NewCheckAndroidVersion" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
-										<label for="newAddChipMode" class="control-label col-xs-5 text-right inputdiv" title="ChipMode">芯片型号&nbsp;:</label>
-										<input type="text" value="" id="newAddChipMode" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="newCheckChipMode" class="control-label col-xs-5 text-right inputdiv" title="ChipMode">芯片型号&nbsp;:</label>
+										<input type="text" value="" id="newCheckChipMode" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
-										<label for="newAddMemory" class="control-label col-xs-5 text-right inputdiv" title="memory">内存&nbsp;:</label>
-										<input type="text" value="" id="newAddMemory" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<label for="newCheckMemory" class="control-label col-xs-5 text-right inputdiv" title="memory">内存&nbsp;:</label>
+										<input type="text" value="" id="newCheckMemory" class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 								</td>
 							</tr>
