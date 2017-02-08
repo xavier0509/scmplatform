@@ -22,6 +22,7 @@ function sessionresult(){
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
                 loginusername = data.data.data.author;
+                document.getElementById("indexUserName").innerHTML = loginusername;
                 if (data.data.data.adminFlag == "1") {
                     adminFlag = 1;   //非管理员标志位                
                     // console.log(loginusername);
