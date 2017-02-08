@@ -686,3 +686,9 @@ td{
 	overflow:hidden; 
 	text-overflow:ellipsis;
 }
+.moreEditDetail:nth-child(5){
+	font-size: 24px;
+	margin: 0;
+	margin-left: 8%;
+	display: none;
+}

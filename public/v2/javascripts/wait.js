@@ -1993,19 +1993,24 @@ function getMoreEditInfo() {
 	var showStatus = document.getElementsByClassName("moreEditDetail");
 	if(mEMkAddCzName.length == 0){
 		showStatus[2].style.display = "none";
+	}else{
+		showStatus[2].style.display = "block";
 	}
 	if(mEMkDelCzName.length == 0){
 		showStatus[3].style.display = "none";
+	}else{
+		showStatus[3].style.display = "block";
 	}
 	if(mEConfigEditCzName.length == 0){
 		showStatus[4].style.display = "none";
+	}else{
+		showStatus[4].style.display = "block";
 	}
 	if(mEMkAddCzName.length == 0&&mEMkDelCzName.length == 0&&mEConfigEditCzName.length == 0){
-		showStatus[0].innerHTML = "您未做任何操作。";
-		showStatus[0].style.marginTop = "1%";
-		showStatus[0].style.marginBottom = "1%";
-		showStatus[0].style.textAlign = "center";
-		showStatus[1].style.display = "none";
+		showStatus[5].style.display = "block";
+	}else{
+		showStatus[0].style.display = "block";
+		showStatus[1].style.display = "block";
 	}
 }
 
