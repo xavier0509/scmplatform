@@ -145,10 +145,6 @@ function AfterWaitHtmlinfo() {
 	oButtonEdit.onclick = function() {
 		//每次点击时先将ChipModelArray置为空
 		ChipModelArray = [];
-		var chipModelObj = {
-			chip: "",
-			model: ""
-		};
 		var myCheckboxChecked = new Array();
 		var myCheckedNumber = 0;
 		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
@@ -156,6 +152,10 @@ function AfterWaitHtmlinfo() {
 		for(var i = 0; i < myCheckboxChecked.length; i++) {
 			if($('.checkboxstatus')[i].checked == true) {
 				myCheckedNumber++;
+				var chipModelObj = {
+					chip: "",
+					model: ""
+				};
 				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
 				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
@@ -220,7 +220,7 @@ function AfterWaitHtmlinfo() {
 		var oButtonEditEnsure = document.getElementById("myMoreDeleteModalEnsure");
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
-			console.log("lxw " + JSON.stringify(ChipModelArray));
+			console.log("lxw " + ChipModelArray);
 			var deleNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
 			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fybv2_api/productUpdate", deleNode, moreDeleteresult);
@@ -2096,8 +2096,8 @@ function getMoreEditInfoEnd() {
 		moreEditMkDelFile['userName'] = loginusername;
 		moreEditMkDelFile['gerritState'] = 1;
 		moreEditMkDelFile['operateType'] = 3;
-		var addNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
-		var delNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
+		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
+		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + addNode);
 		console.log("lxw " + delNode);
 		moreDeleteData = delNode;
@@ -2108,7 +2108,7 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['userName'] = loginusername;
 		moreEditMkAddFile['gerritState'] = 1;
 		moreEditMkAddFile['operateType'] = 3;
-		var addNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
+		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		console.log("lxw " + addNode);
 		moreDeleteData = 0;//表示未删除
 		sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
@@ -2118,7 +2118,7 @@ function getMoreEditInfoEnd() {
 		moreEditMkDelFile['userName'] = loginusername;
 		moreEditMkDelFile['gerritState'] = 1;
 		moreEditMkDelFile['operateType'] = 3;
-		var delNode = '{"data":{"condition":{"$or":[' + ChipModelArray + ']},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
+		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + delNode);
 		sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
 	}
