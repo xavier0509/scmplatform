@@ -579,7 +579,7 @@ td{
 	border: 1px solid skyblue;
 	display: none;
 }
-#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal{
+#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
 .loginmycenter{padding-top: 16%;}
