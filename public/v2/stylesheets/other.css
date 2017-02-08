@@ -687,6 +687,12 @@ td{
 	text-overflow:ellipsis;
 }
 .moreEditDetail:nth-child(5){
+	display:block;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.moreEditDetail:nth-child(6){
 	font-size: 24px;
 	margin: 0;
 	margin-left: 8%;
