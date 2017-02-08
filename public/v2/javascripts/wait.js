@@ -2062,7 +2062,16 @@ function getMoreEditInfoEnd() {
 	console.log("lxw " + addNode);
 	console.log("lxw " + delNode);
 	moreDeleteData = delNode;
+	console.log(judge(moreEditMkAddFile));
+	console.log(judge(moreEditMkDelFile));
 	sendHTTPRequest("/fybv2_api/productUpdate", addNode, moreAddResult);
+}
+
+function judge(obj){
+ 　　for(var i in obj){//如果不为空，则会执行到这一步，返回true
+　　　　return true;
+　　}
+　　 return false; 
 }
 function moreAddResult(){
 	if(this.readyState == 4) {
