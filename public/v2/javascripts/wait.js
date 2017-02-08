@@ -2000,6 +2000,9 @@ function getMoreEditInfo() {
 	if(mEConfigEditCzName.length == 0){
 		showStatus[3].style.display = "none";
 	}
+	if(mEMkAddCzName.length == 0&&mEMkDelCzName.length == 0&&mEConfigEditCzName.length == 0){
+		
+	}
 }
 
 function getMoreEditInfoEnd() {
