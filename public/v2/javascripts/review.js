@@ -209,7 +209,8 @@ function moduleResult(){
                     var text = document.createTextNode(name[i].cnName);
                     var input = document.createElement("input");
                     input.setAttribute('value',name[i].engName);
-                    input.setAttribute('id',name[i].engName);
+                    input.setAttribute('id',name[i]._id);
+                    input.setAttribute('engName',name[i].engName);
                     input.setAttribute('category',name[i].category);
                     input.setAttribute('gitPath',name[i].gitPath);
                     input.setAttribute('desc',name[i].desc);
