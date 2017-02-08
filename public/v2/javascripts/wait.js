@@ -1980,6 +1980,7 @@ function getMoreEditInfo() {
 	console.log("lxw " + mEMkAddCzName);
 	console.log("lxw " + mEMkDelCzName);
 	console.log("lxw " + mEConfigEditCzName);
+	console.log(ChipModelArray);
 	var infoArray = new Array();
 	for (var i=0; i<ChipModelArray.length; i++) {
 		infoArray.push("机芯:"+ChipModelArray[i].chip+"机型:"+ChipModelArray[i].model);
