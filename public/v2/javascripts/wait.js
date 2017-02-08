@@ -1986,7 +1986,7 @@ function getMoreEditInfo() {
 		infoArray.push("机芯:"+ChipModelArray[i].chip+"机型:"+ChipModelArray[i].model);
 	}
 	console.log(infoArray);
-	document.getElementById("AimAtChipAndModel").innerHTML = ChipModelArray;
+	document.getElementById("AimAtChipAndModel").innerHTML = infoArray;
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
