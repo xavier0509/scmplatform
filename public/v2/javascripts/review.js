@@ -20,27 +20,21 @@ var fileUsername = null;
 
 //在待审核页面出现列表
 function reviewlist(){
-    // console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
-        // console.log("this.status = " + this.status);
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
-
             var title=document.getElementById("reviewmytable"); //获取tbody的表格内容
             for (var i = title.childNodes.length-1; i > 0; i--) {
                 title.removeChild(title.childNodes[i]); //删除掉每个子节点的内容
             };          
-
             var data = JSON.parse(this.responseText);
             var level = parent.adminFlag;
             // console.log("level:"+level)
             var _row;
-
             var msg = data.msg;
             if (msg == "success") {
                 var datalength = data.data;
-                // console.log(datalength);
                 for (var i = 0; i < datalength.length; i++) {
                     _row = document.getElementById("reviewmytable").insertRow(0);
                     var _cell1 = _row.insertCell(0);
@@ -140,6 +134,19 @@ function recoverResult(){
 
 }
 
+
+$('#configbutton').click(function(){
+    $("#reviewconfigfile").css("display","block");
+    $("#reviewmkfile").css("display","none");
+})
+
+$('#mkbutton').click(function(){
+    $("#reviewconfigfile").css("display","none");
+    $("#reviewmkfile").css("display","block");
+})
+
+
+
 //点击编辑、审核出现页面的执行函数
 function review(obj){
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
@@ -158,74 +165,73 @@ function moduleResult(){
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) //TODO
         {
-            $('#myMoreDeleteModal').modal();
-
-            var app = [];
-            var appstore = [];
-            var homepage = [];
-            var ime = [];
-            var service = [];
-            var sysapp = [];
-            var tv = [];
-            var mkother = [];
+            $('#myCheckModal').modal();
+//          var app = [];
+//          var appstore = [];
+//          var homepage = [];
+//          var ime = [];
+//          var service = [];
+//          var sysapp = [];
+//          var tv = [];
+//          var mkother = [];
             // var main = [];
             // var other = [];
 
-            var data = JSON.parse(this.responseText);
-            for (var i = 0; i < data.data.length; i++) {
-                if(data.data[i].category == "App"){app.push(data.data[i]);}
-                else if (data.data[i].category == "AppStore") {appstore.push(data.data[i]);}
-                else if (data.data[i].category == "HomePage") {homepage.push(data.data[i]);}
-                else if (data.data[i].category == "IME") {ime.push(data.data[i]);}
-                else if (data.data[i].category == "Service") {service.push(data.data[i]);}
-                else if (data.data[i].category == "SysApp") {sysapp.push(data.data[i]);}
-                else if (data.data[i].category == "TV") {tv.push(data.data[i]);}
-                else if (data.data[i].category == "Other") {mkother.push(data.data[i]);}
-            };
+//          var data = JSON.parse(this.responseText);
+//          for (var i = 0; i < data.data.length; i++) {
+//              if(data.data[i].category == "App"){app.push(data.data[i]);}
+//              else if (data.data[i].category == "AppStore") {appstore.push(data.data[i]);}
+//              else if (data.data[i].category == "HomePage") {homepage.push(data.data[i]);}
+//              else if (data.data[i].category == "IME") {ime.push(data.data[i]);}
+//              else if (data.data[i].category == "Service") {service.push(data.data[i]);}
+//              else if (data.data[i].category == "SysApp") {sysapp.push(data.data[i]);}
+//              else if (data.data[i].category == "TV") {tv.push(data.data[i]);}
+//              else if (data.data[i].category == "Other") {mkother.push(data.data[i]);}
+//          };
 
-            document.getElementById("appcont").innerHTML="";
-            document.getElementById("appstorecont").innerHTML="";
-            document.getElementById("homecont").innerHTML="";
-            document.getElementById("imecont").innerHTML="";
-            document.getElementById("servicecont").innerHTML="";
-            document.getElementById("syscont").innerHTML="";
-            document.getElementById("tvcont").innerHTML="";
-            document.getElementById("mkothercont").innerHTML="";
+//          document.getElementById("appcont").innerHTML="";
+//          document.getElementById("appstorecont").innerHTML="";
+//          document.getElementById("homecont").innerHTML="";
+//          document.getElementById("imecont").innerHTML="";
+//          document.getElementById("servicecont").innerHTML="";
+//          document.getElementById("syscont").innerHTML="";
+//          document.getElementById("tvcont").innerHTML="";
+//          document.getElementById("mkothercont").innerHTML="";
 
-            creatMK(app,"appcont");
-            creatMK(appstore,"appstorecont");
-            creatMK(homepage,"homecont");
-            creatMK(ime,"imecont");
-            creatMK(service,"servicecont");
-            creatMK(sysapp,"syscont");
-            creatMK(tv,"tvcont");
-            creatMK(mkother,"mkothercont");
+//          creatMK(app,"appcont");
+//          creatMK(appstore,"appstorecont");
+//          creatMK(homepage,"homecont");
+//          creatMK(ime,"imecont");
+//          creatMK(service,"servicecont");
+//          creatMK(sysapp,"syscont");
+//          creatMK(tv,"tvcont");
+//          creatMK(mkother,"mkothercont");
 
-            function creatMK(name,divname){
-                for (var i = 0; i < name.length; i++) {
-                    var cont = document.getElementById(divname);
-                    var child = document.createElement("div");
-                    child.setAttribute('class','col-sm-3 form-group');
-                    var text = document.createTextNode(name[i].cnName);
-                    var input = document.createElement("input");
-                    input.setAttribute('value',name[i].engName);
-                    input.setAttribute('id',name[i]._id);
-                    input.setAttribute('engName',name[i].engName);
-                    input.setAttribute('category',name[i].category);
-                    input.setAttribute('gitPath',name[i].gitPath);
-                    input.setAttribute('desc',name[i].desc);
-                    input.setAttribute('type','checkbox');
-                    // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
-                    child.appendChild(input);
-                    child.appendChild(text);
-                    cont.appendChild(child);
-                }
-            }
-        }
-    
-    //查询config信息接口
-    sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult); 
-    }
+//          function creatMK(name,divname){
+//              for (var i = 0; i < name.length; i++) {
+//                  var cont = document.getElementById(divname);
+//                  var child = document.createElement("div");
+//                  child.setAttribute('class','col-sm-3 form-group');
+//                  var text = document.createTextNode(name[i].cnName);
+//                  var input = document.createElement("input");
+//                  input.setAttribute('value',name[i].engName);
+//                  input.setAttribute('id',name[i]._id);
+//                  input.setAttribute('engName',name[i].engName);
+//                  input.setAttribute('category',name[i].category);
+//                  input.setAttribute('gitPath',name[i].gitPath);
+//                  input.setAttribute('desc',name[i].desc);
+//                  input.setAttribute('type','checkbox');
+//                  // if (name[i].state == 1) {input.setAttribute('checked','');};//勾选状态
+//                  child.appendChild(input);
+//                  child.appendChild(text);
+//                  cont.appendChild(child);
+//              }
+//          }
+      	}
+//  
+//查询config信息接口
+//  sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult); 
+  	}
 }
 
 function configResult(){
@@ -603,7 +609,7 @@ function reviewEdit(){
                 // array1.push(JSON.parse(data));//将当前name分类下的数据存到数组中
             }
         }
-        console.log("mk文件信息是："+editMK);
+        console.log("mk文件信息是：" + editMK);
         // console.log("mktest!!!!!!!!!!!"+JSON.stringify(array1));
         // mkdd.push(array1);//将分类之后的数组存到一个数组中
         // console.log(mkdd[0]);
@@ -732,12 +738,3 @@ function closeFun(){
 }
 
 
-$('#configbutton').click(function(){
-    $("#reviewconfigfile").css("display","block");
-    $("#reviewmkfile").css("display","none");
-})
-
-$('#mkbutton').click(function(){
-    $("#reviewconfigfile").css("display","none");
-    $("#reviewmkfile").css("display","block");
-})
