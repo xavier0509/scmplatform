@@ -210,7 +210,7 @@ function returnAddInfo() {
 				freshModuleAddHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "添加失败");
-				document.getElementById("moduleErrorInfo").innerHTML = "添加失败！";
+				document.getElementById("moduleErrorInfo").innerHTML = "添加失败！该模块或已存在。";
 				setTimeout("document.getElementById('moduleErrorInfo').innerHTML='　'", 3000);
 			};
 		};
