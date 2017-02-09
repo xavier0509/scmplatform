@@ -25,6 +25,7 @@ function loginfun() {
 }
 
 function loginresult() {
+    document.getElementById("logintxt").innerHTML = "　";
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         console.log("this.status = " + this.status);
@@ -37,7 +38,7 @@ function loginresult() {
             }
             else if (data.msg == "failure") {
 	    	var loginmsg = document.getElementById("logintxt");
-            loginmsg.innerHTML = loginmsg.innerHTML+"!请输入正确账号或密码";
+            loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确账号或密码!";
             setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
 	    };
 
