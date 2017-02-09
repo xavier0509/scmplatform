@@ -120,6 +120,7 @@ td{
 
 #config-mkTable a{
 	text-decoration: underline;
+	white-space:nowrap;
 }
 #config-mkTable tr td div{
 	margin-bottom: 5px;
