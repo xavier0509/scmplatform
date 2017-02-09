@@ -35,8 +35,9 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleInstr").value = jsonData.desc;
 			
 			var childSelect = document.getElementById("moduleSelect").childNodes;
+			console.log(childSelect.length);
 			for(var j = 0; j < childSelect.length; j++) {
-				childSelect[j].removeAttribute("selected");
+				//childSelect[j].removeAttribute("selected");
 				if(childSelect[j].value == jsonData.category) {
 					childSelect[j].setAttribute("selected", "");
 				}
