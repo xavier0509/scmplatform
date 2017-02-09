@@ -37,7 +37,7 @@ function AfterChipModeHtmlInfo() {
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			console.log(thisEnName);
-			document.getElementById("lableText").innerHTML = "输入机芯名称：";
+			document.getElementById("lableText").innerHTML = "将机芯"+thisEnName+"的名称改为：";
 			document.getElementById("chipOrMode").value = "";
 			//给保存按钮传参
 			toSaveButton("chip", this.index, thisIndexName, thisIndexId);
@@ -52,9 +52,11 @@ function AfterChipModeHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			var thisIndexName = oTableB[this.index].innerText;//通过englishName找到对应数据
 			var thisIndexId = oTableB[this.index].name;//通过id找到对应数据
+			var thisEnName = oTableB[this.index].title;
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-			document.getElementById("lableText").innerHTML = "输入机型名称：";
+			console.log(thisEnName);
+			document.getElementById("lableText").innerHTML = "将机型"+thisEnName+"的名称改为：";;
 			document.getElementById("chipOrMode").value = "";
 			toSaveButton("model", this.index, thisIndexName, thisIndexId);
 		}
