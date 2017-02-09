@@ -51,7 +51,7 @@ td{
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
 
-#modeManager-mkTable a{
+/*#modeManager-mkTable a{
 	text-decoration: underline;
 }
 #modeManager-mkTable tr td{
@@ -60,7 +60,7 @@ td{
 #modeManager-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
-}
+}*/
 
 #chipManager-mkTable{
 	display: inline-block;
@@ -77,6 +77,26 @@ td{
 	display: block;
 }
 #chipManager-mkTable tr td div{
+	margin-bottom: 5px;
+	font-size: 20px;
+	overflow: hidden;
+}
+
+
+#modeManager-mkTable{
+	display: inline-block;
+}
+#modeManager-mkTable tbody,#modeManager-mkTable tbody tr{
+	display: block;
+}
+#modeManager-mkTable a{
+	text-decoration: underline;
+}
+#modeManager-mkTable tr td{
+	border: 0;
+	display: block;
+}
+#modeManager-mkTable tr td div{
 	margin-bottom: 5px;
 	font-size: 20px;
 	overflow: hidden;
