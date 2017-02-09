@@ -14,7 +14,7 @@ function AfterModuleHtmlInfo() {
 		document.getElementById("moduleEnName").value = "";
 		document.getElementById("moduleSrc").value = "";
 		document.getElementById("moduleInstr").value = "";
-		document.getElementById("moduleInstr").value = "App";
+		document.getElementById("moduleSelect").value = "App";
 		toSaveButton(-1, null);
 	}
 
