@@ -58,11 +58,11 @@ function AfterModuleHtmlInfo() {
 			var newModuleSrc = document.getElementById("moduleSrc").value;
 			var newModuleInstr = document.getElementById("moduleInstr").value;
 			var newModuleSelect = document.getElementById("moduleSelect").value;
-			
-			newModuleCzName = newModuleCzName.replace(/(^\s*)|(\s*$)/g,"");
-			newModuleEnName = newModuleEnName.replace(/(^\s*)|(\s*$)/g,"");
-			newModuleSrc = newModuleSrc.replace(/(^\s*)|(\s*$)/g,"");
-			newModuleInstr = newModuleInstr.replace(/(^\s*)|(\s*$)/g,"");
+
+			newModuleCzName = newModuleCzName.replace(/(^\s*)|(\s*$)/g, "");
+			newModuleEnName = newModuleEnName.replace(/(^\s*)|(\s*$)/g, "");
+			newModuleSrc = newModuleSrc.replace(/(^\s*)|(\s*$)/g, "");
+			newModuleInstr = newModuleInstr.replace(/(^\s*)|(\s*$)/g, "");
 			console.log("lxw " + newModuleCzName + "--" + newModuleEnName + "--" + newModuleSrc + "--" + newModuleInstr + "--" + newModuleSelect);
 
 			var myCnNameObj = {
@@ -100,20 +100,20 @@ function AfterModuleHtmlInfo() {
 						jj = currentArray.length;
 						document.getElementById("moduleErrorInfo").style.display = "block";
 						document.getElementById("moduleErrorInfo").innerHTML = ooName + "项不能为空！";
-						setTimeout("document.getElementById('moduleErrorInfo').innerHTML='　'",3000);
+						setTimeout("document.getElementById('moduleErrorInfo').innerHTML='　'", 3000);
 					}
 				}
-			}
-
-			if(myindex == -1) {
-				console.log("lxw " + myindex);
-				var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-				//sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
 			} else {
-				console.log("lxw " + myindex);
-				var node = '{"data":{"_id":"' + idName + '","update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
-				console.log("lxw " + node);
-				//sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
+				if(myindex == -1) {
+					console.log("lxw " + myindex);
+					var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
+					//sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
+				} else {
+					console.log("lxw " + myindex);
+					var node = '{"data":{"_id":"' + idName + '","update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
+					console.log("lxw " + node);
+					//sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
+				}
 			}
 		}
 	}
