@@ -126,6 +126,7 @@ td{
 	margin-top: 5px;
 	font-size: 20px;
 	text-align: left;
+	overflow: hidden;
 }
 #config-mkTable tr td div:nth-child(1){
 	color: red;
