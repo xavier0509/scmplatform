@@ -51,17 +51,6 @@ td{
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
 
-/*#modeManager-mkTable a{
-	text-decoration: underline;
-}
-#modeManager-mkTable tr td{
-	border: 0;
-}
-#modeManager-mkTable tr td div{
-	margin-bottom: 5px;
-	font-size: 20px;
-}*/
-
 #chipManager-mkTable{
 	display: inline-block;
 }
@@ -190,10 +179,6 @@ td{
 .mytable{
 	padding-bottom: 0px;
 	font-size: 18px;
-	display: block;
-}
-.mytable tbody,.mybody tbody tr{
-	display: block;
 }
 .mytable input{
 	display: block;
