@@ -16,7 +16,7 @@ function loginfun() {
     var node = '{"data":{"username":"' + username + '","password":"' + pwd + '"}}';
     console.log(node);
     if (username != "" && pwd != "") {
-        sendHTTPRequest("/api/login", node, loginresult);
+        sendHTTPRequest("/fybv2_api/login", node, loginresult);
     }
     else if(username == ""){
         var usermessage = document.getElementById('usermessage');

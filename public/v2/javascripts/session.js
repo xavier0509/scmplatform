@@ -8,7 +8,7 @@ var loginusername = null;  //访问session之后存取登录用户名
 
 //访问session接口
 function forsession(){
-    sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
+    sendHTTPRequest("/fybv2_api/session", '{"data":""}', sessionresult);
 }
 
 //session返回数据
