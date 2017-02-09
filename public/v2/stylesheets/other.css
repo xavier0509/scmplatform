@@ -771,3 +771,7 @@ td{
 	text-align: center;
 	display: none;
 }
+
+.tablebottom{
+	margin-bottom: 0;
+}
