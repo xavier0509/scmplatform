@@ -1,5 +1,5 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
-document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
+// document.write("<script language=javascript src='../javascripts/login.js' charset=\"utf-8\"></script>");
 
 var level = null;
 var loginusername = null;
