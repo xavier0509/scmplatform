@@ -119,8 +119,8 @@ function AferConfigHtmlInfo() {
 				}
 			}
 			if (newConfigCzName == "" || newConfigEnName == "" || newConfigSrc == "" || newConfigInstr =="" ||(newConfigString == "" && inputNumState == 0)) {
-				document.getElementById("configPostInfo").innerHTML = "请确保所有项不为空！";
-				setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
+				document.getElementById(" configErrorInfo").innerHTML = "请确保所有项不为空！";
+				setTimeout('document.getElementById(" configErrorInfo").innerHTML = "　"',3000);
 			}
 			else{
 				console.log("枚举型是否为空："+inputNumState);
@@ -130,8 +130,8 @@ function AferConfigHtmlInfo() {
 				console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigString+"--"+newConfigInstr+"--"+newConfigSelect);
 				if (newConfigString !="" && inputNumState == 1) {
 					console.log("字符串型不为空，枚举型不为空！！！冲突！！！！");
-					document.getElementById("configPostInfo").innerHTML = "输入有误，请确保字符串与枚举型的唯一！";
-					setTimeout('document.getElementById("configPostInfo").innerHTML = "　"',3000);
+					document.getElementById(" configErrorInfo").innerHTML = "输入有误，请确保字符串与枚举型的唯一！";
+					setTimeout('document.getElementById(" configErrorInfo").innerHTML = "　"',3000);
 				}
 				else if (newConfigString !="" && inputNumState == 0) {
 					console.log("枚举型为空，字符串型！！！");
