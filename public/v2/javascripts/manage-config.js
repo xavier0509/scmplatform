@@ -120,6 +120,7 @@ function AferConfigHtmlInfo() {
 				}
 			}
 			if (newConfigCzName == "" || newConfigEnName == "" || newConfigSrc == "" || newConfigInstr =="" ||(newConfigString == "" && inputNumState == 0)) {
+				console.log("in here");
 				document.getElementById("configErrorInfo").innerHTML = "请确保所有项不为空！";
 				setTimeout('document.getElementById("configErrorInfo").innerHTML = "　"',3000);
 			}

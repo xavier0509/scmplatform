@@ -714,7 +714,7 @@ td{
     margin: 0 auto;
 }
 
-#chipMangInfo,#moduleErrorInfo{
+#chipMangInfo,#moduleErrorInfo,#configErrorInfo{
 	text-align: center;
 	color: red;
 	margin-top: 2%;
@@ -729,7 +729,7 @@ td{
 	color: red;
 }
 
-#configErrorInfo,#myDeleteModalErrorInfo{
+#myDeleteModalErrorInfo{
 	display: none;
 	text-align: center;
 	color: red;
