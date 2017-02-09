@@ -632,6 +632,7 @@ td{
 	resize:none;
 	width: 80%;
 	margin: auto;
+	font-size: 20px;
 }
 .configDefaultedOption{
 	height: 25px;
@@ -677,6 +678,7 @@ td{
 #ADCSEfficient{
 	height: 96px;
 	overflow-y: auto;
+	font-size: 20px;
 }
 .menuUnitInput{
     display: block;
