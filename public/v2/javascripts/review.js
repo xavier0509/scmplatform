@@ -496,6 +496,11 @@ function reviewresult(){
                 // document.getElementById("btn_submit").onclick = reviewEdit;
                 document.getElementById("btn_submit").onclick = editIssue;
                 document.getElementById("button_submit").onclick = editIssue;
+                
+                document.getElementById("newCheckChip").setAttribute('disabled','');
+                document.getElementById("newCheckChip").style.backgroundColor = "#ebebe4";
+                document.getElementById("newCheckModel").setAttribute('disabled','');
+                document.getElementById("newCheckModel").style.backgroundColor = "#ebebe4";
             }
         }
     }
