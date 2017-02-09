@@ -13,7 +13,7 @@ function AfterModuleHtmlInfo() {
 		toSaveButton(-1,null);
 	}
 
-	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
+	/*模块管理板块-修改 table-tr-a   */
 	var oTableA = $("#module-mkTable").find("a");
 	var oTableInput = $("#module-mkTable").find("input");
 	console.log("xjr"+oTableInput.length);
@@ -33,6 +33,14 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleEnName").value = jsonData.engName;
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
+			
+			var childSelect = document.getElementById("moduleSelect").childNodes;
+			for(var j = 0; j < childSelect.length; j++) {
+				childSelect[j].removeAttribute("selected");
+				if(childSelect[j].value == jsonData.category) {
+					childSelect[j].setAttribute("selected", "");
+				}
+			};
 			
 			toSaveButton(this.index,thisId);
 		}
