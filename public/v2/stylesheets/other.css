@@ -259,6 +259,7 @@ td{
     text-align: right;
     margin-left: 0;
     font-size: 17px;
+    white-space: nowrap;
     overflow: hidden;
 }
 #myCopyModalMkTableTbody input{
@@ -303,6 +304,7 @@ td{
     text-align: right;
     margin-left: 0;
     font-size: 17px;
+    white-space: nowrap;
     overflow: hidden;
 }
 #myEditModalMkTableTbody input{
@@ -368,6 +370,7 @@ td{
 }
 #myMoreEditModalMkTableTbody div{
 	margin-bottom: 4px;
+	overflow: hidden;
 }
 #myMoreEditModalConfigTableTbody tr td div{
 	display: block;
@@ -399,6 +402,7 @@ td{
     text-align: right;
     margin-left: 0;
     font-size: 17px;
+    white-space: nowrap;
     overflow: hidden;
 }
 #myAddModalMkTableTbody input{
