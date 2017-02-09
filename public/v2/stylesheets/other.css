@@ -393,6 +393,50 @@ td{
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
 }
+
+#myCheckModalConfigTableTbody div{
+	margin-bottom: 4px;
+}
+#myCheckModalConfigTableTbody div select{
+	width: 50%;
+	float: left;
+	height: 30px;
+	margin-left: 5%;
+}
+#myCheckModalConfigTableTbody div input{
+	width: 50%;
+	float: left;
+	margin-left: 5%;
+}
+#myCheckModalConfigTableTbody tr td div{
+	display: block;
+    height: 30px;
+}
+#myCheckModalConfigTableTbody span{
+	display: block;
+    float: left;
+    width: 40%;
+    text-align: right;
+    margin-left: 0;
+    font-size: 17px;
+    overflow: hidden;
+}
+#myCheckModalMkTableTbody input{
+	display: block;
+    float: left;
+}
+#myCheckModalMkTableTbody span{
+	display: block;
+    float: left;
+    width: 72%;
+    text-align: left;
+    margin-left: 5%;
+    font-size: 17px;
+}
+#myCheckModalMkTableTbody div{
+	margin-bottom: 4px;
+}
+
 .myModalErrorInfo{
     display: none;
     margin-left: 20%;
