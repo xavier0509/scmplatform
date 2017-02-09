@@ -275,6 +275,7 @@ td{
 }
 #myCopyModalMkTableTbody div{
 	margin-bottom: 4px;
+	overflow: hidden;
 }
 #myEditModalConfigTableTbody div{
 	margin-bottom: 4px;
@@ -414,6 +415,7 @@ td{
 }
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
+	overflow: hidden;
 }
 
 #myCheckModalConfigTableTbody div{
