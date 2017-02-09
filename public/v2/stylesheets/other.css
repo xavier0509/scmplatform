@@ -63,7 +63,7 @@ td{
 }
 
 #chipManager-mkTable,#chipManager-mkTable tbody,#chipManager-mkTable tbody tr{
-	display: block;
+	display: inline-block;
 }
 
 #chipManager-mkTable a{
