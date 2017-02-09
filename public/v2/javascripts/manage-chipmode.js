@@ -131,8 +131,8 @@ function CreatChipInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "新增失败");
-				document.getElementById("chipMangInfo").style.display = "block";
 				document.getElementById("chipMangInfo").innerHTML = "该机芯已存在！";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		}
 	}
@@ -150,6 +150,8 @@ function ChangeChipInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
+				document.getElementById("chipMangInfo").innerHTML = "修改失败!";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		};
 	}
@@ -184,8 +186,8 @@ function CreatModelInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementById("chipMangInfo").style.display = "block";
-				document.getElementById("chipMangInfo").innerHTML = "添加失败";
+				document.getElementById("chipMangInfo").innerHTML = "该机型已存在";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		};
 	}
@@ -203,8 +205,8 @@ function ChangeModelInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementById("chipMangInfo").style.display = "block";
-				document.getElementById("chipMangInfo").innerHTML = "修改失败";
+				document.getElementById("chipMangInfo").innerHTML = "修改失败！";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		};
 	}
