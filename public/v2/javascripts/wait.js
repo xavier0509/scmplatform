@@ -2186,11 +2186,11 @@ function delupdatafunc(){
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "批量删除单项的状态修改-成功");
-				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "批量删除单项的状态修改-失败");
 			};
 		};
+		freshHtml("tab_userMenu2");
 		startSelect();
 	}
 }
