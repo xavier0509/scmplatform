@@ -578,11 +578,11 @@ function passResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 console.log("审核成功！！！！");
-                sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
                 freshReviewHtml();
             };
 
         }
+    sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
     }
 }
 
