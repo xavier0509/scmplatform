@@ -577,7 +577,7 @@ function passResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                // console.log("审核成功！！！！");
+                console.log("审核成功！！！！");
                 sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
                 freshReviewHtml();
             };
@@ -611,7 +611,10 @@ function creatFile(){
             if (data.msg=="success") {
                 console.log("生成文件成功！！！！");
                 // freshReviewHtml();
-            };
+            }
+            else{
+                console.log("生成文件失败！！！！");
+            }
 
         }
     }
