@@ -110,7 +110,7 @@ function SearchChipInfo() {
 			console.log("lxw " + data.data.length);
 			var _rowChip = document.getElementById("chipManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
-				_rowChip.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"'>" + data.data[i].name + "</a></div>";
+				_rowChip.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"' title='"+data.data[i].name+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
 		sendHTTPRequest("/fybv2_api/modelQuery", '{"data":""}', SearchModeInfo);
@@ -160,7 +160,7 @@ function SearchModeInfo() {
 			console.log("lxw " + data.data.length);
 			var _rowMode = document.getElementById("modalManageAdd-td");
 			for(var i = 0; i < data.data.length; i++) {
-				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"'>" + data.data[i].name + "</a></div>";
+				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"' title='"+data.data[i].name+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
 		AfterChipModeHtmlInfo();
