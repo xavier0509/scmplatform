@@ -58,6 +58,11 @@ function AfterModuleHtmlInfo() {
 			var newModuleSrc = document.getElementById("moduleSrc").value;
 			var newModuleInstr = document.getElementById("moduleInstr").value;
 			var newModuleSelect = document.getElementById("moduleSelect").value;
+			
+			newModuleCzName = newModuleCzName.replace(/(^\s*)|(\s*$)/g,"");
+			newModuleEnName = newModuleEnName.replace(/(^\s*)|(\s*$)/g,"");
+			newModuleSrc = newModuleSrc.replace(/(^\s*)|(\s*$)/g,"");
+			newModuleInstr = newModuleInstr.replace(/(^\s*)|(\s*$)/g,"");
 			console.log("lxw " + newModuleCzName + "--" + newModuleEnName + "--" + newModuleSrc + "--" + newModuleInstr + "--" + newModuleSelect);
 
 			var myCnNameObj = {
