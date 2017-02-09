@@ -190,6 +190,10 @@ td{
 .mytable{
 	padding-bottom: 0px;
 	font-size: 18px;
+	display: block;
+}
+.mytable tbody,.mybody tbody tr{
+	display: block;
 }
 .mytable input{
 	display: block;
@@ -329,6 +333,7 @@ td{
 }
 #myEditModalMkTableTbody div{
 	margin-bottom: 4px;
+	overflow: hidden;
 }
 
 
