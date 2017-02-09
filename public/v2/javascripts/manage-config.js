@@ -105,6 +105,7 @@ function AferConfigHtmlInfo() {
 		
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
+			console.log("hello");
 			var newConfigCzName = document.getElementById("configChineseName").value;//中文名
 			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
 			var newConfigSrc = document.getElementById("configSrc").value;//config信息
