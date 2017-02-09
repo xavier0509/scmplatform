@@ -131,6 +131,7 @@ function CreatChipInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "新增失败");
+				document.getElementById("chipMangInfo").innerHTML = "该机芯已存在";
 			};
 		}
 	}
