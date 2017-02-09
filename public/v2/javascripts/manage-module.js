@@ -10,6 +10,11 @@ function AfterModuleHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModuleAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("moduleCzName").value = "";
+		document.getElementById("moduleEnName").value = "";
+		document.getElementById("moduleSrc").value = "";
+		document.getElementById("moduleInstr").value = "";
+		document.getElementById("moduleInstr").value = "App";
 		toSaveButton(-1, null);
 	}
 
