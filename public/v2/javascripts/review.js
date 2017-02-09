@@ -773,11 +773,16 @@ function freshReviewHtml() {
 
 document.getElementById("closeReview").onclick=closeFun;
 function closeFun(){
-     $('#mydialog').modal();
-    document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
-    document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
-    document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;
-    
+    console.log("用户等级："+level);
+    if (level == 1) {
+        freshReviewHtml();
+    }
+    else{
+        $('#mydialog').modal();
+        document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
+        document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
+        document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
+    }
     
 }
 
