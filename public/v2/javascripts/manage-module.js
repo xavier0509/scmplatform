@@ -34,12 +34,13 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
 			document.getElementById("moduleInstr").value = jsonData.desc;
 			
-			var childSelect = document.getElementById("moduleSelect").childNodes;
-			console.log(childSelect.length);
-			for(var j = 0; j < childSelect.length; j++) {
-				//childSelect[j].removeAttribute("selected");
-				if(childSelect[j].value == jsonData.category) {
-					childSelect[j].setAttribute("selected", "");
+			var childSelect = document.getElementById("moduleSelect");
+			console.log(childSelect.options.length);
+			for(var j = 0; j < childSelect.options.length; j++) {
+				if(childSelect.options[j].value == jsonData.category) {
+					childSelect.options[j].selected = true;
+				}else{
+					childSelect.options[j].selected = false;
 				}
 			};
 			
