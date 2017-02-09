@@ -12,6 +12,7 @@ function AfterChipModeHtmlInfo() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("lableText").innerHTML = "输入机芯名称：";
+		document.getElementById("chipOrMode").innerHTML = "";
 		toSaveButton("chip", "-1", "");
 	}
 	/*机芯机型板块-机型-增加*/
@@ -20,6 +21,7 @@ function AfterChipModeHtmlInfo() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("lableText").innerHTML = "输入机型名称：";
+		document.getElementById("chipOrMode").innerHTML = "";
 		toSaveButton("model", "-1", "", "");
 	}
 	/*机芯机型板块-机芯-修改*/
@@ -34,6 +36,7 @@ function AfterChipModeHtmlInfo() {
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			document.getElementById("lableText").innerHTML = "输入机芯名称：";
+			document.getElementById("chipOrMode").innerHTML = "";
 			//给保存按钮传参
 			toSaveButton("chip", this.index, thisIndexName, thisIndexId);
 		}
@@ -50,6 +53,7 @@ function AfterChipModeHtmlInfo() {
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			document.getElementById("lableText").innerHTML = "输入机型名称：";
+			document.getElementById("chipOrMode").innerHTML = "";
 			toSaveButton("model", this.index, thisIndexName, thisIndexId);
 		}
 	}
