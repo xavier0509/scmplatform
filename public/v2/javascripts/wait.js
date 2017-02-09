@@ -1931,8 +1931,6 @@ function getMoreEditInfoTwo() {
 			}
 		};
 		moreEditPageButtons();
-		//var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		//sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
 }
 
@@ -2093,9 +2091,9 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['userName'] = loginusername;
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
-		moreEditMkDelFile['userName'] = loginusername;
-		moreEditMkDelFile['gerritState'] = "1";
-		moreEditMkDelFile['operateType'] = "3";
+//		moreEditMkDelFile['userName'] = loginusername;
+//		moreEditMkDelFile['gerritState'] = "1";
+//		moreEditMkDelFile['operateType'] = "3";
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + addNode);
@@ -2177,8 +2175,25 @@ function moreDelResult(){
 				//document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
 				//setTimeout("spanhidden()", 3000);
 			};
-			startSelect();
 		};
+		console.log(JSON.stringify(ChipModelArray));
+		var delStatus = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"3"}}}';
+		console.log(delStatus);
+		sendHTTPRequest("/fybv2_api/productUpdate", delStatus, delupdatafunc);
+	}
+}
+function delupdatafunc(){
+	if(this.readyState == 4) {
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "批量删除单项的状态修改-成功");
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "批量删除单项的状态修改-失败");
+			};
+		};
+		startSelect();
 	}
 }
 
