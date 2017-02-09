@@ -2,6 +2,13 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 var level = 0;//等级权限，0为管理员，1为一般用户
 
+document.getElementById("username").addEventListener("focus",focusPosition);
+document.getElementById("password").addEventListener("focus",focusPosition);
+
+function focusPosition(){
+    document.getElementById("logintxt").innerHTML = "　";
+}
+
 function loginfun() {
     var username = document.getElementById('username').value;
     var pwd = document.getElementById('password').value;
@@ -39,7 +46,7 @@ function loginresult() {
             else if (data.msg == "failure") {
 	    	var loginmsg = document.getElementById("logintxt");
             loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确账号或密码!";
-            setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
+            // setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
 	    };
 
             // loginId = data.data;
