@@ -541,7 +541,7 @@ function passSure(){
 
 //审核不通过
 function noPassSure(){
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passnotResult);
 }
 
 //删除操作
@@ -573,12 +573,45 @@ function passResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("审核成功！！！！");
+                sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
                 freshReviewHtml();
             };
 
         }
     }
 }
+
+//点击审核不通过的回调
+function passnotResult(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                // console.log("审核成功！！！！");
+                freshReviewHtml();
+            };
+
+        }
+    }
+}
+
+function creatFile(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg=="success") {
+                console.log("生成文件成功！！！！");
+                // freshReviewHtml();
+            };
+
+        }
+    }
+}
+
 
 //点击编辑提交的函数
 function reviewEdit(){
