@@ -11,7 +11,7 @@ function AfterChipModeHtmlInfo() {
 		console.log("点击增加机芯按钮");
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("lableText").innerHTML = "输入机芯名称：";
+		document.getElementById("lableText").innerHTML = "输入新增机芯名称：";
 		document.getElementById("chipOrMode").value = "";
 		toSaveButton("chip", "-1", "");
 	}
@@ -20,7 +20,7 @@ function AfterChipModeHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("lableText").innerHTML = "输入机型名称：";
+		document.getElementById("lableText").innerHTML = "输入新增机型名称：";
 		document.getElementById("chipOrMode").value = "";
 		toSaveButton("model", "-1", "", "");
 	}
@@ -33,8 +33,10 @@ function AfterChipModeHtmlInfo() {
 			console.log("ok" + this.index); //点击的是第几个
 			var thisIndexName = oTableA[this.index].innerText;//通过englishName找到对应数据
 			var thisIndexId = oTableA[this.index].name;//通过id找到对应数据
+			var thisEnName = oTableA[this.index].title;
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			console.log(thisEnName);
 			document.getElementById("lableText").innerHTML = "输入机芯名称：";
 			document.getElementById("chipOrMode").value = "";
 			//给保存按钮传参
