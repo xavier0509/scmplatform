@@ -33,6 +33,7 @@ function AfterChipModeHtmlInfo() {
 			var thisIndexId = oTableA[this.index].name;//通过id找到对应数据
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("lableText").innerHTML = "输入机芯名称：";
 			//给保存按钮传参
 			toSaveButton("chip", this.index, thisIndexName, thisIndexId);
 		}
@@ -48,6 +49,7 @@ function AfterChipModeHtmlInfo() {
 			var thisIndexId = oTableB[this.index].name;//通过id找到对应数据
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("lableText").innerHTML = "输入机型名称：";
 			toSaveButton("model", this.index, thisIndexName, thisIndexId);
 		}
 	}
