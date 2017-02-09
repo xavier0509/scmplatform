@@ -109,6 +109,7 @@ td{
 	margin-bottom: 5px;
 	font-size: 20px;
 	padding-left: 5%;
+	overflow: hidden;
 }
 #module-mkTable tr td div:nth-child(1){
 	color: red;
