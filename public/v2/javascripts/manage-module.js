@@ -107,12 +107,12 @@ function AfterModuleHtmlInfo() {
 				if(myindex == -1) {
 					console.log("lxw " + myindex);
 					var node = '{"data":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}';
-					//sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
+					sendHTTPRequest("/fybv2_api/moduleAdd", node, returnAddInfo);
 				} else {
 					console.log("lxw " + myindex);
 					var node = '{"data":{"_id":"' + idName + '","update":{"cnName":"' + newModuleCzName + '","engName":"' + newModuleEnName + '","gitPath":"' + newModuleSrc + '","desc":"' + newModuleInstr + '","category":"' + newModuleSelect + '"}}}';
 					console.log("lxw " + node);
-					//sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
+					sendHTTPRequest("/fybv2_api/moduleUpdate", node, returnChangeInfo);
 				}
 			}
 		}
