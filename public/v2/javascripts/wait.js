@@ -2091,9 +2091,6 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['userName'] = loginusername;
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
-//		moreEditMkDelFile['userName'] = loginusername;
-//		moreEditMkDelFile['gerritState'] = "1";
-//		moreEditMkDelFile['operateType'] = "3";
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + addNode);
@@ -2154,7 +2151,7 @@ function moreAddResult(){
 		if(moreDeleteData!=0){//做了删除操作
 			sendHTTPRequest("/fybv2_api/productUpdate", moreDeleteData, moreDelResult);
 		}else{
-			//freshHtml(tab_userMenu2);
+			freshHtml("tab_userMenu2");
 			startSelect();
 		}
 	}
@@ -2189,6 +2186,7 @@ function delupdatafunc(){
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "批量删除单项的状态修改-成功");
+				freshHtml("tab_userMenu2");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "批量删除单项的状态修改-失败");
 			};
