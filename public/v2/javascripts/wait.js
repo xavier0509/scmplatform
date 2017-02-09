@@ -2113,9 +2113,9 @@ function getMoreEditInfoEnd() {
 	}
 	if(judge(moreEditMkAddFile)==false&&judge(moreEditMkDelFile)==true){
 		//未添加或者修改、只删除
-		moreEditMkDelFile['userName'] = loginusername;
-		moreEditMkDelFile['gerritState'] = "1";
-		moreEditMkDelFile['operateType'] = "3";
+		//moreEditMkDelFile['userName'] = loginusername;
+		//moreEditMkDelFile['gerritState'] = "1";
+		//moreEditMkDelFile['operateType'] = "3";
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + delNode);
 		sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
