@@ -11,7 +11,7 @@ function AfterChipModeHtmlInfo() {
 		console.log("点击增加机芯按钮");
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("lableText").innerText = "输入机芯名称：";
+		document.getElementById("lableText").innerHTML = "输入机芯名称：";
 		toSaveButton("chip", "-1", "");
 	}
 	/*机芯机型板块-机型-增加*/
@@ -19,7 +19,7 @@ function AfterChipModeHtmlInfo() {
 	oButtonAdd.onclick = function() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("lableText").innerText = "输入机型名称：";
+		document.getElementById("lableText").innerHTML = "输入机型名称：";
 		toSaveButton("model", "-1", "", "");
 	}
 	/*机芯机型板块-机芯-修改*/
