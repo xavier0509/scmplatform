@@ -89,11 +89,12 @@ function AfterModuleHtmlInfo() {
 			var currentArray = [myCnNameObj, myEnNameObj, mySrcObj, myInstrObj];
 			if(newModuleCzName == "" || newModuleEnName == "" || newModuleSrc == "" || newModuleInstr == "") {
 				for(var jj = 0; jj < currentArray.length; jj++) {
-					console.log("lxw " + currentArray[jj].value + "--" + currentArray[jj].cnName)
+					var ooName = currentArray[jj].cnName;
+					console.log("lxw " + currentArray[jj].value + "--" + ooName);
 					if(currentArray[jj].value == "") {
 						jj = currentArray.length;
 						document.getElementById("moduleErrorInfo").style.display = "block";
-						document.getElementById("moduleErrorInfo").innerHTML = currentArray[jj].cnName + "项不能为空！";
+						document.getElementById("moduleErrorInfo").innerHTML = ooName + "项不能为空！";
 						setTimeout("document.getElementById('moduleErrorInfo').innerHTML='　'",3000);
 					}
 				}
