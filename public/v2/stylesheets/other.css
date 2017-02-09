@@ -62,8 +62,11 @@ td{
 	font-size: 20px;
 }
 
-#chipManager-mkTable,#chipManager-mkTable tbody,#chipManager-mkTable tbody tr{
+#chipManager-mkTable{
 	display: inline-block;
+}
+#chipManager-mkTable tbody,#chipManager-mkTable tbody tr{
+	display: block;
 }
 
 #chipManager-mkTable a{
