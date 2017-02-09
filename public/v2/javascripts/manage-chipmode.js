@@ -150,7 +150,7 @@ function ChangeChipInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementById("chipMangInfo").innerHTML = "修改失败!";
+				document.getElementById("chipMangInfo").innerHTML = "修改失败!该机芯或已存在。";
 				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		};
@@ -205,7 +205,7 @@ function ChangeModelInfo() {
 				freshHtml();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
-				document.getElementById("chipMangInfo").innerHTML = "修改失败！";
+				document.getElementById("chipMangInfo").innerHTML = "修改失败！该机型或已存在。";
 				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
 			};
 		};
