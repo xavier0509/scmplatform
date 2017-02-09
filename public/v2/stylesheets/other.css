@@ -129,7 +129,7 @@ td{
 #mkTable,#modal-mkTable,#modal-mkAdminTable,#configString{
 	display: block;
 }
-#myAddModalMkTable,#myMoreEditModalMkTable,#myEditModalMkTable,#myCopyModalMkTable{
+#myAddModalMkTable,#myMoreEditModalMkTable,#myCopyModalMkTable{
 	display: block;
 }
 #myAddModalConfigTable,#myMoreEditModalConfigTable,#myEditModalConfigTable,#myCopyModalConfigTable{
@@ -767,4 +767,12 @@ td{
 
 .tablebottom{
 	margin-bottom: 0;
+}
+
+#myEditModalTable,#myEditModalTable tbody,#myEditModalTable tbody tr{
+	display: block;
+}
+
+#myEditModalMkTable,#myEditModalMkTable tbody,#myEditModalMkTable tbody tr{
+	display: block;
 }
