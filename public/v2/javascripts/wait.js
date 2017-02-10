@@ -2276,12 +2276,7 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮一");
-		alert("hello");
-//		Confirm({
-//  		msg: '您选择的订单状态不符合当前操作的条件，请确认是否要继续操作！',
-//  		onOk: function(){},
-//  		onCancel: function(){}
-//		});
+		document.getElementById("myMoreEditSubmitModal").style.display = "block";
 		//$('#myMoreEditSubmitModal').modal();
 		//$(".modal-backdrop").addClass("new-backdrop");
 		//getMoreEditInfo();
@@ -2310,6 +2305,7 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("MoreEditBack");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交取消按钮");
+		document.getElementById("myMoreEditSubmitModal").style.display = "none";
 		//$("#myMoreEditSubmitModal").modal('toggle');
 		//$("#myMoreEditModal").modal('toggle');
 		//$("#myMoreEditModal").modal('show');
