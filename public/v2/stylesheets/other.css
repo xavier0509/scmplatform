@@ -405,11 +405,11 @@ td{
     white-space: nowrap;
     overflow: hidden;
 }
-/*#myAddModalMkTableTbody input{
+#myAddModalMkTableTbody input{
 	display: block;
     float: left;
-}*/
-/*#myAddModalMkTableTbody span{
+}
+#myAddModalMkTableTbody span{
 	display: block;
     float: left;
     width: 72%;
@@ -420,7 +420,7 @@ td{
 #myAddModalMkTableTbody div{
 	margin-bottom: 4px;
 	overflow: hidden;
-}*/
+}
 
 #myCheckModalConfigTableTbody div{
 	margin-bottom: 4px;
