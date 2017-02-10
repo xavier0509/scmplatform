@@ -2327,12 +2327,17 @@ function moreEditPageButtons() {
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
 	oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交确认按钮");
-			getMoreEditInfoEnd();
-			$("#myMoreEditModal").modal('hide');
-			$("#myMoreEditSubmitModal").modal('hide');
-		}
-		/*批量修改页mk-config button的点击*/
+		console.log("批量修改页-提交确认按钮");
+		getMoreEditInfoEnd();
+		$("#myMoreEditModal").modal('hide');
+		$("#myMoreEditSubmitModal").modal('hide');
+	}
+	var oButtonEditEnsure = document.getElementById("MoreEditBack");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-提交取消按钮");
+		$("#myMoreEditModal").modal();
+	}
+	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
 	/*批量修改页-MK页*/
