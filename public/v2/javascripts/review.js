@@ -463,7 +463,7 @@ function reviewresult(){
 			};
 			//如果是管理员，不允许修改-----------更改提示框
             console.log("不同用户的管理等级：" + level);
-            if(level == 1 && adminControl == 1){
+            if(level == 1 && adminControl == "1"){
                 // if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
                                    
@@ -621,7 +621,8 @@ function creatFile(){
                 freshReviewHtml();
             }
             else{
-                console.log("生成文件失败！！！！");
+                console.log(data.reason);
+                freshReviewHtml();
             }
 
         }
