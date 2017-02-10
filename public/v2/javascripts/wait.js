@@ -115,7 +115,6 @@ function searchResource() {
 			}
 		}
 		AfterWaitHtmlinfo(); //具体细节操作
-
 	}
 }
 
