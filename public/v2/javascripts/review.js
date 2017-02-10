@@ -170,6 +170,7 @@ function review(obj,adminControl){
 
 //罗列出所有的mk信息
 function moduleResult(){
+    console.log("操作1："+adminControl);
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) 
@@ -231,6 +232,7 @@ function moduleResult(){
 }
 
 function configResult(){
+    console.log("操作2："+adminControl);
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) 
@@ -419,6 +421,7 @@ function configResult(){
 
 
 function reviewresult(){
+    console.log("操作3："+adminControl);
     var level = parent.adminFlag;
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
@@ -463,7 +466,7 @@ function reviewresult(){
 			};
 			//如果是管理员，不允许修改-----------更改提示框
             console.log("不同用户的管理等级：" + level);
-            console.log("操作："+adminControl);
+            console.log("操作："+ adminControl);
             if(level == 1 && adminControl == 1){
                 // if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
