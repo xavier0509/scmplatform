@@ -2336,6 +2336,7 @@ function moreEditPageButtons() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交取消按钮");
 		$("#myMoreEditSubmitModal").modal('hide');
+		$("#myMoreEditModal").modal('hide');
 		//$("#myMoreEditModal").modal();
 	}
 	/*批量修改页mk-config button的点击*/
