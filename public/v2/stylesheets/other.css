@@ -130,10 +130,10 @@ td{
 	display: block;
 }
 #myAddModalMkTable,#myMoreEditModalMkTable,#myCopyModalMkTable{
-	display: block;
+	display: none;
 }
 #myAddModalConfigTable,#myMoreEditModalConfigTable,#myEditModalConfigTable,#myCopyModalConfigTable{
-	display: none;
+	display: block;
 }
 .bottomStyle{
 	border-bottom: 10px;
