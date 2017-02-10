@@ -136,7 +136,7 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		document.getElementById("myAddModalMkButton").focus();
+		document.getElementById("myAddModalMkButton").click();
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
