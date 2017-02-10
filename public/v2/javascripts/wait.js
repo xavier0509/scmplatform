@@ -168,7 +168,7 @@ function AfterWaitHtmlinfo() {
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-
+			buttonStyle("myMoreEditModalMkButton","myMoreEditModalConfigButton");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
@@ -2421,13 +2421,13 @@ function moreEditPageButtons() {
 function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
 	oMkButtonObject.onclick = function() {
-		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
+		buttonStyle(name1,name2);
 		document.getElementById(table1).style.display = "block";
 		document.getElementById(table2).style.display = "none";
 	}
 	var oConfigButtonObject = document.getElementById(name2);
 	oConfigButtonObject.onclick = function() {
-		buttonStyle("myAddModalConfigButton","myAddModalMkButton");
+		buttonStyle(name2,name1);
 		document.getElementById(table2).style.display = "block";
 		document.getElementById(table1).style.display = "none";
 	}
