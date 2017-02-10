@@ -136,9 +136,8 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		document.getElementById("myAddModalMkButton").setAttribute("color","#333");
-		document.getElementById("myAddModalMkButton").setAttribute("background-color","#e6e6e6");
-		document.getElementById("myAddModalMkButton").setAttribute("border-color","#adadad");
+		document.getElementById("myAddModalMkButton").setAttribute("class","buttonStyle");
+		document.getElementById("myAddModalMkButton").setAttribute("className","buttonStyle");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
