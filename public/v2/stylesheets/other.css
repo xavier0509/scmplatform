@@ -781,15 +781,11 @@ td{
 .tablebottom{
 	margin-bottom: 0;
 }
-#myAddModalMkButton{
-	background-color:#FFFFFF;
-}
+
 #myAddModalMkButton:focus{
-	background-color: #e6e6e6;
+	background-color: red;
 }
-#myAddModalConfigButton{
-	background-color:#FFFFFF;
-}
+
 #myAddModalConfigButton:focus{
-	background-color: #e6e6e6;
+	background-color: red;
 }
