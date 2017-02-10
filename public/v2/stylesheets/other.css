@@ -460,6 +460,7 @@ td{
     text-align: left;
     margin-left: 5%;
     font-size: 17px;
+    overflow: hidden;
 }
 #myCheckModalMkTableTbody div{
 	margin-bottom: 4px;

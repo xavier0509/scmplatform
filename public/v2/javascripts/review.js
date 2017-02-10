@@ -9,7 +9,7 @@ $(function () {
     loginusername = parent.loginusername;
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"1"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"},{"gerritState":"2","userName":"'+loginusername+'"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
     }
     else{
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
@@ -19,6 +19,7 @@ var chip = null;
 var model = null;
 var operate = null;
 var fileUsername = null;
+var adminControl = null;
 
 //在待审核页面出现列表
 function reviewlist(){
@@ -54,7 +55,12 @@ function reviewlist(){
                     var gerritState = datalength[i].gerritState;  
                     var userName = datalength[i].userName;              
                     if (level == 1) {
-                        _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>审核</button></div>";
+                        if (userName == loginusername) {
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2)'>编辑</button></div>";
+                        }
+                        else{
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div>";
+                        }
                     }
                     else{
                         if (operateType == 2) {
@@ -62,7 +68,7 @@ function reviewlist(){
 
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this)'>编辑</button></div>";
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2)'>编辑</button></div>";
 
                         }
                     }
@@ -150,7 +156,8 @@ $('#mkbutton').click(function(){
 
 
 //点击编辑、审核出现页面的执行函数
-function review(obj){
+function review(obj,adminControl){
+    adminControl = adminControl;
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
@@ -456,41 +463,39 @@ function reviewresult(){
 			//如果是管理员，不允许修改-----------更改提示框
             console.log("不同用户的管理等级：" + level);
             if(level == 1){
-                if (fileUsername == "liujinpeng") {
-                    document.getElementById("noPassReview").style.display="none";
-                }
-                else{
+                if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
-                }                
-                var inputcounts = document.getElementsByTagName("input");
-                var selectcounts = document.getElementsByTagName("select");
-                // console.log("inputcounts="+inputcounts.length);
-                document.getElementById("noPassReview").onclick = noPassIssue;
-                for (var i = 0; i < inputcounts.length; i++) {
-                    inputcounts[i].setAttribute('disabled','');
-                    inputcounts[i].style.backgroundColor = "#ebebe4";
-                }
-                for (var i = 0; i < selectcounts.length; i++) {
-                    selectcounts[i].setAttribute('disabled','');
-                    selectcounts[i].style.backgroundColor = "#ebebe4";
-                }
-                // console.log("操作状态:"+operate);
-                if (operate == 2) {
-                    document.getElementById("reviewSubmit").innerHTML = "确认删除";
-                    document.getElementById("reButton").innerHTML = "确认删除";
-                    document.getElementById("reviewSubmit").style.color = "red";
-                    document.getElementById("reButton").style.color = "red";
-                    document.getElementById("btn_submit").onclick = deleteIssue;
-                    document.getElementById("button_submit").onclick = deleteIssue;
-                }
-                else{
-                    document.getElementById("reviewSubmit").innerHTML = "审核通过";
-                    document.getElementById("reButton").innerHTML = "审核通过";
-                    document.getElementById("btn_submit").onclick = passIssue;
-                    document.getElementById("button_submit").onclick = passIssue;
-                }               
+                                   
+                    var inputcounts = document.getElementsByTagName("input");
+                    var selectcounts = document.getElementsByTagName("select");
+                    // console.log("inputcounts="+inputcounts.length);
+                    document.getElementById("noPassReview").onclick = noPassIssue;
+                    for (var i = 0; i < inputcounts.length; i++) {
+                        inputcounts[i].setAttribute('disabled','');
+                        inputcounts[i].style.backgroundColor = "#ebebe4";
+                    }
+                    for (var i = 0; i < selectcounts.length; i++) {
+                        selectcounts[i].setAttribute('disabled','');
+                        selectcounts[i].style.backgroundColor = "#ebebe4";
+                    }
+                    // console.log("操作状态:"+operate);
+                    if (operate == 2) {
+                        document.getElementById("reviewSubmit").innerHTML = "确认删除";
+                        document.getElementById("reButton").innerHTML = "确认删除";
+                        document.getElementById("reviewSubmit").style.color = "red";
+                        document.getElementById("reButton").style.color = "red";
+                        document.getElementById("btn_submit").onclick = deleteIssue;
+                        document.getElementById("button_submit").onclick = deleteIssue;
+                    }
+                    else{
+                        document.getElementById("reviewSubmit").innerHTML = "审核通过";
+                        document.getElementById("reButton").innerHTML = "审核通过";
+                        document.getElementById("btn_submit").onclick = passIssue;
+                        document.getElementById("button_submit").onclick = passIssue;
+                    }   
+                }            
             }
-            else{
+            else if(adminControl == 2){
                 document.getElementById("noPassReview").style.display="none";
                 document.getElementById("reviewSubmit").innerHTML = "提交";
                 document.getElementById("reButton").innerHTML = "提交";
