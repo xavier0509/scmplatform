@@ -136,8 +136,7 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		document.getElementById("myAddModalMkButton").setAttribute("class","buttonStyle");
-		document.getElementById("myAddModalMkButton").setAttribute("className","buttonStyle");
+		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
@@ -2499,4 +2498,13 @@ function waitReset() {
 	document.getElementById("chipid").value = "";
 	document.getElementById("memory").value = "";
 	startSelect();
+}
+
+function buttonStyle(name1, name2){
+	document.getElementById(name1).style.color = "#333";
+	document.getElementById(name1).style.backgroundColor = "#e6e6e6";
+	document.getElementById(name1).style.borderColor = "#adadad";
+	document.getElementById(name2).style.color = "#333";
+	document.getElementById(name2).style.backgroundColor = "#fff";
+	document.getElementById(name2).style.borderColor = "#ccc";
 }
