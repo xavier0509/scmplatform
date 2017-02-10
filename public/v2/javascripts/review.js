@@ -158,6 +158,7 @@ $('#mkbutton').click(function(){
 //点击编辑、审核出现页面的执行函数
 function review(obj,adminControl){
     adminControl = adminControl;
+    console.log("操作按钮："+adminControl);
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
@@ -463,7 +464,7 @@ function reviewresult(){
 			//如果是管理员，不允许修改-----------更改提示框
             console.log("不同用户的管理等级：" + level);
             if(level == 1){
-                if (adminControl == 1) {
+                // if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
                                    
                     var inputcounts = document.getElementsByTagName("input");
@@ -493,9 +494,9 @@ function reviewresult(){
                         document.getElementById("btn_submit").onclick = passIssue;
                         document.getElementById("button_submit").onclick = passIssue;
                     }   
-                }            
+                // }            
             }
-            else if(adminControl == 2){
+            else {
                 document.getElementById("noPassReview").style.display="none";
                 document.getElementById("reviewSubmit").innerHTML = "提交";
                 document.getElementById("reButton").innerHTML = "提交";
