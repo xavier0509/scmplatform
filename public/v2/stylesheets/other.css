@@ -46,7 +46,9 @@ td{
 
 #mytable td{text-align: center; vertical-align: middle;}
 #tableTR th{text-align: center; vertical-align: middle;}
-#reviewmytable td{text-align: center; vertical-align: middle;}
+#reviewmytable td{text-align: left;
+    vertical-align: middle;
+    padding-left: 3%;}
 #reviewtableTR th{text-align: center; vertical-align: middle;}
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
