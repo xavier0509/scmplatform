@@ -2304,8 +2304,8 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("MoreEditBack");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交取消按钮");
-		$("#myMoreEditSubmitModal").modal('toggle');
-		//$("#myMoreEditModal").modal('toggle');
+		//$("#myMoreEditSubmitModal").modal('toggle');
+		$("#myMoreEditModal").modal('toggle');
 		//$("#myMoreEditModal").modal('show');
 		//$(".modal-backdrop").addClass("new-backdrop");
 	}
