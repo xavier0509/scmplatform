@@ -2276,8 +2276,17 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮一");
-		$('#myMoreEditSubmitModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+		Confirm({
+    		msg: '您选择的订单状态不符合当前操作的条件，请确认是否要继续操作！',
+    		onOk: function(){
+
+    		},
+    		onCancel: function(){
+        
+    		}
+		});
+		//$('#myMoreEditSubmitModal').modal();
+		//$(".modal-backdrop").addClass("new-backdrop");
 		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
@@ -2306,7 +2315,7 @@ function moreEditPageButtons() {
 		console.log("批量修改页-提交取消按钮");
 		//$("#myMoreEditSubmitModal").modal('toggle');
 		//$("#myMoreEditModal").modal('toggle');
-		$("#myMoreEditModal").modal('show');
+		//$("#myMoreEditModal").modal('show');
 		//$(".modal-backdrop").addClass("new-backdrop");
 	}
 	/*批量修改页mk-config button的点击*/
