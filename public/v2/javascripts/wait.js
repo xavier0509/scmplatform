@@ -2337,7 +2337,7 @@ function moreEditPageButtons() {
 		console.log("批量修改页-提交取消按钮");
 		$("#myMoreEditSubmitModal").modal('hide');
 		$("#myMoreEditModal").modal('hide');
-		//$("#myMoreEditModal").modal();
+		$("#myMoreEditModal").modal();
 	}
 	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
