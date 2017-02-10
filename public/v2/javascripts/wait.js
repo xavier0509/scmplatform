@@ -2421,11 +2421,13 @@ function moreEditPageButtons() {
 function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
 	oMkButtonObject.onclick = function() {
+		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
 		document.getElementById(table1).style.display = "block";
 		document.getElementById(table2).style.display = "none";
 	}
 	var oConfigButtonObject = document.getElementById(name2);
 	oConfigButtonObject.onclick = function() {
+		buttonStyle("myAddModalConfigButton","myAddModalMkButton");
 		document.getElementById(table2).style.display = "block";
 		document.getElementById(table1).style.display = "none";
 	}
