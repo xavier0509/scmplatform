@@ -173,7 +173,7 @@ function review(obj,adminControl){
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
-    
+    buttonStyle("mkbutton","configbutton");
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
     
