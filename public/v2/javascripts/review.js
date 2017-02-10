@@ -467,7 +467,7 @@ function reviewresult(){
 			//如果是管理员，不允许修改-----------更改提示框
             console.log("不同用户的管理等级：" + level);
             console.log("操作："+ adminControl);
-            if(level == 1 && adminControl == 1){
+            if(level == 1 ){
                 // if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
                                    
