@@ -170,11 +170,12 @@ function review(obj,adminControl){
 
 //罗列出所有的mk信息
 function moduleResult(){
-    console.log("操作1："+adminControl);
+    
     if (this.readyState == 4) {
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) 
         {
+            console.log("操作1："+adminControl);
             $('#myCheckModal').modal();
             $(".modal-backdrop").addClass("new-backdrop");
             var data = JSON.parse(this.responseText);
