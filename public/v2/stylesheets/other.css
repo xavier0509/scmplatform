@@ -130,7 +130,7 @@ td{
 	display: block;
 }
 #myAddModalMkTable,#myMoreEditModalMkTable,#myCopyModalMkTable{
-	display: none;
+	display: block;
 }
 #myAddModalConfigTable,#myMoreEditModalConfigTable,#myEditModalConfigTable,#myCopyModalConfigTable{
 	display: none;
@@ -779,6 +779,6 @@ td{
 .tablebottom{
 	margin-bottom: 0;
 }
-#myAddModalMkButton:focus{
+/*#myAddModalMkButton:focus{
 	background-color: red;
-}
+}*/
