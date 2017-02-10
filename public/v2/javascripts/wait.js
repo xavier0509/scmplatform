@@ -143,38 +143,7 @@ function AfterWaitHtmlinfo() {
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
-		//每次点击时先将ChipModelArray置为空
-		ChipModelArray = [];
-		var myCheckboxChecked = new Array();
-		var myCheckedNumber = 0;
-		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
-		console.log("lxw:" + myCheckboxChecked.length);
-		for(var i = 0; i < myCheckboxChecked.length; i++) {
-			if($('.checkboxstatus')[i].checked == true) {
-				myCheckedNumber++;
-				var chipModelObj = {
-					chip: "",
-					model: ""
-				};
-				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
-				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
-				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
-				ChipModelArray.push(chipModelObj);
-			}
-		}
-		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
-		if(myCheckedNumber != 0) {
-			var thisIndex = null;
-			$("#myMoreEditModalLabel").text("批量修改");
-			$('#myMoreEditModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myMoreEditModalMkButton","myMoreEditModalConfigButton");
-			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
-		} else {
-			$("#myDeleteDialogModalLabel").text("请注意：");
-			$('#myDeleteDialogModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-		}
+		moreEditCommon();
 	}
 
 	/*多项删除*/
@@ -2524,4 +2493,38 @@ function buttonStyle(name1, name2){
 function disMiss(id){
 	$(id).modal("toggle");
 	$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+}
+function moreEditCommon(){
+	//每次点击时先将ChipModelArray置为空
+		ChipModelArray = [];
+		var myCheckboxChecked = new Array();
+		var myCheckedNumber = 0;
+		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
+		console.log("lxw:" + myCheckboxChecked.length);
+		for(var i = 0; i < myCheckboxChecked.length; i++) {
+			if($('.checkboxstatus')[i].checked == true) {
+				myCheckedNumber++;
+				var chipModelObj = {
+					chip: "",
+					model: ""
+				};
+				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
+				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
+				ChipModelArray.push(chipModelObj);
+			}
+		}
+		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
+		if(myCheckedNumber != 0) {
+			var thisIndex = null;
+			$("#myMoreEditModalLabel").text("批量修改");
+			$('#myMoreEditModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myMoreEditModalMkButton","myMoreEditModalConfigButton");
+			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
+		} else {
+			$("#myDeleteDialogModalLabel").text("请注意：");
+			$('#myDeleteDialogModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
 }
