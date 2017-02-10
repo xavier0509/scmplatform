@@ -2512,3 +2512,8 @@ function buttonStyle(name1, name2){
 	document.getElementById(name2).style.backgroundColor = "#fff";
 	document.getElementById(name2).style.borderColor = "#ccc";
 }
+
+function disMiss(id){
+	$(id).modal("toggle");
+	$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+}
