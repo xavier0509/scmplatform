@@ -454,6 +454,7 @@ function reviewresult(){
 				}
 			};
 			//如果是管理员，不允许修改-----------更改提示框
+            console.log("不同用户的管理等级：" + level);
             if(level == 1){
                 if (fileUsername == "liujinpeng") {
                     document.getElementById("noPassReview").style.display="none";
