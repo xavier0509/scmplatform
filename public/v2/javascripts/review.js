@@ -922,6 +922,7 @@ function passResult(){
         }
         console.log("生成文件的机芯机型是："+chip+";"+model);
     sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
+    freshReviewHtml();
     }
 }
 
@@ -933,7 +934,6 @@ function passnotResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                // console.log("审核成功！！！！");
                 freshReviewHtml();
             };
 
@@ -949,7 +949,7 @@ function creatFile(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 console.log("生成文件成功！！！！");
-                freshReviewHtml();
+                
             }
             else{
                 console.log(data.reason);
