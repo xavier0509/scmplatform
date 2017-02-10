@@ -2276,18 +2276,15 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮一");
-		Confirm({
-    		msg: '您选择的订单状态不符合当前操作的条件，请确认是否要继续操作！',
-    		onOk: function(){
-
-    		},
-    		onCancel: function(){
-        
-    		}
-		});
+		alert("hello");
+//		Confirm({
+//  		msg: '您选择的订单状态不符合当前操作的条件，请确认是否要继续操作！',
+//  		onOk: function(){},
+//  		onCancel: function(){}
+//		});
 		//$('#myMoreEditSubmitModal').modal();
 		//$(".modal-backdrop").addClass("new-backdrop");
-		getMoreEditInfo();
+		//getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
