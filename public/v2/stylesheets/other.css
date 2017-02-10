@@ -783,9 +783,15 @@ td{
 }
 
 #myAddModalMkButton:focus{
-	background-color: red;
+	color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+
 }
 
 #myAddModalConfigButton:focus{
-	background-color: red;
+	color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+
 }
