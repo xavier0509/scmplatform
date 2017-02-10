@@ -241,6 +241,7 @@ function AfterWaitHtmlinfo() {
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myEditModalMkButton","myEditModalConfigButton");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
@@ -274,6 +275,7 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myCopyModalMkButton","myCopyModalConfigButton");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
