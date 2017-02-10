@@ -305,36 +305,28 @@ function getAddInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					//_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageApp.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					//_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageService.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					//_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageAppStore.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					//_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageHomePage.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					//_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageIME.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					//_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageSysApp.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					//_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageTV.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					//_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-					_rowAddPageOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
