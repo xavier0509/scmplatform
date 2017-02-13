@@ -1290,7 +1290,7 @@ function editPageSubmitData() {
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct&&changeStatus == 0) {
 		console.log("未做修改...");
 		document.getElementById("myEditModalErrorInfo").innerHTML = "您未做任何修改。";
-		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
+		//setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
 		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
