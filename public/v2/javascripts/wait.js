@@ -2317,6 +2317,9 @@ function editPageButtonsOnclick() {
 			$(".modal-backdrop").addClass("new-backdrop");
 			//传参-关闭父页  
 			closeparentpage("#myEditModal");
+			var indexObject = parent.document.getElementById("home");
+    		var iframe = indexObject.getElementsByTagName("iframe");
+    		iframe[0].src = "wait.html";
 		}
 		//编辑页mk-config button的点击
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
