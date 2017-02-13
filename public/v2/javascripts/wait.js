@@ -136,45 +136,14 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
-		document.getElementById("myAddModalMkButton").focus();
+		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
 	/*批量修改*/
 	var oButtonEdit = document.getElementById("wait-change");
 	oButtonEdit.onclick = function() {
-		//每次点击时先将ChipModelArray置为空
-		ChipModelArray = [];
-		var myCheckboxChecked = new Array();
-		var myCheckedNumber = 0;
-		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
-		console.log("lxw:" + myCheckboxChecked.length);
-		for(var i = 0; i < myCheckboxChecked.length; i++) {
-			if($('.checkboxstatus')[i].checked == true) {
-				myCheckedNumber++;
-				var chipModelObj = {
-					chip: "",
-					model: ""
-				};
-				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
-				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
-				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
-				ChipModelArray.push(chipModelObj);
-			}
-		}
-		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
-		if(myCheckedNumber != 0) {
-			var thisIndex = null;
-			$("#myMoreEditModalLabel").text("批量修改");
-			$('#myMoreEditModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-
-			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
-		} else {
-			$("#myDeleteDialogModalLabel").text("请注意：");
-			$('#myDeleteDialogModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-		}
+		moreEditCommon();
 	}
 
 	/*多项删除*/
@@ -241,6 +210,7 @@ function AfterWaitHtmlinfo() {
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myEditModalMkButton","myEditModalConfigButton");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
@@ -274,6 +244,7 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myCopyModalMkButton","myCopyModalConfigButton");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
@@ -2325,12 +2296,21 @@ function moreEditPageButtons() {
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
 	oButtonEditEnsure.onclick = function() {
-			console.log("批量修改页-提交确认按钮");
-			getMoreEditInfoEnd();
-			$("#myMoreEditModal").modal('hide');
-			$("#myMoreEditSubmitModal").modal('hide');
-		}
-		/*批量修改页mk-config button的点击*/
+		console.log("批量修改页-提交确认按钮");
+		getMoreEditInfoEnd();
+		$("#myMoreEditModal").modal('hide');
+		$("#myMoreEditSubmitModal").modal('hide');
+	}
+	var oButtonEditEnsure = document.getElementById("MoreEditBack");
+	oButtonEditEnsure.onclick = function() {
+		console.log("批量修改页-提交取消按钮");
+		document.getElementById("myMoreEditSubmitModal").style.display = "none";
+		//$("#myMoreEditSubmitModal").modal('toggle');
+		//$("#myMoreEditModal").modal('toggle');
+		//$("#myMoreEditModal").modal('show');
+		//$(".modal-backdrop").addClass("new-backdrop");
+	}
+	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
 
 	/*批量修改页-MK页*/
@@ -2421,11 +2401,13 @@ function moreEditPageButtons() {
 function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
 	oMkButtonObject.onclick = function() {
+		buttonStyle(name1,name2);
 		document.getElementById(table1).style.display = "block";
 		document.getElementById(table2).style.display = "none";
 	}
 	var oConfigButtonObject = document.getElementById(name2);
 	oConfigButtonObject.onclick = function() {
+		buttonStyle(name2,name1);
 		document.getElementById(table2).style.display = "block";
 		document.getElementById(table1).style.display = "none";
 	}
@@ -2498,4 +2480,52 @@ function waitReset() {
 	document.getElementById("chipid").value = "";
 	document.getElementById("memory").value = "";
 	startSelect();
+}
+
+function buttonStyle(name1, name2){
+	document.getElementById(name1).style.color = "#333";
+	document.getElementById(name1).style.backgroundColor = "#e6e6e6";
+	document.getElementById(name1).style.borderColor = "#adadad";
+	document.getElementById(name2).style.color = "#333";
+	document.getElementById(name2).style.backgroundColor = "#fff";
+	document.getElementById(name2).style.borderColor = "#ccc";
+}
+
+function disMiss(id){
+	$(id).modal("toggle");
+	$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+}
+function moreEditCommon(){
+	//每次点击时先将ChipModelArray置为空
+		ChipModelArray = [];
+		var myCheckboxChecked = new Array();
+		var myCheckedNumber = 0;
+		myCheckboxChecked = document.getElementsByClassName("checkboxstatus");
+		console.log("lxw:" + myCheckboxChecked.length);
+		for(var i = 0; i < myCheckboxChecked.length; i++) {
+			if($('.checkboxstatus')[i].checked == true) {
+				myCheckedNumber++;
+				var chipModelObj = {
+					chip: "",
+					model: ""
+				};
+				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
+				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
+				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
+				ChipModelArray.push(chipModelObj);
+			}
+		}
+		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
+		if(myCheckedNumber != 0) {
+			var thisIndex = null;
+			$("#myMoreEditModalLabel").text("批量修改");
+			$('#myMoreEditModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+			buttonStyle("myMoreEditModalMkButton","myMoreEditModalConfigButton");
+			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
+		} else {
+			$("#myDeleteDialogModalLabel").text("请注意：");
+			$('#myDeleteDialogModal').modal();
+			$(".modal-backdrop").addClass("new-backdrop");
+		}
 }

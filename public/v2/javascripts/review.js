@@ -146,13 +146,23 @@ function recoverResult(){
 $('#configbutton').click(function(){
     $("#reviewconfigfile").css("display","block");
     $("#reviewmkfile").css("display","none");
+    buttonStyle("configbutton","mkbutton");
 })
 
 $('#mkbutton').click(function(){
     $("#reviewconfigfile").css("display","none");
     $("#reviewmkfile").css("display","block");
+	buttonStyle("mkbutton","configbutton");    
 })
 
+function buttonStyle(name1, name2){
+	document.getElementById(name1).style.color = "#333";
+	document.getElementById(name1).style.backgroundColor = "#e6e6e6";
+	document.getElementById(name1).style.borderColor = "#adadad";
+	document.getElementById(name2).style.color = "#333";
+	document.getElementById(name2).style.backgroundColor = "#fff";
+	document.getElementById(name2).style.borderColor = "#ccc";
+}
 
 
 //点击编辑、审核出现页面的执行函数
@@ -163,6 +173,7 @@ function review(obj,adminControl){
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
+    buttonStyle("mkbutton","configbutton");
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
     
