@@ -661,6 +661,7 @@ td{
 #myAddCloseDiv{
 	margin: auto;
 	display: none;
+	background-color: deepskyblue;
 }
 
 .loginmycenter{padding-top: 16%;}
