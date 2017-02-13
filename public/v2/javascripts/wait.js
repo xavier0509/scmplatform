@@ -2306,8 +2306,6 @@ function copyPageButtons() {
 	oButtonAdd.onclick = function() {
 			console.log("单项复制页-关闭按钮");
 			document.getElementById("myAddCloseDiv").style.display ="block";
-			//$('#myEditEnsureModal').modal();
-			//$(".modal-backdrop").addClass("new-backdrop");
 			//传参-关闭父页  
 			closeparentpage("#myCopyModal");
 		}
@@ -2331,8 +2329,7 @@ function editPageButtonsOnclick() {
 	var oButtonAdd = document.getElementById("myEditModalClose");
 	oButtonAdd.onclick = function() {
 			console.log("单项编辑页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("myAddCloseDiv").style.display ="block";
 			//传参-关闭父页  
 			closeparentpage("#myEditModal");
 		}
@@ -2369,8 +2366,7 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-关闭按钮");
-		$('#myEditEnsureModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("myAddCloseDiv").style.display ="block";
 		closeparentpage("#myMoreEditModal");
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
