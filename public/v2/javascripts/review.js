@@ -813,6 +813,7 @@ function reviewresult2(){
         if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
+            hashObj = data.data[0];
             //更新设备信息
             document.getElementById("newCheckChip").value=data.data[0].chip;
             document.getElementById("newCheckModel").value=data.data[0].model;
