@@ -1130,7 +1130,8 @@ function getEditInforesult() {
 
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
-	var oocounter, nncounter = 0;
+	var oocounter = 0;
+	var nncounter = 0;
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1268,15 +1269,17 @@ function editPageSubmitData() {
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
-			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
-				oocounter++;
-			}
+			console.log(hashObj.mkFile[ookey]+"--"+dataObj.mkFile[ookey]);
+//			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
+//				oocounter++;
+//			}
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
-			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
-				nncounter++;
-			}
+			console.log(hashObj.configFile[nnkey]+"--"+dataObj.configFile[nnkey]);
+//			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
+//				nncounter++;
+//			}
 		}
 		console.log(oocounter+"--"+nncounter);
 	}
