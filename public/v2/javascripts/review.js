@@ -1132,14 +1132,15 @@ function freshReviewHtml() {
     htmlObject.firstChild.src = "review.html";
     // console.log("要刷新主页了！！！！");
     iframe[0].src = "wait.html";
-}   
+} 
 
-if(document.getElementById("closeReview")){
-    document.getElementById("closeReview").onclick=closeFun;
-}
 if(document.getElementById("closeReview1")){
     document.getElementById("closeReview1").onclick=closeFunT;
 }
+else if(document.getElementById("closeReview")){
+    document.getElementById("closeReview").onclick=closeFun;
+}
+
 
 
 function closeFun(){
