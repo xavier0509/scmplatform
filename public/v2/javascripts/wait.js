@@ -1269,7 +1269,8 @@ function editPageSubmitData() {
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
 			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-			if(typeof(dataObj.mkFile[ookey].value)==undefined){
+			console.log(typeof(dataObj.mkFile[ookey].value));
+			if(typeof(dataObj.mkFile[ookey].value)==="undefined"){
 				console.log("mk做了修改");
 				changeStatus = 1;
 			}else{
