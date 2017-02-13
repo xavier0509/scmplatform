@@ -177,7 +177,7 @@ function review(obj,adminControl){
     document.getElementById("myAddModalLabel").innerHTML = "审核";
     if(document.getElementById("closeReview1")){
         document.getElementById("closeReview1").setAttribute("id","closeReview");
-        document.getElementById("closeReview").onclick=closeFun;
+        
     }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
@@ -1137,7 +1137,7 @@ function freshReviewHtml() {
 } 
 
 
-
+document.getElementById("closeReview").onclick=closeFun;
 function closeFun(){
     console.log("用户等级："+level);
     if (level == 1) {
