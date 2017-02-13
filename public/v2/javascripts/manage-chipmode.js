@@ -225,9 +225,12 @@ function freshHtml() {
 	console.log("lxw " + htmlObject.firstChild.src);
 	htmlObject.firstChild.src = "manage-chipmode.html";
 
-	var htmlObject1 = parent.document.getElementById("tab_userMenu2");
+	
     var indexObject = parent.document.getElementById("home");
     var iframe = indexObject.getElementsByTagName("iframe");
-    htmlObject1.firstChild.src = "review.html";
     iframe[0].src = "wait.html";
+    if(parent.document.getElementById("tab_userMenu2")){
+	    var htmlObject1 = parent.document.getElementById("tab_userMenu2");
+	    htmlObject1.firstChild.src = "review.html";
+	}    
 }
