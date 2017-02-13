@@ -2321,9 +2321,7 @@ function editPageButtonsOnclick() {
 			$(".modal-backdrop").addClass("new-backdrop");
 			//传参-关闭父页  
 			closeparentpage("#myEditModal");
-			var indexObject = parent.document.getElementById("home");
-    		var iframe = indexObject.getElementsByTagName("iframe");
-    		iframe[0].src = "wait.html";
+			
 		}
 		//编辑页mk-config button的点击
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
@@ -2485,46 +2483,49 @@ function closeparentpage(pageName) {
 	//pageName = #myAddModal\#myCopyModal\#myEditModal\#myMoreEditModal
 	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
 	oButtonObject.onclick = function() {
-		$(pageName).modal('hide');
-		$("#myEditEnsureModal").modal('hide');
+		// $(pageName).modal('hide');
+		// $("#myEditEnsureModal").modal('hide');
 		//防止id重名带来的影响
-		if (pageName == "#myEditModal") {
-			document.getElementById("myEditModalMkTableApp").innerHTML = "";
-			document.getElementById("myEditModalMkTableService").innerHTML = "";
-			document.getElementById("myEditModalMkTableAppStore").innerHTML = "";
-			document.getElementById("myEditModalMkTableHomePage").innerHTML = "";
-			document.getElementById("myEditModalMkTableIME").innerHTML = "";
-			document.getElementById("myEditModalMkTableSysApp").innerHTML = "";
-			document.getElementById("myEditModalMkTableTV").innerHTML = "";
-			document.getElementById("myEditModalMkTableOther").innerHTML = "";
-		} else if(pageName == "#myCopyModal"){
-			document.getElementById("myCopyModalMkTableApp").innerHTML = "";
-			document.getElementById("myCopyModalMkTableService").innerHTML = "";
-			document.getElementById("myCopyModalMkTableAppStore").innerHTML = "";
-			document.getElementById("myCopyModalMkTableHomePage").innerHTML = "";
-			document.getElementById("myCopyModalMkTableIME").innerHTML = "";
-			document.getElementById("myCopyModalMkTableSysApp").innerHTML = "";
-			document.getElementById("myCopyModalMkTableTV").innerHTML = "";
-			document.getElementById("myCopyModalMkTableOther").innerHTML = "";
-		}else if(pageName == "#myAddModal"){
-			document.getElementById("myAddModalMkTableApp").innerHTML = "";
-			document.getElementById("myAddModalMkTableService").innerHTML = "";
-			document.getElementById("myAddModalMkTableAppStore").innerHTML = "";
-			document.getElementById("myAddModalMkTableHomePage").innerHTML = "";
-			document.getElementById("myAddModalMkTableIME").innerHTML = "";
-			document.getElementById("myAddModalMkTableSysApp").innerHTML = "";
-			document.getElementById("myAddModalMkTableTV").innerHTML = "";
-			document.getElementById("myAddModalMkTableOther").innerHTML = "";
-		}else if(pageName == "#myMoreEditModal"){
-			document.getElementById("myMoreEditModalMkTableApp").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableService").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableAppStore").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableHomePage").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableIME").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableSysApp").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableTV").innerHTML = "";
-			document.getElementById("myMoreEditModalMkTableOther").innerHTML = "";
-		}
+		// if (pageName == "#myEditModal") {
+		// 	document.getElementById("myEditModalMkTableApp").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableService").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableAppStore").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableHomePage").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableIME").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableSysApp").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableTV").innerHTML = "";
+		// 	document.getElementById("myEditModalMkTableOther").innerHTML = "";
+		// } else if(pageName == "#myCopyModal"){
+		// 	document.getElementById("myCopyModalMkTableApp").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableService").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableAppStore").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableHomePage").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableIME").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableSysApp").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableTV").innerHTML = "";
+		// 	document.getElementById("myCopyModalMkTableOther").innerHTML = "";
+		// }else if(pageName == "#myAddModal"){
+		// 	document.getElementById("myAddModalMkTableApp").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableService").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableAppStore").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableHomePage").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableIME").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableSysApp").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableTV").innerHTML = "";
+		// 	document.getElementById("myAddModalMkTableOther").innerHTML = "";
+		// }else if(pageName == "#myMoreEditModal"){
+		// 	document.getElementById("myMoreEditModalMkTableApp").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableService").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableAppStore").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableHomePage").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableIME").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableSysApp").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableTV").innerHTML = "";
+		// 	document.getElementById("myMoreEditModalMkTableOther").innerHTML = "";
+		// }
+		var indexObject = parent.document.getElementById("home");
+		var iframe = indexObject.getElementsByTagName("iframe");
+		iframe[0].src = "wait.html";
 	}
 }
 
