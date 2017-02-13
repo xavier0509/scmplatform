@@ -1168,14 +1168,14 @@ function editPageSubmitData() {
 		for(var j = 1; j < oEconfigTrDiv.length; j++) {
 			var oEopt = [];
 			var oEstuInfo = {
-				"cnName": "",
-				"engName": "",
-				"configKey": "",
-				"type": "",
-				"value": "",
-				"category": "",
+				"options": [],
 				"desc": "XXXXX",
-				"options": []
+				"category": "",
+				"value": "",
+				"type": "",
+				"configKey": "",
+				"engName": "",
+				"cnName": ""
 			};
 			thisConfigindex = j;
 			oEstuInfo.category = oEconfigTrDiv[0].title;
@@ -1212,11 +1212,11 @@ function editPageSubmitData() {
 			if(oEMkTrDivTwo[oEMkindex].childNodes[0].checked == true) {
 				var oEoptTwo = [];
 				var oEstuInfoTwo = {
-					"cnName": "",
-					"engName": "",
-					"gitPath": "",
+					"desc": "XXXXX",//后期做“”的处理。
 					"category": "",
-					"desc": "XXXXX", //后期做“”的处理。
+					"gitPath": "",
+					"engName": "",
+					"cnName": ""
 				};
 				oEstuInfoTwo.category = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("category");
 				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
