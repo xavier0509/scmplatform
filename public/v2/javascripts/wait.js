@@ -1242,14 +1242,33 @@ function editPageSubmitData() {
 	console.log("lxw " + oEnode);
 	console.log(hashObj);
 	//JSON.stringify(hashObj.mkFile)
-	console.log("old:"+JSON.stringify(hashObj.mkFile)+"---"+JSON.stringify(hashObj.configFile));
-	console.log("new:"+JSON.stringify(dataObj.mkFile)+"---"+JSON.stringify(dataObj.configFile));
-	var hashMKOld = md5(JSON.stringify(hashObj.mkFile));
-	var hashConfigOld = md5(JSON.stringify(hashObj.configFile));
-	var hashMKNew = md5(JSON.stringify(dataObj.mkFile));
-	var hashConfigNew = md5(JSON.stringify(dataObj.configFile));
-	console.log("old: "+hashMKOld+"---"+hashConfigOld);
-	console.log("new: "+hashMKNew+"---"+hashConfigNew);
+	var oldMKkey, oldMKkeycounter = 0;
+	for(oldMKkey in hashObj.mkFile) {
+		oldMKkeycounter++;
+		console.log("lxw counter = " + oldMKkeycounter + "--" + oldMKkey);
+	};
+	var oldConfigkey, oldConfigkeycounter = 0;
+	for(oldConfigkey in hashObj.configFile) {
+		oldConfigkeycounter++;
+		console.log("lxw counter = " + oldConfigkeycounter + "--" + oldConfigkey);
+	};
+	var newMKkey, newMKkeycounter = 0;
+	for(newMKkey in dataObj.mkFile) {
+		newMKkeycounter++;
+		console.log("lxw counter = " + newMKkeycounter + "--" + newMKkey);
+	};
+	var newConfigkey, newConfigkeycounter = 0;
+	for(newConfigkey in dataObj.configFile) {
+		newConfigkeycounter++;
+		console.log("lxw counter = " + newConfigkeycounter + "--" + newConfigkey);
+	};
+	console.log("old: "+oldMKkeycounter+"---"+oldConfigkeycounter);
+	console.log("new: "+newMKkeycounter+"---"+newConfigkeycounter);
+	//var hashMKOld = md5(JSON.stringify(hashObj.mkFile));
+	//var hashConfigOld = md5(JSON.stringify(hashObj.configFile));
+	//var hashMKNew = md5(JSON.stringify(dataObj.mkFile));
+	//var hashConfigNew = md5(JSON.stringify(dataObj.configFile));
+	
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct) {
 		console.log("未做修改...");
 	} else{
