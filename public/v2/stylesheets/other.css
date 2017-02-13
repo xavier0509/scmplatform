@@ -477,6 +477,7 @@ td{
     overflow: hidden;
     text-align: center;
     color: red;
+    line-height: 32px;
 }
 
 #inputChipOrMode{
