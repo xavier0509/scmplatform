@@ -17,6 +17,8 @@ var allChipArray = new Array();
 var allModelArray = new Array();
 //定义一个变量，保存批量删除的数据
 var moreDeleteData = 0;
+//定义一个全局变量，保存编辑提交之前的数据
+var hashObj = {};
 
 function forsession() {
 	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
@@ -1071,7 +1073,8 @@ function getEditInforesult() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log(data.data[0]);
+			hashObj = data.data[0];
+			console.log(hashObj);
 			//console.log(JSON.stringify(data));
 			//var hash1 = md5(JSON.stringify(data));
 			//console.log(hash1);
@@ -1235,7 +1238,8 @@ function editPageSubmitData() {
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
-	console.log("lxw " + JSON.stringify(JSON.parse(oEnode).data.updata));
+	console.log("lxw " + oEnode);
+	
 	//var hash2 = md5(JSON.stringify(oEnode));
 	//console.log(hash2);
 	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
