@@ -14,13 +14,28 @@ $(function () {
     }
     else{
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
-    }                                                        
+    }     
+    XandCancle();
 })
 var chip = null;
 var model = null;
 var operate = null;
 var fileUsername = null;
 var adminControl = null;
+
+
+function XandCancle(){
+	var oButtonAdd = document.getElementById("oButtonX");
+	oButtonAdd.onclick = function() {
+		console.log("X按钮");
+		document.getElementById("mydialog").style.display = "none";
+	}
+	var oButtonAdd = document.getElementById("oButtonCancle");
+	oButtonAdd.onclick = function() {
+		console.log("取消按钮");
+		document.getElementById("mydialog").style.display = "none";
+	}
+}
 
 //在待审核页面出现列表
 function reviewlist(){
@@ -111,7 +126,8 @@ function reviewlist(){
 var rechip = null;
 var remodel = null;
 function recover(obj){
-    $('#mydialog').modal();
+    //$('#mydialog').modal();
+    document.getElementById("mydialog").style.display = "block";
     rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
@@ -872,7 +888,8 @@ function reviewresult2(){
 
 //删除弹窗
 function deleteIssue(){
-    $('#mydialog').modal();
+    //$('#mydialog').modal();
+    document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "删除操作";
     document.getElementById("dialogword").innerHTML = "确认要删除该配置信息吗？";
     document.getElementById("myDeleteModalEnsure").onclick = deleteSure;
@@ -880,7 +897,8 @@ function deleteIssue(){
 
 //审核弹窗
 function passIssue(){
-    $('#mydialog').modal();
+    //$('#mydialog').modal();
+    document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
     document.getElementById("myDeleteModalEnsure").onclick = passSure;
@@ -888,7 +906,8 @@ function passIssue(){
 
 //审核不通过弹窗
 function noPassIssue(){
-    $('#mydialog').modal();
+    //$('#mydialog').modal();
+    document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "是否确认不通过该文件？";
     document.getElementById("myDeleteModalEnsure").onclick = noPassSure;
@@ -896,8 +915,9 @@ function noPassIssue(){
 
 //编辑提交弹窗
 function editIssue(){
-    $('#mydialog').modal();
-    $(".modal-backdrop").addClass("new-backdrop");
+    //$('#mydialog').modal();
+   // $(".modal-backdrop").addClass("new-backdrop");
+   	document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
     document.getElementById("dialogword").innerHTML = "确认提交该修改吗？";
     document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;    
@@ -1112,7 +1132,8 @@ function reviewEditResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("编辑提交成功！！！！");
-                $("#mydialog").modal('hide');
+                //$("#mydialog").modal('hide');
+                document.getElementById("mydialog").style.display = "none";
                 freshReviewHtml();
             }
             else{
@@ -1146,7 +1167,8 @@ function closeFun(){
         freshReviewHtml();
     }
     else{
-        $('#mydialog').modal();
+        //$('#mydialog').modal();
+        document.getElementById("mydialog").style.display = "block";
         document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
         document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
         document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
@@ -1156,7 +1178,8 @@ function closeFun(){
 
 function closeFunT(){
     console.log("用户等级："+level);
-    $('#mydialog').modal();
+    //$('#mydialog').modal();
+    document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
     document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
     document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
