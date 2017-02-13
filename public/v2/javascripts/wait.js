@@ -1241,27 +1241,23 @@ function editPageSubmitData() {
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	console.log(hashObj);
+	//console.log(hashObj);
 	//console.log(dataObj);
 	var oldMKkey, oldMKkeycounter= 0;
 	for(oldMKkey in hashObj.mkFile) {
 		oldMKkeycounter++;
-		//console.log("lxw counter = " + oldMKkeycounter + "--" + oldMKkey);
 	}
 	var oldConfigkey, oldConfigkeycounter = 0;
 	for(oldConfigkey in hashObj.configFile) {
 		oldConfigkeycounter++;
-		//console.log("lxw counter = " + oldConfigkeycounter + "--" + oldConfigkey);
 	}
 	var newMKkey, newMKkeycounter = 0;
 	for(newMKkey in dataObj.mkFile) {
 		newMKkeycounter++;
-		//console.log("lxw counter = " + newMKkeycounter + "--" + newMKkey);
 	}
 	var newConfigkey, newConfigkeycounter = 0;
 	for(newConfigkey in dataObj.configFile) {
 		newConfigkeycounter++;
-		//console.log("lxw counter = " + newConfigkeycounter + "--" + newConfigkey);
 	}
 	console.log("old: "+oldMKkeycounter+"---"+oldConfigkeycounter);
 	console.log("new: "+newMKkeycounter+"---"+newConfigkeycounter);
@@ -1269,17 +1265,12 @@ function editPageSubmitData() {
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
 			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-			console.log(typeof(dataObj.mkFile[ookey]));
+			//console.log(typeof(dataObj.mkFile[ookey]));
 			if(typeof(dataObj.mkFile[ookey])==="undefined"){
-				console.log("mk做了修改");
+				//console.log("mk做了修改");
 				changeStatus = 1;
 			}else{
-//				if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
-//					//console.log("mk未做修改");
-//				}else{
-//					//console.log("mk做了修改");
-//					changeStatus = 1;
-//				}
+				//console.log("mk未做修改");
 			}
 		}
 		var nnkey = 0;
@@ -1298,11 +1289,12 @@ function editPageSubmitData() {
 	console.log(changeStatus);
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct&&changeStatus == 0) {
 		console.log("未做修改...");
+		document.getElementById("myEditModalErrorInfo").innerHTML = "您未做任何修改。";
+		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
-	
 }
 
 function productEditresult() {
