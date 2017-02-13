@@ -1270,18 +1270,17 @@ function editPageSubmitData() {
 		for(ookey in hashObj.mkFile) {
 			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
 			console.log(typeof(dataObj.mkFile[ookey].value));
-			if(typeof(dataObj.mkFile[ookey].value)==="undefined"){
-				console.log("mk做了修改");
-				changeStatus = 1;
-			}else{
+//			if(typeof(dataObj.mkFile[ookey].value)==="undefined"){
+//				console.log("mk做了修改");
+//				changeStatus = 1;
+//			}else{
 				if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
 					//console.log("mk未做修改");
 				}else{
 					//console.log("mk做了修改");
 					changeStatus = 1;
 				}
-			}
-			
+			//}
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
