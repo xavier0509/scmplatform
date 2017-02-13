@@ -1240,9 +1240,19 @@ function editPageSubmitData() {
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	console.log(hashObj);
-	//var hash2 = md5(JSON.stringify(oEnode));
-	//console.log(hash2);
-	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+	//JSON.stringify(hashObj.mkFile)
+	var hashMKOld = md5(JSON.stringify(hashObj.mkFile));
+	var hashConfigOld = md5(JSON.stringify(hashObj.configFile));
+	var hashMKNew = md5(JSON.stringify(dataObj.mkFile));
+	var hashConfigNew = md5(JSON.stringify(dataObj.configFile));
+	console.log("old: "+hashMKOld+"---"+hashConfigOld);
+	console.log("new: "+hashMKNew+"---"+hashConfigNew);
+	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct) {
+		console.log("未做修改");
+	} else{
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+	}
+	
 }
 
 function productEditresult() {
