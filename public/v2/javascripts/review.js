@@ -1216,7 +1216,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myAddModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
 	}
 }
 
