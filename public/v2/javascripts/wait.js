@@ -1242,27 +1242,27 @@ function editPageSubmitData() {
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	console.log(hashObj);
-	//JSON.stringify(hashObj.mkFile)
+	//console.log(dataObj);
 	var oldMKkey, oldMKkeycounter= 0;
 	for(oldMKkey in hashObj.mkFile) {
 		oldMKkeycounter++;
 		//console.log("lxw counter = " + oldMKkeycounter + "--" + oldMKkey);
-	};
+	}
 	var oldConfigkey, oldConfigkeycounter = 0;
 	for(oldConfigkey in hashObj.configFile) {
 		oldConfigkeycounter++;
 		//console.log("lxw counter = " + oldConfigkeycounter + "--" + oldConfigkey);
-	};
+	}
 	var newMKkey, newMKkeycounter = 0;
 	for(newMKkey in dataObj.mkFile) {
 		newMKkeycounter++;
 		//console.log("lxw counter = " + newMKkeycounter + "--" + newMKkey);
-	};
+	}
 	var newConfigkey, newConfigkeycounter = 0;
 	for(newConfigkey in dataObj.configFile) {
 		newConfigkeycounter++;
 		//console.log("lxw counter = " + newConfigkeycounter + "--" + newConfigkey);
-	};
+	}
 	console.log("old: "+oldMKkeycounter+"---"+oldConfigkeycounter);
 	console.log("new: "+newMKkeycounter+"---"+newConfigkeycounter);
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
@@ -1271,13 +1271,13 @@ function editPageSubmitData() {
 			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
 				oocounter++;
 			}
-		};
+		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
 			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
 				nncounter++;
 			}
-		};
+		}
 		console.log(oocounter+"--"+nncounter);
 	}
 	
