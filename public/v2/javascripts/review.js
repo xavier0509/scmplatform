@@ -177,6 +177,7 @@ function review(obj,adminControl){
     document.getElementById("myAddModalLabel").innerHTML = "审核";
     if(document.getElementById("closeReview1")){
         document.getElementById("closeReview1").setAttribute("id","closeReview");
+        document.getElementById("closeReview1").onclick=closeFunT;
     }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
@@ -194,6 +195,7 @@ function edit(obj,adminControl){
     document.getElementById("myAddModalLabel").innerHTML = "编辑";
     if(document.getElementById("closeReview")){
         document.getElementById("closeReview").setAttribute("id","closeReview1");
+        document.getElementById("closeReview").onclick=closeFun;
     }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult2);    
@@ -1133,15 +1135,6 @@ function freshReviewHtml() {
     // console.log("要刷新主页了！！！！");
     iframe[0].src = "wait.html";
 } 
-
-if(document.getElementById("closeReview1")){
-    alert("test111111111");
-    document.getElementById("closeReview1").onclick=closeFunT;
-}
-else if(document.getElementById("closeReview")){
-    alert("test2222222222");
-    document.getElementById("closeReview").onclick=closeFun;
-}
 
 
 
