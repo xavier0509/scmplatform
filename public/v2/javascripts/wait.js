@@ -1270,9 +1270,9 @@ function editPageSubmitData() {
 		for(ookey in hashObj.mkFile) {
 			console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
 			if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
-				console.log("mk未做修改");
+				//console.log("mk未做修改");
 			}else{
-				console.log("mk做了修改");
+				//console.log("mk做了修改");
 				changeStatus = 1;
 			}
 		}
@@ -1280,19 +1280,21 @@ function editPageSubmitData() {
 		for(nnkey in hashObj.configFile) {
 			console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
 			if(hashObj.configFile[nnkey].value == dataObj.configFile[nnkey].value){
-				console.log("config未做修改");
+				//console.log("config未做修改");
 			}else{
-				console.log("config做了修改");
+				//console.log("config做了修改");
 				changeStatus = 1;
 			}
 		}
-		console.log(changeStatus);
+	}else{
+		changeStatus = 1;
 	}
-	
-	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct) {
+	console.log(changeStatus);
+	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct&&changeStatus == 0) {
 		console.log("未做修改...");
 	} else{
-		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		console.log("做了修改...");
+		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 	
 }
