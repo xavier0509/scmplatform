@@ -2276,10 +2276,9 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮一");
-		document.getElementById("myMoreEditSubmitModal").style.display = "block";
-		//$('#myMoreEditSubmitModal').modal();
-		//$(".modal-backdrop").addClass("new-backdrop");
-		//getMoreEditInfo();
+		$('#myMoreEditSubmitModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
