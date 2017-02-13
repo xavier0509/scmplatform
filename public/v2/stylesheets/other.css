@@ -793,3 +793,6 @@ td{
     background-color: #e6e6e6;
     border-color: #adadad;
 }
+#myCheckModalConfigTableTdOther div span{
+    white-space: nowrap;
+}
