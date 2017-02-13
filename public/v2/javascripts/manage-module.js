@@ -241,4 +241,12 @@ function freshModuleAddHtml() {
 	var htmlObject = parent.document.getElementById("tab_userMenu5");
 	console.log("lxw " + htmlObject.firstChild.src);
 	htmlObject.firstChild.src = "manage-module.html";
+
+	var indexObject = parent.document.getElementById("home");
+    var iframe = indexObject.getElementsByTagName("iframe");
+    iframe[0].src = "wait.html";
+    if(parent.document.getElementById("tab_userMenu2")){
+	    var htmlObject1 = parent.document.getElementById("tab_userMenu2");
+	    htmlObject1.firstChild.src = "review.html";
+	}  
 }
