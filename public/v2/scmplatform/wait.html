@@ -197,7 +197,25 @@
 								</td>
 							</tr>
 						</table>
-						<div id="myAddCloseDiv">Hello</div>
+						<div id="myAddCloseDiv">
+							<div class="modal in col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
+								<div class="modal-delete" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+											<h4 class="modal-title" id="myDeleteModalLabel">关闭</h4>
+										</div>
+										<div class="modal-body">
+											<p style="font-size: 24px;text-align: center;">确认要关闭吗？</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-primary" id="myEditEnsureModalEnsure">确定</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal" id="myBackEnsure">取消</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer myfooter">
 						<button type="button" class="btn btn-default" id="myAddModalSubmitTwo">提交</button>
