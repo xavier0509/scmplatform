@@ -1242,6 +1242,8 @@ function editPageSubmitData() {
 	console.log("lxw " + oEnode);
 	console.log(hashObj);
 	//JSON.stringify(hashObj.mkFile)
+	console.log("old:"+hashObj.mkFile+"---"+hashObj.configFile);
+	console.log("new:"+dataObj.mkFile+"---"+dataObj.configFile);
 	var hashMKOld = md5(JSON.stringify(hashObj.mkFile));
 	var hashConfigOld = md5(JSON.stringify(hashObj.configFile));
 	var hashMKNew = md5(JSON.stringify(dataObj.mkFile));
@@ -1249,7 +1251,7 @@ function editPageSubmitData() {
 	console.log("old: "+hashMKOld+"---"+hashConfigOld);
 	console.log("new: "+hashMKNew+"---"+hashConfigNew);
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct) {
-		console.log("未做修改");
+		console.log("未做修改...");
 	} else{
 		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
