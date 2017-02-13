@@ -76,7 +76,7 @@ function startSelect() {
 		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + '},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
