@@ -2268,6 +2268,7 @@ function addPageButtons() {
 	oButtonAdd.onclick = function() {
 			console.log("新增页-关闭按钮");
 			document.getElementById("myAddCloseDiv").style.display = "block";
+			//document.getElementById("myEditEnsureModal").style.display = "block";
 			//$('#myEditEnsureModal').modal();
 			//$(".modal-backdrop").addClass("new-backdrop");
 			//传参-关闭父页  
