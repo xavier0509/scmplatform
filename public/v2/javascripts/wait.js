@@ -1130,8 +1130,7 @@ function getEditInforesult() {
 
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
-	var oocounter = 0;
-	var nncounter = 0;
+	var changeStatus = 0;
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1270,18 +1269,24 @@ function editPageSubmitData() {
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
 			console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-//			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
-//				oocounter++;
-//			}
+			if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
+				console.log("mk未做修改");
+			}else{
+				console.log("mk做了修改");
+				changeStatus = 1;
+			}
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
 			console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
-//			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
-//				nncounter++;
-//			}
+			if(hashObj.configFile[nnkey].value == dataObj.configFile[nnkey].value){
+				console.log("config未做修改");
+			}else{
+				console.log("config做了修改");
+				changeStatus = 1;
+			}
 		}
-		console.log(oocounter+"--"+nncounter);
+		console.log(changeStatus);
 	}
 	
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct) {
