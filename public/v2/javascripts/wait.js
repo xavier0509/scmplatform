@@ -57,7 +57,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"options":{}}}';
+		node = '{"data":{"condition":{},"option":{}}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -76,7 +76,7 @@ function startSelect() {
 		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + '},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
