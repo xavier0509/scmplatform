@@ -1075,7 +1075,7 @@ function getEditInforesult() {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			hashObj = data.data[0];
-			console.log(hashObj);
+			//console.log(hashObj);
 			//console.log(JSON.stringify(data));
 			//var hash1 = md5(JSON.stringify(data));
 			//console.log(hash1);
@@ -1297,7 +1297,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
