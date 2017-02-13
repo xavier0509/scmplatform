@@ -589,11 +589,11 @@
 			</div>
 		</div>
 		<!--批量修改-保存-确认框-->
-		<div class="modal fade col-xs-8" id="myMoreEditSubmitModal" style="padding-right: 0; margin-top: 7%;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditSubmitModalLabel">
+		<div class="col-xs-8" id="myMoreEditSubmitModal" style="padding-right: 0; top: 7%;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditSubmitModalLabel">
 			<div class="modalwidth" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<button type="button" class="close" aria-label="Close" id="MoreEditX"><span aria-hidden="true">×</span></button>
 						<h4 class="modal-title" id="myMoreEditSubmitModalLabel">批量修改确认框</h4>
 					</div>
 					<div class="modal-body">
@@ -606,25 +606,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary" id="MoreEditSaveSubmit">确定</button>
-						<button type="reset" class="btn btn-default" data-dismiss="modal" id="MoreEditBack">取消</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--新增、编辑、复制、批量复制的关闭按钮的确认框-->
-		<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
-			<div class="modal-delete" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-						<h4 class="modal-title" id="myDeleteModalLabel">关闭</h4>
-					</div>
-					<div class="modal-body">
-						<p style="font-size: 24px;text-align: center;">确认要关闭吗？</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="myEditEnsureModalEnsure">确定</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal" id="myBackEnsure">取消</button>
+						<button type="reset" class="btn btn-default" id="MoreEditBack">取消</button>
 					</div>
 				</div>
 			</div>
