@@ -896,8 +896,7 @@ function noPassIssue(){
 
 //编辑提交弹窗
 function editIssue(){
-    // $('#mydialog').modal();
-    document.getElementById("mydialog").style.display = "block";
+    $('#mydialog').modal();
     $(".modal-backdrop").addClass("new-backdrop");
     document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
     document.getElementById("dialogword").innerHTML = "确认提交该修改吗？";
@@ -1215,7 +1214,6 @@ function submitStatus(hashObj,dataObj,oEnode){
 		console.log("未做修改...");
 		document.getElementById("myAddModalErrorInfo").innerHTML = "您未做任何修改。";
 		setTimeout("document.getElementById('myAddModalErrorInfo').innerHTML='　'",3000);
-        document.getElementById("mydialog").style.display = "none";
 	} else{
 		console.log("做了修改...");
 		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
