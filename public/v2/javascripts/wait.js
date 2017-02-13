@@ -1130,7 +1130,6 @@ function getEditInforesult() {
 
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
-	var changeStatus = 0;
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1241,6 +1240,11 @@ function editPageSubmitData() {
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
+	submitStatus(hashObj,dataObj,oEnode);
+}
+
+function submitStatus(hashObj,dataObj,oEnode){
+	var changeStatus = 0;
 	//console.log(hashObj);
 	//console.log(dataObj);
 	var oldMKkey, oldMKkeycounter= 0;
@@ -1290,10 +1294,10 @@ function editPageSubmitData() {
 	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct&&changeStatus == 0) {
 		console.log("未做修改...");
 		document.getElementById("myEditModalErrorInfo").innerHTML = "您未做任何修改。";
-		//setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
+		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
