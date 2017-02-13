@@ -55,7 +55,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"options":{}}}';
+		node = '{"data":{"condition":{},"options":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1}}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -82,7 +82,7 @@ function startSelect() {
 
 function searchResource() {
 	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
+		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var title = document.getElementById("wait-tablebody"); //获取tbody的表格内容
 			for(var i = title.childNodes.length - 1; i > 0; i--) {
