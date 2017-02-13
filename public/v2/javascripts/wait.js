@@ -1242,8 +1242,8 @@ function editPageSubmitData() {
 	console.log("lxw " + oEnode);
 	console.log(hashObj);
 	//JSON.stringify(hashObj.mkFile)
-	console.log("old:"+hashObj.mkFile+"---"+hashObj.configFile);
-	console.log("new:"+dataObj.mkFile+"---"+dataObj.configFile);
+	console.log("old:"+JSON.stringify(hashObj.mkFile)+"---"+JSON.stringify(hashObj.configFile));
+	console.log("new:"+JSON.stringify(dataObj.mkFile)+"---"+JSON.stringify(dataObj.configFile));
 	var hashMKOld = md5(JSON.stringify(hashObj.mkFile));
 	var hashConfigOld = md5(JSON.stringify(hashObj.configFile));
 	var hashMKNew = md5(JSON.stringify(dataObj.mkFile));
