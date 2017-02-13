@@ -1268,8 +1268,8 @@ function editPageSubmitData() {
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
-			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-			console.log(typeof(dataObj.mkFile[ookey].value));
+			console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
+			console.log(typeof(dataObj.mkFile[ookey]));
 //			if(typeof(dataObj.mkFile[ookey].value)==="undefined"){
 //				console.log("mk做了修改");
 //				changeStatus = 1;
