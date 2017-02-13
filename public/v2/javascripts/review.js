@@ -174,6 +174,10 @@ function review(obj,adminControl){
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
     buttonStyle("mkbutton","configbutton");
+    document.getElementById("myAddModalLabel").innerHTML = "审核";
+    if(document.getElementById("closeReview1")){
+        document.getElementById("closeReview1").setAttribute("id","closeReview");
+    }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
     
@@ -187,6 +191,10 @@ function edit(obj,adminControl){
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
     buttonStyle("mkbutton","configbutton");
+    document.getElementById("myAddModalLabel").innerHTML = "编辑";
+    if(document.getElementById("closeReview")){
+        document.getElementById("closeReview").setAttribute("id","closeReview1");
+    }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult2);    
     
@@ -1126,8 +1134,13 @@ function freshReviewHtml() {
     iframe[0].src = "wait.html";
 }   
 
+if(document.getElementById("closeReview")){
+    document.getElementById("closeReview").onclick=closeFun;
+}
+if(document.getElementById("closeReview1")){
+    document.getElementById("closeReview1").onclick=closeFun1;
+}
 
-document.getElementById("closeReview").onclick=closeFun;
 function closeFun(){
     console.log("用户等级："+level);
     if (level == 1) {
@@ -1142,4 +1155,14 @@ function closeFun(){
     
 }
 
+function closeFun1(){
+    console.log("用户等级："+level);
+    
+    $('#mydialog').modal();
+    document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
+    document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
+    document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
+    
+    
+}
 
