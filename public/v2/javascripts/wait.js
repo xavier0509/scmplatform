@@ -1268,17 +1268,23 @@ function editPageSubmitData() {
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
-			console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-			if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
-				//console.log("mk未做修改");
-			}else{
-				//console.log("mk做了修改");
+			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
+			if(typeof(dataObj.mkFile[ookey].value)==undefined){
+				console.log("mk做了修改");
 				changeStatus = 1;
+			}else{
+				if(hashObj.mkFile[ookey].value == dataObj.mkFile[ookey].value){
+					//console.log("mk未做修改");
+				}else{
+					//console.log("mk做了修改");
+					changeStatus = 1;
+				}
 			}
+			
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
-			console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
+			//console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
 			if(hashObj.configFile[nnkey].value == dataObj.configFile[nnkey].value){
 				//console.log("config未做修改");
 			}else{
