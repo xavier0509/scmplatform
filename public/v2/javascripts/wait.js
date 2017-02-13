@@ -911,16 +911,16 @@ function getEditInfoInfTwo() {
 			_rowEditPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw " + data.data[i].category + data.data[i].type);
+				//console.log("lxw " + data.data[i].category + data.data[i].type);
 				if(data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					console.log("main:" + kk);
+					//console.log("main:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -934,12 +934,12 @@ function getEditInfoInfTwo() {
 				} else if(data.data[i].category == "hardware") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("hardware:" + kk);
+					//console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -953,12 +953,12 @@ function getEditInfoInfTwo() {
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("serverip:" + kk);
+					//console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -972,12 +972,12 @@ function getEditInfoInfTwo() {
 				} else if(data.data[i].category == "ad") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("ad:" + kk);
+					//console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigAd.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -991,12 +991,12 @@ function getEditInfoInfTwo() {
 				} else if(data.data[i].category == "channel") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("channel:" + kk);
+					//console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigChannel.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -1048,7 +1048,7 @@ function getEditInfoInfTwo() {
 						_rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						//console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -1072,6 +1072,9 @@ function getEditInforesult() {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log(data);
+			console.log(JSON.stringify(data));
+			var hash1 = md5(JSON.stringify(data));
+			console.log("hash1");
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
 				//console.log("lxw " + JSON.stringify(data.data[0]));
@@ -1233,6 +1236,8 @@ function editPageSubmitData() {
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
+	var hash2 = md5(JSON.stringify(oEnode));
+	console.log(hash2);
 	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 }
 
