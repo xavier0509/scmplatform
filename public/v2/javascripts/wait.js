@@ -87,6 +87,7 @@ function searchResource() {
 		console.log("this.responseText = " + this.responseText);
 		if(this.status == 200) {
 			var title = document.getElementById("wait-tablebody"); //获取tbody的表格内容
+			console.log("节点个数：" + title.childNodes.length);
 			for(var i = title.childNodes.length - 1; i > 0; i--) {
 				title.removeChild(title.childNodes[i]); //删除掉每个子节点的内容
 			};
