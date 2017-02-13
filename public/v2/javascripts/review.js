@@ -1135,9 +1135,11 @@ function freshReviewHtml() {
 } 
 
 if(document.getElementById("closeReview1")){
+    alert("test111111111");
     document.getElementById("closeReview1").onclick=closeFunT;
 }
 else if(document.getElementById("closeReview")){
+    alert("test2222222222");
     document.getElementById("closeReview").onclick=closeFun;
 }
 
