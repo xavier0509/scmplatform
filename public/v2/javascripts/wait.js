@@ -1269,14 +1269,14 @@ function editPageSubmitData() {
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
-			console.log(hashObj.mkFile[ookey]+"--"+dataObj.mkFile[ookey]);
+			console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
 //			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
 //				oocounter++;
 //			}
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
-			console.log(hashObj.configFile[nnkey]+"--"+dataObj.configFile[nnkey]);
+			console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
 //			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
 //				nncounter++;
 //			}
