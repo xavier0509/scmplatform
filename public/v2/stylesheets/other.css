@@ -658,6 +658,7 @@ td{
 #myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
+
 .loginmycenter{padding-top: 16%;}
 
 #logintxt,#pwdmessage,#usermessage{color: red}
