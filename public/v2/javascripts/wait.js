@@ -1074,7 +1074,7 @@ function getEditInforesult() {
 			console.log(data);
 			console.log(JSON.stringify(data));
 			var hash1 = md5(JSON.stringify(data));
-			console.log("hash1");
+			console.log(hash1);
 			if(data.msg == "success") {
 				console.log("lxw " + "访问成功");
 				//console.log("lxw " + JSON.stringify(data.data[0]));
