@@ -3,6 +3,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 var level = null;
 var loginusername = null;
+var hashObj = {};
 //加载自执行，传递参数请求列表
 $(function () {
     level = parent.adminFlag;
@@ -714,6 +715,7 @@ function reviewresult(){
         if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
+            hashObj = data.data[0];
             //更新设备信息
             document.getElementById("newCheckChip").value=data.data[0].chip;
             document.getElementById("newCheckModel").value=data.data[0].model;
@@ -1097,7 +1099,7 @@ function reviewEdit(){
 	dataObj.desc = "enenene";
 	var oEnode = '{"data":{"condition":{"chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
-	sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
+	submitStatus(hashObj,dataObj,oEnode);
 }
 
 
@@ -1120,7 +1122,6 @@ function reviewEditResult(){
     }
 }
 
-
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
@@ -1134,7 +1135,7 @@ function freshReviewHtml() {
     htmlObject.firstChild.src = "review.html";
     // console.log("要刷新主页了！！！！");
     iframe[0].src = "wait.html";
-} 
+}   
 
 
 document.getElementById("closeReview").onclick=closeFun;
@@ -1154,13 +1155,67 @@ function closeFun(){
 
 function closeFunT(){
     console.log("用户等级："+level);
-    
     $('#mydialog').modal();
     document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
     document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
     document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
-    
-    
 }
 
+function submitStatus(hashObj,dataObj,oEnode){
+	var changeStatus = 0;
+	console.log(hashObj);
+	console.log(dataObj);
+	var oldMKkey, oldMKkeycounter= 0;
+	for(oldMKkey in hashObj.mkFile) {
+		oldMKkeycounter++;
+	}
+	var oldConfigkey, oldConfigkeycounter = 0;
+	for(oldConfigkey in hashObj.configFile) {
+		oldConfigkeycounter++;
+	}
+	var newMKkey, newMKkeycounter = 0;
+	for(newMKkey in dataObj.mkFile) {
+		newMKkeycounter++;
+	}
+	var newConfigkey, newConfigkeycounter = 0;
+	for(newConfigkey in dataObj.configFile) {
+		newConfigkeycounter++;
+	}
+	console.log("old: "+oldMKkeycounter+"---"+oldConfigkeycounter);
+	console.log("new: "+newMKkeycounter+"---"+newConfigkeycounter);
+	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
+		var ookey = 0;
+		for(ookey in hashObj.mkFile) {
+			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
+			//console.log(typeof(dataObj.mkFile[ookey]));
+			if(typeof(dataObj.mkFile[ookey])==="undefined"){
+				//console.log("mk做了修改");
+				changeStatus = 1;
+			}else{
+				//console.log("mk未做修改");
+			}
+		}
+		var nnkey = 0;
+		for(nnkey in hashObj.configFile) {
+			//console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
+			if(hashObj.configFile[nnkey].value == dataObj.configFile[nnkey].value){
+				//console.log("config未做修改");
+			}else{
+				//console.log("config做了修改");
+				changeStatus = 1;
+			}
+		}
+	}else{
+		changeStatus = 1;
+	}
+	console.log(changeStatus);
+	if (dataObj.androidVersion==hashObj.androidVersion&&dataObj.memorySize==hashObj.memorySize&&dataObj.chipModel==hashObj.chipModel&&dataObj.targetProduct ==hashObj.targetProduct&&changeStatus == 0) {
+		console.log("未做修改...");
+		document.getElementById("myAddModalErrorInfo").innerHTML = "您未做任何修改。";
+		setTimeout("document.getElementById('myAddModalErrorInfo').innerHTML='　'",3000);
+	} else{
+		console.log("做了修改...");
+		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, reviewEditResult);
+	}
+}
 
