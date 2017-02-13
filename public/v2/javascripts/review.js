@@ -1134,12 +1134,14 @@ function freshReviewHtml() {
     iframe[0].src = "wait.html";
 }   
 
-// if(document.getElementById("closeReview")){
-    document.getElementById("closeReview").onclick=closeFun;
-// }
-// if(document.getElementById("closeReview1")){
-    document.getElementById("closeReview1").onclick=closeFun1;
-// }
+(function(){
+    if(document.getElementById("closeReview")){
+        document.getElementById("closeReview").onclick=closeFun;
+    }
+    if(document.getElementById("closeReview1")){
+        document.getElementById("closeReview1").onclick=closeFun1;
+    }
+})
 
 function closeFun(){
     console.log("用户等级："+level);
