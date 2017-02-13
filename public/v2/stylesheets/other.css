@@ -662,6 +662,7 @@ td{
 	margin: auto;
 	display: none;
 	background-color: deepskyblue;
+	z-index: 1051;
 }
 
 .loginmycenter{padding-top: 16%;}
