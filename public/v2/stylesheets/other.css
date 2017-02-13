@@ -658,6 +658,10 @@ td{
 #myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
+#myAddCloseDiv{
+	margin: auto;
+	display: none;
+}
 
 .loginmycenter{padding-top: 16%;}
 
