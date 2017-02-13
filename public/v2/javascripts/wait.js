@@ -3,6 +3,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 $(function() {
 		forsession();
+		XandCancle();
 	})
 	//获取用户名
 var adminFlag = null;
@@ -19,6 +20,19 @@ var allModelArray = new Array();
 var moreDeleteData = 0;
 //定义一个全局变量，保存编辑提交之前的数据
 var hashObj = {};
+
+function XandCancle(){
+	var oButtonAdd = document.getElementById("myEnsureX");
+	oButtonAdd.onclick = function() {
+		console.log("X按钮");
+		document.getElementById("myAddCloseDiv").style.display = "none";
+	}
+	var oButtonAdd = document.getElementById("myEnsureCancle");
+	oButtonAdd.onclick = function() {
+		console.log("取消按钮");
+		document.getElementById("myAddCloseDiv").style.display = "none";
+	}
+}
 
 function forsession() {
 	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
@@ -2268,25 +2282,10 @@ function addPageButtons() {
 	oButtonAdd.onclick = function() {
 		console.log("新增页-关闭按钮");
 		document.getElementById("myAddCloseDiv").style.display = "block";
-		//document.getElementById("myEditEnsureModal").style.display = "block";
-		//$('#myEditEnsureModal').modal();
-		//$(".modal-backdrop").addClass("new-backdrop");
 		//传参-关闭父页  
 		closeparentpage("#myAddModal");
 	}
-	var oButtonAdd = document.getElementById("myEnsureX");
-	oButtonAdd.onclick = function() {
-		console.log("新增页-X按钮");
-		document.getElementById("myAddCloseDiv").style.display = "none";
-	}
-	var oButtonAdd = document.getElementById("myEnsureCancle");
-	oButtonAdd.onclick = function() {
-		console.log("新增页-取消按钮");
-		document.getElementById("myAddCloseDiv").style.display = "none";
-	}
-	
-
-		//新增页mk-config button的点击
+	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 }
 /*点击单项复制-弹框里的各个按钮*/
@@ -2306,8 +2305,9 @@ function copyPageButtons() {
 	var oButtonAdd = document.getElementById("myCopyModalClose");
 	oButtonAdd.onclick = function() {
 			console.log("单项复制页-关闭按钮");
-			$('#myEditEnsureModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("myAddCloseDiv").style.display ="block";
+			//$('#myEditEnsureModal').modal();
+			//$(".modal-backdrop").addClass("new-backdrop");
 			//传参-关闭父页  
 			closeparentpage("#myCopyModal");
 		}
