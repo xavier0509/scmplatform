@@ -2266,14 +2266,25 @@ function addPageButtons() {
 	}
 	var oButtonAdd = document.getElementById("myAddModalClose");
 	oButtonAdd.onclick = function() {
-			console.log("新增页-关闭按钮");
-			document.getElementById("myAddCloseDiv").style.display = "block";
-			//document.getElementById("myEditEnsureModal").style.display = "block";
-			//$('#myEditEnsureModal').modal();
-			//$(".modal-backdrop").addClass("new-backdrop");
-			//传参-关闭父页  
-			closeparentpage("#myAddModal");
-		}
+		console.log("新增页-关闭按钮");
+		document.getElementById("myAddCloseDiv").style.display = "block";
+		//document.getElementById("myEditEnsureModal").style.display = "block";
+		//$('#myEditEnsureModal').modal();
+		//$(".modal-backdrop").addClass("new-backdrop");
+		//传参-关闭父页  
+		closeparentpage("#myAddModal");
+	}
+	var oButtonAdd = document.getElementById("myEnsureX");
+	oButtonAdd.onclick = function() {
+		console.log("新增页-X按钮");
+		document.getElementById("myAddCloseDiv").style.display = "none";
+	}
+	var oButtonAdd = document.getElementById("myEnsureCancle");
+	oButtonAdd.onclick = function() {
+		console.log("新增页-取消按钮");
+		document.getElementById("myAddCloseDiv").style.display = "none";
+	}
+	
 
 		//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
