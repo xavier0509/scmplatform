@@ -9,9 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
 		<script src="../javascripts/jquery.min.js"></script>
 		<script src="../javascripts/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../javascripts/test.js"></script>
-		<script type="text/javascript" src="../javascripts/md5.min.js"></script>
-
+ 		<script type="text/javascript" src="../javascripts/test.js"></script>
+ 		
 	</head>
 
 	<body>
@@ -77,14 +76,14 @@
 								</tr>
 							</thead>
 							<tbody id="wait-tablebody">
-
+								
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</fieldset>
 		</div>
-
+		
 		<!--点击新增弹出新增的modal-->
 		<div class="modal fade" id="myAddModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
 			<div class="modalwidth" role="document">
@@ -93,11 +92,10 @@
 						<button type="button" class="close" aria-label="Close" id="myAddModalClose"><span aria-hidden="true">关闭</span></button>
 						<button type="button" class="close" id="myAddModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myAddModalLabel">新增</h4>
-						<span id="myAddModalErrorInfo" class="myModalErrorInfo"></span>
+						<h4 id="myAddModalErrorInfo" class="myModalErrorInfo"></h4>
 					</div>
 					<div class="modal-body mybody">
-						<table class="table table-bordered " id="myAddModalTable">
-							<!--mytable-->
+						<table class="table table-bordered " id="myAddModalTable"><!--mytable-->
 							<tr>
 								<td>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -114,7 +112,7 @@
 								<td>
 									<div class="col-xs-6 form-group inputdiv">
 										<label for="newAddDevice" class="control-label col-xs-5 text-right inputdiv" title="TARGET_PRODUCT">TARGET_PRODUCT&nbsp;:</label>
-										<input type="text" value="" id="newAddDevice" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<input type="text" value="" id="newAddDevice"  class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
 										<label for="NewAddAndroidVersion" class="control-label col-xs-5 text-right inputdiv" title="AndroidVersion">Android版本&nbsp;:</label>
@@ -122,11 +120,11 @@
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
 										<label for="newAddChipMode" class="control-label col-xs-5 text-right inputdiv" title="ChipMode">芯片型号&nbsp;:</label>
-										<input type="text" value="" id="newAddChipMode" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<input type="text" value="" id="newAddChipMode"  class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
 										<label for="newAddMemory" class="control-label col-xs-5 text-right inputdiv" title="memory">内存&nbsp;:</label>
-										<input type="text" value="" id="newAddMemory" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<input type="text" value="" id="newAddMemory"  class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 								</td>
 							</tr>
@@ -137,8 +135,7 @@
 										<button type="button" class="btn btn-default" id="myAddModalConfigButton">config文件</button>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myAddModalMkTable">
-										<table class="table table-bordered">
-											<!--mytable-->
+										<table class="table table-bordered"><!--mytable-->
 											<tbody id="myAddModalMkTableTbody">
 												<tr>
 													<td id="myAddModalMkTableApp"></td>
@@ -168,8 +165,7 @@
 										</table>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myAddModalConfigTable">
-										<table class="table table-bordered">
-											<!--mytable-->
+										<table class="table table-bordered"><!--mytable-->
 											<tbody id="myAddModalConfigTableTbody">
 												<tr>
 													<td id="myAddModalConfigTableTdMain"></td>
@@ -207,24 +203,6 @@
 					</div>
 				</div>
 			</div>
-			<!--新增的关闭按钮的确认框-->
-			<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
-				<div class="modal-delete" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" aria-label="Close" id="myAddBack"><span aria-hidden="true">×</span></button>
-							<h4 class="modal-title" id="myDeleteModalLabel">关闭</h4>
-						</div>
-						<div class="modal-body">
-							<p style="font-size: 24px;text-align: center;">确认要关闭吗？</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" id="myEditEnsureModalEnsure">确定</button>
-							<button type="button" class="btn btn-default" id="myAddCancle">取消</button>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		<!--点击批量修改弹出批量修改的modal-->
 		<div class="modal fade" id="myMoreEditModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditModalLabel">
@@ -241,12 +219,11 @@
 							<tr>
 								<td style="padding: 0;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" id="myMoreEditModalMkButton">批量编辑MK文件</button>
-										<button type="button" class="btn btn-default" id="myMoreEditModalConfigButton">批量编辑config文件</button>
+										<button type="button" class="btn btn-default" id="myMoreEditModalMkButton" >批量编辑MK文件</button>
+										<button type="button" class="btn btn-default" id="myMoreEditModalConfigButton" >批量编辑config文件</button>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myMoreEditModalMkTable">
-										<table class="table table-bordered ">
-											<!--mytable-->
+										<table class="table table-bordered "><!--mytable-->
 											<tbody id="myMoreEditModalMkTableTbody">
 												<tr>
 													<td id="myMoreEditModalMkTableApp"></td>
@@ -276,8 +253,7 @@
 										</table>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myMoreEditModalConfigTable">
-										<table class="table table-bordered fontsize ">
-											<!--mytable-->
+										<table class="table table-bordered fontsize "><!--mytable-->
 											<tbody id="myMoreEditModalConfigTableTbody">
 												<tr>
 													<td id="myMoreEditModalConfigTableTdMain"></td>
@@ -327,8 +303,7 @@
 						<h4 id="myEditModalErrorInfo" class="myModalErrorInfo"></h4>
 					</div>
 					<div class="modal-body mybody">
-						<table class="table table-bordered " id="myEditModalTable">
-							<!--mytable-->
+						<table class="table table-bordered " id="myEditModalTable"><!--mytable-->
 							<tr>
 								<td>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -364,12 +339,11 @@
 							<tr>
 								<td style="padding: 0;">
 									<div class="btn-group">
-										<button type="button" class="btn btn-default" id="myEditModalMkButton">MK文件</button>
+										<button type="button" class="btn btn-default" id="myEditModalMkButton" >MK文件</button>
 										<button type="button" class="btn btn-default" id="myEditModalConfigButton">config文件</button>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myEditModalMkTable">
-										<table class="table table-bordered ">
-											<!--mytable-->
+										<table class="table table-bordered "><!--mytable-->
 											<tbody id="myEditModalMkTableTbody">
 												<tr>
 													<td id="myEditModalMkTableApp"></td>
@@ -399,8 +373,7 @@
 										</table>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myEditModalConfigTable">
-										<table class="table table-bordered ">
-											<!--mytable-->
+										<table class="table table-bordered "><!--mytable-->
 											<tbody id="myEditModalConfigTableTbody">
 												<tr>
 													<td id="myEditModalConfigTableTdMain"></td>
@@ -447,11 +420,10 @@
 						<button type="button" class="close" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
 						<button type="button" class="close" id="myCopyModalSubmit"><span aria-hidden="true">提交</span></button>
 						<h4 class="modal-title" id="myCopyModalLabel">新建机芯机型</h4>
-						<span id="myCopyModalErrorInfo" class="myModalErrorInfo"></span>
+						<h4 id="myCopyModalErrorInfo" class="myModalErrorInfo"></h4>
 					</div>
 					<div class="modal-body mybody">
-						<table class="table table-bordered " id="myCopyModalTable">
-							<!--mytable-->
+						<table class="table table-bordered " id="myCopyModalTable"><!--mytable-->
 							<tr>
 								<td>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -468,7 +440,7 @@
 								<td>
 									<div class="col-xs-6 form-group text-left inputdiv">
 										<label for="newCopyDevice" class="control-label col-xs-5 text-right inputdiv" title="TARGET_PRODUCT">TARGET_PRODUCT&nbsp;:</label>
-										<input type="text" value="" id="newCopyDevice" class="col-xs-5 col-xs-push-1 inputstyle text-left">
+										<input type="text" value="" id="newCopyDevice"  class="col-xs-5 col-xs-push-1 inputstyle text-left">
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
 										<label for="NewCopyAndroidVersion" class="control-label col-xs-5 text-right inputdiv" title="AndroidVersion">Android版本&nbsp;:</label>
@@ -491,8 +463,7 @@
 										<button type="button" class="btn btn-default" id="myCopyModalConfigButton">config文件</button>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myCopyModalMkTable">
-										<table class="table table-bordered ">
-											<!--mytable-->
+										<table class="table table-bordered "><!--mytable-->
 											<tbody id="myCopyModalMkTableTbody">
 												<tr>
 													<td id="myCopyModalMkTableApp"></td>
@@ -522,8 +493,7 @@
 										</table>
 									</div>
 									<div class="col-xs-12 inputstyle" id="myCopyModalConfigTable">
-										<table class="table table-bordered ">
-											<!--mytable-->
+										<table class="table table-bordered "><!--mytable-->
 											<tbody id="myCopyModalConfigTableTbody">
 												<tr>
 													<td id="myCopyModalConfigTableTdMain"></td>
@@ -588,7 +558,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 						<h4 class="modal-title" id="myDeleteModalLabel">删除</h4>
-						<span id="myDeleteModalErrorInfo" class="myModalErrorInfo"></span>
+						<h4 id="myDeleteModalErrorInfo" class="myModalErrorInfo"></h4>
 					</div>
 					<div class="modal-body">
 						<p style="font-size: 24px;text-align: center;">确认要删除吗？</p>
@@ -624,7 +594,7 @@
 			</div>
 		</div>
 		<!--新增、编辑、复制、批量复制的关闭按钮的确认框-->
-		<!--<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
+		<div class="modal fade col-xs-8" id="myEditEnsureModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myEditEnsureModalLabel">
 			<div class="modal-delete" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -640,7 +610,7 @@
 					</div>
 				</div>
 			</div>
-		</div>-->
+		</div>
 		<!--请先勾选要删除的项-->
 		<div class="modal fade col-xs-8" id="myDeleteDialogModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myDeleteDialogModalLabel">
 			<div class="modal-delete" role="document">
@@ -659,7 +629,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<script src="../javascripts/wait.js"></script>
 	</body>
 

@@ -2266,24 +2266,15 @@ function addPageButtons() {
 	}
 	var oButtonAdd = document.getElementById("myAddModalClose");
 	oButtonAdd.onclick = function() {
-		console.log("新增页-关闭按钮");
-		document.getElementById("myEditEnsureModal").style.display = "block";
-		//$('#myEditEnsureModal').modal();
-		//$(".modal-backdrop").addClass("new-backdrop");
-		//传参-关闭父页  
-		closeparentpage("#myAddModal");
-	}
-	var oAddBack = document.getElementById("myAddBack");
-	oAddBack.onclick = function() {
-		console.log("新增页-X按钮");
-		document.getElementById("myEditEnsureModal").style.display = "none";
-	}
-	var oAddCancle = document.getElementById("myAddCancle");
-	oAddCancle.onclick = function() {
-		console.log("新增页-取消按钮");
-		document.getElementById("myEditEnsureModal").style.display = "none";
-	}
-	//新增页mk-config button的点击
+			console.log("新增页-关闭按钮");
+			document.getElementById("myEditEnsureModal").style.display = "block";
+			//$('#myEditEnsureModal').modal();
+			//$(".modal-backdrop").addClass("new-backdrop");
+			//传参-关闭父页  
+			closeparentpage("#myAddModal");
+		}
+
+		//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 }
 /*点击单项复制-弹框里的各个按钮*/
