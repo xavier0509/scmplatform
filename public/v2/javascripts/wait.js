@@ -1130,6 +1130,7 @@ function getEditInforesult() {
 
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
+	vae oocounter, nncounter = 0;
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
@@ -1265,13 +1266,13 @@ function editPageSubmitData() {
 	console.log("old: "+oldMKkeycounter+"---"+oldConfigkeycounter);
 	console.log("new: "+newMKkeycounter+"---"+newConfigkeycounter);
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
-		var ookey, oocounter = 0;
+		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
 			if(hashObj.mkFile[ookey] == dataObj.mkFile[ookey]){
 				oocounter++;
 			}
 		};
-		var nnkey, nncounter = 0;
+		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
 			if(hashObj.configFile[nnkey] == dataObj.configFile[nnkey]){
 				nncounter++;
