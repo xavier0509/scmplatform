@@ -1130,7 +1130,7 @@ function getEditInforesult() {
 
 function editPageSubmitData() {
 	console.log("lxw " + loginusername + "--" + adminFlag);
-	vae oocounter, nncounter = 0;
+	var oocounter, nncounter = 0;
 	var dataObj = {
 		"configFile": "",
 		"mkFile": "",
