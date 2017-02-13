@@ -32,6 +32,17 @@ function XandCancle(){
 		console.log("取消按钮");
 		document.getElementById("myAddCloseDiv").style.display = "none";
 	}
+	//MoreEditX
+	var oButtonAdd = document.getElementById("MoreEditX");
+	oButtonAdd.onclick = function() {
+		console.log("X按钮");
+		document.getElementById("myMoreEditSubmitModal").style.display = "none";
+	}
+	var oButtonAdd = document.getElementById("MoreEditBack");
+	oButtonAdd.onclick = function() {
+		console.log("取消按钮");
+		document.getElementById("myMoreEditSubmitModal").style.display = "none";
+	}
 }
 
 function forsession() {
@@ -2352,15 +2363,17 @@ function moreEditPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmit");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮一");
-		$('#myMoreEditSubmitModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("myMoreEditSubmitModal").style.display = "block";
+		//$('#myMoreEditSubmitModal').modal();
+		//$(".modal-backdrop").addClass("new-backdrop");
 		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮二");
-		$('#myMoreEditSubmitModal').modal();
-		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("myMoreEditSubmitModal").style.display = "block";
+		//$('#myMoreEditSubmitModal').modal();
+		//$(".modal-backdrop").addClass("new-backdrop");
 		getMoreEditInfo();
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
