@@ -10,6 +10,7 @@ function focusPosition(){
 }
 
 function loginfun() {
+    document.getElementById("logintxt").innerHTML = "　";
     var username = document.getElementById('username').value;
     var pwd = document.getElementById('password').value;
     // var node = '{"username":"' + username + '","password":"' + pwd +'"}';
