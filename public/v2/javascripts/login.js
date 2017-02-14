@@ -30,7 +30,7 @@ function loginfun() {
 }
 
 function loginresult() {
-    document.getElementById("logintxt").innerHTML = "　";
+    
     console.log("this.readyState = " + this.readyState);
     if (this.readyState == 4) {
         console.log("this.status = " + this.status);
