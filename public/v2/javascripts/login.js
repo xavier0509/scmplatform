@@ -19,14 +19,12 @@ function loginfun() {
         sendHTTPRequest("/fybv2_api/login", node, loginresult);
     }
     else if(username == ""){
-        var usermessage = document.getElementById('usermessage');
-        usermessage.innerHTML="请输入账号";
-        setTimeout("usermessage.innerHTML=''",2000);
+        var loginmsg = document.getElementById("logintxt");
+        loginmsg.innerHTML = loginmsg.innerHTML+"请输入用户名！";
     }
     else{
-        var pwdmessage = document.getElementById('pwdmessage');
-        pwdmessage.innerHTML="请输入密码";
-        setTimeout("pwdmessage.innerHTML=''",2000);
+        var loginmsg = document.getElementById("logintxt");
+            loginmsg.innerHTML = loginmsg.innerHTML+"请输入密码！";
     }
 
 }
@@ -45,7 +43,7 @@ function loginresult() {
             }
             else if (data.msg == "failure") {
 	    	var loginmsg = document.getElementById("logintxt");
-            loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确账号或密码!";
+            loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确用户名或密码！";
             // setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
 	    };
 
