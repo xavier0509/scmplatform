@@ -1158,7 +1158,11 @@ function freshReviewHtml() {
     // console.log("要刷新主页了！！！！");
     iframe[0].src = "wait.html";
 }   
-
+//关闭当前dialog
+function closeCurPage(){
+	document.getElementById("myDeleteModalLabel").style.display = "none";
+	$("#myCheckModal").modal('hide');
+}
 
 document.getElementById("closeReview").onclick=closeFun;
 function closeFun(){
@@ -1171,7 +1175,9 @@ function closeFun(){
         document.getElementById("mydialog").style.display = "block";
         document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
         document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
-        document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
+        //替换掉刷新的效果
+        //document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;
+        document.getElementById("myDeleteModalEnsure").onclick = closeCurPage;
     }
     
 }
