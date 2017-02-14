@@ -450,6 +450,7 @@ td{
     margin-left: 0;
     font-size: 17px;
     overflow: hidden;
+    white-space: nowrap;
 }
 #myCheckModalMkTableTbody input{
 	display: block;
@@ -831,4 +832,9 @@ td{
 }
 #myCheckModalConfigTableTdOther div span{
     white-space: nowrap;
+}
+
+#checkModalSpan{
+	overflow: hidden;
+	white-space: nowrap;
 }
