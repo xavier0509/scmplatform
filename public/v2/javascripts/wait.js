@@ -2504,11 +2504,12 @@ function functionMkConfigTable(name1, table1, name2, table2) {
 function closeparentpage(pageName) {
 	//pageName = #myAddModal\#myCopyModal\#myEditModal\#myMoreEditModal
 	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
-	oButtonObject.onclick = function() {
-		var indexObject = parent.document.getElementById("home");
-		var iframe = indexObject.getElementsByTagName("iframe");
-		iframe[0].src = "wait.html";
-	}
+	$(pageName).modal('hide');
+//	oButtonObject.onclick = function() {
+//		var indexObject = parent.document.getElementById("home");
+//		var iframe = indexObject.getElementsByTagName("iframe");
+//		iframe[0].src = "wait.html";
+//	}
 }
 
 /*刷新审核页面*/
