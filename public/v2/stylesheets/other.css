@@ -834,7 +834,7 @@ td{
     white-space: nowrap;
 }
 
-#checkModalSpan{
+.checkModalSpan{
 	overflow: hidden;
 	white-space: nowrap;
 }
