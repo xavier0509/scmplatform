@@ -1160,6 +1160,7 @@ function freshReviewHtml() {
 }   
 //关闭当前dialog
 function closeCurPage(){
+	document.getElementById("reviewDialog").style.display = "none";
 	document.getElementById("myDeleteModalLabel").style.display = "none";
 	$("#myCheckModal").modal('hide');
 }
