@@ -2505,6 +2505,7 @@ function closeparentpage(pageName) {
 	//pageName = #myAddModal\#myCopyModal\#myEditModal\#myMoreEditModal
 	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
 	oButtonObject.onclick = function() {
+		document.getElementById("myAddCloseDiv").style.display = "none";
 		$(pageName).modal('hide');
 //		var indexObject = parent.document.getElementById("home");
 //		var iframe = indexObject.getElementsByTagName("iframe");
