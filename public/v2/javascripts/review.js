@@ -1188,7 +1188,9 @@ function closeFunT(){
     document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
     document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
-    document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;  
+    //替换掉刷新的效果
+        //document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;
+        document.getElementById("myDeleteModalEnsure").onclick = closeCurPage;
 }
 
 function submitStatus(hashObj,dataObj,oEnode){
