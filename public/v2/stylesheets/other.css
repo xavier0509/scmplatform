@@ -5,7 +5,6 @@
 
 body{
     width: 100%;
-    min-width: 990px;
 }
 
 fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}
