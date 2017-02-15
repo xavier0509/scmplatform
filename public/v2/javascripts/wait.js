@@ -1780,28 +1780,28 @@ function getMoreEditInfoOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageService.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageAppStore.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageHomePage.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageIME.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageSysApp.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' desc='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
+					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				}
 			}
 		};
@@ -1838,12 +1838,10 @@ function getMoreEditInfoTwo() {
 				if(data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
-						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -1851,7 +1849,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigMain.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "hardware") {
@@ -1859,7 +1857,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("hardware:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1870,7 +1868,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigHardware.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
@@ -1878,7 +1876,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigServerip.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1889,7 +1887,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigServerip.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "ad") {
@@ -1897,7 +1895,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("ad:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigAd.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1908,7 +1906,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigAd.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "channel") {
@@ -1916,7 +1914,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("channel:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigChannel.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1927,7 +1925,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigChannel.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "localmedia") {
@@ -1935,7 +1933,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigLocalmedia.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1946,7 +1944,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigLocalmedia.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "browser") {
@@ -1954,7 +1952,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("browser:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1965,7 +1963,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
@@ -1973,7 +1971,7 @@ function getMoreEditInfoTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigOther.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1984,7 +1982,7 @@ function getMoreEditInfoTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span name='" + data.data[kk].engName + "' title='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -2005,7 +2003,6 @@ function getMoreEditInfo() {
 	var oMEMkindex = null;
 	for(var i = 0; i < oMEMkTrDiv.length; i++) {
 		oMEMkTrDivTwo = $("#myMoreEditModalMkTableTbody").find("tr:eq(" + i + ")").find("div");
-		//console.log("lxw" + oMEMkTrDivTwo.length);
 		for(var j = 1; j < oMEMkTrDivTwo.length; j++) {
 			oMEMkindex = j;
 			var ooValue = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("curValue");
@@ -2025,13 +2022,12 @@ function getMoreEditInfo() {
 	var oMEConfigindex = null;
 	for(var i = 0; i < oMEConfigTrDiv.length; i++) {
 		oMEConfigTrDivTwo = $("#myMoreEditModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
-		//console.log("lxw" + oMEConfigTrDivTwo.length);
 		for(var j = 1; j < oMEConfigTrDivTwo.length; j++) {
 			oMEConfigindex = j;
 			var ooValue = oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].getAttribute("curvalue");
 			if(ooValue == "1") { //修改
 				console.log("lxw " + oMEConfigindex + "--" + oMEConfigTrDivTwo[oMEConfigindex].childNodes[1].value);
-				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].title);
+				mEConfigEditCzName.push(oMEConfigTrDivTwo[oMEConfigindex].childNodes[0].getAttribute("cnName"));
 			}
 		}
 	}
@@ -2105,6 +2101,7 @@ function getMoreEditInfoEnd() {
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
+				oCstuInfoTwo.desc = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("title");
 				//moreEditMkAddFile.push(JSON.stringify(oCstuInfoTwo));
 				moreEditMkAddFile['mkFile.' + curId] = oCstuInfoTwo;
 			}
@@ -2123,6 +2120,7 @@ function getMoreEditInfoEnd() {
 				oCstuInfoTwo.cnName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].innerHTML;
 				oCstuInfoTwo.engName = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("engName");
 				oCstuInfoTwo.gitPath = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("gitPath");
+				oCstuInfoTwo.desc = oMEMkTrDivTwo[oMEMkindex].childNodes[0].getAttribute("title");
 				moreEditMkDelFile['mkFile.' + curTwoId] = "1";
 			}
 		}
@@ -2506,9 +2504,6 @@ function closeparentpage(pageName) {
 	oButtonObject.onclick = function() {
 		document.getElementById("myAddCloseDiv").style.display = "none";
 		$(pageName).modal('hide');
-//		var indexObject = parent.document.getElementById("home");
-//		var iframe = indexObject.getElementsByTagName("iframe");
-//		iframe[0].src = "wait.html";
 	}
 }
 
