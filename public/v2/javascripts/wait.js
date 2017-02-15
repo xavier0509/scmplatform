@@ -2345,7 +2345,7 @@ function editPageButtonsOnclick() {
 		var body = document.getElementById("homePage");
 		console.log(div.scrollTop+"---"+body.scrollTop);
 		document.getElementById("myEditModal").scrollTop = 0;
-		$("#homePage").animate({scrollTop:0},1000);
+		$(window).scrollTop(50);
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
 	}
