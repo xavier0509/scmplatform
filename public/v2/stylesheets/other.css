@@ -838,3 +838,10 @@ td{
 	overflow: hidden;
 	white-space: nowrap;
 }
+
+#successMessage{
+	display: none;
+	color: red;
+	font-size: 24px;
+	text-align: center;
+}

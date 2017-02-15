@@ -728,8 +728,9 @@ function productAddresult() {
 				console.log("lxw " + "添加成功");
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
-				setTimeout("freshHtml('tab_userMenu2')", 3000);
-				setTimeout("startSelect()", 3000);
+				document.getElementById("successMessage").style.display = "block";
+				//setTimeout("freshHtml('tab_userMenu2')", 3000);
+				//setTimeout("startSelect()", 3000);
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myAddModalErrorInfo").style.display = "block";
