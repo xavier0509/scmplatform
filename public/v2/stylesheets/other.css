@@ -73,7 +73,6 @@ td{
 	overflow: hidden;
 }
 
-
 #modeManager-mkTable{
 	display: inline-block;
 }
@@ -95,6 +94,7 @@ td{
 
 #module-mkTable a{
 	text-decoration: underline;
+	white-space: nowrap;
 }
 #module-mkTable tr td div{
 	margin-bottom: 5px;
