@@ -164,6 +164,7 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModalLabel").text("新增");
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+		clearPageInfo();
 		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
@@ -2594,4 +2595,21 @@ function moreEditCommon(){
 			$('#myDeleteDialogModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
 		}
+}
+
+function clearPageInfo(){
+	document.getElementById("newAddChip").value = "";
+	document.getElementById("newAddModel").value = "";
+	document.getElementById("newAddDevice").value = "";
+	document.getElementById("NewAddAndroidVersion").value = "";
+	document.getElementById("newAddChipMode").value = "";
+	document.getElementById("newAddMemory").value = "";
+	document.getElementById("myAddModalMkTableApp").innerHTML = "";
+	document.getElementById("myAddModalMkTableService").innerHTML = "";
+	document.getElementById("myAddModalMkTableAppStore").innerHTML = "";
+	document.getElementById("myAddModalMkTableHomePage").innerHTML = "";
+	document.getElementById("myAddModalMkTableIME").innerHTML = "";
+	document.getElementById("myAddModalMkTableSysApp").innerHTML = "";
+	document.getElementById("myAddModalMkTableTV").innerHTML = "";
+	document.getElementById("myAddModalMkTableOther").innerHTML = "";
 }
