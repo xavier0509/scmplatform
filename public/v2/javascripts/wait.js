@@ -2342,11 +2342,12 @@ function editPageButtonsOnclick() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
 		var div = document.getElementById("myEditModal");
-		console.log(div.clientHeight + "--|--" +document.documentElement.scrollTop);
-        if(div.clientHeight-document.documentElement.scrollTop==0){
-    		console.log("hello");
-    		document.documentElement.scrollTop = 0;
-    	}
+		console.log(document.getElementById("myEditModal").scrollTop);
+		document.getElementById("myEditModal").scrollTop = 0;
+//      if(div.clientHeight-document.documentElement.scrollTop!=0){
+//  		console.log("hello");
+//  		div.clientHeight = 100;
+//  	}
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
 	}
