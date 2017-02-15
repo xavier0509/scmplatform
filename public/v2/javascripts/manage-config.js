@@ -276,50 +276,42 @@ function searchConfigInfo() {
 				if (data.data[i].category == "main") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					console.log("main:"+kk);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
+					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "hardware"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("hardware:"+kk);
-					_rowConfigHardware.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigHardware.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "serverip"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("serverip:"+kk);
-					_rowConfigServerip.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigServerip.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "ad"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("ad:"+kk);
-					_rowConfigAd.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigAd.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "channel"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("channel:"+kk);
-					_rowConfigChannel.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigChannel.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "localmedia"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("localmedia:"+kk);
-					_rowConfigLocalmedia.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigLocalmedia.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "browser"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("browser:"+kk);
-					_rowConfigBrowser.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigBrowser.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "other"){
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:"+kk);
-					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigOther.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 			}
 		};
