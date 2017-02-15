@@ -43,6 +43,10 @@ function XandCancle(){
 		console.log("取消按钮");
 		document.getElementById("myMoreEditSubmitModal").style.display = "none";
 	}
+	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
+	oButtonObject.onclick = function() {
+		document.getElementById("myAddCloseDiv").style.display = "none";
+	}
 }
 
 function forsession() {
