@@ -1337,6 +1337,9 @@ function productEditresult() {
 				$("#myDeleteModal").modal('hide');
 				startSelect();
 				freshHtml("tab_userMenu2");
+				document.getElementById("myAddCloseDiv").style.display = "block";
+				document.getElementById("infoEdit").innerHTML = "数据提交成功，可在待审核页面查看该条数据。";
+				closeparentpage("1");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myEditModalErrorInfo").style.display = "block";
