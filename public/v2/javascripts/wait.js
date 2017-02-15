@@ -2383,17 +2383,14 @@ function moreEditPageButtons() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交确认按钮");
 		getMoreEditInfoEnd();
+		document.getElementById("myMoreEditSubmitModal").style.display = "none";
 		$("#myMoreEditModal").modal('hide');
-		$("#myMoreEditSubmitModal").modal('hide');
+		//$("#myMoreEditSubmitModal").modal('hide');
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditBack");
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交取消按钮");
 		document.getElementById("myMoreEditSubmitModal").style.display = "none";
-		//$("#myMoreEditSubmitModal").modal('toggle');
-		//$("#myMoreEditModal").modal('toggle');
-		//$("#myMoreEditModal").modal('show');
-		//$(".modal-backdrop").addClass("new-backdrop");
 	}
 	/*批量修改页mk-config button的点击*/
 	functionMkConfigTable("myMoreEditModalMkButton", "myMoreEditModalMkTable", "myMoreEditModalConfigButton", "myMoreEditModalConfigTable");
