@@ -1086,8 +1086,7 @@ function getEditInfoInfTwo() {
 			}
 		};
 		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		console.log(node);
-		//sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
+		sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
 	}
 }
 
@@ -1200,11 +1199,12 @@ function editPageSubmitData() {
 			};
 			thisConfigindex = j;
 			oEstuInfo.category = oEconfigTrDiv[0].title;
-			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].title;
+			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("cnName");
 			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			oEstuInfo.configKey = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
 			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
+			oEstuInfo.desc = oEconfigTrDiv[thisConfigindex].childNodes[1]..getAttribute("title");;
 			if(oEstuInfo.type == "string") {
 				oEopt = [];
 			} else if(oEstuInfo.type == "enum") {
@@ -1243,6 +1243,7 @@ function editPageSubmitData() {
 				oEstuInfoTwo.cnName = oEMkTrDivTwo[oEMkindex].childNodes[1].innerHTML;
 				oEstuInfoTwo.engName = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("name");
 				oEstuInfoTwo.gitPath = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("gitPath");
+				oEstuInfoTwo.desc = oEMkTrDivTwo[oEMkindex].childNodes[1].getAttribute("title");
 				editMkFile[oEMkTrDivTwo[oEMkindex].childNodes[0].getAttribute("id")] = oEstuInfoTwo;
 			}
 		}
@@ -1318,7 +1319,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
