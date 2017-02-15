@@ -2292,6 +2292,7 @@ function addPageButtons() {
 	var oButtonAddEnsure = document.getElementById("myAddModalSubmitTwo");
 	oButtonAddEnsure.onclick = function() {
 		console.log("新增页-提交按钮二");
+		scrollTopStyle("myAddModal");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(1);
 	}
@@ -2317,6 +2318,7 @@ function copyPageButtons() {
 	var oButtonEditEnsure = document.getElementById("myCopyModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项复制页-提交按钮二");
+		scrollTopStyle("myCopyModal");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(2);
 	}
@@ -2382,9 +2384,8 @@ function moreEditPageButtons() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-提交按钮二");
 		document.getElementById("myMoreEditSubmitModal").style.display = "block";
-		//$('#myMoreEditSubmitModal').modal();
-		//$(".modal-backdrop").addClass("new-backdrop");
 		getMoreEditInfo();
+		scrollTopStyle("myMoreEditModal");
 	}
 	var oButtonEditEnsure = document.getElementById("myMoreEditModalClose");
 	oButtonEditEnsure.onclick = function() {
