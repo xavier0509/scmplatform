@@ -2342,12 +2342,7 @@ function editPageButtonsOnclick() {
 	var oButtonEditEnsure = document.getElementById("myEditModalSubmitTwo");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
-		var div = document.getElementById("myEditModal");
-		var body = parent.document.getElementById("homePage");
-		console.log(div.scrollTop+"---"+body.scrollTop);
-		document.getElementById("myEditModal").scrollTop = 0;
-		parent.document.getElementById("homePage").scrollTop = 0;
-		//document.documentElement.scrollTop = 0;
+		scrollTopStyle("myEditModal");
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
 	}
@@ -2613,4 +2608,12 @@ function clearPageInfo(){
 	document.getElementById("myAddModalMkTableSysApp").innerHTML = "";
 	document.getElementById("myAddModalMkTableTV").innerHTML = "";
 	document.getElementById("myAddModalMkTableOther").innerHTML = "";
+}
+
+function scrollTopStyle(name){
+	var div = document.getElementById(name);
+	var body = parent.document.getElementById("homePage");
+	console.log(div.scrollTop+"---"+body.scrollTop);
+	document.getElementById(name).scrollTop = 0;
+	parent.document.getElementById("homePage").scrollTop = 0;
 }
