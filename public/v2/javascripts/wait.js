@@ -2344,7 +2344,7 @@ function editPageButtonsOnclick() {
 		console.log("单项编辑页-提交按钮二");
 		var div = document.getElementById("myEditModal");
 		var body = document.getElementById("homePage");
-		console.log(div.scrollTop+"---"+document.documentElement.scrollTop);
+		console.log(div.scrollTop+"---"+parent.document.documentElement.scrollTop);
 		document.getElementById("myEditModal").scrollTop = 0;
 		//document.documentElement.scrollTop = 0;
 		//传参：1-新增页 2-复制页 3-编辑页
