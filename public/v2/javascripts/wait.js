@@ -729,7 +729,7 @@ function productAddresult() {
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
 				document.getElementById("myAddCloseDiv").style.display = "block";
-				document.getElementById("infoEdit").innerHTML = "数据提交成功，可在待审核页面查看该条数据。";
+				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
 				freshHtml("tab_userMenu2");
@@ -1339,7 +1339,8 @@ function productEditresult() {
 				startSelect();
 				freshHtml("tab_userMenu2");
 				document.getElementById("myAddCloseDiv").style.display = "block";
-				document.getElementById("infoEdit").innerHTML = "数据提交成功，可在待审核页面查看该条数据。";
+				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
+				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
