@@ -43,10 +43,6 @@ function XandCancle(){
 		console.log("取消按钮");
 		document.getElementById("myMoreEditSubmitModal").style.display = "none";
 	}
-	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
-	oButtonObject.onclick = function() {
-		document.getElementById("myAddCloseDiv").style.display = "none";
-	}
 }
 
 function forsession() {
@@ -734,6 +730,7 @@ function productAddresult() {
 				$("#myCopyModal").modal('hide');
 				document.getElementById("myAddCloseDiv").style.display = "block";
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，可在待审核页面查看该条数据。";
+				closeparentpage("1");
 				freshHtml("tab_userMenu2");
 				startSelect();
 			} else if(data.msg == "failure") {
@@ -2510,7 +2507,12 @@ function closeparentpage(pageName) {
 	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
 	oButtonObject.onclick = function() {
 		document.getElementById("myAddCloseDiv").style.display = "none";
-		$(pageName).modal('hide');
+		if (pageName != 1) {
+			console.log("pageName != 1");
+			$(pageName).modal('hide');
+		}else{
+			console.log("pageName == 1");
+		}
 	}
 }
 
