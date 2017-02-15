@@ -1204,7 +1204,7 @@ function editPageSubmitData() {
 			oEstuInfo.configKey = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
 			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
-			oEstuInfo.desc = oEconfigTrDiv[thisConfigindex].childNodes[1]..getAttribute("title");
+			oEstuInfo.desc = oEconfigTrDiv[thisConfigindex].childNodes[1].getAttribute("title");
 			if(oEstuInfo.type == "string") {
 				oEopt = [];
 			} else if(oEstuInfo.type == "enum") {
