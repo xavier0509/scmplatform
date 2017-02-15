@@ -888,39 +888,38 @@ function reviewresult2(){
 
 //删除弹窗
 function deleteIssue(){
-    //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "删除操作";
     document.getElementById("dialogword").innerHTML = "确认要删除该配置信息吗？";
     document.getElementById("myDeleteModalEnsure").onclick = deleteSure;
+    scrollTopStyle("myCheckModal");
 }
 
 //审核弹窗
 function passIssue(){
-    //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "确认通过审核吗？";
     document.getElementById("myDeleteModalEnsure").onclick = passSure;
+    scrollTopStyle("myCheckModal");
 }
 
 //审核不通过弹窗
 function noPassIssue(){
-    //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "审核操作";
     document.getElementById("dialogword").innerHTML = "是否确认不通过该文件？";
     document.getElementById("myDeleteModalEnsure").onclick = noPassSure;
+    scrollTopStyle("myCheckModal");
 }
 
 //编辑提交弹窗
 function editIssue(){
-    //$('#mydialog').modal();
-   // $(".modal-backdrop").addClass("new-backdrop");
    	document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
     document.getElementById("dialogword").innerHTML = "确认提交该修改吗？";
-    document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;    
+    document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;
+    scrollTopStyle("myCheckModal");
 }
 
 //审核通过（针对编辑）
@@ -1254,3 +1253,10 @@ function submitStatus(hashObj,dataObj,oEnode){
 	}
 }
 
+function scrollTopStyle(name){
+	var div = document.getElementById(name);
+	var body = parent.document.getElementById("homePage");
+	console.log(div.scrollTop+"---"+body.scrollTop);
+	document.getElementById(name).scrollTop = 0;
+	parent.document.getElementById("homePage").scrollTop = 0;
+}
