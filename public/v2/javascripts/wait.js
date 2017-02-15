@@ -2342,6 +2342,7 @@ function editPageButtonsOnclick() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
 		var div = document.getElementById("myEditModal");
+		console.log(div.clientHeight + "--|--" +document.documentElement.scrollTop);
         if(div.clientHeight-document.documentElement.scrollTop==0){
     		console.log("hello");
     		document.documentElement.scrollTop = 0;
