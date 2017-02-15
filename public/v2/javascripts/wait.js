@@ -2342,8 +2342,10 @@ function editPageButtonsOnclick() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项编辑页-提交按钮二");
 		var div = document.getElementById("myEditModal");
+		var body = document.getElementById("homePage");
+		console.log(div.scrollTop+"---"+body.scrollTop);
 		document.getElementById("myEditModal").scrollTop = 0;
-		 $('html,body').animate({scrollTop:0},1000);
+		document.getElementById("homePage").scrollTop = 0;
 		//传参：1-新增页 2-复制页 3-编辑页
 		chipModeldataCheck(3);
 	}
