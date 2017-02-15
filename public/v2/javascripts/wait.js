@@ -728,9 +728,10 @@ function productAddresult() {
 				console.log("lxw " + "添加成功");
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
-				document.getElementById("successMessage").style.display = "block";
-				//setTimeout("freshHtml('tab_userMenu2')", 3000);
-				//setTimeout("startSelect()", 3000);
+				document.getElementById("myAddCloseDiv").style.display = "block";
+				document.getElementById("infoEdit").innerHTML = "数据提交成功，可在待审核页面查看该条数据。";
+				freshHtml("tab_userMenu2");
+				startSelect();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myAddModalErrorInfo").style.display = "block";
@@ -2291,6 +2292,7 @@ function addPageButtons() {
 	oButtonAdd.onclick = function() {
 		console.log("新增页-关闭按钮");
 		document.getElementById("myAddCloseDiv").style.display = "block";
+		document.getElementById("infoEdit").innerHTML = "确认要关闭吗？";
 		//传参-关闭父页  
 		closeparentpage("#myAddModal");
 	}
@@ -2315,6 +2317,7 @@ function copyPageButtons() {
 	oButtonAdd.onclick = function() {
 			console.log("单项复制页-关闭按钮");
 			document.getElementById("myAddCloseDiv").style.display ="block";
+			document.getElementById("infoEdit").innerHTML = "确认要关闭吗？";
 			//传参-关闭父页  
 			closeparentpage("#myCopyModal");
 		}
@@ -2339,6 +2342,7 @@ function editPageButtonsOnclick() {
 	oButtonAdd.onclick = function() {
 			console.log("单项编辑页-关闭按钮");
 			document.getElementById("myAddCloseDiv").style.display ="block";
+			document.getElementById("infoEdit").innerHTML = "确认要关闭吗？";
 			//传参-关闭父页  
 			closeparentpage("#myEditModal");
 		}
@@ -2378,6 +2382,7 @@ function moreEditPageButtons() {
 	oButtonEditEnsure.onclick = function() {
 		console.log("批量修改页-关闭按钮");
 		document.getElementById("myAddCloseDiv").style.display ="block";
+		document.getElementById("infoEdit").innerHTML = "确认要关闭吗？";
 		closeparentpage("#myMoreEditModal");
 	}
 	var oButtonEditEnsure = document.getElementById("MoreEditSaveSubmit");
