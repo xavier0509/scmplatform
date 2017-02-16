@@ -106,7 +106,6 @@ function AferConfigHtmlInfo() {
 	function toSaveButton(myindex,keylue) {
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
-			console.log("hello");
 			console.log(myindex+"---"+JSON.stringify(keylue));
 			var newConfigCzName = document.getElementById("configChineseName").value;//中文名
 			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
@@ -147,13 +146,9 @@ function AferConfigHtmlInfo() {
 					var newConfigMenu = [];//value值是枚举,值放入数组
 					var newConfigMenuObject = document.getElementsByClassName("menuUnit");
 					var newConfigMenuDiv = document.getElementById("ADCSEfficient");
-					var thisOneIndex,thisTwoIndex,valueOne,valueTwo = null;
+					var valueTwo = null;
 					for (var i=0; i<newConfigMenuObject.length;i++) {
-						thisOneIndex = 2*i;
-						thisTwoIndex = 2*i + 1;
-						// valueOne =  newConfigMenuDiv.getElementsByTagName("input")[thisOneIndex].value;
 						valueTwo =  newConfigMenuDiv.getElementsByTagName("input")[i].value;
-						console.log("lxw "+valueOne +":"+ valueTwo);
 						newConfigMenu.push('"'+valueTwo+'"');
 						console.log("lxw"+newConfigMenu);
 					}
