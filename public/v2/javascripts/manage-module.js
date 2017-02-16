@@ -13,12 +13,14 @@ function AfterModuleHtmlInfo() {
 		document.getElementById("moduleCzName").value = "";
 		document.getElementById("moduleEnName").value = "";
 		document.getElementById("moduleSrc").value = "";
+		document.getElementById("moduleSrc").removeAttribute('disabled');
+        document.getElementById("moduleSrc").style.backgroundColor = "white";
 		document.getElementById("moduleInstr").value = "";
 		document.getElementById("moduleSelect").value = "App";
 		toSaveButton(-1, null);
 	}
 
-	/*模块管理板块-修改 table-tr-a   */
+	/*模块管理板块-修改*/
 	var oTableA = $("#module-mkTable").find("a");
 	var oTableInput = $("#module-mkTable").find("input");
 	console.log("xjr" + oTableInput.length);
@@ -37,6 +39,8 @@ function AfterModuleHtmlInfo() {
 			document.getElementById("moduleCzName").value = jsonData.cnName;
 			document.getElementById("moduleEnName").value = jsonData.engName;
 			document.getElementById("moduleSrc").value = jsonData.gitPath;
+			document.getElementById("moduleSrc").setAttribute('disabled','');
+           	document.getElementById("moduleSrc").style.backgroundColor = "#ebebe4";
 			document.getElementById("moduleInstr").value = jsonData.desc;
 
 			var childSelect = document.getElementById("moduleSelect");
