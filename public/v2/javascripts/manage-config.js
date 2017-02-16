@@ -104,11 +104,10 @@ function AferConfigHtmlInfo() {
 
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex,keylue) {
-		console.log(myindex+"---"+JSON.stringify(keylue));
-		
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
 			console.log("hello");
+			console.log(myindex+"---"+JSON.stringify(keylue));
 			var newConfigCzName = document.getElementById("configChineseName").value;//中文名
 			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
 			var newConfigSrc = document.getElementById("configSrc").value;//config信息
@@ -159,7 +158,7 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keyValue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+newConfigMenu[0]+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 				}
 
 				if (myindex == null) {
