@@ -855,3 +855,9 @@ td{
     margin-right: auto;
     margin-left: auto;
 }
+
+#homePage{
+    margin: 0 auto;
+    text-align: center;
+    width: 1100px;
+}
