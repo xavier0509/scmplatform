@@ -336,6 +336,7 @@ function returnAddInfo(){
 				console.log("lxw " + "修改失败");
 				document.getElementById("configErrorInfo").style.display = "block";
 				document.getElementById("configErrorInfo").innerHTML = "该配置已存在";
+				setTimeout('document.getElementById("configErrorInfo").innerHTML = "　"',3000);
 			};
 		};
 	}
