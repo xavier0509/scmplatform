@@ -104,7 +104,7 @@ function AferConfigHtmlInfo() {
 
 	/*模块管理板块-保存*/
 	function toSaveButton(myindex,keylue) {
-		console.log(myindex+"---"+keylue);
+		console.log(myindex+"---"+JSON.stringify(keylue));
 		
 		var ConfigSubmit = document.getElementById("inputConfigSubmit");
 		ConfigSubmit.onclick = function() {
@@ -160,7 +160,6 @@ function AferConfigHtmlInfo() {
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
 					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+valueTwo+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
-					
 				}
 
 				if (myindex == null) {
