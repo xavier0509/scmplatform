@@ -12,6 +12,8 @@ function AferConfigHtmlInfo() {
 		document.getElementById("configChineseName").value = "";
 		document.getElementById("configEnglishName").value = "";
 		document.getElementById("configSrc").value = "";
+		document.getElementById("configSrc").removeAttribute('disabled');
+        document.getElementById("configSrc").style.backgroundColor = "white";
 		document.getElementById("configInstr").value = "";
 		document.getElementById("configString").value = "";
 		document.getElementById("ADCSEfficient").innerHTML="";
@@ -29,7 +31,7 @@ function AferConfigHtmlInfo() {
 		toSaveButton(this.index,null);
 	}
 
-	/*机芯机型板块-机型-修改------------这里需要分级------ table-tr-a   */
+	/*配置管理板块-修改 */
 	var oTableA = $("#config-mkTable").find("a");
 	var oTableInput = $("#config-mkTable").find("input");
 	console.log(oTableA.length);
@@ -41,15 +43,16 @@ function AferConfigHtmlInfo() {
 			keyValue = oTableA[this.index].nextSibling.value;
 			var data = oTableInput[this.index].value;
 			var jsonData = JSON.parse(data);
-			//console.log("lxw "+keyValue);
 			keyValueObj = JSON.parse(keyValue);
-			//console.log("lxw "+keyValueObj);
-			$('#myConfigAddChangeModal').modal(); //显示新建与编辑机芯机型时的弹框
+			$('#myConfigAddChangeModal').modal(); //显示编辑config时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-
+			
 			document.getElementById("configChineseName").value = jsonData.cnName;
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
+			document.getElementById("configSrc").setAttribute('disabled','');
+           	document.getElementById("configSrc").style.backgroundColor = "#ebebe4";
+            
 			if (jsonData.type == "string") {
 				document.getElementById("configString").style.display = "block";
 				document.getElementById("configTableBoxEnum").style.display = "none";
