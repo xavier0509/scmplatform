@@ -175,28 +175,8 @@ td{
 .myheader button{
 	position: relative;
 	display: block;
-	width: 5%;
 	margin-right: 5px;
 }
-/*.mytable{
-	padding-bottom: 0px;
-	font-size: 18px;
-}
-.mytable input{
-	display: block;
-    float: left;
-}
-.mytable span{
-	display: block;
-    float: left;
-    width: 40%;
-    text-align: right;
-    margin-left: 5%;
-    font-size: 17px;
-}
-.mytable div{
-	margin-bottom: 4px;
-}*/
 
 .mybody{
 	padding-bottom: 0px;
