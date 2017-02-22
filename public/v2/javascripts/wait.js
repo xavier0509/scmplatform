@@ -929,7 +929,7 @@ function getEditInfoInfOne() {
 					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "PlayerLibrary") {
 					kk = i;
-					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
@@ -1340,7 +1340,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
@@ -1424,7 +1424,7 @@ function getCopyInfoInfOne() {
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "PlayerLibrary") {
 					kk = i;
-					_rowCopyPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCopyPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
