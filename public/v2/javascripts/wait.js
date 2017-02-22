@@ -920,7 +920,7 @@ function getEditInfoInfOne() {
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Other") {
+				} else if(data.data[i].category == "PlayerLibrary") {
 					kk = i;
 					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
@@ -1415,7 +1415,7 @@ function getCopyInfoInfOne() {
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Other") {
+				} else if(data.data[i].category == "PlayerLibrary") {
 					kk = i;
 					_rowCopyPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				}
