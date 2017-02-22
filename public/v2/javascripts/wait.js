@@ -2333,9 +2333,9 @@ function addPageButtons() {
 	console.log(oCheckedStatus.length);
 	for (var i=1; i<oCheckedStatus.length; i++) {
 	  	var inputStyle = $("#myAddModalConfigTableTbody").find("div:eq(" + i + ")").find("input");
-	  	console.log(inputStyle.getAttribute("checked"));
 	  	inputStyle.onclick = function(){
-	  		console.log("hello");	
+	  		console.log("hello"+this.id);	
+	  		//console.log(document.getElementById(this.id).getAttribute("checked"));
 	  	};
 	}
 	//oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
