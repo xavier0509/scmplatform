@@ -2332,8 +2332,8 @@ function addPageButtons() {
 	var oCheckedStatus = $("#myAddModalMkTablePlayerLibrary").find("div");
 	console.log(oCheckedStatus.length);
 	for (var i=1; i<oCheckedStatus.length; i++) {
-	  	var inputStyle = $("#myAddModalConfigTableTbody").find("div:eq(" + i + ")").find("input");
-	  	console.log("hello"+inputStyle.id);	
+	  	//var inputStyle = $("#myAddModalConfigTableTbody").find("div:eq(" + i + ")").find("input");
+	  	console.log("hello");	
 	  	//console.log(document.getElementById(this.id).getAttribute("checked"));
 	}
 	//oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
