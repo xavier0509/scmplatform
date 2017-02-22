@@ -338,12 +338,13 @@ function getAddInfoInfOne() {
 					console.log(checkId);
 					if (checkId == 1) {
 						console.log(data.data[kk]._id);
-						document.getElementById(data.data[kk]._id).setAttribute('checked', '');
+						firstChecked = data.data[kk]._id;
 					}
 					_rowAddPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
+		document.getElementById(firstChecked).setAttribute('checked', '');
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getAddInfoInfTwo);
 	}
 }
