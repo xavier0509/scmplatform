@@ -285,7 +285,7 @@ function moduleResult(){
 					if (checkId == 1) {
 						firstChecked = data.data[kk]._id;
 					}
-					_rowCheckPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowCheckPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
       	}
@@ -308,6 +308,8 @@ function moduleResult2(){
             var data = JSON.parse(this.responseText);
             console.log(data);
             var kk = 0;
+            var checkId = 0;
+			var firstChecked = "";
             var _rowCheckPageApp = document.getElementById("myCheckModalMkTableApp");
             var _rowCheckPageService = document.getElementById("myCheckModalMkTableService");
             var _rowCheckPageAppStore = document.getElementById("myCheckModalMkTableAppStore");
@@ -354,11 +356,16 @@ function moduleResult2(){
                     kk = i;
                     _rowCheckPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "PlayerLibrary") {
-                    kk = i;
-                    _rowCheckPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    checkId++;
+					kk = i;
+					if (checkId == 1) {
+						firstChecked = data.data[kk]._id;
+					}
+                    _rowCheckPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
                 }
             }
         }
+        document.getElementById(firstChecked).setAttribute('checked', '');
     //查询config信息接口
     sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult2); 
     }
