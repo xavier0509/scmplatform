@@ -1333,7 +1333,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
@@ -1772,7 +1772,7 @@ function copyPageSubmitData() {
 	dataObj.desc = "enenen";
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
-	//sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
+	sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
 function getMoreEditInfoOne() {
