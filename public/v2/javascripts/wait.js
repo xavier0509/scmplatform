@@ -881,6 +881,8 @@ function getEditInfoInfOne() {
 			var data = JSON.parse(this.responseText);
 			console.log(data);
 			var kk = 0;
+			var checkId = 0;
+			var firstChecked = "";
 			var _rowEditPageApp = document.getElementById("myEditModalMkTableApp");
 			var _rowEditPageService = document.getElementById("myEditModalMkTableService");
 			var _rowEditPageAppStore = document.getElementById("myEditModalMkTableAppStore");
@@ -928,11 +930,16 @@ function getEditInfoInfOne() {
 					kk = i;
 					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "PlayerLibrary") {
+					checkId++;
 					kk = i;
-					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					if (checkId == 1) {
+						firstChecked = data.data[kk]._id;
+					}
+					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
+		document.getElementById(firstChecked).setAttribute('checked', '');
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getEditInfoInfTwo);
 	}
 }
@@ -1340,7 +1347,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		//sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
 	}
 }
 
@@ -1376,6 +1383,8 @@ function getCopyInfoInfOne() {
 			var data = JSON.parse(this.responseText);
 			console.log(data);
 			var kk = 0;
+			var checkId = 0;
+			var firstChecked = "";
 			var _rowCopyPageApp = document.getElementById("myCopyModalMkTableApp");
 			var _rowCopyPageService = document.getElementById("myCopyModalMkTableService");
 			var _rowCopyPageAppStore = document.getElementById("myCopyModalMkTableAppStore");
@@ -1423,11 +1432,16 @@ function getCopyInfoInfOne() {
 					kk = i;
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "PlayerLibrary") {
+					checkId++;
 					kk = i;
-					_rowCopyPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					if (checkId == 1) {
+						firstChecked = data.data[kk]._id;
+					}
+					_rowCopyPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
+		document.getElementById(firstChecked).setAttribute('checked', '');
 		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getCopyInfoInfTwo);
 	}
 }
@@ -2326,15 +2340,6 @@ function addPageButtons() {
 	}
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
-	//新增页PlayerLibrary项的单项选择
-	var oCheckedStatus = $("#myAddModalMkTablePlayerLibrary").find("div");
-	console.log(oCheckedStatus.length);
-	for (var i=1; i<oCheckedStatus.length; i++) {
-	  	//var inputStyle = $("#myAddModalConfigTableTbody").find("div:eq(" + i + ")").find("input");
-	  	console.log("hello");	
-	  	//console.log(document.getElementById(this.id).getAttribute("checked"));
-	}
-	//oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 }
 /*点击单项复制-弹框里的各个按钮*/
 function copyPageButtons() {
