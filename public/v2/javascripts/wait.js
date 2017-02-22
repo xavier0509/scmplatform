@@ -293,6 +293,7 @@ function getAddInfoInfOne() {
 			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
 			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
 			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
+			var _rowAddPagePlayerLibrary = document.getElementById("myAddModalMkTablePlayerLibrary");
 			_rowAddPageApp.innerHTML = "<div title='App'>App:</div>";
 			_rowAddPageService.innerHTML = "<div title='Service'>Service:</div>";
 			_rowAddPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
@@ -301,6 +302,7 @@ function getAddInfoInfOne() {
 			_rowAddPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowAddPageTV.innerHTML = "<div title='TV'>TV:</div>";
 			_rowAddPageOther.innerHTML = "<div title='Other'>Other:</div>";
+			_rowAddPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
@@ -328,6 +330,9 @@ function getAddInfoInfOne() {
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+				} else if(data.data[i].category == "PlayerLibrary") {
+					kk = i;
+					_rowAddPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
@@ -717,7 +722,7 @@ function addPageSubmitData() {
 
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
-	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
+	//sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
