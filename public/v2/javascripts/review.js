@@ -194,7 +194,6 @@ function review(obj,adminControl){
     document.getElementById("myAddModalLabel").innerHTML = "审核";
     if(document.getElementById("closeReview1")){
         document.getElementById("closeReview1").setAttribute("id","closeReview");
-        
     }
     //查询模块信息接口
     sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
@@ -310,6 +309,7 @@ function moduleResult2(){
             var _rowCheckPageSysApp = document.getElementById("myCheckModalMkTableSysApp");
             var _rowCheckPageTV = document.getElementById("myCheckModalMkTableTV");
             var _rowCheckPageOther = document.getElementById("myCheckModalMkTableOther");
+            var _rowCheckPagePlayerLibrary = document.getElementById("myCheckModalMkTablePlayerLibrary");
             _rowCheckPageApp.innerHTML = "<div title='App'>App:</div>";
             _rowCheckPageService.innerHTML = "<div title='Service'>Service:</div>";
             _rowCheckPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
@@ -318,6 +318,7 @@ function moduleResult2(){
             _rowCheckPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
             _rowCheckPageTV.innerHTML = "<div title='TV'>TV:</div>";
             _rowCheckPageOther.innerHTML = "<div title='Other'>Other:</div>";
+            _rowCheckPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
             
             for(var i = 0; i < data.data.length; i++) {
                 console.log("lxw " + data.data[i].category);
@@ -345,6 +346,9 @@ function moduleResult2(){
                 } else if(data.data[i].category == "Other") {
                     kk = i;
                     _rowCheckPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "PlayerLibrary") {
+                    kk = i;
+                    _rowCheckPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 }
             }
         }
@@ -967,12 +971,10 @@ function passResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 console.log("审核成功！！！！");
-                
             };
-
         }
         console.log("生成文件的机芯机型是："+chip+";"+model);
-    sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
+    //sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
     freshReviewHtml();
     }
 }
