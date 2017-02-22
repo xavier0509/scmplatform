@@ -286,6 +286,7 @@ function getAddInfoInfOne() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var checkId = 0;
+			var firstChecked = "";
 			var _rowAddPageApp = document.getElementById("myAddModalMkTableApp");
 			var _rowAddPageService = document.getElementById("myAddModalMkTableService");
 			var _rowAddPageAppStore = document.getElementById("myAddModalMkTableAppStore");
@@ -337,7 +338,7 @@ function getAddInfoInfOne() {
 					console.log(checkId);
 					if (checkId == 1) {
 						console.log(data.data[kk]._id);
-						//document.getElementById(data.data[kk]._id).setAttribute('checked', '');
+						document.getElementById(data.data[kk]._id).setAttribute('checked', '');
 					}
 					_rowAddPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
