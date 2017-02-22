@@ -165,7 +165,7 @@ function AfterWaitHtmlinfo() {
 		$("#myAddModal").modal("toggle");
 		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
 		clearPageInfo();
-		buttonStyle("myAddModalMkButton","myAddModalConfigButton");
+		buttonStyle("myAddModalMkButton","myAddModalMkTable","myAddModalConfigButton","myAddModalConfigTable");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
@@ -239,7 +239,7 @@ function AfterWaitHtmlinfo() {
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myEditModalMkButton","myEditModalConfigButton");
+			buttonStyle("myEditModalMkButton","myEditModalMkTable","myEditModalConfigButton","myEditModalConfigTable");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
@@ -273,7 +273,7 @@ function AfterWaitHtmlinfo() {
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myCopyModalMkButton","myCopyModalConfigButton");
+			buttonStyle("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
@@ -2498,15 +2498,15 @@ function moreEditPageButtons() {
 function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
 	oMkButtonObject.onclick = function() {
-		buttonStyle(name1,name2);
-		document.getElementById(table1).style.display = "block";
-		document.getElementById(table2).style.display = "none";
+		buttonStyle(name1,table1,name2,table2);
+		//document.getElementById(table1).style.display = "block";
+		//document.getElementById(table2).style.display = "none";
 	}
 	var oConfigButtonObject = document.getElementById(name2);
 	oConfigButtonObject.onclick = function() {
-		buttonStyle(name2,name1);
-		document.getElementById(table2).style.display = "block";
-		document.getElementById(table1).style.display = "none";
+		buttonStyle(name2,table2,name1,table1);
+		//document.getElementById(table2).style.display = "block";
+		//document.getElementById(table1).style.display = "none";
 	}
 }
 
@@ -2546,13 +2546,15 @@ function waitReset() {
 	startSelect();
 }
 
-function buttonStyle(name1, name2){
+function buttonStyle(name1, table1, name2, table2){
 	document.getElementById(name1).style.color = "#333";
 	document.getElementById(name1).style.backgroundColor = "#e6e6e6";
 	document.getElementById(name1).style.borderColor = "#adadad";
+	document.getElementById(table1).style.display = "block";
 	document.getElementById(name2).style.color = "#333";
 	document.getElementById(name2).style.backgroundColor = "#fff";
 	document.getElementById(name2).style.borderColor = "#ccc";
+	document.getElementById(table2).style.display = "none";
 }
 
 function disMiss(id){
@@ -2585,7 +2587,7 @@ function moreEditCommon(){
 			$("#myMoreEditModalLabel").text("批量修改");
 			$('#myMoreEditModal').modal();
 			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myMoreEditModalMkButton","myMoreEditModalConfigButton");
+			buttonStyle("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
