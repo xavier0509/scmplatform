@@ -1114,7 +1114,7 @@ function getEditInforesult() {
 				document.getElementById("newEditMemory").value = data.data[0].memorySize;
 				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
 
-				//console.log("lxw " + JSON.stringify(data.data[0].mkFile));
+				console.log("lxw " + JSON.stringify(data.data[0].mkFile));
 				var key, counter = 0;
 				for(key in data.data[0].mkFile) {
 					counter++;
