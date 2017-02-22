@@ -2329,7 +2329,16 @@ function addPageButtons() {
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 	//新增页PlayerLibrary项的单项选择
-	
+	var oCheckedStatus = $("#myAddModalMkTablePlayerLibrary").find("div");
+	console.log(oCheckedStatus.length);
+	for (var i=1; i<oCheckedStatus.length; i++) {
+	  	var inputStyle = $("#myAddModalConfigTableTbody").find("div:eq(" + i + ")").find("input");
+	  	console.log(inputStyle.getAttribute("checked"));
+	  	inputStyle.onclick = function(){
+	  		console.log("hello");	
+	  	};
+	}
+	//oAconfigTrDiv = $("#myAddModalConfigTableTbody").find("tr:eq(" + i + ")").find("div");
 }
 /*点击单项复制-弹框里的各个按钮*/
 function copyPageButtons() {
