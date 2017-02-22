@@ -338,7 +338,7 @@ function getAddInfoInfOne() {
 					if (checkId == 1) {
 						firstChecked = data.data[kk]._id;
 					}
-					_rowAddPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowAddPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
