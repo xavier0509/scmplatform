@@ -382,7 +382,7 @@ function getAddInfoInfTwo() {
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' configKey='" + data.data[kk].configKey + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -391,13 +391,13 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
 						var disableConfigKey =  data.data[kk].configKey;
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							changeId = data.data[kk]._id;
 							console.log(changeId);
-							changListen(changeId);
+							//changListen(changeId);
 						}
 					}
 				} else if(data.data[i].category == "hardware") {
@@ -2354,6 +2354,10 @@ function addPageButtons() {
 	}
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
+	
+	changListen();
+	
+	
 }
 /*点击单项复制-弹框里的各个按钮*/
 function copyPageButtons() {
@@ -2666,9 +2670,20 @@ function scrollTopStyle(name){
 }
 
 function changListen(id){
-	console.log(id);
-	console.log(document.getElementById(id).value);
-	document.getElementById(id).onchange = function(){
-		console.log("hello");
-	};
+	var omyVideoObj = new Array();
+	omyVideoObj = document.getElementsByClassName("videoChange");
+	console.log(omyVideoObj.length);
+	for(var ii = 0; ii < omyVideoObj.length; ii++) {
+		omyVideoObj[ii].childNodes[1].onchange = function() {
+			//console.log(document.getElementById(this.id).getAttribute("oldvalue"));
+			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value + "---" + this.previousSibling.title);
+			if(this.getAttribute("oldvalue") != this.value) { //做了修改
+				this.previousSibling.style.color = "red";
+				this.setAttribute("curvalue", "1");
+			} else { //没做修改
+				this.previousSibling.style.color = "";
+				this.setAttribute("curvalue", "0");
+			}
+		}
+	}
 }
