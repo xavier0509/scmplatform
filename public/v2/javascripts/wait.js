@@ -1900,6 +1900,9 @@ function getMoreEditInfoTwo() {
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							document.getElementById(disableId).setAttribute('disabled','');
 							document.getElementById(disableId).style.backgroundColor = "#ebebe4";
+							document.getElementById(disableId).onchange = function(){
+								console.log(this.id +"--"+this.values);
+							};
 						}
 					}
 				} else if(data.data[i].category == "hardware") {
