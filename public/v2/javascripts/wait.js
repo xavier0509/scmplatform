@@ -2675,7 +2675,7 @@ function changListen(id){
 	console.log(omyVideoObj.length);
 	for(var ii = 0; ii < omyVideoObj.length; ii++) {
 		omyVideoObj[ii].childNodes[1].onchange = function() {
-			//console.log(document.getElementById(this.id).getAttribute("oldvalue"));
+			console.log(omyVideoObj[ii].childNodes[0].configKey);
 			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value + "---" + this.previousSibling.title);
 			if(this.getAttribute("oldvalue") != this.value) { //做了修改
 				this.previousSibling.style.color = "red";
