@@ -2680,6 +2680,7 @@ function changListen(id){
 			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value);
 			if(configKeyName == "PLAYER_KERNEL"&&this.getAttribute("oldvalue") != this.value) { 
 				console.log("Let us do next.");
+				document.getElementById("myVideoChangeDiv").style.display = "block";
 			}
 		}
 	}

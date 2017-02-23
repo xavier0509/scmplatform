@@ -274,6 +274,32 @@
 			</div>
 		</div>
 		
+		<div class="col-xs-8" id="myVideoChangeDiv" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myVCModalLabel">
+			<div class="modal-delete" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" aria-label="Close" id="myVC-X"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title text-left" id="myVCModalLabel">关闭</h4>
+					</div>
+					<div class="modal-body">
+						<p>提示：请确认您的配置</p>
+						<p>config配置 与 播放器so选择对应关系如下：</p>
+						<dl class="dl-horizontal">
+							<dt><p>config配置</p></dt><dd><p>播放器so</p></dd><br/>
+							<dt><p>bj_decoder</p></dt><dd><p>intact</p></dd><br/>
+							<dt><p>mediaplayer</p></dt><dd><p>mix</p></dd><br/>
+							<dt><p>mediaplayer</p></dt><dd><p>null</p></dd><br/>
+							<dt><p>platform</p></dt><dd><p>null</p></dd><br/>
+							<dt><p>platform</p></dt><dd><p>intact</p></dd>
+						</dl>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="myVC-Ensure">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<!--点击批量修改弹出批量修改的modal-->
 		<div class="modal fade" id="myMoreEditModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreEditModalLabel">
 			<div class="modalwidth" role="document">
