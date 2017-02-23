@@ -2667,4 +2667,7 @@ function scrollTopStyle(name){
 
 function changListen(id){
 	console.log(id);
+	document.getElementById(id).onchange = function(){
+		console.log(id);
+	};
 }
