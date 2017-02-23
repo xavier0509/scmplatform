@@ -22,26 +22,37 @@ var moreDeleteData = 0;
 var hashObj = {};
 
 function XandCancle(){
-	var oButtonAdd = document.getElementById("myEnsureX");
-	oButtonAdd.onclick = function() {
+	var oButtonAdd_X = document.getElementById("myEnsureX");
+	oButtonAdd_X.onclick = function() {
 		console.log("X按钮");
 		document.getElementById("myAddCloseDiv").style.display = "none";
 	}
-	var oButtonAdd = document.getElementById("myEnsureCancle");
-	oButtonAdd.onclick = function() {
+	var oButtonAdd_C = document.getElementById("myEnsureCancle");
+	oButtonAdd_C.onclick = function() {
 		console.log("取消按钮");
 		document.getElementById("myAddCloseDiv").style.display = "none";
 	}
 	//MoreEditX
-	var oButtonAdd = document.getElementById("MoreEditX");
-	oButtonAdd.onclick = function() {
+	var oButtonME_X = document.getElementById("MoreEditX");
+	oButtonME_X.onclick = function() {
 		console.log("X按钮");
 		document.getElementById("myMoreEditSubmitModal").style.display = "none";
 	}
-	var oButtonAdd = document.getElementById("MoreEditBack");
-	oButtonAdd.onclick = function() {
+	var oButtonME_B = document.getElementById("MoreEditBack");
+	oButtonME_B.onclick = function() {
 		console.log("取消按钮");
 		document.getElementById("myMoreEditSubmitModal").style.display = "none";
+	}
+	//VC-X
+	var oButtonVC_X = document.getElementById("myVC-X");
+	oButtonVC_X.onclick = function() {
+		console.log("X按钮");
+		document.getElementById("myVideoChangeDiv").style.display = "none";
+	}
+	var oButtonVC_E = document.getElementById("MoreEditBack");
+	oButtonVC_E.onclick = function() {
+		console.log("确定按钮");
+		document.getElementById("myVideoChangeDiv").style.display = "none";
 	}
 }
 
