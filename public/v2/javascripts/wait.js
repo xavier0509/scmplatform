@@ -2677,9 +2677,9 @@ function scrollTopStyle(name){
 	parent.document.getElementById("homePage").scrollTop = 0;
 }
 
-function changListen(id){
+function changListen(className){
 	var omyVideoObj = new Array();
-	omyVideoObj = document.getElementsByClassName("videoChange");
+	omyVideoObj = document.getElementsByClassName(className);
 	console.log(omyVideoObj.length);
 	for(var ii = 0; ii < omyVideoObj.length; ii++) {
 		omyVideoObj[ii].childNodes[1].onchange = function() {
