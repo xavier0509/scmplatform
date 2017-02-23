@@ -2675,14 +2675,11 @@ function changListen(id){
 	console.log(omyVideoObj.length);
 	for(var ii = 0; ii < omyVideoObj.length; ii++) {
 		omyVideoObj[ii].childNodes[1].onchange = function() {
-			console.log(this.previousSibling.getAttribute("configKey"));
+			var configKeyName = this.previousSibling.getAttribute("configKey");
+			console.log(configKeyName);
 			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value + "---" + this.previousSibling.title);
-			if(this.getAttribute("oldvalue") != this.value) { //做了修改
-				this.previousSibling.style.color = "red";
-				this.setAttribute("curvalue", "1");
-			} else { //没做修改
-				this.previousSibling.style.color = "";
-				this.setAttribute("curvalue", "0");
+			if(configKeyName == "PLAYER_KERNEL") { 
+				console.log("Let us do next.");
 			}
 		}
 	}
