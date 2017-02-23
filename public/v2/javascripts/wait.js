@@ -49,7 +49,7 @@ function XandCancle(){
 		console.log("X按钮");
 		document.getElementById("myVideoChangeDiv").style.display = "none";
 	}
-	var oButtonVC_E = document.getElementById("MoreEditBack");
+	var oButtonVC_E = document.getElementById("myVC-Ensure");
 	oButtonVC_E.onclick = function() {
 		console.log("确定按钮");
 		document.getElementById("myVideoChangeDiv").style.display = "none";
