@@ -640,19 +640,10 @@ td{
 #myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
-#myAddCloseDiv{
-	margin: auto;
-    position: absolute;
-    display: none;
-    width: 60%;
-    margin-left: 20%;
-    z-index: 1051;
+#myAddCloseDiv,#myVideoChangeDiv,#mydialog{
     text-align: center;
-    height: 30%;
-    top: 8%;
-    font-size: 24px;
 }
-#myMoreEditSubmitModal{
+#myMoreEditSubmitModal,#myAddCloseDiv,#myVideoChangeDiv,#mydialog{
 	margin: auto;
     position: absolute;
     display: none;
@@ -663,18 +654,7 @@ td{
     top: 8%;
     font-size: 24px;
 }
-#mydialog{
-	margin: auto;
-    position: absolute;
-    display: none;
-    width: 60%;
-    margin-left: 20%;
-    z-index: 1051;
-    text-align: center;
-    height: 30%;
-    top: 8%;
-    font-size: 24px;
-}
+
 .loginmycenter{padding-top: 16%;}
 
 #logintxt,#pwdmessage,#usermessage{color: red}
