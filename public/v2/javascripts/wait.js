@@ -2677,8 +2677,8 @@ function changListen(id){
 		omyVideoObj[ii].childNodes[1].onchange = function() {
 			var configKeyName = this.previousSibling.getAttribute("configKey");
 			console.log(configKeyName);
-			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value + "---" + this.previousSibling.title);
-			if(configKeyName == "PLAYER_KERNEL") { 
+			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value);
+			if(configKeyName == "PLAYER_KERNEL"&&this.getAttribute("oldvalue") != this.value) { 
 				console.log("Let us do next.");
 			}
 		}
