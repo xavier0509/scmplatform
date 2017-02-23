@@ -1899,6 +1899,7 @@ function getMoreEditInfoTwo() {
 						var disableId = data.data[kk]._id;
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							document.getElementById(disableId).setAttribute('disabled','');
+							document.getElementById(disableId).style.backgroundColor = "#ebebe4";
 						}
 					}
 				} else if(data.data[i].category == "hardware") {
