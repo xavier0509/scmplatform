@@ -1898,8 +1898,7 @@ function getMoreEditInfoTwo() {
 						var disableConfigKey =  data.data[kk].configKey;
 						var disableId = data.data[kk]._id;
 						if (disableConfigKey == "PLAYER_KERNEL") {
-							console.log(disableId);
-							//document.getElementById("disableId").setAttribute('disabled','');
+							document.getElementById(disableId).setAttribute('disabled','');
 						}
 					}
 				} else if(data.data[i].category == "hardware") {
