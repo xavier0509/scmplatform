@@ -1894,6 +1894,12 @@ function getMoreEditInfoTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigMain.innerHTML += _myAddselect;
+						
+						var disableConfigKey =  data.data[kk].configKey;
+						var disableId = data.data[kk]._id;
+						if (disableConfigKey == "PLAYER_KERNEL") {
+							document.getElementById("disableId").nextSibling.setAttribute('disabled','');
+						}
 					}
 				} else if(data.data[i].category == "hardware") {
 					kk = i;

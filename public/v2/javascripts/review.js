@@ -988,7 +988,7 @@ function passResult(){
             };
         }
         console.log("生成文件的机芯机型是："+chip+";"+model);
-    //sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
+    sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
     freshReviewHtml();
     }
 }
