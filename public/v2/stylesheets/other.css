@@ -643,7 +643,7 @@ td{
 #myAddCloseDiv,#myVideoChangeDiv,#mydialog{
     text-align: center;
 }
-#myMoreEditSubmitModal,#myAddCloseDiv,#myVideoChangeDiv,#mydialog{
+#myMoreEditSubmitModal,#myAddCloseDiv,#mydialog{
 	margin: auto;
     position: absolute;
     display: none;
@@ -653,6 +653,18 @@ td{
     height: 30%;
     top: 8%;
     font-size: 24px;
+}
+#myVideoChangeDiv{
+	margin: auto;
+    position: absolute;
+    display: none;
+    width: 60%;
+    margin-left: 20%;
+    z-index: 1051;
+    height: 30%;
+    top: 8%;
+    font-size: 24px;
+    text-align: center;
 }
 
 .loginmycenter{padding-top: 16%;}
