@@ -402,14 +402,8 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 videoChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoAChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
-						var disableConfigKey =  data.data[kk].configKey;
-						if (disableConfigKey == "PLAYER_KERNEL") {
-							changeId = data.data[kk]._id;
-							console.log(changeId);
-							//changListen(changeId);
-						}
 					}
 				} else if(data.data[i].category == "hardware") {
 					kk = i;
@@ -1003,7 +997,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigMain.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "hardware") {
@@ -1507,7 +1501,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span  title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoCChange'><span  title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigMain.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "hardware") {
@@ -2366,7 +2360,7 @@ function addPageButtons() {
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
 	
-	changListen();
+	changListen("videoAChange");
 	
 	
 }
@@ -2395,6 +2389,8 @@ function copyPageButtons() {
 		}
 		//复制页mk-config button的点击
 	functionMkConfigTable("myCopyModalMkButton", "myCopyModalMkTable", "myCopyModalConfigButton", "myCopyModalConfigTable");
+	
+	changListen("videoCChange");
 }
 /*点击单项编辑-弹框里的各个按钮*/
 function editPageButtonsOnclick() {
@@ -2421,6 +2417,7 @@ function editPageButtonsOnclick() {
 		}
 		//编辑页mk-config button的点击
 	functionMkConfigTable("myEditModalMkButton", "myEditModalMkTable", "myEditModalConfigButton", "myEditModalConfigTable");
+	changListen("videoEChange");
 }
 /*点击单项删除-弹框里的各个按钮*/
 function singleDeletePageButtons(olchip, olmode) {
