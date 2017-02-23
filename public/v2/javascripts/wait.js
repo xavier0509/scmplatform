@@ -396,6 +396,7 @@ function getAddInfoInfTwo() {
 						var disableConfigKey =  data.data[kk].configKey;
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							changeId = data.data[kk]._id;
+							console.log(changeId);
 							changListen(changeId);
 						}
 					}
