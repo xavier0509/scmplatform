@@ -354,6 +354,7 @@ function getAddInfoInfTwo() {
 			var data = JSON.parse(this.responseText);
 			console.log(data);
 			var kk = 0;
+			var changeId = "";
 			var pullDataOne, pullDataTwo = null;
 			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdMain");
 			var _rowAddPageConfigHardware = document.getElementById("myAddModalConfigTableTdHardware");
@@ -392,6 +393,11 @@ function getAddInfoInfTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigMain.innerHTML += _myAddselect;
+						var disableConfigKey =  data.data[kk].configKey;
+						if (disableConfigKey == "PLAYER_KERNEL") {
+							changeId = data.data[kk]._id;
+							changListen(changeId);
+						}
 					}
 				} else if(data.data[i].category == "hardware") {
 					kk = i;
@@ -1900,9 +1906,6 @@ function getMoreEditInfoTwo() {
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							document.getElementById(disableId).setAttribute('disabled','');
 							document.getElementById(disableId).style.backgroundColor = "#ebebe4";
-							document.getElementById(disableId).onchange = function(){
-								console.log(this.id +"--"+this.values);
-							};
 						}
 					}
 				} else if(data.data[i].category == "hardware") {
@@ -2543,14 +2546,10 @@ function functionMkConfigTable(name1, table1, name2, table2) {
 	var oMkButtonObject = document.getElementById(name1);
 	oMkButtonObject.onclick = function() {
 		buttonStyle(name1,table1,name2,table2);
-		//document.getElementById(table1).style.display = "block";
-		//document.getElementById(table2).style.display = "none";
 	}
 	var oConfigButtonObject = document.getElementById(name2);
 	oConfigButtonObject.onclick = function() {
 		buttonStyle(name2,table2,name1,table1);
-		//document.getElementById(table2).style.display = "block";
-		//document.getElementById(table1).style.display = "none";
 	}
 }
 
@@ -2663,4 +2662,8 @@ function scrollTopStyle(name){
 	console.log(div.scrollTop+"---"+body.scrollTop);
 	document.getElementById(name).scrollTop = 0;
 	parent.document.getElementById("homePage").scrollTop = 0;
+}
+
+function changListen(id){
+	console.log(id);
 }
