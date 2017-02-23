@@ -382,7 +382,7 @@ function getAddInfoInfTwo() {
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "'>";
 						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
@@ -2667,7 +2667,8 @@ function scrollTopStyle(name){
 
 function changListen(id){
 	console.log(id);
+	console.log(document.getElementById(id).value);
 	document.getElementById(id).onchange = function(){
-		console.log(id);
+		console.log("hello");
 	};
 }
