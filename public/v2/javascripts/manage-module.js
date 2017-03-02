@@ -136,6 +136,7 @@ function searchModalInfo() {
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data.data.length);
 			var kk = 0;
+			
 			var _rowModuleApp = document.getElementById("moduleTableApp");
 			var _rowModuleService = document.getElementById("moduleTableService");
 			var _rowModuleAppStore = document.getElementById("moduleTableAppStore");
@@ -144,6 +145,8 @@ function searchModalInfo() {
 			var _rowModuleSysApp = document.getElementById("moduleTableSysApp");
 			var _rowModuleTV = document.getElementById("moduleTableTV");
 			var _rowModuleOther = document.getElementById("moduleTableOther");
+			var _rowModulePlayerLibrary = document.getElementById("moduleTablePlayerLibrary");
+			
 			_rowModuleApp.innerHTML = "<div title='App'>App:</div>";
 			_rowModuleService.innerHTML = "<div title='Service'>Service:</div>";
 			_rowModuleAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
@@ -152,6 +155,7 @@ function searchModalInfo() {
 			_rowModuleSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowModuleTV.innerHTML = "<div title='TV'>TV:</div>";
 			_rowModuleOther.innerHTML = "<div title='Other'>Other:</div>";
+			_rowModulePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category);
@@ -190,6 +194,11 @@ function searchModalInfo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("Other:" + kk);
 					_rowModuleOther.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
+				} else if(data.data[i].category == "PlayerLibrary") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("Other:" + kk);
+					_rowModulePlayerLibrary.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
 				}
 			}
 		};

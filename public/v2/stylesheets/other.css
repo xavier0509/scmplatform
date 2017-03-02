@@ -640,10 +640,10 @@ td{
 #myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
-#myAddCloseDiv,#myVideoChangeDiv,#mydialog{
+#myAddCloseDiv,#myVideoChangeDiv{
     text-align: center;
 }
-#myMoreEditSubmitModal,#myAddCloseDiv,#mydialog{
+#myMoreEditSubmitModal,#myAddCloseDiv{
 	margin: auto;
     position: absolute;
     display: none;
@@ -652,6 +652,17 @@ td{
     z-index: 1051;
     height: 30%;
     top: 8%;
+    font-size: 24px;
+}
+#mydialog{
+	text-align: center;
+	margin: auto;
+    position: absolute;
+    display: none;
+    width: 100%;
+    z-index: 1051;
+   /* height: 30%;*/
+    top: 0;
     font-size: 24px;
 }
 #myVideoChangeDiv{
@@ -721,9 +732,9 @@ td{
 	text-align: center;
 }
 #reviewDialog{
-    width: 51%;
-    margin-left: 42%;
-    padding-top: 24%;
+    width: 60%;
+    /*margin-left: 42%;*/
+    padding-top: 13%;
     margin: 0 auto;
 }
 
