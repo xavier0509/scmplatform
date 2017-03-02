@@ -30,11 +30,11 @@ function XandCancle(){
 		console.log("X按钮");
 		document.getElementById("mydialog").style.display = "none";
 	}
-	var oButtonAdd = document.getElementById("oButtonCancle");
-	oButtonAdd.onclick = function() {
-		console.log("取消按钮");
-		document.getElementById("mydialog").style.display = "none";
-	}
+//	var oButtonAdd = document.getElementById("oButtonCancle");
+//	oButtonAdd.onclick = function() {
+//		console.log("取消按钮");
+//		document.getElementById("mydialog").style.display = "none";
+//	}
 }
 
 //在待审核页面出现列表
