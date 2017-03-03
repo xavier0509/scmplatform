@@ -1878,6 +1878,7 @@ function getMoreEditInfoTwo() {
 						
 						var disableConfigKey =  data.data[kk].configKey;
 						var disableId = data.data[kk]._id;
+						console.log(disableConfigKey+"---"+disableId);
 						if (disableConfigKey == "PLAYER_KERNEL") {
 							document.getElementById(disableId).setAttribute('disabled','');
 							document.getElementById(disableId).style.backgroundColor = "#ebebe4";
