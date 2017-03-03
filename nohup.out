@@ -1,0 +1,43 @@
+
+> scmplatform@0.0.0 start /home/scmplatform
+> supervisor ./bin/www
+
+
+Running node-supervisor with
+  program './bin/www'
+  --watch '.'
+  --extensions 'node,js,/bin/www'
+  --exec 'node'
+
+Starting child process with 'node ./bin/www'
+Watching directory '/home/scmplatform' for changes.
+Press rs for restarting the process.
+Parent process exiting, terminating child...
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+
+npm ERR! Linux 2.6.32-431.el6.x86_64
+npm ERR! argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+npm ERR! node v7.4.0
+npm ERR! npm  v4.0.5
+npm ERR! code ELIFECYCLE
+npm ERR! scmplatform@0.0.0 start: `supervisor ./bin/www`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the scmplatform@0.0.0 start script 'supervisor ./bin/www'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the scmplatform package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     supervisor ./bin/www
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs scmplatform
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls scmplatform
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/scmplatform/npm-debug.log
