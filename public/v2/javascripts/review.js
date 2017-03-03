@@ -533,7 +533,7 @@ function configResult2(){
             var _rowCheckPageConfigLocalmedia = document.getElementById("myCheckModalConfigTableTdLocalmedia");
             var _rowCheckPageConfigOther = document.getElementById("myCheckModalConfigTableTdOther");
 
-            _rowCheckPageConfigBase.innerHTML = "<div title='main'>核心功能：</div>";
+            _rowCheckPageConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
             _rowCheckPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
             _rowCheckPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
             _rowCheckPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
