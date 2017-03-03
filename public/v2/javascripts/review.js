@@ -526,7 +526,7 @@ function configResult2(){
             var data = JSON.parse(this.responseText);
             var kk = 0;
             var pullDataOne, pullDataTwo = null;
-            var _rowCheckPageConfigBase = document.getElementById("myCheckModalConfigTableTdMain");
+            var _rowCheckPageConfigBase = document.getElementById("myCheckModalConfigTableTdBase");
             var _rowCheckPageConfigServerip = document.getElementById("myCheckModalConfigTableTdServerip");
             var _rowCheckPageConfigAd = document.getElementById("myCheckModalConfigTableTdAd");
             var _rowCheckPageConfigChannel = document.getElementById("myCheckModalConfigTableTdChannel");
