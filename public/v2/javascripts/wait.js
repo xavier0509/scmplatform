@@ -367,31 +367,27 @@ function getAddInfoInfTwo() {
 			var kk = 0;
 			var changeId = "";
 			var pullDataOne, pullDataTwo = null;
-			var _rowAddPageConfigMain = document.getElementById("myAddModalConfigTableTdMain");
-			var _rowAddPageConfigHardware = document.getElementById("myAddModalConfigTableTdHardware");
+			var _rowAddPageConfigBase = document.getElementById("myAddModalConfigTableTdBase");
 			var _rowAddPageConfigServerip = document.getElementById("myAddModalConfigTableTdServerip");
 			var _rowAddPageConfigAd = document.getElementById("myAddModalConfigTableTdAd");
 			var _rowAddPageConfigChannel = document.getElementById("myAddModalConfigTableTdChannel");
 			var _rowAddPageConfigLocalmedia = document.getElementById("myAddModalConfigTableTdLocalmedia");
-			var _rowAddPageConfigBrowser = document.getElementById("myAddModalConfigTableTdBrowser");
 			var _rowAddPageConfigOther = document.getElementById("myAddModalConfigTableTdOther");
 
-			_rowAddPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowAddPageConfigHardware.innerHTML = "<div title='main'>硬件配置信息：</div>";
-			_rowAddPageConfigServerip.innerHTML = "<div title='main'>服务器IP配置：</div>";
-			_rowAddPageConfigAd.innerHTML = "<div title='main'> 广告配置：</div>";
-			_rowAddPageConfigChannel.innerHTML = "<div title='main'>TV通道：</div>";
-			_rowAddPageConfigLocalmedia.innerHTML = "<div title='main'>本地媒体：</div>";
-			_rowAddPageConfigBrowser.innerHTML = "<div title='main'>浏览器配置：</div>";
+			_rowAddPageConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
+			_rowAddPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
+			_rowAddPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
+			_rowAddPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
+			_rowAddPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
 			_rowAddPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				if(data.data[i].category == "main") {
+				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowAddPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowAddPageConfigBase.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' configKey='" + data.data[kk].configKey + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -403,26 +399,7 @@ function getAddInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6 videoAChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowAddPageConfigMain.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "hardware") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("hardware:" + kk);
-					if(data.data[i].type == "string") {
-						_rowAddPageConfigHardware.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowAddPageConfigHardware.innerHTML += _myAddselect;
+						_rowAddPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
@@ -499,25 +476,6 @@ function getAddInfoInfTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigLocalmedia.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "browser") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("browser:" + kk);
-					if(data.data[i].type == "string") {
-						_rowAddPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowAddPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
@@ -964,30 +922,26 @@ function getEditInfoInfTwo() {
 			console.log(data);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
-			var _rowEditPageConfigMain = document.getElementById("myEditModalConfigTableTdMain");
-			var _rowEditPageConfigHardware = document.getElementById("myEditModalConfigTableTdHardware");
+			var _rowEditPageConfigBase = document.getElementById("myEditModalConfigTableTdBase");
 			var _rowEditPageConfigServerip = document.getElementById("myEditModalConfigTableTdServerip");
 			var _rowEditPageConfigAd = document.getElementById("myEditModalConfigTableTdAd");
 			var _rowEditPageConfigChannel = document.getElementById("myEditModalConfigTableTdChannel");
 			var _rowEditPageConfigLocalmedia = document.getElementById("myEditModalConfigTableTdLocalmedia");
-			var _rowEditPageConfigBrowser = document.getElementById("myEditModalConfigTableTdBrowser");
 			var _rowEditPageConfigOther = document.getElementById("myEditModalConfigTableTdOther");
 
-			_rowEditPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowEditPageConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+			_rowEditPageConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
 			_rowEditPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
 			_rowEditPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
 			_rowEditPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
 			_rowEditPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
-			_rowEditPageConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
 			_rowEditPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				if(data.data[i].category == "main") {
+				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
-						_rowEditPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowEditPageConfigBase.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						for(var k = 0; k < data.data[kk].options.length; k++) {
@@ -998,25 +952,7 @@ function getEditInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigMain.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "hardware") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					//console.log("hardware:" + kk);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigHardware.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigHardware.innerHTML += _myAddselect;
+						_rowEditPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
@@ -1077,23 +1013,6 @@ function getEditInfoInfTwo() {
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
 						_rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "browser") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						for(var k = 0; k < data.data[kk].options.length; k++) {
@@ -1466,32 +1385,28 @@ function getCopyInfoInfTwo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
-			var _rowCopyPageConfigMain = document.getElementById("myCopyModalConfigTableTdMain");
-			var _rowCopyPageConfigHardware = document.getElementById("myCopyModalConfigTableTdHardware");
+			var _rowCopyPageConfigBase = document.getElementById("myCopyModalConfigTableTdBase");
 			var _rowCopyPageConfigServerip = document.getElementById("myCopyModalConfigTableTdServerip");
 			var _rowCopyPageConfigAd = document.getElementById("myCopyModalConfigTableTdAd");
 			var _rowCopyPageConfigChannel = document.getElementById("myCopyModalConfigTableTdChannel");
 			var _rowCopyPageConfigLocalmedia = document.getElementById("myCopyModalConfigTableTdLocalmedia");
-			var _rowCopyPageConfigBrowser = document.getElementById("myCopyModalConfigTableTdBrowser");
 			var _rowCopyPageConfigOther = document.getElementById("myCopyModalConfigTableTdOther");
 
-			_rowCopyPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowCopyPageConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+			_rowCopyPageConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
 			_rowCopyPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
 			_rowCopyPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
 			_rowCopyPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
 			_rowCopyPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
-			_rowCopyPageConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
 			_rowCopyPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw " + data.data[i].category + data.data[i].type);
-				if(data.data[i].category == "main") {
+				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("main:" + kk);
 					if(data.data[i].type == "string") {
-						_rowCopyPageConfigMain.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+						_rowCopyPageConfigBase.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
 						console.log("lxw " + data.data[kk].options.length);
@@ -1503,26 +1418,7 @@ function getCopyInfoInfTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6 videoCChange'><span  title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowCopyPageConfigMain.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "hardware") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("hardware:" + kk);
-					if(data.data[i].type == "string") {
-						_rowCopyPageConfigHardware.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowCopyPageConfigHardware.innerHTML += _myAddselect;
+						_rowCopyPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
@@ -1599,25 +1495,6 @@ function getCopyInfoInfTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigLocalmedia.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "browser") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("browser:" + kk);
-					if(data.data[i].type == "string") {
-						_rowCopyPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowCopyPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
@@ -1872,30 +1749,26 @@ function getMoreEditInfoTwo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne, pullDataTwo = null;
-			var _rowMEPageConfigMain = document.getElementById("myMoreEditModalConfigTableTdMain");
-			var _rowMEPageConfigHardware = document.getElementById("myMoreEditModalConfigTableTdHardware");
+			var _rowMEPageConfigBase = document.getElementById("myMoreEditModalConfigTableTdBase");
 			var _rowMEPageConfigServerip = document.getElementById("myMoreEditModalConfigTableTdServerip");
 			var _rowMEPageConfigAd = document.getElementById("myMoreEditModalConfigTableTdAd");
 			var _rowMEPageConfigChannel = document.getElementById("myMoreEditModalConfigTableTdChannel");
 			var _rowMEPageConfigLocalmedia = document.getElementById("myMoreEditModalConfigTableTdLocalmedia");
-			var _rowMEPageConfigBrowser = document.getElementById("myMoreEditModalConfigTableTdBrowser");
 			var _rowMEPageConfigOther = document.getElementById("myMoreEditModalConfigTableTdOther");
 
-			_rowMEPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowMEPageConfigHardware.innerHTML = "<div title='main'>硬件配置信息：</div>";
-			_rowMEPageConfigServerip.innerHTML = "<div title='main'>服务器IP配置：</div>";
-			_rowMEPageConfigAd.innerHTML = "<div title='main'> 广告配置：</div>";
-			_rowMEPageConfigChannel.innerHTML = "<div title='main'>TV通道：</div>";
-			_rowMEPageConfigLocalmedia.innerHTML = "<div title='main'>本地媒体：</div>";
-			_rowMEPageConfigBrowser.innerHTML = "<div title='main'>浏览器配置：</div>";
+			_rowMEPageConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
+			_rowMEPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
+			_rowMEPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
+			_rowMEPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
+			_rowMEPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
 			_rowMEPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
-				if(data.data[i].category == "main") {
+				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
 					if(data.data[i].type == "string") {
-						_rowMEPageConfigMain.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
+						_rowMEPageConfigBase.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
 						for(var k = 0; k < data.data[kk].options.length; k++) {
@@ -1906,7 +1779,7 @@ function getMoreEditInfoTwo() {
 							}
 						}
 						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowMEPageConfigMain.innerHTML += _myAddselect;
+						_rowMEPageConfigBase.innerHTML += _myAddselect;
 						
 						var disableConfigKey =  data.data[kk].configKey;
 						var disableId = data.data[kk]._id;
@@ -1914,25 +1787,6 @@ function getMoreEditInfoTwo() {
 							document.getElementById(disableId).setAttribute('disabled','');
 							document.getElementById(disableId).style.backgroundColor = "#ebebe4";
 						}
-					}
-				} else if(data.data[i].category == "hardware") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("hardware:" + kk);
-					if(data.data[i].type == "string") {
-						_rowMEPageConfigHardware.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowMEPageConfigHardware.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
@@ -2009,25 +1863,6 @@ function getMoreEditInfoTwo() {
 						}
 						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowMEPageConfigLocalmedia.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "browser") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("browser:" + kk);
-					if(data.data[i].type == "string") {
-						_rowMEPageConfigBrowser.innerHTML += "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' oldvalue='" + data.data[kk].value + "' value='" + data.data[kk].value + "' value='" + data.data[kk].value + "' curvalue='0'>";
-						console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6 mytextedit'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowMEPageConfigBrowser.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "other") {
 					kk = i;
