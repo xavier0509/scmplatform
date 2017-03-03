@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>   
+<!--  此文件是自动化配置平台根据配置值自动生成  -->   
+
+<SkyGeneralCfgs>
+    <!--  屏幕属性，分辨率“4K/FHD/SD” | 是否支持3D“3D”| 屏幕类型“LCD/OLED”，以|分隔  -->  
+    <config name="PANEL" value="4K|LCD" />  
+
+    <!--  当前电视支持的网络类型，ETHERNET支持有线网络，WIFI支持无线网络，同时支持中间用 | 符号区隔  -->  
+    <config name="NETWORK_SUPPORT_DEVICES" value="ETHERNET|WIFI" />  
+
+    <!--  机器内置TV通道配置，每个通道中间用 | 符号区隔  -->  
+    <config name="CONFIG_SOURCE_LIST" value="AV|HDMI@1|HDMI@2" />  
+
+    <!--  该机器是否标配蓝牙遥控器，true-出厂标配，false-出厂不标配  -->  
+    <config name="SUPPORT_BLE_REMOTE" value="false" />  
+
+    <!--  该机器是否支持H.265解码  -->  
+    <config name="SUPPORT_H265" value="false" />  
+
+    <!--  酷开系统log日志输出哪个等级的日志, 其中value对应为各个log等级, 分别为 debug , info , warning , error , none, 默认为error  -->  
+    <config name="LOG_APPENDER" value="error" />  
+
+    <!--  存储升级包的路径  -->  
+    <config name="OTA_PATH" value="/skyota" />  
+
+    <!--  底层是否支持新的开机启动流程，旧启动流程是底层开机启动TV画面，新的开机流程底层开机不启动TV画面  -->  
+    <config name="NEW_BOOT_FLOW" value="true" />  
+
+    <!--  主页配置（酷开主页、简易主页等），格式： 包名/类名  -->  
+    <config name="DEFAULT_HOMEPAGE" value="com.coocaa.homepage.vast/com.coocaa.homepage.vast.HomePageActivity" />  
+
+    <!--  当前平台是否需要屏保功能  -->  
+    <config name="SUPPORT_SCREENSAVER" value="true" />  
+
+    <!--  当前机型是否打开儿童模式  -->  
+    <config name="SUPPORT_CHILDMODE" value="true" />  
+
+    <!--  是否支持Dolby DD+认证，true-支持，false-不支持  -->  
+    <config name="DOLBY_DD_SUPPORT" value="false" />  
+
+    <!--  基础服务地址  -->  
+    <config name="CURRENT_SERVER" value="sky.tvos.skysrt.com" />  
+
+    <!--  TC服务器，主要是历史收藏、帐号  -->  
+    <config name="CURRENT_TC_SERVER" value="tc.skysrt.com" />  
+
+    <!--  push的服务地址  -->  
+    <config name="CURRENT_PUSH_SERVER" value="push.skysrt.com" />  
+
+    <!--  支付中心服务器地址  -->  
+    <config name="CURRENT_PAY_SERVER" value="pay.coocaa.com" />  
+
+    <!--  账号的服务地址  -->  
+    <config name="CURRENT_PASSPORT_SERVER" value="passport.coocaa.com" />  
+
+    <!--  当前酷开系统日志采集提交的服务地址  -->  
+    <config name="CURRENT_LOGGER_SERVER" value="log.skysrt.com" />  
+
+    <!--  影视服务器地址, 爱奇艺和优朋源配置为  movie.tc.skysrt.com    腾讯源配置为  sky.t003.ottcn.com  -->  
+    <config name="CURRENT_MOVIE_SERVER" value="sky.t003.ottcn.com" />  
+
+    <!--  该域名用于在酷开系统中部分应用当中嵌入html运营页面，增加运营的灵活性  -->  
+    <config name="CURRENT_WEBAPP_SERVER" value="webapp.skysrt.com" />  
+
+    <!--  设备服务器地址,内销参数api.device.skysrt.com，外销参数api.device.hw.skysrt.com  -->  
+    <config name="CURRENT_DEVICE_SERVER" value="api.device.skysrt.com" />  
+
+    <!--  广告服务器地址，内销参数hoisin.coocaatv.com，外销参数api.hoisin.hw.coocaatv.com  -->  
+    <config name="CURRENT_AD_SERVER" value="hoisin.coocaatv.com" />  
+
+    <!--  Web版本机信息服务器地址  -->  
+    <config name="CURRENT_TVINFO_SERVER" value="api.tvinfo.skysrt.com" />  
+
+    <!--  是否支持开机广告  -->  
+    <config name="BOOT_AD" value="true" />  
+
+    <!--  切换通道或者切换频道后，延迟出“无信号”提示的时间，单位为毫秒  -->  
+    <config name="START_SINGAL_CHECK_DELAY" value="1500" />  
+
+    <!--  切换到HDMI通道后，延迟出“无信号”提示的时间，单位为毫秒  -->  
+    <config name="START_HDMISINGAL_CHECK_DELAY" value="2500" />  
+
+    <!--  不使用信号源插拔自动切换通道功能。 默认true  -->  
+    <config name="PLUGSTATE_CHANGE_DISABLE" value="true" />  
+
+    <!--  DTV通道没有字幕功能。默认false  -->  
+    <config name="DTV_SUBTITLE_DISABLE" value="false" />  
+
+    <!--  DTV Surfaceview使用tianci4方式，E690,E710用。默认false  -->  
+    <config name="DTV_VIEW_SETDISPLAY" value="false" />  
+
+    <!--  配置支持的音频播放格式  -->  
+    <config name="AUDIO_SUFFIX" value="mp3|wav|midi|AAC|m4a|flac|ogg" />  
+
+    <!--  配置支持的图片播放格式  -->  
+    <config name="PICTURE_SUFFIX" value="jpg|jpeg|png|bmp|gif" />  
+
+    <!--  配置支持的视频播放格式  -->  
+    <config name="VIDEO_SUFFIX" value="avi|rmvb|rm|ts|mpeg|mpg|mpe|mp4|mov|m2ts|mkv|flv|m2t|mts|vob|dat|m4v|asf|f4v|3gp|3g2|m1v|m2v|tp|trp|m2p|webm" />  
+
+    <!--  配置图片解码能够支持的最大图片占用空间  -->  
+    <config name="BITMAP_DECODE_MAX_SIZE" value="20000000" />  
+
+    <!--  配置底层是否支持新字幕标准要求功能  -->  
+    <config name="SUPPORT_NEW_SUBTITLE" value="true" />  
+
+    <!--  配置是否打开samba功能  -->  
+    <config name="SUPPORT_SAMBA" value="true" />  
+
+    <!--  配置是否打开媒体的图片缩略图预览  -->  
+    <config name="SUPPORT_PIC_PREVIEW" value="true" />  
+
+    <!--  配置是否打开媒体的视频缩略图预览  -->  
+    <config name="SUPPORT_VIDEO_PREVIEW" value="true" />  
+
+    <!--  配置是否打开本地媒体分类功能  -->  
+    <config name="SUPPORT_SORT_FUNCTION" value="true" />  
+
+    <!--  配置是否打开获取音乐总时间功能  -->  
+    <config name="SUPPORT_MUSIC_DUARTION" value="true" />  
+
+    <!--  配置是否打开家庭网络功能（客户要求定制）  -->  
+    <config name="SUPPORT_HOME_NETWORK_FUNCTION" value="true" />  
+
+    <!--  采用哪个播放器，platform 为方案商，mediaplayer 为标准android播放器，bj_decoder 为 jni版北京播放器  -->  
+    <config name="PLAYER_KERNEL" value="mediaplayer" />  
+
+    <!--  浏览器首页, 即浏览器打开后访问的用于运营/展示的html地址  -->  
+    <config name="BROWSER_HOMEPAGE" value="http://www.bing.com" />  
+
+    <!--  浏览器可以打开的标签数量  -->  
+    <config name="BROWSER_LABEL_COUNT" value="3" />  
+
+    <!--  是否启用Airplay服务  -->  
+    <config name="SUPPORT_AIRPLAY" value="true" />  
+
+    <!--  是否开启airmirror镜像推送功能  -->  
+    <config name="SUPPORT_AIRMIRROR" value="true" />  
+
+    <!--  是否开启应用自由安装功能  -->  
+    <config name="APP_SELF_INSTALL" value="false" />  
+
+    <!--  是否支持关机广告，value 值为true或者false，“true”代表支持关机广告，“false”代表不支持关机广告。6.0版本开始增加  -->  
+    <config name="SUPPORT_POWER_OFF_AD" value="true" />  
+
+    <!--  当前电视键控板的物理按键数，value 值为按键数量，“5”代表五键，“3”代表3键，当前按键数支持5键和3键两种，默认为5键（兼容之前各种5&7键老的键控）。由外销需求引入，6.0版本开始增加 只有新的三键才需单独配置为3  -->  
+    <config name="KEYPAD_NUMBER" value="5" />  
+
+    <!--  会员中心后台请求数据服务地址，6.0版本开始增加  -->  
+    <config name="CURRENT_API_MEMBER_SERVER" value="member.coocaa.com" />  
+
+</SkyGeneralCfgs>
+
+
+
