@@ -398,7 +398,7 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 videoAChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
@@ -493,7 +493,7 @@ function getAddInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoAChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowAddPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -951,7 +951,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
@@ -1040,7 +1040,7 @@ function getEditInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowEditPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
@@ -1417,7 +1417,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6 videoCChange'><span  title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6'><span  title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigBase.innerHTML += _myAddselect;
 					}
 				} else if(data.data[i].category == "serverip") {
@@ -1512,7 +1512,7 @@ function getCopyInfoInfTwo() {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
 							}
 						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+						_myAddselect = "<div class='col-xs-6 videoCChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
 						_rowCopyPageConfigOther.innerHTML += _myAddselect;
 					}
 				}
