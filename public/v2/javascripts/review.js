@@ -387,7 +387,7 @@ function configResult(){
 			var _rowCheckPageConfigLocalmedia = document.getElementById("myCheckModalConfigTableTdLocalmedia");
 			var _rowCheckPageConfigOther = document.getElementById("myCheckModalConfigTableTdOther");
 
-			_rowCheckPageConfigBase.innerHTML = "<div title='main'>核心功能：</div>";
+			_rowCheckPageConfigBase.innerHTML = "<div title='base'>基本功能：</div>";
 			_rowCheckPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
 			_rowCheckPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
 			_rowCheckPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
@@ -398,7 +398,7 @@ function configResult(){
 				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					console.log("main:" + kk);
+					console.log("base:" + kk);
 					if(data.data[i].type == "string") {
 						_rowCheckPageConfigBase.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -526,31 +526,27 @@ function configResult2(){
             var data = JSON.parse(this.responseText);
             var kk = 0;
             var pullDataOne, pullDataTwo = null;
-            var _rowCheckPageConfigMain = document.getElementById("myCheckModalConfigTableTdMain");
-            var _rowCheckPageConfigHardware = document.getElementById("myCheckModalConfigTableTdHardware");
+            var _rowCheckPageConfigBase = document.getElementById("myCheckModalConfigTableTdMain");
             var _rowCheckPageConfigServerip = document.getElementById("myCheckModalConfigTableTdServerip");
             var _rowCheckPageConfigAd = document.getElementById("myCheckModalConfigTableTdAd");
             var _rowCheckPageConfigChannel = document.getElementById("myCheckModalConfigTableTdChannel");
             var _rowCheckPageConfigLocalmedia = document.getElementById("myCheckModalConfigTableTdLocalmedia");
-            var _rowCheckPageConfigBrowser = document.getElementById("myCheckModalConfigTableTdBrowser");
             var _rowCheckPageConfigOther = document.getElementById("myCheckModalConfigTableTdOther");
 
-            _rowCheckPageConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-            _rowCheckPageConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+            _rowCheckPageConfigBase.innerHTML = "<div title='main'>核心功能：</div>";
             _rowCheckPageConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
             _rowCheckPageConfigAd.innerHTML = "<div title='ad'> 广告配置：</div>";
             _rowCheckPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
             _rowCheckPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
-            _rowCheckPageConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
             _rowCheckPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
             for(var i = 0; i < data.data.length; i++) {
-                if(data.data[i].category == "main") {
+                if(data.data[i].category == "base") {
                     kk = i;
                     pullDataOne = JSON.stringify(data.data[kk]);
-                    console.log("main:" + kk);
+                    console.log("base:" + kk);
                     if(data.data[i].type == "string") {
-                        _rowCheckPageConfigMain.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                        _rowCheckPageConfigBase.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
                     } else if(data.data[i].type == "enum") {
                         var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
                         console.log("lxw " + data.data[kk].options.length);
@@ -562,26 +558,7 @@ function configResult2(){
                             }
                         }
                         _myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-                        _rowCheckPageConfigMain.innerHTML += _myAddselect;
-                    }
-                } else if(data.data[i].category == "hardware") {
-                    kk = i;
-                    pullDataTwo = JSON.stringify(data.data[kk]);
-                    console.log("hardware:" + kk);
-                    if(data.data[i].type == "string") {
-                        _rowCheckPageConfigHardware.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-                    } else if(data.data[i].type == "enum") {
-                        var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-                        console.log("lxw " + data.data[kk].options.length);
-                        for(var k = 0; k < data.data[kk].options.length; k++) {
-                            if(data.data[kk].options[k] == data.data[kk].value) {
-                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-                            } else {
-                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-                            }
-                        }
-                        _myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-                        _rowCheckPageConfigHardware.innerHTML += _myAddselect;
+                        _rowCheckPageConfigBase.innerHTML += _myAddselect;
                     }
                 } else if(data.data[i].category == "serverip") {
                     kk = i;
@@ -659,25 +636,6 @@ function configResult2(){
                         _myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
                         _rowCheckPageConfigLocalmedia.innerHTML += _myAddselect;
                     }
-                } else if(data.data[i].category == "browser") {
-                    kk = i;
-                    pullDataTwo = JSON.stringify(data.data[kk]);
-                    console.log("browser:" + kk);
-                    if(data.data[i].type == "string") {
-                        _rowCheckPageConfigBrowser.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-                    } else if(data.data[i].type == "enum") {
-                        var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-                        console.log("lxw " + data.data[kk].options.length);
-                        for(var k = 0; k < data.data[kk].options.length; k++) {
-                            if(data.data[kk].options[k] == data.data[kk].value) {
-                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-                            } else {
-                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-                            }
-                        }
-                        _myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-                        _rowCheckPageConfigBrowser.innerHTML += _myAddselect;
-                    }
                 } else if(data.data[i].category == "other") {
                     kk = i;
                     pullDataTwo = JSON.stringify(data.data[kk]);
@@ -694,7 +652,7 @@ function configResult2(){
                                 _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
                             }
                         }
-                        _myAddselect = "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _myAddselect = "<div class='col-xs-6 videoCKChange'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
                         _rowCheckPageConfigOther.innerHTML += _myAddselect;
                     }
                 }
@@ -1106,13 +1064,10 @@ function reviewEdit(){
 
 function reviewEditResult(){
     if (this.readyState == 4) {
-        // console.log("this.responseText = " + this.responseText);
         if (this.status == 200)
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                // console.log("编辑提交成功！！！！");
-                //$("#mydialog").modal('hide');
                 document.getElementById("mydialog").style.display = "none";
                 freshReviewHtml();
             }
@@ -1127,15 +1082,9 @@ function reviewEditResult(){
 //刷新当前iframe
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
-    // console.log("页面1:"+htmlObject.firstChild);
     var indexObject = parent.document.getElementById("home");
     var iframe = indexObject.getElementsByTagName("iframe");
-    // console.log("页面："+iframe[0]);
-    // console.log("页面："+iframe);
-    // console.log("页面2:"+indexObject.firstChild);
-    // console.log("lxw " + htmlObject.firstChild.src);
     htmlObject.firstChild.src = "review.html";
-    // console.log("要刷新主页了！！！！");
     iframe[0].src = "wait.html";
 }   
 //关闭当前dialog
@@ -1152,12 +1101,9 @@ function closeFun(){
         freshReviewHtml();
     }
     else{
-        //$('#mydialog').modal();
         document.getElementById("mydialog").style.display = "block";
         document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
         document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
-        //替换掉刷新的效果
-        //document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;
         document.getElementById("myDeleteModalEnsure").onclick = closeCurPage;
     }
     
@@ -1165,13 +1111,10 @@ function closeFun(){
 
 function closeFunT(){
     console.log("用户等级："+level);
-    //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
     document.getElementById("myDeleteModalLabel").innerHTML = "关闭操作";
     document.getElementById("dialogword").innerHTML = "当前操作未保存，是否确认退出？";
-    //替换掉刷新的效果
-        //document.getElementById("myDeleteModalEnsure").onclick = freshReviewHtml;
-        document.getElementById("myDeleteModalEnsure").onclick = closeCurPage;
+    document.getElementById("myDeleteModalEnsure").onclick = closeCurPage;
 }
 
 function submitStatus(hashObj,dataObj,oEnode){
@@ -1199,10 +1142,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 	if(oldMKkeycounter==newMKkeycounter&&oldConfigkeycounter==newConfigkeycounter){
 		var ookey = 0;
 		for(ookey in hashObj.mkFile) {
-			//console.log(hashObj.mkFile[ookey].value+"--"+dataObj.mkFile[ookey].value);
-			//console.log(typeof(dataObj.mkFile[ookey]));
 			if(typeof(dataObj.mkFile[ookey])==="undefined"){
-				//console.log("mk做了修改");
 				changeStatus = 1;
 			}else{
 				//console.log("mk未做修改");
@@ -1210,11 +1150,8 @@ function submitStatus(hashObj,dataObj,oEnode){
 		}
 		var nnkey = 0;
 		for(nnkey in hashObj.configFile) {
-			//console.log(hashObj.configFile[nnkey].value+"--"+dataObj.configFile[nnkey].value);
 			if(hashObj.configFile[nnkey].value == dataObj.configFile[nnkey].value){
-				//console.log("config未做修改");
 			}else{
-				//console.log("config做了修改");
 				changeStatus = 1;
 			}
 		}
