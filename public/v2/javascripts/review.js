@@ -30,11 +30,16 @@ function XandCancle(){
 		console.log("X按钮");
 		document.getElementById("mydialog").style.display = "none";
 	}
-//	var oButtonAdd = document.getElementById("oButtonCancle");
-//	oButtonAdd.onclick = function() {
-//		console.log("取消按钮");
-//		document.getElementById("mydialog").style.display = "none";
-//	}
+	var oButtonCK_E = document.getElementById("myCK_X");
+	oButtonCK_E.onclick = function() {
+		console.log("确定按钮");
+		document.getElementById("myVideoChangeDivTwo").style.display = "none";
+	}
+	var oButtonCK_E = document.getElementById("myCK_Ensure");
+	oButtonCK_E.onclick = function() {
+		console.log("确定按钮");
+		document.getElementById("myVideoChangeDivTwo").style.display = "none";
+	}
 }
 
 //在待审核页面出现列表
@@ -658,6 +663,7 @@ function configResult2(){
                 }
             }
         }
+    changListen("videoCKChange");
     // 查询对应机芯机型的配置信息
     sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
     }
@@ -1176,4 +1182,21 @@ function scrollTopStyle(name){
 	console.log(div.scrollTop+"---"+body.scrollTop);
 	document.getElementById(name).scrollTop = 0;
 	parent.document.getElementById("homePage").scrollTop = 0;
+}
+
+function changListen(className){
+	var omyVideoObj = new Array();
+	omyVideoObj = document.getElementsByClassName(className);
+	console.log(omyVideoObj.length);
+	for(var ii = 0; ii < omyVideoObj.length; ii++) {
+		omyVideoObj[ii].childNodes[1].onchange = function() {
+			var configKeyName = this.previousSibling.getAttribute("configKey");
+			console.log(configKeyName);
+			console.log(this.type + "---" + this.getAttribute("oldvalue") + "|" + this.value);
+			if(configKeyName == "PLAYER_KERNEL"&&this.getAttribute("oldvalue") != this.value) { 
+				console.log("Let us do next.");
+				document.getElementById("myVideoChangeDiv").style.display = "block";
+			}
+		}
+	}
 }
