@@ -640,7 +640,7 @@ td{
 #myDeleteModal,#myMoreDeleteModal,#myEditEnsureModal,#myDeleteDialogModal,#myMoreEditSubmitModal{
 	margin: auto;
 }
-#myAddCloseDiv,#myVideoChangeDiv{
+#myAddCloseDiv,#myVideoChangeDiv,#myVideoChangeDivTwo{
     text-align: center;
 }
 #myMoreEditSubmitModal,#myAddCloseDiv{
@@ -665,7 +665,7 @@ td{
     top: 0;
     font-size: 24px;
 }
-#myVideoChangeDiv{
+#myVideoChangeDiv,#myVideoChangeDivTwo{
 	margin: auto;
     position: absolute;
     display: none;

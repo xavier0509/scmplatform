@@ -1,3 +1,5 @@
+document.write("<script language=javascript src='../javascripts/bootstrap.addtabs.js' charset=\"utf-8\"></script>");
+
 var adminFlag = null;   //访问session之后存取管理员标志位
 var loginusername = null;  //访问session之后存取登录用户名
 
@@ -8,6 +10,13 @@ var loginusername = null;  //访问session之后存取登录用户名
 
 //访问session接口
 function forsession(){
+    Addtabs.add({
+            id: 'userMenu1',
+            title: '配置文件管理',
+            // content: 'content',
+            url: 'wait.html',
+            ajax: false
+        });
     sendHTTPRequest("/fybv2_api/session", '{"data":""}', sessionresult);
 }
 

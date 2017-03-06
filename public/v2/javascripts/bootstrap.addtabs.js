@@ -142,9 +142,12 @@ window.Addtabs = {
 
             //是否允许关闭
             if (Addtabs.options.close) {
-                title.append(
-                    $('<i>', {'class': 'close-tab glyphicon glyphicon-remove'})
-                );
+                if (id == "tab_userMenu1") {}
+                else{
+                    title.append(
+                        $('<i>', {'class': 'close-tab glyphicon glyphicon-remove'})
+                    );
+                }
             }
             //创建新TAB的内容
             var content = $('<div>', {
@@ -214,23 +217,26 @@ window.Addtabs = {
         });
     },
     close: function (id) {
-        var r=confirm("是否确认离开当前窗口？");
-            if (r==true)
-              {//如果关闭的是当前激活的TAB，激活他的前一个TAB
-                if (Addtabs.options.obj.find("li.active").attr('id') === "tab_" + id) {
-                    $("#tab_" + id).prev().addClass('active');
-                    $("#" + id).prev().addClass('active');
-                }
-                //关闭TAB
-                $("#tab_" + id).remove();
-                $("#" + id).remove();
-                Addtabs.drop();
-                Addtabs.options.callback();
-              }
-            else
-              {
-              
-              }     
+        if (id=="tab_userMenu1") {}
+        else{
+            var r=confirm("是否确认离开当前窗口？");
+                if (r==true)
+                  {//如果关闭的是当前激活的TAB，激活他的前一个TAB
+                    if (Addtabs.options.obj.find("li.active").attr('id') === "tab_" + id) {
+                        $("#tab_" + id).prev().addClass('active');
+                        $("#" + id).prev().addClass('active');
+                    }
+                    //关闭TAB
+                    $("#tab_" + id).remove();
+                    $("#" + id).remove();
+                    Addtabs.drop();
+                    Addtabs.options.callback();
+                  }
+                else
+                  {
+                  
+                  }  
+            }   
     },
     closeAll: function () {
         $.each(obj.find('li[id]'), function () {
