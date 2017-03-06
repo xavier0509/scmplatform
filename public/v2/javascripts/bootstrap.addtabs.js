@@ -142,9 +142,12 @@ window.Addtabs = {
 
             //是否允许关闭
             if (Addtabs.options.close) {
-                title.append(
-                    $('<i>', {'class': 'close-tab glyphicon glyphicon-remove'})
-                );
+                if (id == "tab_userMenu1") {}
+                else{
+                    title.append(
+                        $('<i>', {'class': 'close-tab glyphicon glyphicon-remove'})
+                    );
+                }
             }
             //创建新TAB的内容
             var content = $('<div>', {
