@@ -251,34 +251,25 @@ function searchConfigInfo() {
 			var data = JSON.parse(this.responseText);
 			var kk = 0;
 			var pullDataOne,pullDataTwo =null;
-			var _rowConfigMain = document.getElementById("configMkTableTdMain");
-			var _rowConfigHardware = document.getElementById("configMkTableTdHardware");
+			var _rowConfigBase = document.getElementById("configMkTableTdBase");
 			var _rowConfigServerip = document.getElementById("configMkTableTdServerip");
 			var _rowConfigAd = document.getElementById("configMkTableTdAd");
 			var _rowConfigChannel = document.getElementById("configMkTableTdChannel");
 			var _rowConfigLocalmedia = document.getElementById("configMkTableTdLocalmedia");
-			var _rowConfigBrowser = document.getElementById("configMkTableTdBrowser");
 			var _rowConfigOther = document.getElementById("configMkTableTdOther");
-			_rowConfigMain.innerHTML = "<div title='main'>核心功能：</div>";
-			_rowConfigHardware.innerHTML = "<div title='hardware'>硬件配置信息：</div>";
+			_rowConfigBase.innerHTML = "<div title='base'>基础功能：</div>";
 			_rowConfigServerip.innerHTML = "<div title='serverip'>服务器IP配置：</div>";
 			_rowConfigAd.innerHTML = "<div title='ad'>广告配置：</div>";
 			_rowConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
 			_rowConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
-			_rowConfigBrowser.innerHTML = "<div title='browser'>浏览器配置：</div>";
 			_rowConfigOther.innerHTML = "<div title='other'>其他功能：</div>";
 			
 			for(var i = 0; i < data.data.length; i++) {
 				console.log("lxw "+data.data[i].category);
-				if (data.data[i].category == "main") {
+				if (data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					_rowConfigMain.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
-				}
-				else if(data.data[i].category == "hardware"){
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					_rowConfigHardware.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
+					_rowConfigBase.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataOne+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "serverip"){
 					kk = i;
@@ -299,11 +290,6 @@ function searchConfigInfo() {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
 					_rowConfigLocalmedia.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
-				}
-				else if(data.data[i].category == "browser"){
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					_rowConfigBrowser.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='"+data.data[kk].engName+"'>" + data.data[kk].cnName + "</a><input type='text' value='"+pullDataTwo+"' style='display:none'></div>";
 				}
 				else if(data.data[i].category == "other"){
 					kk = i;
