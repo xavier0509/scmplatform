@@ -570,9 +570,9 @@ router.post('/productAdd', function (req, res) {
 
 
 router.post('/generateFile', function (req, res) {
-     if(req.body.data){
+    if(req.body.data){
         var data = req.body.data;
-	Generator.generate(data, "Rel6.0", function(err,result){
+	    Generator.generate(data, "Rel6.0", function(err,result){
             if(err != 0){
                 res.json({"code": 0, "msg": "failure", "reason": result});
             }else{
@@ -617,7 +617,20 @@ router.post('/session', function (req, res) {
     }
 });
 
-
+router.post('/preview', function (req, res) {
+  if (req.body.data) {
+        var chip = req.body.data.chip;
+        var model = req.body.data.model;
+        res.json({"code": 0, "msg": "failure", "reason": "fanyanbo fanyanbo"});
+   /*     Generator.preview(chip, model, function(err,result){
+            if(err != 0){
+                res.json({"code": 0, "msg": "failure", "reason": result});
+            }else{
+                res.json({"code": 1, "msg": "success", "data": result});
+            }
+        }); */
+    }
+});
 
 
 
