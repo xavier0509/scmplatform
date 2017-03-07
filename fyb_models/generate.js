@@ -58,6 +58,16 @@ Generator.prototype.generate = function(
 	}
 }
 
+Generator.prototype.preview = function(chip, model, callback)
+{
+	
+	var res = "	var result = 0;\n	var mongo = require(\"mongodb\");\n	var client = mongo.MongoClient;\n	var assert = require('assert');\n\n\n\n	if (systemVersion == null)\n		systemVersion = \"Rel6.0\";\n\n	infoTxt = \"\";\n	commit_msg = \"\";\";";
+	if (callback != null)
+	{
+		callback(0, res);
+	}
+}
+
 function generateFiles(	machines,			// 机器列表
 						systemVersion,		// 系统版本
 						callback 			// 回调函数
