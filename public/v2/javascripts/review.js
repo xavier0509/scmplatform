@@ -10,10 +10,10 @@ $(function () {
     loginusername = parent.loginusername;
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"},{"gerritState":"2","userName":"'+loginusername+'"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"},{"gerritState":"2","userName":"'+loginusername+'"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
     }     
     XandCancle();
 })
@@ -116,8 +116,8 @@ function reviewlist(){
                     var _cell9 = _row.insertCell(8);
                     _cell9.innerHTML = operateType;
                     _cell9.style.display="none";
-                    var _cell10 = _row.insertCell(9);
-                    _cell10.innerHTML = operateTime;
+                    // var _cell10 = _row.insertCell(9);
+                    // _cell10.innerHTML = operateTime;
                     
                 };
             }
@@ -144,8 +144,9 @@ function recover(obj){
 
 }
 //点击恢复按钮执行函数-----将待审核状态置0
-function recoverSure(obj){    
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
+function recoverSure(obj){   
+    var operateTime = new Date().getTime(); 
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+ operateTime +'"}}}',recoverResult);
 
 }
 
@@ -873,12 +874,15 @@ function editIssue(){
 
 //审核通过（针对编辑）
 function passSure(){
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+    var operateTime = new Date().getTime();
+    console.log(operateTime);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+operateTime+'"}}}',passResult);
 }
 
 //审核不通过
 function noPassSure(){
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passnotResult);
+    var operateTime = new Date().getTime();
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2","operateTime":"'+operateTime+'"}}}',passnotResult);
 }
 
 //删除操作
