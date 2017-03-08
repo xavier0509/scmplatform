@@ -636,11 +636,11 @@ router.post('/preview', function (req, res) {
   if (req.body.data) {
         var chip = req.body.data.chip;
         var model = req.body.data.model;
-        Generator.preview(chip, model, function(err,result){
+        Generator.preview(chip, model, function(err,mkRes,configRes){
             if(err != 0){
-                res.json({"code": 0, "msg": "failure", "reason": result});
+                res.json({"code": 0, "msg": "failure", "reason": error});
             }else{
-                res.json({"code": 1, "msg": "success", "data": result});
+                res.json({"code": 1, "msg": "success", "mkRes": mkRes, "configRes":configRes});
             }
         }); 
     }
