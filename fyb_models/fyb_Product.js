@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var db = require("./fyb_db");
 
 var productSchema = new mongoose.Schema({
+    operateTime:String,
     operateType:Number,
     gerritState:Number,
     userName:String,
