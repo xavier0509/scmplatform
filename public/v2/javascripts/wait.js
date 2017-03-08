@@ -5,7 +5,7 @@ $(function() {
 		forsession();
 		XandCancle();
 	})
-	//获取用户名
+//获取用户名
 var adminFlag = null;
 var loginusername = null;
 //编辑、修改、删除时 机芯机型参数的传递
@@ -148,7 +148,7 @@ function searchResource() {
 						var _cell5 = _row.insertCell(5);
 						_cell5.innerHTML = mySearchData[j].memorySize;
 						var _cell6 = _row.insertCell(6);
-						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button></div>";
+						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>预览</button></div>";
 					}
 				};
 			}
@@ -264,8 +264,8 @@ function AfterWaitHtmlinfo() {
 			console.log("in delete");
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
-			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			TwiceTransferChip = oClassButtonDelete[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonDelete[thisIndex].getAttribute("model");
 			//校验机芯机型
 			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfoInDel);
 		}
@@ -279,13 +279,29 @@ function AfterWaitHtmlinfo() {
 		oClassButtonCopy[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
-			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			TwiceTransferChip = oClassButtonCopy[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonCopy[thisIndex].getAttribute("model");
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
 			buttonStyle("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
+		}
+	}
+	//单项预览
+	var oClassButtonPreview = new Array();
+	oClassButtonPreview = document.getElementsByClassName("eachpreview");
+	for(var i = 0; i < oClassButtonPreview.length; i++) {
+		oClassButtonPreview[i].index = i;
+		oClassButtonPreview[i].onclick = function() {
+			console.log(this.index); //点击的是第几个
+			var thisIndex = this.index;
+			TwiceTransferChip = oClassButtonPreview[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonPreview[thisIndex].getAttribute("model");
+			$("#myPreviewModalLabel").text("预览");
+			$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+			$(".modal-backdrop").addClass("new-backdrop");
+			sendHTTPRequest("/fybv2_api/preview", '{"data":{"chip":"'+TwiceTransferChip+'","model":"'+TwiceTransferModel+'"}}', getPreviewInfo);
 		}
 	}
 }
@@ -2528,5 +2544,22 @@ function changListen(className){
 				document.getElementById("myVideoChangeDiv").style.display = "block";
 			}
 		}
+	}
+}
+
+function getPreviewInfo(){
+	if(this.readyState == 4) {
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log(data);
+			if(data.msg == "success") {
+				console.log("lxw " + "预览-成功");
+				document.getElementById("myPreviewBody").innerHTML = data.data;
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "预览-失败");
+				document.getElementById("myPreviewBody").innerHTML = data.data;
+			};
+		};
 	}
 }
