@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var db = require("./fyb_db");
 
 var productSchema = new mongoose.Schema({
+    operateTime:String,
     operateType:Number,
     gerritState:Number,
     userName:String,
@@ -24,9 +25,9 @@ productSchema.statics.productAdd = function (jsonStr,callback) {
     this.model("Product").create(jsonStr,callback);
 };
 
-productSchema.statics.productQuery = function (whereStr,optStr,callback) {
+productSchema.statics.productQuery = function (whereStr,fields,sortStr,callback) {
 
-    this.model("Product").find(whereStr,optStr,callback);
+    this.model("Product").find(whereStr,fields,sortStr,callback);
 };
 
 productSchema.statics.productUpdate = function (whereStr,updateStr,optStr,callback) {

@@ -653,6 +653,23 @@
 				</div>
 			</div>
 		</div>
+		<!--点击预览弹出复制的modal-->
+		<div class="modal fade" id="myPreviewModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myPreviewModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
+						<h4 class="modal-title" id="myPreviewModalLabel">预览</h4>
+					</div>
+					<textarea class="modal-body mybody" id="myPreviewBody" disabled>
+						
+					</textarea>
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="myCopyModalSubmitTwo">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--点击批量删除弹出批量删除的modal-->
 		<div class="modal fade col-xs-8" id="myMoreDeleteModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myMoreDeleteModalLabel">
 			<div class="modal-delete" role="document">

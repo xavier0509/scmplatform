@@ -10,10 +10,10 @@ $(function () {
     loginusername = parent.loginusername;
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"},{"gerritState":"2","userName":"'+loginusername+'"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"},{"gerritState":"2","userName":"'+loginusername+'"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1}}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"},{"gerritState":"2"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
     }     
     XandCancle();
 })
@@ -73,7 +73,8 @@ function reviewlist(){
                     _cell5.innerHTML = datalength[i].memorySize;
                     var _cell6 = _row.insertCell(5); 
                     var operateType = datalength[i].operateType;   
-                    var gerritState = datalength[i].gerritState;  
+                    var gerritState = datalength[i].gerritState; 
+                    var operateTime = datalength[i].operateTime; 
                     var userName = datalength[i].userName;              
                     if (level == 1) {
                         if (userName == loginusername) {
@@ -115,6 +116,8 @@ function reviewlist(){
                     var _cell9 = _row.insertCell(8);
                     _cell9.innerHTML = operateType;
                     _cell9.style.display="none";
+                    // var _cell10 = _row.insertCell(9);
+                    // _cell10.innerHTML = operateTime;
                     
                 };
             }
@@ -141,8 +144,9 @@ function recover(obj){
 
 }
 //点击恢复按钮执行函数-----将待审核状态置0
-function recoverSure(obj){    
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',recoverResult);
+function recoverSure(obj){   
+    var operateTime = new Date().getTime(); 
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+ operateTime +'"}}}',recoverResult);
 
 }
 
@@ -870,12 +874,15 @@ function editIssue(){
 
 //审核通过（针对编辑）
 function passSure(){
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0"}}}',passResult);
+    var operateTime = new Date().getTime();
+    console.log(operateTime);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+operateTime+'"}}}',passResult);
 }
 
 //审核不通过
 function noPassSure(){
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2"}}}',passnotResult);
+    var operateTime = new Date().getTime();
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2","operateTime":"'+operateTime+'"}}}',passnotResult);
 }
 
 //删除操作
@@ -1062,7 +1069,9 @@ function reviewEdit(){
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenene";
-	var oEnode = '{"data":{"condition":{"chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+    var operateTime = new Date().getTime();
+    console.log(operateTime);
+	var oEnode = '{"data":{"condition":{"chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	submitStatus(hashObj,dataObj,oEnode);
 }

@@ -5,7 +5,7 @@ $(function() {
 		forsession();
 		XandCancle();
 	})
-	//获取用户名
+//获取用户名
 var adminFlag = null;
 var loginusername = null;
 //编辑、修改、删除时 机芯机型参数的传递
@@ -93,7 +93,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}';
+		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"operateTime":1 }}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -112,7 +112,7 @@ function startSelect() {
 		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1}}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"operateTime":1 }}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
@@ -148,7 +148,9 @@ function searchResource() {
 						var _cell5 = _row.insertCell(5);
 						_cell5.innerHTML = mySearchData[j].memorySize;
 						var _cell6 = _row.insertCell(6);
-						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button></div>";
+						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>预览</button></div>";
+						// var _cell10 = _row.insertCell(7);
+      //               	_cell10.innerHTML = mySearchData[j].operateTime;
 					}
 				};
 			}
@@ -230,7 +232,8 @@ function AfterWaitHtmlinfo() {
 		oButtonEditEnsure.onclick = function() {
 			console.log("多项删除页-确认按钮");
 			console.log("lxw " + ChipModelArray);
-			var deleNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
+			var operateTime = new Date().getTime();
+			var deleNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2","operateTime":"'+operateTime+'"}}}';
 			console.log("lxw " + deleNode);
 			sendHTTPRequest("/fybv2_api/productUpdate", deleNode, moreDeleteresult);
 		}
@@ -264,8 +267,8 @@ function AfterWaitHtmlinfo() {
 			console.log("in delete");
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
-			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			TwiceTransferChip = oClassButtonDelete[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonDelete[thisIndex].getAttribute("model");
 			//校验机芯机型
 			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfoInDel);
 		}
@@ -279,13 +282,29 @@ function AfterWaitHtmlinfo() {
 		oClassButtonCopy[i].onclick = function() {
 			console.log(this.index); //点击的是第几个
 			var thisIndex = this.index;
-			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
-			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			TwiceTransferChip = oClassButtonCopy[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonCopy[thisIndex].getAttribute("model");
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
 			buttonStyle("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
+		}
+	}
+	//单项预览
+	var oClassButtonPreview = new Array();
+	oClassButtonPreview = document.getElementsByClassName("eachpreview");
+	for(var i = 0; i < oClassButtonPreview.length; i++) {
+		oClassButtonPreview[i].index = i;
+		oClassButtonPreview[i].onclick = function() {
+			console.log(this.index); //点击的是第几个
+			var thisIndex = this.index;
+			TwiceTransferChip = oClassButtonPreview[thisIndex].getAttribute("chip");
+			TwiceTransferModel = oClassButtonPreview[thisIndex].getAttribute("model");
+			$("#myPreviewModalLabel").text("预览");
+			$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+			$(".modal-backdrop").addClass("new-backdrop");
+			sendHTTPRequest("/fybv2_api/preview", '{"data":{"chip":"'+TwiceTransferChip+'","model":"'+TwiceTransferModel+'"}}', getPreviewInfo);
 		}
 	}
 }
@@ -596,7 +615,8 @@ function addPageSubmitData() {
 		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": loginusername,
-		"desc": "enenen"
+		"desc": "enenen",
+		"operateTime": ""
 	};
 	// 获取DeviceInfo里的信息
 	var oAchip = document.getElementById("newAddChip").value;
@@ -684,6 +704,8 @@ function addPageSubmitData() {
 			}
 		}
 	}
+	var operateTime = new Date().getTime();
+
 	dataObj.configFile = addConfigFile;
 	dataObj.mkFile = addMkFile;
 	dataObj.memorySize = oAmemorySize;
@@ -696,7 +718,7 @@ function addPageSubmitData() {
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
-
+	dataObj.operateTime = operateTime;
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
 	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
@@ -877,35 +899,35 @@ function getEditInfoInfOne() {
 				console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
-					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Service") {
 					kk = i;
-					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "AppStore") {
 					kk = i;
-					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "HomePage") {
 					kk = i;
-					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "IME") {
 					kk = i;
-					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "TV") {
 					kk = i;
-					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
-					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "PlayerLibrary") {
 					checkId++;
 					kk = i;
 					if (checkId == 1) {
 						firstChecked = data.data[kk]._id;
 					}
-					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' oldvalue='0' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				}
 			}
 		};
@@ -1121,7 +1143,8 @@ function editPageSubmitData() {
 		"gerritState": "1", // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 		"operateType": "3", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": loginusername,
-		"desc": "enenen"
+		"desc": "enenen",
+		"operateTime": ""
 	};
 	// 获取DeviceInfo里的信息
 	var oEchip = document.getElementById("newEditChip").value;
@@ -1207,6 +1230,8 @@ function editPageSubmitData() {
 			}
 		}
 	}
+	var operateTime = new Date().getTime();
+
 	dataObj.configFile = editConfigFile;
 	dataObj.mkFile = editMkFile;
 	dataObj.memorySize = oEmemorySize;
@@ -1219,7 +1244,9 @@ function editPageSubmitData() {
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenene";
-	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+	dataObj.operateTime = operateTime;
+	
+	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+operateTime+'","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	submitStatus(hashObj,dataObj,oEnode);
 }
@@ -1588,7 +1615,8 @@ function copyPageSubmitData() {
 		"gerritState": "1", // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 		"operateType": "1", // 0表示无状态，1表示增加，2表示删除，3表示修改
 		"userName": loginusername,
-		"desc": "enenen"
+		"desc": "enenen",
+		"operateTime": ""
 	};
 	// 获取DeviceInfo里的信息
 	var oCchip = document.getElementById("newCopyChip").value;
@@ -1669,6 +1697,8 @@ function copyPageSubmitData() {
 		}
 	}
 	//console.log("lxw " + JSON.stringify(copyMkFile));
+	var operateTime = new Date().getTime();
+
 	dataObj.configFile = copyConfigFile;
 	dataObj.mkFile = copyMkFile;
 	dataObj.memorySize = oCmemorySize;
@@ -1681,6 +1711,7 @@ function copyPageSubmitData() {
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
 	dataObj.desc = "enenen";
+	dataObj.operateTime = operateTime;
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
 	sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
@@ -2043,11 +2074,14 @@ function getMoreEditInfoEnd() {
 	console.log("lxw " + ChipModelArray); 
 	console.log(judge(moreEditMkAddFile));
 	console.log(judge(moreEditMkDelFile));
+	var operateTime = new Date().getTime();
 	if(judge(moreEditMkAddFile)==true&&judge(moreEditMkDelFile)==true){
 		//添加或者修改、删除"userName":"' + loginusername + '","gerritState":"1","operateType":"2"
 		moreEditMkAddFile['userName'] = loginusername;
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
+		moreEditMkAddFile['operateTime'] = operateTime;
+		
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + addNode);
@@ -2060,6 +2094,8 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['userName'] = loginusername;
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
+		moreEditMkAddFile['operateTime'] = operateTime;
+		
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		console.log("lxw " + addNode);
 		moreDeleteData = 0;//表示未删除
@@ -2070,6 +2106,7 @@ function getMoreEditInfoEnd() {
 		//moreEditMkDelFile['userName'] = loginusername;
 		//moreEditMkDelFile['gerritState'] = "1";
 		//moreEditMkDelFile['operateType'] = "3";
+		//moreEditMkAddFile['operateTime'] = operateTime;
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
 		console.log("lxw " + delNode);
 		sendHTTPRequest("/fybv2_api/productUpdate", delNode, moreDelResult);
@@ -2262,7 +2299,8 @@ function singleDeletePageButtons(olchip, olmode) {
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
 		console.log("lxw " + olchip + "--" + olmode);
-		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2"}}}';
+		var operateTime = new Date().getTime();
+		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2","operateTime":"'+operateTime+'"}}}';
 		console.log("lxw " + ooEnode);
 		sendHTTPRequest("/fybv2_api/productUpdate", ooEnode, productEditresult);
 	}
@@ -2528,5 +2566,22 @@ function changListen(className){
 				document.getElementById("myVideoChangeDiv").style.display = "block";
 			}
 		}
+	}
+}
+
+function getPreviewInfo(){
+	if(this.readyState == 4) {
+		//console.log("this.responseText = " + this.responseText);
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log(data);
+			if(data.msg == "success") {
+				console.log("lxw " + "预览-成功");
+				document.getElementById("myPreviewBody").innerHTML = data.data;
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "预览-失败");
+				document.getElementById("myPreviewBody").innerHTML = data.data;
+			};
+		};
 	}
 }
