@@ -25,9 +25,9 @@ productSchema.statics.productAdd = function (jsonStr,callback) {
     this.model("Product").create(jsonStr,callback);
 };
 
-productSchema.statics.productQuery = function (whereStr,fields,callback) {
+productSchema.statics.productQuery = function (whereStr,fields,sortStr,callback) {
 
-    this.model("Product").find(whereStr,fields,{sort:{'operateTime':-1}},callback);
+    this.model("Product").find(whereStr,fields,sortStr,callback);
 };
 
 productSchema.statics.productUpdate = function (whereStr,updateStr,optStr,callback) {

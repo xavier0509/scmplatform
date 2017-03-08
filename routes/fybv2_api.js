@@ -443,13 +443,21 @@ router.post('/productQuery', function (req, res) {
     if (req.body.data) {
         var whereStr = req.body.data.condition;
         var opt = req.body.data.option;
+        var sortStr = req.body.data.sort;
+        var sortObj = {};
         if (typeof whereStr == "undefined") {
           whereStr = {};
         }
         if (typeof opt == "undefined") {
           opt = {};
         }
-        Product.productQuery(whereStr, opt, function (err, result) {
+        if (typeof sortStr == "undefined") {
+
+        }else{
+            sortObj["sort"] = sortStr;
+        }
+
+        Product.productQuery(whereStr, opt, sortObj,function (err, result) {
           if (result[0] == null) {
               res.json({"code": 0, "msg": "failure", "reason": "productQuery result[0] == null"});
           } else {
@@ -470,6 +478,8 @@ router.post('/productRegexQuery', function (req, res) {
         var memorySize = req.body.data.condition.memorySize;
         var chipModel = req.body.data.condition.chipModel;
         var opt = req.body.data.option;
+        var sortStr = req.body.data.sort;
+        var sortObj = {};
 
         if(chip != null && chip != ""){
             whereStr += "\"chip\":{$regex:/" + chip +"/i},";
@@ -489,9 +499,14 @@ router.post('/productRegexQuery', function (req, res) {
         if(typeof opt == "undefined" && opt == null){
           opt = {};
         }
+        if(typeof sortStr == "undefined" && sortStr == null){
+        }else{
+            sortObj["sort"] = sortStr;
+        }
+
         var newStr = "{" + whereStr.substring(0,whereStr.length-1) + "}";
         var obj = (eval('(' + newStr + ')'));
-        Product.productQuery(obj,opt,function(err,result){
+        Product.productQuery(obj,opt,sortObj,function(err,result){
             if (result[0] == null) {
                 res.json({"code": 0, "msg":"failure", "reason": "productQuery result[0] == null"});
             }else{
