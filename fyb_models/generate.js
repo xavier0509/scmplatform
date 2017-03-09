@@ -1,5 +1,5 @@
 
-var url = 'mongodb://localhost:27017/fybv2';
+var url = 'mongodb://172.20.132.225/fybtest';
 var fs = require('fs');
 var infoTxt = "";
 var tempFileList = null;
@@ -25,6 +25,12 @@ function getGitBranch(systemVersion)
     return gitbranch;
 }
 
+function getTmpDir()
+{
+	var os = require('os');
+	console.log(os.tmpdir());
+	return os.tmpdir();
+}
 
 function Generator()
 {
@@ -104,7 +110,7 @@ function generateFiles(	machines,			// 机器列表
 
 			var boHaveWriteShellHeader = false;
 			var randValue = Math.ceil(1000 * Math.random());
-			var temp_shell_filename =  "/tmp/temp_git_commit_shell_script" + "_" + randValue + ".txt";
+			var temp_shell_filename =  getTmpDir() + "/temp_git_commit_shell_script" + "_" + randValue + ".txt";
 			tempFileList[tempFileList.length] = temp_shell_filename;
 
 			var existRecord = false;
@@ -120,8 +126,8 @@ function generateFiles(	machines,			// 机器列表
 				var recordList = docs;
 				
 				var randValue = Math.ceil(1000 * Math.random());
-				var temp_config_filename =  "/tmp/temp_general_config_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
-				var temp_mk_filename =  "/tmp/temp_android_mk_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
+				var temp_config_filename =  getTmpDir() + "/temp_general_config_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
+				var temp_mk_filename =  getTmpDir() + "/temp_android_mk_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
 				
 				tempFileList[tempFileList.length] = temp_config_filename;
 				tempFileList[tempFileList.length] = temp_mk_filename;
@@ -164,7 +170,7 @@ function generateFiles(	machines,			// 机器列表
 				var recordList = docs;
 				
 				var randValue = Math.ceil(1000 * Math.random());
-				var tempDeviceTabFileName =  "/tmp/temp_devicetab_mk_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
+				var tempDeviceTabFileName =  getTmpDir() + "/temp_devicetab_mk_" + tv_chip + "_" + tv_model + "_" + randValue + ".txt";
 				
 				for (var i in recordList)
 				{
@@ -228,6 +234,7 @@ Generator.prototype.preview = function(chip, model, callback)
 	var client = mongo.MongoClient;
 	var assert = require("assert");
 	
+	getTmpDir();
 	// Use connect method to connect to the server
 	client.connect(url, function(err, db) 
 	{
@@ -259,8 +266,8 @@ Generator.prototype.preview = function(chip, model, callback)
             //console.log(docs);
 
 			var randValue = Math.ceil(1000 * Math.random());
-			var tmpfile1 = "/tmp/preview_config" + "_" + randValue + ".txt";
-			var tmpfile2 = "/tmp/preview_mk" + "_" + randValue + ".txt";
+			var tmpfile1 = getTmpDir() + "/preview_config" + "_" + randValue + ".txt";
+			var tmpfile2 = getTmpDir() + "/preview_mk" + "_" + randValue + ".txt";
 			var existRecord = false;
 			var recordList = docs;
 			
