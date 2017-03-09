@@ -2577,7 +2577,7 @@ function getPreviewInfo(){
 			console.log(data);
 			if(data.msg == "success") {
 				console.log("lxw " + "预览-成功");
-				document.getElementById("myPreviewBody").innerHTML = data.data;
+				document.getElementById("myPreviewBody").innerHTML = data.configRes+ data.mkRes;
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "预览-失败");
 				document.getElementById("myPreviewBody").innerHTML = data.data;
