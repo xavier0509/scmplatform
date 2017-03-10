@@ -2770,7 +2770,7 @@ function getPreviewInfo(){
             var data = JSON.parse(this.responseText);
             console.log(data);
             if(data.msg == "success") {
-                console.log("lxw " + "预览-成功");
+                console.log("lxw " + "预览-成功"+ data.configRes);
                 document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
                 document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
             } else if(data.msg == "failure") {
