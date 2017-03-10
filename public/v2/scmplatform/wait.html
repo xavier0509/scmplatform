@@ -661,9 +661,23 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
 						<h4 class="modal-title" id="myPreviewModalLabel">预览</h4>
 					</div>
-					<textarea class="modal-body mybody" id="myPreviewBody" disabled>
-						
-					</textarea>
+					<!-- <textarea class="modal-body mybody" id="myPreviewBody" disabled></textarea> -->
+					<div class="modal-body mybody">
+						<ul class="nav nav-pills nav-justified" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#myPreviewBodyOne" aria-controls="home" role="tab" data-toggle="tab">Config文件</a>
+							</li>
+							<li role="presentation">
+								<a href="#myPreviewBodyTwo" aria-controls="profile" role="tab" data-toggle="tab">MK文件</a>
+							</li>
+							
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="myPreviewBodyOne"></div>
+							<div role="tabpanel" class="tab-pane" id="myPreviewBodyTwo"></div>
+						</div>
+					</div>
 					<div class="modal-footer myfooter">
 						<button type="button" class="btn btn-default" data-dismiss="modal" id="myCopyModalSubmitTwo">确定</button>
 					</div>
