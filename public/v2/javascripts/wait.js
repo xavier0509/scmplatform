@@ -21,6 +21,12 @@ var moreDeleteData = 0;
 //定义一个全局变量，保存编辑提交之前的数据
 var hashObj = {};
 
+var changeAdd = [];
+var changeReduce = [];
+var changeConf = [];
+var changeDev = [];
+var olrplayerid = null;
+
 function XandCancle(){
 	var oButtonAdd_X = document.getElementById("myEnsureX");
 	oButtonAdd_X.onclick = function() {
@@ -895,45 +901,119 @@ function getEditInfoInfOne() {
 			_rowEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
 			_rowEditPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
-			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw " + data.data[i].category);
-				if(data.data[i].category == "App") {
-					kk = i;
-					_rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Service") {
-					kk = i;
-					_rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "AppStore") {
-					kk = i;
-					_rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "HomePage") {
-					kk = i;
-					_rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "IME") {
-					kk = i;
-					_rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "SysApp") {
-					kk = i;
-					_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "TV") {
-					kk = i;
-					_rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Other") {
-					kk = i;
-					_rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "PlayerLibrary") {
-					checkId++;
-					kk = i;
-					if (checkId == 1) {
-						firstChecked = data.data[kk]._id;
-					}
-					_rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' oldvalue='0' name='PlayerLibrary' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
-				}
-			}
-		};
-		document.getElementById(firstChecked).setAttribute('checked', '');
-		sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getEditInfoInfTwo);
-	}
+            for(var i = 0; i < data.data.length; i++) {
+                console.log("lxw " + data.data[i].category);
+                if(data.data[i].category == "App") {
+                    kk = i;
+                    _rowEditPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "Service") {
+                    kk = i;
+                    _rowEditPageService.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "AppStore") {
+                    kk = i;
+                    _rowEditPageAppStore.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "HomePage") {
+                    kk = i;
+                    _rowEditPageHomePage.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' value='' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "IME") {
+                    kk = i;
+                    _rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "SysApp") {
+                    kk = i;
+                    _rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "TV") {
+                    kk = i;
+                    _rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "Other") {
+                    kk = i;
+                    _rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                } else if(data.data[i].category == "PlayerLibrary") {
+                    checkId++;
+                    kk = i;
+                    if (checkId == 1) {
+                        firstChecked = data.data[kk]._id;
+                    }
+                    _rowEditPagePlayerLibrary.innerHTML += "<div class='col-xs-3'><input type='radio' oldvalue='0' name='PlayerLibrary' id='" + data.data[kk]._id + "' value='' onclick = 'changePlayer()'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+                }
+            }
+        };
+        document.getElementById(firstChecked).setAttribute('checked', '');
+        sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', getEditInfoInfTwo);
+    }
+}
+
+function changePlayer(){
+    var arr=document.getElementsByName("PlayerLibrary");
+    for(var i=0;i<arr.length;i++)
+        {
+            if(arr[i].checked)
+            {
+                console.log("id=="+arr[i].id);
+                console.log("oldid==="+olrplayerid)
+               if(arr[i].id == olrplayerid){
+                    Array.prototype.indexOf = function(val) {
+                        for (var i = 0; i < this.length; i++) {
+                            if (this[i] == val) return i;
+                        }
+                        return -1;
+                    };
+                    Array.prototype.remove = function(val) {
+                        var index = this.indexOf(val);
+                        if (index > -1) {
+                            this.splice(index, 1);
+                        }
+                    };
+
+                    changeConf.remove("PlayerLibrary");
+                    console.log("change"+changeConf);
+               }
+               else{
+                if (changeConf.indexOf("PlayerLibrary") == -1){
+                    changeConf.push("PlayerLibrary");
+                    console.log("ssdsaddasdasdas"+changeConf)
+                }else{}
+               }
+            }
+        }
+}
+
+function changeChex(obj){
+    if (obj.checked && (obj.getAttribute("oldvalue") == '0')) {
+        // obj.oldvalue = '1';
+        obj.setAttribute("oldvalue","1");
+        changeAdd.push(obj.getAttribute("cvalue"));
+        console.log("add"+changeAdd);
+        console.log("changeReduce"+changeReduce);
+    }
+    else if(!(obj.checked) && (obj.getAttribute("oldvalue") == '0'))
+    {
+        obj.setAttribute("oldvalue","2");
+        changeReduce.push(obj.getAttribute("cvalue"));
+        console.log("add"+changeAdd);
+        console.log("changeReduce"+changeReduce);
+    }
+    else 
+    {
+        obj.setAttribute("oldvalue","0");
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+
+        changeReduce.remove(obj.getAttribute("cvalue"));
+        changeAdd.remove(obj.getAttribute("cvalue"));
+        console.log("add"+changeAdd);
+        console.log("changeReduce"+changeReduce);
+    }   
+
 }
 
 function getEditInfoInfTwo() {
@@ -958,175 +1038,261 @@ function getEditInfoInfTwo() {
 			_rowEditPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
 			_rowEditPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
 
-			for(var i = 0; i < data.data.length; i++) {
-				if(data.data[i].category == "base") {
-					kk = i;
-					pullDataOne = JSON.stringify(data.data[kk]);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigBase.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigBase.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "serverip") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					//console.log("serverip:" + kk);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigServerip.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigServerip.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "ad") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					//console.log("ad:" + kk);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigAd.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						//console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigAd.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "channel") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigChannel.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigChannel.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "localmedia") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
-					}
-				} else if(data.data[i].category == "other") {
-					kk = i;
-					pullDataTwo = JSON.stringify(data.data[kk]);
-					if(data.data[i].type == "string") {
-						_rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
-					} else if(data.data[i].type == "enum") {
-						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						//console.log("lxw " + data.data[kk].options.length);
-						for(var k = 0; k < data.data[kk].options.length; k++) {
-							if(data.data[kk].options[k] == data.data[kk].value) {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
-							} else {
-								_myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
-							}
-						}
-						_myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
-						_rowEditPageConfigOther.innerHTML += _myAddselect;
-					}
-				}
-			}
-		};
-		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
-		sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
-	}
+            for(var i = 0; i < data.data.length; i++) {
+                if(data.data[i].category == "base") {
+                    kk = i;
+                    pullDataOne = JSON.stringify(data.data[kk]);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigBase.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input  type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigBase.innerHTML += _myAddselect;
+                    }
+                } else if(data.data[i].category == "serverip") {
+                    kk = i;
+                    pullDataTwo = JSON.stringify(data.data[kk]);
+                    //console.log("serverip:" + kk);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigServerip.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text'  onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigServerip.innerHTML += _myAddselect;
+                    }
+                } else if(data.data[i].category == "ad") {
+                    kk = i;
+                    pullDataTwo = JSON.stringify(data.data[kk]);
+                    //console.log("ad:" + kk);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigAd.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        //console.log("lxw " + data.data[kk].options.length);
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigAd.innerHTML += _myAddselect;
+                    }
+                } else if(data.data[i].category == "channel") {
+                    kk = i;
+                    pullDataTwo = JSON.stringify(data.data[kk]);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigChannel.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigChannel.innerHTML += _myAddselect;
+                    }
+                } else if(data.data[i].category == "localmedia") {
+                    kk = i;
+                    pullDataTwo = JSON.stringify(data.data[kk]);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigLocalmedia.innerHTML += _myAddselect;
+                    }
+                } else if(data.data[i].category == "other") {
+                    kk = i;
+                    pullDataTwo = JSON.stringify(data.data[kk]);
+                    if(data.data[i].type == "string") {
+                        _rowEditPageConfigOther.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'></div>";
+                    } else if(data.data[i].type == "enum") {
+                        var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+                        //console.log("lxw " + data.data[kk].options.length);
+                        for(var k = 0; k < data.data[kk].options.length; k++) {
+                            if(data.data[kk].options[k] == data.data[kk].value) {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
+                            } else {
+                                _myAddselect += "<option value='" + data.data[kk].options[k] + "'>" + data.data[kk].options[k] + "</option>";
+                            }
+                        }
+                        _myAddselect = "<div class='col-xs-6 videoEChange'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span>" + _myAddselect + "</select></div>";
+                        _rowEditPageConfigOther.innerHTML += _myAddselect;
+                    }
+                }
+            }
+        };
+        var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+        sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
+    }
+}
+
+function changeConfig(obj){
+    var x = obj.value;
+    console.log(x);
+    console.log(obj.getAttribute("oldvalue"))
+    if(x == obj.getAttribute("oldvalue")){
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+
+        changeConf.remove(obj.getAttribute("cnName"));
+        console.log("change"+changeConf);
+    }
+    else{
+        if (changeConf.indexOf(obj.getAttribute("cnName")) == -1){
+            changeConf.push(obj.getAttribute("cnName"));
+            console.log("change"+changeConf);
+        }else{}
+    }
+  
 }
 
 function getEditInforesult() {
-	if(this.readyState == 4) {
-		if(this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			hashObj = data.data[0];
-			//console.log(hashObj);
-			//console.log(JSON.stringify(data));
-			if(data.msg == "success") {
-				console.log("lxw " + "访问成功");
-				//console.log("lxw " + JSON.stringify(data.data[0]));
-				document.getElementById("newEditChip").value = data.data[0].chip;
-				document.getElementById("newEditModel").value = data.data[0].model;
-				document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
-				document.getElementById("newEditChipMode").value = data.data[0].chipModel;
-				document.getElementById("newEditMemory").value = data.data[0].memorySize;
-				document.getElementById("newEditDevice").value = data.data[0].targetProduct;
+    if(this.readyState == 4) {
+        if(this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            hashObj = data.data[0];
+            //console.log(hashObj);
+            //console.log(JSON.stringify(data));
+            if(data.msg == "success") {
+                console.log("lxw " + "访问成功");
+                //console.log("lxw " + JSON.stringify(data.data[0]));
+                document.getElementById("newEditChip").value = data.data[0].chip;
+                document.getElementById("newEditModel").value = data.data[0].model;
+                document.getElementById("NewEditAndroidVersion").value = data.data[0].androidVersion;
+                document.getElementById("NewEditAndroidVersion").setAttribute("oldvalue",data.data[0].androidVersion);
+                document.getElementById("NewEditAndroidVersion").setAttribute("cnName","Android版本");
+                document.getElementById("NewEditAndroidVersion").setAttribute("onchange","changeDevice(this)");
+                document.getElementById("newEditChipMode").value = data.data[0].chipModel;
+                document.getElementById("newEditChipMode").setAttribute("oldvalue",data.data[0].chipModel);
+                document.getElementById("newEditChipMode").setAttribute("cnName","芯片型号");
+                document.getElementById("newEditChipMode").setAttribute("onchange","changeDevice(this)");
+                document.getElementById("newEditMemory").value = data.data[0].memorySize;
+                document.getElementById("newEditMemory").setAttribute("oldvalue",data.data[0].memorySize);
+                document.getElementById("newEditMemory").setAttribute("cnName","内存");
+                document.getElementById("newEditMemory").setAttribute("onchange","changeDevice(this)");
+                document.getElementById("newEditDevice").value = data.data[0].targetProduct;
+                document.getElementById("newEditDevice").setAttribute("oldvalue",data.data[0].targetProduct);
+                document.getElementById("newEditDevice").setAttribute("cnName","TARGET_PRODUCT");
+                document.getElementById("newEditDevice").setAttribute("onchange","changeDevice(this)");
 
-				console.log("lxw " + JSON.stringify(data.data[0].mkFile));
-				var key, counter = 0;
-				for(key in data.data[0].mkFile) {
-					counter++;
-					console.log("lxw counter = " + counter + "--" + key);
-					document.getElementById(key).setAttribute('checked', '');
-					document.getElementById(key).checked = "true";
-					console.log(document.getElementById(key).getAttribute("checked"));
-				}
-				console.log("lxw " + JSON.stringify(data.data[0].configFile));
-				var configkey, configcounter = 0;
-				for(configkey in data.data[0].configFile) {
-					configcounter++;
-					console.log("lxw counter = " + configcounter + "--" + configkey);
-					console.log(data.data[0].configFile[configkey].type);
-					if(data.data[0].configFile[configkey].type == "string") {
-						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
-					} else {
-						document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
-						var childSelect = document.getElementById(configkey).childNodes;
-						for(var j = 0; j < childSelect.length; j++) {
-							childSelect[j].removeAttribute("selected");
-							if(childSelect[j].value == data.data[0].configFile[configkey].value) {
-								childSelect[j].setAttribute("selected", "");
-							}
-						};
-					}
-				}
-			} else if(data.msg == "failure") {
-				console.log("lxw " + "访问失败");
-			}
-		};
-		editPageButtonsOnclick();
-		if(allChipArray.length == 0 || allModelArray.length == 0) {
-			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
-		}
-	}
+                console.log("lxw " + JSON.stringify(data.data[0].mkFile));
+                var key, counter = 0;
+                for(key in data.data[0].mkFile) {
+                    counter++;
+                    console.log("lxw counter = " + counter + "--" + key);
+                    document.getElementById(key).setAttribute('checked', '');
+                    document.getElementById(key).checked = "true";
+                    console.log(document.getElementById(key).getAttribute("checked"));
+                }
+                console.log("lxw " + JSON.stringify(data.data[0].configFile));
+
+                var arr=document.getElementsByName("PlayerLibrary");
+            
+                for(var i=0;i<arr.length;i++)
+                {
+                    if(arr[i].checked)
+                    {
+                       olrplayerid = arr[i].id;
+                       console.log("ssssssssssssssssssss"+olrplayerid);
+                    }
+                }
+
+                var configkey, configcounter = 0;
+                for(configkey in data.data[0].configFile) {
+                    configcounter++;
+                    console.log("lxw counter = " + configcounter + "--" + configkey);
+                    console.log(data.data[0].configFile[configkey].type);
+                    if(data.data[0].configFile[configkey].type == "string") {
+                        document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+                        document.getElementById(configkey).setAttribute("oldvalue",data.data[0].configFile[configkey].value) ;
+                    } else {
+                        document.getElementById(configkey).value = data.data[0].configFile[configkey].value;
+                        document.getElementById(configkey).setAttribute("oldvalue",data.data[0].configFile[configkey].value) ;
+                        var childSelect = document.getElementById(configkey).childNodes;
+                        for(var j = 0; j < childSelect.length; j++) {
+                            childSelect[j].removeAttribute("selected");
+                            if(childSelect[j].value == data.data[0].configFile[configkey].value) {
+                                childSelect[j].setAttribute("selected", "");
+                            }
+                        };
+                    }
+                }
+            } else if(data.msg == "failure") {
+                console.log("lxw " + "访问失败");
+            }
+        };
+        editPageButtonsOnclick();
+        if(allChipArray.length == 0 || allModelArray.length == 0) {
+            sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
+        }
+    }
+}
+
+function changeDevice(obj){
+    var x = obj.value;
+    console.log(x);
+    console.log(obj.getAttribute("oldvalue"))
+    if(x == obj.getAttribute("oldvalue")){
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+
+        changeDev.remove(obj.getAttribute("cnName"));
+        console.log("change"+changeDev);
+    }
+    else{
+        if (changeDev.indexOf(obj.getAttribute("cnName")) == -1) {
+            changeDev.push(obj.getAttribute("cnName"));
+            console.log("change"+changeDev);
+        }else{}
+    }
+  
 }
 
 function editPageSubmitData() {
@@ -1306,8 +1472,36 @@ function submitStatus(hashObj,dataObj,oEnode){
 		setTimeout("document.getElementById('myEditModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		console.log("做了修改...");
-		sendHTTPRequest("/fybv2_api/productUpdate", oEnode, productEditresult);
+		document.getElementById("myAddCloseDiv").style.display = "block";
+	    document.getElementById("infoEdit").setAttribute("style","text-align:left");
+	    document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
+	    
+	    document.getElementById("infoEdit").innerHTML = "您做了以下操作，确认提交该修改吗？<br>"+"<span id='txt1'>修改设备信息：<br>　"+changeDev+"</span><span id='txt2'>新增模块：<br>　"+changeAdd+"</span><span id='txt3'>删除模块：<br>　"+changeReduce+"</span><span id='txt4'>修改配置：<br>　"+changeConf+"</span>";
+	    if (changeDev.length != 0) {
+	        document.getElementById("txt1").style.display="block";
+	    }
+	    if(changeAdd.length != 0    ){
+	        document.getElementById("txt2").style.display="block";
+	    }
+	    if (changeReduce.length != 0) {
+	        document.getElementById("txt3").style.display="block";
+	    }
+	    if (changeConf.length != 0) {
+	        document.getElementById("txt4").style.display="block";
+	    }
+	    document.getElementById("infoEdit").setAttribute("max-height","350px");
+	    
+	    document.getElementById("myEditEnsureModalEnsure").onclick = function(){
+	    	reviewEdit(oEnode);
+	    }
+	    
+	    scrollTopStyle("myAddModal");
+		
 	}
+}
+
+function reviewEdit(obj){
+	sendHTTPRequest("/fybv2_api/productUpdate", obj, productEditresult);
 }
 
 function productEditresult() {
@@ -2570,18 +2764,20 @@ function changListen(className){
 }
 
 function getPreviewInfo(){
-	if(this.readyState == 4) {
-		//console.log("this.responseText = " + this.responseText);
-		if(this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			console.log(data);
-			if(data.msg == "success") {
-				console.log("lxw " + "预览-成功");
-				document.getElementById("myPreviewBody").innerHTML = data.configRes+ data.mkRes;
-			} else if(data.msg == "failure") {
-				console.log("lxw " + "预览-失败");
-				document.getElementById("myPreviewBody").innerHTML = data.data;
-			};
-		};
-	}
+    if(this.readyState == 4) {
+        //console.log("this.responseText = " + this.responseText);
+        if(this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            if(data.msg == "success") {
+                console.log("lxw " + "预览-成功");
+                document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
+                document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
+            } else if(data.msg == "failure") {
+                console.log("lxw " + "预览-失败");
+                document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
+                document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
+            };
+        };
+    }
 }

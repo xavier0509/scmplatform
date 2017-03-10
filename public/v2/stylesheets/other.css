@@ -851,3 +851,7 @@ td{
 	font-size: 20px;
 	width: 100%;
 }
+#txt1,#txt2,#txt3,#txt4{
+    display: none;
+    font-size: 20px;
+}
