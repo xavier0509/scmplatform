@@ -38,14 +38,14 @@ var transporter = nodemailer.createTransport({
     });
 }*/
 
-var sendmail = function(from,to,subject,content){
+var sendmail = function(from,to,subject,html){
     var option = {
         from:from,
         to:to
     }
     option.subject = subject;
-    option.text = content;
-    //option.html= html;
+    //option.text = content;
+    option.html= html;
     transporter.sendMail(option, function(error, response){
         if(error){
             console.log("fail: " + error);
