@@ -8,6 +8,7 @@ var Module = require("../fyb_models/fyb_Module");
 var Config = require("../fyb_models/fyb_Config");
 var Product = require("../fyb_models/fyb_Product");
 var Generator = require("../fyb_models/generate");
+var Sendmail = require("../fyb_models/fyb_test");
 
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
@@ -646,7 +647,13 @@ router.post('/preview', function (req, res) {
     }
 });
 
-
+router.post('/sendmail', function (req, res) {
+  if (req.body.data) {
+        var desc = req.body.data.desc;
+        var from = req.body.data.from;
+        Sendmail("fanyanbo@skyworth.com","xiejinrong@skyworth.com,linxinwang@skyworth.com,liangquanqing@skyworth.com","软件配置管理平台-修改邮件通知",desc);
+    }
+});
 
 
 
