@@ -1476,7 +1476,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 	    document.getElementById("infoEdit").setAttribute("style","text-align:left");
 	    document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
 	    
-	    document.getElementById("infoEdit").innerHTML = "您做了以下操作，确认提交该修改吗？<br>"+"<span id='txt1'>修改设备信息：<br>　"+changeDev+"</span><span id='txt2'>新增模块：<br>　"+changeAdd+"</span><span id='txt3'>删除模块：<br>　"+changeReduce+"</span><span id='txt4'>修改配置：<br>　"+changeConf+"</span>";
+	    document.getElementById("infoEdit").innerHTML = "您做了以下操作，确认提交该修改吗？<br>"+"<span id='txt1'>修改设备信息：<br><span id='txt11'>　"+changeDev+"</span></span><span id='txt2'>新增模块：<br><span id='txt22'>　"+changeAdd+"</span></span><span id='txt3'>删除模块：<br><span id='txt33'>　"+changeReduce+"</span></span><span id='txt4'>修改配置：<br>　<span id='txt44'>"+changeConf+"</span></span>";
 	    if (changeDev.length != 0) {
 	        document.getElementById("txt1").style.display="block";
 	    }
@@ -2640,6 +2640,10 @@ function closeparentpage(pageName) {
 	var oButtonObject = document.getElementById("myEditEnsureModalEnsure");
 	oButtonObject.onclick = function() {
 		document.getElementById("myAddCloseDiv").style.display = "none";
+		changeAdd.splice(0,changeAdd.length);
+	    changeConf.splice(0,changeConf.length);
+	    changeDev.splice(0,changeDev.length);
+	    changeReduce.splice(0,changeReduce.length);
 		if (pageName != 1) {
 			console.log("pageName != 1");
 			$(pageName).modal('hide');

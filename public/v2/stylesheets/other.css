@@ -855,6 +855,9 @@ td{
     display: none;
     font-size: 20px;
 }
+#txt11,#txt22,#txt33,#txt44{
+    color: red;
+}
 #myPreviewBodyOne{
 	width: 100%;
 	min-height: 400px;
