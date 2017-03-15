@@ -21,11 +21,12 @@ var moreDeleteData = 0;
 //定义一个全局变量，保存编辑提交之前的数据
 var hashObj = {};
 
-var changeAdd = [];
-var changeReduce = [];
-var changeConf = [];
-var changeDev = [];
+var changeAdd = [];//保存新增模块信息
+var changeReduce = [];//保存删除模块信息
+var changeConf = [];//保存修改配置信息
+var changeDev = [];//保存修改设备信息
 var olrplayerid = null;
+var infoflag = 0 //判断复制or新增的标志,1为新增，2为复制
 
 function XandCancle(){
 	var oButtonAdd_X = document.getElementById("myEnsureX");
@@ -727,6 +728,7 @@ function addPageSubmitData() {
 	dataObj.operateTime = operateTime;
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
+	infoflag = 1;
 	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
 
@@ -754,6 +756,17 @@ function productAddresult() {
 				setTimeout("spanhidden()", 3000);
 			};
 		};
+		if (infoflag == 2 ) {
+			var chippp = document.getElementById('newCopyChip').value;
+			var modellll = document.getElementById('newCopyModel').value;
+		}
+		else{
+			var chippp = document.getElementById('newAddChip').value;
+			var modellll = document.getElementById('newAddModel').value;
+		}
+	    maildata = "新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
+	    console.log("maildata:"+maildata);
+	    // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);
 	}
 }
 
@@ -1512,13 +1525,36 @@ function productEditresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myEditModal").modal('hide');
-				$("#myDeleteModal").modal('hide');
-				startSelect();
+				$("#myDeleteModal").modal('hide');	
 				freshHtml("tab_userMenu2");
+				startSelect();
 				document.getElementById("myAddCloseDiv").style.display = "block";
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
+
+
+				var maildata = "针对机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"修改内容如下：";
+			    if (changeDev.length != 0) {
+			     maildata += "<br/>修改设备信息："+ changeDev;
+			     // console.log("maildata:"+changeDev);
+			    }
+			    if(changeAdd.length != 0    ){
+			        maildata += "<br/>新增模块："+ changeAdd;
+			    }
+			    if (changeReduce.length != 0) {
+			        maildata += "<br/>删除模块："+ changeReduce;
+			    }
+			    if (changeConf.length != 0) {
+			        maildata += "<br/>修改配置："+ changeConf;
+			    }
+			    else{
+			    	maildata = "删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档，请审核";
+			    }
+			    console.log("maildata:"+maildata);
+			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);	
+
+
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myEditModalErrorInfo").style.display = "block";
@@ -1526,8 +1562,25 @@ function productEditresult() {
 				setTimeout("spanhidden()", 3000);
 			};
 		};
+	    
 	}
 }
+
+function mailfun(){
+	console.log("ssss");
+	startSelect();
+	if(this.readyState == 4) {
+		if(this.status == 200) {
+			var data = JSON.parse(this.responseText);
+			console.log("hhh"+data)
+			startSelect();
+		}
+		else{
+
+		}
+	}
+}
+
 //单项复制-获取后台接口数据，动态加载单项编辑页面
 function getCopyInfoInfOne() {
 	if(this.readyState == 4) {
@@ -1908,6 +1961,7 @@ function copyPageSubmitData() {
 	dataObj.operateTime = operateTime;
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
+	infoflag = 2;
 	sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
