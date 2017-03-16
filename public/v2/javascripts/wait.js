@@ -765,6 +765,7 @@ function productAddresult() {
 			var modellll = document.getElementById('newAddModel').value;
 		}
 	    maildata = "新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
+	    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
 	    console.log("maildata:"+maildata);
 	    // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);
 	}
@@ -1548,11 +1549,12 @@ function productEditresult() {
 			    if (changeConf.length != 0) {
 			        maildata += "<br/>修改配置："+ changeConf;
 			    }
-			    else{
+			    if(changeDev.length == 0&&changeAdd.length == 0 &&changeReduce.length == 0&&changeConf.length == 0){
 			    	maildata = "删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档，请审核";
 			    }
+			    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
-			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);	
+			    // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);	
 
 
 			} else if(data.msg == "failure") {
@@ -1568,11 +1570,16 @@ function productEditresult() {
 
 function mailfun(){
 	console.log("ssss");
-	startSelect();
+	// startSelect();
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
-			console.log("hhh"+data)
+			console.log("hhh"+data);
+			console.log("end sendmail");
+			changeAdd.splice(0,changeAdd.length);
+		    changeConf.splice(0,changeConf.length);
+		    changeDev.splice(0,changeDev.length);
+		    changeReduce.splice(0,changeReduce.length);
 			startSelect();
 		}
 		else{
