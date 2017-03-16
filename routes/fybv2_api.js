@@ -651,7 +651,13 @@ router.post('/sendmail', function (req, res) {
   if (req.body.data) {
         var desc = req.body.data.desc;
         var from = req.body.data.from;
-        Sendmail("fanyanbo@skyworth.com","xiejinrong@skyworth.com,linxinwang@skyworth.com,liangquanqing@skyworth.com","软件配置管理平台-修改邮件通知",desc);
+        Sendmail("fanyanbo@skyworth.com","xiejinrong@skyworth.com,fanyanbo@skyworth.com","软件配置管理平台-待审核通知",desc,function(err,res1){
+            if(err != 0){
+                res.json({"code": 0, "msg": "failure", "reason": res1});
+            }else{
+                res.json({"code": 1, "msg": "success", "data": res1});
+            }
+        });
     }
 });
 

@@ -38,7 +38,7 @@ var transporter = nodemailer.createTransport({
     });
 }*/
 
-var sendmail = function(from,to,subject,html){
+var sendmail = function(from,to,subject,html,callback){
     var option = {
         from:from,
         to:to
@@ -49,8 +49,10 @@ var sendmail = function(from,to,subject,html){
     transporter.sendMail(option, function(error, response){
         if(error){
             console.log("fail: " + error);
+            callback(-1,"error");
         }else{
             console.log("success: " + response);
+            callback(0,"success");
         }
     });
 }
