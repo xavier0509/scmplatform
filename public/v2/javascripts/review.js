@@ -77,7 +77,13 @@ function reviewlist(){
                     var userName = datalength[i].userName;              
                     if (level == 1) {
                         if (userName == loginusername) {
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
+                            if (operateType == 2) {
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                            }
+                            else{
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
+                            }
+                            
                         }
                         else{
                             _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div>";
