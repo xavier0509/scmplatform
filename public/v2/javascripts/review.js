@@ -27,6 +27,7 @@ var model = null;
 var operate = null;
 var fileUsername = null;
 var adminControl = null;
+var emaiTo = null;
 
 
 function XandCancle(){
@@ -126,8 +127,9 @@ function reviewlist(){
                     var _cell9 = _row.insertCell(8);
                     _cell9.innerHTML = operateType;
                     _cell9.style.display="none";
-                    // var _cell10 = _row.insertCell(9);
-                    // _cell10.innerHTML = operateTime;
+                    var _cell10 = _row.insertCell(9);
+                    _cell10.innerHTML = "fanyanbo@skyworth.com";
+                    _cell10.style.display="none";
                     
                 };
             }
@@ -209,6 +211,8 @@ function review(obj,adminControl){
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
+    emaiTo = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    console.log("email:"+emaiTo);
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "审核";
     if(document.getElementById("closeReview1")){
