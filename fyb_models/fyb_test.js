@@ -1,77 +1,32 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var db = require("./fyb_db");
+var nodemailer = require('nodemailer');
 
-var configSchema = new mongoose.Schema({
-    cnName:String,
-    engName:String,
-    configKey:String,
-    type:String,   
-    value:String,
-    category:String,
-    options:Array,
-    desc:String
+var transporter = nodemailer.createTransport({
+    host: "smtp.163.com",
+    secureConnection: true,
+    port:465,
+    auth: {
+        user: 'fanyanbo917@163.com',
+        pass: 'wo2small',
+    }
 });
 
-var productSchema = new mongoose.Schema({
-    operateType:Number,
-    gerritState:Number,
-    userName:String,
-    desc:String,
-    memorySize:String,
-    chipModel:String,
-    androidVersion:String,
-    model:String,
-    chip:String,
-    targetProduct:String,
-    mkFile: Schema.Types.Mixed,
-    configFile: Schema.Types.Mixed
-});
-
-
-configSchema.statics.configUpdate = function (conditions, update, options, callback) {
-
-    this.model("Config").update(conditions, update, options, callback);
-};
-
-productSchema.statics.productUpdate = function (whereStr,updateStr,optStr,callback) {
-
-    this.model("Product").update(whereStr, updateStr, optStr, callback);
-};
-
-
-var configModel = db.model("Config", configSchema);
-
-var productModel = db.model("Product", productSchema);
-
-function test(){
-	var conditions = {"_id":Object("5887f84887f639072bdaae0c")};
-	var update = {"desc":"fanyanbo test!"};
-	var options = {multi:true};
-	configModel.configUpdate(conditions, update, options, function(err,res){
-		if (err) {
-			console.log(err);
-		}else{
-			console.log(res);
-		}
-
-	});
+var sendmail = function(html){
+    var option = {
+        from:"fanyanbo917@163.com",
+        to:"xiejr_work@163.com,fanyanbo@skyworth.com,16187525@qq.com"
+    }
+    option.subject = 'hello 系统支持组'
+    option.html= html;
+    transporter.sendMail(option, function(error, response){
+        if(error){
+            console.log("fail: " + error);
+        }else{
+            console.log("success: " + response);
+        }
+    });
 }
 
-function test1(){
-	var conditions = {};
-	var update = {$set:{"mkFile.ObjectId('4fd58ecbb9ac507e96276f1a').desc": "liangquanqing XXXXXX"}};
-	var options = {multi:true};
-	productModel.productUpdate(conditions, update, options, function(err,res){
-		if (err) {
-			console.log(err);
-		}else{
-			console.log(res);
-		}
+ 
+sendmail("邮件内容：<br/>这是来自软件配置管理平台发送的邮件");
 
-	});
-}
 
-test1();
-
-module.exports = configModel;

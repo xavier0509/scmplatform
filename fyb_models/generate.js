@@ -3,6 +3,7 @@ var url = 'mongodb://localhost:27017/fybv2';
 var fs = require('fs');
 var infoTxt = "";
 var tempFileList = null;
+var commit_msg = "";
 
 function getGitDir(systemVersion)
 {
@@ -58,6 +59,16 @@ Generator.prototype.generate = function(
 	}
 }
 
+Generator.prototype.preview = function(chip, model, callback)
+{
+	
+	var res = "	var result = 0;\n	var mongo = require(\"mongodb\");\n	var client = mongo.MongoClient;\n	var assert = require('assert');\n\n\n\n	if (systemVersion == null)\n		systemVersion = \"Rel6.0\";\n\n	infoTxt = \"\";\n	commit_msg = \"\";\";";
+	if (callback != null)
+	{
+		callback(0, res);
+	}
+}
+
 function generateFiles(	machines,			// 机器列表
 						systemVersion,		// 系统版本
 						callback 			// 回调函数
@@ -72,6 +83,7 @@ function generateFiles(	machines,			// 机器列表
 		systemVersion = "Rel6.0";
 	
 	infoTxt = "";
+	commit_msg = "";
 	
 	// Use connect method to connect to the server
 	client.connect(url, function(err, db) 
@@ -109,6 +121,7 @@ function generateFiles(	machines,			// 机器列表
 			
 			for (var h in machines)
 			{
+				var commit_msg_cnounter = 1;
 				var machine = machines[h];
 				var tv_chip = machine.chip;
 				var tv_model = machine.model;
@@ -122,12 +135,13 @@ function generateFiles(	machines,			// 机器列表
 				
 				tempFileList[tempFileList.length] = temp_config_filename;
 				tempFileList[tempFileList.length] = temp_mk_filename;
-				
+
 				for (var i in recordList)
 				{
 					var record = recordList[i];
 					var curmodel = record.model;
 					var curchip = record.chip;
+					var curuser = record.userName;
 					var targetProduct = record.targetProduct;
 					
 					if (tv_chip == curchip && tv_model == curmodel)
@@ -143,6 +157,8 @@ function generateFiles(	machines,			// 机器列表
 						
 						shellScriptAddConfigFile(temp_shell_filename, temp_config_filename, tv_chip, tv_model);
 						shellScriptAddMkFile(temp_shell_filename, temp_mk_filename, targetProduct);
+						
+						commit_msg += ("" + (commit_msg_cnounter++) + ". " + curuser + " modified " + curchip + "_" + curmodel + " , \n");
 						
 						existRecord = true;
 						break;
@@ -299,6 +315,7 @@ function gitpush(shellFileName, callback)
 		{
 			callback(code, infoTxt);
 		}
+		deleteTempFiles();
     });
 }
 
@@ -390,8 +407,11 @@ function shellScriptEnd(shellFileName, systemVersion)
 	var shcmd = "";
 	var gitbranch = getGitBranch(systemVersion);
 	
-	cmd = "git commit -m scmplatform_auto_commit_and_push  \n";
-	shcmd += "echo " + cmd;
+	cmd = "git commit -m  '\n";
+	cmd += commit_msg;
+	cmd += "'\n";
+	
+	//shcmd += "echo " + cmd;
 	shcmd += cmd;
 	
     cmd = "git push origin HEAD:refs/for/" + gitbranch + "  \n\n";
@@ -520,7 +540,7 @@ var generator = new Generator();
 //		{"chip":"5S02", "model":"15U" }
 //	];
 
-//var info = {"chip":"8S87", "model":"A2" };
+//var info = {"chip":"5S09", "model":"A3" };
 
 //generator.generate(info, "Rel6.0", null);
 
