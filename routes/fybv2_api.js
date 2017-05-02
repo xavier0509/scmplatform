@@ -8,6 +8,7 @@ var Module = require("../fyb_models/fyb_Module");
 var Config = require("../fyb_models/fyb_Config");
 var Product = require("../fyb_models/fyb_Product");
 var Generator = require("../fyb_models/generate");
+var Sendmail = require("../fyb_models/fyb_test");
 
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
@@ -636,17 +637,29 @@ router.post('/preview', function (req, res) {
   if (req.body.data) {
         var chip = req.body.data.chip;
         var model = req.body.data.model;
-        Generator.preview(chip, model, function(err,result){
+        Generator.preview(chip, model, function(err,configRes,mkRes){
             if(err != 0){
-                res.json({"code": 0, "msg": "failure", "reason": result});
+                res.json({"code": 0, "msg": "failure", "reason": err});
             }else{
-                res.json({"code": 1, "msg": "success", "data": result});
+                res.json({"code": 1, "msg": "success", "configRes":configRes, "mkRes": mkRes});
             }
         }); 
     }
 });
 
-
+router.post('/sendmail', function (req, res) {
+  if (req.body.data) {
+        var desc = req.body.data.desc;
+        var from = req.body.data.from;
+        Sendmail("fanyanbo@skyworth.com","xiejinrong@skyworth.com,fanyanbo@skyworth.com","软件配置管理平台-待审核通知",desc,function(err,res1){
+            if(err != 0){
+                res.json({"code": 0, "msg": "failure", "reason": res1});
+            }else{
+                res.json({"code": 1, "msg": "success", "data": res1});
+            }
+        });
+    }
+});
 
 
 

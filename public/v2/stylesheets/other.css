@@ -847,7 +847,18 @@ td{
     width: 1100px;
 }
 #myPreviewBody{
-	min-height: 300px;
+	min-height: 400px;
 	font-size: 20px;
 	width: 100%;
+}
+#txt1,#txt2,#txt3,#txt4{
+    display: none;
+    font-size: 20px;
+}
+#txt11,#txt22,#txt33,#txt44{
+    color: red;
+}
+#myPreviewBodyOne{
+	width: 100%;
+	min-height: 400px;
 }

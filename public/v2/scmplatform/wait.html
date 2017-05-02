@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/other.css">
 		<script src="../javascripts/jquery.min.js"></script>
 		<script src="../javascripts/bootstrap.min.js"></script>
- 		<script type="text/javascript" src="../javascripts/test.js"></script>
+ 		<!--<script type="text/javascript" src="../javascripts/test.js"></script>-->
  		
 	</head>
 
@@ -48,6 +48,7 @@
 							<option value="MST6A828">MST6A828</option>
 							<option value="MST6A938">MST6A938</option>
 							<option value="AMLS905">AMLS905</option>
+							<option value="Hi3751V551">Hi3751V551</option>
 						</select>
 					</div>
 					<div class="col-xs-4 form-group">
@@ -157,6 +158,7 @@
 											<option value="MST6A828">MST6A828</option>
 											<option value="MST6A938">MST6A938</option>
 											<option value="AMLS905">AMLS905</option>
+											<option value="Hi3751V551">Hi3751V551</option>
 										</select>
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -422,6 +424,7 @@
 											<option value="MST6A828">MST6A828</option>
 											<option value="MST6A938">MST6A938</option>
 											<option value="AMLS905">AMLS905</option>
+											<option value="Hi3751V551">Hi3751V551</option>
 										</select>
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -561,6 +564,7 @@
 											<option value="MST6A828">MST6A828</option>
 											<option value="MST6A938">MST6A938</option>
 											<option value="AMLS905">AMLS905</option>
+											<option value="Hi3751V551">Hi3751V551</option>
 										</select>
 									</div>
 									<div class="col-xs-6 form-group text-left inputdiv">
@@ -661,9 +665,26 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
 						<h4 class="modal-title" id="myPreviewModalLabel">预览</h4>
 					</div>
-					<textarea class="modal-body mybody" id="myPreviewBody" disabled>
+				
+					<div class="modal-body mybody">
+						<ul class="nav nav-pills nav-justified" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#myPreviewBodyOne" aria-controls="myPreviewBodyOne" role="tab" data-toggle="tab">Config文件</a>
+							</li>
+							<li role="presentation">
+								<a href="#myPreviewBodyTwo" aria-controls="myPreviewBodyTwo" role="tab" data-toggle="tab">MK文件</a>
+							</li>
+							
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<textarea wrap="off" style="overflow:scroll;" role="tabpanel" class="tab-pane active" id="myPreviewBodyOne" disabled></textarea>
+							<div role="tabpanel" class="tab-pane" id="myPreviewBodyTwo" disabled></div>
+						</div>
+					</div>
+					<!-- <textarea wrap="off" style="overflow:scroll;" class="modal-body mybody" id="myPreviewBody" disabled>
 						
-					</textarea>
+					</textarea> -->
 					<div class="modal-footer myfooter">
 						<button type="button" class="btn btn-default" data-dismiss="modal" id="myCopyModalSubmitTwo">确定</button>
 					</div>
