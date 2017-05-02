@@ -956,6 +956,7 @@ function getEditInfoInfOne() {
     }
 }
 
+//player单选框的变化监听
 function changePlayer(){
     var arr=document.getElementsByName("PlayerLibrary");
     for(var i=0;i<arr.length;i++)
@@ -1534,7 +1535,7 @@ function productEditresult() {
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
 
-
+//发送邮件
 				var maildata = "针对机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"修改内容如下：";
 			    if (changeDev.length != 0) {
 			     maildata += "<br/>修改设备信息："+ changeDev;
@@ -1567,7 +1568,7 @@ function productEditresult() {
 	    
 	}
 }
-
+//邮件函数回调
 function mailfun(){
 	console.log("ssss");
 	// startSelect();
@@ -2704,7 +2705,7 @@ function closeparentpage(pageName) {
 		changeAdd.splice(0,changeAdd.length);
 	    changeConf.splice(0,changeConf.length);
 	    changeDev.splice(0,changeDev.length);
-	    changeReduce.splice(0,changeReduce.length);
+	    changeReduce.splice(0,changeReduce.length); 
 		if (pageName != 1) {
 			console.log("pageName != 1");
 			$(pageName).modal('hide');
