@@ -1506,7 +1506,15 @@ function submitStatus(hashObj,dataObj,oEnode){
 	    }
 	    document.getElementById("infoEdit").setAttribute("max-height","350px");
 	    
+	    //修改描述
+	    var changedesc = {"changeDev":changeDev,"changeAdd":changeAdd,"changeReduce":changeReduce,"changeConf":changeConf}
+	    // dataObj.desc = changedesc;
+	    console.log("old:"+changedesc);
+	    var a = JSON.stringify(changedesc);
+	    console.log("new:"+JSON.stringify(changedesc));
 	    document.getElementById("myEditEnsureModalEnsure").onclick = function(){
+	    	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":"'+a+'"}}}';
+	    	console.log("详细修改："+oEnode)
 	    	reviewEdit(oEnode);
 	    }
 	    

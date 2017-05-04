@@ -873,6 +873,6 @@ td{
     color: red;
 }
 .marginCenter{
-    margin:  0 auto;
-    text-align: center;
+    margin-top: 2%;
+    margin-left: 5%;
 }
