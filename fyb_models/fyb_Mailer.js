@@ -1,22 +1,32 @@
 var nodemailer = require('nodemailer');
 //require('ssl-root-cas').inject();
 
-/*var transporter = nodemailer.createTransport({
-    host: "smtp.163.com",
-    secureConnection: true,
-    port:465,
-    auth: {
-        user: 'fanyanbo917@163.com',
-        pass: 'wo2small',
-    }
-});*/
+
+//var transporter = nodemailer.createTransport({
+//  host:'smtp.163.com',
+//  port:465,
+//  auth: {
+//      user: 'fanyanbo917@163.com',
+//      pass: 'wo2small',
+//  },
+//  tls: {rejectUnauthorized: false},
+//  debug:true
+//});
+
+//var transporter = nodemailer.createTransport({
+//  service:'qq',
+//  auth: {
+//      user: '16187525@qq.com',
+//      pass: 'oyaupgqgsucubhdg',
+//  }
+//});
 
 var transporter = nodemailer.createTransport({
     host: "mail.skyworth.com",
     port:465,
     auth: {
         user: 'fanyanbo@skyworth.com',
-        pass: 'fyb.1117',
+        pass: 'fyb.1116',
     },
     tls: {rejectUnauthorized: false},
     debug:true
@@ -38,7 +48,7 @@ var transporter = nodemailer.createTransport({
     });
 }*/
 
-var sendmail = function(from,to,subject,html,callback){
+var sendmail = function(from,to,cc,subject,html,callback){
     var option = {
         from:from,
         to:to
@@ -46,6 +56,7 @@ var sendmail = function(from,to,subject,html,callback){
     option.subject = subject;
     //option.text = content;
     option.html= html;
+    option.cc = cc;
     transporter.sendMail(option, function(error, response){
         if(error){
             console.log("fail: " + error);
