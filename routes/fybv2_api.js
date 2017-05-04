@@ -8,7 +8,7 @@ var Module = require("../fyb_models/fyb_Module");
 var Config = require("../fyb_models/fyb_Config");
 var Product = require("../fyb_models/fyb_Product");
 var Generator = require("../fyb_models/generate");
-var Sendmail = require("../fyb_models/fyb_test");
+var Sendmail = require("../fyb_models/fyb_Mailer");
 
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
@@ -648,10 +648,16 @@ router.post('/preview', function (req, res) {
 });
 
 router.post('/sendmail', function (req, res) {
-  if (req.body.data) {
-        var desc = req.body.data.desc;
+  if (req.body.data) {    
         var from = req.body.data.from;
-        Sendmail("fanyanbo@skyworth.com","xiejinrong@skyworth.com,fanyanbo@skyworth.com","软件配置管理平台-待审核通知",desc,function(err,res1){
+        var to = req.body.data.to;
+        var subject = req.body.data.subject;
+        var desc = req.body.data.desc;
+        console.log("/sendmail from：" + from);
+        console.log("/sendmail to：" + to);
+        console.log("/sendmail subject：" + subject);
+        console.log("/sendmail desc：" + desc);
+        Sendmail("fanyanbo@skyworth.com",to,from,subject,desc,function(err,res1){
             if(err != 0){
                 res.json({"code": 0, "msg": "failure", "reason": res1});
             }else{
