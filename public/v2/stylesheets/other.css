@@ -48,7 +48,7 @@ td{
 #tableTR th{text-align: center; vertical-align: middle;}
 #reviewmytable td{text-align: left;
     vertical-align: middle;
-    padding-left: 3%;}
+    padding-left: 2%;}
 #reviewtableTR th{text-align: center; vertical-align: middle;}
 #contenttable td{text-align: center; vertical-align: middle;}
 #contenttable th{text-align: center; vertical-align: middle;}
@@ -861,4 +861,18 @@ td{
 #myPreviewBodyOne{
 	width: 100%;
 	min-height: 400px;
+}
+
+#changeDescDiv{
+    /*display: none;*/
+}
+#changeDescTitle{
+    font-size: 18px;
+}
+.redDesc{
+    color: red;
+}
+.marginCenter{
+    margin-top: 2%;
+    margin-left: 5%;
 }
