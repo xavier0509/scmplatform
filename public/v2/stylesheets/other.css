@@ -862,3 +862,17 @@ td{
 	width: 100%;
 	min-height: 400px;
 }
+
+#changeDescDiv{
+    /*display: none;*/
+}
+#changeDescTitle{
+    font-size: 18px;
+}
+.redDesc{
+    color: red;
+}
+.marginCenter{
+    margin:  0 auto;
+    text-align: center;
+}
