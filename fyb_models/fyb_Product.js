@@ -4,8 +4,8 @@ var db = require("./fyb_db");
 
 var productSchema = new mongoose.Schema({
     operateTime:String,
-    operateType:Number,
-    gerritState:Number,
+    operateType:Number,// 0表示无状态，1表示增加，2表示删除，3表示修改
+    gerritState:Number,// 0表示正常状态，1表示待审核状态，2表示审核不通过状态
     userName:String,
     desc:Schema.Types.Mixed,
     memorySize:String,
