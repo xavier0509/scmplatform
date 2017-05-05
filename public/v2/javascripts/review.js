@@ -85,14 +85,14 @@ function reviewlist(){
                     if (level == 1) {
                         if (userName == loginusername) {
                             if (operateType == 2) {
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
                             }
                             else{
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
                             }
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div>";
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,"+operateType+")'>审核</button></div>";
                         }
                     }
                     else{
@@ -101,7 +101,7 @@ function reviewlist(){
 
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2)'>编辑</button></div>";
+                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>编辑</button></div>";
 
                         }
                     }
@@ -204,10 +204,15 @@ function buttonStyle(name1, name2){
 
 
 //点击编辑、审核出现页面的执行函数
-function review(obj,adminControl){
+function review(obj,adminControl,deleteFlag){
     adminControl = adminControl;
+    var deleteFlag = deleteFlag;
     if (adminControl == "1") {
-        document.getElementById("changeDescDiv").style.display="block";
+        if (deleteFlag == "0") {
+            document.getElementById("changeDescDiv").style.display="block";
+        }else{
+            document.getElementById("changeDescDiv").style.display="none";
+        }       
     }else{
         document.getElementById("changeDescDiv").style.display="none";
     }
