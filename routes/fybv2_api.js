@@ -9,6 +9,7 @@ var Config = require("../fyb_models/fyb_Config");
 var Product = require("../fyb_models/fyb_Product");
 var Generator = require("../fyb_models/generate");
 var Sendmail = require("../fyb_models/fyb_Mailer");
+var ChipModel = require("../fyb_models/fyb_ChipModel");
 
 var success = {"code": 1, "msg": "success"};
 var failure = {"code": 0, "msg": "failure"};
@@ -18,6 +19,23 @@ router.get('/fyb', function (req, res) {
     res.json("fybv2_api");
 });
 
+router.post('/userQuery', function (req, res) {
+    if (req.body.data) {
+        var whereStr = req.body.data.condition;
+        if (typeof whereStr == "undefined" || whereStr == null) {
+          whereStr = {};
+        }
+        User.userQuery(whereStr, function (err, result) {
+          if (result[0] == null) {
+              res.json({"code": 0, "msg": "failure", "reason": "userQuery result[0] == null"});
+          } else {
+             res.json({"code": 1, "msg": "success", "data": result});
+          }
+        });
+     }else{
+        res.json({"code": 0, "msg": "failure","reason": "req.body.data is null"});
+     }
+});
 
 router.post('/chipQuery', function (req, res) {
     var whereStr = {};
@@ -96,6 +114,90 @@ router.post('/chipUpdate', function (req, res) {
                 } 
                 else {
                     res.json({"code": 0, "msg": "failure", "reason":"chipQuery failed"});
+                }
+            });
+        }
+    
+    }
+});
+
+router.post('/chipModelQuery', function (req, res) {
+    var whereStr = {};
+    var optStr = {};
+    ChipModel.chipModelQuery(whereStr,optStr,function (err, result) {
+        if (result[0] == null) {
+            res.json(failure);
+        } else {
+            res.json({"code": 1, "msg": "success", "data": result});
+        }
+    });
+});
+
+router.post('/chipModelAdd', function (req, res) {
+    if (req.body.data) {
+        var name = req.body.data.name;
+        if (name.trim() !== null && typeof name.trim() !== "undefined" &&
+            name.trim() !== "") {
+            var whereStr = {"name":name};
+            ChipModel.chipModelQuery(whereStr, function (err, result) {
+                if (result[0] == null || typeof result[0] == "undefined") {
+                    ChipModel.chipModelAdd(whereStr, function (err1,result1) {
+                        res.json(success);
+                    });
+                } 
+                else {
+                    res.json(failure);
+                }
+            });
+        } else {
+            res.json(failure);
+        }
+    }
+});
+
+router.post('/chipModelDelete', function (req, res) {
+    if (req.body.data) {
+        var conditionStr = req.body.data.condition;
+        ChipModel.chipModelDelete(conditionStr, function (err, result) {
+            if (result.n == 0) {
+                res.json(failure);
+            } else {
+                res.json({"code": 1, "msg": "success","data":result});
+            }
+        });
+    }
+});
+
+router.post('/chipModelUpdate', function (req, res) {
+    if (req.body.data) {
+        var id = req.body.data._id;     
+        if (id == null && typeof id == "undefined") {
+            res.json({"code": 0, "msg": "failure", "reason":"id is null"});
+        };
+
+        if(req.body.data.update){
+            var newer = req.body.data.update.newer;
+            var old = req.body.data.update.old;
+            var whereStr = {"name": newer};   
+            ChipModel.chipModelQuery(whereStr, function (err, result) {
+                if (result[0] == null || typeof result[0] == "undefined") {
+                    var conditionStr = {"_id": id};
+                    var updateStr = {"name":newer};
+                    ChipModel.chipModelUpdate(conditionStr, {$set: updateStr}, {}, function (err, result) {
+                        if (result.nModified == 0) {
+                            res.json({"code": 0, "msg": "failure", "reason":"chipModelUpdate nModified == 0"});
+                        } else {
+                            Product.productUpdate({"chipModel":old}, {$set: {"chipModel":newer,"gerritState":1,"operateType":3}}, {multi:true}, function (err1, result1){
+                                if (err1)
+                                    res.json({"code": 0, "msg": "failure", "reason":"productUpdate failed"});
+                                else
+                                    res.json({"code": 1, "msg": "success"});
+                            });    
+                        }
+                    });
+                } 
+                else {
+                    res.json({"code": 0, "msg": "failure", "reason":"chipModelQuery failed"});
                 }
             });
         }
