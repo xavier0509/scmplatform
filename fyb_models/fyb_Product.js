@@ -7,7 +7,7 @@ var productSchema = new mongoose.Schema({
     operateType:Number,
     gerritState:Number,
     userName:String,
-    desc:String,
+    desc:Schema.Types.Mixed,
     memorySize:String,
     chipModel:String,
     androidVersion:String,

@@ -724,7 +724,7 @@ function addPageSubmitData() {
 	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
-	dataObj.desc = "enenen";
+	dataObj.desc = {"changeDev":"","changeAdd":"","changeReduce":"","changeConf":""};
 	dataObj.operateTime = operateTime;
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
@@ -1424,7 +1424,7 @@ function editPageSubmitData() {
 	dataObj.gerritState = "1"; // 0表示审核通过，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "3"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
-	dataObj.desc = "enenene";
+	dataObj.desc = {"changeDev":"","changeAdd":"","changeReduce":"","changeConf":""};
 	dataObj.operateTime = operateTime;
 	
 	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + loginusername + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+operateTime+'","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
@@ -1507,14 +1507,15 @@ function submitStatus(hashObj,dataObj,oEnode){
 	    document.getElementById("infoEdit").setAttribute("max-height","350px");
 	    
 	    //修改描述
-	    var changedesc = {"changeDev":changeDev,"changeAdd":changeAdd,"changeReduce":changeReduce,"changeConf":changeConf}
+	    var changedesc = '{"changeDev":"'+changeDev+'","changeAdd":"'+changeAdd+'","changeReduce":"'+changeReduce+'","changeConf":"'+changeConf+'"}';
 	    // dataObj.desc = changedesc;
 	    console.log("old:"+changedesc);
-	    var a = JSON.stringify(changedesc);
-	    console.log("new:"+JSON.stringify(changedesc));
+	    var a = JSON.parse(changedesc);
+	    console.log("new:"+a);
+	    console.log(typeof(JSON.stringify(a)))
 	    document.getElementById("myEditEnsureModalEnsure").onclick = function(){
-	    	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":"'+a+'"}}}';
-	    	console.log("详细修改："+oEnode)
+	    	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":'+JSON.stringify(a)+'}}}';
+	    	console.log("详细修改："+oEnode);
 	    	reviewEdit(oEnode);
 	    }
 	    
@@ -1532,6 +1533,7 @@ function productEditresult() {
 	if(this.readyState == 4) {
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
+			console.log(JSON.stringify(data));
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myEditModal").modal('hide');
@@ -1543,7 +1545,7 @@ function productEditresult() {
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
 
-//发送邮件
+				//发送邮件
 				var maildata = "针对机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"修改内容如下：";
 			    if (changeDev.length != 0) {
 			     maildata += "<br/>修改设备信息："+ changeDev;
@@ -1569,7 +1571,7 @@ function productEditresult() {
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myEditModalErrorInfo").style.display = "block";
-				document.getElementById("myEditModalErrorInfo").innerHTML = "该产品已存在"
+				document.getElementById("myEditModalErrorInfo").innerHTML = "修改失败"
 				setTimeout("spanhidden()", 3000);
 			};
 		};
@@ -1973,7 +1975,7 @@ function copyPageSubmitData() {
 	dataObj.gerritState = "1"; // 0表示正常状态，1表示待审核状态，2表示审核不通过状态
 	dataObj.operateType = "1"; // 0表示无状态，1表示增加，2表示删除，3表示修改
 	dataObj.userName = loginusername;
-	dataObj.desc = "enenen";
+	dataObj.desc = {"changeDev":"","changeAdd":"","changeReduce":"","changeConf":""};
 	dataObj.operateTime = operateTime;
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
@@ -2238,6 +2240,8 @@ function getMoreEditInfo() {
 	document.getElementById("addmodules").innerHTML = mEMkAddCzName;
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
+    changeMoredesc = {"changeDev":"","changeAdd":mEMkAddCzName,"changeReduce":mEMkDelCzName,"changeConf":mEConfigEditCzName};
+
 	var showStatus = document.getElementsByClassName("moreEditDetail");
 	if(mEMkAddCzName.length == 0){
 		showStatus[2].style.display = "none";
@@ -2345,6 +2349,7 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
 		moreEditMkAddFile['operateTime'] = operateTime;
+		moreEditMkAddFile['desc'] = changeMoredesc;
 		
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		var delNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"unset","update":' + JSON.stringify(moreEditMkDelFile) + '}}';
@@ -2359,6 +2364,7 @@ function getMoreEditInfoEnd() {
 		moreEditMkAddFile['gerritState'] = "1";
 		moreEditMkAddFile['operateType'] = "3";
 		moreEditMkAddFile['operateTime'] = operateTime;
+		moreEditMkAddFile['desc'] = changeMoredesc;
 		
 		var addNode = '{"data":{"condition":{"$or":' + JSON.stringify(ChipModelArray) + '},"action":"set","update":' + JSON.stringify(moreEditMkAddFile) + '}}';
 		console.log("lxw " + addNode);

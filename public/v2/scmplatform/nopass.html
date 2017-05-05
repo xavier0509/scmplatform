@@ -12,57 +12,57 @@
 
     </head>
 
-    <body>
-        <fieldset id="_rowlist">
-            <legend>内容列表</legend>
-            <div class="row">
-                <div class="col-xs-12">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr id="reviewtableTR">
-                                <th>机芯</th>
-                                <th>机型</th>
-                                <th>Android版本</th>
-                                <th>芯片型号</th>
-                                <th>内存</th>
-                                <th>操作</th>
-                                <th>类型</th>
-                                <th>提交者</th>
-                                <!-- <th>时间</th> -->
-                            </tr>
-                        </thead>
-                        <tbody id="reviewmytable">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </fieldset>
-        <!--点击新增弹出新增的modal-->
-        <div class="modal fade" id="myCheckModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
-            <div class="modalwidth" role="document">
-                <div class="modal-content">
-                    <div class="modal-header myheader">
-                        <button type="button" class="close"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭</span></button> 
-                        <button type="button" class="close" id="button_submit"><span aria-hidden="true" id="reButton"></span></button>  
-                        <button type="button" class="close"  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过   </span></button>
-                        
-                        <h3 class="modal-title" id="myAddModalLabel">审核</h3>
-                        <h4 id="myAddModalErrorInfo" class="myModalErrorInfo"></h4>
-                    </div>
-                    <div class="modal-body mybody">
-                        <table class="table table-bordered mytable" id="myAddModalTable">
-                            <tr id="changeDescDiv">
-                                <td>
-                                    <div class="col-xs-6 form-group text-left inputdiv">
-                                        <span id="changeDescTitle"><b>当前文件做了如下更改，请注意审核：</b>
-                                        </span>
-                                        <div id="newFileDesc" class="redDesc marginCenter">当前文件为新增配置，请仔细审核！</div>
-                                        <div id="changeDeviceDesc" class="marginCenter">修改设备信息：<span id="" class="redDesc">fffsdfd</span></div>
-                                        <div id="addModelDesc" class="marginCenter">新增模块：<span span id="" class="redDesc">sdfsdgrty</span></div>
-                                        <div id="removeModelDesc" class="marginCenter">删除模块：<span span id="" class="redDesc">reyeryty</span></div>
-                                        <div id="changeConfigDesc" class="marginCenter">修改配置：<span span id="" class="redDesc">tryrt</span></div>
-                                    </div>
-                                </td>
+	<body>
+		<fieldset id="_rowlist">
+			<legend>内容列表</legend>
+			<div class="row">
+				<div class="col-xs-12">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr id="reviewtableTR">
+								<th>机芯</th>
+								<th>机型</th>
+								<th>Android版本</th>
+								<th>芯片型号</th>
+								<th>内存</th>
+								<th>操作</th>
+								<th>类型</th>
+								<th>提交者</th>
+								<!-- <th>时间</th> -->
+							</tr>
+						</thead>
+						<tbody id="reviewmytable">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</fieldset>
+		<!--点击新增弹出新增的modal-->
+		<div class="modal fade" id="myCheckModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭</span></button> 
+						<button type="button" class="close" id="button_submit"><span aria-hidden="true" id="reButton"></span></button>  
+                    	<button type="button" class="close"  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过   </span></button>
+                    	
+						<h3 class="modal-title" id="myAddModalLabel">审核</h3>
+						<h4 id="myAddModalErrorInfo" class="myModalErrorInfo"></h4>
+					</div>
+					<div class="modal-body mybody">
+						<table class="table table-bordered mytable" id="myAddModalTable">
+							<tr >
+								<DIV class="col-xs-12" id="changeDescDiv">
+									<div class="col-xs-12 form-group text-left inputdiv">
+										<span id="changeDescTitle"><b>当前文件做了如下更改，请注意审核：</b>
+										</span>
+										<div id="newFileDesc" class="redDesc marginCenter">当前文件为新增配置，请仔细审核！</div>
+										<div id="changeDeviceDesc" class="marginCenter">修改设备信息：<span id="changeInfo1" class="redDesc">fffsdfd</span></div>
+										<div id="addModelDesc" class="marginCenter">新增模块：<span span id="changeInfo2" class="redDesc">sdfsdgrty</span></div>
+										<div id="removeModelDesc" class="marginCenter">删除模块：<span span id="changeInfo3" class="redDesc">reyeryty</span></div>
+										<div id="changeConfigDesc" class="marginCenter">修改配置：<span span id="changeInfo4" class="redDesc">tryrt</span></div>
+									</div>
+								</DIV>
                             </tr>
                             <tr>
                                 <td>

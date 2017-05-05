@@ -85,7 +85,7 @@ function reviewlist(){
                     if (level == 1) {
                         if (userName == loginusername) {
                             if (operateType == 2) {
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
                             }
                             else{
                                 _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
@@ -206,6 +206,16 @@ function buttonStyle(name1, name2){
 //点击编辑、审核出现页面的执行函数
 function review(obj,adminControl){
     adminControl = adminControl;
+    if (adminControl == "1") {
+        document.getElementById("changeDescDiv").style.display="block";
+    }else{
+        document.getElementById("changeDescDiv").style.display="none";
+    }
+    $("#newFileDesc").hide();
+    $("#changeDeviceDesc").hide();
+    $("#addModelDesc").hide();
+    $("#removeModelDesc").hide();
+    $("#changeConfigDesc").hide();
     console.log("操作按钮："+adminControl);
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
@@ -225,6 +235,7 @@ function review(obj,adminControl){
 
 function edit(obj,adminControl){
     adminControl = adminControl;
+    document.getElementById("changeDescDiv").style.display="none";
     console.log("操作按钮："+adminControl);
     chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
@@ -831,6 +842,27 @@ function reviewresult(){
         {
             var data = JSON.parse(this.responseText);
             hashObj = data.data[0];
+            changeDesc = data.data[0].desc;
+            console.log("修改:"+JSON.stringify(changeDesc));
+            $("#changeInfo1").text(changeDesc.changeConf);
+            $("#changeInfo3").text(changeDesc.changeReduce);
+            $("#changeInfo2").text(changeDesc.changeAdd);
+            $("#changeInfo4").text(changeDesc.changeDev);
+            if (changeDesc.changeConf.length != "0") {
+                document.getElementById('changeDeviceDesc').style.display="block";
+            }
+            if (changeDesc.changeReduce.length != "0") {
+                document.getElementById('removeModelDesc').style.display="block";
+            }
+            if (changeDesc.changeAdd.length != "0") {
+                document.getElementById('addModelDesc').style.display="block";
+            }
+            if (changeDesc.changeDev.length != "0") {
+                document.getElementById('changeConfigDesc').style.display="block";
+            }
+            if (changeDesc.changeConf.length == "0" && changeDesc.changeReduce.length == "0" && changeDesc.changeAdd.length == "0"&& changeDesc.changeDev.length == "0") {
+                document.getElementById('newFileDesc').style.display="block";
+            };
             //更新设备信息
             document.getElementById("newCheckChip").value=data.data[0].chip;
             document.getElementById("newCheckModel").value=data.data[0].model;

@@ -871,8 +871,23 @@ td{
 }
 .redDesc{
     color: red;
+    font-size: 16px;
 }
 .marginCenter{
     margin-top: 2%;
     margin-left: 5%;
+    font-size: 17px;
+}
+#changeDeviceDesc,
+#removeModelDesc,
+#addModelDesc,
+#changeConfigDesc,
+#newFileDesc{
+    display: none;
+}
+.close1{
+    float: right;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: -12px;
 }
