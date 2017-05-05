@@ -2411,6 +2411,7 @@ function closeparentpage(pageName) {
 		if (pageName != 1) {
 			console.log("pageName != 1");
 			$(pageName).modal('hide');
+			freshHtml("tab_userMenu1");
 		}else{
 			console.log("pageName == 1");
 		}
