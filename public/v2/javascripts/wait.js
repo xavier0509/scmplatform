@@ -2420,9 +2420,11 @@ function closeparentpage(pageName) {
 }
 
 function freshWait(){
-	var indexObject = parent.document.getElementById("home");
+	var htmlObject = parent.document.getElementById("tab_userMenu1");
+    var indexObject = parent.document.getElementById("home");
     var iframe = indexObject.getElementsByTagName("iframe");
-	iframe[0].src = "wait.html";
+    htmlObject.firstChild.src = "wait.html";
+    iframe[0].src = "wait.html";
 }
 
 /*刷新审核页面*/
