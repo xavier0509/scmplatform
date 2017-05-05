@@ -1098,6 +1098,8 @@ function freshReviewHtml() {
     var iframe = indexObject.getElementsByTagName("iframe");
     htmlObject.firstChild.src = "review.html";
     iframe[0].src = "wait.html";
+    var htmlObject2 = parent.document.getElementById("tab_userMenu1");
+    htmlObject2.firstChild.src = "wait.html";
 }   
 //关闭当前dialog
 function closeCurPage(){
