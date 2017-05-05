@@ -643,9 +643,20 @@ td{
 #myAddCloseDiv,#myVideoChangeDiv,#myVideoChangeDivTwo{
     text-align: center;
 }
-#myMoreEditSubmitModal,#myAddCloseDiv{
+#myMoreEditSubmitModal{
 	margin: auto;
     position: absolute;
+    display: none;
+    width: 60%;
+    margin-left: 20%;
+    z-index: 1051;
+    height: 30%;
+    top: 8%;
+    font-size: 24px;
+}
+#myAddCloseDiv{
+    margin: auto;
+    position: fixed;
     display: none;
     width: 60%;
     margin-left: 20%;
