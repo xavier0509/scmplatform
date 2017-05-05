@@ -2412,10 +2412,17 @@ function closeparentpage(pageName) {
 			console.log("pageName != 1");
 			$(pageName).modal('hide');
 			// freshHtml("tab_userMenu1");
+			freshWait();
 		}else{
 			console.log("pageName == 1");
 		}
 	}
+}
+
+function freshWait(){
+	var indexObject = parent.document.getElementById("home");
+    var iframe = indexObject.getElementsByTagName("iframe");
+	iframe[0].src = "wait.html";
 }
 
 /*刷新审核页面*/
