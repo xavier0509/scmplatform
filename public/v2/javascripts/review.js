@@ -1011,6 +1011,7 @@ function reviewEdit(){
 			oEstuInfo.cnName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("cnName");
 			oEstuInfo.engName = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("name");
 			oEstuInfo.configKey = oEconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("configKey");
+            oEstuInfo.desc = oAconfigTrDiv[thisConfigindex].childNodes[0].getAttribute("title");
 			oEstuInfo.type = oEconfigTrDiv[thisConfigindex].childNodes[1].name;
 			oEstuInfo.value = oEconfigTrDiv[thisConfigindex].childNodes[1].value;
 			if(oEstuInfo.type == "string") {
