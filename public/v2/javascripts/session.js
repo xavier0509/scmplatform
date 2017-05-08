@@ -2,6 +2,7 @@ document.write("<script language=javascript src='../javascripts/bootstrap.addtab
 
 var adminFlag = null;   //访问session之后存取管理员标志位
 var loginusername = null;  //访问session之后存取登录用户名
+var loginEmail = null;   //当前用户的邮箱地址
 
 //访问session接口
 // function forsession(){
@@ -47,6 +48,24 @@ function sessionresult(){
             else if (data.code == "0"){
                 console.log("未登录");
                 document.location.href="login.html" ;  
+            }            
+        }
+        sendHTTPRequest("/fybv2_api/userQuery", '{"data":{"condition":{"userName":"' + loginusername + '"}}}', userInfoResult);    
+    }
+}
+
+function userInfoResult(){
+    if (this.readyState == 4) {
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg == "success") {
+                // console.log(data);
+                loginEmail = data.data[0].email;
+                // console.log("邮箱地址："+loginEmail);
+            }
+            else{
+                
             }            
         }
     }

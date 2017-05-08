@@ -28,7 +28,10 @@ var changeDev = [];//保存修改设备信息
 var olrplayerid = null;
 var infoflag = 0 //判断复制or新增的标志,1为新增，2为复制
 
+var fromEmail = null;
+
 function XandCancle(){
+	fromEmail = parent.loginEmail;
 	var oButtonAdd_X = document.getElementById("myEnsureX");
 	oButtonAdd_X.onclick = function() {
 		console.log("X按钮");
@@ -1546,7 +1549,7 @@ function productEditresult() {
 				closeparentpage("1");
 
 				//发送邮件
-				var maildata = "针对机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"修改内容如下：";
+				var maildata = "用户："+loginusername+"<br/>针对机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"做出了如下修改：";
 			    if (changeDev.length != 0) {
 			     maildata += "<br/>修改设备信息："+ changeDev;
 			     // console.log("maildata:"+changeDev);
@@ -1561,11 +1564,11 @@ function productEditresult() {
 			        maildata += "<br/>修改配置："+ changeConf;
 			    }
 			    if(changeDev.length == 0&&changeAdd.length == 0 &&changeReduce.length == 0&&changeConf.length == 0){
-			    	maildata = "删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档，请审核";
+			    	maildata = "用户："+loginusername+"<br/>删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档";
 			    }
-			    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
-			    // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);	
+			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 
 
 			} else if(data.msg == "failure") {
@@ -2468,15 +2471,32 @@ function moreDeleteresult() {
 			if(data.msg == "success") {
 				console.log("lxw " + "修改成功");
 				$("#myMoreDeleteModal").modal('hide');
-				freshHtml("tab_userMenu2");
-				startSelect();
+				
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myMDModalErrorInfo").style.display = "block";
 				document.getElementById("myMDModalErrorInfo").innerHTML = "修改失败";
 				setTimeout("spanhidden()", 3000);
 			};
-		};
+		}
+		console.log("array:"+JSON.stringify(ChipModelArray));
+		var changeTv = JSON.stringify(ChipModelArray[0]);
+		console.log("aaaaaaaaaaa:"+changeTv);
+		var maildata = "用户："+loginusername+"<br>删除了"+changeTv+"的配置文档";
+        maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+        var nodeData = '{"data":{"desc":'+maildata+',"from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
+        console.log(nodeDate);
+        sendHTTPRequest("/fybv2_api/sendmail", nodeData, sendmailfun);  
+	}
+}
+
+function sendmailfun(){
+	if(this.readyState == 4) {
+		if(this.status == 200) {
+			console.log("批量删除发送邮件");
+			freshHtml("tab_userMenu2");
+			startSelect();
+		}
 	}
 }
 /*点击新增-弹框里的各个按钮*/
