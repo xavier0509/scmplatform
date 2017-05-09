@@ -710,7 +710,6 @@ router.post('/login', function (req, res) {
             if (result[0] == null) {
                 res.json({"code": 0, "msg": "failure", "reason": "userQuery result[0] == null"});
             } else {
-                req.session.username = userName;
                 req.session.regenerate(function (err) {
                     if (err) {
                         res.json({"code": 0, "msg": "failure", "reason": "regenerate error"});
@@ -770,21 +769,15 @@ router.post('/sendmail', function (req, res) {
 });
 
 
+router.get('/home', function (req, res) {
+	//res.render('index', { title: 'Express' });
+	res.redirect('../v2/scmplatform/login.html');
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.post('/logout', function (req, res) {
+	console.log("---------->logout");
+	res.json({"code": 1, "msg": "success", "reason": ""});
+});
 
 
 

@@ -59,7 +59,7 @@ app.use(session({
     store: new MongoStore({
         url: 'mongodb://172.20.132.225/session',
     }),
-    cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+    cookie: {maxAge: 1000 * 60 * 60},//one hour
     resave: true,
     saveUninitialized: true,
 }));

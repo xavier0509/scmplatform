@@ -17,9 +17,6 @@ function printErrorInfo(errCode, errMsg) {
     return str;
 }
 
-router.post('/test', function (req, res) {
-     
-});
 
 router.get('/', function (req, res) {
     "use strict";
