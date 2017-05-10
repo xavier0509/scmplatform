@@ -72,6 +72,8 @@ function forsession() {
 
 function sessionresult() {
 	if(this.readyState == 4) {
+		fromEmail = parent.loginEmail;
+		console.log("邮箱："+fromEmail);
 		if(this.status == 200) {
 			var data = JSON.parse(this.responseText);
 			console.log(data);
@@ -81,8 +83,6 @@ function sessionresult() {
 					adminFlag = 1; //非管理员标志位                
 					// console.log(loginusername);
 					//隐藏左边管理员的部分
-					fromEmail = parent.loginEmail;
-					console.log("邮箱："+fromEmail);
 					document.getElementById("wait-change").style.display = "block";
 				} else if(data.data.data.adminFlag == "0") {
 					adminFlag = 0;
@@ -772,7 +772,7 @@ function productAddresult() {
 	    maildata = "新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
 	    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
 	    console.log("maildata:"+maildata);
-	    // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);
+	    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);
 	}
 }
 
@@ -1570,6 +1570,7 @@ function productEditresult() {
 			    }
 			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
+			    console.log("fromEmail:"+fromEmail);
 			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 
 

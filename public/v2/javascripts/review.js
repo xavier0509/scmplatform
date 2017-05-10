@@ -176,12 +176,28 @@ function recoverResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshReviewHtml();
+                if (level == "1") {
+                    freshReviewHtml();
+                }
+                else{
+                    var maildata = "用户："+loginusername+"<br/>恢复删除机芯："+rechip+",机型："+remodel+"的配置文档";
+                    maildata += "<br/>该文档将重新出现在首页上，请确认<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', recovermailfun);
+                }
             };
 
         }
     }
 
+}
+
+function recovermailfun(){
+    if (this.readyState == 4) {
+        if (this.status == 200) 
+        {
+            freshReviewHtml();
+        }
+    }
 }
 
 
@@ -1182,7 +1198,7 @@ function passResult(){
 
         var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
         maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-        // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
+        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
     }
 }
 
@@ -1196,7 +1212,7 @@ function passnotResult(){
             if (data.msg=="success") {
                 var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档暂未通过审核，请前往《审核未通过文件》菜单进行修改并再次提交";
                 maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-                // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
             };
 
         }
