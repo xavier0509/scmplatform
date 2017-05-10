@@ -869,9 +869,9 @@ td{
 #txt11,#txt22,#txt33,#txt44{
     color: red;
 }
-#myPreviewBodyOne{
+#myPreviewBodyOne,#myPreviewBodyTwo{
 	width: 100%;
-	min-height: 400px;
+	min-height: 500px;
 }
 
 #changeDescDiv{
