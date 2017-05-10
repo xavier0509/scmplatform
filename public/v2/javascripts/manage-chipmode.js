@@ -30,7 +30,7 @@ function ChipModeHtmlInfo() {
 	oButtonCTAdd.onclick = function() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		document.getElementById("lableText").innerHTML = "输入新增机型名称：";
+		document.getElementById("lableText").innerHTML = "输入新增芯片型号名称：";
 		document.getElementById("chipOrMode").value = "";
 		toSaveButton("chipType", "-1", "", "");
 	}
