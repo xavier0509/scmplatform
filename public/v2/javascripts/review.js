@@ -886,11 +886,11 @@ function reviewresult(){
             hashObj = data.data[0];
             changeDesc = data.data[0].desc;
             console.log("修改:"+JSON.stringify(changeDesc));
-            $("#changeInfo1").text(changeDesc.changeConf);
+            $("#changeInfo4").text(changeDesc.changeConf);
             $("#changeInfo3").text(changeDesc.changeReduce);
             $("#changeInfo2").text(changeDesc.changeAdd);
-            $("#changeInfo4").text(changeDesc.changeDev);
-            if (changeDesc.changeConf.length != "0") {
+            $("#changeInfo1").text(changeDesc.changeDev);
+            if (changeDesc.changeDev.length != "0") {
                 document.getElementById('changeDeviceDesc').style.display="block";
             }
             if (changeDesc.changeReduce.length != "0") {
@@ -899,7 +899,7 @@ function reviewresult(){
             if (changeDesc.changeAdd.length != "0") {
                 document.getElementById('addModelDesc').style.display="block";
             }
-            if (changeDesc.changeDev.length != "0") {
+            if (changeDesc.changeConf.length != "0") {
                 document.getElementById('changeConfigDesc').style.display="block";
             }
             if (changeDesc.changeConf.length == "0" && changeDesc.changeReduce.length == "0" && changeDesc.changeAdd.length == "0"&& changeDesc.changeDev.length == "0") {
@@ -1182,7 +1182,7 @@ function passResult(){
 
         var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
         maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
+        // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
     }
 }
 
@@ -1196,7 +1196,7 @@ function passnotResult(){
             if (data.msg=="success") {
                 var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档暂未通过审核，请前往《审核未通过文件》菜单进行修改并再次提交";
                 maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
+                // sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
             };
 
         }

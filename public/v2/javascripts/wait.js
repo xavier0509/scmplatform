@@ -31,7 +31,7 @@ var infoflag = 0 //判断复制or新增的标志,1为新增，2为复制
 var fromEmail = null;
 
 function XandCancle(){
-	fromEmail = parent.loginEmail;
+
 	var oButtonAdd_X = document.getElementById("myEnsureX");
 	oButtonAdd_X.onclick = function() {
 		console.log("X按钮");
@@ -81,6 +81,8 @@ function sessionresult() {
 					adminFlag = 1; //非管理员标志位                
 					// console.log(loginusername);
 					//隐藏左边管理员的部分
+					fromEmail = parent.loginEmail;
+					console.log("邮箱："+fromEmail);
 					document.getElementById("wait-change").style.display = "block";
 				} else if(data.data.data.adminFlag == "0") {
 					adminFlag = 0;
@@ -2193,9 +2195,10 @@ function getMoreEditInfoTwo() {
 
 function getMoreEditInfo() {
 	//获取mkFile、configFile里的信息
-	var mEMkAddCzName = [];
-	var mEMkDelCzName = [];
-	var mEConfigEditCzName = []; //config文件用
+	mEMkAddCzName = [];
+	mEMkDelCzName = [];
+	mEConfigEditCzName = []; //config文件用
+	mEDevice = [];
 
 	var oMEMkTrDiv = $("#myMoreEditModalMkTableTbody").find("tr");
 	console.log("lxw " + oMEMkTrDiv.length);
@@ -2235,8 +2238,10 @@ function getMoreEditInfo() {
 	console.log("lxw " + mEConfigEditCzName);
 	console.log(JSON.stringify(ChipModelArray));
 	var infoArray = new Array();
+	mEDevice = [];
 	for (var i=0; i<ChipModelArray.length; i++) {
 		infoArray.push('"'+ChipModelArray[i].chip+"、"+ChipModelArray[i].model+'" ');
+		mEDevice.push(ChipModelArray[i].chip+"、"+ChipModelArray[i].model);
 	}
 	console.log(infoArray);
 	document.getElementById("AimAtChipAndModel").innerHTML = infoArray;
@@ -2244,7 +2249,6 @@ function getMoreEditInfo() {
 	document.getElementById("deletemodules").innerHTML = mEMkDelCzName;
 	document.getElementById("setmodules").innerHTML = mEConfigEditCzName;
     changeMoredesc = {"changeDev":"","changeAdd":mEMkAddCzName,"changeReduce":mEMkDelCzName,"changeConf":mEConfigEditCzName};
-
 	var showStatus = document.getElementsByClassName("moreEditDetail");
 	if(mEMkAddCzName.length == 0){
 		showStatus[2].style.display = "none";
@@ -2418,6 +2422,39 @@ function moreAddResult(){
 		if(moreDeleteData!=0){//做了删除操作
 			sendHTTPRequest("/fybv2_api/productUpdate", moreDeleteData, moreDelResult);
 		}else{
+
+			//发送邮件
+			sentMailForMoreFile();
+		}
+	}
+}
+
+function sentMailForMoreFile(){
+	console.log("12345:"+mEMkAddCzName);
+	console.log(mEDevice);
+	// for (var i = 0; i < mEDevice.length; i++) {
+	// 	Things[i]
+	// };
+	var maildata = "用户："+loginusername+"<br/>针对"+mEDevice+"做出了如下修改：";
+    
+    if(mEMkAddCzName.length != 0    ){
+        maildata += "<br/>新增模块："+ mEMkAddCzName;
+    }
+    if (mEMkDelCzName.length != 0) {
+        maildata += "<br/>删除模块："+ mEMkDelCzName;
+    }
+    if (mEConfigEditCzName.length != 0) {
+        maildata += "<br/>修改配置："+ mEConfigEditCzName;
+    }
+   	console.log("批量from："+fromEmail);
+    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+    console.log("maildata:"+maildata);
+    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', moreEditMailFun)			
+}
+
+function moreEditMailFun(){
+	if(this.readyState == 4) {
+		if(this.status == 200) {
 			freshHtml("tab_userMenu2");
 			startSelect();
 		}
@@ -2457,8 +2494,9 @@ function delupdatafunc(){
 				console.log("lxw " + "批量删除单项的状态修改-失败");
 			};
 		};
-		freshHtml("tab_userMenu2");
-		startSelect();
+		// freshHtml("tab_userMenu2");
+		// startSelect();
+		sentMailForMoreFile();
 	}
 }
 
@@ -2480,12 +2518,19 @@ function moreDeleteresult() {
 			};
 		}
 		console.log("array:"+JSON.stringify(ChipModelArray));
-		var changeTv = JSON.stringify(ChipModelArray[0]);
+
+		var changeTv = "";
+		for (var i = 0; i < ChipModelArray.length; i++) {
+			changeTv += ChipModelArray[i].chip;
+			changeTv += ",";
+			changeTv += ChipModelArray[i].model;
+			changeTv += "　";
+		};
 		console.log("aaaaaaaaaaa:"+changeTv);
 		var maildata = "用户："+loginusername+"<br>删除了"+changeTv+"的配置文档";
         maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
-        var nodeData = '{"data":{"desc":'+maildata+',"from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
-        console.log(nodeDate);
+        var nodeData = '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
+        console.log(nodeData);
         sendHTTPRequest("/fybv2_api/sendmail", nodeData, sendmailfun);  
 	}
 }
