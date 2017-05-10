@@ -2,28 +2,46 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 
 $(function() {
 	sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', SearchChipInfo);
+	ChipModeHtmlInfo();
 })
 
-function AfterChipModeHtmlInfo() {
+function ChipModeHtmlInfo() {
 	/*机芯机型板块-机芯-增加*/
-	var oButtonAdd = document.getElementById("manage-chipAdd");
-	oButtonAdd.onclick = function() {
+	var oButtonCAdd = document.getElementById("manage-chipAdd");
+	oButtonCAdd.onclick = function() {
 		console.log("点击增加机芯按钮");
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("lableText").innerHTML = "输入新增机芯名称：";
 		document.getElementById("chipOrMode").value = "";
-		toSaveButton("chip", "-1", "");
+		toSaveButton("chip", "-1", "","");
 	}
 	/*机芯机型板块-机型-增加*/
-	var oButtonAdd = document.getElementById("manage-modeAdd");
-	oButtonAdd.onclick = function() {
+	var oButtonMAdd = document.getElementById("manage-modeAdd");
+	oButtonMAdd.onclick = function() {
 		$('#myModeChipAddModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("lableText").innerHTML = "输入新增机型名称：";
 		document.getElementById("chipOrMode").value = "";
 		toSaveButton("model", "-1", "", "");
 	}
+	/*机芯机型板块-芯片型号-增加*/
+	var oButtonCTAdd = document.getElementById("manage-chipTypeAdd");
+	oButtonCTAdd.onclick = function() {
+		$('#myModeChipAddModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		document.getElementById("lableText").innerHTML = "输入新增机型名称：";
+		document.getElementById("chipOrMode").value = "";
+		toSaveButton("chipType", "-1", "", "");
+	}
+	/*机芯机型板块-机芯-增加-关闭*/
+	var chipOrModeClose = document.getElementById("inputChipOrModeClose");
+	chipOrModeClose.onclick = function() {
+		console.log("lxw " + "in inputChipOrModeClose");
+	}
+}
+
+function AfterChipModeHtmlInfo(){
 	/*机芯机型板块-机芯-修改*/
 	var oTableA = $("#chipManager-mkTable").find("a");
 	console.log(oTableA.length);
@@ -61,50 +79,78 @@ function AfterChipModeHtmlInfo() {
 			toSaveButton("model", this.index, thisIndexName, thisIndexId);
 		}
 	}
-	/*机芯机型板块-机芯-增加-关闭*/
-	var hipOrModeClose = document.getElementById("inputChipOrModeClose");
-	hipOrModeClose.onclick = function() {
-		console.log("lxw " + "in inputChipOrModeClose");
+	/*机芯机型板块-芯片型号-修改*/
+	var oTableC = $("#chipTypeManager-mkTable").find("a");
+	//console.log(oTableB.length);
+	for(var i = 0; i < oTableC.length; i++) {
+		oTableC[i].index = i;
+		oTableC[i].onclick = function() {
+			console.log("ok" + this.index); //点击的是第几个
+			var thisIndexName = oTableC[this.index].innerText;//通过englishName找到对应数据
+			var thisIndexId = oTableC[this.index].name;//通过id找到对应数据
+			var thisEnName = oTableC[this.index].title;
+			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
+			$(".modal-backdrop").addClass("new-backdrop");
+			scrollTopStyle("myModeChipAddModal");
+			
+			console.log(thisEnName);
+			document.getElementById("lableText").innerHTML = "将芯片型号 "+thisEnName+" 的修改为：";;
+			document.getElementById("chipOrMode").value = "";
+			toSaveButton("chipType", this.index, thisIndexName, thisIndexId);
+		}
 	}
-	/*机芯机型板块-机芯-增加-保存*/
-	function toSaveButton(name, index, oldname, idname) {
-		var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
-		ChipOrModeSubmit.onclick = function() {
-			console.log("点击了保存按钮" + name + "--" + index +"--"+ idname + "--" + oldname);
-			var currentChipOrModelName = document.getElementById("chipOrMode").value;
-			if (currentChipOrModelName == "") {
-				document.getElementById("chipMangInfo").innerHTML="该数据不可为空！";
-				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
-			}
-			else{
-				if(name == "chip") {
-					if(index == "-1") {
-						console.log("lxw " + "新增机芯的保存按钮" + currentChipOrModelName);
-						var creatChip = '{"data":{"name":"' + currentChipOrModelName + '"}}';
-						sendHTTPRequest("/fybv2_api/chipAdd", creatChip, CreatChipInfo);
-					} else {
-						console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
-						//var changeChip = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
-						var changeChip = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
-						console.log("lxw " + changeChip);
-						sendHTTPRequest("/fybv2_api/chipUpdate", changeChip, ChangeChipInfo);
-					}
-				} else if(name == "model") {
-					if(index == "-1") {
-						console.log("lxw " + "新增机型的保存按钮" + currentChipOrModelName);
-						var creatModel = '{"data":{"name":"' + currentChipOrModelName + '"}}';
-						console.log("lxw " + creatModel);
-						sendHTTPRequest("/fybv2_api/modelAdd", creatModel, CreatModelInfo);
-					} else {
-						console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
-						//var changeModel = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
-						var changeModel = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
-						console.log("lxw " + changeModel);
-						sendHTTPRequest("/fybv2_api/modelUpdate", changeModel, ChangeModelInfo);
-					}
+}
+
+/*机芯机型板块-增加-保存*/
+function toSaveButton(name, index, oldname, idname) {
+	var ChipOrModeSubmit = document.getElementById("inputChipOrModeSubmit");
+	ChipOrModeSubmit.onclick = function() {
+		console.log("点击了保存按钮" + name + "--" + index +"--"+ idname + "--" + oldname);
+		var currentChipOrModelName = document.getElementById("chipOrMode").value;
+		if (currentChipOrModelName == "") {
+			document.getElementById("chipMangInfo").innerHTML="该数据不可为空！";
+			setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
+		}
+		else{
+			if(name == "chip") {
+				if(index == "-1") {
+					console.log("lxw " + "新增机芯的保存按钮" + currentChipOrModelName);
+					var creatChip = '{"data":{"name":"' + currentChipOrModelName + '"}}';
+					sendHTTPRequest("/fybv2_api/chipAdd", creatChip, CreatChipInfo);
+				} else {
+					console.log("lxw " + "修改机芯的保存按钮" + currentChipOrModelName);
+					//var changeChip = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
+					var changeChip = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
+					console.log("lxw " + changeChip);
+					sendHTTPRequest("/fybv2_api/chipUpdate", changeChip, ChangeChipInfo);
+				}
+			} else if(name == "model") {
+				if(index == "-1") {
+					console.log("lxw " + "新增机型的保存按钮" + currentChipOrModelName);
+					var creatModel = '{"data":{"name":"' + currentChipOrModelName + '"}}';
+					console.log("lxw " + creatModel);
+					sendHTTPRequest("/fybv2_api/modelAdd", creatModel, CreatModelInfo);
+				} else {
+					console.log("lxw " + "修改机型的保存按钮" + currentChipOrModelName);
+					//var changeModel = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
+					var changeModel = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
+					console.log("lxw " + changeModel);
+					sendHTTPRequest("/fybv2_api/modelUpdate", changeModel, ChangeModelInfo);
+				}
+			} else if(name = "chipType"){
+				if(index == "-1") {
+					console.log("lxw " + "新增芯片型号的保存按钮" + currentChipOrModelName);
+					var creatModel = '{"data":{"name":"' + currentChipOrModelName + '"}}';
+					console.log("lxw " + creatModel);
+					sendHTTPRequest("/fybv2_api/chipModelAdd", creatModel, CreatModelInfo);
+				} else {
+					console.log("lxw " + "修改芯片型号的保存按钮" + currentChipOrModelName);
+					//var changeModel = '{"data":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}';
+					var changeModel = '{"data":{"_id":"'+ idname +'","update":{"old":"' + oldname + '","newer":"' + currentChipOrModelName + '"}}}';
+					console.log("lxw " + changeModel);
+					sendHTTPRequest("/fybv2_api/chipModelUpdate", changeModel, ChangeModelInfo);
 				}
 			}
-			
 		}
 	}
 }
@@ -177,7 +223,7 @@ function SearchModeInfo() {
 				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"' title='"+data.data[i].name+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
-		AfterChipModeHtmlInfo();
+		sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipModeInfo);
 	}
 
 }
@@ -219,6 +265,68 @@ function ChangeModelInfo() {
 		};
 	}
 }
+
+/*芯片型号-查询数据*/
+function SearchChipModeInfo() {
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
+			console.log("lxw " + data.data.length);
+			var _rowMode = document.getElementById("chipTypeManageAdd-td");
+			for(var i = 0; i < data.data.length; i++) {
+				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"' title='"+data.data[i].name+"'>" + data.data[i].name + "</a></div>";
+			}
+		};
+		AfterChipModeHtmlInfo();
+	}
+}
+/*机型-新增数据*/
+function CreatChipModelInfo() {
+	console.log("lxw " + "CreatChipModelInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				$("#myConfigAddChangeModal").modal('hide');
+				freshHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+				document.getElementById("chipMangInfo").innerHTML = "该芯片型号已存在";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
+			};
+		};
+	}
+}
+/*机型-修改数据*/
+function ChangeChipModelInfo() {
+	console.log("lxw " + "ChangeChipModelInfo");
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			if(data.msg == "success") {
+				console.log("lxw " + "修改成功");
+				$("#myConfigAddChangeModal").modal('hide');
+				freshHtml();
+			} else if(data.msg == "failure") {
+				console.log("lxw " + "修改失败");
+				document.getElementById("chipMangInfo").innerHTML = "修改失败！该芯片型号或已存在。";
+				setTimeout("document.getElementById('chipMangInfo').innerHTML='　'",3000);
+			};
+		};
+	}
+}
+
+
+
+
+
+
+
 /*刷新页面*/
 function freshHtml() {
 	var htmlObject = parent.document.getElementById("tab_userMenu4");
@@ -233,4 +341,12 @@ function freshHtml() {
 	    var htmlObject1 = parent.document.getElementById("tab_userMenu2");
 	    htmlObject1.firstChild.src = "review.html";
 	}    
+}
+
+function scrollTopStyle(name){
+	var div = document.getElementById(name);
+	var body = parent.document.getElementById("homePage");
+	console.log(div.scrollTop+"---"+body.scrollTop);
+	document.getElementById(name).scrollTop = 0;
+	parent.document.getElementById("homePage").scrollTop = 0;
 }

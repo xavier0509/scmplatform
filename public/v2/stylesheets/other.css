@@ -92,6 +92,25 @@ td{
 	overflow: hidden;
 }
 
+#chipTypeManager-mkTable{
+	display: inline-block;
+}
+#chipTypeManager-mkTable tbody,#chipTypeManager-mkTable tbody tr{
+	display: block;
+}
+#chipTypeManager-mkTable a{
+	text-decoration: underline;
+}
+#chipTypeManager-mkTable tr td{
+	border: 0;
+	display: block;
+}
+#chipTypeManager-mkTable tr td div{
+	margin-bottom: 5px;
+	font-size: 20px;
+	overflow: hidden;
+}
+
 #module-mkTable a{
 	text-decoration: underline;
 	white-space: nowrap;
