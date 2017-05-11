@@ -709,26 +709,16 @@ router.post('/login', function (req, res) {
             if (result[0] == null) {
                 res.json({"code": -1, "msg": "failure", "reason": "该用户或密码错误"});
             } else {
-            	if(req.session.username){
-            		if(req.session.logined){
-            			res.json({"code": -2, "msg": "failure", "data": "该用户已登录"});
-            		}else{
-            			req.session.logined = true;
-            			var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
-            			res.json({"code": 1, "msg": "success", "data": data});
-            		}
-            	}else{
-                    req.session.regenerate(function (err) {
-                    	if (err) {
-                        	res.json({"code": 0, "msg": "failure", "reason": "regenerate error"});
-                    	}else{
-                        	req.session.logined = true;
-                        	req.session.username = userName;
-                        	req.session.adminFlag = result[0].level;
-                        	res.json({"code": 1, "msg": "success", "data": result});
-                    	}
-                	});       		
-            	}
+                req.session.regenerate(function (err) {
+                if (err) {
+                    res.json({"code": 0, "msg": "failure", "reason": "regenerate error"});
+                    }else{
+                        req.session.logined = true;
+                        req.session.username = userName;
+                        req.session.adminFlag = result[0].level;
+                        res.json({"code": 1, "msg": "success", "data": "regenerate success"});
+                    }
+                });       		
             }
         });
     }
@@ -749,13 +739,12 @@ router.post('/logout', function (req, res) {
     }
 });
 
-
 router.post('/session', function (req, res) {
     if (req.session.username) {
     	var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag, "logined":req.session.logined}};
     	res.json({"code": 1, "msg": "success", "data": data})      
     } else {
-        res.json({"code": -1, "msg": "failure", "reason": "该用户session已失效"});
+        res.json({"code": 0, "msg": "failure", "reason": "该用户session已失效"});
     }
 });
 
