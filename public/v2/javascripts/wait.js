@@ -143,23 +143,31 @@ function searchResource() {
 			var msg = data.msg;
 			if(msg == "success") {
 				var mySearchData = data.data;
-				//console.log(mySearchData);
+				console.log(mySearchData.length);
+				var thisJ = 0;
 				for(var j = 0; j < mySearchData.length; j++) {
 					if(mySearchData[j].gerritState == "0") {
-						_row = document.getElementById("wait-tablebody").insertRow(0);
+						thisJ ++;
+					}
+				}
+				for(var j = 0; j < mySearchData.length; j++) {
+					if(mySearchData[j].gerritState == "0") {
+						var _row = document.getElementById("wait-tablebody").insertRow(0);
 						var _cell0 = _row.insertCell(0);
 						_cell0.innerHTML = "<input type='checkbox' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "' class='checkboxstatus' value=''>";
 						var _cell1 = _row.insertCell(1);
+						_cell1.innerHTML = thisJ--;
+						var _cell1 = _row.insertCell(2);
 						_cell1.innerHTML = mySearchData[j].chip;
-						var _cell2 = _row.insertCell(2);
+						var _cell2 = _row.insertCell(3);
 						_cell2.innerHTML = mySearchData[j].model;
-						var _cell3 = _row.insertCell(3);
+						var _cell3 = _row.insertCell(4);
 						_cell3.innerHTML = mySearchData[j].androidVersion;
-						var _cell4 = _row.insertCell(4);
+						var _cell4 = _row.insertCell(5);
 						_cell4.innerHTML = mySearchData[j].chipModel;
-						var _cell5 = _row.insertCell(5);
+						var _cell5 = _row.insertCell(6);
 						_cell5.innerHTML = mySearchData[j].memorySize;
-						var _cell6 = _row.insertCell(6);
+						var _cell6 = _row.insertCell(7);
 						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>预览</button></div>";
 						// var _cell10 = _row.insertCell(7);
       //               	_cell10.innerHTML = mySearchData[j].operateTime;
