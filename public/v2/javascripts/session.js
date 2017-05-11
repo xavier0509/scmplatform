@@ -70,3 +70,22 @@ function userInfoResult(){
         }
     }
 }
+
+function logout(){
+    sendHTTPRequest("/fybv2_api/logout", '', logoutResult);    
+}
+
+function logoutResult(){
+    if (this.readyState == 4) {
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg == "success") {
+                console.log("byebye");
+            }
+            else{
+                
+            }            
+        }
+    }
+}
