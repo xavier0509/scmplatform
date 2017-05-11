@@ -40,13 +40,18 @@ function loginresult() {
         {
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
-                sendHTTPRequest("/fybv2_api/session", '{"data":""}', sessionresult);
-                // document.location.href="index.html" ;  
+                
+                document.location.href="index.html" ;  
             }
             else if (data.msg == "failure") {
-	    	var loginmsg = document.getElementById("logintxt");
-            loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确用户名或密码！";
-            // setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
+                if (data.code == "-1") {
+        	    	var loginmsg = document.getElementById("logintxt");
+                    loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确用户名或密码！";
+                    // setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
+                }else if(data.code == "-2"){
+                    var loginmsg = document.getElementById("logintxt");
+                    loginmsg.innerHTML = loginmsg.innerHTML+"该用户已经登录！";
+                }
 	    };
 
             // loginId = data.data;
@@ -60,19 +65,4 @@ function loginresult() {
 function keyLogin(){
     if (event.keyCode==13)   //回车键的键值为13
      document.getElementById("loginbutton").click();  //调用登录按钮的登录事件
-}
-
-function sessionresult(){
-    if (this.readyState == 4) {
-        if (this.status == 200) //TODO
-        {
-            var data = JSON.parse(this.responseText);
-            if (data.msg == "success"){
-                document.location.href="index.html" ;  
-            }else{
-                var loginmsg = document.getElementById("logintxt");
-                loginmsg.innerHTML = loginmsg.innerHTML+"当前用户已经登录！";
-            }
-        }
-    }
 }

@@ -31,21 +31,25 @@ function sessionresult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
-                loginusername = data.data.data.author;
-                document.getElementById("indexUserName").innerHTML = loginusername;
-                if (data.data.data.adminFlag == "1") {
-                    adminFlag = 1;   //非管理员标志位                
-                    // console.log(loginusername);
-                    for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
-                        document.getElementById("_hidden"+i).style.display="block";
-                    };
-                }
-                else if (data.data.data.adminFlag == "0") {
-                    adminFlag = 0;
+                if (data.data.data.logined == true) {
+                    loginusername = data.data.data.author;
+                    document.getElementById("indexUserName").innerHTML = loginusername;
+                    if (data.data.data.adminFlag == "1") {
+                        adminFlag = 1;   //非管理员标志位                
+                        // console.log(loginusername);
+                        for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
+                            document.getElementById("_hidden"+i).style.display="block";
+                        };
+                    }
+                    else if (data.data.data.adminFlag == "0") {
+                        adminFlag = 0;
+                    }
+                }else{
+                    document.location.href="login.html" ; 
                 }
 
             }
-            else if (data.code == "0"){
+            else {
                 console.log("未登录");
                 document.location.href="login.html" ;  
             }            
@@ -73,19 +77,16 @@ function userInfoResult(){
 
 function logout(){
     sendHTTPRequest("/fybv2_api/logout", '', logoutResult);    
-}
 
+}
 function logoutResult(){
     if (this.readyState == 4) {
         if (this.status == 200) //TODO
         {
-            var data = JSON.parse(this.responseText);
-            if (data.msg == "success") {
-                console.log("byebye");
-            }
-            else{
-                
-            }            
+          alert("ok")
+        }
+        else{
+            // alert("qqok")
         }
     }
 }
