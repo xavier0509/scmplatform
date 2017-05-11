@@ -726,9 +726,8 @@ router.post('/login', function (req, res) {
 });
 
 router.post('/logout', function (req, res) {
-	var session = req.session;
-    if (req.body.data) {
-        var userName = req.body.data.username;
+    if (req.session.username) {
+        var userName = req.session.username;
         var whereStr = {"userName":userName};
         User.userQuery(whereStr, function (err, result) {
             if (result[0] == null) {
