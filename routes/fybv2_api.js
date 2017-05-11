@@ -744,10 +744,11 @@ router.post('/logout', function (req, res) {
 router.post('/session', function (req, res) {
     if (req.session.username) {
     	if(req.session.logined){
-    		var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
-        	res.json({"code": 1, "msg": "success", "data": data})
+			res.json({"code": 0, "msg": "failure", "reason": "该用户已登录"});
     	}else{
-    		res.json({"code": 0, "msg": "failure", "reason": "该用户已登录"});
+    		req.session.logined = true;
+    		var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
+        	res.json({"code": 1, "msg": "success", "data": data})   		
     	}     
     } else {
         res.json({"code": 0, "msg": "failure", "reason": "该用户不存在"});
