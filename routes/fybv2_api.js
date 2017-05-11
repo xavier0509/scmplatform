@@ -701,25 +701,34 @@ router.post('/generateFile', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
-    var session = req.session;
     if (req.body.data) {
         var userName = req.body.data.username;
         var password = req.body.data.password;
         var whereStr = {"userName":userName,"password":password};
         User.userQuery(whereStr, function (err, result) {
             if (result[0] == null) {
-                res.json({"code": 0, "msg": "failure", "reason": "userQuery result[0] == null"});
+                res.json({"code": -1, "msg": "failure", "reason": "该用户或密码错误"});
             } else {
-                req.session.regenerate(function (err) {
-                    if (err) {
-                        res.json({"code": 0, "msg": "failure", "reason": "regenerate error"});
-                    }else{
-                        req.session.logined = true;
-                        req.session.username = userName;
-                        req.session.adminFlag = result[0].level;
-                        res.json({"code": 1, "msg": "success", "data": result});
-                    }
-                });
+            	if(req.session.username){
+            		if(req.session.logined){
+            			res.json({"code": -2, "msg": "failure", "data": "该用户已登录"});
+            		}else{
+            			req.session.logined = true;
+            			var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
+            			res.json({"code": 1, "msg": "success", "data": data});
+            		}
+            	}else{
+                    req.session.regenerate(function (err) {
+                    	if (err) {
+                        	res.json({"code": 0, "msg": "failure", "reason": "regenerate error"});
+                    	}else{
+                        	req.session.logined = true;
+                        	req.session.username = userName;
+                        	req.session.adminFlag = result[0].level;
+                        	res.json({"code": 1, "msg": "success", "data": result});
+                    	}
+                	});       		
+            	}
             }
         });
     }
@@ -743,15 +752,10 @@ router.post('/logout', function (req, res) {
 
 router.post('/session', function (req, res) {
     if (req.session.username) {
-    	if(req.session.logined){
-			res.json({"code": 0, "msg": "failure", "reason": "该用户已登录"});
-    	}else{
-    		req.session.logined = true;
-    		var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
-        	res.json({"code": 1, "msg": "success", "data": data})   		
-    	}     
+    	var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag, "logined":req.session.logined}};
+    	res.json({"code": 1, "msg": "success", "data": data})      
     } else {
-        res.json({"code": 0, "msg": "failure", "reason": "该用户不存在"});
+        res.json({"code": -1, "msg": "failure", "reason": "该用户session已失效"});
     }
 });
 
