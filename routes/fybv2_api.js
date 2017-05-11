@@ -725,12 +725,33 @@ router.post('/login', function (req, res) {
     }
 });
 
+router.post('/logout', function (req, res) {
+	var session = req.session;
+    if (req.body.data) {
+        var userName = req.body.data.username;
+        var whereStr = {"userName":userName};
+        User.userQuery(whereStr, function (err, result) {
+            if (result[0] == null) {
+                res.json({"code": 0, "msg": "failure", "reason": "logout userQuery result[0] == null"});
+            } else {
+            	req.session.logined = false;
+            	res.json({"code": 1, "msg": "success", "data": "logout ok"});
+            }
+        });
+    }
+});
+
+
 router.post('/session', function (req, res) {
     if (req.session.username) {
-        var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
-        res.json({"code": 1, "msg": "success", "data": data})
+    	if(req.session.logined){
+    		var data = {data: {"author": req.session.username, "adminFlag": req.session.adminFlag}};
+        	res.json({"code": 1, "msg": "success", "data": data})
+    	}else{
+    		res.json({"code": 0, "msg": "failure", "reason": "该用户已登录"});
+    	}     
     } else {
-        res.json({"code": 0, "msg": "failure", "reason": "7"});
+        res.json({"code": 0, "msg": "failure", "reason": "该用户不存在"});
     }
 });
 
@@ -773,13 +794,6 @@ router.get('/home', function (req, res) {
 	//res.render('index', { title: 'Express' });
 	res.redirect('../v2/scmplatform/login.html');
 });
-
-router.post('/logout', function (req, res) {
-	console.log("---------->logout");
-	res.json({"code": 1, "msg": "success", "reason": ""});
-});
-
-
 
 
 
