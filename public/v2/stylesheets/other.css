@@ -875,6 +875,7 @@ td{
     margin: 0 auto;
     text-align: center;
     width: 1100px;
+    display: none;
 }
 #myPreviewBody{
 	min-height: 400px;

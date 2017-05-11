@@ -67,31 +67,13 @@ function XandCancle(){
 }
 
 function forsession() {
-	sendHTTPRequest("/api/session", '{"data":""}', sessionresult);
+	fromEmail = parent.loginEmail;
+	loginusername = parent.author;
+	adminFlag = parent.adminFlag;
+	startSelect(); //打开就获取数据
 }
 
-function sessionresult() {
-	if(this.readyState == 4) {
-		fromEmail = parent.loginEmail;
-		console.log("邮箱："+fromEmail);
-		if(this.status == 200) {
-			var data = JSON.parse(this.responseText);
-			console.log(data);
-			if(data.msg == "success") {
-				loginusername = data.data.data.author;
-				if(data.data.data.adminFlag == "1") {
-					adminFlag = 1; //非管理员标志位                
-					// console.log(loginusername);
-					//隐藏左边管理员的部分
-					document.getElementById("wait-change").style.display = "block";
-				} else if(data.data.data.adminFlag == "0") {
-					adminFlag = 0;
-				}
-			};
-		}
-		startSelect(); //打开就获取数据
-	}
-}
+
 
 function startSelect() {
 	console.log("xjr start select");

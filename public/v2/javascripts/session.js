@@ -11,13 +11,7 @@ var loginEmail = null;   //当前用户的邮箱地址
 
 //访问session接口
 function forsession(){
-    Addtabs.add({
-            id: 'userMenu1',
-            title: '配置文件管理',
-            // content: 'content',
-            url: 'wait.html',
-            ajax: false
-        });
+    
     sendHTTPRequest("/fybv2_api/session", '{"data":""}', sessionresult);
 }
 
@@ -31,23 +25,26 @@ function sessionresult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg == "success") {
-                if (data.data.data.logined == true) {
-                    loginusername = data.data.data.author;
-                    document.getElementById("indexUserName").innerHTML = loginusername;
-                    if (data.data.data.adminFlag == "1") {
-                        adminFlag = 1;   //非管理员标志位                
-                        // console.log(loginusername);
-                        for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
-                            document.getElementById("_hidden"+i).style.display="block";
-                        };
-                    }
-                    else if (data.data.data.adminFlag == "0") {
-                        adminFlag = 0;
-                    }
-                }else{
-                    document.location.href="login.html" ; 
+                document.getElementById('homePage').style.display="block";
+                Addtabs.add({
+                    id: 'userMenu1',
+                    title: '配置文件管理',
+                    // content: 'content',
+                    url: 'wait.html',
+                    ajax: false
+                });
+                loginusername = data.data.data.author;
+                document.getElementById("indexUserName").innerHTML = loginusername;
+                if (data.data.data.adminFlag == "1") {
+                    adminFlag = 1;   //非管理员标志位                
+                    // console.log(loginusername);
+                    for (var i = 1; i < 5; i++) {//隐藏左边管理员的部分
+                        document.getElementById("_hidden"+i).style.display="block";
+                    };
                 }
-
+                else if (data.data.data.adminFlag == "0") {
+                    adminFlag = 0;
+                }
             }
             else {
                 console.log("未登录");
@@ -71,22 +68,6 @@ function userInfoResult(){
             else{
                 
             }            
-        }
-    }
-}
-
-function logout(){
-    sendHTTPRequest("/fybv2_api/logout", '', logoutResult);    
-
-}
-function logoutResult(){
-    if (this.readyState == 4) {
-        if (this.status == 200) //TODO
-        {
-          alert("ok")
-        }
-        else{
-            // alert("qqok")
         }
     }
 }

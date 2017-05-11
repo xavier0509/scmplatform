@@ -48,9 +48,9 @@ function loginresult() {
         	    	var loginmsg = document.getElementById("logintxt");
                     loginmsg.innerHTML = loginmsg.innerHTML+"请输入正确用户名或密码！";
                     // setTimeout("document.getElementById('logintxt').innerHTML='　'",2000);
-                }else if(data.code == "-2"){
+                }else{
                     var loginmsg = document.getElementById("logintxt");
-                    loginmsg.innerHTML = loginmsg.innerHTML+"该用户已经登录！";
+                    loginmsg.innerHTML = loginmsg.innerHTML+"登录失败";
                 }
 	    };
 
