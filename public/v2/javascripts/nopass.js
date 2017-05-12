@@ -9,10 +9,14 @@ var changeReduce = [];
 var changeConf = [];
 var changeDev = [];
 var olrplayerid = null;
+var fromEmail = null;
+var toEmail = null;
 //加载自执行，传递参数请求列表
 $(function () {
     level = parent.adminFlag;
     loginusername = parent.loginusername;
+    fromEmail = parent.loginEmail;
+    console.log("邮箱是："+loginusername);
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
@@ -88,10 +92,10 @@ function reviewlist(){
                     if (level == 1) {
                         if (userName == loginusername) {
                             if (operateType == 2) {
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
                             }
                             else{
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2)'>编辑</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2,0)'>编辑</button></div>";
                             }
                         }
                         else{
@@ -130,8 +134,8 @@ function reviewlist(){
                     var _cell9 = _row.insertCell(9);
                     _cell9.innerHTML = operateType;
                     _cell9.style.display="none";
-                    var _cell10 = _row.insertCell(10);
-                    _cell10.innerHTML = "fanyanbo@skyworth.com";
+                    _cell10 = _row.insertCell(10);
+                    // _cell10.innerHTML = "fanyanbo@skyworth.com";
                     _cell10.style.display="none";
                     
                 };
@@ -151,8 +155,8 @@ var remodel = null;
 function recover(obj){
     //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
-    rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    rechip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    remodel = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
     document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
     document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
@@ -175,12 +179,28 @@ function recoverResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshReviewHtml();
+                if (level == "1") {
+                    freshReviewHtml();
+                }
+                else{
+                    var maildata = "用户："+loginusername+"<br/>恢复删除机芯："+rechip+",机型："+remodel+"的配置文档";
+                    maildata += "<br/>该文档将重新出现在首页上，请确认<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"","subject":"软件配置平台通知-自动发送，请勿回复"}}', recovermailfun);
+                }
             };
 
         }
     }
 
+}
+
+function recovermailfun(){
+    if (this.readyState == 4) {
+        if (this.status == 200) 
+        {
+            freshReviewHtml();
+        }
+    }
 }
 
 
@@ -210,14 +230,14 @@ function buttonStyle(name1, name2){
 function review(obj,adminControl,deleteFlag){
     adminControl = adminControl;
     var deleteFlag = deleteFlag;
-    if (adminControl == "1") {
-        if (deleteFlag == "0") {
+    if (adminControl ) {
+        if (deleteFlag != "2") {
             document.getElementById("changeDescDiv").style.display="block";
         }else{
             document.getElementById("changeDescDiv").style.display="none";
         }       
     }else{
-        document.getElementById("changeDescDiv").style.display="none";
+        // document.getElementById("changeDescDiv").style.display="none";
     }
     $("#newFileDesc").hide();
     $("#changeDeviceDesc").hide();
@@ -225,30 +245,47 @@ function review(obj,adminControl,deleteFlag){
     $("#removeModelDesc").hide();
     $("#changeConfigDesc").hide();
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
-    emaiTo = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
+    emaiTo = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
     console.log("email:"+emaiTo);
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "审核";
     if(document.getElementById("closeReview1")){
         document.getElementById("closeReview1").setAttribute("id","closeReview");
     }
-    //查询模块信息接口
-    sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);    
-    
+    sendHTTPRequest("/fybv2_api/userQuery", '{"data":{"condition":{"userName":"' + fileUsername + '"}}}', userInfoResult);          
 }
 
-function edit(obj,adminControl){
+function userInfoResult(){
+    if (this.readyState == 4) {
+        if (this.status == 200) //TODO
+        {
+            var data = JSON.parse(this.responseText);
+            if (data.msg == "success") {
+                // console.log(data);
+                toEmail = data.data[0].email;
+                console.log("邮箱地址："+toEmail);
+            }
+            else{
+                
+            }            
+        }
+        //查询模块信息接口
+        sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":{}}', moduleResult);  
+    }
+}
+
+function edit(obj,adminControl,deleteFlag){
     adminControl = adminControl;
     document.getElementById("changeDescDiv").style.display="none";
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "编辑";
     if(document.getElementById("closeReview")){
@@ -296,7 +333,7 @@ function moduleResult(){
 			_rowCheckPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 			
 			for(var i = 0; i < data.data.length; i++) {
-				console.log("lxw " + data.data[i].category);
+				// console.log("lxw " + data.data[i].category);
 				if(data.data[i].category == "App") {
 					kk = i;
 					_rowCheckPageApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -478,12 +515,12 @@ function configResult(){
 				if(data.data[i].category == "base") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
-					console.log("base:" + kk);
+					// console.log("base:" + kk);
 					if(data.data[i].type == "string") {
 						_rowCheckPageConfigBase.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text'  id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value +"'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						// console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -497,7 +534,7 @@ function configResult(){
 				} else if(data.data[i].category == "serverip") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("serverip:" + kk);
+					// console.log("serverip:" + kk);
 					if(data.data[i].type == "string") {
 						_rowCheckPageConfigServerip.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
@@ -554,12 +591,12 @@ function configResult(){
 				} else if(data.data[i].category == "localmedia") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("localmedia:" + kk);
+					// console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
 						_rowCheckPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						// console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -573,12 +610,12 @@ function configResult(){
 				} else if(data.data[i].category == "other") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
+					// console.log("other:" + kk);
 					if(data.data[i].type == "string") {
 						_rowCheckPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
+						// console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -849,14 +886,15 @@ function reviewresult(){
         if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
+            console.log(data);
             hashObj = data.data[0];
             changeDesc = data.data[0].desc;
             console.log("修改:"+JSON.stringify(changeDesc));
-            $("#changeInfo1").text(changeDesc.changeConf);
+            $("#changeInfo4").text(changeDesc.changeConf);
             $("#changeInfo3").text(changeDesc.changeReduce);
             $("#changeInfo2").text(changeDesc.changeAdd);
-            $("#changeInfo4").text(changeDesc.changeDev);
-            if (changeDesc.changeConf.length != "0") {
+            $("#changeInfo1").text(changeDesc.changeDev);
+            if (changeDesc.changeDev.length != "0") {
                 document.getElementById('changeDeviceDesc').style.display="block";
             }
             if (changeDesc.changeReduce.length != "0") {
@@ -865,7 +903,7 @@ function reviewresult(){
             if (changeDesc.changeAdd.length != "0") {
                 document.getElementById('addModelDesc').style.display="block";
             }
-            if (changeDesc.changeDev.length != "0") {
+            if (changeDesc.changeConf.length != "0") {
                 document.getElementById('changeConfigDesc').style.display="block";
             }
             if (changeDesc.changeConf.length == "0" && changeDesc.changeReduce.length == "0" && changeDesc.changeAdd.length == "0"&& changeDesc.changeDev.length == "0") {
@@ -883,11 +921,11 @@ function reviewresult(){
             var mkkey, mkcounter = 0;
 			for(mkkey in data.data[0].mkFile) {
 				mkcounter++;
-				console.log("lxw counter = " + mkcounter + "--" + mkkey);
+				// console.log("lxw counter = " + mkcounter + "--" + mkkey);
 				document.getElementById(mkkey).removeAttribute("checked");
 				//document.getElementById(mkkey).setAttribute('checked', '');
 				document.getElementById(mkkey).checked = true;
-				console.log(document.getElementById(mkkey).checked);
+				// console.log(document.getElementById(mkkey).checked);
 			};
 			//生成config文件
 			//console.log("lxw " + JSON.stringify(data.data[0].configFile));
@@ -1128,8 +1166,20 @@ function deleteResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("删除成功！！！！");
-                freshReviewHtml();
+                var maildata = "您提交删除的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
+                maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', Deletesendmailfun);  
             };
+        }
+    }
+}
+
+function Deletesendmailfun(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            freshReviewHtml();
         }
     }
 }
@@ -1145,9 +1195,10 @@ function passResult(){
                 console.log("审核成功！！！！");
             };
         }
-        console.log("生成文件的机芯机型是："+chip+";"+model);
-    sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
-    freshReviewHtml();
+
+        var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
+        maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
     }
 }
 
@@ -1159,7 +1210,9 @@ function passnotResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                freshReviewHtml();
+                var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档暂未通过审核，请前往《审核未通过文件》菜单进行修改并再次提交";
+                maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
             };
 
         }
@@ -1185,6 +1238,30 @@ function creatFile(){
     }
 }
 
+function sendmailfun(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            console.log("发送成功！");
+        }
+        console.log("生成文件的机芯机型是："+chip+";"+model);
+        sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
+        freshReviewHtml();
+    }
+}
+
+
+function sendmailfun2(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            console.log("审核未过，发送邮件")
+            freshReviewHtml();
+        }
+    }
+}
 
 //点击编辑提交的函数
 function reviewEdit(){
@@ -1205,7 +1282,9 @@ function reviewEdit(){
 	};
 	// 获取DeviceInfo里的信息
 	var oEchip = document.getElementById("newCheckChip").value;
+    oEchip123 = oEchip;
 	var oEmodel = document.getElementById("newCheckModel").value;
+    oEmodel123 = oEmodel;
 	var oEandroidVersion = document.getElementById("newCheckAndroidVersion").value;
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
@@ -1312,13 +1391,43 @@ function reviewEditResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                document.getElementById("mydialog").style.display = "none";
-                freshReviewHtml();
+
+                //发送邮件
+                var maildata = "用户："+loginusername+"<br/>针对机芯："+oEchip123+",机型："+oEmodel123+"做出了如下修改：";
+                if (changeDev.length != 0) {
+                 maildata += "<br/>修改设备信息："+ changeDev;
+                 // console.log("maildata:"+changeDev);
+                }
+                if(changeAdd.length != 0    ){
+                    maildata += "<br/>新增模块："+ changeAdd;
+                }
+                if (changeReduce.length != 0) {
+                    maildata += "<br/>删除模块："+ changeReduce;
+                }
+                if (changeConf.length != 0) {
+                    maildata += "<br/>修改配置："+ changeConf;
+                }
+                
+                maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                console.log("maildata:"+maildata);
+                console.log("fromEmail:"+fromEmail);
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun)
+
+                
             }
             else{
                 freshReviewHtml();
             }
 
+        }
+    }
+}
+
+function DTwicemailfun(){
+    if (this.readyState == 4) {
+        if (this.status == 200){
+            document.getElementById("mydialog").style.display = "none";
+            freshReviewHtml();
         }
     }
 }

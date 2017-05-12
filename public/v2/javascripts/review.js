@@ -16,7 +16,7 @@ $(function () {
     level = parent.adminFlag;
     loginusername = parent.loginusername;
     fromEmail = parent.loginEmail;
-    console.log("邮箱是："+fromEmail);
+    console.log("邮箱是："+loginusername);
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
         sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
@@ -92,7 +92,7 @@ function reviewlist(){
                     if (level == 1) {
                         if (userName == loginusername) {
                             if (operateType == 2) {
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
                             }
                             else{
                                 _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2,0)'>编辑</button></div>";
@@ -155,8 +155,8 @@ var remodel = null;
 function recover(obj){
     //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
-    rechip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    rechip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    remodel = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
     document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
     document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
@@ -185,7 +185,7 @@ function recoverResult(){
                 else{
                     var maildata = "用户："+loginusername+"<br/>恢复删除机芯："+rechip+",机型："+remodel+"的配置文档";
                     maildata += "<br/>该文档将重新出现在首页上，请确认<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
-                    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', recovermailfun);
+                    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"","subject":"软件配置平台通知-自动发送，请勿回复"}}', recovermailfun);
                 }
             };
 
@@ -245,11 +245,11 @@ function review(obj,adminControl,deleteFlag){
     $("#removeModelDesc").hide();
     $("#changeConfigDesc").hide();
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
-    emaiTo = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
+    emaiTo = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
     console.log("email:"+emaiTo);
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "审核";
@@ -298,10 +298,10 @@ function edit(obj,adminControl,deleteFlag){
     // $("#changeConfigDesc").hide();
     document.getElementById("changeDescDiv").style.display="none";
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[0].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[7].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "编辑";
     if(document.getElementById("closeReview")){
@@ -902,6 +902,7 @@ function reviewresult(){
         if (this.status == 200) 
         {
             var data = JSON.parse(this.responseText);
+            console.log(data);
             hashObj = data.data[0];
             changeDesc = data.data[0].desc;
             console.log("修改:"+JSON.stringify(changeDesc));
@@ -1181,8 +1182,20 @@ function deleteResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 // console.log("删除成功！！！！");
-                freshReviewHtml();
+                var maildata = "您提交删除的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
+                maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', Deletesendmailfun);  
             };
+        }
+    }
+}
+
+function Deletesendmailfun(){
+    if (this.readyState == 4) {
+        // console.log("this.responseText = " + this.responseText);
+        if (this.status == 200) 
+        {
+            freshReviewHtml();
         }
     }
 }
@@ -1201,7 +1214,7 @@ function passResult(){
 
         var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
         maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
+        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
     }
 }
 
@@ -1215,7 +1228,7 @@ function passnotResult(){
             if (data.msg=="success") {
                 var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档暂未通过审核，请前往《审核未通过文件》菜单进行修改并再次提交";
                 maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
             };
 
         }
@@ -1285,7 +1298,9 @@ function reviewEdit(){
 	};
 	// 获取DeviceInfo里的信息
 	var oEchip = document.getElementById("newCheckChip").value;
+    oEchip123 = oEchip;
 	var oEmodel = document.getElementById("newCheckModel").value;
+    oEmodel123 = oEmodel;
 	var oEandroidVersion = document.getElementById("newCheckAndroidVersion").value;
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
@@ -1392,13 +1407,43 @@ function reviewEditResult(){
         {
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
-                document.getElementById("mydialog").style.display = "none";
-                freshReviewHtml();
+
+                //发送邮件
+                var maildata = "用户："+loginusername+"<br/>针对机芯："+oEchip123+",机型："+oEmodel123+"做出了如下修改：";
+                if (changeDev.length != 0) {
+                 maildata += "<br/>修改设备信息："+ changeDev;
+                 // console.log("maildata:"+changeDev);
+                }
+                if(changeAdd.length != 0    ){
+                    maildata += "<br/>新增模块："+ changeAdd;
+                }
+                if (changeReduce.length != 0) {
+                    maildata += "<br/>删除模块："+ changeReduce;
+                }
+                if (changeConf.length != 0) {
+                    maildata += "<br/>修改配置："+ changeConf;
+                }
+                
+                maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                console.log("maildata:"+maildata);
+                console.log("fromEmail:"+fromEmail);
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun)
+
+                
             }
             else{
                 freshReviewHtml();
             }
 
+        }
+    }
+}
+
+function DTwicemailfun(){
+    if (this.readyState == 4) {
+        if (this.status == 200){
+            document.getElementById("mydialog").style.display = "none";
+            freshReviewHtml();
         }
     }
 }

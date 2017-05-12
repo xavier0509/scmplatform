@@ -68,7 +68,7 @@ function XandCancle(){
 
 function forsession() {
 	fromEmail = parent.loginEmail;
-	loginusername = parent.author;
+	loginusername = parent.loginusername;
 	adminFlag = parent.adminFlag;
 	startSelect(); //打开就获取数据
 }
@@ -740,8 +740,19 @@ function productAddresult() {
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
 				closeparentpage("1");
-				freshHtml("tab_userMenu2");
-				startSelect();
+				console.log(infoflag);
+				if (infoflag == "2" ) {
+					chippp = document.getElementById('newCopyChip').value;
+					modellll = document.getElementById('newCopyModel').value;
+				}
+				else{
+					chippp = document.getElementById('newAddChip').value;
+					modellll = document.getElementById('newAddModel').value;
+				}
+				maildata = "用户："+loginusername+"<br/>新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
+			    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+			    console.log("maildata:"+maildata);
+			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myAddModalErrorInfo").style.display = "block";
@@ -749,20 +760,9 @@ function productAddresult() {
 				document.getElementById("myCopyModalErrorInfo").style.display = "block";
 				document.getElementById("myCopyModalErrorInfo").innerHTML = "该产品已存在";
 				setTimeout("spanhidden()", 3000);
-			};
-		};
-		if (infoflag == 2 ) {
-			var chippp = document.getElementById('newCopyChip').value;
-			var modellll = document.getElementById('newCopyModel').value;
+			}
 		}
-		else{
-			var chippp = document.getElementById('newAddChip').value;
-			var modellll = document.getElementById('newAddModel').value;
-		}
-	    maildata = "新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
-	    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-	    console.log("maildata:"+maildata);
-	    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"fanyanbo@skyworth.com"}}', mailfun);
+		
 	}
 }
 
@@ -1587,6 +1587,7 @@ function mailfun(){
 		    changeConf.splice(0,changeConf.length);
 		    changeDev.splice(0,changeDev.length);
 		    changeReduce.splice(0,changeReduce.length);
+			freshHtml("tab_userMenu2");
 			startSelect();
 		}
 		else{
@@ -2481,13 +2482,14 @@ function delupdatafunc(){
 			var data = JSON.parse(this.responseText);
 			if(data.msg == "success") {
 				console.log("lxw " + "批量删除单项的状态修改-成功");
+				sentMailForMoreFile();
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "批量删除单项的状态修改-失败");
 			};
 		};
 		// freshHtml("tab_userMenu2");
 		// startSelect();
-		sentMailForMoreFile();
+		
 	}
 }
 
