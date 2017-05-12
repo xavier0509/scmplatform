@@ -70,9 +70,24 @@ function forsession() {
 	fromEmail = parent.loginEmail;
 	loginusername = parent.author;
 	adminFlag = parent.adminFlag;
-	startSelect(); //打开就获取数据
+	sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
 }
-
+function SearchChipTypeInfo(){
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
+			console.log("lxw " + data.data.length);
+			var _rowChipMode = document.getElementById("chipid");
+			_rowChipMode.innerHTML = "<option value=''></option>";
+			for(var i = 0; i < data.data.length; i++) {
+				_rowChipMode.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>"
+			}
+		};
+		startSelect(); //打开就获取数据
+	}
+}
 
 
 function startSelect() {
