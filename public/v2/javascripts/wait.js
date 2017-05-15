@@ -87,7 +87,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"operateTime":1 }}}';
+		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"model":-1 }}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -106,7 +106,7 @@ function startSelect() {
 		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"operateTime":1 }}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"model":-1  }}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
@@ -140,9 +140,9 @@ function searchResource() {
 						var _cell1 = _row.insertCell(1);
 						_cell1.innerHTML = thisJ--;
 						var _cell1 = _row.insertCell(2);
-						_cell1.innerHTML = mySearchData[j].chip;
+						_cell1.innerHTML = mySearchData[j].model;
 						var _cell2 = _row.insertCell(3);
-						_cell2.innerHTML = mySearchData[j].model;
+						_cell2.innerHTML = mySearchData[j].chip;
 						var _cell3 = _row.insertCell(4);
 						_cell3.innerHTML = mySearchData[j].androidVersion;
 						var _cell4 = _row.insertCell(5);

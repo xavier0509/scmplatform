@@ -19,10 +19,10 @@ $(function () {
     console.log("邮箱是："+loginusername);
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"model":-1 }}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"operateTime":1 }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"model":-1 }}}', reviewlist);
     }     
     XandCancle();
 })
@@ -75,9 +75,9 @@ function reviewlist(){
                     var _cell1 = _row.insertCell(0);
                     _cell1.innerHTML = thisN--;
                     var _cell1 = _row.insertCell(1);
-                    _cell1.innerHTML = datalength[i].chip;
+                    _cell1.innerHTML = datalength[i].model;
                     var _cell2 = _row.insertCell(2);
-                    _cell2.innerHTML = datalength[i].model;
+                    _cell2.innerHTML = datalength[i].chip;
                     var _cell3 = _row.insertCell(3);
                     _cell3.innerHTML = datalength[i].androidVersion;
                     var _cell4 = _row.insertCell(4);
@@ -116,17 +116,17 @@ function reviewlist(){
                     var _cell7 = _row.insertCell(7); 
                     _cell7.style.color="red";
                     if (operateType == 1) {  
-                        if(gerritState == 1){_cell7.innerHTML = "新增(待审核)";}
-                        else{_cell7.innerHTML = "新增(审核未通过)";}                
+                        if(gerritState == 1){_cell7.innerHTML = "新增";}
+                        else{_cell7.innerHTML = "新增";}                
                        
                     }
                     else if (operateType == 2) {
-                        if(gerritState == 1){_cell7.innerHTML = "删除(待审核)";}
-                        else{_cell7.innerHTML = "删除(审核未通过)";}
+                        if(gerritState == 1){_cell7.innerHTML = "删除";}
+                        else{_cell7.innerHTML = "删除";}
                     }
                     else if (operateType == 3) {
-                        if(gerritState == 1){_cell7.innerHTML = "修改(待审核)";}
-                        else{_cell7.innerHTML = "修改(审核未通过)";}
+                        if(gerritState == 1){_cell7.innerHTML = "修改";}
+                        else{_cell7.innerHTML = "修改";}
                     }
                     var _cell8 = _row.insertCell(8);
                     _cell8.innerHTML = userName;
@@ -155,8 +155,8 @@ var remodel = null;
 function recover(obj){
     //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
-    rechip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    remodel = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    rechip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
     document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
     document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
@@ -245,8 +245,8 @@ function review(obj,adminControl,deleteFlag){
     $("#removeModelDesc").hide();
     $("#changeConfigDesc").hide();
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     emaiTo = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
@@ -282,8 +282,8 @@ function edit(obj,adminControl,deleteFlag){
     adminControl = adminControl;
     document.getElementById("changeDescDiv").style.display="none";
     console.log("操作按钮："+adminControl);
-    chip = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    model = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    chip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
+    model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
     operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
     fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
     buttonStyle("mkbutton","configbutton");
