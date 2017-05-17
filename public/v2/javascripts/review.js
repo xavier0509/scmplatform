@@ -115,7 +115,6 @@ function reviewlist(){
 
                         }
                     }
-                    
                     var _cell9 = _row.insertCell(8); 
                     _cell9.style.color="red";
                     if (operateType == 1) {  
@@ -140,16 +139,28 @@ function reviewlist(){
                     _cell12 = _row.insertCell(11);
                     // _cell10.innerHTML = "fanyanbo@skyworth.com";
                     _cell12.style.display="none";
-                    
                 };
-            }
-            else{
-                //查询为空
-
             }
             
         }
+        sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
     }
+}
+
+function SearchChipTypeInfo(){
+	if(this.readyState == 4) {
+		if(this.status == 200)
+		{
+			var data = JSON.parse(this.responseText);
+			console.log("lxw " + data);
+			console.log("lxw " + data.data.length);
+			var _rowChipModeCheck = document.getElementById("newCheckChipMode");
+			_rowChipModeCheck.innerHTML = "<option value=''></option>";
+			for(var i = 0; i < data.data.length; i++) {
+				_rowChipModeCheck.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>";
+			}
+		};
+	}
 }
 
 //恢复提示框
