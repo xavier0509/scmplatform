@@ -46,7 +46,8 @@
 					<div class="modal-header myheader">
 						<button type="button" class="close1 btn btn-default"  aria-label="Close" id="closeReview"><span aria-hidden="true">关闭</span></button> 
 						<button type="button" class="close1 btn btn-default" id="button_submit"><span aria-hidden="true" id="reButton"></span></button>  
-                    	<button type="button" class="close1 btn btn-default "  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过   </span></button>
+                    	<button type="button" class="close1 btn btn-default "  id="noPassReview" style="display:none"><span aria-hidden="true">审核不通过</span></button>
+                    	<button type="button" class="close1 btn btn-default "  id="ReviewCat" style="display:none"><span aria-hidden="true">预览</span></button>
                     	
 						<h3 class="modal-title" id="myAddModalLabel">审核</h3>
 						<h4 id="myAddModalErrorInfo" class="myModalErrorInfo"></h4>
@@ -233,6 +234,40 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary" id="myCK_Ensure">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!--点击预览弹出复制的modal-->
+		<div class="modal fade" id="myPreviewModal" style="padding-right: 0;" tabindex="-1" role="dialog" aria-labelledby="myPreviewModalLabel">
+			<div class="modalwidth" role="document">
+				<div class="modal-content">
+					<div class="modal-header myheader">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="myCopyModalClose"><span aria-hidden="true">关闭</span></button>
+						<h4 class="modal-title" id="myPreviewModalLabel">预览</h4>
+					</div>
+				
+					<div class="modal-body mybody">
+						<ul class="nav nav-pills nav-justified" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#myPreviewBodyOne" aria-controls="myPreviewBodyOne" role="tab" data-toggle="tab">Config文件</a>
+							</li>
+							<li role="presentation">
+								<a href="#myPreviewBodyTwo" aria-controls="myPreviewBodyTwo" role="tab" data-toggle="tab">MK文件</a>
+							</li>
+							
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<textarea wrap="off" style="overflow:scroll;" role="tabpanel" class="tab-pane active" id="myPreviewBodyOne" disabled></textarea>
+							<textarea wrap="off" style="overflow:scroll;" role="tabpanel" class="tab-pane" id="myPreviewBodyTwo" disabled></textarea>
+						</div>
+					</div>
+					<!-- <textarea wrap="off" style="overflow:scroll;" class="modal-body mybody" id="myPreviewBody" disabled>
+						
+					</textarea> -->
+					<div class="modal-footer myfooter">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="myCopyModalSubmitTwo">确定</button>
 					</div>
 				</div>
 			</div>

@@ -958,11 +958,12 @@ function reviewresult(){
             if(level == 1 ){
                 // if (adminControl == 1) {
                     document.getElementById("noPassReview").style.display="block";
-                                   
+                    document.getElementById("ReviewCat").style.display="block";              
                     var inputcounts = document.getElementsByTagName("input");
                     var selectcounts = document.getElementsByTagName("select");
                     // console.log("inputcounts="+inputcounts.length);
                     document.getElementById("noPassReview").onclick = noPassIssue;
+                    document.getElementById('ReviewCat').onclick = reviewCat;
                     for (var i = 0; i < inputcounts.length; i++) {
                         inputcounts[i].setAttribute('disabled','');
                         inputcounts[i].style.backgroundColor = "#ebebe4";
@@ -990,6 +991,7 @@ function reviewresult(){
             }
             else {
                 document.getElementById("noPassReview").style.display="none";
+                document.getElementById("ReviewCat").style.display="none"; 
                 document.getElementById("reviewSubmit").innerHTML = "提交";
                 document.getElementById("reButton").innerHTML = "提交";
                 // document.getElementById("btn_submit").onclick = reviewEdit;
@@ -1002,6 +1004,33 @@ function reviewresult(){
                 document.getElementById("newCheckModel").style.backgroundColor = "#ebebe4";
             }
         }
+    }
+}
+
+function reviewCat(){
+    $("#myPreviewModalLabel").text("预览");
+    $('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+    $(".modal-backdrop").addClass("new-backdrop");
+    sendHTTPRequest("/fybv2_api/preview", '{"data":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"}}', getPreviewInfo);
+
+}
+
+function getPreviewInfo(){
+    if(this.readyState == 4) {
+        //console.log("this.responseText = " + this.responseText);
+        if(this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+            if(data.msg == "success") {
+                console.log("lxw " + "预览-成功"+ data.configRes);
+                document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
+                document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
+            } else if(data.msg == "failure") {
+                console.log("lxw " + "预览-失败");
+                document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
+                document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
+            };
+        };
     }
 }
 
@@ -1079,6 +1108,7 @@ function reviewresult2(){
             console.log("操作："+ adminControl);
             
             document.getElementById("noPassReview").style.display="none";
+            document.getElementById("ReviewCat").style.display="none"; 
             document.getElementById("reviewSubmit").innerHTML = "提交";
             document.getElementById("reButton").innerHTML = "提交";
             // document.getElementById("btn_submit").onclick = reviewEdit;
