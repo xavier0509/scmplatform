@@ -43,15 +43,15 @@ td{
 	padding-left: 8px;
 	padding-right: 0px;
 }
-
+table{font-size: ;}
 #mytable td{text-align: center; vertical-align: middle;}
 #tableTR th{text-align: center; vertical-align: middle;}
 #reviewmytable td{text-align: left;
     vertical-align: middle;
-    padding-left: 2%;}
-#reviewtableTR th{text-align: center; vertical-align: middle;}
-#contenttable td{text-align: center; vertical-align: middle;}
-#contenttable th{text-align: center; vertical-align: middle;}
+    padding-left: 2%;font-size: 13px;}
+#reviewtableTR th{text-align: center; vertical-align: middle;font-size: 14px;}
+#contenttable td{text-align: center; vertical-align: middle;font-size: 13px;}
+#contenttable th{text-align: center; vertical-align: middle;font-size: 14px;}
 
 #chipManager-mkTable{
 	display: inline-block;

@@ -20,20 +20,24 @@
 				<!--机芯、机型、Device-->
 				<div class="row text-right">
 					<div class="col-xs-4 form-group">
-						<label for="chip" class="control-label col-xs-4">机芯</label>
-						<input type="text" value="" id="chip" class="col-xs-7 inputstyle">
+						<label for="chip" class="control-label col-xs-5">机芯</label>
+						<input type="text" value="" id="chip" class="col-xs-6 inputstyle">
 					</div>
 					<div class="col-xs-4 form-group">
-						<label for="model" class="control-label col-xs-4">机型</label>
-						<input type="text" value="" id="model" class="col-xs-7 inputstyle">
+						<label for="model" class="control-label col-xs-5">机型</label>
+						<input type="text" value="" id="model" class="col-xs-6 inputstyle">
+					</div>
+					<div class="col-xs-4 form-group">
+						<label for="model" class="control-label col-xs-5">targetProduct</label>
+						<input type="text" value="" id="targetProduct" class="col-xs-6 inputstyle">
 					</div>
 				</div>
 				<div class="row text-right">
 					<div class="col-xs-4 form-group">
-						<label for="androidVersion" class="control-label col-xs-4">安卓版本</label>
-						<select id="androidVersion" class="col-xs-7 inputstyle"> 
+						<label for="androidVersion" class="control-label col-xs-5">安卓版本</label>
+						<select id="androidVersion" class="col-xs-6 inputstyle"> 
 							<option value=""></option>
-							<option value="Android4.2">Android4.2</option>
+							<option value="Android4.2">Android4.2</option> 
 							<option value="Android4.3">Android4.3</option>
 							<option value="Android4.4">Android4.4</option>
 							<option value="Android5.0">Android5.0</option>
@@ -42,8 +46,8 @@
 						</select>
 					</div>
 					<div class="col-xs-4 form-group">
-						<label for="chipid" class="control-label col-xs-4">芯片型号</label>
-						<select id="chipid" class="col-xs-7 inputstyle">
+						<label for="chipid" class="control-label col-xs-5">芯片型号</label>
+						<select id="chipid" class="col-xs-6 inputstyle">
 							<option value=""></option>
 							<option value="MST6A828">MST6A828</option>
 							<option value="MST6A938">MST6A938</option>
@@ -52,8 +56,8 @@
 						</select>
 					</div>
 					<div class="col-xs-4 form-group">
-						<label for="memory" class="control-label col-xs-4">内存</label>
-						<select id="memory" class="col-xs-7 inputstyle"> 
+						<label for="memory" class="control-label col-xs-5">内存</label>
+						<select id="memory" class="col-xs-6 inputstyle"> 
 							<option value=""></option>
 							<option value="256MB">256MB</option>
 							<option value="512MB">512MB</option>
@@ -96,7 +100,8 @@
 									<th>选择</th>
 									<th>序号</th>
 									<th>机型</th>
-									<th>机芯</th>									
+									<th>机芯</th>	
+									<th>TARGET_PRODUCT</th>									
 									<th>Android版本</th>
 									<th>芯片型号</th>
 									<th>内存</th>

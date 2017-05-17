@@ -11,6 +11,7 @@ var loginusername = null;
 //编辑、修改、删除时 机芯机型参数的传递
 var TwiceTransferChip = null;
 var TwiceTransferModel = null;
+var TwiceTransferTargetProduct =null;
 //定义一个数组，插入机芯机型对
 var ChipModelArray = new Array();
 //定义两个数组，插入所有的机芯和机型
@@ -82,12 +83,13 @@ function startSelect() {
 	var oMemory = document.getElementById('memory').value;
 	var oAndroid = document.getElementById('androidVersion').value;
 	var oChipid = document.getElementById('chipid').value;
+	var oTargetProduct = document.getElementById('targetProduct').value;
 	var node = null;
 	var myNeedObj = {};
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"model":-1 }}}';
+		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1 }}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -104,9 +106,12 @@ function startSelect() {
 		if(oMemory != "") {
 			myNeedObj['memorySize'] = oMemory;
 		}
+		if(oTargetProduct != "") {
+			myNeedObj['targetProduct'] = oTargetProduct;
+		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1},"sort":{"model":-1  }}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1  }}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
@@ -136,7 +141,7 @@ function searchResource() {
 					if(mySearchData[j].gerritState == "0") {
 						var _row = document.getElementById("wait-tablebody").insertRow(0);
 						var _cell0 = _row.insertCell(0);
-						_cell0.innerHTML = "<input type='checkbox' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "' class='checkboxstatus' value=''>";
+						_cell0.innerHTML = "<input type='checkbox' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model +"'targetProduct='"+ mySearchData[j].targetProduct + "' class='checkboxstatus' value=''>";
 						var _cell1 = _row.insertCell(1);
 						_cell1.innerHTML = thisJ--;
 						var _cell1 = _row.insertCell(2);
@@ -144,13 +149,15 @@ function searchResource() {
 						var _cell2 = _row.insertCell(3);
 						_cell2.innerHTML = mySearchData[j].chip;
 						var _cell3 = _row.insertCell(4);
+						_cell3.innerHTML = mySearchData[j].targetProduct;
+						var _cell3 = _row.insertCell(5);
 						_cell3.innerHTML = mySearchData[j].androidVersion;
-						var _cell4 = _row.insertCell(5);
+						var _cell4 = _row.insertCell(6);
 						_cell4.innerHTML = mySearchData[j].chipModel;
-						var _cell5 = _row.insertCell(6);
+						var _cell5 = _row.insertCell(7);
 						_cell5.innerHTML = mySearchData[j].memorySize;
-						var _cell6 = _row.insertCell(7);
-						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'>预览</button></div>";
+						var _cell6 = _row.insertCell(8);
+						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct  + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct  + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct    + "'>预览</button></div>";
 						// var _cell10 = _row.insertCell(7);
       //               	_cell10.innerHTML = mySearchData[j].operateTime;
 					}
@@ -207,11 +214,13 @@ function AfterWaitHtmlinfo() {
 				myCheckedNumber++;
 				var chipModelObj = {
 					chip: "",
-					model: ""
+					model: "",
+					targetProduct: ""
 				};
 				console.log("lxw " + $('.checkboxstatus')[i].getAttribute("chip") + "--" + $('.checkboxstatus')[i].getAttribute("model"));
 				chipModelObj.chip = $('.checkboxstatus')[i].getAttribute("chip");
 				chipModelObj.model = $('.checkboxstatus')[i].getAttribute("model");
+				chipModelObj.targetProduct = $('.checkboxstatus')[i].getAttribute("targetProduct");
 				ChipModelArray.push(chipModelObj);
 			}
 		}
@@ -251,6 +260,7 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonEdit[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
+			TwiceTransferTargetProduct = oClassButtonEdit[thisIndex].getAttribute("targetProduct");
 			console.log("lxw " + TwiceTransferChip + "--" + TwiceTransferModel);
 			$("#myEditModalLabel").text("单项编辑");
 			$('#myEditModal').modal();
@@ -271,6 +281,7 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonDelete[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonDelete[thisIndex].getAttribute("model");
+			TwiceTransferTargetProduct = oClassButtonDelete[thisIndex].getAttribute("targetProduct");
 			//校验机芯机型
 			sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfoInDel);
 		}
@@ -286,6 +297,7 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonCopy[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonCopy[thisIndex].getAttribute("model");
+			TwiceTransferTargetProduct = oClassButtonCopy[thisIndex].getAttribute("targetProduct");
 			$("#myCopyModalLabel").text("单项复制");
 			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
@@ -303,10 +315,11 @@ function AfterWaitHtmlinfo() {
 			var thisIndex = this.index;
 			TwiceTransferChip = oClassButtonPreview[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonPreview[thisIndex].getAttribute("model");
+			TwiceTransferTargetProduct = oClassButtonPreview[thisIndex].getAttribute("targetProduct");
 			$("#myPreviewModalLabel").text("预览");
 			$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 			$(".modal-backdrop").addClass("new-backdrop");
-			sendHTTPRequest("/fybv2_api/preview", '{"data":{"chip":"'+TwiceTransferChip+'","model":"'+TwiceTransferModel+'"}}', getPreviewInfo);
+			sendHTTPRequest("/fybv2_api/preview", '{"data":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"'+TwiceTransferChip+'","model":"'+TwiceTransferModel+'"}}', getPreviewInfo);
 		}
 	}
 }
@@ -599,7 +612,7 @@ function checkModelInfoInDel() {
 			document.getElementById("myDeleteModalErrorInfo").style.display = "block";
 			document.getElementById("myDeleteModalErrorInfo").innerHTML = "机型：" + TwiceTransferModel + "不存在";
 		}
-		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel);
+		singleDeletePageButtons(TwiceTransferChip, TwiceTransferModel,TwiceTransferTargetProduct);
 	}
 }
 
@@ -1158,7 +1171,7 @@ function getEditInfoInfTwo() {
                 }
             }
         };
-        var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+        var node = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
         sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
     }
 }
@@ -1509,7 +1522,7 @@ function submitStatus(hashObj,dataObj,oEnode){
 	    console.log("new:"+a);
 	    console.log(typeof(JSON.stringify(a)))
 	    document.getElementById("myEditEnsureModalEnsure").onclick = function(){
-	    	var oEnode = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":'+JSON.stringify(a)+'}}}';
+	    	var oEnode = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":'+JSON.stringify(a)+'}}}';
 	    	console.log("详细修改："+oEnode);
 	    	reviewEdit(oEnode);
 	    }
@@ -1807,7 +1820,7 @@ function getCopyInfoInfTwo() {
 				}
 			}
 		};
-		var node = '{"data":{"condition":{"chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
+		var node = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
 		sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
 }
@@ -2622,13 +2635,13 @@ function editPageButtonsOnclick() {
 	changListen("videoEChange");
 }
 /*点击单项删除-弹框里的各个按钮*/
-function singleDeletePageButtons(olchip, olmode) {
+function singleDeletePageButtons(olchip, olmode, oltargetProduct) {
 	var oButtonEditEnsure = document.getElementById("myDeleteModalEnsure");
 	oButtonEditEnsure.onclick = function() {
 		console.log("单项删除页-确认按钮");
 		console.log("lxw " + olchip + "--" + olmode);
 		var operateTime = new Date().getTime();
-		var ooEnode = '{"data":{"condition":{"chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2","operateTime":"'+operateTime+'"}}}';
+		var ooEnode = '{"data":{"condition":{"targetProduct":"'+oltargetProduct+'","chip":"' + olchip + '","model":"' + olmode + '"},"action":"set","update":{"userName":"' + loginusername + '","gerritState":"1","operateType":"2","operateTime":"'+operateTime+'"}}}';
 		console.log("lxw " + ooEnode);
 		sendHTTPRequest("/fybv2_api/productUpdate", ooEnode, productEditresult);
 	}
@@ -2806,6 +2819,7 @@ function waitReset() {
 	document.getElementById("androidVersion").value = "";
 	document.getElementById("chipid").value = "";
 	document.getElementById("memory").value = "";
+	document.getElementById("targetProduct").value = "";
 	startSelect();
 }
 

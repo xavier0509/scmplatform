@@ -19,15 +19,16 @@ $(function () {
     console.log("邮箱是："+loginusername);
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"model":-1 }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1 }}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1},"sort":{"model":-1 }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","gerritState":"2"},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1 }}}', reviewlist);
     }     
     XandCancle();
 })
 var chip = null;
 var model = null;
+var targetProduct = null;
 var operate = null;
 var fileUsername = null;
 var adminControl = null;
@@ -74,17 +75,19 @@ function reviewlist(){
                     _row = document.getElementById("reviewmytable").insertRow(0);
                     var _cell1 = _row.insertCell(0);
                     _cell1.innerHTML = thisN--;
-                    var _cell1 = _row.insertCell(1);
-                    _cell1.innerHTML = datalength[i].model;
-                    var _cell2 = _row.insertCell(2);
-                    _cell2.innerHTML = datalength[i].chip;
-                    var _cell3 = _row.insertCell(3);
-                    _cell3.innerHTML = datalength[i].androidVersion;
-                    var _cell4 = _row.insertCell(4);
-                    _cell4.innerHTML = datalength[i].chipModel;
-                    var _cell5 = _row.insertCell(5);
-                    _cell5.innerHTML = datalength[i].memorySize;
-                    var _cell6 = _row.insertCell(6); 
+                     var _cell2 = _row.insertCell(1);
+                    _cell2.innerHTML = datalength[i].model;
+                    var _cell3 = _row.insertCell(2);
+                    _cell3.innerHTML = datalength[i].chip;
+                    var _cell4 = _row.insertCell(3);
+                    _cell4.innerHTML = datalength[i].targetProduct;
+                    var _cell5 = _row.insertCell(4);
+                    _cell5.innerHTML = datalength[i].androidVersion;
+                    var _cell6 = _row.insertCell(5);
+                    _cell6.innerHTML = datalength[i].chipModel;
+                    var _cell7 = _row.insertCell(6);
+                    _cell7.innerHTML = datalength[i].memorySize;
+                    var _cell8 = _row.insertCell(7); 
                     var operateType = datalength[i].operateType;   
                     var gerritState = datalength[i].gerritState; 
                     var operateTime = datalength[i].operateTime; 
@@ -92,51 +95,51 @@ function reviewlist(){
                     if (level == 1) {
                         if (userName == loginusername) {
                             if (operateType == 2) {
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                                _cell8.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,2)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
                             }
                             else{
-                                _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2,0)'>编辑</button></div>";
+                                _cell8.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,0)'>审核</button></div><div class='btn-group'><button type='button' class='btn btn-default' onclick='edit(this,2,0)'>编辑</button></div>";
                             }
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,"+operateType+")'>审核</button></div>";
+                            _cell8.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,1,"+operateType+")'>审核</button></div>";
                         }
                     }
                     else{
                         if (operateType == 2) {
-                             _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
+                             _cell8.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='recover(this)'>恢复</button></div>";
 
                         }
                         else{
-                            _cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>编辑</button></div>";
+                            _cell8.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default' onclick='review(this,2,0)'>编辑</button></div>";
 
                         }
                     }
                     
-                    var _cell7 = _row.insertCell(7); 
-                    _cell7.style.color="red";
+                    var _cell9 = _row.insertCell(8); 
+                    _cell9.style.color="red";
                     if (operateType == 1) {  
-                        if(gerritState == 1){_cell7.innerHTML = "新增";}
-                        else{_cell7.innerHTML = "新增";}                
+                        if(gerritState == 1){_cell9.innerHTML = "新增";}
+                        else{_cell9.innerHTML = "新增";}                
                        
                     }
                     else if (operateType == 2) {
-                        if(gerritState == 1){_cell7.innerHTML = "删除";}
-                        else{_cell7.innerHTML = "删除";}
+                        if(gerritState == 1){_cell9.innerHTML = "删除";}
+                        else{_cell9.innerHTML = "删除";}
                     }
                     else if (operateType == 3) {
-                        if(gerritState == 1){_cell7.innerHTML = "修改";}
-                        else{_cell7.innerHTML = "修改";}
+                        if(gerritState == 1){_cell9.innerHTML = "修改";}
+                        else{_cell9.innerHTML = "修改";}
                     }
-                    var _cell8 = _row.insertCell(8);
-                    _cell8.innerHTML = userName;
+                    var _cell10 = _row.insertCell(9);
+                    _cell10.innerHTML = userName;
                     // _cell8.style.display="none";
-                    var _cell9 = _row.insertCell(9);
-                    _cell9.innerHTML = operateType;
-                    _cell9.style.display="none";
-                    _cell10 = _row.insertCell(10);
+                    var _cell11 = _row.insertCell(10);
+                    _cell11.innerHTML = operateType;
+                    _cell11.style.display="none";
+                    _cell12 = _row.insertCell(11);
                     // _cell10.innerHTML = "fanyanbo@skyworth.com";
-                    _cell10.style.display="none";
+                    _cell12.style.display="none";
                     
                 };
             }
@@ -152,11 +155,13 @@ function reviewlist(){
 //恢复提示框
 var rechip = null;
 var remodel = null;
+var retargetProduct =null;
 function recover(obj){
     //$('#mydialog').modal();
     document.getElementById("mydialog").style.display = "block";
     rechip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
     remodel = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
+    retargetProduct = obj.parentNode.parentNode.parentNode.children[3].innerHTML;
     document.getElementById("myDeleteModalLabel").innerHTML = "恢复操作";
     document.getElementById("dialogword").innerHTML = "确认撤销删除吗？";   
     document.getElementById("myDeleteModalEnsure").onclick = recoverSure;
@@ -165,7 +170,7 @@ function recover(obj){
 //点击恢复按钮执行函数-----将待审核状态置0
 function recoverSure(obj){   
     var operateTime = new Date().getTime(); 
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+ operateTime +'"}}}',recoverResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"targetProduct":"'+retargetProduct+'","chip":"'+rechip+'","model":"'+remodel+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+ operateTime +'"}}}',recoverResult);
 
 }
 
@@ -247,9 +252,10 @@ function review(obj,adminControl,deleteFlag){
     console.log("操作按钮："+adminControl);
     chip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
-    emaiTo = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
+    targetProduct = obj.parentNode.parentNode.parentNode.children[3].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
+    emaiTo = obj.parentNode.parentNode.parentNode.children[11].innerHTML;
     console.log("email:"+emaiTo);
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "审核";
@@ -284,8 +290,9 @@ function edit(obj,adminControl,deleteFlag){
     console.log("操作按钮："+adminControl);
     chip = obj.parentNode.parentNode.parentNode.children[2].innerHTML;
     model = obj.parentNode.parentNode.parentNode.children[1].innerHTML;
-    operate = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
-    fileUsername = obj.parentNode.parentNode.parentNode.children[8].innerHTML;
+    targetProduct = obj.parentNode.parentNode.parentNode.children[3].innerHTML;
+    operate = obj.parentNode.parentNode.parentNode.children[10].innerHTML;
+    fileUsername = obj.parentNode.parentNode.parentNode.children[9].innerHTML;
     buttonStyle("mkbutton","configbutton");
     document.getElementById("myAddModalLabel").innerHTML = "编辑";
     if(document.getElementById("closeReview")){
@@ -630,7 +637,7 @@ function configResult(){
 			}
       	}
     // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+retargetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
@@ -777,7 +784,7 @@ function configResult2(){
         }
     changListen("videoCKChange");
     // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+retargetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
     }
 }
 
@@ -1143,18 +1150,18 @@ function editIssue(){
 function passSure(){
     var operateTime = new Date().getTime();
     console.log(operateTime);
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+operateTime+'"}}}',passResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"operateType":"0","gerritState":"0","operateTime":"'+operateTime+'"}}}',passResult);
 }
 
 //审核不通过
 function noPassSure(){
     var operateTime = new Date().getTime();
-    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2","operateTime":"'+operateTime+'"}}}',passnotResult);
+    sendHTTPRequest("/fybv2_api/productUpdate",'{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"action":"set","update":{"gerritState":"2","operateTime":"'+operateTime+'"}}}',passnotResult);
 }
 
 //删除操作
 function deleteSure(){
-    sendHTTPRequest("/fybv2_api/productDelete",'{"data":{"condition":{"chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
+    sendHTTPRequest("/fybv2_api/productDelete",'{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"}}}',deleteResult);
 }
 
 //点击删除的回调
@@ -1379,7 +1386,7 @@ function reviewEdit(){
 	dataObj.desc = "enenene";
     var operateTime = new Date().getTime();
     console.log(operateTime);
-	var oEnode = '{"data":{"condition":{"chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+	var oEnode = '{"data":{"condition":{"targetProduct":"'+oEtargetProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
 	console.log("lxw " + oEnode);
 	submitStatus(hashObj,dataObj,oEnode);
 }
