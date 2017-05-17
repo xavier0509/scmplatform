@@ -80,10 +80,21 @@ function SearchChipTypeInfo(){
 			var data = JSON.parse(this.responseText);
 			console.log("lxw " + data);
 			console.log("lxw " + data.data.length);
-			var _rowChipMode = document.getElementById("chipid");
-			_rowChipMode.innerHTML = "<option value=''></option>";
+			var _rowChipModeHome = document.getElementById("chipid");
+			var _rowChipModeAdd = document.getElementById("newAddChipMode");
+			var _rowChipModeEdit = document.getElementById("newEditChipMode");
+			var _rowChipModeCopy = document.getElementById("newCopyChipMode");
+			
+			_rowChipModeHome.innerHTML = "<option value=''></option>";
+			_rowChipModeAdd.innerHTML = "<option value=''></option>";
+			_rowChipModeEdit.innerHTML = "<option value=''></option>";
+			_rowChipModeCopy.innerHTML = "<option value=''></option>";
+			
 			for(var i = 0; i < data.data.length; i++) {
-				_rowChipMode.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>"
+				_rowChipModeHome.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>";
+				_rowChipModeAdd.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>";
+				_rowChipModeEdit.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>";
+				_rowChipModeCopy.innerHTML += "<option value="+data.data[i].name+">"+data.data[i].name+"</option>"
 			}
 		};
 		startSelect(); //打开就获取数据
