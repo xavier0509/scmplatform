@@ -637,7 +637,7 @@ function configResult(){
 			}
       	}
     // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+retargetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
 }
 
@@ -784,7 +784,7 @@ function configResult2(){
         }
     changListen("videoCKChange");
     // 查询对应机芯机型的配置信息
-    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+retargetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
+    sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
     }
 }
 
