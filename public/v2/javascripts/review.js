@@ -1238,7 +1238,7 @@ function passResult(){
 
         var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
         maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
-        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun);  
+        sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun2);  
     }
 }
 
@@ -1264,14 +1264,10 @@ function creatFile(){
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) 
         {
-            // freshReviewHtml();
+            freshReviewHtml();
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 console.log("生成文件成功！！！！");
-                // 同步更新相同target下的MK信息
-                var oEnode = '{"data":{"condition":{"targetProduct":"'+targetProduct+'"},"action":"set","update":{"mkFile":' + JSON.stringify(targetForMK) + '}}}';
-                sendHTTPRequest("/fybv2_api/productUpdate", oEnode, DTwicemailfun2);
-                
             }
             else{
                 console.log(data.reason);
@@ -1284,7 +1280,9 @@ function creatFile(){
 function DTwicemailfun2(){
     if (this.readyState == 4) {
         if (this.status == 200){
-            freshReviewHtml();
+            // 同步更新相同target下的MK信息
+            var oEnode = '{"data":{"condition":{"gerritState":"0","targetProduct":"'+targetProduct+'"},"action":"set","update":{"mkFile":' + JSON.stringify(targetForMK) + '}}}';
+            sendHTTPRequest("/fybv2_api/productUpdate", oEnode, creatFile);
         }
     }
 }
