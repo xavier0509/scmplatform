@@ -11,6 +11,8 @@ var changeDev = [];
 var olrplayerid = null;
 var fromEmail = null;
 var toEmail = null;
+var allTargetMk = null;
+var targetForMK = null;
 //加载自执行，传递参数请求列表
 $(function () {
     level = parent.adminFlag;
@@ -894,6 +896,7 @@ function reviewresult(){
         {
             var data = JSON.parse(this.responseText);
             console.log(data);
+            targetForMK = data.data[0].mkFile;
             hashObj = data.data[0];
             changeDesc = data.data[0].desc;
             console.log("修改:"+JSON.stringify(changeDesc));
@@ -1261,16 +1264,27 @@ function creatFile(){
         // console.log("this.responseText = " + this.responseText);
         if (this.status == 200) 
         {
+            // freshReviewHtml();
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 console.log("生成文件成功！！！！");
+                // 同步更新相同target下的MK信息
+                var oEnode = '{"data":{"condition":{"targetProduct":"'+targetProduct+'"},"action":"set","update":{"mkFile":' + JSON.stringify(targetForMK) + '}}}';
+                sendHTTPRequest("/fybv2_api/productUpdate", oEnode, DTwicemailfun2);
                 
             }
             else{
                 console.log(data.reason);
-                freshReviewHtml();
             }
 
+        }
+    }
+}
+
+function DTwicemailfun2(){
+    if (this.readyState == 4) {
+        if (this.status == 200){
+            freshReviewHtml();
         }
     }
 }
@@ -1284,7 +1298,6 @@ function sendmailfun(){
         }
         console.log("生成文件的机芯机型是："+chip+";"+model);
         sendHTTPRequest("/fybv2_api/generateFile",'{"data":{"chip":"'+chip+'","model":"'+model+'"}}',creatFile);
-        freshReviewHtml();
     }
 }
 
@@ -1416,8 +1429,11 @@ function reviewEdit(){
 	dataObj.desc = "enenene";
     var operateTime = new Date().getTime();
     console.log(operateTime);
-	var oEnode = '{"data":{"condition":{"targetProduct":"'+oEtargetProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + '}}}';
+    var changedesc = '{"changeDev":"'+changeDev+'","changeAdd":"'+changeAdd+'","changeReduce":"'+changeReduce+'","changeConf":"'+changeConf+'"}';
+    var a = JSON.parse(changedesc);
+	var oEnode = '{"data":{"condition":{"targetProduct":"'+oEtargetProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + ',"desc":'+JSON.stringify(a) + '}}}';
 	console.log("lxw " + oEnode);
+    allTargetMk = editMkFile;
 	submitStatus(hashObj,dataObj,oEnode);
 }
 
@@ -1465,9 +1481,21 @@ function DTwicemailfun(){
         if (this.status == 200){
             document.getElementById("mydialog").style.display = "none";
             freshReviewHtml();
+            //同步更新相同target下的MK信息
+            // var oEnode = '{"data":{"condition":{"targetProduct":"'+targetProduct+'"},"action":"set","update":{"mkFile":' + JSON.stringify(allTargetMk) + '}}}';
+            // sendHTTPRequest("/fybv2_api/productUpdate", oEnode, DTwicemailfun2);
+
         }
     }
 }
+// function DTwicemailfun2(){
+//     if (this.readyState == 4) {
+//         if (this.status == 200){
+//             document.getElementById("mydialog").style.display = "none";
+//             freshReviewHtml();
+//         }
+//     }
+// }
 
 //刷新当前iframe
 function freshReviewHtml() {
