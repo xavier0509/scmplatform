@@ -4,6 +4,7 @@ document.write("<script language=javascript src='../javascripts/sentHTTP.js' cha
 $(function() {
 		forsession();
 		XandCancle();
+		addPageButtons();
 	})
 //获取用户名
 var adminFlag = null;
@@ -35,7 +36,6 @@ var addAllTarget = null;
 var fromEmail = null;
 
 function XandCancle(){
-
 	var oButtonAdd_X = document.getElementById("myEnsureX");
 	oButtonAdd_X.onclick = function() {
 		console.log("X按钮");
@@ -69,7 +69,6 @@ function XandCancle(){
 		document.getElementById("myVideoChangeDiv").style.display = "none";
 	}
 }
-
 function forsession() {
 	fromEmail = parent.loginEmail;
 	loginusername = parent.loginusername;
@@ -103,8 +102,6 @@ function SearchChipTypeInfo(){
 		startSelect(); //打开就获取数据
 	}
 }
-
-
 function startSelect() {
 	console.log("xjr start select");
 	var oChip = document.getElementById('chip').value;
@@ -145,7 +142,6 @@ function startSelect() {
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
 }
-
 function searchResource() {
 	if(this.readyState == 4) {
 		// console.log("this.responseText = " + this.responseText);
@@ -187,8 +183,6 @@ function searchResource() {
 						_cell5.innerHTML = mySearchData[j].memorySize;
 						var _cell6 = _row.insertCell(8);
 						_cell6.innerHTML = "<div class='btn-group'><button type='button' class='btn btn-default eachedit' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct + "'>编辑</button><button type='button' class='btn btn-default eachdelete' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct  + "'>删除</button><button type='button' class='btn btn-default eachcopy' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct  + "'>复制</button><button type='button' class='btn btn-default eachpreview' chip='" + mySearchData[j].chip + "' model='" + mySearchData[j].model + "'targetProduct='" + mySearchData[j].targetProduct    + "'>预览</button></div>";
-						// var _cell10 = _row.insertCell(7);
-      //               	_cell10.innerHTML = mySearchData[j].operateTime;
 					}
 				};
 			}
@@ -212,12 +206,8 @@ function AfterWaitHtmlinfo() {
 	oButtonAdd.onclick = function() {
 		var currentParentName = oButtonAdd.id;
 		var thisIndex = null;
-		$("#myAddModalLabel").text("新增");
-		$("#myAddModal").modal("toggle");
-		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
 		document.getElementById("loading").style.display = "block";
 		clearPageInfo();
-		buttonStyle("myAddModalMkButton","myAddModalMkTable","myAddModalConfigButton","myAddModalConfigTable");
 		sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getAddInfoInfOne);
 	}
 
@@ -292,10 +282,7 @@ function AfterWaitHtmlinfo() {
 			TwiceTransferModel = oClassButtonEdit[thisIndex].getAttribute("model");
 			TwiceTransferTargetProduct = oClassButtonEdit[thisIndex].getAttribute("targetProduct");
 			console.log("lxw " + TwiceTransferChip + "--" + TwiceTransferModel);
-			$("#myEditModalLabel").text("单项编辑");
-			$('#myEditModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myEditModalMkButton","myEditModalMkTable","myEditModalConfigButton","myEditModalConfigTable");
+			document.getElementById("loading").style.display = "block";
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getEditInfoInfOne);
 		}
 	}
@@ -328,10 +315,7 @@ function AfterWaitHtmlinfo() {
 			TwiceTransferChip = oClassButtonCopy[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonCopy[thisIndex].getAttribute("model");
 			TwiceTransferTargetProduct = oClassButtonCopy[thisIndex].getAttribute("targetProduct");
-			$("#myCopyModalLabel").text("单项复制");
-			$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
-			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
+			document.getElementById("loading").style.display = "block";
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getCopyInfoInfOne);
 		}
 	}
@@ -346,9 +330,7 @@ function AfterWaitHtmlinfo() {
 			TwiceTransferChip = oClassButtonPreview[thisIndex].getAttribute("chip");
 			TwiceTransferModel = oClassButtonPreview[thisIndex].getAttribute("model");
 			TwiceTransferTargetProduct = oClassButtonPreview[thisIndex].getAttribute("targetProduct");
-			$("#myPreviewModalLabel").text("预览");
-			$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
-			$(".modal-backdrop").addClass("new-backdrop");
+			document.getElementById("loading").style.display = "block";
 			sendHTTPRequest("/fybv2_api/preview", '{"data":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"'+TwiceTransferChip+'","model":"'+TwiceTransferModel+'"}}', getPreviewInfo);
 		}
 	}
@@ -565,7 +547,11 @@ function getAddInfoInfTwo() {
 		};
 		
 		document.getElementById("loading").style.display = "none";
-		addPageButtons();
+		$("#myAddModalLabel").text("新增");
+		$("#myAddModal").modal("toggle");
+		$(".modal-backdrop").addClass("new-backdrop"); //去掉后面的阴影效果
+		buttonStyle("myAddModalMkButton","myAddModalMkTable","myAddModalConfigButton","myAddModalConfigTable");
+		changListen("videoAChange");
 		sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', checkChipInfo);
 	}
 }
@@ -1206,6 +1192,11 @@ function getEditInfoInfTwo() {
                 }
             }
         };
+        document.getElementById("loading").style.display = "none";
+        $("#myEditModalLabel").text("单项编辑");
+		$('#myEditModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		buttonStyle("myEditModalMkButton","myEditModalMkTable","myEditModalConfigButton","myEditModalConfigTable");
         var node = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
         sendHTTPRequest("/fybv2_api/productQuery", node, getEditInforesult);
     }
@@ -1870,6 +1861,11 @@ function getCopyInfoInfTwo() {
 				}
 			}
 		};
+		document.getElementById("loading").style.display = "none";
+		$("#myCopyModalLabel").text("单项复制");
+		$('#myCopyModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+		$(".modal-backdrop").addClass("new-backdrop");
+		buttonStyle("myCopyModalMkButton","myCopyModalMkTable","myCopyModalConfigButton","myCopyModalConfigTable");
 		var node = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"option":{}}}';
 		sendHTTPRequest("/fybv2_api/productQuery", node, getCopyInforesult);
 	}
@@ -2246,6 +2242,11 @@ function getMoreEditInfoTwo() {
 				}
 			}
 		};
+		document.getElementById("loading").style.display = "none";
+		$("#myMoreEditModalLabel").text("批量修改");
+		$('#myMoreEditModal').modal();
+		$(".modal-backdrop").addClass("new-backdrop");
+		buttonStyle("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
 		moreEditPageButtons();
 	}
 }
@@ -2626,10 +2627,6 @@ function addPageButtons() {
 	}
 	//新增页mk-config button的点击
 	functionMkConfigTable("myAddModalMkButton", "myAddModalMkTable", "myAddModalConfigButton", "myAddModalConfigTable");
-	
-	changListen("videoAChange");
-	
-	
 }
 /*点击单项复制-弹框里的各个按钮*/
 function copyPageButtons() {
@@ -2913,10 +2910,7 @@ function moreEditCommon(){
 		console.log("lxw " + ChipModelArray + "--" + myCheckedNumber);
 		if(myCheckedNumber != 0) {
 			var thisIndex = null;
-			$("#myMoreEditModalLabel").text("批量修改");
-			$('#myMoreEditModal').modal();
-			$(".modal-backdrop").addClass("new-backdrop");
-			buttonStyle("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
+			document.getElementById("loading").style.display = "block";
 			sendHTTPRequest("/fybv2_api/moduleQuery", '{"data":""}', getMoreEditInfoOne);
 		} else {
 			$("#myDeleteDialogModalLabel").text("请注意：");
@@ -2975,6 +2969,10 @@ function getPreviewInfo(){
             console.log(data);
             if(data.msg == "success") {
                 console.log("lxw " + "预览-成功"+ data.configRes);
+                document.getElementById("loading").style.display = "none";
+                $("#myPreviewModalLabel").text("预览");
+				$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
+				$(".modal-backdrop").addClass("new-backdrop");
                 document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
                 document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
             } else if(data.msg == "failure") {
