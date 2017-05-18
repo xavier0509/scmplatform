@@ -922,3 +922,38 @@ table{font-size: ;}
     font-size: 13px;
     margin-top: -4px;
 }
+
+#loading{
+	position: fixed;
+	top: 60%;
+	left: 25%;
+	height: 150px;
+	width: 50%;
+	background-color: #bcbcbc;
+	line-height: 150px;
+	font-size: 24px;
+	border-radius: 10px 10px 10px 10px;
+	display: none;
+}
+#loadingImg{
+	position: relative;
+	top: 0;
+	left: 2%;
+	height: 100%;
+	width: 30%;
+	color: rgba(255,255,255,0);
+	display: inline-block;
+	background-image: url(../images/loading.gif);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#loadingText{
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 65%;
+	text-align: left;
+	text-indent: 50px;
+	display: inline-block;
+}
