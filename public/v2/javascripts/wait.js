@@ -29,6 +29,9 @@ var changeDev = [];//保存修改设备信息
 var olrplayerid = null;
 var infoflag = 0 //判断复制or新增的标志,1为新增，2为复制
 
+var addAllTargetMK = null;
+var addAllTarget = null;
+
 var fromEmail = null;
 
 function XandCancle(){
@@ -763,10 +766,13 @@ function addPageSubmitData() {
 	var oAnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw" + oAnode);
 	infoflag = 1;
+	addAllTargetMK = addMkFile;
+	addAllTarget = oAtargetProduct;
 	sendHTTPRequest("/fybv2_api/productAdd", oAnode, productAddresult);
 }
 
 function productAddresult() {
+	console.log("target:"+addAllTarget+";mk:"+addAllTargetMK);
 	console.log("in productAddresult");
 	if(this.readyState == 4) {
 		if(this.status == 200) {
@@ -1546,10 +1552,13 @@ function submitStatus(hashObj,dataObj,oEnode){
 	    console.log("old:"+changedesc);
 	    var a = JSON.parse(changedesc);
 	    console.log("new:"+a);
-	    console.log(typeof(JSON.stringify(a)))
+	    console.log(typeof(JSON.stringify(a)));
+	    addAllTarget = TwiceTransferTargetProduct;
+	    addAllTargetMK = dataObj.mkFile;
 	    document.getElementById("myEditEnsureModalEnsure").onclick = function(){
 	    	var oEnode = '{"data":{"condition":{"targetProduct":"'+TwiceTransferTargetProduct+'","chip":"' + TwiceTransferChip + '","model":"' + TwiceTransferModel + '"},"action":"set","update":{"userName":"' + dataObj.userName + '","memorySize":"' + dataObj.memorySize + '","chipModel":"' + dataObj.chipModel + '","androidVersion":"' + dataObj.androidVersion + '","targetProduct":"' + dataObj.targetProduct + '","gerritState":"1","operateType":"3", "operateTime":"'+dataObj.operateTime+'","mkFile":' + JSON.stringify(dataObj.mkFile) + ',"configFile":' + JSON.stringify(dataObj.configFile) + ',"desc":'+JSON.stringify(a)+'}}}';
-	    	console.log("详细修改："+oEnode);
+	    	// console.log("详细修改："+oEnode);
+	    	console.log("target:"+addAllTarget+",mk:"+addAllTargetMK);
 	    	reviewEdit(oEnode);
 	    }
 	    
@@ -1628,11 +1637,23 @@ function mailfun(){
 		    changeReduce.splice(0,changeReduce.length);
 			freshHtml("tab_userMenu2");
 			startSelect();
+			//同步更新相同target下的MK信息
+			// var oEnode = '{"data":{"condition":{"targetProduct":"'+addAllTarget+'"},"action":"set","update":{"mkFile":' + JSON.stringify(addAllTargetMK) + '}}}';
+   //          sendHTTPRequest("/fybv2_api/productUpdate", oEnode, DTwicemailfun2);
 		}
 		else{
 
 		}
 	}
+}
+
+function DTwicemailfun2(){
+    if (this.readyState == 4) {
+        if (this.status == 200){
+            freshHtml("tab_userMenu2");
+			startSelect();
+        }
+    }
 }
 
 //单项复制-获取后台接口数据，动态加载单项编辑页面
@@ -2016,6 +2037,8 @@ function copyPageSubmitData() {
 	var oCnode = '{"data":' + JSON.stringify(dataObj) + '}';
 	console.log("lxw " + oCnode);
 	infoflag = 2;
+	addAllTargetMK = copyMkFile;
+	addAllTarget = oCtargetProduct;
 	sendHTTPRequest("/fybv2_api/productAdd", oCnode, productAddresult);
 }
 //多项修改-获取后台接口数据，动态加载多项修改页面
