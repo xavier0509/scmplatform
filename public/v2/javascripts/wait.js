@@ -2843,10 +2843,19 @@ function closeparentpage(pageName) {
 		if (pageName != 1) {
 			console.log("pageName != 1");
 			$(pageName).modal('hide');
+			freshWait();
 		}else{
 			console.log("pageName == 1");
 		}
 	}
+}
+
+function freshWait(){
+    var htmlObject = parent.document.getElementById("tab_userMenu1");
+    var indexObject = parent.document.getElementById("home");
+    var iframe = indexObject.getElementsByTagName("iframe");
+    htmlObject.firstChild.src = "wait.html";
+    iframe[0].src = "wait.html";
 }
 
 /*刷新审核页面*/
