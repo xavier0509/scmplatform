@@ -144,7 +144,9 @@ function reviewlist(){
                     _cell12.style.display="none";
                 };
             }
-            
+            else{
+                document.getElementById('noList3').style.display="block";
+            }
         }
         sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
     }

@@ -162,6 +162,11 @@ function searchResource() {
 						thisJ ++;
 					}
 				}
+				if (thisJ == 0) {
+					document.getElementById("noList").style.display="block";
+				}else{
+					document.getElementById("noList").style.display="none";
+				}
 				for(var j = 0; j < mySearchData.length; j++) {
 					if(mySearchData[j].gerritState == "0") {
 						var _row = document.getElementById("wait-tablebody").insertRow(0);
