@@ -83,6 +83,7 @@ function reviewlist(){
                     _cell3.innerHTML = datalength[i].chip;
                     var _cell4 = _row.insertCell(3);
                     _cell4.innerHTML = datalength[i].targetProduct;
+                    _cell4.style.display="none"
                     var _cell5 = _row.insertCell(4);
                     _cell5.innerHTML = datalength[i].androidVersion;
                     var _cell6 = _row.insertCell(5);

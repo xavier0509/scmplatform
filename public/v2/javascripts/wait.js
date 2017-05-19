@@ -175,6 +175,7 @@ function searchResource() {
 						_cell2.innerHTML = mySearchData[j].chip;
 						var _cell3 = _row.insertCell(4);
 						_cell3.innerHTML = mySearchData[j].targetProduct;
+						_cell3.style.display="none";
 						var _cell3 = _row.insertCell(5);
 						_cell3.innerHTML = mySearchData[j].androidVersion;
 						var _cell4 = _row.insertCell(6);
