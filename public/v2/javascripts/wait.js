@@ -109,7 +109,7 @@ function startSelect() {
 	var oMemory = document.getElementById('memory').value;
 	var oAndroid = document.getElementById('androidVersion').value;
 	var oChipid = document.getElementById('chipid').value;
-	// var oTargetProduct = document.getElementById('targetProduct').value;
+	var oTargetProduct = document.getElementById('targetProduct').value;
 	var node = null;
 	var myNeedObj = {};
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
@@ -132,9 +132,9 @@ function startSelect() {
 		if(oMemory != "") {
 			myNeedObj['memorySize'] = oMemory;
 		}
-		// if(oTargetProduct != "") {
-		// 	myNeedObj['targetProduct'] = oTargetProduct;
-		// }
+		if(oTargetProduct != "") {
+			myNeedObj['targetProduct'] = oTargetProduct;
+		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
 		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1  }}}';
