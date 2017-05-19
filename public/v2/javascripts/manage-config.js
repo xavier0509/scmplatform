@@ -1,5 +1,6 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 $(function() {
+	document.getElementById("loading").style.display = "block";
 	sendHTTPRequest("/fybv2_api/configQuery", '{"data":""}', searchConfigInfo);
 })
 
@@ -298,6 +299,8 @@ function searchConfigInfo() {
 				}
 			}
 		};
+		document.getElementById("loading").style.display = "none";
+		document.getElementById("configManagePage").style.display = "block";
 		AferConfigHtmlInfo();
 	}
 }

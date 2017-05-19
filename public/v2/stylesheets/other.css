@@ -957,10 +957,16 @@ table{font-size: ;}
 	text-indent: 50px;
 	display: inline-block;
 }
+
 #noList,#noList2,#noList3{
     display: none;
     width: 100%;
     margin: 0 auto;
     text-align: center;
+}
+
+
+#chipmodeManagePage,#configManagePage,#moduleManagePage{
+	display: none;
 }
 

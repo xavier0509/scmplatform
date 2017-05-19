@@ -251,6 +251,7 @@ function buttonStyle(name1, name2){
 
 //点击编辑、审核出现页面的执行函数
 function review(obj,adminControl,deleteFlag){
+	document.getElementById("loading").style.display = "block";
     adminControl = adminControl;
     var deleteFlag = deleteFlag;
     if (adminControl ) {
@@ -303,6 +304,7 @@ function userInfoResult(){
 }
 
 function edit(obj,adminControl,deleteFlag){
+	document.getElementById("loading").style.display = "block";
     adminControl = adminControl;
     document.getElementById("changeDescDiv").style.display="none";
     console.log("操作按钮："+adminControl);
@@ -330,8 +332,6 @@ function moduleResult(){
         if (this.status == 200) 
         {
             console.log("操作1："+adminControl);
-            $('#myCheckModal').modal();
-            $(".modal-backdrop").addClass("new-backdrop");
             var data = JSON.parse(this.responseText);
             console.log(data);
             var kk = 0;
@@ -406,8 +406,6 @@ function moduleResult2(){
         if (this.status == 200) 
         {
             console.log("操作1："+adminControl);
-            $('#myCheckModal').modal();
-            $(".modal-backdrop").addClass("new-backdrop");
             //document.getElementById("mkbutton").setAttribute("background-color: rgb(230, 230, 230);");
             var data = JSON.parse(this.responseText);
             console.log(data);
@@ -469,6 +467,7 @@ function moduleResult2(){
                 }
             }
         }
+        
         document.getElementById(firstChecked).setAttribute('checked', '');
     //查询config信息接口
     sendHTTPRequest("/fybv2_api/configQuery", '{"data":{}}', configResult2); 
@@ -654,6 +653,9 @@ function configResult(){
 				}
 			}
       	}
+      	document.getElementById("loading").style.display = "none";
+      	$('#myCheckModal').modal();
+        $(".modal-backdrop").addClass("new-backdrop");
     // 查询对应机芯机型的配置信息
     sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult);   
     }
@@ -801,6 +803,9 @@ function configResult2(){
             }
         }
     changListen("videoCKChange");
+    document.getElementById("loading").style.display = "none";
+    $('#myCheckModal').modal();
+    $(".modal-backdrop").addClass("new-backdrop");
     // 查询对应机芯机型的配置信息
     sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"},"option":{}}}', reviewresult2);   
     }
