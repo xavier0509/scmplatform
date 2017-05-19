@@ -1,6 +1,7 @@
 document.write("<script language=javascript src='../javascripts/sentHTTP.js' charset=\"utf-8\"></script>");
 
 $(function() {
+	document.getElementById("loading").style.display = "block";
 	sendHTTPRequest("/fybv2_api/chipQuery", '{"data":""}', SearchChipInfo);
 	ChipModeHtmlInfo();
 })
@@ -279,6 +280,9 @@ function SearchChipModeInfo() {
 				_rowMode.innerHTML += "<div class='col-xs-4'><a name='"+data.data[i]._id+"' title='"+data.data[i].name+"'>" + data.data[i].name + "</a></div>";
 			}
 		};
+		
+		document.getElementById("loading").style.display = "none";
+		document.getElementById("chipmodeManagePage").style.display = "block";
 		AfterChipModeHtmlInfo();
 	}
 }

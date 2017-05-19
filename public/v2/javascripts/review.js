@@ -1027,7 +1027,6 @@ function reviewCat(){
     $('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
     $(".modal-backdrop").addClass("new-backdrop");
     sendHTTPRequest("/fybv2_api/preview", '{"data":{"targetProduct":"'+targetProduct+'","chip":"'+chip+'","model":"'+model+'"}}', getPreviewInfo);
-
 }
 
 function getPreviewInfo(){
