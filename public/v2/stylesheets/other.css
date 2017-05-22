@@ -913,7 +913,7 @@ table{font-size: ;}
 #removeModelDesc,
 #addModelDesc,
 #changeConfigDesc,
-#newFileDesc{
+#newFileDesc,#changeFileDesc{
     display: none;
 }
 .close1{

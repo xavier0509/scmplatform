@@ -13,6 +13,7 @@ var fromEmail = null;
 var toEmail = null;
 var allTargetMk = null;
 var targetForMK = null;
+var descOperateType = null;
 //加载自执行，传递参数请求列表
 $(function () {
     level = parent.adminFlag;
@@ -91,7 +92,8 @@ function reviewlist(){
                     var _cell7 = _row.insertCell(6);
                     _cell7.innerHTML = datalength[i].memorySize;
                     var _cell8 = _row.insertCell(7); 
-                    var operateType = datalength[i].operateType;   
+                    var operateType = datalength[i].operateType; 
+                    // descOperateType = operateType;
                     var gerritState = datalength[i].gerritState; 
                     var operateTime = datalength[i].operateTime; 
                     var userName = datalength[i].userName;              
@@ -930,9 +932,12 @@ function reviewresult(){
             if (changeDesc.changeConf.length != "0") {
                 document.getElementById('changeConfigDesc').style.display="block";
             }
-            if (changeDesc.changeConf.length == "0" && changeDesc.changeReduce.length == "0" && changeDesc.changeAdd.length == "0"&& changeDesc.changeDev.length == "0") {
+            if (operate != "1" && changeDesc.changeConf.length == "0" && changeDesc.changeReduce.length == "0" && changeDesc.changeAdd.length == "0"&& changeDesc.changeDev.length == "0") {
+                document.getElementById('changeFileDesc').style.display="block";
+            }
+            if (operate == "1") {
                 document.getElementById('newFileDesc').style.display="block";
-            };
+            }
             //更新设备信息
             document.getElementById("newCheckChip").value=data.data[0].chip;
             document.getElementById("newCheckModel").value=data.data[0].model;
