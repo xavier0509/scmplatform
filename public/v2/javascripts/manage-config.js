@@ -338,4 +338,8 @@ function freshConfigAddHtml() {
 	    var htmlObject1 = parent.document.getElementById("tab_userMenu2");
 	    htmlObject1.firstChild.src = "review.html";
 	}  
+	if(parent.document.getElementById("tab_userMenu3")){
+	    var htmlObject2 = parent.document.getElementById("tab_userMenu3");
+	    htmlObject2.firstChild.src = "nopass.html";
+	} 
 }
