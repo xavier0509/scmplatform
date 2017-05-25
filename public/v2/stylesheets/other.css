@@ -925,27 +925,28 @@ table{font-size: ;}
 
 #loading{
 	position: fixed;
-	top: 60%;
+	top: 55%;
 	left: 25%;
-	height: 150px;
-	width: 50%;
+	height: 100px;
+	width: 400px;
 	background-color: #bcbcbc;
-	line-height: 150px;
+	line-height: 100px;
 	font-size: 24px;
 	border-radius: 10px 10px 10px 10px;
 	display: none;
+	z-index: 9999;
 }
 #loadingImg{
 	position: relative;
 	top: 0;
-	left: 2%;
+	left: 5%;
 	height: 100%;
 	width: 30%;
 	color: rgba(255,255,255,0);
 	display: inline-block;
 	background-image: url(../images/loading.gif);
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: 80%;
 }
 #loadingText{
 	position: relative;
@@ -969,4 +970,3 @@ table{font-size: ;}
 #chipmodeManagePage,#configManagePage,#moduleManagePage{
 	display: none;
 }
-
