@@ -111,7 +111,11 @@ function AferConfigHtmlInfo() {
 			var newConfigEnName = document.getElementById("configEnglishName").value;//英文名
 			var newConfigSrc = document.getElementById("configSrc").value;//config信息
 			var newConfigString = document.getElementById("configString").value;//默认值【string型】
+			newConfigString = newConfigString.replace(new RegExp("\"","gm"),"\\\"");
+			newConfigString = newConfigString.replace(new RegExp("\n","gm"),"\\n");
 			var newConfigInstr = document.getElementById("configInstr").value;//描述
+			newConfigInstr = newConfigInstr.replace(new RegExp("\"","gm"),"\\\"");
+			newConfigInstr = newConfigInstr.replace(new RegExp("\n","gm"),"\\n");
 			var newConfigSelect = document.getElementById("configSelect").value;//下拉列表
 			var inputNum = document.getElementsByClassName("menuUnitInput");
 			var inputNumState = 0; //枚举型为空时的状态值
