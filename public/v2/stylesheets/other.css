@@ -970,3 +970,7 @@ table{font-size: ;}
 #chipmodeManagePage,#configManagePage,#moduleManagePage{
 	display: none;
 }
+
+.textIndent{
+	text-indent: 1em;
+}
