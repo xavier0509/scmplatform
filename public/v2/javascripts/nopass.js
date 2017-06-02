@@ -1178,7 +1178,9 @@ function noPassIssue(){
 //编辑提交弹窗
 function editIssue(){
 	if (changeDev.length==0&&changeAdd.length==0&&changeReduce.length==0&&changeConf.length==0) {
-		reviewEdit();
+		//reviewEdit();
+		document.getElementById("myAddModalErrorInfo").innerHTML = "您未做任何修改。";
+		setTimeout("document.getElementById('myAddModalErrorInfo').innerHTML='　'",3000);
 	} else{
 		document.getElementById("mydialog").style.display = "block";
 	    document.getElementById("dialogword").setAttribute("style","text-align:left");
