@@ -73,6 +73,7 @@ function forsession() {
 	fromEmail = parent.loginEmail;
 	loginusername = parent.loginusername;
 	adminFlag = parent.adminFlag;
+	console.log("email="+fromEmail+",userName="+loginusername+",adminFlag="+adminFlag);
 	sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
 }
 function SearchChipTypeInfo(){
@@ -2252,7 +2253,7 @@ function getMoreEditInfoTwo() {
 		$("#myMoreEditModalLabel").text("批量修改");
 		$('#myMoreEditModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		buttonStyle("myMoreEditModalConfigButton","myMoreEditModalConfigTable","myMoreEditModalMkButton","myMoreEditModalMkTable");
+		buttonStyle("myMoreEditModalConfigButton","myMoreEditModalConfigTable","myMoreEditModalMkButton","myMoreEditModalMkTable",);
 		moreEditPageButtons();
 	}
 }
@@ -2858,10 +2859,10 @@ function closeparentpage(pageName) {
 
 function freshWait(){
     var htmlObject = parent.document.getElementById("tab_userMenu1");
-    var indexObject = parent.document.getElementById("home");
-    var iframe = indexObject.getElementsByTagName("iframe");
+    // var indexObject = parent.document.getElementById("home");
+    // var iframe = indexObject.getElementsByTagName("iframe");
     htmlObject.firstChild.src = "wait.html";
-    iframe[0].src = "wait.html";
+    // iframe[0].src = "wait.html";
 }
 
 /*刷新审核页面*/

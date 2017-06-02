@@ -1521,12 +1521,14 @@ function DTwicemailfun(){
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
     var htmlObject2 = parent.document.getElementById("tab_userMenu3");
-    var indexObject = parent.document.getElementById("home");
-    var iframe = indexObject.getElementsByTagName("iframe");
+    var htmlObject3 = parent.document.getElementById("tab_userMenu1");
+    // var indexObject = parent.document.getElementById("home");
+    // var iframe = indexObject.getElementsByTagName("iframe");
     if (htmlObject) {
     htmlObject.firstChild.src = "review.html";}
     htmlObject2.firstChild.src = "nopass.html";
-    iframe[0].src = "wait.html";
+    // iframe[0].src = "wait.html";
+    htmlObject3.firstChild.src = "wait.html";
 }   
 //关闭当前dialog
 function closeCurPage(){
