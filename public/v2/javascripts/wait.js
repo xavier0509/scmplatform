@@ -2252,7 +2252,7 @@ function getMoreEditInfoTwo() {
 		$("#myMoreEditModalLabel").text("批量修改");
 		$('#myMoreEditModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		buttonStyle("myMoreEditModalConfigButton","myMoreEditModalConfigTable","myMoreEditModalMkButton","myMoreEditModalMkTable",);
+		buttonStyle("myMoreEditModalConfigButton","myMoreEditModalConfigTable","myMoreEditModalMkButton","myMoreEditModalMkTable");
 		moreEditPageButtons();
 	}
 }
