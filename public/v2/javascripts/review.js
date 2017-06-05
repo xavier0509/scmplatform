@@ -22,10 +22,10 @@ $(function () {
     console.log("邮箱是："+loginusername);
     // console.log("得到的用户名："+loginusername+"得到的权限标志："+level);
     if (level == 1) {
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1  }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"$or":[{"gerritState":"1"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"operateTime":1  }}}', reviewlist);
     }
     else{
-        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1  }}}', reviewlist);
+        sendHTTPRequest("/fybv2_api/productQuery", '{"data":{"condition":{"userName":"'+loginusername+'","$or":[{"gerritState":"1"}]},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"userName":1,"operateTime":1,"targetProduct":1},"sort":{"operateTime":1  }}}', reviewlist);
     }     
     XandCancle();
 })
@@ -207,7 +207,7 @@ function recoverResult(){
                 }
                 else{
                     var maildata = "用户："+loginusername+"<br/>恢复删除机芯："+rechip+",机型："+remodel+"的配置文档";
-                    maildata += "<br/>该文档将重新出现在首页上，请确认<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                    maildata += "<br/>该文档将重新出现在首页上，请确认<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
                     sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"","subject":"软件配置平台通知-自动发送，请勿回复"}}', recovermailfun);
                 }
             };
@@ -1174,26 +1174,30 @@ function noPassIssue(){
 
 //编辑提交弹窗
 function editIssue(){
-   	document.getElementById("mydialog").style.display = "block";
-    document.getElementById("dialogword").setAttribute("style","text-align:left");
-    document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
-    
-    document.getElementById("dialogword").innerHTML = "您做了以下操作，确认提交该修改吗？<br>"+"<span id='txt1'>修改设备信息：<br><span id='txt11'>　"+changeDev+"</span></span><span id='txt2'>新增模块：<br><span id='txt22'>　"+changeAdd+"</span></span><span id='txt3'>删除模块：<br><span id='txt33'>　"+changeReduce+"</span></span><span id='txt4'>修改配置：<br>　<span id='txt44'>"+changeConf+"</span></span>";
-    if (changeDev.length != 0) {
-        document.getElementById("txt1").style.display="block";
-    }
-    if(changeAdd.length != 0    ){
-        document.getElementById("txt2").style.display="block";
-    }
-    if (changeReduce.length != 0) {
-        document.getElementById("txt3").style.display="block";
-    }
-    if (changeConf.length != 0) {
-        document.getElementById("txt4").style.display="block";
-    }
-    document.getElementById("dialogword").setAttribute("max-height","350px");
-    
-    document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;
+	if (changeDev.length==0&&changeAdd.length==0&&changeReduce.length==0&&changeConf.length==0) {
+		//reviewEdit();
+		document.getElementById("myAddModalErrorInfo").innerHTML = "您未做任何修改。";
+		setTimeout("document.getElementById('myAddModalErrorInfo').innerHTML='　'",3000);
+	} else{
+	   	document.getElementById("mydialog").style.display = "block";
+	    document.getElementById("dialogword").setAttribute("style","text-align:left");
+	    document.getElementById("myDeleteModalLabel").innerHTML = "编辑操作";
+	    document.getElementById("dialogword").innerHTML = "您做了以下操作，确认提交该修改吗？<br>"+"<span id='txt1'>修改设备信息：<br><span id='txt11'>　"+changeDev+"</span></span><span id='txt2'>新增模块：<br><span id='txt22'>　"+changeAdd+"</span></span><span id='txt3'>删除模块：<br><span id='txt33'>　"+changeReduce+"</span></span><span id='txt4'>修改配置：<br>　<span id='txt44'>"+changeConf+"</span></span>";
+	    if (changeDev.length != 0) {
+	        document.getElementById("txt1").style.display="block";
+	    }
+	    if(changeAdd.length != 0    ){
+	        document.getElementById("txt2").style.display="block";
+	    }
+	    if (changeReduce.length != 0) {
+	        document.getElementById("txt3").style.display="block";
+	    }
+	    if (changeConf.length != 0) {
+	        document.getElementById("txt4").style.display="block";
+	    }
+	    document.getElementById("dialogword").setAttribute("max-height","350px");
+	    document.getElementById("myDeleteModalEnsure").onclick = reviewEdit;
+   	}
     scrollTopStyle("myCheckModal");
 }
 
@@ -1225,7 +1229,7 @@ function deleteResult(){
             if (data.msg=="success") {
                 // console.log("删除成功！！！！");
                 var maildata = "您提交删除的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
-                maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+                maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
                 sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', Deletesendmailfun);  
             };
         }
@@ -1255,7 +1259,7 @@ function passResult(){
         }
 
         var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档已经通过审核，请确认";
-        maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+        maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
         sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun2);  
     }
 }
@@ -1269,7 +1273,7 @@ function passnotResult(){
             var data = JSON.parse(this.responseText);
             if (data.msg=="success") {
                 var maildata = "您提交的机芯："+chip+",机型："+model+" 的配置文档暂未通过审核，请前往《审核未通过文件》菜单进行修改并再次提交";
-                maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+                maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
                 sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"","to":"'+toEmail+'","subject":"软件配置平台通知-自动发送，请勿回复"}}', sendmailfun2);  
             };
 
@@ -1478,7 +1482,7 @@ function reviewEditResult(){
                     maildata += "<br/>修改配置："+ changeConf;
                 }
                 
-                maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+                maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
                 console.log("maildata:"+maildata);
                 console.log("fromEmail:"+fromEmail);
                 sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun)
@@ -1518,13 +1522,15 @@ function DTwicemailfun(){
 function freshReviewHtml() {
     var htmlObject = parent.document.getElementById("tab_userMenu2");
     var htmlObject2 = parent.document.getElementById("tab_userMenu3");
-    var indexObject = parent.document.getElementById("home");
-    var iframe = indexObject.getElementsByTagName("iframe");
+    var htmlObject3 = parent.document.getElementById("tab_userMenu1");
+    // var indexObject = parent.document.getElementById("home");
+    // var iframe = indexObject.getElementsByTagName("iframe");
     htmlObject.firstChild.src = "review.html";
     if (htmlObject2) {
         htmlObject2.firstChild.src = "nopass.html";
     }
-    iframe[0].src = "wait.html";
+    // iframe[0].src = "wait.html";
+    htmlObject3.firstChild.src = "wait.html";
 }   
 //关闭当前dialog
 function closeCurPage(){

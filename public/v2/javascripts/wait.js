@@ -73,6 +73,7 @@ function forsession() {
 	fromEmail = parent.loginEmail;
 	loginusername = parent.loginusername;
 	adminFlag = parent.adminFlag;
+	console.log("email="+fromEmail+",userName="+loginusername+",adminFlag="+adminFlag);
 	sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
 }
 function SearchChipTypeInfo(){
@@ -115,7 +116,7 @@ function startSelect() {
 	console.log(oChip + "--" + oMode + "--" + oMemory + "--" + oAndroid + "--" + oChipid);
 	if(oChip == "" && oMode == "" && oMemory == "" && oAndroid == "" && oChipid == "") {
 		//进来就查询，全查
-		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1 }}}';
+		node = '{"data":{"condition":{},"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"operateTime":1 }}}';
 	} else {
 		if(oChip != "") {
 			myNeedObj['chip'] = oChip;
@@ -137,7 +138,7 @@ function startSelect() {
 		}
 		//console.log("lxw --->" + JSON.stringify(myNeedObj));
 		var myNeedString = JSON.stringify(myNeedObj);
-		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"model":-1  }}}';
+		node = '{"data":{"condition":' + myNeedString + ',"option":{"chip":1,"model":1,"androidVersion":1,"memorySize":1,"chipModel":1,"operateType":1,"gerritState":1,"operateTime":1,"targetProduct":1},"sort":{"operateTime":1  }}}';
 	}
 	console.log("lxw " + node);
 	sendHTTPRequest("/fybv2_api/productRegexQuery", node, searchResource);
@@ -790,7 +791,7 @@ function productAddresult() {
 					modellll = document.getElementById('newAddModel').value;
 				}
 				maildata = "用户："+loginusername+"<br/>新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
-			    maildata += "<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+			    maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
 			    console.log("maildata:"+maildata);
 			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 			} else if(data.msg == "failure") {
@@ -1606,7 +1607,7 @@ function productEditresult() {
 			    if(changeDev.length == 0&&changeAdd.length == 0 &&changeReduce.length == 0&&changeConf.length == 0){
 			    	maildata = "用户："+loginusername+"<br/>删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档";
 			    }
-			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
 			    console.log("fromEmail:"+fromEmail);
 			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
@@ -2252,7 +2253,7 @@ function getMoreEditInfoTwo() {
 		$("#myMoreEditModalLabel").text("批量修改");
 		$('#myMoreEditModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
-		buttonStyle("myMoreEditModalMkButton","myMoreEditModalMkTable","myMoreEditModalConfigButton","myMoreEditModalConfigTable");
+		buttonStyle("myMoreEditModalConfigButton","myMoreEditModalConfigTable","myMoreEditModalMkButton","myMoreEditModalMkTable");
 		moreEditPageButtons();
 	}
 }
@@ -2511,7 +2512,7 @@ function sentMailForMoreFile(){
         maildata += "<br/>修改配置："+ mEConfigEditCzName;
     }
    	console.log("批量from："+fromEmail);
-    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
     console.log("maildata:"+maildata);
     sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', moreEditMailFun)			
 }
@@ -2593,7 +2594,7 @@ function moreDeleteresult() {
 		};
 		console.log("aaaaaaaaaaa:"+changeTv);
 		var maildata = "用户："+loginusername+"<br>删除了"+changeTv+"的配置文档";
-        maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>To view visit <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+        maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
         var nodeData = '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
         console.log(nodeData);
         sendHTTPRequest("/fybv2_api/sendmail", nodeData, sendmailfun);  
@@ -2858,10 +2859,10 @@ function closeparentpage(pageName) {
 
 function freshWait(){
     var htmlObject = parent.document.getElementById("tab_userMenu1");
-    var indexObject = parent.document.getElementById("home");
-    var iframe = indexObject.getElementsByTagName("iframe");
+    // var indexObject = parent.document.getElementById("home");
+    // var iframe = indexObject.getElementsByTagName("iframe");
     htmlObject.firstChild.src = "wait.html";
-    iframe[0].src = "wait.html";
+    // iframe[0].src = "wait.html";
 }
 
 /*刷新审核页面*/
