@@ -5,9 +5,9 @@ var chipModelSchema = new mongoose.Schema({
     name: {type: String},
 });
 
-chipModelSchema.statics.chipModelQuery = function (whereStr,optStr,callback) {
+chipModelSchema.statics.chipModelQuery = function (whereStr,optStr,sortStr,callback) {
 
-        this.model("ChipModel").find(whereStr,optStr,callback);
+        this.model("ChipModel").find(whereStr,optStr,sortStr,callback);
 };
 
 chipModelSchema.statics.chipModelAdd = function (wherestr,callback) {
