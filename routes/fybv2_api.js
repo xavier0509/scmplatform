@@ -125,10 +125,10 @@ router.post('/chipModelQuery', function (req, res) {
     var whereObj = {};
     var optObj = {};  
     var sortParam = req.body.data.sort;
-    var sortObj = {};
-    if (typeof sortParam !== "undefined") {
-		sortObj["sort"] = sortParam;
-    }
+    var sortObj = {"name":1};
+//  if (typeof sortParam !== "undefined") {
+//		sortObj["sort"] = sortParam;
+//  }
     ChipModel.chipModelQuery(whereObj,optObj,sortObj,function (err, result) {
         if (result[0] == null) {
             res.json(failure);
