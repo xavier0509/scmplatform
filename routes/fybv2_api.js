@@ -124,8 +124,11 @@ router.post('/chipUpdate', function (req, res) {
 router.post('/chipModelQuery', function (req, res) {
     var whereObj = {};
     var optObj = {};  
-    var sortParam = req.body.data.sort;
-    var sortObj = {"name":1};
+  //  var sortParam = req.body.data.sort;
+  	var sortParam = {"name":1};
+    var sortObj = {};
+    sortObj["sort"] = sortParam;
+//  }
 //  if (typeof sortParam !== "undefined") {
 //		sortObj["sort"] = sortParam;
 //  }
