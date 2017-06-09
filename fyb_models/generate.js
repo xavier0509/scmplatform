@@ -1,5 +1,5 @@
 
-var url = 'mongodb://172.20.132.225/fybtest';
+var url = 'mongodb://172.20.5.239/fybv3';
 var fs = require('fs');
 var infoTxt = "";
 var tempFileList = null;
