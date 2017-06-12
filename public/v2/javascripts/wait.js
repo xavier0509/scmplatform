@@ -74,7 +74,7 @@ function forsession() {
 	loginusername = parent.loginusername;
 	adminFlag = parent.adminFlag;
 	console.log("email="+fromEmail+",userName="+loginusername+",adminFlag="+adminFlag);
-	sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":""}', SearchChipTypeInfo);
+	sendHTTPRequest("/fybv2_api/chipModelQuery", '{"data":{"sort":{"name":1}}}', SearchChipTypeInfo);
 }
 function SearchChipTypeInfo(){
 	if(this.readyState == 4) {

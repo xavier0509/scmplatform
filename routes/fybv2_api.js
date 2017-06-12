@@ -122,9 +122,17 @@ router.post('/chipUpdate', function (req, res) {
 });
 
 router.post('/chipModelQuery', function (req, res) {
-    var whereStr = {};
-    var optStr = {};
-    ChipModel.chipModelQuery(whereStr,optStr,function (err, result) {
+    var whereObj = {};
+    var optObj = {};  
+  //  var sortParam = req.body.data.sort;
+  	var sortParam = {"name":1};
+    var sortObj = {};
+    sortObj["sort"] = sortParam;
+//  }
+//  if (typeof sortParam !== "undefined") {
+//		sortObj["sort"] = sortParam;
+//  }
+    ChipModel.chipModelQuery(whereObj,optObj,sortObj,function (err, result) {
         if (result[0] == null) {
             res.json(failure);
         } else {

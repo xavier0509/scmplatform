@@ -49,14 +49,19 @@ function AfterChipModeHtmlInfo(){
 	for(var i = 0; i < oTableA.length; i++) {
 		oTableA[i].index = i;
 		oTableA[i].onclick = function() {
-			console.log("ok" + this.index); //点击的是第几个
 			var thisIndexName = oTableA[this.index].innerText;//通过englishName找到对应数据
 			var thisIndexId = oTableA[this.index].name;//通过id找到对应数据
 			var thisEnName = oTableA[this.index].title;
+			var thisEnNameCut = "";
+			if(thisEnName.length>10){
+				thisEnNameCut = thisEnName.substring(0,10)+"...";  
+			}else{
+				thisEnNameCut = thisEnName;
+			}
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
 			console.log(thisEnName);
-			document.getElementById("lableText").innerHTML = "将机芯 "+thisEnName+" 的名称改为：";
+			document.getElementById("lableText").innerHTML = "将机芯 <span title='"+thisEnName+"'>"+thisEnNameCut+"</span> 的名称改为：";
 			document.getElementById("chipOrMode").value = "";
 			//给保存按钮传参
 			toSaveButton("chip", this.index, thisIndexName, thisIndexId);
@@ -74,8 +79,13 @@ function AfterChipModeHtmlInfo(){
 			var thisEnName = oTableB[this.index].title;
 			$('#myModeChipAddModal').modal(); //显示新建与编辑机芯机型时的弹框
 			$(".modal-backdrop").addClass("new-backdrop");
-			console.log(thisEnName);
-			document.getElementById("lableText").innerHTML = "将机型 "+thisEnName+" 的名称改为：";;
+			var thisEnNameCut = "";
+			if(thisEnName.length>10){
+				thisEnNameCut = thisEnName.substring(0,10)+"...";  
+			}else{
+				thisEnNameCut = thisEnName;
+			}
+			document.getElementById("lableText").innerHTML = "将机型 <span title='"+thisEnName+"'>"+thisEnNameCut+"</span> 的名称改为：";;
 			document.getElementById("chipOrMode").value = "";
 			toSaveButton("model", this.index, thisIndexName, thisIndexId);
 		}
@@ -94,8 +104,13 @@ function AfterChipModeHtmlInfo(){
 			$(".modal-backdrop").addClass("new-backdrop");
 			scrollTopStyle("myModeChipAddModal");
 			
-			console.log(thisEnName);
-			document.getElementById("lableText").innerHTML = "将芯片型号 "+thisEnName+" 的修改为：";;
+			var thisEnNameCut = "";
+			if(thisEnName.length>10){
+				thisEnNameCut = thisEnName.substring(0,10)+"...";  
+			}else{
+				thisEnNameCut = thisEnName;
+			}
+			document.getElementById("lableText").innerHTML = "将芯片型号 <span title='"+thisEnName+"'>"+thisEnNameCut+"</span> 修改为：";;
 			document.getElementById("chipOrMode").value = "";
 			toSaveButton("chipType", this.index, thisIndexName, thisIndexId);
 		}
