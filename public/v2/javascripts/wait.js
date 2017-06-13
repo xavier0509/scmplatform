@@ -791,7 +791,7 @@ function productAddresult() {
 					modellll = document.getElementById('newAddModel').value;
 				}
 				maildata = "用户："+loginusername+"<br/>新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
-			    maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>"
+			    maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>"
 			    console.log("maildata:"+maildata);
 			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 			} else if(data.msg == "failure") {
@@ -1607,7 +1607,7 @@ function productEditresult() {
 			    if(changeDev.length == 0&&changeAdd.length == 0 &&changeReduce.length == 0&&changeConf.length == 0){
 			    	maildata = "用户："+loginusername+"<br/>删除了机芯："+TwiceTransferChip+",机型："+TwiceTransferModel+"的配置文档";
 			    }
-			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
 			    console.log("fromEmail:"+fromEmail);
 			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
@@ -2512,7 +2512,7 @@ function sentMailForMoreFile(){
         maildata += "<br/>修改配置："+ mEConfigEditCzName;
     }
    	console.log("批量from："+fromEmail);
-    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
     console.log("maildata:"+maildata);
     sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', moreEditMailFun)			
 }
@@ -2594,7 +2594,7 @@ function moreDeleteresult() {
 		};
 		console.log("aaaaaaaaaaa:"+changeTv);
 		var maildata = "用户："+loginusername+"<br>删除了"+changeTv+"的配置文档";
-        maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>进入配置平台请点击 <a href='http://localhost:3000/v2/scmplatform/index.html'>scmplatform</a>";
+        maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
         var nodeData = '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
         console.log(nodeData);
         sendHTTPRequest("/fybv2_api/sendmail", nodeData, sendmailfun);  
