@@ -334,8 +334,8 @@ router.post('/configAdd', function (req, res) {
                                 productUpdateStr["configFile." + id + ".type"] = result2[0].type;
                                 productUpdateStr["configFile." + id + ".value"] = result2[0].value;
                                 productUpdateStr["configFile." + id + ".options"] = result2[0].options;
-                                productUpdateStr["gerritState"] = 1;
-                                productUpdateStr["operateType"] = 3;
+                            //    productUpdateStr["gerritState"] = 1;
+                            //    productUpdateStr["operateType"] = 3;
                                 Product.productUpdate({}, {$set: productUpdateStr}, {multi:true}, function (err3, result3){
                                     if (err3) 
                                         res.json({"code": 0, "msg": "failure","reason":"productUpdate failed"});
