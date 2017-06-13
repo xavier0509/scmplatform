@@ -493,7 +493,8 @@ function shellScriptEnd(shellFileName, systemVersion)
 	//shcmd += "echo " + cmd;
 	shcmd += cmd;
 	
-    cmd = "git push origin HEAD:refs/for/" + gitbranch + "  \n\n";
+    // cmd = "git push origin HEAD:refs/for/" + gitbranch + "  \n\n";
+    cmd = "git push 1 HEAD:refs/for/" + gitbranch + "  \n\n";
 	shcmd += "echo " + cmd;
 	shcmd += cmd;
 	
