@@ -1307,7 +1307,7 @@ function DTwicemailfun2(){
         if (this.status == 200){
             // 同步更新相同target下的MK信息
             var oEnode = '{"data":{"condition":{"gerritState":"0","targetProduct":"'+targetProduct+'"},"action":"set","update":{"mkFile":' + JSON.stringify(targetForMK) + '}}}';
-            sendHTTPRequest("/fybv2_api/productUpdate", oEnode, sendmailfun);
+            sendHTTPRequest("/fybv2_api/productUpdate", oEnode, creatFile);
         }
     }
 }
