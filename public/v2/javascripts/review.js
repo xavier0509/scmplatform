@@ -142,7 +142,7 @@ function reviewlist(){
                     _cell11.innerHTML = operateType;
                     _cell11.style.display="none";
                     _cell12 = _row.insertCell(11);
-                    // _cell10.innerHTML = "liujinpeng@skyworth.com";
+                    // _cell10.innerHTML = "hefengshuang@skyworth.com";
                     _cell12.style.display="none";
                 };
             }
@@ -1485,7 +1485,7 @@ function reviewEditResult(){
                 maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
                 console.log("maildata:"+maildata);
                 console.log("fromEmail:"+fromEmail);
-                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"liujinpeng@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun)
+                sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"hefengshuang@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', DTwicemailfun)
 
                 
             }
