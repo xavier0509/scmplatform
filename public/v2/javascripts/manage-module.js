@@ -145,6 +145,7 @@ function searchModalInfo() {
 			var _rowModuleIME = document.getElementById("moduleTableIME");
 			var _rowModuleSysApp = document.getElementById("moduleTableSysApp");
 			var _rowModuleTV = document.getElementById("moduleTableTV");
+			var _rowModuleETC = document.getElementById("moduleTableETC");
 			var _rowModuleOther = document.getElementById("moduleTableOther");
 			var _rowModulePlayerLibrary = document.getElementById("moduleTablePlayerLibrary");
 			
@@ -155,6 +156,7 @@ function searchModalInfo() {
 			_rowModuleIME.innerHTML = "<div title='IME'>IME:</div>";
 			_rowModuleSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowModuleTV.innerHTML = "<div title='TV'>TV:</div>";
+			_rowModuleETC.innerHTML = "<div title='ETC'>ETC:</div>";
 			_rowModuleOther.innerHTML = "<div title='Other'>Other:</div>";
 			_rowModulePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
@@ -190,6 +192,11 @@ function searchModalInfo() {
 					pullDataOne = JSON.stringify(data.data[kk]);
 					console.log("TV:" + kk);
 					_rowModuleTV.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
+				} else if(data.data[i].category == "Etc") {
+					kk = i;
+					pullDataOne = JSON.stringify(data.data[kk]);
+					console.log("Etc:" + kk);
+					_rowModuleETC.innerHTML += "<div class='col-xs-4'><a title='"+data.data[kk].cnName+"' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</a><input type='text' value='" + pullDataOne + "' style='display:none'></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					pullDataOne = JSON.stringify(data.data[kk]);
