@@ -974,3 +974,8 @@ table{font-size: ;}
 .textIndent{
 	text-indent: 1em;
 }
+
+#chipid option{
+	width: 100px;
+	overflow: hidden;
+}

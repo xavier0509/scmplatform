@@ -778,8 +778,10 @@ function productAddresult() {
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
 				document.getElementById("myAddCloseDiv").style.display = "block";
+				document.getElementById("myEnsureCancle").style.display = "none";
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
+				setTimeout("document.getElementById('myEnsureCancle').style.display = 'block'",3000);
 				closeparentpage("1");
 				console.log(infoflag);
 				if (infoflag == "2" ) {
