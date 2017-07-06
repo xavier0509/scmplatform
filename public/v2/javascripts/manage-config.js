@@ -9,7 +9,7 @@ function AferConfigHtmlInfo() {
 	var oButtonAdd = document.getElementById("manage-configAdd");
 	oButtonAdd.onclick = function() {
 		var addDefaultValue = {
-			"value" : false
+			"value" : ""
 		};
 		$('#myConfigAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
@@ -161,7 +161,12 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":'+newConfigMenu[0]+',"options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					if (keylue.value == ""||keylue.value == null)) {
+						keylue.value = newConfigMenu[0];
+						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":'+newConfigMenu[0]+',"options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					} else{
+						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					}
 				}
 
 				if (myindex == null) {
