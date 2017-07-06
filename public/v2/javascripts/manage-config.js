@@ -32,7 +32,7 @@ function AferConfigHtmlInfo() {
 			child1.appendChild(child2);
 			parentDiv.appendChild(child1);
 		};
-		toSaveButton("-1",addDefaultValue);
+		toSaveButton(this.index,addDefaultValue);
 	}
 
 	/*配置管理板块-修改 */
@@ -161,9 +161,9 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-					keylue.value = newConfigMenu[0];
-					console.log(keylue.value);
-					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+//					keylue.value = newConfigMenu[0];
+//					console.log(keylue.value);
+					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+newConfigMenu[0]+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 				}
 
 				if (myindex == null) {
