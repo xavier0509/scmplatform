@@ -5,9 +5,12 @@ $(function() {
 })
 
 function AferConfigHtmlInfo() {
-	/*配置管理板块-增加与编辑*/
+	/*配置管理板块-增加*/
 	var oButtonAdd = document.getElementById("manage-configAdd");
 	oButtonAdd.onclick = function() {
+		var addDefaultValue = {
+			"value" : false
+		};
 		$('#myConfigAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("configChineseName").value = "";
@@ -29,7 +32,7 @@ function AferConfigHtmlInfo() {
 			child1.appendChild(child2);
 			parentDiv.appendChild(child1);
 		};
-		toSaveButton(this.index,null);
+		toSaveButton("-1",addDefaultValue);
 	}
 
 	/*配置管理板块-修改 */
@@ -158,6 +161,7 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
+					keylue.value = newConfigMenu[0];
 					console.log(keylue.value);
 					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 				}
@@ -172,8 +176,6 @@ function AferConfigHtmlInfo() {
 						console.log("lxw in edit 单项编辑"+keylue);
 						var nodeObj = JSON.parse(node);
 						console.log("lxw "+ node);
-						console.log(nodeObj);
-						console.log(nodeObj.data);
 						var nodeObjString = JSON.stringify(nodeObj.data);
 						console.log(nodeObjString);
 						
