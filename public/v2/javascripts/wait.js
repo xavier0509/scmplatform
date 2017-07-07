@@ -3002,13 +3002,15 @@ function getPreviewInfo(){
         //console.log("this.responseText = " + this.responseText);
         if(this.status == 200) {
             var data = JSON.parse(this.responseText);
-            console.log(data);
             if(data.msg == "success") {
                 console.log("lxw " + "预览-成功"+ data.configRes);
                 document.getElementById("loading").style.display = "none";
                 $("#myPreviewModalLabel").text("预览");
 				$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 				$(".modal-backdrop").addClass("new-backdrop");
+				$("#myPreviewModal").find("li")[0].className = "presentation active";
+				$("#myPreviewModal").find("li")[1].className = "presentation";
+				
                 document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
                 document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
             } else if(data.msg == "failure") {
