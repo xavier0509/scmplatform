@@ -5,15 +5,28 @@ $(function() {
 })
 
 function AferConfigHtmlInfo() {
-	/*配置管理板块-增加与编辑*/
+	/*配置管理板块-增加*/
 	var oButtonAdd = document.getElementById("manage-configAdd");
 	oButtonAdd.onclick = function() {
+		var addDefaultValue = {
+			"value" : ""
+		};
 		$('#myConfigAddChangeModal').modal();
 		$(".modal-backdrop").addClass("new-backdrop");
 		document.getElementById("configChineseName").value = "";
 		document.getElementById("configEnglishName").value = "";
 		document.getElementById("configSrc").value = "";
+		
+		document.getElementById("configChineseName").removeAttribute('disabled');
+		document.getElementById("configEnglishName").removeAttribute('disabled');
 		document.getElementById("configSrc").removeAttribute('disabled');
+		document.getElementById("configString").removeAttribute('disabled');
+		var myMenuUnitInputTwo = document.getElementsByClassName("menuUnitInput");
+		for (var kk = 0; kk<myMenuUnitInputTwo.length; kk++) {
+			document.getElementsByClassName("menuUnitInput")[kk].removeAttribute('disabled');
+		}
+		document.getElementById("configSelect").removeAttribute('disabled');
+		document.getElementById("configSelect").style.backgroundColor = "white";
         document.getElementById("configSrc").style.backgroundColor = "white";
 		document.getElementById("configInstr").value = "";
 		document.getElementById("configString").value = "";
@@ -29,7 +42,7 @@ function AferConfigHtmlInfo() {
 			child1.appendChild(child2);
 			parentDiv.appendChild(child1);
 		};
-		toSaveButton(this.index,null);
+		toSaveButton(this.index,addDefaultValue);
 	}
 
 	/*配置管理板块-修改 */
@@ -51,7 +64,16 @@ function AferConfigHtmlInfo() {
 			document.getElementById("configChineseName").value = jsonData.cnName;
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
+			document.getElementById("configChineseName").setAttribute('disabled','');
+			document.getElementById("configEnglishName").setAttribute('disabled','');
 			document.getElementById("configSrc").setAttribute('disabled','');
+			document.getElementById("configString").setAttribute('disabled','');
+			var myMenuUnitInput = document.getElementsByClassName("menuUnitInput");
+			for (var kk = 0; kk<myMenuUnitInput.length; kk++) {
+				document.getElementsByClassName("menuUnitInput")[kk].setAttribute('disabled','');
+			}
+			document.getElementById("configSelect").setAttribute('disabled','');
+			document.getElementById("configSelect").style.backgroundColor = "#ebebe4";
            	document.getElementById("configSrc").style.backgroundColor = "#ebebe4";
             
 			if (jsonData.type == "string") {
@@ -158,8 +180,12 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-					console.log(keylue.value);
-					node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					if(keylue.value == null||keylue.value== ""){
+						keylue.value = newConfigMenu[0];
+						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":'+keylue.value+',"options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					}else{
+						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					}
 				}
 
 				if (myindex == null) {
@@ -172,8 +198,6 @@ function AferConfigHtmlInfo() {
 						console.log("lxw in edit 单项编辑"+keylue);
 						var nodeObj = JSON.parse(node);
 						console.log("lxw "+ node);
-						console.log(nodeObj);
-						console.log(nodeObj.data);
 						var nodeObjString = JSON.stringify(nodeObj.data);
 						console.log(nodeObjString);
 						
