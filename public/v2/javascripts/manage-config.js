@@ -16,7 +16,17 @@ function AferConfigHtmlInfo() {
 		document.getElementById("configChineseName").value = "";
 		document.getElementById("configEnglishName").value = "";
 		document.getElementById("configSrc").value = "";
+		
+		document.getElementById("configChineseName").removeAttribute('disabled');
+		document.getElementById("configEnglishName").removeAttribute('disabled');
 		document.getElementById("configSrc").removeAttribute('disabled');
+		document.getElementById("configString").removeAttribute('disabled');
+		var myMenuUnitInputTwo = document.getElementsByClassName("menuUnitInput");
+		for (var kk = 0; kk<myMenuUnitInputTwo.length; kk++) {
+			document.getElementsByClassName("menuUnitInput")[kk].removeAttribute('disabled');
+		}
+		document.getElementById("configSelect").removeAttribute('disabled');
+		document.getElementById("configSelect").style.backgroundColor = "white";
         document.getElementById("configSrc").style.backgroundColor = "white";
 		document.getElementById("configInstr").value = "";
 		document.getElementById("configString").value = "";
@@ -54,7 +64,16 @@ function AferConfigHtmlInfo() {
 			document.getElementById("configChineseName").value = jsonData.cnName;
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
+			document.getElementById("configChineseName").setAttribute('disabled','');
+			document.getElementById("configEnglishName").setAttribute('disabled','');
 			document.getElementById("configSrc").setAttribute('disabled','');
+			document.getElementById("configString").setAttribute('disabled','');
+			var myMenuUnitInput = document.getElementsByClassName("menuUnitInput");
+			for (var kk = 0; kk<myMenuUnitInput.length; kk++) {
+				document.getElementsByClassName("menuUnitInput")[kk].setAttribute('disabled','');
+			}
+			document.getElementById("configSelect").setAttribute('disabled','');
+			document.getElementById("configSelect").style.backgroundColor = "#ebebe4";
            	document.getElementById("configSrc").style.backgroundColor = "#ebebe4";
             
 			if (jsonData.type == "string") {
@@ -161,10 +180,10 @@ function AferConfigHtmlInfo() {
 						console.log("lxw"+newConfigMenu);
 					}
 					console.log("lxw "+newConfigCzName+"--"+newConfigEnName+"--"+newConfigSrc+"--"+newConfigMenu+"--"+newConfigInstr+"--"+newConfigSelect);
-					if (keylue.value == ""||keylue.value == null) {
+					if(keylue.value == null||keylue.value== ""){
 						keylue.value = newConfigMenu[0];
-						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":'+newConfigMenu[0]+',"options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
-					} else{
+						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":'+keylue.value+',"options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
+					}else{
 						node = '{"data":{"cnName":"'+newConfigCzName+'","engName":"'+newConfigEnName+'","configKey":"'+newConfigSrc+'","type":"enum", "value":"'+keylue.value+'","options":['+newConfigMenu+'],"desc":"'+newConfigInstr+'","category":"'+newConfigSelect+'"}}';
 					}
 				}
