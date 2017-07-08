@@ -331,6 +331,7 @@ router.post('/moduleAdd', function (req, res) {
     }
 });
 
+//important fixbug One:name:{$exists:true}只更新存在的module，不存在的module则不插入
 router.post('/moduleUpdate', function (req, res) {
     if (req.body.data) {
         var moduleUpdateStr = {};
@@ -382,7 +383,9 @@ router.post('/moduleUpdate', function (req, res) {
                     if (result.nModified == 0) {
                         res.json({"code": 0, "msg": "failure", "reason":"moduleUpdate nModified == 0"});
                     } else {
-                        Product.productUpdate({}, {$set: productUpdateStr}, {multi:true}, function (err1, result1){
+                    	var name = "mkFile."+id;
+                    	console.log("ModuleUpdate name = " + name);
+                        Product.productUpdate({name:{$exists:true}}, {$set: productUpdateStr}, {multi:true}, function (err1, result1){
                             if (err1) 
                                 res.json({"code": 0, "msg": "failure", "reason":"productUpdate failed"});
                             else
@@ -466,6 +469,7 @@ router.post('/configAdd', function (req, res) {
     }
 });
 
+//fixbug:二期只支持修改描述项
 router.post('/configUpdate', function (req, res) {
     if (req.body.data) {
         var configUpdateStr = {};
@@ -489,22 +493,22 @@ router.post('/configUpdate', function (req, res) {
 
             if (cnName != null) {
                 configUpdateStr["cnName"] = cnName;
-                productUpdateStr["configFile." + id + ".cnName"] = cnName;
+              //  productUpdateStr["configFile." + id + ".cnName"] = cnName;
             };
 
             if (engName != null) {
                 configUpdateStr["engName"] = engName;
-                productUpdateStr["configFile." + id + ".engName"] = engName;
+              //  productUpdateStr["configFile." + id + ".engName"] = engName;
             };
 
             if (configKey != null) {
                 configUpdateStr["configKey"] = configKey;
-                productUpdateStr["configFile." + id + ".configKey"] = configKey;
+              //  productUpdateStr["configFile." + id + ".configKey"] = configKey;
             };
 
             if (category != null) {
                 configUpdateStr["category"] = category;
-                productUpdateStr["configFile." + id + ".category"] = category;
+              //  productUpdateStr["configFile." + id + ".category"] = category;
             };
 
             if (desc != null) {
@@ -514,17 +518,17 @@ router.post('/configUpdate', function (req, res) {
 
             if (type != null) {
                 configUpdateStr["type"] = type;
-                productUpdateStr["configFile." + id + ".type"] = type;
+             //   productUpdateStr["configFile." + id + ".type"] = type;
             };
 
             if (value != null) {
                 configUpdateStr["value"] = value;
-                productUpdateStr["configFile." + id + ".value"] = value;
+             //   productUpdateStr["configFile." + id + ".value"] = value;
             };
 
             if (options != null) {
                 configUpdateStr["options"] = options;
-                productUpdateStr["configFile." + id + ".options"] = options;
+             //   productUpdateStr["configFile." + id + ".options"] = options;
             };       
         };
 
