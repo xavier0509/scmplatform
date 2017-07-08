@@ -2989,6 +2989,10 @@ function getPreviewInfo(){
                 $("#myPreviewModalLabel").text("预览");
 				$('#myPreviewModal').modal(); //弹出编辑页（即新增页，只是每项都有数据，这个数据从后台获取）
 				$(".modal-backdrop").addClass("new-backdrop");
+				$("#myPreviewModal").find("li")[0].className = "presentation active";
+				$("#myPreviewModal").find("li")[1].className = "presentation";
+
+
                 document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
                 document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
             } else if(data.msg == "failure") {
