@@ -1420,6 +1420,7 @@ function reviewEdit(){
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
 	var oEtargetProduct = document.getElementById("newCheckDevice").value;
+    var oldProduct = document.getElementById("newCheckDevice").getAttribute("oldvalue");
 	var oEgerritState = "1";
 	var oEoperateType = "3";
 	var userName = loginusername;
@@ -1513,7 +1514,7 @@ function reviewEdit(){
     console.log(operateTime);
     var changedesc = '{"changeDev":"'+changeDev+'","changeAdd":"'+changeAdd+'","changeReduce":"'+changeReduce+'","changeConf":"'+changeConf+'"}';
     var a = JSON.parse(changedesc);
-	var oEnode = '{"data":{"condition":{"targetProduct":"'+oEtargetProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + ',"desc":'+JSON.stringify(a) + '}}}';
+	var oEnode = '{"data":{"condition":{"targetProduct":"'+oldProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + ',"desc":'+JSON.stringify(a) + '}}}';
 	console.log("lxw " + oEnode);
     allTargetMk = editMkFile;
 	submitStatus(hashObj,dataObj,oEnode);

@@ -358,10 +358,8 @@ function getAddInfoInfOne() {
 			var _rowAddPageIME = document.getElementById("myAddModalMkTableIME");
 			var _rowAddPageSysApp = document.getElementById("myAddModalMkTableSysApp");
 			var _rowAddPageTV = document.getElementById("myAddModalMkTableTV");
-			var _rowAddPageETC = document.getElementById("myAddModalMkTableEtc");
 			var _rowAddPageOther = document.getElementById("myAddModalMkTableOther");
 			var _rowAddPagePlayerLibrary = document.getElementById("myAddModalMkTablePlayerLibrary");
-			
 			_rowAddPageApp.innerHTML = "<div title='App'>App:</div>";
 			_rowAddPageService.innerHTML = "<div title='Service'>Service:</div>";
 			_rowAddPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
@@ -369,7 +367,6 @@ function getAddInfoInfOne() {
 			_rowAddPageIME.innerHTML = "<div title='IME'>IME:</div>";
 			_rowAddPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowAddPageTV.innerHTML = "<div title='TV'>TV:</div>";
-			_rowAddPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
 			_rowAddPageOther.innerHTML = "<div title='Other'>Other:</div>";
 			_rowAddPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
@@ -396,9 +393,6 @@ function getAddInfoInfOne() {
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Etc") {
-					kk = i;
-					_rowAddPageETC.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowAddPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
@@ -520,10 +514,12 @@ function getAddInfoInfTwo() {
 				} else if(data.data[i].category == "localmedia") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -537,10 +533,12 @@ function getAddInfoInfTwo() {
 				} else if(data.data[i].category == "other") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
+					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
+						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -780,10 +778,8 @@ function productAddresult() {
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
 				document.getElementById("myAddCloseDiv").style.display = "block";
-				document.getElementById("myEnsureCancle").style.display = "none";
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
-				setTimeout("document.getElementById('myEnsureCancle').style.display = 'block'",3000);
 				closeparentpage("1");
 				console.log(infoflag);
 				if (infoflag == "2" ) {
@@ -797,7 +793,7 @@ function productAddresult() {
 				maildata = "用户："+loginusername+"<br/>新增了机芯："+chippp+",机型："+modellll+"的配置文档，请审核";
 			    maildata += "<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>"
 			    console.log("maildata:"+maildata);
-			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
+			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"hefengshuang@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 			} else if(data.msg == "failure") {
 				console.log("lxw " + "修改失败");
 				document.getElementById("myAddModalErrorInfo").style.display = "block";
@@ -942,7 +938,6 @@ function getEditInfoInfOne() {
 			var _rowEditPageIME = document.getElementById("myEditModalMkTableIME");
 			var _rowEditPageSysApp = document.getElementById("myEditModalMkTableSysApp");
 			var _rowEditPageTV = document.getElementById("myEditModalMkTableTV");
-			var _rowEditPageETC = document.getElementById("myEditModalMkTableEtc");
 			var _rowEditPageOther = document.getElementById("myEditModalMkTableOther");
 			var _rowEditPagePlayerLibrary = document.getElementById("myEditModalMkTablePlayerLibrary");
 			
@@ -953,7 +948,6 @@ function getEditInfoInfOne() {
 			_rowEditPageIME.innerHTML = "<div title='IME'>IME:</div>";
 			_rowEditPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowEditPageTV.innerHTML = "<div title='TV'>TV:</div>";
-			_rowEditPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
 			_rowEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
 			_rowEditPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
@@ -980,9 +974,6 @@ function getEditInfoInfOne() {
                 } else if(data.data[i].category == "TV") {
                     kk = i;
                     _rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-                } else if(data.data[i].category == "Etc") {
-                    kk = i;
-                    _rowEditPageETC.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "Other") {
                     kk = i;
                     _rowEditPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -1619,7 +1610,7 @@ function productEditresult() {
 			    maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
 			    console.log("maildata:"+maildata);
 			    console.log("fromEmail:"+fromEmail);
-			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
+			    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"hefengshuang@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', mailfun)
 
 
 			} else if(data.msg == "failure") {
@@ -1683,7 +1674,6 @@ function getCopyInfoInfOne() {
 			var _rowCopyPageIME = document.getElementById("myCopyModalMkTableIME");
 			var _rowCopyPageSysApp = document.getElementById("myCopyModalMkTableSysApp");
 			var _rowCopyPageTV = document.getElementById("myCopyModalMkTableTV");
-			var _rowCopyPageETC = document.getElementById("myCopyModalMkTableEtc");
 			var _rowCopyPageOther = document.getElementById("myCopyModalMkTableOther");
 			var _rowCopyPagePlayerLibrary = document.getElementById("myCopyModalMkTablePlayerLibrary");
 			
@@ -1694,7 +1684,6 @@ function getCopyInfoInfOne() {
 			_rowCopyPageIME.innerHTML = "<div title='IME'>IME:</div>";
 			_rowCopyPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowCopyPageTV.innerHTML = "<div title='TV'>TV:</div>";
-			_rowCopyPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
 			_rowCopyPageOther.innerHTML = "<div title='Other'>Other:</div>";
 			_rowCopyPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
 
@@ -1721,9 +1710,6 @@ function getCopyInfoInfOne() {
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
-				} else if(data.data[i].category == "Etc") {
-					kk = i;
-					_rowCopyPageETC.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowCopyPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -2075,9 +2061,7 @@ function getMoreEditInfoOne() {
 			var _rowMEditPageIME = document.getElementById("myMoreEditModalMkTableIME");
 			var _rowMEditPageSysApp = document.getElementById("myMoreEditModalMkTableSysApp");
 			var _rowMEditPageTV = document.getElementById("myMoreEditModalMkTableTV");
-			var _rowMEditPageETC = document.getElementById("myMoreEditModalMkTableEtc");
 			var _rowMEditPageOther = document.getElementById("myMoreEditModalMkTableOther");
-			
 			_rowMEditPageApp.innerHTML = "<div title='App'>App:</div>";
 			_rowMEditPageService.innerHTML = "<div title='Service'>Service:</div>";
 			_rowMEditPageAppStore.innerHTML = "<div title='AppStore'>AppStore:</div>";
@@ -2085,7 +2069,6 @@ function getMoreEditInfoOne() {
 			_rowMEditPageIME.innerHTML = "<div title='IME'>IME:</div>";
 			_rowMEditPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
 			_rowMEditPageTV.innerHTML = "<div title='TV'>TV:</div>";
-			_rowMEditPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
 			_rowMEditPageOther.innerHTML = "<div title='Other'>Other:</div>";
 
 			for(var i = 0; i < data.data.length; i++) {
@@ -2111,9 +2094,6 @@ function getMoreEditInfoOne() {
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					_rowMEditPageTV.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
-				} else if(data.data[i].category == "Etc") {
-					kk = i;
-					_rowMEditPageEtc.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
 				} else if(data.data[i].category == "Other") {
 					kk = i;
 					_rowMEditPageOther.innerHTML += "<div class='col-xs-4'><a id='" + data.data[kk]._id + "' class='aFlagToButton' engName='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' gitPath='" + data.data[kk].gitPath + "' category='" + data.data[kk].category + "' title='" + data.data[kk].desc + "' curValue = '0'>" + data.data[kk].cnName + "</a><button type='button' class='btn btn-default mybuttonAddstyle'>批量新增</button><button type='button' class='btn btn-default mybuttonDelstyle'>批量删除</button></div>";
@@ -2534,7 +2514,7 @@ function sentMailForMoreFile(){
    	console.log("批量from："+fromEmail);
     maildata += "<br/>请前往《待审核文件》菜单进行审核处理<br/> -----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
     console.log("maildata:"+maildata);
-    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', moreEditMailFun)			
+    sendHTTPRequest("/fybv2_api/sendmail", '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"hefengshuang@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}', moreEditMailFun)			
 }
 
 function moreEditMailFun(){
@@ -2615,7 +2595,7 @@ function moreDeleteresult() {
 		console.log("aaaaaaaaaaa:"+changeTv);
 		var maildata = "用户："+loginusername+"<br>删除了"+changeTv+"的配置文档";
         maildata += "<br/> 请前往《待审核文件》菜单进行审核处理<br>-----<br/>进入配置平台请点击 <a href='http://172.20.132.225:3000/v2/scmplatform/index.html'>scmplatform</a>";
-        var nodeData = '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"fanyanbo@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
+        var nodeData = '{"data":{"desc":"'+maildata+'","from":"'+fromEmail+'","to":"hefengshuang@skyworth.com","subject":"软件配置平台通知-自动发送，请勿回复"}}';
         console.log(nodeData);
         sendHTTPRequest("/fybv2_api/sendmail", nodeData, sendmailfun);  
 	}
@@ -3002,6 +2982,7 @@ function getPreviewInfo(){
         //console.log("this.responseText = " + this.responseText);
         if(this.status == 200) {
             var data = JSON.parse(this.responseText);
+            console.log(data);
             if(data.msg == "success") {
                 console.log("lxw " + "预览-成功"+ data.configRes);
                 document.getElementById("loading").style.display = "none";
@@ -3010,7 +2991,8 @@ function getPreviewInfo(){
 				$(".modal-backdrop").addClass("new-backdrop");
 				$("#myPreviewModal").find("li")[0].className = "presentation active";
 				$("#myPreviewModal").find("li")[1].className = "presentation";
-				
+
+
                 document.getElementById("myPreviewBodyOne").innerHTML = data.configRes;
                 document.getElementById("myPreviewBodyTwo").innerHTML = data.mkRes;
             } else if(data.msg == "failure") {

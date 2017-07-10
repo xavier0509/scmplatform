@@ -433,7 +433,7 @@ function moduleResult2(){
             _rowCheckPageIME.innerHTML = "<div title='IME'>IME:</div>";
             _rowCheckPageSysApp.innerHTML = "<div title='SysApp'>SysApp:</div>";
             _rowCheckPageTV.innerHTML = "<div title='TV'>TV:</div>";
-            _rowCheckPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
+            // _rowCheckPageETC.innerHTML = "<div title='ETC'>ETC:</div>";
             _rowCheckPageOther.innerHTML = "<div title='Other'>Other:</div>";
             _rowCheckPagePlayerLibrary.innerHTML = "<div title='PlayerLibrary'>PlayerLibrary:</div>";
             
@@ -462,7 +462,7 @@ function moduleResult2(){
                     _rowCheckPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "Etc") {
                     kk = i;
-                    _rowCheckPageETC.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    // _rowCheckPageETC.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "Other") {
                     kk = i;
                     _rowCheckPageOther.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -1419,6 +1419,8 @@ function reviewEdit(){
 	var oEchipModel = document.getElementById("newCheckChipMode").value;
 	var oEmemorySize = document.getElementById("newCheckMemory").value;
 	var oEtargetProduct = document.getElementById("newCheckDevice").value;
+    var oldProduct = document.getElementById("newCheckDevice").getAttribute("oldvalue");
+    console.log("oldvalue====="+oldvalue);
 	var oEgerritState = "1";
 	var oEoperateType = "3";
 	var userName = loginusername;
@@ -1512,7 +1514,7 @@ function reviewEdit(){
     console.log(operateTime);
     var changedesc = '{"changeDev":"'+changeDev+'","changeAdd":"'+changeAdd+'","changeReduce":"'+changeReduce+'","changeConf":"'+changeConf+'"}';
     var a = JSON.parse(changedesc);
-	var oEnode = '{"data":{"condition":{"targetProduct":"'+oEtargetProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + ',"desc":'+JSON.stringify(a) + '}}}';
+	var oEnode = '{"data":{"condition":{"targetProduct":"'+oldProduct+'","chip":"' + oEchip + '","model":"' + oEmodel + '"},"action":"set","update":{"userName":"' + loginusername +'","operateTime":"' + operateTime + '","memorySize":"' + oEmemorySize + '","chipModel":"' + oEchipModel + '","androidVersion":"' + oEandroidVersion + '","targetProduct":"' + oEtargetProduct + '","gerritState":"1","operateType":"3","androidVersion":"' + oEandroidVersion + '","mkFile":' + JSON.stringify(editMkFile) + ',"configFile":' + JSON.stringify(editConfigFile) + ',"desc":'+JSON.stringify(a) + '}}}';
 	console.log("lxw " + oEnode);
     allTargetMk = editMkFile;
 	submitStatus(hashObj,dataObj,oEnode);
