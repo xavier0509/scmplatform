@@ -16,6 +16,9 @@ function AferConfigHtmlInfo() {
 		document.getElementById("configChineseName").value = "";
 		document.getElementById("configEnglishName").value = "";
 		document.getElementById("configSrc").value = "";
+		
+		document.getElementById("configChineseName").removeAttribute('disabled');
+		document.getElementById("configEnglishName").removeAttribute('disabled');
 		document.getElementById("configSrc").removeAttribute('disabled');
         document.getElementById("configSrc").style.backgroundColor = "white";
 		document.getElementById("configInstr").value = "";
