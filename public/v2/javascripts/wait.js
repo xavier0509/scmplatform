@@ -514,12 +514,10 @@ function getAddInfoInfTwo() {
 				} else if(data.data[i].category == "localmedia") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("localmedia:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -533,12 +531,10 @@ function getAddInfoInfTwo() {
 				} else if(data.data[i].category == "other") {
 					kk = i;
 					pullDataTwo = JSON.stringify(data.data[kk]);
-					console.log("other:" + kk);
 					if(data.data[i].type == "string") {
 						_rowAddPageConfigOther.innerHTML += "<div class='col-xs-6'><span title='" + data.data[kk].desc + "' name='" + data.data[kk].engName + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
 					} else if(data.data[i].type == "enum") {
 						var _myAddselect = "<select id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-						console.log("lxw " + data.data[kk].options.length);
 						for(var k = 0; k < data.data[kk].options.length; k++) {
 							if(data.data[kk].options[k] == data.data[kk].value) {
 								_myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -778,8 +774,10 @@ function productAddresult() {
 				$("#myAddModal").modal('hide');
 				$("#myCopyModal").modal('hide');
 				document.getElementById("myAddCloseDiv").style.display = "block";
+				document.getElementById("myEnsureCancle").style.display = "none";
 				document.getElementById("infoEdit").innerHTML = "数据提交成功，请在待审核页面查看。";
 				setTimeout("document.getElementById('myAddCloseDiv').style.display = 'none'",3000);
+				setTimeout("document.getElementById('myEnsureCancle').style.display = 'block'",3000);
 				closeparentpage("1");
 				console.log(infoflag);
 				if (infoflag == "2" ) {
