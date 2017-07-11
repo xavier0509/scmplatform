@@ -57,6 +57,8 @@ function AferConfigHtmlInfo() {
 			document.getElementById("configChineseName").value = jsonData.cnName;
 			document.getElementById("configEnglishName").value = jsonData.engName;
 			document.getElementById("configSrc").value = jsonData.configKey;
+			document.getElementById("configChineseName").setAttribute('disabled','');
+			document.getElementById("configEnglishName").setAttribute('disabled','');
 			document.getElementById("configSrc").setAttribute('disabled','');
            	document.getElementById("configSrc").style.backgroundColor = "#ebebe4";
             
