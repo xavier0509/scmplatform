@@ -609,12 +609,10 @@ function configResult(){
                 } else if(data.data[i].category == "localmedia") {
                     kk = i;
                     pullDataTwo = JSON.stringify(data.data[kk]);
-                    // console.log("localmedia:" + kk);
                     if(data.data[i].type == "string") {
                         _rowCheckPageConfigLocalmedia.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"' oldvalue = '"+data.data[kk].value+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
                     } else if(data.data[i].type == "enum") {
                         var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-                        // console.log("lxw " + data.data[kk].options.length);
                         for(var k = 0; k < data.data[kk].options.length; k++) {
                             if(data.data[kk].options[k] == data.data[kk].value) {
                                 _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -628,12 +626,10 @@ function configResult(){
                 } else if(data.data[i].category == "other") {
                     kk = i;
                     pullDataTwo = JSON.stringify(data.data[kk]);
-                    // console.log("other:" + kk);
                     if(data.data[i].type == "string") {
                         _rowCheckPageConfigOther.innerHTML += "<div class='col-xs-6'><span name='" + data.data[kk].engName + "'title = '" + data.data[kk].desc + "' cnName='" + data.data[kk].cnName + "' configkey='" + data.data[kk].configKey + "'>" + data.data[kk].cnName + " :</span><input type='text' onchange = 'changeConfig(this)' cnName = '"+data.data[kk].cnName+"'  oldvalue = '"+data.data[kk].value+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "' value='" + data.data[kk].value + "'title='" + data.data[kk].value  + "'></div>";
                     } else if(data.data[i].type == "enum") {
                         var _myAddselect = "<select onchange='changeConfig(this)' cnName = '"+data.data[kk].cnName+"' id='" + data.data[kk]._id + "' name='" + data.data[kk].type + "'>";
-                        // console.log("lxw " + data.data[kk].options.length);
                         for(var k = 0; k < data.data[kk].options.length; k++) {
                             if(data.data[kk].options[k] == data.data[kk].value) {
                                 _myAddselect += "<option value='" + data.data[kk].options[k] + "'selected>" + data.data[kk].options[k] + "</option>";
@@ -678,7 +674,7 @@ function configResult2(){
             _rowCheckPageConfigChannel.innerHTML = "<div title='channel'>TV通道：</div>";
             _rowCheckPageConfigLocalmedia.innerHTML = "<div title='localmedia'>本地媒体：</div>";
             _rowCheckPageConfigOther.innerHTML = "<div title='other'>其它功能：</div>";
-
+			
             for(var i = 0; i < data.data.length; i++) {
                 if(data.data[i].category == "base") {
                     kk = i;
