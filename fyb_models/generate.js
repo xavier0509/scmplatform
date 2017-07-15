@@ -325,13 +325,34 @@ function targetArrayIndex(arr, obj)
 
 function generateConfigFile(config_filename, configsList)
 {
-	writeConfigStart(config_filename);
-	for (var j in configsList)
+	function ConfigInfo(engName, value, desc, category)
 	{
-		//console.log("config: " + JSON.stringify(configsList[j]));
-		var key = configsList[j].engName;
-		var value = configsList[j].value;
-		var desc = configsList[j].desc;
+		this.engName = engName;
+		this.value = value;
+		this.desc = desc;
+		this.category = category;
+    }
+    
+    var newConfigList = new Array();
+	
+	for (var i in configsList)
+	{
+		newConfigList.push(new ConfigInfo(
+			configsList[i].engName, 
+			configsList[i].value, 
+			configsList[i].desc,
+			configsList[i].category));
+	}
+	
+	sortConfigList(newConfigList);
+	
+	writeConfigStart(config_filename);
+	for (var j in newConfigList)
+	{
+		//console.log("config: " + JSON.stringify(newConfigList[j]));
+		var key = newConfigList[j].engName;
+		var value = newConfigList[j].value;
+		var desc = newConfigList[j].desc;
 		writeConfigItem(config_filename, key, value, desc);
 	}
 	writeConfigEnd(config_filename);
@@ -339,32 +360,132 @@ function generateConfigFile(config_filename, configsList)
 
 function generateMkFile(mk_filename, mkList)
 {
+	function MkInfo(category, gitPath)
+	{
+		this.category = category;
+		this.gitPath = gitPath;
+    }
+    
+	var newMkList = new Array();
+	
+	for (var j in mkList)
+	{
+		newMkList.push(new MkInfo(mkList[j].category, mkList[j].gitPath));
+	}
+	
+	sortMkList(newMkList);
+	
 	var playerType = "";
 	
-	for (var i in mkList)
+	for (var i in newMkList)
 	{
-		var category = mkList[i].category;
+		var category = newMkList[i].category;
 		if (category == "PlayerLibrary")
 		{
-			playerType = mkList[i].gitPath;
+			playerType = newMkList[i].gitPath;
 		}
 	}
 	
 	console.log("playerType = " + playerType);
 	
 	writeAndroidmkStart(mk_filename, playerType);
-	for (var k in mkList)
+	for (var k in newMkList)
 	{
-		var category = mkList[k].category;
+		var category = newMkList[k].category;
 		if (category != "PlayerLibrary")
 		{
-			//console.log("mk: " + JSON.stringify(mkList[k]));
-			var path = mkList[k].gitPath;
+			//console.log("mk: " + JSON.stringify(newMkList[k]));
+			var path = newMkList[k].gitPath;
 			writeAndroidmkItem(mk_filename, path);
 		}
 	}
 	writeAndroidmkEnd(mk_filename);
 }
+
+function sortConfigList(configsList)
+{
+	configsList.sort(function(a,b)
+	{
+		var v = compareConfigCategory(a.category, b.category);
+		if (v != 0)
+			return v;
+		else
+		{
+			if (a.engName > b.engName)
+				return 1;
+			if (a.engName < b.engName)
+				return -1;
+			return 0;
+		}
+	});
+}
+
+function compareConfigCategory(str1, str2)
+{
+	var L1;
+	var L2;
+	
+	if (str1 == str2)
+		return 0;
+		
+	if (str1 == "base")
+		L1 = 1;
+	else if (str1 == "serverip")
+		L1 = 2;
+	else if (str1 == "ad")
+		L1 = 3;
+	else if (str1 == "channel")
+		L1 = 4;
+	else if (str1 == "localmedia")
+		L1 = 5;
+	else if (str1 == "other")
+		L1 = 6;
+	else 
+		L1 = 7;
+	
+	if (str2 == "base")
+		L2 = 1;
+	else if (str2 == "serverip")
+		L2 = 2;
+	else if (str2 == "ad")
+		L2 = 3;
+	else if (str2 == "channel")
+		L2 = 4;
+	else if (str2 == "localmedia")
+		L2 = 5;
+	else if (str2 == "other")
+		L2 = 6;
+	else 
+		L2 = 7;
+		
+	if (L1 > L2)
+		return 1;
+	else if (L1 < L2)
+		return -1;
+	else
+	{
+		if (str1 > str2)
+			return 1;
+		else if (str1 < str2)
+			return -1;
+		else
+			return 0;
+	}
+	return 0;
+}
+
+function sortMkList(mkList)
+{
+	mkList.sort(function(a,b)
+	{
+		if (a.gitPath > b.gitPath)
+			return 1;
+		if (a.gitPath < b.gitPath)
+			return -1;
+		return 0;
+	});
+}
+
 
 function gitpush(shellFileName, callback)
 {
