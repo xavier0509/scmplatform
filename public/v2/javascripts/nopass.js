@@ -422,7 +422,7 @@ function moduleResult2(){
             var _rowCheckPageIME = document.getElementById("myCheckModalMkTableIME");
             var _rowCheckPageSysApp = document.getElementById("myCheckModalMkTableSysApp");
             var _rowCheckPageTV = document.getElementById("myCheckModalMkTableTV");
-            var _rowCheckPageETC = document.getElementById("myCheckModalMkTableETC");
+            var _rowCheckPageETC = document.getElementById("myCheckModalMkTableEtc");
             var _rowCheckPageOther = document.getElementById("myCheckModalMkTableOther");
             var _rowCheckPagePlayerLibrary = document.getElementById("myCheckModalMkTablePlayerLibrary");
             
