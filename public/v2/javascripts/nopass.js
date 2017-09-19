@@ -376,7 +376,11 @@ function moduleResult(){
                     _rowCheckPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "SysApp") {
                     kk = i;
-                    _rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    if (data.data[i].engName == "SkyMirrorPlayer") {
+                    	_rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)' disabled><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    }else{
+                    	_rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    }
                 } else if(data.data[i].category == "TV") {
                     kk = i;
                     _rowCheckPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -449,7 +453,11 @@ function moduleResult2(){
                     _rowCheckPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "SysApp") {
                     kk = i;
-                    _rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    if (data.data[i].engName == "SkyMirrorPlayer") {
+                    	_rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)' disabled><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    }else{
+                    	_rowCheckPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    }
                 } else if(data.data[i].category == "TV") {
                     kk = i;
                     _rowCheckPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+"' oldstatus='0' onchange='changeChex(this)'><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "'title = '" + data.data[kk].desc + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";

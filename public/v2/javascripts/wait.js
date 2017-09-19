@@ -389,7 +389,11 @@ function getAddInfoInfOne() {
 					_rowAddPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+					if (data.data[i].engName == "SkyMirrorPlayer") {
+						_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value='' disabled><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+					}else{
+						_rowAddPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
+					}
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					_rowAddPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' id='" + data.data[kk]._id + "' value=''><span category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "' title='" + data.data[kk].desc + "'>" + data.data[kk].cnName + "</span></div>";
@@ -968,7 +972,11 @@ function getEditInfoInfOne() {
                     _rowEditPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
                 } else if(data.data[i].category == "SysApp") {
                     kk = i;
-                    _rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    if (data.data[i].engName == "SkyMirrorPlayer") {
+                    	_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)' disabled><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    } else{
+                    	_rowEditPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+                    }
                 } else if(data.data[i].category == "TV") {
                     kk = i;
                     _rowEditPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' oldvalue='0' id='" + data.data[kk]._id + "' cvalue='"+data.data[kk].cnName+ "' onchange='changeChex(this)'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
@@ -1704,7 +1712,11 @@ function getCopyInfoInfOne() {
 					_rowCopyPageIME.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
 				} else if(data.data[i].category == "SysApp") {
 					kk = i;
-					_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					if (data.data[i].engName == "SkyMirrorPlayer") {
+						_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "' disabled><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					} else{
+						_rowCopyPageSysApp.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
+					}
 				} else if(data.data[i].category == "TV") {
 					kk = i;
 					_rowCopyPageTV.innerHTML += "<div class='col-xs-3'><input type='checkbox' value='' id='" + data.data[kk]._id + "'><span title='" + data.data[kk].desc + "' category='" + data.data[kk].category + "' gitPath='" + data.data[kk].gitPath + "' name='" + data.data[kk].engName + "'>" + data.data[kk].cnName + "</span></div>";
