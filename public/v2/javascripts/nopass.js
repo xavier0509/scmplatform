@@ -921,7 +921,11 @@ function reviewresult(){
             console.log(data);
             targetForMK = data.data[0].mkFile;
             hashObj = data.data[0];
-            changeDesc = data.data[0].desc;
+            if(operate == "2"){
+                changeDesc = {"changeDev":"","changeAdd":"","changeReduce":"","changeConf":""};
+            }else{
+                changeDesc = data.data[0].desc;
+            }
             console.log("修改:"+JSON.stringify(changeDesc));
             $("#changeInfo4").text(changeDesc.changeConf);
             $("#changeInfo3").text(changeDesc.changeReduce);
