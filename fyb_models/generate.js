@@ -9,9 +9,9 @@ function getGitDir(systemVersion)
 {
 	var gitdir;
 	if (systemVersion == "Rel6.0")
-        gitdir = "/home/scmplatform/gitfiles/Rel6.0/Custom/";
+        gitdir = "/home/scmplatform/scmv3_git/60/Custom/";
     else
-        gitdir = "/home/scmplatform/gitfiles/Rel6.0/Custom/";
+        gitdir = "/home/scmplatform/scmv3_git/60/Custom/";
 	return gitdir;
 }
 
