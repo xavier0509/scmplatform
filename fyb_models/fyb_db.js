@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var db = mongoose.createConnection('mongodb://172.20.132.225/fybv3');
+var db = mongoose.createConnection('mongodb://172.20.5.239/fybv3');
 
 db.once("open", function (callback) {
     console.log("数据库成功连接");
