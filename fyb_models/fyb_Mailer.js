@@ -26,7 +26,7 @@ var transporter = nodemailer.createTransport({
     port:465,
     auth: {
         user: 'fanyanbo@skyworth.com',
-        pass: 'fyb.1115',
+        pass: 'fyb.1112',
     },
     tls: {rejectUnauthorized: false},
     debug:true

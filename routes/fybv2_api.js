@@ -703,13 +703,17 @@ router.post('/productAdd', function (req, res) {
 router.post('/generateFile', function (req, res) {
     if(req.body.data){
         var data = req.body.data;
+	try{
 	    Generator.generate(data, "Rel6.0", function(err,result){
-            if(err != 0){
-                res.json({"code": 0, "msg": "failure", "reason": result});
-            }else{
-                res.json({"code": 1, "msg": "success", "data": result});
-            }
-        });   
+           	if(err != 0){
+                	res.json({"code": 0, "msg": "failure", "reason": result});
+            	}else{
+                	res.json({"code": 1, "msg": "success", "data": result});
+            	}
+           });  
+	}catch(error){
+		res.json({"code": 1, "msg": "failure", "reason": "fatal error!"});
+	} 
      }
 });
 
