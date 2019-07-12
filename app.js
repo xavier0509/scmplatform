@@ -57,7 +57,7 @@ app.use(session({
     secret: "123",
     key: 'sid',
     store: new MongoStore({
-        url: 'mongodb://172.20.5.239/session',
+        url: 'mongodb://172.20.217.11:27018/session',
     }),
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 3},//3 days
     resave: true,
